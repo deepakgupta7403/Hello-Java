@@ -1,0 +1,21 @@
+There are majorly two types of languages.
+1) Statically typed language where each variable and expression type is already known at compile time.Once a variable is declared to be of a certain data type, it cannot hold values of other data types.Example: C,C++, Java.
+2) Dynamically typed languages: These languages can receive different data types over the time. Ruby, Python.
+
+Java is statically typed and also a strongly typed language because in Java, each type of data (such as integer, character, hexadecimal, packed decimal, and so forth) is predefined as part of the programming language and all constants or variables defined for a given program must be described with one of the data types.
+
+Java has two categories of data:
+Primitive data (e.g., number, character)
+Reference/Object data (programmer created types)
+
+Primitive Data Types :- Primitive data are only single values; they have no special capabilities. There are 8 primitive data types
+There are eight primitive datatypes supported by Java. Primitive datatypes are predefined by the language and named by a keyword.
+Let us now look into the eight primitive data types in detail.
+1) boolean (true and false) 1bit,
+2) byte (twos complement integer) 8bits,
+3) char (Unicode character) 16bits,
+4) short (twos complement integer) 16bits,
+5) int (twos complement integer) 32bit,
+6) long (twos complement integer) 64bit,
+7) float (IEEE 754 floating point) 32bits,
+8) double (IEEE 754 floating point) 64bits.

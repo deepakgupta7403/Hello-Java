@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d9494791-d467-4c71-aec9-feaf22b8afed" name="Default Changelist" comment="What is class and Obj Creation is Done and inheritance with Types of Inheritance is added DG Commit">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Encapsulation/Encapsulation Theory" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java Prctice/HelloWorld.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Inheritance/TypesOfClasses/HierarchicalInheritance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Inheritance/TypesOfInheritance/HierarchicalInheritance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Inheritance/TypesOfClasses/HybridInheritance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Inheritance/TypesOfInheritance/HybridInheritance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Inheritance/TypesOfClasses/MultiLevelInheritance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Inheritance/TypesOfInheritance/MultiLevelInheritance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Inheritance/TypesOfClasses/MultipleInheritance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Inheritance/TypesOfInheritance/MultipleInheritance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Inheritance/TypesOfClasses/SingleInheritance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Inheritance/TypesOfInheritance/SingleInheritance.java" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>int</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>long</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="MERGE" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1Sf0ADqEBIyexZx8tJvdSsILaUm" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Variables" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Deepak\IdeaProjects\Java Prctice\src\Variables" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.HybridInheritance">
+    <configuration name="ExplicitTypeConversion" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Conversion.ExplicitTypeConversion" />
+      <module name="Java Prctice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Conversion.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HybridInheritance" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Inheritance.TypesOfInheritance.HybridInheritance" />
+      <module name="Java Prctice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Inheritance.TypesOfInheritance.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IfElseStatement" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="DecisionMaking.IfElseStatement" />
+      <module name="Java Prctice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DecisionMaking.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InitializingObject" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ClassesAndObject.InitializingObject" />
+      <module name="Java Prctice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Inheritance.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WideningPrimitive" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Conversion.WideningPrimitive" />
+      <module name="Java Prctice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Conversion.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.HybridInheritance" />
+        <item itemvalue="Application.InitializingObject" />
+        <item itemvalue="Application.ExplicitTypeConversion" />
+        <item itemvalue="Application.WideningPrimitive" />
+        <item itemvalue="Application.IfElseStatement" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d9494791-d467-4c71-aec9-feaf22b8afed" name="Default Changelist" comment="" />
+      <created>1560605330452</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1560605330452</updated>
+    </task>
+    <task id="LOCAL-00001" summary="The Class name myth read and datatypes are read did the practice boolean, short, byte other are pending DG commit">
+      <created>1560971704566</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1560971704566</updated>
+    </task>
+    <task id="LOCAL-00002" summary="int are done and other are pending DG commit">
+      <created>1561000405155</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1561000405155</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Data Type Example Added DG commit">
+      <created>1565726754011</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1565726754011</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Stock Enum Added DG commit">
+      <created>1565728867477</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1565728867477</updated>
+    </task>
+    <task id="LOCAL-00005" summary="All the Primitive DataTypes Added, Enum with custom value added, Final keyword added, Variable in java and different types of variable added">
+      <created>1566419030907</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1566419030907</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Final keyword some more points added and Scope of Variable added">
+      <created>1567108653331</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1567108653331</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Java Loops added DG Commit">
+      <created>1567112716040</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1567112716040</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Decision Making statement added DG Commit">
+      <created>1567197011069</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1567197011069</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Type Conversion and Diff. Types of Comments in JAVA added DG Commit">
+      <created>1567283129856</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1567283129856</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Extra features added DG Commit">
+      <created>1567540808711</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1567540808711</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Sorting added DG Commit">
+      <created>1567621100913</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1567621100913</updated>
+    </task>
+    <task id="LOCAL-00012" summary="What is class and Obj Creation is Done and inheritance with Types of Inheritance is added DG Commit">
+      <created>1567628481892</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1567628481892</updated>
+    </task>
+    <task id="LOCAL-00013" summary="local DG Commit">
+      <created>1582078540800</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1582078540800</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="The Class name myth read and datatypes are read did the practice boolean, short, byte other are pending DG commit" />
+    <MESSAGE value="int are done and other are pending DG commit" />
+    <MESSAGE value="Data Type Example Added DG commit" />
+    <MESSAGE value="Stock Enum Added DG commit" />
+    <MESSAGE value="All the Primitive DataTypes Added, Enum with custom value added, Final keyword added, Variable in java and different types of variable added" />
+    <MESSAGE value="Final keyword some more points added and Scope of Variable added" />
+    <MESSAGE value="Java Loops added DG Commit" />
+    <MESSAGE value="Decision Making statement added DG Commit" />
+    <MESSAGE value="Type Conversion and Diff. Types of Comments in JAVA added DG Commit" />
+    <MESSAGE value="Extra features added DG Commit" />
+    <MESSAGE value="Sorting added DG Commit" />
+    <MESSAGE value="What is class and Obj Creation is Done and inheritance with Types of Inheritance is added DG Commit" />
+    <MESSAGE value="local DG Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="local DG Commit" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8.0_212</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Java Prctice</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

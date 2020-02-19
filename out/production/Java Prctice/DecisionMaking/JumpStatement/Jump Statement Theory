@@ -1,0 +1,6 @@
+Java supports three jump statement:
+      1)break
+      2)continue
+      3)return
+
+These three statements transfer control to other part of the program.
