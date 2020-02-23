@@ -1,0 +1,47 @@
+JDK
+The Java Development Kit (JDK) is a software development environment used for developing Java applications and applets.
+It includes the Java Runtime Environment (JRE), an interpreter/loader (Java), a compiler (javac), an achiever (jar), a documentation generator (Javadoc) and other tools needed in Java development.
+
+
+JRE
+JRE stands for “Java Runtime Environment” and may also be written as “Java RTE.”
+The Java Runtime Environment provides the minimum requirements for executing a Java application;
+it consists of the Java Virtual Machine (JVM), core classes, and supporting files.
+
+
+JVM
+JVM stands for “JAVA VIRTUAL MACHINE”
+ * Specification where working of Java Virtual Machine is specified.
+    But implementation provider is independent to choose the algorithm.
+    Its implementation has been provided by Sun and other companies.
+ * An implementation is a computer program that meets the requirements of the JVM specification
+ * Runtime Instance Whenever you write java command on the command prompt to run the java class, an instance of JVM is created.
+
+ JDK = JRE + Development Tool
+ JRE = JVM + Library Classes
+
+ ---------------------------------------------------------------------------------------------------------------------
+
+
+ JDK – Java Development Kit (in short JDK) is Kit which provides the environment to develop and execute(run) the Java program. JDK is a kit(or package) which includes two things
+        1) Development Tools(to provide an environment to develop your java programs)
+        2) JRE (to execute your java program).
+ Note : JDK is only used by Java Developers.
+
+ JRE – Java Runtime Environment (to say JRE) is an installation package which provides environment to only run(not develop) the java program(or application)onto your machine. JRE is only used by them who only wants to run the Java Programs i.e. end users of your system.
+
+ JVM – Java Virtual machine(JVM) is a very important part of both JDK and JRE because it is contained or inbuilt in both. Whatever Java program you run using JRE or JDK goes into JVM and JVM is responsible for executing the java program line by line hence it is also known as interpreter.
+
+
+ ----------------------------------------------------------------------------------------------------------------------
+
+
+ What does JRE consists of?
+ JRE consists of the following components:
+
+ Deployment technologies:- including deployment, Java Web Start and Java Plug-in.
+ User interface toolkit:- including Abstract Window Toolkit (AWT), Swing, Java 2D, Accessibility, Image I/O, Print Service, Sound, drag and drop (DnD) and input methods.
+ Integration libraries:- including Interface Definition Language (IDL), Java Database Connectivity (JDBC), Java Naming and Directory Interface (JNDI), Remote Method Invocation (RMI), Remote Method Invocation Over Internet Inter-Orb Protocol (RMI-IIOP) and scripting.
+ Other base libraries:- including international support, input/output (I/O), extension mechanism, Beans, Java Management Extensions (JMX), Java Native Interface (JNI), Math, Networking, Override Mechanism, Security, Serialization and Java for XML Processing (XML JAXP).
+ Lang and util base libraries:- including lang and util, management, versioning, zip, instrument, reflection, Collections, Concurrency Utilities, Java Archive (JAR), Logging, Preferences API, Ref Objects and Regular Expressions.
+ Java Virtual Machine (JVM):- including Java HotSpot Client and Server Virtual Machines.

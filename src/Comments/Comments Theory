@@ -1,7 +1,0 @@
-In a program, comments take part in making the program become more human readable by placing the detail of code involved and proper use of comments makes maintenance easier and finding bugs easily. Comments are ignored by the compiler while compiling a code.
-
-In Java there are three types of comments:
-
-   1)Single – line comments.
-   2)Multi – line comments.
-   3)Documentation comments.
