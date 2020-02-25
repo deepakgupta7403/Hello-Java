@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9494791-d467-4c71-aec9-feaf22b8afed" name="Default Changelist" comment="What is class and Obj Creation is Done and inheritance with Types of Inheritance is added DG Commit">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Encapsulation/Encapsulation Theory" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java Prctice/HelloWorld.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Inheritance/TypesOfClasses/HierarchicalInheritance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Inheritance/TypesOfInheritance/HierarchicalInheritance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Inheritance/TypesOfClasses/HybridInheritance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Inheritance/TypesOfInheritance/HybridInheritance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Inheritance/TypesOfClasses/MultiLevelInheritance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Inheritance/TypesOfInheritance/MultiLevelInheritance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Inheritance/TypesOfClasses/MultipleInheritance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Inheritance/TypesOfInheritance/MultipleInheritance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Inheritance/TypesOfClasses/SingleInheritance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Inheritance/TypesOfInheritance/SingleInheritance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,30 +44,26 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Variables" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Deepak\IdeaProjects\Java Prctice\src\Variables" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Application.HybridInheritance">
     <configuration name="ExplicitTypeConversion" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -288,6 +274,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="The Class name myth read and datatypes are read did the practice boolean, short, byte other are pending DG commit" />
     <MESSAGE value="int are done and other are pending DG commit" />
     <MESSAGE value="Data Type Example Added DG commit" />
@@ -302,6 +289,16 @@
     <MESSAGE value="What is class and Obj Creation is Done and inheritance with Types of Inheritance is added DG Commit" />
     <MESSAGE value="local DG Commit" />
     <option name="LAST_COMMIT_MESSAGE" value="local DG Commit" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="467" y="96" width="1043" height="912" key="CommitChangelistDialog2" timestamp="1582634715602">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="467" y="96" width="1043" height="912" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1582634715602" />
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1582634697055">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1582634697055" />
   </component>
   <component name="masterDetails">
     <states>
