@@ -1,8 +1,7 @@
 Classes and Objects are basic concepts of Object Oriented Programming which revolve around the real life entities.
 
 -------------------------------------------------------------Class-------------------------------------------------------------
-A class is a user defined blueprint or prototype from which objects are created.
-It represents the set of properties or methods that are common to all objects of one type.
+A class is a user defined blueprint or prototype from which objects are created. It represents the set of properties or methods that are common to all objects of one type.
 In general, class declarations can include these components, in order:
 
     1)Modifiers : A class can be public or has default access (Refer this for details).
