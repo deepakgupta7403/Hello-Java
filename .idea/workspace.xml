@@ -4,48 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9494791-d467-4c71-aec9-feaf22b8afed" name="Default Changelist" comment="Exception Handling, Regex and Memory Allocation added DG Commit">
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/AbstractListClasses.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/AbstractQueueDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/ArrayDequeDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/ArrayListDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/BlockingQueueDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/CollectionInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/CollectionsClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/CollectionsIntroduction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/ComparatorComparable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/ConcurrentHashMapDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/ConcurrentLinkedQueueDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/ConcurrentSkipListSetDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/CopyOnWriteArrayListDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/DequeInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/EnumSetDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/EnumerationDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/FaceDetectionApp/Detector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/FaceDetectionApp/Face.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/FaceDetectionApp/FaceDetectionApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/FaceDetectionApp/FaceRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/HashMapDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/HashSetDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/HashtableDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/IdentityHashMapDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/IterableDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/IteratorDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/LinkedHashMapDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/LinkedHashSetDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/LinkedListDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/ListInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/MapInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/ModernCollections.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/PriorityQueueDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/QueueInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/SetInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/SortedAndNavigableSet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/TreeMapDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/TreeSetDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/VectorAndStack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Collections/WeakHashMapDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="d9494791-d467-4c71-aec9-feaf22b8afed" name="Default Changelist" comment="Collection and Genetics Method code and example added DG Commit">
+      <change afterPath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/CollectorsClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/Examples/BookGroupingExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/Examples/EmployeeSalaryExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/Examples/GroceryStoreExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/InfiniteStreams.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/IntermediateOperations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/LambdaExpressions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/MethodReferences.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/ModernStreams.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/PrimitiveStreams.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/SequentialVsParallel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/StreamCreation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/StreamFileIO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/StreamIntroduction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/StreamPipeline.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/StreamVsCollection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/TerminalOperations.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -271,7 +247,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779225055366</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Collection and Genetics Method code and example added DG Commit">
+      <option name="closed" value="true" />
+      <created>1779228061285</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1779228061285</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,7 +303,8 @@
     <MESSAGE value="local DG Commit" />
     <MESSAGE value="code updated via claude DG Commit" />
     <MESSAGE value="Exception Handling, Regex and Memory Allocation added DG Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Exception Handling, Regex and Memory Allocation added DG Commit" />
+    <MESSAGE value="Collection and Genetics Method code and example added DG Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Collection and Genetics Method code and example added DG Commit" />
   </component>
   <component name="masterDetails">
     <states>

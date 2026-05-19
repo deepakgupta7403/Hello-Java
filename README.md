@@ -42,6 +42,51 @@ is also included as comments inside each `main()` so you can verify your run.
 
 ---
 
+## Lambda Expressions and Streams
+
+> Functional-style data processing. Lambdas give concise syntax for
+> anonymous functions; the Stream API turns "loops + temporary lists"
+> into composable, parallelisable pipelines.
+
+### Foundations
+
+| Topic | Source |
+|---|---|
+| Lambda Expressions (syntax forms, capture, target typing, `this`) | [LambdaExpressions.java](src/Basics/LambdaAndStreams/LambdaExpressions.java) |
+| Method References (`::`) — four forms in stream context | [MethodReferences.java](src/Basics/LambdaAndStreams/MethodReferences.java) |
+
+### Streams
+
+| Topic | Source |
+|---|---|
+| Stream Introduction (laziness, one-shot, decl vs imp) | [StreamIntroduction.java](src/Basics/LambdaAndStreams/StreamIntroduction.java) |
+| Stream Creation (15 ways) | [StreamCreation.java](src/Basics/LambdaAndStreams/StreamCreation.java) |
+| Stream Pipeline (Source / Intermediate / Terminal architecture) | [StreamPipeline.java](src/Basics/LambdaAndStreams/StreamPipeline.java) |
+| Intermediate Operations (`filter`/`map`/`flatMap`/`sorted`/`distinct`/`limit`/`skip`/`peek`/`takeWhile`/`dropWhile`/`mapMulti`) | [IntermediateOperations.java](src/Basics/LambdaAndStreams/IntermediateOperations.java) |
+| Terminal Operations (`forEach`/`collect`/`reduce`/`count`/`match`/`find`/`min`/`max`/`toArray`/`toList`) | [TerminalOperations.java](src/Basics/LambdaAndStreams/TerminalOperations.java) |
+| Collectors (toList/toMap/groupingBy/partitioningBy/joining/teeing/collectingAndThen) | [CollectorsClass.java](src/Basics/LambdaAndStreams/CollectorsClass.java) |
+
+### Stream Types
+
+| Topic | Source |
+|---|---|
+| Sequential vs Parallel (when each helps, side-effect trap, splittability) | [SequentialVsParallel.java](src/Basics/LambdaAndStreams/SequentialVsParallel.java) |
+| Infinite Streams (`iterate`/`generate`/`limit`/`takeWhile`) | [InfiniteStreams.java](src/Basics/LambdaAndStreams/InfiniteStreams.java) |
+| Primitive Streams (`IntStream`/`LongStream`/`DoubleStream`, boxing perf) | [PrimitiveStreams.java](src/Basics/LambdaAndStreams/PrimitiveStreams.java) |
+| Stream vs Collection (side-by-side, crossing back and forth) | [StreamVsCollection.java](src/Basics/LambdaAndStreams/StreamVsCollection.java) |
+| File I/O via streams (`Files.lines`/`list`/`walk`, append, write) | [StreamFileIO.java](src/Basics/LambdaAndStreams/StreamFileIO.java) |
+| Modern Streams — Java 9 → 21 (`takeWhile`/`dropWhile`, `iterate(3-arg)`, `mapMulti`, `toList`, `teeing`, sequenced collections) | [ModernStreams.java](src/Basics/LambdaAndStreams/ModernStreams.java) |
+
+### Real-World Examples
+
+| Topic | Source |
+|---|---|
+| Filtering Employees by Salary | [EmployeeSalaryExample.java](src/Basics/LambdaAndStreams/Examples/EmployeeSalaryExample.java) |
+| Streams in a Grocery Store | [GroceryStoreExample.java](src/Basics/LambdaAndStreams/Examples/GroceryStoreExample.java) |
+| Grouping Books by Author | [BookGroupingExample.java](src/Basics/LambdaAndStreams/Examples/BookGroupingExample.java) |
+
+---
+
 ## Generic Programming
 
 > Type-safe reuse via parameterised classes, methods, and interfaces.
