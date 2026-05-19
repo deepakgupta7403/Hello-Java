@@ -4,76 +4,48 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9494791-d467-4c71-aec9-feaf22b8afed" name="Default Changelist" comment="What is class and Obj Creation is Done and inheritance with Types of Inheritance is added DG Commit">
-      <change afterPath="$PROJECT_DIR$/.claude/settings.local.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Arrays/ArrayIntroduction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Arrays/ArraysClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Arrays/FinalArrays.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Arrays/JaggedArrays.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Arrays/MultiDimensionalArrays.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/DataTypes/DataTypesIntro.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Identifiers/Identifiers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Input/BufferedReaderInput.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Input/ConsoleInput.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Input/ScannerInput.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Installation/InstallJava.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Introduction/Introduction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/JDKvsJREvsJVM/JDKvsJREvsJVM.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Keywords/Keywords.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Methods/AccessModifiers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Methods/CommandLineArguments.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Methods/InterfaceMethods.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Methods/MethodIntroduction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Methods/MethodReferences.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Methods/StaticVsInstanceMethods.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Methods/Varargs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/ModernJava/PatternMatchingSwitch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/ModernJava/RecordsAndPatterns.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/ModernJava/SequencedCollections.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/ModernJava/SwitchExpression.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/ModernJava/VarLocalTypeInference.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Operators/ArithmeticOperators.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Operators/AssignmentOperators.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Operators/BitwiseOperators.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Operators/InstanceofOperator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Operators/LogicalOperators.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Operators/RelationalOperators.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Operators/TernaryOperator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Operators/UnaryOperators.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Output/FormattedOutput.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Output/PrintMethods.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Strings/ModernStringFeatures.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Strings/StringBufferClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Strings/StringBuilderClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Strings/StringConcatenation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Strings/StringImmutability.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Strings/StringIntroduction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Strings/StringMethods.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Strings/StringVsBufferVsBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/WrapperClasses/AutoboxingUnboxing.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/WrapperClasses/WrapperClassesIntro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="d9494791-d467-4c71-aec9-feaf22b8afed" name="Default Changelist" comment="code updated via claude DG Commit">
+      <change afterPath="$PROJECT_DIR$/src/Basics/ExceptionHandling/ChainedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/ExceptionHandling/CustomException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/ExceptionHandling/ExceptionBestPractices.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/ExceptionHandling/ExceptionInOverriding.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/ExceptionHandling/ExceptionIntroduction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/ExceptionHandling/FinalFinallyFinalize.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/ExceptionHandling/NullPointerExceptions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/ExceptionHandling/ThrowAndThrows.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/ExceptionHandling/TryCatchBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/ExceptionHandling/TryWithResources.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/MemoryAllocation/GarbageCollection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/MemoryAllocation/GarbageCollectors.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/MemoryAllocation/JvmMemoryAreas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/MemoryAllocation/MemoryLeaks.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/MemoryAllocation/MemoryManagementIntro.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/MemoryAllocation/ModernMemoryFeatures.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/MemoryAllocation/ObjectsInMemory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/MemoryAllocation/StackVsHeap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Regex/CharacterClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Regex/GroupsAndBackreferences.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Regex/LookaroundAssertions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Regex/MatcherClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Regex/MetacharactersAndAnchors.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Regex/ModernRegexFeatures.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Regex/Quantifiers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Regex/RegexExamples.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Regex/RegexFlags.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Regex/RegexIntroduction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java Prctice/ClassesAndObject/Classes and Object Theory" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java Prctice/Comments/Comments Theory" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java Prctice/Conversion/Type Conversion Theory" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java Prctice/DataTypes/DataType Theory" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java Prctice/DataTypes_Variables_Operator/DataType, Variable and Operator Theory" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java Prctice/DecisionMaking/Decision Making Theory" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java Prctice/DecisionMaking/JumpStatement/Jump Statement Theory" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java Prctice/Enumerations/enums" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java Prctice/Inheritance/Inheritance Theory" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java Prctice/Loops/Loop Theory" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java Prctice/META-INF/Java Prctice.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java Prctice/Variables/Variable Theory" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Basics/Extra/_UnderscoreInJava.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+      <option value="repository" />
+    </option>
   </component>
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
@@ -263,7 +235,23 @@
       <option name="project" value="LOCAL" />
       <updated>1582078540800</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="code updated via claude DG Commit">
+      <option name="closed" value="true" />
+      <created>1779191559700</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1779191559700</updated>
+    </task>
+    <task id="LOCAL-00015" summary="code updated via claude DG Commit">
+      <option name="closed" value="true" />
+      <created>1779194377231</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1779194377231</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,7 +297,8 @@
     <MESSAGE value="Sorting added DG Commit" />
     <MESSAGE value="What is class and Obj Creation is Done and inheritance with Types of Inheritance is added DG Commit" />
     <MESSAGE value="local DG Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="local DG Commit" />
+    <MESSAGE value="code updated via claude DG Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="code updated via claude DG Commit" />
   </component>
   <component name="masterDetails">
     <states>

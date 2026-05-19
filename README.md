@@ -42,6 +42,65 @@ is also included as comments inside each `main()` so you can verify your run.
 
 ---
 
+## Memory Allocation
+
+> How the JVM assigns memory to variables, objects, and classes — heap,
+> stack, garbage collection, and how to avoid leaks.
+
+| # | Topic | Source |
+|---|-------|--------|
+| 1 | Java Memory Management (overview, heap inspection, default GC) | [MemoryManagementIntro.java](src/Basics/MemoryAllocation/MemoryManagementIntro.java) |
+| 2 | How Java Objects Are Stored in Memory (header, fields, padding, references, compressed oops) | [ObjectsInMemory.java](src/Basics/MemoryAllocation/ObjectsInMemory.java) |
+| 3 | Types of Memory Areas (Method Area / Heap / Stack / PC / Native, generations) | [JvmMemoryAreas.java](src/Basics/MemoryAllocation/JvmMemoryAreas.java) |
+| 4 | Stack vs Heap (side-by-side, pass-by-value, escape analysis) | [StackVsHeap.java](src/Basics/MemoryAllocation/StackVsHeap.java) |
+| 5 | Garbage Collection (reachability, mark/sweep, generations, weak/soft refs, Cleaner) | [GarbageCollection.java](src/Basics/MemoryAllocation/GarbageCollection.java) |
+| 6 | Types of JVM Garbage Collectors (Serial / Parallel / G1 / ZGC / Shenandoah / Epsilon) | [GarbageCollectors.java](src/Basics/MemoryAllocation/GarbageCollectors.java) |
+| 7 | Memory Leaks (5 patterns + fixes) | [MemoryLeaks.java](src/Basics/MemoryAllocation/MemoryLeaks.java) |
+| 8 | Modern Memory Features — Java 9 → 21 (Compact Strings, Cleaner, direct buffers, virtual threads, **Generational ZGC**) | [ModernMemoryFeatures.java](src/Basics/MemoryAllocation/ModernMemoryFeatures.java) |
+
+---
+
+## Regex
+
+> Pattern matching and text manipulation via `java.util.regex` —
+> `Pattern` compiles a regex, `Matcher` runs it against an input.
+
+| # | Topic | Source |
+|---|-------|--------|
+| 1 | Introduction (Pattern + Matcher, escapes, `matches` vs `find` vs `lookingAt`) | [RegexIntroduction.java](src/Basics/Regex/RegexIntroduction.java) |
+| 2 | Matcher Class (every important method, named groups, `replaceAll`, `region`, `results`) | [MatcherClass.java](src/Basics/Regex/MatcherClass.java) |
+| 3 | Character Class (custom sets, predefined `\d`/`\w`/`\s`, POSIX, Unicode) | [CharacterClass.java](src/Basics/Regex/CharacterClass.java) |
+| 4 | Quantifiers (`*` `+` `?` `{n,m}`, greedy vs reluctant vs possessive, backtracking) | [Quantifiers.java](src/Basics/Regex/Quantifiers.java) |
+| 5 | Metacharacters & Anchors (`^` `$` `\b` `\A` `\z` `\G`, `Pattern.quote`) | [MetacharactersAndAnchors.java](src/Basics/Regex/MetacharactersAndAnchors.java) |
+| 6 | Groups & Backreferences (`(…)` `(?:…)` `(?<name>…)` `\1` `${name}`) | [GroupsAndBackreferences.java](src/Basics/Regex/GroupsAndBackreferences.java) |
+| 7 | Lookahead & Lookbehind (`(?=…)` `(?!…)` `(?<=…)` `(?<!…)`, password rules) | [LookaroundAssertions.java](src/Basics/Regex/LookaroundAssertions.java) |
+| 8 | Flags (`CASE_INSENSITIVE`, `MULTILINE`, `DOTALL`, `COMMENTS`, `UNICODE_CHARACTER_CLASS`, scoped `(?i:…)`) | [RegexFlags.java](src/Basics/Regex/RegexFlags.java) |
+| 9 | Modern Features — Java 8/9/11/21 (`splitAsStream`, `asPredicate`, `Matcher.results`, `replaceAll(Function)`, pattern-matching switch on String) | [ModernRegexFeatures.java](src/Basics/Regex/ModernRegexFeatures.java) |
+| 10 | Real-World Examples (email, phone, URL, IPv4, password, ISO date, hex color, slug, CSV) | [RegexExamples.java](src/Basics/Regex/RegexExamples.java) |
+
+---
+
+## Exception Handling
+
+> Mechanism for handling runtime errors so a program can recover or fail
+> gracefully. Uses `try`, `catch`, `finally`, `throw`, `throws`, and the
+> Throwable type hierarchy.
+
+| # | Topic | Source |
+|---|-------|--------|
+| 1 | Introduction (hierarchy, checked vs unchecked, stack trace) | [ExceptionIntroduction.java](src/Basics/ExceptionHandling/ExceptionIntroduction.java) |
+| 2 | Try-Catch Block (single / multiple / multi-catch / nested / `finally`) | [TryCatchBlock.java](src/Basics/ExceptionHandling/TryCatchBlock.java) |
+| 3 | `final`, `finally`, `finalize` — three confusable keywords | [FinalFinallyFinalize.java](src/Basics/ExceptionHandling/FinalFinallyFinalize.java) |
+| 4 | `throw` and `throws` — raise vs declare, propagation, re-throw | [ThrowAndThrows.java](src/Basics/ExceptionHandling/ThrowAndThrows.java) |
+| 5 | Custom Exceptions (checked + unchecked, carrying extra data) | [CustomException.java](src/Basics/ExceptionHandling/CustomException.java) |
+| 6 | Chained Exceptions (`getCause`, `initCause`, suppressed vs cause) | [ChainedException.java](src/Basics/ExceptionHandling/ChainedException.java) |
+| 7 | Null Pointer Exceptions (six causes, helpful NPE Java 14+, `Optional`) | [NullPointerExceptions.java](src/Basics/ExceptionHandling/NullPointerExceptions.java) |
+| 8 | Exception Handling with Method Overriding (the `throws` rule) | [ExceptionInOverriding.java](src/Basics/ExceptionHandling/ExceptionInOverriding.java) |
+| 9 | Try-with-resources — Java 7+ / 9+ (`AutoCloseable`, suppressed exceptions) | [TryWithResources.java](src/Basics/ExceptionHandling/TryWithResources.java) |
+| 10 | Best Practices (top-10 dos & don'ts with code) | [ExceptionBestPractices.java](src/Basics/ExceptionHandling/ExceptionBestPractices.java) |
+
+---
+
 ## Strings
 
 > Sequences of characters. `String` is immutable; `StringBuffer` and
