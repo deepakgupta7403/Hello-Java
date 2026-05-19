@@ -1,10 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="d9494791-d467-4c71-aec9-feaf22b8afed" name="Default Changelist" comment="What is class and Obj Creation is Done and inheritance with Types of Inheritance is added DG Commit">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude/settings.local.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Arrays/ArrayIntroduction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Arrays/ArraysClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Arrays/FinalArrays.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Arrays/JaggedArrays.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Arrays/MultiDimensionalArrays.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/DataTypes/DataTypesIntro.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Identifiers/Identifiers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Input/BufferedReaderInput.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Input/ConsoleInput.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Input/ScannerInput.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Installation/InstallJava.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Introduction/Introduction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/JDKvsJREvsJVM/JDKvsJREvsJVM.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Keywords/Keywords.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Methods/AccessModifiers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Methods/CommandLineArguments.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Methods/InterfaceMethods.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Methods/MethodIntroduction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Methods/MethodReferences.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Methods/StaticVsInstanceMethods.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Methods/Varargs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/ModernJava/PatternMatchingSwitch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/ModernJava/RecordsAndPatterns.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/ModernJava/SequencedCollections.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/ModernJava/SwitchExpression.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/ModernJava/VarLocalTypeInference.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Operators/ArithmeticOperators.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Operators/AssignmentOperators.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Operators/BitwiseOperators.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Operators/InstanceofOperator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Operators/LogicalOperators.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Operators/RelationalOperators.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Operators/TernaryOperator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Operators/UnaryOperators.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Output/FormattedOutput.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Output/PrintMethods.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Strings/ModernStringFeatures.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Strings/StringBufferClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Strings/StringBuilderClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Strings/StringConcatenation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Strings/StringImmutability.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Strings/StringIntroduction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Strings/StringMethods.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Strings/StringVsBufferVsBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/WrapperClasses/AutoboxingUnboxing.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/WrapperClasses/WrapperClassesIntro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java Prctice/ClassesAndObject/Classes and Object Theory" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java Prctice/Comments/Comments Theory" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java Prctice/Conversion/Type Conversion Theory" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java Prctice/DataTypes/DataType Theory" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java Prctice/DataTypes_Variables_Operator/DataType, Variable and Operator Theory" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java Prctice/DecisionMaking/Decision Making Theory" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java Prctice/DecisionMaking/JumpStatement/Jump Statement Theory" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java Prctice/Enumerations/enums" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java Prctice/Inheritance/Inheritance Theory" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java Prctice/Loops/Loop Theory" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java Prctice/META-INF/Java Prctice.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java Prctice/Variables/Variable Theory" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Extra/_UnderscoreInJava.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +80,9 @@
   </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="89" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -37,109 +104,62 @@
     <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectCodeStyleSettingsMigration">
-    <option name="version" value="1" />
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;deepakgupta7403&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/deepakgupta7403/Hello-Java.git&quot;,
+    &quot;accountId&quot;: &quot;587a8981-3093-4e5c-bd20-67180797ba3d&quot;
+  }
+}</component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
   </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5,
+  &quot;fromUser&quot;: false
+}</component>
   <component name="ProjectId" id="1Sf0ADqEBIyexZx8tJvdSsILaUm" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Variables" />
-    <property name="project.structure.last.edited" value="SDKs" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
-    <property name="show.migrate.to.gradle.popup" value="false" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.InitializingObject.executor": "Run",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Deepak\IdeaProjects\Java Prctice\src\Variables" />
     </key>
-  </component>
-  <component name="RunManager" selected="Application.HybridInheritance">
-    <configuration name="ExplicitTypeConversion" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Conversion.ExplicitTypeConversion" />
-      <module name="Java Prctice" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Conversion.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HybridInheritance" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Inheritance.TypesOfInheritance.HybridInheritance" />
-      <module name="Java Prctice" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Inheritance.TypesOfInheritance.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IfElseStatement" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="DecisionMaking.IfElseStatement" />
-      <module name="Java Prctice" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="DecisionMaking.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="InitializingObject" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ClassesAndObject.InitializingObject" />
-      <module name="Java Prctice" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Inheritance.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WideningPrimitive" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Conversion.WideningPrimitive" />
-      <module name="Java Prctice" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Conversion.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.HybridInheritance" />
-        <item itemvalue="Application.InitializingObject" />
-        <item itemvalue="Application.ExplicitTypeConversion" />
-        <item itemvalue="Application.WideningPrimitive" />
-        <item itemvalue="Application.IfElseStatement" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -246,18 +266,10 @@
     <option name="localTasksCounter" value="14" />
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="Branch">
@@ -268,6 +280,15 @@
         <entry key="User">
           <value>
             <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
           </value>
         </entry>
       </map>
@@ -289,16 +310,6 @@
     <MESSAGE value="What is class and Obj Creation is Done and inheritance with Types of Inheritance is added DG Commit" />
     <MESSAGE value="local DG Commit" />
     <option name="LAST_COMMIT_MESSAGE" value="local DG Commit" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="467" y="96" width="1043" height="912" key="CommitChangelistDialog2" timestamp="1582634715602">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state x="467" y="96" width="1043" height="912" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1582634715602" />
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1582634697055">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1582634697055" />
   </component>
   <component name="masterDetails">
     <states>
