@@ -119,12 +119,41 @@ is also included as comments inside each `main()` so you can verify your run.
 
 ## OOP Concepts
 
-| Topic | Source |
-|-------|--------|
-| Classes & Objects | [Initializing object](src/OOPSConcepts/ClassesAndObject/InitializingObject.java) · [Ways to create an object](src/OOPSConcepts/ClassesAndObject/WaysToCreateObject.java) |
-| Encapsulation | [TestEncapsulation.java](src/OOPSConcepts/Encapsulation/TestEncapsulation.java) |
-| Inheritance | [Intro](src/OOPSConcepts/Inheritance/InheritanceJava.java) · [Single](src/OOPSConcepts/Inheritance/TypesOfInheritance/SingleInheritance.java) · [Multi-level](src/OOPSConcepts/Inheritance/TypesOfInheritance/MultiLevelInheritance.java) · [Hierarchical](src/OOPSConcepts/Inheritance/TypesOfInheritance/HierarchicalInheritance.java) · [Multiple (interfaces)](src/OOPSConcepts/Inheritance/TypesOfInheritance/MultipleInheritance.java) · [Hybrid](src/OOPSConcepts/Inheritance/TypesOfInheritance/HybridInheritance.java) |
-| Serialization | [Demo 1](src/OOPSConcepts/SerializationDeserialization/SerializationDeserializationDemoOne.java) · [Demo 2](src/OOPSConcepts/SerializationDeserialization/SerializationDeserializationDemoTwo.java) |
+> Java's organising paradigm — classes, objects, and the four pillars
+> (abstraction, encapsulation, inheritance, polymorphism). The section ends
+> with a small **Simple Banking Application** that uses all of them together.
+
+| # | Topic | Source |
+|---|-------|--------|
+| 1 | Introduction (the four pillars in one mini-demo) | [OopIntroduction.java](src/OOPSConcepts/Introduction/OopIntroduction.java) |
+| 2 | Classes & Objects | [Initializing object](src/OOPSConcepts/ClassesAndObject/InitializingObject.java) · [Ways to create an object](src/OOPSConcepts/ClassesAndObject/WaysToCreateObject.java) |
+| 3 | Constructors (default / parameterized / overloading / chaining / copy / private) | [Constructors.java](src/OOPSConcepts/Constructors/Constructors.java) |
+| 4 | Object Class (equals / hashCode / toString / clone / getClass / records) | [ObjectClassMethods.java](src/OOPSConcepts/ObjectClass/ObjectClassMethods.java) |
+| 5 | Abstraction | [Abstract class](src/OOPSConcepts/Abstraction/AbstractClassExample.java) · [Interfaces](src/OOPSConcepts/Abstraction/InterfaceExample.java) · [Abstract vs Interface](src/OOPSConcepts/Abstraction/AbstractClassVsInterface.java) |
+| 6 | Encapsulation | [TestEncapsulation.java](src/OOPSConcepts/Encapsulation/TestEncapsulation.java) |
+| 7 | Inheritance | [Intro](src/OOPSConcepts/Inheritance/InheritanceJava.java) · [Single](src/OOPSConcepts/Inheritance/TypesOfInheritance/SingleInheritance.java) · [Multi-level](src/OOPSConcepts/Inheritance/TypesOfInheritance/MultiLevelInheritance.java) · [Hierarchical](src/OOPSConcepts/Inheritance/TypesOfInheritance/HierarchicalInheritance.java) · [Multiple (interfaces)](src/OOPSConcepts/Inheritance/TypesOfInheritance/MultipleInheritance.java) · [Hybrid](src/OOPSConcepts/Inheritance/TypesOfInheritance/HybridInheritance.java) |
+| 8 | Polymorphism (overloading + overriding + dynamic dispatch + covariant returns) | [Polymorphism.java](src/OOPSConcepts/Polymorphism/Polymorphism.java) |
+| 9 | Packages and Imports (single / wildcard / static, package-private access) | [PackagesAndImports.java](src/OOPSConcepts/Packages/PackagesAndImports.java) |
+| 10 | Sealed Classes — Java 17+ (`sealed` / `non-sealed` / `permits`) | [SealedClassesDemo.java](src/OOPSConcepts/SealedClasses/SealedClassesDemo.java) |
+| 11 | Project: Simple Banking Application | [Account](src/OOPSConcepts/BankingApp/Account.java) · [SavingsAccount](src/OOPSConcepts/BankingApp/SavingsAccount.java) · [CheckingAccount](src/OOPSConcepts/BankingApp/CheckingAccount.java) · [Transaction (record)](src/OOPSConcepts/BankingApp/Transaction.java) · [Bank](src/OOPSConcepts/BankingApp/Bank.java) · **[Runner: BankingApp.java](src/OOPSConcepts/BankingApp/BankingApp.java)** |
+| 12 | Serialization (extra) | [Demo 1](src/OOPSConcepts/SerializationDeserialization/SerializationDeserializationDemoOne.java) · [Demo 2](src/OOPSConcepts/SerializationDeserialization/SerializationDeserializationDemoTwo.java) |
+
+---
+
+## Interfaces
+
+> Contracts a class agrees to satisfy. Interfaces give Java its main form
+> of abstraction and let one class fulfil multiple types.
+
+| # | Topic | Source |
+|---|-------|--------|
+| 1 | Interfaces — full tour (abstract / default / static / private members, multiple impl, interface inheritance) | [InterfaceIntro.java](src/OOPSConcepts/Interfaces/InterfaceIntro.java) |
+| 2 | Class vs Interface (side-by-side, real-world JDK pattern) | [ClassVsInterface.java](src/OOPSConcepts/Interfaces/ClassVsInterface.java) · [longer version](src/OOPSConcepts/Abstraction/AbstractClassVsInterface.java) |
+| 3 | Functional Interface (SAM, `@FunctionalInterface`, `java.util.function`, composition, lambdas, comparators) | [FunctionalInterfaceDemo.java](src/OOPSConcepts/Interfaces/FunctionalInterfaceDemo.java) |
+| 4 | Nested Interface (inside class, inside interface, `private` nested) | [NestedInterface.java](src/OOPSConcepts/Interfaces/NestedInterface.java) |
+| 5 | Marker Interface (`Serializable`, custom marker, annotation alternative, generic upper bound) | [MarkerInterface.java](src/OOPSConcepts/Interfaces/MarkerInterface.java) |
+| 6 | Sealed Interfaces — Java 17+ (`permits`, `non-sealed`, exhaustive switch) | [SealedInterfaceDemo.java](src/OOPSConcepts/Interfaces/SealedInterfaceDemo.java) |
+| 7 | Project: Employee Management System | [Employee (sealed)](src/OOPSConcepts/EmployeeApp/Employee.java) · [FullTimeEmployee](src/OOPSConcepts/EmployeeApp/FullTimeEmployee.java) · [PartTimeEmployee](src/OOPSConcepts/EmployeeApp/PartTimeEmployee.java) · [Contractor](src/OOPSConcepts/EmployeeApp/Contractor.java) · [Intern](src/OOPSConcepts/EmployeeApp/Intern.java) · [Promotable](src/OOPSConcepts/EmployeeApp/Promotable.java) · [Auditable (marker)](src/OOPSConcepts/EmployeeApp/Auditable.java) · [EmployeeFilter (functional)](src/OOPSConcepts/EmployeeApp/EmployeeFilter.java) · [EmployeeRepository](src/OOPSConcepts/EmployeeApp/EmployeeRepository.java) · **[Runner: EmployeeApp.java](src/OOPSConcepts/EmployeeApp/EmployeeApp.java)** |
 
 ---
 
