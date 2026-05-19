@@ -42,6 +42,123 @@ is also included as comments inside each `main()` so you can verify your run.
 
 ---
 
+## Generic Programming
+
+> Type-safe reuse via parameterised classes, methods, and interfaces.
+> Generics are checked by the compiler and erased at runtime — a quirky
+> but powerful combination.
+
+| # | Topic | Source |
+|---|-------|--------|
+| 1 | Introduction (before/after, type parameter conventions) | [GenericsIntroduction.java](src/Basics/Generics/GenericsIntroduction.java) |
+| 2 | Generic Classes (single + multi-param, inheritance, diamond) | [GenericClasses.java](src/Basics/Generics/GenericClasses.java) |
+| 3 | Generic Methods (type inference, method-level type params) | [GenericMethods.java](src/Basics/Generics/GenericMethods.java) |
+| 4 | Generic Interfaces (Comparable, Function, custom contracts) | [GenericInterfaces.java](src/Basics/Generics/GenericInterfaces.java) |
+| 5 | Bounded Type Parameters (`<T extends X>`, multi-bound `&`) | [BoundedTypeParameters.java](src/Basics/Generics/BoundedTypeParameters.java) |
+| 6 | Wildcards (`?`, `? extends`, `? super`) | [Wildcards.java](src/Basics/Generics/Wildcards.java) |
+| 7 | PECS Principle (Producer Extends, Consumer Super) | [PecsPrinciple.java](src/Basics/Generics/PecsPrinciple.java) |
+| 8 | Type Erasure (runtime behaviour, bridge methods, reflection) | [TypeErasure.java](src/Basics/Generics/TypeErasure.java) |
+| 9 | Generic Restrictions (no primitives / no `new T()` / no generic arrays / no parameterised `instanceof`) | [GenericRestrictions.java](src/Basics/Generics/GenericRestrictions.java) |
+| 10 | Recursive Type Bounds (`<T extends Comparable<T>>`, self-typed builders, `Enum<E extends Enum<E>>`) | [RecursiveTypeBounds.java](src/Basics/Generics/RecursiveTypeBounds.java) |
+| 11 | Heap Pollution + `@SafeVarargs` | [HeapPollutionAndSafeVarargs.java](src/Basics/Generics/HeapPollutionAndSafeVarargs.java) |
+| 12 | Modern Generics — Java 7 → 21 (diamond, `var`, generic records, sealed generic interfaces, **generic record patterns in switch**) | [ModernGenerics.java](src/Basics/Generics/ModernGenerics.java) |
+
+---
+
+## Collections
+
+> Framework for storing and manipulating groups of objects — `List`, `Set`,
+> `Queue`, `Deque`, `Map`, plus utilities and concurrency variants. Each
+> file is a complete method reference with **why this type exists** and
+> **when to use it**.
+
+### 0. Framework Overview
+
+| Topic | Source |
+|---|---|
+| Framework Introduction (hierarchy diagram, big-O cheatsheet) | [CollectionsIntroduction.java](src/Basics/Collections/CollectionsIntroduction.java) |
+| Modern Features — Java 8 → 21 (factories, Collectors, `Stream.toList`, **Sequenced Collections**) | [ModernCollections.java](src/Basics/Collections/ModernCollections.java) |
+
+### 1. Core Interfaces
+
+| Topic | Source |
+|---|---|
+| `Collection` Interface | [CollectionInterface.java](src/Basics/Collections/CollectionInterface.java) |
+| `List` Interface | [ListInterface.java](src/Basics/Collections/ListInterface.java) |
+| `Set` Interface | [SetInterface.java](src/Basics/Collections/SetInterface.java) |
+| `Queue` Interface | [QueueInterface.java](src/Basics/Collections/QueueInterface.java) |
+| `Deque` Interface | [DequeInterface.java](src/Basics/Collections/DequeInterface.java) |
+| `Map` Interface | [MapInterface.java](src/Basics/Collections/MapInterface.java) |
+
+### 2. List Implementations
+
+| Topic | Source |
+|---|---|
+| `ArrayList` | [ArrayListDemo.java](src/Basics/Collections/ArrayListDemo.java) |
+| `LinkedList` | [LinkedListDemo.java](src/Basics/Collections/LinkedListDemo.java) |
+| `Vector` + `Stack` (legacy) | [VectorAndStack.java](src/Basics/Collections/VectorAndStack.java) |
+| `AbstractList` + `AbstractSequentialList` (skeleton classes) | [AbstractListClasses.java](src/Basics/Collections/AbstractListClasses.java) |
+
+### 3. Set Implementations
+
+| Topic | Source |
+|---|---|
+| `HashSet` | [HashSetDemo.java](src/Basics/Collections/HashSetDemo.java) |
+| `LinkedHashSet` | [LinkedHashSetDemo.java](src/Basics/Collections/LinkedHashSetDemo.java) |
+| `TreeSet` | [TreeSetDemo.java](src/Basics/Collections/TreeSetDemo.java) |
+| `EnumSet` (bit-vector enum keys) | [EnumSetDemo.java](src/Basics/Collections/EnumSetDemo.java) |
+| `SortedSet` + `NavigableSet` interfaces | [SortedAndNavigableSet.java](src/Basics/Collections/SortedAndNavigableSet.java) |
+| `ConcurrentSkipListSet` | [ConcurrentSkipListSetDemo.java](src/Basics/Collections/ConcurrentSkipListSetDemo.java) |
+
+### 4. Queue / Deque Implementations
+
+| Topic | Source |
+|---|---|
+| `PriorityQueue` (heap, Top-K) | [PriorityQueueDemo.java](src/Basics/Collections/PriorityQueueDemo.java) |
+| `ArrayDeque` (modern stack + queue) | [ArrayDequeDemo.java](src/Basics/Collections/ArrayDequeDemo.java) |
+| `BlockingQueue` (ArrayBlockingQueue / LinkedBlockingQueue / SynchronousQueue) | [BlockingQueueDemo.java](src/Basics/Collections/BlockingQueueDemo.java) |
+| `ConcurrentLinkedQueue` (lock-free) | [ConcurrentLinkedQueueDemo.java](src/Basics/Collections/ConcurrentLinkedQueueDemo.java) |
+| `AbstractQueue` (skeleton class + custom BoundedQueue) | [AbstractQueueDemo.java](src/Basics/Collections/AbstractQueueDemo.java) |
+
+### 5. Map Implementations
+
+| Topic | Source |
+|---|---|
+| `HashMap` | [HashMapDemo.java](src/Basics/Collections/HashMapDemo.java) |
+| `LinkedHashMap` (insertion + access order, LRU cache) | [LinkedHashMapDemo.java](src/Basics/Collections/LinkedHashMapDemo.java) |
+| `TreeMap` (sorted, NavigableMap) | [TreeMapDemo.java](src/Basics/Collections/TreeMapDemo.java) |
+| `WeakHashMap` (GC-eligible keys) | [WeakHashMapDemo.java](src/Basics/Collections/WeakHashMapDemo.java) |
+| `IdentityHashMap` (`==` instead of `equals`) | [IdentityHashMapDemo.java](src/Basics/Collections/IdentityHashMapDemo.java) |
+| `Hashtable` (legacy) | [HashtableDemo.java](src/Basics/Collections/HashtableDemo.java) |
+
+### 6. Utility & Supporting Classes
+
+| Topic | Source |
+|---|---|
+| `Collections` utility class | [CollectionsClass.java](src/Basics/Collections/CollectionsClass.java) |
+| `Iterable` interface (custom for-each types) | [IterableDemo.java](src/Basics/Collections/IterableDemo.java) |
+| `Iterator` / `ListIterator` / `Spliterator` | [IteratorDemo.java](src/Basics/Collections/IteratorDemo.java) |
+| `Enumeration` (legacy 1.0 iteration) | [EnumerationDemo.java](src/Basics/Collections/EnumerationDemo.java) |
+| `Comparator` and `Comparable` | [ComparatorComparable.java](src/Basics/Collections/ComparatorComparable.java) |
+
+### 7. Concurrency Collections
+
+| Topic | Source |
+|---|---|
+| `ConcurrentHashMap` (lock-striped) | [ConcurrentHashMapDemo.java](src/Basics/Collections/ConcurrentHashMapDemo.java) |
+| `CopyOnWriteArrayList` (snapshot iterator, listener-list pattern) | [CopyOnWriteArrayListDemo.java](src/Basics/Collections/CopyOnWriteArrayListDemo.java) |
+| `ConcurrentLinkedQueue` (lock-free) | [ConcurrentLinkedQueueDemo.java](src/Basics/Collections/ConcurrentLinkedQueueDemo.java) |
+| `BlockingQueue` family | [BlockingQueueDemo.java](src/Basics/Collections/BlockingQueueDemo.java) |
+| `ConcurrentSkipListSet` | [ConcurrentSkipListSetDemo.java](src/Basics/Collections/ConcurrentSkipListSetDemo.java) |
+
+### Project
+
+| Topic | Source |
+|---|---|
+| Face Detection System (uses every collection type) | [Face](src/Basics/Collections/FaceDetectionApp/Face.java) · [Detector](src/Basics/Collections/FaceDetectionApp/Detector.java) · [FaceRepository](src/Basics/Collections/FaceDetectionApp/FaceRepository.java) · **[Runner: FaceDetectionApp.java](src/Basics/Collections/FaceDetectionApp/FaceDetectionApp.java)** |
+
+---
+
 ## Memory Allocation
 
 > How the JVM assigns memory to variables, objects, and classes — heap,
