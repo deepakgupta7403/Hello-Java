@@ -13,7 +13,12 @@
       "Bash(mkdir -p /tmp/mt-classes)",
       "Bash(\"/c/Users/deepa/.jdks/temurin-21.0.11/bin/javac\" -d /tmp/mt-classes -sourcepath src src/Basics/Multithreading/*.java src/Basics/Multithreading/SnakeGame/*.java)",
       "Bash(mkdir -p /tmp/new-classes)",
-      "Bash(/c/Users/deepa/.jdks/temurin-21.0.11/bin/javac -d /tmp/new-classes -sourcepath src src/Basics/FileIO/*.java src/Basics/DateAndTime/*.java src/Basics/NestedClasses/*.java src/Basics/Annotations/*.java src/Basics/OptionalType/*.java src/Basics/Reflection/*.java src/Basics/HttpClient/*.java src/Basics/Modules/*.java)"
+      "Bash(/c/Users/deepa/.jdks/temurin-21.0.11/bin/javac -d /tmp/new-classes -sourcepath src src/Basics/FileIO/*.java src/Basics/DateAndTime/*.java src/Basics/NestedClasses/*.java src/Basics/Annotations/*.java src/Basics/OptionalType/*.java src/Basics/Reflection/*.java src/Basics/HttpClient/*.java src/Basics/Modules/*.java)",
+      "Bash(git mv *)",
+      "Bash(rmdir src/Overview)",
+      "Bash(xargs -I{} sh -c 'head -1 \"$1\" | grep -E \"^package \" > /dev/null || echo \"MISSING_PACKAGE: $1\"' _ {})",
+      "Bash(sed -i -E 's|^import Basics\\\\.Annotations\\\\.|import Phase4_ErrorsAndTypeSafety.Annotations.|' src/Phase4_ErrorsAndTypeSafety/Annotations/RuntimeAnnotations.java)",
+      "Bash(grep -r \"^import Basics\\\\.\\\\|^import OOPSConcepts\\\\.\\\\|^import Overview\\\\.\" src --include=\"*.java\")"
     ]
   }
 }

@@ -4,84 +4,426 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9494791-d467-4c71-aec9-feaf22b8afed" name="Default Changelist" comment="Readme update DG Commit">
-      <change afterPath="$PROJECT_DIR$/src/Basics/Annotations/AnnotationsIntroduction.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Annotations/AnnotationsIntroduction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Annotations/BuiltInAnnotations.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Annotations/BuiltInAnnotations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Annotations/CustomAnnotations.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Annotations/CustomAnnotations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Annotations/RuntimeAnnotations.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Annotations/RuntimeAnnotations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/DateTimeFormatterDemo.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/DateTimeFormatterDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/DateTimeIntroduction.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/DateTimeIntroduction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/DurationDemo.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/DurationDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/InstantDemo.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/InstantDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/LegacyDateConversions.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/LegacyDateConversions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/LocalDateLocalTimeLocalDateTime.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/LocalDateLocalTimeLocalDateTime.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/PeriodDemo.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/PeriodDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/ZonedDateTimeDemo.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/ZonedDateTimeDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/BufferedStreams.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/BufferedStreams.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/ByteStreams.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/ByteStreams.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/CharacterStreams.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/CharacterStreams.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/DataStreams.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/DataStreams.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/FileChannelDemo.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/FileChannelDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/FileIOIntroduction.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/FileIOIntroduction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/FilesAndPaths.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/FilesAndPaths.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/FilesWalkAndList.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/FilesWalkAndList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/ModernFileIO.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/ModernFileIO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/ObjectStreams.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/ObjectStreams.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/WatchServiceDemo.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/WatchServiceDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/HttpClient/HttpClientIntroduction.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/HttpClient/HttpClientIntroduction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/HttpClient/SyncAndAsyncRequests.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/HttpClient/SyncAndAsyncRequests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/HttpClient/WebSocketDemo.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/HttpClient/WebSocketDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Modules/ModuleExamples.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Modules/ModuleExamples.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Modules/ModulesIntroduction.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Modules/ModulesIntroduction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Modules/ServiceLoaderDemo.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Modules/ServiceLoaderDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/NestedClasses/InnerClass.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/NestedClasses/InnerClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/NestedClasses/LocalAndAnonymousClass.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/NestedClasses/LocalAndAnonymousClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/NestedClasses/NestedClassesIntroduction.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/NestedClasses/NestedClassesIntroduction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/NestedClasses/StaticNestedClass.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/NestedClasses/StaticNestedClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/OptionalType/OptionalDemo.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/OptionalType/OptionalDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Reflection/ClassAndMethodReflection.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Reflection/ClassAndMethodReflection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Reflection/DynamicInvocation.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Reflection/DynamicInvocation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Reflection/ReflectionIntroduction.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Reflection/ReflectionIntroduction.java" afterDir="false" />
+    <list default="true" id="d9494791-d467-4c71-aec9-feaf22b8afed" name="Default Changelist" comment="more things added DG Commit">
       <change beforePath="$PROJECT_DIR$/.claude/settings.local.json" beforeDir="false" afterPath="$PROJECT_DIR$/.claude/settings.local.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Annotations/AnnotationsIntroduction.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/Annotations/AnnotationsIntroduction.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Annotations/AnnotationsIntroduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/Annotations/AnnotationsIntroduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Annotations/BuiltInAnnotations.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/Annotations/BuiltInAnnotations.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Annotations/BuiltInAnnotations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/Annotations/BuiltInAnnotations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Annotations/CustomAnnotations.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/Annotations/CustomAnnotations.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Annotations/CustomAnnotations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/Annotations/CustomAnnotations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Annotations/RuntimeAnnotations.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/Annotations/RuntimeAnnotations.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Annotations/RuntimeAnnotations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/Annotations/RuntimeAnnotations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Arrays/ArrayIntroduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase2_MethodsArraysStrings/Arrays/ArrayIntroduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Arrays/ArraysClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase2_MethodsArraysStrings/Arrays/ArraysClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Arrays/FinalArrays.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase2_MethodsArraysStrings/Arrays/FinalArrays.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Arrays/JaggedArrays.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase2_MethodsArraysStrings/Arrays/JaggedArrays.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Arrays/MultiDimensionalArrays.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase2_MethodsArraysStrings/Arrays/MultiDimensionalArrays.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/AbstractListClasses.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/AbstractListClasses.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/AbstractQueueDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/AbstractQueueDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/ArrayDequeDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/ArrayDequeDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/ArrayListDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/ArrayListDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/BlockingQueueDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/BlockingQueueDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/CollectionInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/CollectionInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/CollectionsClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/CollectionsClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/CollectionsIntroduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/CollectionsIntroduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/ComparatorComparable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/ComparatorComparable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/ConcurrentHashMapDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/ConcurrentHashMapDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/ConcurrentLinkedQueueDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/ConcurrentLinkedQueueDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/ConcurrentSkipListSetDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/ConcurrentSkipListSetDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/CopyOnWriteArrayListDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/CopyOnWriteArrayListDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/DequeInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/DequeInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/EnumSetDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/EnumSetDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/EnumerationDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/EnumerationDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/FaceDetectionApp/Detector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/FaceDetectionApp/Detector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/FaceDetectionApp/Face.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/FaceDetectionApp/Face.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/FaceDetectionApp/FaceDetectionApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/FaceDetectionApp/FaceDetectionApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/FaceDetectionApp/FaceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/FaceDetectionApp/FaceRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/HashMapDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/HashMapDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/HashSetDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/HashSetDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/HashtableDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/HashtableDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/IdentityHashMapDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/IdentityHashMapDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/IterableDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/IterableDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/IteratorDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/IteratorDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/LinkedHashMapDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/LinkedHashMapDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/LinkedHashSetDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/LinkedHashSetDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/LinkedListDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/LinkedListDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/ListInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/ListInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/MapInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/MapInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/ModernCollections.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/ModernCollections.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/PriorityQueueDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/PriorityQueueDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/QueueInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/QueueInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/SetInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/SetInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/SortedAndNavigableSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/SortedAndNavigableSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/TreeMapDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/TreeMapDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/TreeSetDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/TreeSetDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/VectorAndStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/VectorAndStack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Collections/WeakHashMapDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/Collections/WeakHashMapDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Comments/Comments Theory" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Comments/Comments Theory" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Comments/DocumentationComments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Comments/DocumentationComments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Comments/MultiLineComment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Comments/MultiLineComment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Comments/SingleLineComments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Comments/SingleLineComments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Conversion/AutomaticTypeConversion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Conversion/AutomaticTypeConversion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Conversion/ExplicitTypeConversion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Conversion/ExplicitTypeConversion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Conversion/Type Conversion Theory" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Conversion/Type Conversion Theory" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Conversion/WideningPrimitive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Conversion/WideningPrimitive.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DataTypes/DataTypesIntro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/DataTypes/DataTypesIntro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DateAndTime/DateTimeFormatterDemo.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/DateAndTime/DateTimeFormatterDemo.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DateAndTime/DateTimeFormatterDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/DateAndTime/DateTimeFormatterDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DateAndTime/DateTimeIntroduction.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/DateAndTime/DateTimeIntroduction.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DateAndTime/DateTimeIntroduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/DateAndTime/DateTimeIntroduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DateAndTime/DurationDemo.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/DateAndTime/DurationDemo.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DateAndTime/DurationDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/DateAndTime/DurationDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DateAndTime/InstantDemo.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/DateAndTime/InstantDemo.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DateAndTime/InstantDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/DateAndTime/InstantDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DateAndTime/LegacyDateConversions.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/DateAndTime/LegacyDateConversions.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DateAndTime/LegacyDateConversions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/DateAndTime/LegacyDateConversions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DateAndTime/LocalDateLocalTimeLocalDateTime.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/DateAndTime/LocalDateLocalTimeLocalDateTime.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DateAndTime/LocalDateLocalTimeLocalDateTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/DateAndTime/LocalDateLocalTimeLocalDateTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DateAndTime/PeriodDemo.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/DateAndTime/PeriodDemo.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DateAndTime/PeriodDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/DateAndTime/PeriodDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DateAndTime/ZonedDateTimeDemo.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/DateAndTime/ZonedDateTimeDemo.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DateAndTime/ZonedDateTimeDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/DateAndTime/ZonedDateTimeDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DecisionMaking/Decision Making Theory" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/DecisionMaking/Decision Making Theory" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DecisionMaking/IfElseIfStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/DecisionMaking/IfElseIfStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DecisionMaking/IfElseStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/DecisionMaking/IfElseStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DecisionMaking/IfStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/DecisionMaking/IfStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DecisionMaking/JumpStatement/BreakStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/DecisionMaking/JumpStatement/BreakStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DecisionMaking/JumpStatement/ContinueStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/DecisionMaking/JumpStatement/ContinueStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DecisionMaking/JumpStatement/Jump Statement Theory" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/DecisionMaking/JumpStatement/Jump Statement Theory" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DecisionMaking/JumpStatement/LabelStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/DecisionMaking/JumpStatement/LabelStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DecisionMaking/JumpStatement/ReturnStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/DecisionMaking/JumpStatement/ReturnStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DecisionMaking/NestedIfStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/DecisionMaking/NestedIfStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/DecisionMaking/SwitchCaseStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/DecisionMaking/SwitchCaseStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Enumerations/EnumConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Enumerations/EnumConstructor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Enumerations/EnumMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Enumerations/EnumMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Enumerations/EnumWithCustomizedVal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Enumerations/EnumWithCustomizedVal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Enumerations/EnumWithSwitchCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Enumerations/EnumWithSwitchCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Enumerations/InsideClassEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Enumerations/InsideClassEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Enumerations/MainInsideEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Enumerations/MainInsideEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Enumerations/OutsideClassEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Enumerations/OutsideClassEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Enumerations/enums" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Enumerations/enums" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/ExceptionHandling/ChainedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/ExceptionHandling/ChainedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/ExceptionHandling/CustomException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/ExceptionHandling/CustomException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/ExceptionHandling/ExceptionBestPractices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/ExceptionHandling/ExceptionBestPractices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/ExceptionHandling/ExceptionInOverriding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/ExceptionHandling/ExceptionInOverriding.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/ExceptionHandling/ExceptionIntroduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/ExceptionHandling/ExceptionIntroduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/ExceptionHandling/FinalFinallyFinalize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/ExceptionHandling/FinalFinallyFinalize.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/ExceptionHandling/NullPointerExceptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/ExceptionHandling/NullPointerExceptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/ExceptionHandling/ThrowAndThrows.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/ExceptionHandling/ThrowAndThrows.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/ExceptionHandling/TryCatchBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/ExceptionHandling/TryCatchBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/ExceptionHandling/TryWithResources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/ExceptionHandling/TryWithResources.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Extra/BinarySearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Extra/BinarySearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Extra/FactsAboutNull.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Extra/FactsAboutNull.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Extra/FunctionCurrying.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Extra/FunctionCurrying.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Extra/IsJavaSupportGoto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Extra/IsJavaSupportGoto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Extra/ObjectMemoryAllocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Extra/ObjectMemoryAllocation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Extra/Sorting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Extra/Sorting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Extra/UnderscoreInNumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Extra/UnderscoreInNumber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/FileIO/BufferedStreams.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/FileIO/BufferedStreams.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/FileIO/BufferedStreams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/FileIO/BufferedStreams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/FileIO/ByteStreams.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/FileIO/ByteStreams.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/FileIO/ByteStreams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/FileIO/ByteStreams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/FileIO/CharacterStreams.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/FileIO/CharacterStreams.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/FileIO/CharacterStreams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/FileIO/CharacterStreams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/FileIO/DataStreams.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/FileIO/DataStreams.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/FileIO/DataStreams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/FileIO/DataStreams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/FileIO/FileChannelDemo.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/FileIO/FileChannelDemo.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/FileIO/FileChannelDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/FileIO/FileChannelDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/FileIO/FileIOIntroduction.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/FileIO/FileIOIntroduction.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/FileIO/FileIOIntroduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/FileIO/FileIOIntroduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/FileIO/FilesAndPaths.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/FileIO/FilesAndPaths.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/FileIO/FilesAndPaths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/FileIO/FilesAndPaths.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/FileIO/FilesWalkAndList.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/FileIO/FilesWalkAndList.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/FileIO/FilesWalkAndList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/FileIO/FilesWalkAndList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/FileIO/ModernFileIO.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/FileIO/ModernFileIO.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/FileIO/ModernFileIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/FileIO/ModernFileIO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/FileIO/ObjectStreams.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/FileIO/ObjectStreams.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/FileIO/ObjectStreams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/FileIO/ObjectStreams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/FileIO/WatchServiceDemo.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/FileIO/WatchServiceDemo.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/FileIO/WatchServiceDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/FileIO/WatchServiceDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Generics/BoundedTypeParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/Generics/BoundedTypeParameters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Generics/GenericClasses.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/Generics/GenericClasses.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Generics/GenericInterfaces.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/Generics/GenericInterfaces.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Generics/GenericMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/Generics/GenericMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Generics/GenericRestrictions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/Generics/GenericRestrictions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Generics/GenericsIntroduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/Generics/GenericsIntroduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Generics/HeapPollutionAndSafeVarargs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/Generics/HeapPollutionAndSafeVarargs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Generics/ModernGenerics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/Generics/ModernGenerics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Generics/PecsPrinciple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/Generics/PecsPrinciple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Generics/RecursiveTypeBounds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/Generics/RecursiveTypeBounds.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Generics/TypeErasure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/Generics/TypeErasure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Generics/Wildcards.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/Generics/Wildcards.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/HttpClient/HttpClientIntroduction.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/HttpClient/HttpClientIntroduction.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/HttpClient/HttpClientIntroduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/HttpClient/HttpClientIntroduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/HttpClient/SyncAndAsyncRequests.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/HttpClient/SyncAndAsyncRequests.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/HttpClient/SyncAndAsyncRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/HttpClient/SyncAndAsyncRequests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/HttpClient/WebSocketDemo.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/HttpClient/WebSocketDemo.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/HttpClient/WebSocketDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase8_PracticalAPIs/HttpClient/WebSocketDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Identifiers/Identifiers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Identifiers/Identifiers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Input/BufferedReaderInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/Input/BufferedReaderInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Input/ConsoleInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/Input/ConsoleInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Input/ScannerInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/Input/ScannerInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Installation/InstallJava.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/Installation/InstallJava.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Introduction/Introduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/Introduction/Introduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/JDKvsJREvsJVM/JDKvsJREvsJVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/JDKvsJREvsJVM/JDKvsJREvsJVM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Keywords/Keywords.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Keywords/Keywords.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/CollectorsClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/CollectorsClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/Examples/BookGroupingExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/Examples/BookGroupingExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/Examples/EmployeeSalaryExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/Examples/EmployeeSalaryExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/Examples/GroceryStoreExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/Examples/GroceryStoreExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/InfiniteStreams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/InfiniteStreams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/IntermediateOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/IntermediateOperations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/LambdaExpressions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/LambdaExpressions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/MethodReferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/MethodReferences.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/ModernStreams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/ModernStreams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/PrimitiveStreams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/PrimitiveStreams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/SequentialVsParallel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/SequentialVsParallel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/StreamCreation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/StreamCreation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/StreamFileIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/StreamFileIO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/StreamIntroduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/StreamIntroduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/StreamPipeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/StreamPipeline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/StreamVsCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/StreamVsCollection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/TerminalOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/TerminalOperations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Loops/DoWhileLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Loops/DoWhileLoop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Loops/ForEachOrEnhanceLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Loops/ForEachOrEnhanceLoop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Loops/ForLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Loops/ForLoop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Loops/ForLoopImportant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Loops/ForLoopImportant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Loops/InfiniteLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Loops/InfiniteLoop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Loops/Loop Theory" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Loops/Loop Theory" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Loops/WhileLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Loops/WhileLoop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/MemoryAllocation/GarbageCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase6_RuntimeMemoryRegexReflection/MemoryAllocation/GarbageCollection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/MemoryAllocation/GarbageCollectors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase6_RuntimeMemoryRegexReflection/MemoryAllocation/GarbageCollectors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/MemoryAllocation/JvmMemoryAreas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase6_RuntimeMemoryRegexReflection/MemoryAllocation/JvmMemoryAreas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/MemoryAllocation/MemoryLeaks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase6_RuntimeMemoryRegexReflection/MemoryAllocation/MemoryLeaks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/MemoryAllocation/MemoryManagementIntro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase6_RuntimeMemoryRegexReflection/MemoryAllocation/MemoryManagementIntro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/MemoryAllocation/ModernMemoryFeatures.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase6_RuntimeMemoryRegexReflection/MemoryAllocation/ModernMemoryFeatures.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/MemoryAllocation/ObjectsInMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase6_RuntimeMemoryRegexReflection/MemoryAllocation/ObjectsInMemory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/MemoryAllocation/StackVsHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase6_RuntimeMemoryRegexReflection/MemoryAllocation/StackVsHeap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Methods/AccessModifiers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase2_MethodsArraysStrings/Methods/AccessModifiers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Methods/CommandLineArguments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase2_MethodsArraysStrings/Methods/CommandLineArguments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Methods/InterfaceMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase2_MethodsArraysStrings/Methods/InterfaceMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Methods/MethodIntroduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase2_MethodsArraysStrings/Methods/MethodIntroduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Methods/MethodReferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase2_MethodsArraysStrings/Methods/MethodReferences.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Methods/StaticVsInstanceMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase2_MethodsArraysStrings/Methods/StaticVsInstanceMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Methods/Varargs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase2_MethodsArraysStrings/Methods/Varargs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/ModernJava/PatternMatchingSwitch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase9_ModernJavaAndModules/ModernJava/PatternMatchingSwitch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/ModernJava/RecordsAndPatterns.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase9_ModernJavaAndModules/ModernJava/RecordsAndPatterns.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/ModernJava/SequencedCollections.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase9_ModernJavaAndModules/ModernJava/SequencedCollections.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/ModernJava/SwitchExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase9_ModernJavaAndModules/ModernJava/SwitchExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/ModernJava/VarLocalTypeInference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase9_ModernJavaAndModules/ModernJava/VarLocalTypeInference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Modules/ModuleExamples.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase9_ModernJavaAndModules/Modules/ModuleExamples.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Modules/ModuleExamples.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase9_ModernJavaAndModules/Modules/ModuleExamples.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Modules/ModulesIntroduction.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase9_ModernJavaAndModules/Modules/ModulesIntroduction.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Modules/ModulesIntroduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase9_ModernJavaAndModules/Modules/ModulesIntroduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Modules/ServiceLoaderDemo.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase9_ModernJavaAndModules/Modules/ServiceLoaderDemo.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Modules/ServiceLoaderDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase9_ModernJavaAndModules/Modules/ServiceLoaderDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/AtomicVariables.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/AtomicVariables.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/AtomicVariables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/AtomicVariables.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/CallableAndFuture.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/CallableAndFuture.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/CallableAndFuture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/CallableAndFuture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/CompletableFutureDemo.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/CompletableFutureDemo.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/CompletableFutureDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/CompletableFutureDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/CountDownLatchDemo.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/CountDownLatchDemo.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/CountDownLatchDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/CountDownLatchDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/CyclicBarrierDemo.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/CyclicBarrierDemo.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/CyclicBarrierDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/CyclicBarrierDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/DaemonThread.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/DaemonThread.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/DaemonThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/DaemonThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/DeadlockDemo.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/DeadlockDemo.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/DeadlockDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/DeadlockDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ExecutorFramework.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ExecutorFramework.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ExecutorFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ExecutorFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ForkJoinPoolDemo.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ForkJoinPoolDemo.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ForkJoinPoolDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ForkJoinPoolDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/JavaMemoryModel.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/JavaMemoryModel.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/JavaMemoryModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/JavaMemoryModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/JavaSynchronization.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/JavaSynchronization.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/JavaSynchronization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/JavaSynchronization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/LockFrameworkVsSync.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/LockFrameworkVsSync.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/LockFrameworkVsSync.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/LockFrameworkVsSync.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/LockVsMonitor.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/LockVsMonitor.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/LockVsMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/LockVsMonitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/LocksInJava.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/LocksInJava.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/LocksInJava.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/LocksInJava.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/MainThread.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/MainThread.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/MainThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/MainThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/MultithreadingCompleteTutorial.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/MultithreadingCompleteTutorial.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/MultithreadingCompleteTutorial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/MultithreadingCompleteTutorial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/MultithreadingIntroduction.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/MultithreadingIntroduction.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/MultithreadingIntroduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/MultithreadingIntroduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/PhaserDemo.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/PhaserDemo.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/PhaserDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/PhaserDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ProducerConsumer.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ProducerConsumer.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ProducerConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ProducerConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/RaceConditionStarvationLivelock.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/RaceConditionStarvationLivelock.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/RaceConditionStarvationLivelock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/RaceConditionStarvationLivelock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ReadWriteLockDemo.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ReadWriteLockDemo.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ReadWriteLockDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ReadWriteLockDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ReentrantLockDemo.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ReentrantLockDemo.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ReentrantLockDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ReentrantLockDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/RunnableInterface.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/RunnableInterface.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/RunnableInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/RunnableInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ScheduledExecutorDemo.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ScheduledExecutorDemo.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ScheduledExecutorDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ScheduledExecutorDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ScopedValuesDemo.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ScopedValuesDemo.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ScopedValuesDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ScopedValuesDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/SemaphoreDemo.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/SemaphoreDemo.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/SemaphoreDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/SemaphoreDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/SnakeGame/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/SnakeGame/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/SnakeGame/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/SnakeGame/Direction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/SnakeGame/GameLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/SnakeGame/GameLoop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/SnakeGame/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/SnakeGame/GameState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/SnakeGame/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/SnakeGame/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/SnakeGame/SnakeBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/SnakeGame/SnakeBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/SnakeGame/SnakeGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/SnakeGame/SnakeGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/StampedLockDemo.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/StampedLockDemo.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/StampedLockDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/StampedLockDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/StartVsRun.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/StartVsRun.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/StartVsRun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/StartVsRun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/StructuredConcurrency.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/StructuredConcurrency.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/StructuredConcurrency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/StructuredConcurrency.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadInterruption.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ThreadInterruption.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadInterruption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ThreadInterruption.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadJoinMethod.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ThreadJoinMethod.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadJoinMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ThreadJoinMethod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadLifecycle.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ThreadLifecycle.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadLifecycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ThreadLifecycle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadLocalDemo.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ThreadLocalDemo.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadLocalDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ThreadLocalDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadPools.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ThreadPools.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadPools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ThreadPools.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadPriority.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ThreadPriority.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadPriority.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ThreadPriority.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadSafety.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ThreadSafety.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadSafety.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ThreadSafety.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadSleepMethod.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ThreadSleepMethod.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadSleepMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ThreadSleepMethod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadYieldMethod.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ThreadYieldMethod.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadYieldMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/ThreadYieldMethod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/Threads.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/Threads.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/Threads.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/Threads.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/VirtualThreads.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/VirtualThreads.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/VirtualThreads.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/VirtualThreads.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/VolatileKeyword.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/VolatileKeyword.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/VolatileKeyword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/VolatileKeyword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/WaitNotifyNotifyAll.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/WaitNotifyNotifyAll.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Multithreading/WaitNotifyNotifyAll.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase7_Concurrency/Multithreading/WaitNotifyNotifyAll.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/NestedClasses/InnerClass.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/NestedClasses/InnerClass.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/NestedClasses/InnerClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/NestedClasses/InnerClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/NestedClasses/LocalAndAnonymousClass.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/NestedClasses/LocalAndAnonymousClass.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/NestedClasses/LocalAndAnonymousClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/NestedClasses/LocalAndAnonymousClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/NestedClasses/NestedClassesIntroduction.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/NestedClasses/NestedClassesIntroduction.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/NestedClasses/NestedClassesIntroduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/NestedClasses/NestedClassesIntroduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/NestedClasses/StaticNestedClass.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/NestedClasses/StaticNestedClass.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/NestedClasses/StaticNestedClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/NestedClasses/StaticNestedClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Operators/ArithmeticOperators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Operators/ArithmeticOperators.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Operators/AssignmentOperators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Operators/AssignmentOperators.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Operators/BitwiseOperators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Operators/BitwiseOperators.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Operators/InstanceofOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Operators/InstanceofOperator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Operators/LogicalOperators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Operators/LogicalOperators.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Operators/RelationalOperators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Operators/RelationalOperators.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Operators/TernaryOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Operators/TernaryOperator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Operators/UnaryOperators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Operators/UnaryOperators.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/OptionalType/OptionalDemo.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/OptionalType/OptionalDemo.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/OptionalType/OptionalDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase4_ErrorsAndTypeSafety/OptionalType/OptionalDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Output/FormattedOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/Output/FormattedOutput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Output/PrintMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/Output/PrintMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/PrimitiveDataTypes/BooleanExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/PrimitiveDataTypes/BooleanExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/PrimitiveDataTypes/ByteExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/PrimitiveDataTypes/ByteExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/PrimitiveDataTypes/CharExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/PrimitiveDataTypes/CharExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/PrimitiveDataTypes/DataType Theory" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/PrimitiveDataTypes/DataType Theory" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/PrimitiveDataTypes/DoubleExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/PrimitiveDataTypes/DoubleExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/PrimitiveDataTypes/FloatExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/PrimitiveDataTypes/FloatExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/PrimitiveDataTypes/IntegerExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/PrimitiveDataTypes/IntegerExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/PrimitiveDataTypes/LongExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/PrimitiveDataTypes/LongExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/PrimitiveDataTypes/ShortExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/PrimitiveDataTypes/ShortExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Reflection/ClassAndMethodReflection.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase6_RuntimeMemoryRegexReflection/Reflection/ClassAndMethodReflection.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Reflection/ClassAndMethodReflection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase6_RuntimeMemoryRegexReflection/Reflection/ClassAndMethodReflection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Reflection/DynamicInvocation.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase6_RuntimeMemoryRegexReflection/Reflection/DynamicInvocation.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Reflection/DynamicInvocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase6_RuntimeMemoryRegexReflection/Reflection/DynamicInvocation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Reflection/ReflectionIntroduction.README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase6_RuntimeMemoryRegexReflection/Reflection/ReflectionIntroduction.README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Reflection/ReflectionIntroduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase6_RuntimeMemoryRegexReflection/Reflection/ReflectionIntroduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Regex/CharacterClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase6_RuntimeMemoryRegexReflection/Regex/CharacterClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Regex/GroupsAndBackreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase6_RuntimeMemoryRegexReflection/Regex/GroupsAndBackreferences.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Regex/LookaroundAssertions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase6_RuntimeMemoryRegexReflection/Regex/LookaroundAssertions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Regex/MatcherClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase6_RuntimeMemoryRegexReflection/Regex/MatcherClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Regex/MetacharactersAndAnchors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase6_RuntimeMemoryRegexReflection/Regex/MetacharactersAndAnchors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Regex/ModernRegexFeatures.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase6_RuntimeMemoryRegexReflection/Regex/ModernRegexFeatures.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Regex/Quantifiers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase6_RuntimeMemoryRegexReflection/Regex/Quantifiers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Regex/RegexExamples.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase6_RuntimeMemoryRegexReflection/Regex/RegexExamples.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Regex/RegexFlags.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase6_RuntimeMemoryRegexReflection/Regex/RegexFlags.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Regex/RegexIntroduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase6_RuntimeMemoryRegexReflection/Regex/RegexIntroduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/SpecialKeyword/FinalKeywordExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/SpecialKeyword/FinalKeywordExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Strings/ModernStringFeatures.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase2_MethodsArraysStrings/Strings/ModernStringFeatures.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Strings/StringBufferClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase2_MethodsArraysStrings/Strings/StringBufferClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Strings/StringBuilderClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase2_MethodsArraysStrings/Strings/StringBuilderClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Strings/StringConcatenation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase2_MethodsArraysStrings/Strings/StringConcatenation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Strings/StringImmutability.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase2_MethodsArraysStrings/Strings/StringImmutability.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Strings/StringIntroduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase2_MethodsArraysStrings/Strings/StringIntroduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Strings/StringMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase2_MethodsArraysStrings/Strings/StringMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Strings/StringVsBufferVsBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase2_MethodsArraysStrings/Strings/StringVsBufferVsBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Variables/InstanceVariableExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Variables/InstanceVariableExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Variables/LocalVariableExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Variables/LocalVariableExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Variables/ScopeOfVariable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Variables/ScopeOfVariable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Variables/StaticVariableExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Variables/StaticVariableExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Variables/Variable Theory" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Variables/Variable Theory" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/WrapperClasses/AutoboxingUnboxing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/WrapperClasses/AutoboxingUnboxing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/WrapperClasses/WrapperClassesIntro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/WrapperClasses/WrapperClassesIntro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/Abstraction/AbstractClassExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/Abstraction/AbstractClassExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/Abstraction/AbstractClassVsInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/Abstraction/AbstractClassVsInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/Abstraction/InterfaceExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/Abstraction/InterfaceExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/BankingApp/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/BankingApp/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/BankingApp/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/BankingApp/Bank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/BankingApp/BankingApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/BankingApp/BankingApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/BankingApp/CheckingAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/BankingApp/CheckingAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/BankingApp/SavingsAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/BankingApp/SavingsAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/BankingApp/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/BankingApp/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/ClassesAndObject/Classes and Object Theory" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/ClassesAndObject/Classes and Object Theory" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/ClassesAndObject/InitializingObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/ClassesAndObject/InitializingObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/ClassesAndObject/WaysToCreateObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/ClassesAndObject/WaysToCreateObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/Constructors/Constructors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/Constructors/Constructors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/EmployeeApp/Auditable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/EmployeeApp/Auditable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/EmployeeApp/Contractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/EmployeeApp/Contractor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/EmployeeApp/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/EmployeeApp/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/EmployeeApp/EmployeeApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/EmployeeApp/EmployeeApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/EmployeeApp/EmployeeFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/EmployeeApp/EmployeeFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/EmployeeApp/EmployeeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/EmployeeApp/EmployeeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/EmployeeApp/FullTimeEmployee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/EmployeeApp/FullTimeEmployee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/EmployeeApp/Intern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/EmployeeApp/Intern.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/EmployeeApp/PartTimeEmployee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/EmployeeApp/PartTimeEmployee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/EmployeeApp/Promotable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/EmployeeApp/Promotable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/Encapsulation/Encapsulation Theory" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/Encapsulation/Encapsulation Theory" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/Encapsulation/TestEncapsulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/Encapsulation/TestEncapsulation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/Inheritance/Inheritance Theory" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/Inheritance/Inheritance Theory" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/Inheritance/InheritanceJava.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/Inheritance/InheritanceJava.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/Inheritance/TypesOfInheritance/HierarchicalInheritance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/Inheritance/TypesOfInheritance/HierarchicalInheritance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/Inheritance/TypesOfInheritance/HybridInheritance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/Inheritance/TypesOfInheritance/HybridInheritance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/Inheritance/TypesOfInheritance/MultiLevelInheritance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/Inheritance/TypesOfInheritance/MultiLevelInheritance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/Inheritance/TypesOfInheritance/MultipleInheritance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/Inheritance/TypesOfInheritance/MultipleInheritance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/Inheritance/TypesOfInheritance/SingleInheritance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/Inheritance/TypesOfInheritance/SingleInheritance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/Interfaces/ClassVsInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/Interfaces/ClassVsInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/Interfaces/FunctionalInterfaceDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/Interfaces/FunctionalInterfaceDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/Interfaces/InterfaceIntro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/Interfaces/InterfaceIntro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/Interfaces/MarkerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/Interfaces/MarkerInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/Interfaces/NestedInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/Interfaces/NestedInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/Interfaces/SealedInterfaceDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/Interfaces/SealedInterfaceDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/Introduction/OopIntroduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/Introduction/OopIntroduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/ObjectClass/ObjectClassMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/ObjectClass/ObjectClassMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/Packages/PackagesAndImports.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/Packages/PackagesAndImports.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/Polymorphism/Polymorphism.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/Polymorphism/Polymorphism.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/SealedClasses/SealedClassesDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/SealedClasses/SealedClassesDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/SerializationDeserialization/DemoOneModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/SerializationDeserialization/DemoOneModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/SerializationDeserialization/DemoTwoModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/SerializationDeserialization/DemoTwoModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/SerializationDeserialization/Serialization and Deserialization Theory" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/SerializationDeserialization/Serialization and Deserialization Theory" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/SerializationDeserialization/SerializationDeserializationDemoOne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/SerializationDeserialization/SerializationDeserializationDemoOne.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPSConcepts/SerializationDeserialization/SerializationDeserializationDemoTwo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase3_ObjectOrientation/SerializationDeserialization/SerializationDeserializationDemoTwo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Overview/ClassNameMyth/Hello.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/ClassNameMyth/Hello.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Overview/HelloWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/HelloWorld.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Overview/IsMainCompulsory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/IsMainCompulsory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Overview/JDKJREJVM" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/JDKJREJVM" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Overview/JavaNamingConventions" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/JavaNamingConventions" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -338,7 +680,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779300164225</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="more things added DG Commit">
+      <option name="closed" value="true" />
+      <created>1779312437732</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1779312437732</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -390,7 +740,8 @@
     <MESSAGE value="Lambda And Streams code and example added DG Commit" />
     <MESSAGE value="Multithread code and example added DG Commit" />
     <MESSAGE value="Readme update DG Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Readme update DG Commit" />
+    <MESSAGE value="more things added DG Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="more things added DG Commit" />
   </component>
   <component name="masterDetails">
     <states>
