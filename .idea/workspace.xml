@@ -4,102 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9494791-d467-4c71-aec9-feaf22b8afed" name="Default Changelist" comment="Lambda And Streams code and example added DG Commit">
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/AtomicVariables.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/AtomicVariables.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/CallableAndFuture.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/CallableAndFuture.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/CompletableFutureDemo.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/CompletableFutureDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/CountDownLatchDemo.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/CountDownLatchDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/CyclicBarrierDemo.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/CyclicBarrierDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/DaemonThread.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/DaemonThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/DeadlockDemo.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/DeadlockDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ExecutorFramework.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ExecutorFramework.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ForkJoinPoolDemo.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ForkJoinPoolDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/JavaMemoryModel.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/JavaMemoryModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/JavaSynchronization.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/JavaSynchronization.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/LockFrameworkVsSync.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/LockFrameworkVsSync.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/LockVsMonitor.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/LockVsMonitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/LocksInJava.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/LocksInJava.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/MainThread.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/MainThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/MultithreadingCompleteTutorial.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/MultithreadingCompleteTutorial.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/MultithreadingIntroduction.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/MultithreadingIntroduction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/PhaserDemo.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/PhaserDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ProducerConsumer.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ProducerConsumer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/RaceConditionStarvationLivelock.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/RaceConditionStarvationLivelock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ReadWriteLockDemo.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ReadWriteLockDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ReentrantLockDemo.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ReentrantLockDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/RunnableInterface.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/RunnableInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ScheduledExecutorDemo.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ScheduledExecutorDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ScopedValuesDemo.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ScopedValuesDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/SemaphoreDemo.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/SemaphoreDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/SnakeGame/Cell.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/SnakeGame/Direction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/SnakeGame/GameLoop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/SnakeGame/GameState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/SnakeGame/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/SnakeGame/SnakeBoard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/SnakeGame/SnakeGame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/StampedLockDemo.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/StampedLockDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/StartVsRun.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/StartVsRun.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/StructuredConcurrency.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/StructuredConcurrency.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadInterruption.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadInterruption.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadJoinMethod.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadJoinMethod.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadLifecycle.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadLifecycle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadLocalDemo.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadLocalDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadPools.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadPools.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadPriority.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadPriority.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadSafety.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadSafety.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadSleepMethod.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadSleepMethod.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadYieldMethod.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/ThreadYieldMethod.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/Threads.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/Threads.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/VirtualThreads.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/VirtualThreads.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/VolatileKeyword.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/VolatileKeyword.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/WaitNotifyNotifyAll.README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Basics/Multithreading/WaitNotifyNotifyAll.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.claude/settings.local.json" beforeDir="false" afterPath="$PROJECT_DIR$/.claude/settings.local.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="d9494791-d467-4c71-aec9-feaf22b8afed" name="Default Changelist" comment="Multithread code and example added DG Commit">
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/TerminalOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Basics/LambdaAndStreams/TerminalOperations.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -340,7 +246,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779229008997</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Multithread code and example added DG Commit">
+      <option name="closed" value="true" />
+      <created>1779283102662</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1779283102662</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -390,7 +304,8 @@
     <MESSAGE value="Exception Handling, Regex and Memory Allocation added DG Commit" />
     <MESSAGE value="Collection and Genetics Method code and example added DG Commit" />
     <MESSAGE value="Lambda And Streams code and example added DG Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lambda And Streams code and example added DG Commit" />
+    <MESSAGE value="Multithread code and example added DG Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Multithread code and example added DG Commit" />
   </component>
   <component name="masterDetails">
     <states>

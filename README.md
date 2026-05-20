@@ -263,6 +263,103 @@ is also included as comments inside each `main()` so you can verify your run.
 
 ---
 
+## Multithreading and Synchronization
+
+> Multiple threads of execution inside one JVM — concurrent and parallel
+> work, the synchronization primitives that keep shared state sane, and
+> the Java 21 virtual-thread world. Every topic has a `.java` runner and
+> a matching `<Topic>.README.md` next to it.
+
+### 1. Foundations
+
+| # | Topic | Source |
+|---|-------|--------|
+| 1 | Multithreading Introduction (concurrency vs parallelism, why threads) | [MultithreadingIntroduction.java](src/Basics/Multithreading/MultithreadingIntroduction.java) |
+| 2 | Threads (`java.lang.Thread` API tour) | [Threads.java](src/Basics/Multithreading/Threads.java) |
+| 3 | Thread Lifecycle (`NEW`/`RUNNABLE`/`BLOCKED`/`WAITING`/`TIMED_WAITING`/`TERMINATED`) | [ThreadLifecycle.java](src/Basics/Multithreading/ThreadLifecycle.java) |
+| 4 | The Main Thread (default properties, JVM exit rules) | [MainThread.java](src/Basics/Multithreading/MainThread.java) |
+| 5 | `Thread.start()` vs `Thread.run()` | [StartVsRun.java](src/Basics/Multithreading/StartVsRun.java) |
+| 6 | `Thread.sleep(...)` | [ThreadSleepMethod.java](src/Basics/Multithreading/ThreadSleepMethod.java) |
+| 7 | `Thread.join(...)` | [ThreadJoinMethod.java](src/Basics/Multithreading/ThreadJoinMethod.java) |
+| 8 | `Thread.yield()` and `onSpinWait` | [ThreadYieldMethod.java](src/Basics/Multithreading/ThreadYieldMethod.java) |
+| 9 | Thread Interruption (cooperative cancellation) | [ThreadInterruption.java](src/Basics/Multithreading/ThreadInterruption.java) |
+| 10 | Thread Priority (`MIN`/`NORM`/`MAX`, OS mapping) | [ThreadPriority.java](src/Basics/Multithreading/ThreadPriority.java) |
+| 11 | Daemon Threads (JVM exit semantics) | [DaemonThread.java](src/Basics/Multithreading/DaemonThread.java) |
+
+### 2. Creating Work
+
+| Topic | Source |
+|---|---|
+| Runnable Interface (lambdas, composition, decoration) | [RunnableInterface.java](src/Basics/Multithreading/RunnableInterface.java) |
+| Callable & Future (results, exceptions, cancellation, FutureTask) | [CallableAndFuture.java](src/Basics/Multithreading/CallableAndFuture.java) |
+
+### 3. Correctness (synchronization, JMM, atomics)
+
+| Topic | Source |
+|---|---|
+| Java Synchronization (`synchronized` blocks/methods, monitor locks) | [JavaSynchronization.java](src/Basics/Multithreading/JavaSynchronization.java) |
+| Thread Safety (strategies, levels, compound-op traps) | [ThreadSafety.java](src/Basics/Multithreading/ThreadSafety.java) |
+| Race Conditions, Livelock, Starvation | [RaceConditionStarvationLivelock.java](src/Basics/Multithreading/RaceConditionStarvationLivelock.java) |
+| Java Memory Model (happens-before, safe publication) | [JavaMemoryModel.java](src/Basics/Multithreading/JavaMemoryModel.java) |
+| `volatile` Keyword (visibility, DCL singleton) | [VolatileKeyword.java](src/Basics/Multithreading/VolatileKeyword.java) |
+| `wait` / `notify` / `notifyAll` | [WaitNotifyNotifyAll.java](src/Basics/Multithreading/WaitNotifyNotifyAll.java) |
+| Producer-Consumer (three implementations) | [ProducerConsumer.java](src/Basics/Multithreading/ProducerConsumer.java) |
+| `ThreadLocal<T>` | [ThreadLocalDemo.java](src/Basics/Multithreading/ThreadLocalDemo.java) |
+| Atomic Variables (`Atomic*`, `LongAdder`, ABA) | [AtomicVariables.java](src/Basics/Multithreading/AtomicVariables.java) |
+
+### 4. Locks
+
+| Topic | Source |
+|---|---|
+| Locks in Java (`Lock` interface tour) | [LocksInJava.java](src/Basics/Multithreading/LocksInJava.java) |
+| Lock vs Monitor in Concurrency | [LockVsMonitor.java](src/Basics/Multithreading/LockVsMonitor.java) |
+| Lock Framework vs `synchronized` | [LockFrameworkVsSync.java](src/Basics/Multithreading/LockFrameworkVsSync.java) |
+| `ReentrantLock` (fairness, `tryLock`, conditions) | [ReentrantLockDemo.java](src/Basics/Multithreading/ReentrantLockDemo.java) |
+| `ReadWriteLock` (many readers, one writer) | [ReadWriteLockDemo.java](src/Basics/Multithreading/ReadWriteLockDemo.java) |
+| `StampedLock` (optimistic reads) | [StampedLockDemo.java](src/Basics/Multithreading/StampedLockDemo.java) |
+| Deadlock (Coffman, detection, prevention) | [DeadlockDemo.java](src/Basics/Multithreading/DeadlockDemo.java) |
+
+### 5. Executors and high-level concurrency
+
+| Topic | Source |
+|---|---|
+| Thread Pools (`ThreadPoolExecutor`, queues, rejection policies) | [ThreadPools.java](src/Basics/Multithreading/ThreadPools.java) |
+| Executor Framework (`ExecutorService` tour) | [ExecutorFramework.java](src/Basics/Multithreading/ExecutorFramework.java) |
+| `ScheduledExecutorService` (`fixedRate` vs `fixedDelay`) | [ScheduledExecutorDemo.java](src/Basics/Multithreading/ScheduledExecutorDemo.java) |
+| `ForkJoinPool` (divide-and-conquer, work stealing) | [ForkJoinPoolDemo.java](src/Basics/Multithreading/ForkJoinPoolDemo.java) |
+| `CompletableFuture` (composable async) | [CompletableFutureDemo.java](src/Basics/Multithreading/CompletableFutureDemo.java) |
+
+### 6. Synchronizers
+
+| Topic | Source |
+|---|---|
+| `CountDownLatch` (one-shot gate) | [CountDownLatchDemo.java](src/Basics/Multithreading/CountDownLatchDemo.java) |
+| `CyclicBarrier` (resettable, barrier action) | [CyclicBarrierDemo.java](src/Basics/Multithreading/CyclicBarrierDemo.java) |
+| `Semaphore` (permits, binary, fair) | [SemaphoreDemo.java](src/Basics/Multithreading/SemaphoreDemo.java) |
+| `Phaser` (variable parties, per-phase actions) | [PhaserDemo.java](src/Basics/Multithreading/PhaserDemo.java) |
+
+### 7. Java 21 — modern concurrency
+
+| Topic | Source |
+|---|---|
+| Virtual Threads (JEP 444 finalised) | [VirtualThreads.java](src/Basics/Multithreading/VirtualThreads.java) |
+| Structured Concurrency (JEP 453 preview) | [StructuredConcurrency.java](src/Basics/Multithreading/StructuredConcurrency.java) |
+| Scoped Values (JEP 446 preview) | [ScopedValuesDemo.java](src/Basics/Multithreading/ScopedValuesDemo.java) |
+
+### 8. End-to-end
+
+| Topic | Source |
+|---|---|
+| Multithreading Complete Tutorial (one-file tour) | [MultithreadingCompleteTutorial.java](src/Basics/Multithreading/MultithreadingCompleteTutorial.java) |
+
+### Project
+
+| Topic | Source |
+|---|---|
+| Snake Game (Swing render thread + game loop thread + locked state) | [Direction](src/Basics/Multithreading/SnakeGame/Direction.java) · [Cell](src/Basics/Multithreading/SnakeGame/Cell.java) · [GameState](src/Basics/Multithreading/SnakeGame/GameState.java) · [GameLoop](src/Basics/Multithreading/SnakeGame/GameLoop.java) · [SnakeBoard](src/Basics/Multithreading/SnakeGame/SnakeBoard.java) · **[Runner: SnakeGame.java](src/Basics/Multithreading/SnakeGame/SnakeGame.java)** |
+
+---
+
 ## Strings
 
 > Sequences of characters. `String` is immutable; `StringBuffer` and
