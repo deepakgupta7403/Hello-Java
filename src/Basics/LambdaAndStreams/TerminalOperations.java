@@ -15,54 +15,54 @@ import java.util.stream.Stream;
  * -----------------------------------------------
  * A TERMINAL operation kicks off the pipeline and produces a side effect
  * or a value. After a terminal op runs, the stream is CLOSED.
- *
- *
+ * <p>
+ * <p>
  * Common Terminal Operations
  * --------------------------
- *
- *   Side-effecting
- *      forEach(Consumer)
- *      forEachOrdered(Consumer)             - preserves encounter order, even in parallel
- *
- *   Reduction / aggregation
- *      reduce(identity, BinaryOperator)
- *      reduce(BinaryOperator) -&gt; Optional&lt;T&gt;
- *      reduce(identity, accumulator, combiner)
- *      collect(Collector)
- *      count()
- *      min(Comparator) / max(Comparator) -&gt; Optional
- *      sum / average / IntStream.sum / .summaryStatistics  (primitive streams)
- *
- *   Existence / search (SHORT-CIRCUIT)
- *      anyMatch(Predicate)                  - true if any element matches
- *      allMatch(Predicate)                  - true if every element matches
- *      noneMatch(Predicate)                 - true if no element matches
- *      findFirst()                          - Optional of first element
- *      findAny()                            - Optional of any element (parallel-friendly)
- *
- *   Conversion
- *      toArray() / toArray(IntFunction)
- *      toList()                             - Java 16+, returns unmodifiable List
- *      iterator()                            - bridge back to Iterator
- *
- *
+ * <p>
+ * Side-effecting
+ * forEach(Consumer)
+ * forEachOrdered(Consumer)             - preserves encounter order, even in parallel
+ * <p>
+ * Reduction / aggregation
+ * reduce(identity, BinaryOperator)
+ * reduce(BinaryOperator) -&gt; Optional&lt;T&gt;
+ * reduce(identity, accumulator, combiner)
+ * collect(Collector)
+ * count()
+ * min(Comparator) / max(Comparator) -&gt; Optional
+ * sum / average / IntStream.sum / .summaryStatistics  (primitive streams)
+ * <p>
+ * Existence / search (SHORT-CIRCUIT)
+ * anyMatch(Predicate)                  - true if any element matches
+ * allMatch(Predicate)                  - true if every element matches
+ * noneMatch(Predicate)                 - true if no element matches
+ * findFirst()                          - Optional of first element
+ * findAny()                            - Optional of any element (parallel-friendly)
+ * <p>
+ * Conversion
+ * toArray() / toArray(IntFunction)
+ * toList()                             - Java 16+, returns unmodifiable List
+ * iterator()                            - bridge back to Iterator
+ * <p>
+ * <p>
  * Reduce - Three Forms Explained
  * ------------------------------
- *
- *   1. T reduce(T identity, BinaryOperator&lt;T&gt; op)
- *
- *         int sum = stream.reduce(0, Integer::sum);
- *
- *   2. Optional&lt;T&gt; reduce(BinaryOperator&lt;T&gt; op)
- *
- *         Optional&lt;Integer&gt; max = stream.reduce(Integer::max);
- *
- *   3. &lt;U&gt; U reduce(U identity, BiFunction&lt;U, T, U&gt; accumulator,
- *                                BinaryOperator&lt;U&gt; combiner)
- *
- *      The "U is a different type" form, useful for parallel streams.
- *
- *
+ * <p>
+ * 1. T reduce(T identity, BinaryOperator&lt;T&gt; op)
+ * <p>
+ * int sum = stream.reduce(0, Integer::sum);
+ * <p>
+ * 2. Optional&lt;T&gt; reduce(BinaryOperator&lt;T&gt; op)
+ * <p>
+ * Optional&lt;Integer&gt; max = stream.reduce(Integer::max);
+ * <p>
+ * 3. &lt;U&gt; U reduce(U identity, BiFunction&lt;U, T, U&gt; accumulator,
+ * BinaryOperator&lt;U&gt; combiner)
+ * <p>
+ * The "U is a different type" form, useful for parallel streams.
+ * <p>
+ * <p>
  * Match Operations Short-Circuit
  * ------------------------------
  * anyMatch / allMatch / noneMatch return as soon as the answer is decided.
@@ -115,7 +115,7 @@ public class TerminalOperations {
 
         section("6) findFirst / findAny - Optional results");
         Optional<Integer> firstOver3 = nums.stream().filter(n -> n > 3).findFirst();
-        Optional<Integer> anyOver3   = nums.parallelStream().filter(n -> n > 3).findAny();
+        Optional<Integer> anyOver3 = nums.parallelStream().filter(n -> n > 3).findAny();
         System.out.println("firstOver3 = " + firstOver3.orElse(-1));
         System.out.println("anyOver3   = " + anyOver3.orElse(-1));
 
@@ -133,13 +133,14 @@ public class TerminalOperations {
         section("8) Stream.toList (Java 16+) - UNMODIFIABLE result");
         List<Integer> immutable = nums.stream().filter(n -> n > 2).toList();
         System.out.println("toList = " + immutable);
-        try { immutable.add(99); }
-        catch (UnsupportedOperationException e) {
+        try {
+            immutable.add(99);
+        } catch (UnsupportedOperationException e) {
             System.out.println("toList result is immutable - add rejected");
         }
 
         section("9) toArray - object vs typed");
-        Object[] objs   = nums.stream().toArray();
+        Object[] objs = nums.stream().toArray();
         Integer[] typed = nums.stream().toArray(Integer[]::new);
         System.out.println("objs len = " + objs.length + ", typed len = " + typed.length);
 
