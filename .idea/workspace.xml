@@ -4,7 +4,83 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9494791-d467-4c71-aec9-feaf22b8afed" name="Default Changelist" comment="Multithread code and example added DG Commit">
+    <list default="true" id="d9494791-d467-4c71-aec9-feaf22b8afed" name="Default Changelist" comment="Readme update DG Commit">
+      <change afterPath="$PROJECT_DIR$/src/Basics/Annotations/AnnotationsIntroduction.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Annotations/AnnotationsIntroduction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Annotations/BuiltInAnnotations.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Annotations/BuiltInAnnotations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Annotations/CustomAnnotations.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Annotations/CustomAnnotations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Annotations/RuntimeAnnotations.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Annotations/RuntimeAnnotations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/DateTimeFormatterDemo.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/DateTimeFormatterDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/DateTimeIntroduction.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/DateTimeIntroduction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/DurationDemo.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/DurationDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/InstantDemo.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/InstantDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/LegacyDateConversions.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/LegacyDateConversions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/LocalDateLocalTimeLocalDateTime.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/LocalDateLocalTimeLocalDateTime.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/PeriodDemo.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/PeriodDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/ZonedDateTimeDemo.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/DateAndTime/ZonedDateTimeDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/BufferedStreams.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/BufferedStreams.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/ByteStreams.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/ByteStreams.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/CharacterStreams.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/CharacterStreams.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/DataStreams.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/DataStreams.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/FileChannelDemo.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/FileChannelDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/FileIOIntroduction.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/FileIOIntroduction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/FilesAndPaths.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/FilesAndPaths.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/FilesWalkAndList.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/FilesWalkAndList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/ModernFileIO.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/ModernFileIO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/ObjectStreams.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/ObjectStreams.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/WatchServiceDemo.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/FileIO/WatchServiceDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/HttpClient/HttpClientIntroduction.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/HttpClient/HttpClientIntroduction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/HttpClient/SyncAndAsyncRequests.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/HttpClient/SyncAndAsyncRequests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/HttpClient/WebSocketDemo.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/HttpClient/WebSocketDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Modules/ModuleExamples.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Modules/ModuleExamples.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Modules/ModulesIntroduction.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Modules/ModulesIntroduction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Modules/ServiceLoaderDemo.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Modules/ServiceLoaderDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/NestedClasses/InnerClass.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/NestedClasses/InnerClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/NestedClasses/LocalAndAnonymousClass.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/NestedClasses/LocalAndAnonymousClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/NestedClasses/NestedClassesIntroduction.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/NestedClasses/NestedClassesIntroduction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/NestedClasses/StaticNestedClass.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/NestedClasses/StaticNestedClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/OptionalType/OptionalDemo.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/OptionalType/OptionalDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Reflection/ClassAndMethodReflection.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Reflection/ClassAndMethodReflection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Reflection/DynamicInvocation.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Reflection/DynamicInvocation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Reflection/ReflectionIntroduction.README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Basics/Reflection/ReflectionIntroduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.claude/settings.local.json" beforeDir="false" afterPath="$PROJECT_DIR$/.claude/settings.local.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -254,7 +330,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779283102662</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Readme update DG Commit">
+      <option name="closed" value="true" />
+      <created>1779300164225</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1779300164225</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,7 +389,8 @@
     <MESSAGE value="Collection and Genetics Method code and example added DG Commit" />
     <MESSAGE value="Lambda And Streams code and example added DG Commit" />
     <MESSAGE value="Multithread code and example added DG Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Multithread code and example added DG Commit" />
+    <MESSAGE value="Readme update DG Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Readme update DG Commit" />
   </component>
   <component name="masterDetails">
     <states>
