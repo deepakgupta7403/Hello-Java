@@ -9,9 +9,10 @@ import java.util.concurrent.TimeUnit;
  * ScheduledExecutorService
  * ------------------------
  * Delayed and recurring tasks without writing your own scheduler.
+ * <p>
  *
  *      ScheduledExecutorService ses = Executors.newScheduledThreadPool(2);
- *
+ * <p>
  *
  * The methods
  * -----------
@@ -24,35 +25,38 @@ import java.util.concurrent.TimeUnit;
  *   scheduleWithFixedDelay(r, initial, delay, unit)
  *                                            - WAIT `delay` AFTER each run finishes
  *                                              (no catch-up).
- *
+ * <p>
  *
  * Difference at a glance
+ * <p>
  *
  *      atFixedRate( period=100 ms ):
  *          start 0   100   200   300 ...    even if a run took 150ms,
  *                                            the next still starts at 200.
+ * <p>
  *
  *      withFixedDelay( delay=100 ms ):
  *          run, wait 100, run, wait 100, ...
- *
+ * <p>
  *
  * Cancelling
  * ----------
  *   ScheduledFuture<?> f = ses.scheduleAtFixedRate(...);
  *   f.cancel(/* mayInterrupt= * / false);
- *
+ * <p>
  *
  * Failure semantics
  * -----------------
  *   - If a periodic task THROWS, subsequent runs are suppressed and the
  *     ScheduledFuture's get() will rethrow. ALWAYS catch inside the task
  *     if you want it to keep running.
- *
+ * <p>
  *
  * Java 21
  * -------
  *   - You can pass a virtual-thread factory to the scheduler if you want
  *     each scheduled run to execute on a virtual thread:
+ * <p>
  *
  *         Executors.newScheduledThreadPool(1, Thread.ofVirtual().factory());
  */

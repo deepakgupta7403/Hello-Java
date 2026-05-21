@@ -1,14 +1,6 @@
 package Phase8_PracticalAPIs.FileIO;
 
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.Reader;
-import java.io.StringReader;
-import java.io.StringWriter;
-import java.io.Writer;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -20,7 +12,7 @@ import java.nio.file.Path;
  * between bytes and characters in modern encodings (UTF-8, UTF-16,
  * GB-18030, ...). A single character can be 1-4 bytes, so reading
  * "text" through an InputStream is wrong.
- *
+ * <p>
  *
  * Reader — read characters
  * ------------------------
@@ -28,7 +20,7 @@ import java.nio.file.Path;
  *      int read(char[] cbuf)
  *      int read(char[] cbuf, off, len)
  *      void close()
- *
+ * <p>
  *
  * Writer — write characters
  * -------------------------
@@ -38,16 +30,17 @@ import java.nio.file.Path;
  *      void write(String s, off, len)
  *      void append(char c)         -> chainable
  *      void flush()
- *
+ * <p>
  *
  * The bridge classes
  * ------------------
  *      InputStreamReader(InputStream, Charset)   - bytes -> chars
  *      OutputStreamWriter(OutputStream, Charset) - chars -> bytes
+ * <p>
  *
  * Use these to wrap a byte stream when you need text from a non-File
  * source (a Socket, stdin, an HTTP response).
- *
+ * <p>
  *
  * Concrete impls
  * --------------
@@ -56,7 +49,7 @@ import java.nio.file.Path;
  *      StringReader / StringWriter - in-memory.
  *      CharArrayReader/Writer       - in-memory, char[].
  *      PrintWriter                  - convenience formatting layer.
- *
+ * <p>
  *
  * Charset trap
  * ------------

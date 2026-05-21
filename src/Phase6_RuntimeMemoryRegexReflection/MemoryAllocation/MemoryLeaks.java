@@ -1,10 +1,6 @@
 package Phase6_RuntimeMemoryRegexReflection.MemoryAllocation;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.WeakHashMap;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -18,36 +14,41 @@ import java.util.concurrent.TimeUnit;
  * collector reclaims only UNREACHABLE objects - so any "live" path back to
  * the heap (a static field, a long-lived collection, a registered
  * listener, ...) is a leak waiting to happen.
- *
+ * <p>
  *
  * The Five Most Common Java Leak Patterns
  * ---------------------------------------
+ * <p>
  *
  *   1. STATIC COLLECTIONS that grow forever
  *      A `static Map<String, Customer> CACHE = new HashMap<>();` with no
  *      eviction policy will hold every customer it ever sees. Use a
  *      bounded cache (Guava `Cache`, `Caffeine`, or your own LRU).
+ * <p>
  *
  *   2. KEYS WITHOUT proper equals/hashCode
  *      Entries put into a HashMap can become "lost" - present in memory
  *      but unfindable - if you mutate the key after insertion.
+ * <p>
  *
  *   3. INNER CLASSES holding the enclosing instance
  *      A non-static inner class keeps an implicit reference to its outer
  *      instance. Same with lambdas that capture `this`. If the inner
  *      object outlives the outer (e.g. registered with a long-lived
  *      executor), the outer cannot be reclaimed.
+ * <p>
  *
  *   4. LISTENERS / CALLBACKS that you never unregister
  *      Every observer is a strong reference held by the subject. When you
  *      stop using the observer but forget to call `removeListener`, the
  *      subject keeps it alive forever.
+ * <p>
  *
  *   5. UNCLOSED RESOURCES (streams, JDBC connections, native handles)
  *      Even Java-managed wrappers hold on to OS-level resources until
  *      `close()` runs. Use try-with-resources for everything that
  *      implements AutoCloseable.
- *
+ * <p>
  *
  * Detecting Leaks
  * ---------------
@@ -56,7 +57,7 @@ import java.util.concurrent.TimeUnit;
  *   - Take a heap dump (-XX:+HeapDumpOnOutOfMemoryError or `jmap -dump`)
  *     and inspect with Eclipse MAT, VisualVM, or JProfiler.
  *   - Use `jcmd <pid> GC.class_histogram` for a quick instance count.
- *
+ * <p>
  *
  * This file demonstrates the FIRST three leak patterns and their fixes.
  */

@@ -2,10 +2,12 @@ package Phase3_ObjectOrientation.BankingApp;
 
 /**
  * CheckingAccount - "is-a" Account designed for day-to-day spending.
+ * <p>
  *
  *   - Pays NO interest in this simple model (overrides return 0).
  *   - Charges a flat MONTHLY FEE each time applyInterest() runs (we treat
  *     `applyInterest` as the monthly cycle hook).
+ * <p>
  *
  * Demonstrates:
  *   - INHERITANCE + POLYMORPHISM by overriding the hook differently from

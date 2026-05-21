@@ -8,13 +8,15 @@ import java.util.List;
  * --------------------------------------
  * A VARARGS parameter lets a method accept ANY NUMBER of arguments of a given
  * type, including zero. Syntax:
+ * <p>
  *
  *      returnType methodName(Type... name) { ... }
+ * <p>
  *
  * Inside the method, `name` is a regular array (Type[]). At the CALL SITE the
  * caller can pass a comma-separated list of values - the compiler bundles them
  * into an array automatically.
- *
+ * <p>
  *
  * Familiar Example
  * ----------------
@@ -23,27 +25,29 @@ import java.util.List;
  *      String.format("%d + %d = %d", 1, 2, 3);
  *      List.of(1, 2, 3, 4, 5);
  *      Arrays.asList("a", "b", "c");
- *
+ * <p>
  *
  * The Four Rules
  * --------------
  *  1. ONLY ONE varargs parameter per method.
  *  2. It must be the LAST parameter.
+ * <p>
  *
  *         void f(int x, String... names)   // OK
  *         void f(String... names, int x)   // ERROR
+ * <p>
  *
  *  3. The caller can pass:
  *       a) zero or more values    ->   f("a", "b", "c");
  *       b) an explicit array      ->   f(new String[] {"a","b","c"});
  *  4. Inside the method, the varargs parameter is just an array.
- *
+ * <p>
  *
  * Overloading and Ambiguity
  * -------------------------
  * Overload resolution prefers EXACT matches and fixed-arity methods before
  * varargs. Mixing varargs with overloads can create surprises - keep it simple.
- *
+ * <p>
  *
  * Generics + Varargs Warning
  * --------------------------

@@ -11,26 +11,27 @@ import java.nio.file.Path;
 import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
 
 /**
  * Synchronous and Asynchronous HTTP Requests
  * ------------------------------------------
+ * <p>
  *
  *   client.send(req, handler)         - synchronous; blocks the caller.
  *   client.sendAsync(req, handler)    - asynchronous; returns
  *                                       CompletableFuture<HttpResponse<T>>.
- *
+ * <p>
  *
  * Sync vs async — when to pick which
  * ----------------------------------
  *   SYNC  - simple scripts, single call, blocking thread is fine.
  *   ASYNC - many parallel requests; compose with thenCompose / thenApply.
+ * <p>
  *
  * With Java 21 virtual threads, you can call send() from many VTs and
  * the cost of blocking is trivial — async is no longer the only path to
  * concurrency.
- *
+ * <p>
  *
  * Examples in this file
  * ---------------------
@@ -40,7 +41,7 @@ import java.util.stream.Stream;
  *   4. Async with thenApply.
  *   5. Fan-out: 3 parallel requests, combine results.
  *   6. Error handling with .exceptionally / .handle.
- *
+ * <p>
  *
  * Hit URLs are example endpoints (httpbin.org). If you're offline the
  * code still compiles cleanly; the calls will throw IOException at run.

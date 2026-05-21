@@ -7,15 +7,17 @@ package Phase3_ObjectOrientation.Interfaces;
  * that any implementing class promises to provide. Interfaces give Java its
  * primary form of ABSTRACTION and let one class fulfil MULTIPLE TYPES, which
  * is Java's controlled answer to multiple inheritance.
+ * <p>
  *
  *      interface Comparable<T> {
  *          int compareTo(T other);
  *      }
+ * <p>
  *
  *      class Customer implements Comparable<Customer> {
  *          public int compareTo(Customer other) { ... }
  *      }
- *
+ * <p>
  *
  * Why Use Interfaces?
  * -------------------
@@ -25,51 +27,60 @@ package Phase3_ObjectOrientation.Interfaces;
  *   - MULTI-TYPING - a class can implement many interfaces simultaneously
  *                    (Comparable + Serializable + AutoCloseable, etc.).
  *   - TESTABILITY  - pass a stub/mock in tests by implementing the interface.
- *
+ * <p>
  *
  * Members an Interface May Contain
  * --------------------------------
+ * <p>
  *
  *   1. ABSTRACT methods         implicit `public abstract`, no body.
  *      void doWork();
+ * <p>
  *
  *   2. DEFAULT methods (Java 8) have a body; inherited unless overridden.
  *      default void run() { ... }
+ * <p>
  *
  *   3. STATIC methods  (Java 8) belong to the interface itself.
  *      static MyInterface create() { ... }
+ * <p>
  *
  *   4. PRIVATE methods (Java 9) helpers for default/static methods.
  *      private boolean valid(...) { ... }
+ * <p>
  *
  *   5. CONSTANTS                 implicit `public static final`.
  *      int MAX = 100;
+ * <p>
  *
  *   6. NESTED TYPES              static by default - any class/interface/enum/record
  *      interface Builder { ... }
+ * <p>
  *
  *   Interfaces canNOT contain:
  *      - instance fields (no per-object state)
  *      - constructors
  *      - protected / package-private methods (default-method modifier is implicit public)
- *
+ * <p>
  *
  * Implementing an Interface
  * -------------------------
  *      class Customer implements Comparable<Customer>, Serializable { ... }
+ * <p>
  *
  * The class must provide ALL abstract methods of every interface it implements,
  * or it must itself be declared `abstract`.
- *
+ * <p>
  *
  * Interfaces in the Type Hierarchy
  * --------------------------------
  *   - A class can extend at most ONE class but implement MANY interfaces.
  *   - An interface can extend MANY other interfaces ("interface inheritance").
  *   - You can declare variables of interface type to hold any implementor:
+ * <p>
  *
  *         Comparable<Integer> c = 5;        // Integer implements Comparable<Integer>
- *
+ * <p>
  *
  * Java Version Timeline
  * ---------------------
@@ -80,7 +91,7 @@ package Phase3_ObjectOrientation.Interfaces;
  *   Java 17   - sealed interfaces (permits-clause).
  *   Java 21   - sealed interfaces + pattern matching switch make exhaustive
  *               dispatch ergonomic.
- *
+ * <p>
  *
  * This file is a guided tour. For more depth see:
  *   - FunctionalInterfaceDemo.java  - SAM types + lambdas + java.util.function

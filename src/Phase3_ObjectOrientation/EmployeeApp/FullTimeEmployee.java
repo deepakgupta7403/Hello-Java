@@ -2,12 +2,14 @@ package Phase3_ObjectOrientation.EmployeeApp;
 
 /**
  * FullTimeEmployee - permanent staff paid a fixed monthly salary.
+ * <p>
  *
  * Implemented as a RECORD, which:
  *   - is implicitly final (satisfies the sealed permits requirement),
  *   - generates equals/hashCode/toString from the components,
  *   - exposes a canonical constructor we can extend with a compact form
  *     for validation.
+ * <p>
  *
  * Also implements two cross-cutting interfaces:
  *   - Promotable - this employee can be promoted (gets a raise).

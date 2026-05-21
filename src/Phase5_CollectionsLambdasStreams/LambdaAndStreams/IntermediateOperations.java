@@ -13,7 +13,7 @@ import java.util.stream.Stream;
  * terminal operation pulls them. Most are STATELESS - they process each
  * element independently. A few are STATEFUL and must see multiple elements
  * to decide.
- *
+ * <p>
  *
  * Stateless
  * ---------
@@ -22,7 +22,7 @@ import java.util.stream.Stream;
  *      mapToInt / mapToLong / mapToDouble
  *      flatMap(Function)       T -&gt; Stream&lt;R&gt;, flatten one level
  *      peek(Consumer)          side effect on each element (debug)
- *
+ * <p>
  *
  * Stateful
  * --------
@@ -33,7 +33,7 @@ import java.util.stream.Stream;
  *      skip(long n)            drop first n
  *      takeWhile(Predicate)    take while the predicate holds   (Java 9+)
  *      dropWhile(Predicate)    drop while the predicate holds   (Java 9+)
- *
+ * <p>
  *
  * mapMulti (Java 16+) - 1 element to MANY without an intermediate Stream
  * ---------------------------------------------------------------------
@@ -41,10 +41,11 @@ import java.util.stream.Stream;
  *          if (cond) downstream.accept(t);
  *          downstream.accept(other);
  *      });
+ * <p>
  *
  * It is faster than flatMap when each element produces only a small,
  * computable set of results.
- *
+ * <p>
  *
  * One element per row - the table
  * -------------------------------

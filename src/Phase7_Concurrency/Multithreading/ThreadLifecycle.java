@@ -6,6 +6,7 @@ import java.util.concurrent.locks.LockSupport;
  * Thread Lifecycle
  * ----------------
  * A Thread moves through a small set of states defined by Thread.State:
+ * <p>
  *
  *   NEW              - constructed but start() has NOT been called yet.
  *   RUNNABLE         - eligible to run on a CPU. May be currently
@@ -24,10 +25,11 @@ import java.util.concurrent.locks.LockSupport;
  *                          LockSupport.parkNanos / parkUntil
  *   TERMINATED       - run() has returned (normally or via uncaught
  *                      exception). Cannot be restarted.
- *
+ * <p>
  *
  * Diagram
  * -------
+ * <p>
  *
  *          start()                schedule
  *   NEW ----------> RUNNABLE <--------------> running on CPU
@@ -35,6 +37,7 @@ import java.util.concurrent.locks.LockSupport;
  *      synchronized -->|  |
  *                      v  |
  *                   BLOCKED                 (waiting for a monitor)
+ * <p>
  *
  *      wait/join/park -->|
  *                        v
@@ -43,11 +46,12 @@ import java.util.concurrent.locks.LockSupport;
  *                  notify/timeout
  *                        v
  *                     RUNNABLE
+ * <p>
  *
  *                   run() returns
  *                        v
  *                   TERMINATED
- *
+ * <p>
  *
  * Important Notes
  * ---------------
@@ -57,7 +61,7 @@ import java.util.concurrent.locks.LockSupport;
  *      on a Lock from java.util.concurrent.locks are WAITING /
  *      TIMED_WAITING, not BLOCKED — because Lock uses LockSupport.park.
  *   3. TERMINATED is final. You cannot restart a terminated thread.
- *
+ * <p>
  *
  * This file walks through each state and prints what getState() returns.
  */

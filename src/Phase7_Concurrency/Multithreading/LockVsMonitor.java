@@ -10,10 +10,11 @@ import java.util.concurrent.locks.ReentrantLock;
  * -------------------------------------------------
  * "Monitor" here means the INTRINSIC LOCK on every Object, accessed via
  * `synchronized`, with `wait/notify/notifyAll` as the condition variable.
+ * <p>
  *
  * "Lock" means the `java.util.concurrent.locks.Lock` family — typically
  * `ReentrantLock` with `Condition` objects.
- *
+ * <p>
  *
  * Side-by-side table
  * ------------------
@@ -30,7 +31,7 @@ import java.util.concurrent.locks.ReentrantLock;
  *                                                            comparable; sometimes faster
  *   Read/write split?          no                            ReentrantReadWriteLock
  *   Optimistic read?           no                            StampedLock
- *
+ * <p>
  *
  * When to use which
  * -----------------
@@ -40,7 +41,7 @@ import java.util.concurrent.locks.ReentrantLock;
  *     multiple conditions, read/write separation → Lock family.
  *   - "Drop-in" parity: ReentrantLock matches synchronized semantics
  *     including reentrancy.
- *
+ * <p>
  *
  * Don't mix them
  * --------------

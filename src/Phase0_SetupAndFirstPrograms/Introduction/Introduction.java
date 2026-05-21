@@ -8,7 +8,7 @@ package Phase0_SetupAndFirstPrograms.Introduction;
  * It follows the principle of WORA - "Write Once, Run Anywhere" - which means
  * compiled Java code can run on all platforms that support Java without the need
  * for recompilation.
- *
+ * <p>
  *
  * History (Brief Timeline)
  * ------------------------
@@ -20,14 +20,14 @@ package Phase0_SetupAndFirstPrograms.Introduction;
  * 2018 - Java moved to a 6-month release cadence.
  * 2021 - Java 17 released as the next LTS (Long Term Support) version.
  * 2023 - Java 21 released as the latest LTS at the time, adding Virtual Threads.
- *
+ * <p>
  *
  * Why the name "Java"?
  * --------------------
  * The original name was "Oak" but it was already trademarked. The team picked "Java"
  * after the Java coffee that they consumed during long meetings - which is also why
  * the official Java logo is a steaming coffee cup.
- *
+ * <p>
  *
  * Key Features of Java
  * --------------------
@@ -54,7 +54,7 @@ package Phase0_SetupAndFirstPrograms.Introduction;
  *                    RMI, sockets, and HTTP client.
  * 11. Dynamic      - Java loads classes on demand (lazy loading) and supports
  *                    reflection for introspecting code at runtime.
- *
+ * <p>
  *
  * Java Editions
  * -------------
@@ -63,12 +63,12 @@ package Phase0_SetupAndFirstPrograms.Introduction;
  *                                  (Servlets, JSP, EJB).
  * - Java ME (Micro Edition)      - For embedded and mobile devices.
  * - JavaFX                       - For rich desktop GUI applications.
- *
+ * <p>
  *
  * How Java Works (One-Line Summary)
  * ---------------------------------
  *      Source (.java)  --javac-->  Bytecode (.class)  --JVM-->  Native Machine Code
- *
+ * <p>
  *
  * This file is documentation only. The first runnable program lives in
  * src/Overview/HelloWorld.java.

@@ -17,7 +17,7 @@ import java.util.stream.Stream;
  * They let you process files with the same declarative style you use for
  * collections - and crucially they STREAM lazily, so you can process a
  * multi-gigabyte file with a tiny memory footprint.
- *
+ * <p>
  *
  * Stream-Returning Methods on Files
  * ---------------------------------
@@ -26,18 +26,19 @@ import java.util.stream.Stream;
  *      Files.list(Path)                    Stream&lt;Path&gt;   - children of one dir
  *      Files.walk(Path[, maxDepth])        Stream&lt;Path&gt;   - recursive tree walk
  *      Files.find(Path, depth, biPredicate) recursive with a filter
- *
+ * <p>
  *
  * Why You Should Use try-with-resources
  * -------------------------------------
  * These streams hold OS handles (file descriptors). They implement
  * AutoCloseable; ALWAYS wrap them in try-with-resources so the handle is
  * released even if the pipeline throws.
+ * <p>
  *
  *      try (Stream&lt;String&gt; lines = Files.lines(path)) {
  *          lines.filter(...).forEach(...);
  *      }
- *
+ * <p>
  *
  * Writing Files - the Counterpart
  * -------------------------------
@@ -45,7 +46,7 @@ import java.util.stream.Stream;
  *      Files.write(Path, byte[], OpenOption...)
  *      Files.writeString(Path, CharSequence)           Java 11+
  *      Files.newBufferedWriter(Path)                    streamable BufferedWriter
- *
+ * <p>
  *
  * Demo Below
  * ----------

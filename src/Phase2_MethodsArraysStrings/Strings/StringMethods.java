@@ -8,21 +8,24 @@ import java.util.Arrays;
  * This file is a guided tour through the most-used methods of java.lang.String.
  * Each method has a short comment explaining what it does and a runnable
  * example with the expected output.
- *
+ * <p>
  *
  * Methods Grouped By Purpose
  * --------------------------
+ * <p>
  *
  *  LENGTH / EMPTINESS
  *      length()                    - number of UTF-16 code units
  *      isEmpty()                   - length == 0
  *      isBlank()                   - empty or only whitespace (Java 11+)
+ * <p>
  *
  *  CHAR ACCESS / ARRAYS
  *      charAt(i)                   - char at index i
  *      toCharArray()               - copy to a new char[]
  *      codePointAt(i)              - int code point (supports supplementary chars)
  *      getBytes() / getBytes(charset) - encode as byte[]
+ * <p>
  *
  *  SEARCH
  *      indexOf(ch | str | from)    - first occurrence, or -1
@@ -30,17 +33,20 @@ import java.util.Arrays;
  *      contains(seq)               - true if `seq` appears
  *      startsWith(prefix)
  *      endsWith(suffix)
+ * <p>
  *
  *  COMPARISON
  *      equals(other)               - case-sensitive content equality
  *      equalsIgnoreCase(other)
  *      compareTo(other)            - lexicographic; <0 / 0 / >0
  *      compareToIgnoreCase(other)
+ * <p>
  *
  *  CASE / WHITESPACE
  *      toUpperCase() / toLowerCase()
  *      trim()                      - strips ASCII control + space
  *      strip() / stripLeading() / stripTrailing()  (Java 11+, Unicode-aware)
+ * <p>
  *
  *  TRANSFORM
  *      replace(old, new)           - replaces ALL (chars OR CharSequences)
@@ -51,6 +57,7 @@ import java.util.Arrays;
  *      repeat(count)               - Java 11+
  *      indent(n)                   - Java 12+
  *      transform(fn)               - Java 12+, apply any Function<String, R>
+ * <p>
  *
  *  SPLIT / JOIN / FORMAT
  *      split(regex)
@@ -58,14 +65,16 @@ import java.util.Arrays;
  *      String.format(fmt, args...)             (static; printf-style)
  *      formatted(args...)                      (Java 15+, instance form)
  *      lines()                                 (Java 11+, Stream of lines)
+ * <p>
  *
  *  CONVERSION FROM OTHER TYPES
  *      String.valueOf(int|double|boolean|Object|char[])
  *      Integer.parseInt(s), Double.parseDouble(s) ...
+ * <p>
  *
  *  REGEX QUICK PATH
  *      matches(regex)              - matches() must match the WHOLE string
- *
+ * <p>
  *
  * Pitfalls Quick Reference
  * ------------------------

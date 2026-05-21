@@ -6,6 +6,7 @@ package Phase6_RuntimeMemoryRegexReflection.MemoryAllocation;
  * Every Java object lives on the HEAP, even tiny wrappers like Integer. The
  * exact byte layout is JVM-specific, but on HotSpot / OpenJDK every object
  * is built from three pieces:
+ * <p>
  *
  *      +-----------------+ <- start of object  (8-byte aligned address)
  *      |  Object Header  |  12 bytes typical (with compressed oops)
@@ -15,7 +16,7 @@ package Phase6_RuntimeMemoryRegexReflection.MemoryAllocation;
  *      +-----------------+
  *      |   Padding       |  to make total size a multiple of 8 bytes
  *      +-----------------+
- *
+ * <p>
  *
  * Header Contents (HotSpot, simplified)
  * -------------------------------------
@@ -23,22 +24,25 @@ package Phase6_RuntimeMemoryRegexReflection.MemoryAllocation;
  *   - Klass Pointer (4 bytes with -XX:+UseCompressedClassPointers, else 8):
  *     points to the class metadata in the Method Area.
  *   - Arrays add a 4-byte length field.
+ * <p>
  *
  * That gives a typical 12-byte header for ordinary objects and 16 bytes for
  * arrays (plus alignment padding).
- *
+ * <p>
  *
  * "Reference" - what does an Object variable hold?
  * ------------------------------------------------
  * A reference is essentially a POINTER. On 64-bit JVMs HotSpot uses
  * COMPRESSED OOPS (Ordinary Object Pointers) - 32-bit references that the
  * JVM scales back to 64-bit addresses transparently - to save memory.
- *
+ * <p>
  *
  * Where Different Things Live
  * ---------------------------
+ * <p>
  *
  *      Customer c = new Customer("Alice", 30);
+ * <p>
  *
  *      Stack frame:
  *          c  ----+----+   (4 bytes - compressed oop)
@@ -54,11 +58,12 @@ package Phase6_RuntimeMemoryRegexReflection.MemoryAllocation;
  *      +---------+
  *      | padding |
  *      +---------+
+ * <p>
  *
  *   - The variable `c` is on the STACK and holds a reference.
  *   - The Customer instance is on the HEAP.
  *   - The String "Alice" is ALSO on the heap (a separate object).
- *
+ * <p>
  *
  * String Pool
  * -----------
@@ -66,7 +71,7 @@ package Phase6_RuntimeMemoryRegexReflection.MemoryAllocation;
  * heap (since Java 7). Two identical literals share the same object. The
  * intern() method can move a runtime-built string into that pool. See
  * Basics/Strings/StringIntroduction.java for the demo.
- *
+ * <p>
  *
  * Boxed Wrappers Allocate Too
  * ---------------------------
@@ -74,13 +79,14 @@ package Phase6_RuntimeMemoryRegexReflection.MemoryAllocation;
  * value falls into the Integer cache range (-128..127 by default). That
  * is why tight loops with `Long sum = 0L; sum += i` are slow - each += is
  * an allocation. Use primitives in hot paths.
- *
+ * <p>
  *
  * Sizing Tools
  * ------------
  *   - The JOL library (`org.openjdk.jol`) can print exact object layouts.
  *   - `java.lang.instrument.Instrumentation.getObjectSize` gives the size
  *     of one object - but excludes the objects it references.
+ * <p>
  *
  * This file uses neither; we just demonstrate the EFFECTS of allocation
  * with the Runtime API.

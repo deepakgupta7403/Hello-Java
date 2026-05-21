@@ -1,33 +1,35 @@
 package Phase7_Concurrency.Multithreading.SnakeGame;
 
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * GameLoop — the simulation thread.
+ * <p>
  *
  * Runs on its OWN thread (not the EDT). Sleeps between ticks to control
  * speed, then advances the game state and asks the Swing renderer to
  * repaint via SwingUtilities.invokeLater. (Swing components must be
  * touched on the EDT.)
- *
+ * <p>
  *
  * Why a dedicated thread?
  * -----------------------
  *   - The EDT must stay responsive to input and repaint.
  *   - The simulation should tick at a steady rate independent of how
  *     long painting takes.
- *
+ * <p>
  *
  * Coordination
  * ------------
  *   - state.tick() takes the GameState lock briefly.
  *   - state.snapshot() (called from the EDT) takes the same lock.
  *     They never overlap painting and ticking. No torn frames.
+ * <p>
  *
  *   - A volatile `running` flag controls the loop; setRunning(false)
  *     stops the loop and the thread exits.
- *
+ * <p>
  *
  * Frame-pacing
  * ------------

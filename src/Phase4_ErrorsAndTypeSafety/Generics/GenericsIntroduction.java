@@ -9,13 +9,15 @@ import java.util.List;
  * GENERICS let you write classes, interfaces, and methods that work with a
  * PARAMETER TYPE chosen by the caller. The result is code that is reusable
  * AND type-safe at compile time:
+ * <p>
  *
  *      List&lt;String&gt;  names = new ArrayList&lt;&gt;();
  *      List&lt;Integer&gt; ints  = new ArrayList&lt;&gt;();
+ * <p>
  *
  * One ArrayList class, two specialised types. The compiler enforces that
  * `names.add(42)` is a COMPILE error - you cannot accidentally mix types.
- *
+ * <p>
  *
  * Before Generics (Pre-Java 5)
  * ----------------------------
@@ -23,7 +25,7 @@ import java.util.List;
  *      names.add("Alice");
  *      names.add(42);                          // legal! mixed bag
  *      String s = (String) names.get(1);       // ClassCastException at runtime
- *
+ * <p>
  *
  * After Generics (Java 5+)
  * ------------------------
@@ -31,7 +33,7 @@ import java.util.List;
  *      names.add("Alice");
  *      names.add(42);                          // COMPILE ERROR - caught early
  *      String s = names.get(0);                // no cast needed
- *
+ * <p>
  *
  * What Generics Give You
  * ----------------------
@@ -40,7 +42,7 @@ import java.util.List;
  *   - Reusable, generic algorithms (Collections.sort, Comparator.comparing,
  *     Function&lt;T, R&gt;, Optional&lt;T&gt;, Stream&lt;T&gt;...).
  *   - Better IDE autocomplete and refactoring.
- *
+ * <p>
  *
  * Type Parameters - The Conventional Names
  * ----------------------------------------
@@ -51,10 +53,11 @@ import java.util.List;
  *      N       Number
  *      R       Return type
  *      ?       Wildcard ("some type, I don't care which")
+ * <p>
  *
  * Use these single-letter names by convention. Pick longer names only if
  * the meaning is non-obvious in context.
- *
+ * <p>
  *
  * Where Generics Appear in Java
  * -----------------------------
@@ -64,7 +67,7 @@ import java.util.List;
  *   - Generic CONSTRUCTORS    &lt;T&gt; Box(T t) { ... }
  *   - Bounded type params     &lt;T extends Number&gt;
  *   - Wildcards               List&lt;? extends Number&gt;
- *
+ * <p>
  *
  * What This Folder Covers
  * -----------------------

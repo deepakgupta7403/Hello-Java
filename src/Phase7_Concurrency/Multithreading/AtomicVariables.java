@@ -1,14 +1,6 @@
 package Phase7_Concurrency.Multithreading;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicIntegerArray;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.concurrent.atomic.AtomicStampedReference;
-import java.util.concurrent.atomic.DoubleAdder;
-import java.util.concurrent.atomic.LongAccumulator;
-import java.util.concurrent.atomic.LongAdder;
+import java.util.concurrent.atomic.*;
 
 /**
  * java.util.concurrent.atomic
@@ -16,6 +8,7 @@ import java.util.concurrent.atomic.LongAdder;
  * Lock-free counters / references built on COMPARE-AND-SET (CAS) — a
  * hardware instruction that atomically updates a memory cell only if it
  * still matches an expected old value.
+ * <p>
  *
  * Compared with `synchronized`, atomics:
  *   + Scale better under contention for SIMPLE updates (counters, refs).
@@ -23,7 +16,7 @@ import java.util.concurrent.atomic.LongAdder;
  *   - Cannot atomically update MULTIPLE variables; use a lock for that.
  *   - Under HEAVY contention, CAS-retry loops still spin; use LongAdder /
  *     DoubleAdder for hot counters.
- *
+ * <p>
  *
  * The Family
  * ----------
@@ -36,7 +29,7 @@ import java.util.concurrent.atomic.LongAdder;
  *   LongAdder / DoubleAdder        - high-throughput counter (striped cells)
  *   LongAccumulator / DoubleAccumulator - LongAdder with arbitrary binary op
  *   AtomicIntegerFieldUpdater etc. - reflection-based update of volatile fields
- *
+ * <p>
  *
  * Common Methods
  * --------------
@@ -46,7 +39,7 @@ import java.util.concurrent.atomic.LongAdder;
  *   incrementAndGet / decrementAndGet / addAndGet
  *   updateAndGet(UnaryOperator)                  - lambda-driven CAS loop
  *   accumulateAndGet(x, BinaryOperator)          - lambda-driven CAS with arg
- *
+ * <p>
  *
  * The ABA Problem
  * ---------------

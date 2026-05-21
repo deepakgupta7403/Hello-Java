@@ -3,9 +3,11 @@ package Phase1_CoreLanguage.Conversion;
 /**
  * If we want to assign a value of larger data type to a smaller data type we perform explicit type casting or narrowing.
  * <p>
+ *
  * This is useful for incompatible data types where automatic conversion cannot be done.
  * Here, target-type specifies the desired type to convert the specified value to.
  * <p>
+ *
  * Dobule-------->Float-------->Long-------->Int-------->Short-------->Byte
  **/
 

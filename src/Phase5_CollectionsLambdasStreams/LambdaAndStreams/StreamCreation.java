@@ -1,12 +1,6 @@
 package Phase5_CollectionsLambdasStreams.LambdaAndStreams;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Random;
-import java.util.Spliterator;
-import java.util.Spliterators;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
@@ -18,7 +12,7 @@ import java.util.stream.StreamSupport;
  * ------------------------------
  * There is no single "Stream constructor". You build a Stream from a
  * source - and Java offers many sources to choose from.
- *
+ * <p>
  *
  * The Common Routes
  * -----------------
@@ -36,13 +30,13 @@ import java.util.stream.StreamSupport;
  *  12. From a single nullable value  Stream.ofNullable(x)                   (Java 9+)
  *  13. From a file                   Files.lines(path)                      (see StreamFileIO)
  *  14. Primitive ranges              IntStream.range / rangeClosed / iterate
- *
+ * <p>
  *
  * Stream.iterate - Two Forms
  * --------------------------
  *      Stream.iterate(seed, UnaryOperator)            // INFINITE - needs .limit
  *      Stream.iterate(seed, Predicate, UnaryOperator) // FINITE   (Java 9+)
- *
+ * <p>
  *
  * Sequential or Parallel?
  * -----------------------
@@ -50,6 +44,7 @@ import java.util.stream.StreamSupport;
  *      list.parallelStream()       // parallel
  *      anyStream.parallel()        // toggle to parallel
  *      anyStream.sequential()      // toggle back
+ * <p>
  *
  * See SequentialVsParallel.java for the deep dive.
  */

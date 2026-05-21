@@ -1,14 +1,6 @@
 package Phase8_PracticalAPIs.FileIO;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -20,7 +12,7 @@ import java.util.stream.Collectors;
  * Reading or writing one byte (or char) at a time hits the OS for EVERY
  * call. A buffer slurps a big chunk at once, then serves it from
  * memory. Cheap, easy, ~10-50x faster for byte-by-byte loops.
- *
+ * <p>
  *
  * The four classes
  * ----------------
@@ -28,34 +20,36 @@ import java.util.stream.Collectors;
  *   BufferedOutputStream wraps  OutputStream
  *   BufferedReader       wraps  Reader
  *   BufferedWriter       wraps  Writer
- *
+ * <p>
  *
  * Pattern
  * -------
  *      try (var in = new BufferedInputStream(new FileInputStream(file))) {
  *          // ...byte-by-byte reads are now cheap
  *      }
+ * <p>
  *
  * For text the modern shortcut is:
+ * <p>
  *
  *      try (BufferedReader r = Files.newBufferedReader(path, UTF_8)) {
  *          ...
  *      }
- *
+ * <p>
  *
  * Useful extras
  * -------------
  *   BufferedReader.readLine()       - read up to the next \n / \r\n
  *   BufferedReader.lines()          - Stream<String> of lines (Java 8+)
  *   BufferedWriter.newLine()        - platform-correct line separator
- *
+ * <p>
  *
  * When NOT to bother
  * ------------------
  *   - You're already reading in big chunks (e.g. read(buf) with 8KB+).
  *   - You're using Files.readAllBytes / readString — they buffer internally.
  *   - Performance isn't a concern (small files).
- *
+ * <p>
  *
  * flush vs close
  * --------------

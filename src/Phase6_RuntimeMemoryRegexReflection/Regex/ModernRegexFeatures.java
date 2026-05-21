@@ -11,16 +11,18 @@ import java.util.stream.Stream;
  * ------------------------------------
  * Pattern / Matcher have collected a few quality-of-life additions over the
  * years that fit the modern functional / stream style.
- *
+ * <p>
  *
  * Java 8
  * ------
  *   Pattern.splitAsStream(input)            - lazy Stream<String> of split parts
  *   Pattern.asPredicate()                   - Predicate<String> for "matches anywhere"
+ * <p>
  *
  * Java 11
  * -------
  *   Pattern.asMatchPredicate()              - Predicate<String> for "full match"
+ * <p>
  *
  * Java 9
  * ------
@@ -29,6 +31,7 @@ import java.util.stream.Stream;
  *                                           - replace with a function per match
  *   Matcher.replaceFirst(Function<MatchResult,String>)
  *                                           - one-shot version of the above
+ * <p>
  *
  * Java 20+ / 21
  * -------------
@@ -36,7 +39,7 @@ import java.util.stream.Stream;
  *     classifying strings ergonomic when combined with simple `String` checks.
  *   - There were no new regex primitives in Java 21, but the existing Stream
  *     APIs pair very well with collectors and records added in 16/17/21.
- *
+ * <p>
  *
  * Why the Stream Versions Matter
  * ------------------------------

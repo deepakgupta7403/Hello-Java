@@ -2,21 +2,28 @@ package Phase1_CoreLanguage.Variables;
 
 /**These variables must be declared inside class (outside any function).
  * They can be directly accessed anywhere in class. Let’s take a look at an example:
+ * <p>
  *
  * We can declare class variables anywhere in class, but outside methods.
  * Access specified of member variables doesn’t effect scope of them within a class.
  * Member variables can be accessed outside a class with following rules
+ * <p>
  *
  * Modifier      Package  Subclass  World
+ * <p>
  *
  * public          Yes      Yes     Yes
+ * <p>
  *
  * protected       Yes      Yes     No
+ * <p>
  *
  * Default (no
  * modifier)       Yes       No     No
+ * <p>
  *
  * private         No        No     No
+ * <p>
  *
  * **/
 class GlobalVarible{

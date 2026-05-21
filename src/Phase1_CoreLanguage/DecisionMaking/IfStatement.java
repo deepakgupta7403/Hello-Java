@@ -3,7 +3,7 @@ package Phase1_CoreLanguage.DecisionMaking;
 /**if statement is the most simple decision making statement.
  * It is used to decide whether a certain statement or block of statements will be executed or not
  * i.e if a certain condition is true then a block of statement is executed otherwise not.
- *
+ * <p>
  *
  * Syntax:
  * if(condition)
@@ -11,13 +11,16 @@ package Phase1_CoreLanguage.DecisionMaking;
  *    // Statements to execute if
  *    // condition is true
  * }
+ * <p>
  *
  * Here, condition after evaluation will be either true or false. if statement accepts boolean values – if the value is true then it will execute the block of statements under it.
  * If we do not provide the curly braces ‘{‘ and ‘}’ after if( condition ) then by default if statement will consider the immediate one statement to be inside its block. For example,
+ * <p>
  *
  * if(condition)
  *    statement1;
  *    statement2;
+ * <p>
  *
  * // Here if the condition is true, if block
  * // will consider only statement1 to be inside

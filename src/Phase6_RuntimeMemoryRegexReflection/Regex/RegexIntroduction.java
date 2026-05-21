@@ -9,15 +9,17 @@ import java.util.regex.Pattern;
  * A REGULAR EXPRESSION (regex) is a small language for describing
  * patterns of text. Java exposes it through the package java.util.regex,
  * which contains two main classes:
+ * <p>
  *
  *      Pattern      - the compiled representation of a regex.
  *      Matcher      - the engine that runs a Pattern against an input.
+ * <p>
  *
  *      Pattern p = Pattern.compile("\\d+");
  *      Matcher m = p.matcher("abc 123 xyz 45");
  *      m.find();              // true; matched "123"
  *      m.group();             // "123"
- *
+ * <p>
  *
  * What Can A Regex Do?
  * --------------------
@@ -26,33 +28,39 @@ import java.util.regex.Pattern;
  *   - EXTRACT pieces of a string into named groups.
  *   - REPLACE one substring (or set of substrings) with another.
  *   - SPLIT a string at every occurrence of a delimiter.
- *
+ * <p>
  *
  * The 3 Ways to Use Regex in Java
  * -------------------------------
  *   1. Convenience methods on java.lang.String:
+ * <p>
  *
  *         "abc 123".matches("\\w+ \\d+");
  *         "a,b,,c".split(",");
  *         "x1y2z3".replaceAll("\\d", "*");
  *         "x1y2z3".replaceFirst("\\d", "*");
+ * <p>
  *
  *      These compile the regex EACH call. Fine for one-shots, wasteful
  *      inside loops.
+ * <p>
  *
  *   2. Pattern + Matcher - precompile once, reuse many times:
+ * <p>
  *
  *         Pattern p = Pattern.compile("\\d+");
  *         for (String s : huge) {
  *             Matcher m = p.matcher(s);
  *             ...
  *         }
+ * <p>
  *
  *   3. The newer Stream/functional API (Java 8+):
+ * <p>
  *
  *         p.matcher(text).results().map(MatchResult::group).forEach(...);
  *         p.splitAsStream(text);
- *
+ * <p>
  *
  * Important: matches() vs find()
  * ------------------------------
@@ -60,10 +68,11 @@ import java.util.regex.Pattern;
  *      m.find()     - returns TRUE if a SUBSTRING anywhere matches.
  *      m.lookingAt()- returns TRUE if the input matches starting AT THE BEGINNING
  *                     (does not need to consume the whole input).
+ * <p>
  *
  * `String.matches(regex)` calls `matches()` - so it requires a full match.
  * That is the #1 source of "my regex doesn't match" surprise.
- *
+ * <p>
  *
  * Escaping In Java Strings
  * ------------------------
@@ -71,13 +80,15 @@ import java.util.regex.Pattern;
  * strings ALSO use `\` for escapes. That means a regex `\d` is written
  * `"\\d"` in a Java string literal. A literal backslash in regex is `\\`,
  * which is `"\\\\"` in a string literal.
+ * <p>
  *
  *      Java 15+ TEXT BLOCKS spare you one level of escaping:
+ * <p>
  *
  *          String r = """
  *                     \d+\s+\w+
  *                     """.strip();
- *
+ * <p>
  *
  * Folder Map
  * ----------

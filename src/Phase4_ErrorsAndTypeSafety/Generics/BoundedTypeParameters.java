@@ -13,42 +13,46 @@ import java.util.List;
  * is `T extends X` (read as "T which is some subtype of X"). The bound
  * applies whether X is a CLASS or an INTERFACE - the keyword is always
  * `extends`, never `implements`.
+ * <p>
  *
  *      &lt;T extends Number&gt;             T must be Number, Integer, Double, ...
  *      &lt;T extends Comparable&lt;T&gt;&gt;     T must be comparable to itself
  *      &lt;T extends Number &amp; Comparable&lt;T&gt;&gt;   multiple bounds via `&amp;`
- *
+ * <p>
  *
  * Why Bound?
  * ----------
  * Without a bound, T is just Object - you can only call Object's methods on
  * it. With a bound, the compiler lets you treat T as the bound type:
+ * <p>
  *
  *      static &lt;T extends Number&gt; double sum(List&lt;T&gt; xs) {
  *          double s = 0;
  *          for (T x : xs) s += x.doubleValue();        // legal because T is-a Number
  *          return s;
  *      }
- *
+ * <p>
  *
  * Multiple Bounds
  * ---------------
  *      &lt;T extends Number &amp; Comparable&lt;T&gt;&gt;
+ * <p>
  *
  *   - Use `&` (ampersand), not commas, between bounds.
  *   - At most ONE bound may be a CLASS, and it must come FIRST. The rest
  *     must be interfaces.
  *   - The compiler treats T as having all the bounds' members.
- *
+ * <p>
  *
  * Recursive Bounds
  * ----------------
  *      &lt;T extends Comparable&lt;T&gt;&gt;
+ * <p>
  *
  * T's bound references T itself. This is how you require "comparable to its
  * own type" - the classic recipe for type-safe sorting / min / max. See
  * RecursiveTypeBounds.java for the full discussion.
- *
+ * <p>
  *
  * Bounded Class-Level Type Parameter
  * ----------------------------------
@@ -56,15 +60,17 @@ import java.util.List;
  *          T value;
  *          double asDouble() { return value.doubleValue(); }
  *      }
+ * <p>
  *
  * Now NumericBox&lt;String&gt; is a COMPILE ERROR. The class cannot be
  * instantiated with anything other than a Number subclass.
- *
+ * <p>
  *
  * Wildcards (?) vs Bounded Type Parameters
  * ----------------------------------------
  *      &lt;T extends Number&gt;      named parameter T, usable in the body
  *      &lt;? extends Number&gt;      wildcard, no name, less flexible
+ * <p>
  *
  * Use a NAMED type parameter when you need to REFER to that type inside the
  * method (return it, hold a reference, pass it to another generic method).

@@ -5,10 +5,11 @@ package Phase6_RuntimeMemoryRegexReflection.MemoryAllocation;
  * -------------------------------
  * One of the most-asked Java interview questions and one of the most useful
  * mental models for reasoning about your code.
- *
+ * <p>
  *
  * Side-By-Side
  * ------------
+ * <p>
  *
  *  Aspect           | Stack                          | Heap
  *  -----------------+--------------------------------+--------------------------------
@@ -26,10 +27,11 @@ package Phase6_RuntimeMemoryRegexReflection.MemoryAllocation;
  *  Failure mode     | StackOverflowError             | OutOfMemoryError: Java heap
  *                   |   (too-deep recursion)         |   space
  *  Tuning           | -Xss (per-thread stack)        | -Xms, -Xmx, GC choice
- *
+ * <p>
  *
  * What Goes Where, Exactly
  * ------------------------
+ * <p>
  *
  *      void foo() {
  *          int x = 5;                   // x is on the STACK (primitive local)
@@ -39,11 +41,12 @@ package Phase6_RuntimeMemoryRegexReflection.MemoryAllocation;
  *          Customer c = new Customer(); // 'c' is on the STACK (a reference);
  *                                        //   the Customer instance is on the HEAP
  *      }
+ * <p>
  *
  * When foo() returns:
  *   - The frame is popped - x, s, c disappear instantly.
  *   - The Customer object remains on the heap until the GC reclaims it.
- *
+ * <p>
  *
  * Escape Analysis (HotSpot)
  * -------------------------
@@ -51,7 +54,7 @@ package Phase6_RuntimeMemoryRegexReflection.MemoryAllocation;
  * created it - no reference leaves through return values, threads or fields
  * - and may then place it on the stack (or in registers) instead of the
  * heap. This is invisible to your code; you only see the speedup.
- *
+ * <p>
  *
  * Pass-By-Value Reminder
  * ----------------------
@@ -59,20 +62,23 @@ package Phase6_RuntimeMemoryRegexReflection.MemoryAllocation;
  * pushed onto the called method's frame. For references a copy of the
  * REFERENCE (the pointer) is pushed - both frames point at the SAME heap
  * object.
- *
+ * <p>
  *
  * Common Misconceptions
  * ---------------------
  *   "primitives are always on the stack"  - WRONG. A primitive FIELD of an
  *                                            object lives inside the object
  *                                            on the heap.
+ * <p>
  *
  *   "the heap is slow"                     - Not really; modern JVMs allocate
  *                                            faster than malloc/free in C.
+ * <p>
  *
  *   "stack memory is freed by the GC"      - No - stack frames are popped
  *                                            automatically when the method
  *                                            returns.
+ * <p>
  *
  *   "smaller heap = faster GC"             - Often the opposite. Tiny heaps
  *                                            mean MORE GC cycles.

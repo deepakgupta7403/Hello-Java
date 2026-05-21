@@ -7,32 +7,33 @@ import java.util.concurrent.locks.ReentrantLock;
  * Race Condition, Starvation, Livelock, Deadlock
  * ----------------------------------------------
  * The four classic concurrency hazards.
- *
+ * <p>
  *
  * 1) RACE CONDITION
  *    Two threads access shared state, at least one writes, with no
  *    synchronization. The final result depends on interleaving — often
  *    silently wrong.
+ * <p>
  *
  *      Example: counter++  (read, +1, write — three steps, not atomic).
- *
+ * <p>
  *
  * 2) DEADLOCK
  *    Two or more threads each hold a lock the others need. None ever
  *    progresses. See DeadlockDemo.java for a full treatment.
- *
+ * <p>
  *
  * 3) LIVELOCK
  *    Threads ARE doing work — but the work is "polite reaction" to each
  *    other and nothing real progresses. Imagine two people in a hallway
  *    each stepping aside the same direction.
- *
+ * <p>
  *
  * 4) STARVATION
  *    A thread is technically eligible to run but is repeatedly passed
  *    over because higher-priority / busier threads keep grabbing the
  *    resource it needs. Fairness is the cure.
- *
+ * <p>
  *
  * Cousin: PRIORITY INVERSION
  *    A low-priority thread holds a lock a high-priority thread needs,

@@ -2,8 +2,10 @@ package Phase3_ObjectOrientation.EmployeeApp;
 
 /**
  * EmployeeApp - runnable demo of the Employee Management System.
+ * <p>
  *
  * Wires together every kind of interface covered in this folder:
+ * <p>
  *
  *   - SEALED INTERFACE        : Employee with permits-list of variants.
  *   - RECORDS implementing    : FullTimeEmployee, PartTimeEmployee,
@@ -15,8 +17,10 @@ package Phase3_ObjectOrientation.EmployeeApp;
  *                                root interface.
  *   - DEFAULT, STATIC, PRIVATE methods inside Employee.
  *   - PATTERN MATCHING SWITCH on the sealed Employee type (Java 21).
+ * <p>
  *
  * Run with:
+ * <p>
  *
  *      javac src/OOPSConcepts/EmployeeApp/*.java
  *      cd src

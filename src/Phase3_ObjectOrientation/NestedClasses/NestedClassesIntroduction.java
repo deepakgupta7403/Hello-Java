@@ -4,11 +4,12 @@ package Phase3_ObjectOrientation.NestedClasses;
  * Nested Classes — Introduction
  * -----------------------------
  * Java has FOUR kinds of nested classes. They differ in:
+ * <p>
  *
  *   - Whether they need an enclosing instance.
  *   - Whether they can capture variables from outside.
  *   - Where they can be declared.
- *
+ * <p>
  *
  *     Kind                  Static?   Needs outer instance?   Can capture locals?
  *     -------------------   -------   ----------------------  ---------------------
@@ -19,14 +20,14 @@ package Phase3_ObjectOrientation.NestedClasses;
  *                                                              final locals)
  *  4) Anonymous class        NO        Sometimes               YES (effectively
  *                                                              final locals)
- *
+ * <p>
  *
  * Why nest at all?
  * ----------------
  *   - Group helpers tightly with the class that uses them.
  *   - Keep visibility tight — a static nested class can be private.
  *   - Cleaner namespaces. Counts as one .class file per nested class.
- *
+ * <p>
  *
  * Modern relatives
  * ----------------

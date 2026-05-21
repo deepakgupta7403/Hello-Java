@@ -8,23 +8,25 @@ import java.util.regex.Pattern;
  * ---------------------------------------
  * LOOKAROUND ASSERTIONS check WHAT IS AROUND a position WITHOUT consuming
  * any characters. They are zero-width assertions, like anchors.
+ * <p>
  *
  *      (?=X)        positive lookahead   - assert "X follows here"
  *      (?!X)        negative lookahead   - assert "X does NOT follow here"
  *      (?<=X)       positive lookbehind  - assert "X precedes here"
  *      (?<!X)       negative lookbehind  - assert "X does NOT precede here"
- *
+ * <p>
  *
  * Why "Zero-Width" Matters
  * ------------------------
  * The check happens at a POSITION; the regex cursor does not advance.
  * That lets you compose constraints without consuming input:
+ * <p>
  *
  *      \d+(?=USD)             a number FOLLOWED BY "USD" (USD is not part of the match)
  *      (?<=\$)\d+             a number PRECEDED BY "$"   ($ is not part of the match)
  *      \b(?!the\b)\w+         any word that is NOT "the"
  *      (?<![A-Z])[A-Z]\w+     a capitalised word NOT preceded by another upper-case letter
- *
+ * <p>
  *
  * Lookbehind Limits (in Java)
  * ---------------------------
@@ -32,7 +34,7 @@ import java.util.regex.Pattern;
  * variable-length lookbehind is supported, but inside the lookbehind the
  * pattern still must have a finite maximum length. Truly unbounded
  * lookbehind (e.g. `(?<=a*)`) will be rejected by the compiler.
- *
+ * <p>
  *
  * Common Real-World Uses
  * ----------------------
@@ -41,7 +43,7 @@ import java.util.regex.Pattern;
  *     password rules ("must contain at least one digit", etc.).
  *   - Insert text BETWEEN two specific characters.
  *   - Split without consuming the delimiter.
- *
+ * <p>
  *
  * Password rule example (compact)
  * -------------------------------

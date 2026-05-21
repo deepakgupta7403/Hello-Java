@@ -1,11 +1,6 @@
 package Phase4_ErrorsAndTypeSafety.Generics;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 
 /**
@@ -13,57 +8,66 @@ import java.util.function.Function;
  * ---------------
  * A method is GENERIC when it declares its OWN type parameters in front of
  * the return type, regardless of whether the enclosing class is generic.
+ * <p>
  *
  *      public &lt;T&gt; List&lt;T&gt; singletonList(T t) { ... }
  *      public &lt;K, V&gt; Map.Entry&lt;K, V&gt; entry(K k, V v) { ... }
  *      public static &lt;T extends Comparable&lt;T&gt;&gt; T max(List&lt;T&gt; xs) { ... }
+ * <p>
  *
  * The type parameters BEFORE the return type belong to THE METHOD - not
  * the class. They are bound EACH CALL and may differ between calls.
- *
+ * <p>
  *
  * Type Inference at the Call Site
  * -------------------------------
  * In almost every case the compiler can INFER the type parameters from the
  * call's arguments and the assignment context:
+ * <p>
  *
  *      List&lt;Integer&gt; xs = singletonList(42);   // T inferred as Integer
  *      var pair         = entry("a", 1);        // K=String, V=Integer
+ * <p>
  *
  * You can also write the type parameter explicitly, but it is rarely needed:
+ * <p>
  *
  *      Collections.&lt;String&gt;emptyList();
  *      Pair.&lt;String, Integer&gt;of("a", 1);
- *
+ * <p>
  *
  * Where Type Parameters Go
  * ------------------------
  *      public  &lt;T&gt; void doSomething(T t)                    // before return type
  *      private &lt;K, V&gt; Map&lt;K, V&gt; emptyMap()
  *      static  &lt;T&gt; T noOp(T t)
+ * <p>
  *
  * On a CONSTRUCTOR the parameter list goes BEFORE the class name in the
  * declaration (rarely used in practice):
+ * <p>
  *
  *      public class Box {
  *          public &lt;T&gt; Box(T t) { ... }
  *      }
- *
+ * <p>
  *
  * Static Generic Methods
  * ----------------------
  * Static methods may have their OWN type parameters. A static method in a
  * generic class CANNOT use the CLASS's type parameter:
+ * <p>
  *
  *      class Box&lt;T&gt; {
  *          static T DEFAULT;                   // ERROR - static can't use T
  *          static &lt;T&gt; T noOp(T t) { ... }    // OK - method's own T
  *      }
- *
+ * <p>
  *
  * Bounded Generic Methods
  * -----------------------
  *      public static &lt;T extends Comparable&lt;T&gt;&gt; T max(List&lt;T&gt; xs)
+ * <p>
  *
  * See BoundedTypeParameters.java for the deep dive.
  */

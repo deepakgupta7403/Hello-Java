@@ -4,6 +4,7 @@ package Phase2_MethodsArraysStrings.Methods;
  * Static Methods vs Instance Methods
  * ----------------------------------
  * A method in Java is one of two flavours:
+ * <p>
  *
  *      STATIC METHOD                  | INSTANCE METHOD
  *      -------------------------------+-----------------------------------------
@@ -20,7 +21,7 @@ package Phase2_MethodsArraysStrings.Methods;
  *      One copy per CLASS.            | One copy of state per OBJECT.
  *      Can be called BEFORE any       | Requires an object to exist.
  *      object is created.             |
- *
+ * <p>
  *
  * When To Use a Static Method
  * ---------------------------
@@ -28,14 +29,14 @@ package Phase2_MethodsArraysStrings.Methods;
  *    (Math.sqrt, Collections.sort, Integer.parseInt).
  *  - Factory methods that build instances (Optional.of, List.of).
  *  - The application entry point - `public static void main(String[] args)`.
- *
+ * <p>
  *
  * When To Use an Instance Method
  * ------------------------------
  *  - Behaviour that depends on or modifies the OBJECT'S state.
  *  - When you want polymorphism (instance methods can be OVERRIDDEN in
  *    subclasses; static methods cannot - they can only be HIDDEN).
- *
+ * <p>
  *
  * Static Methods Are NOT Polymorphic
  * ----------------------------------
@@ -43,11 +44,12 @@ package Phase2_MethodsArraysStrings.Methods;
  * superclass, it HIDES the parent's method (resolved at compile time by the
  * declared type of the reference). Instance methods, in contrast, are
  * dispatched at runtime based on the actual object type.
- *
+ * <p>
  *
  * Common Beginner Mistake
  * -----------------------
  * Calling a non-static field/method directly from main():
+ * <p>
  *
  *      class Demo {
  *          int x = 10;
@@ -55,6 +57,7 @@ package Phase2_MethodsArraysStrings.Methods;
  *              System.out.println(x);     // ERROR - x is instance, main is static
  *          }
  *      }
+ * <p>
  *
  * Fix: create an object first  ->  new Demo().x;
  */

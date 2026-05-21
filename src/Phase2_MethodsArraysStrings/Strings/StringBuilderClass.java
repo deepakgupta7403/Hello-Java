@@ -7,24 +7,25 @@ package Phase2_MethodsArraysStrings.Strings;
  * It has the EXACT SAME API but skips the locking, so it is faster. Use it
  * for almost every "build up a string" scenario - StringBuilder is the
  * default choice in single-threaded code (which most code is).
+ * <p>
  *
  *      StringBuilder sb = new StringBuilder();
  *      sb.append("Hello").append(", ").append("World");
  *      String s = sb.toString();      // "Hello, World"
- *
+ * <p>
  *
  * StringBuffer vs StringBuilder - One-Line Recap
  * ----------------------------------------------
  *      StringBuffer  - synchronized, thread-safe, slower.
  *      StringBuilder - NOT synchronized, NOT thread-safe, faster.
- *
+ * <p>
  *
  * When To Use It
  * --------------
  *  - Building a String from many pieces in a loop.
  *  - Composing structured text (CSV, JSON, HTML) at runtime.
  *  - Anywhere you used to write `s += ...` inside a loop.
- *
+ * <p>
  *
  * Common Methods - Quick Catalogue
  * --------------------------------
@@ -33,30 +34,37 @@ package Phase2_MethodsArraysStrings.Strings;
  *          new StringBuilder(int cap)            custom capacity
  *          new StringBuilder(String s)           seeded with s
  *          new StringBuilder(CharSequence)       seeded with any CharSequence
+ * <p>
  *
  *      Append / Insert / Replace / Delete - identical to StringBuffer
  *          append(...) / insert(...) / replace(...) / delete(...) / deleteCharAt(...)
+ * <p>
  *
  *      Read / write
  *          charAt(i) / setCharAt(i, ch) / getChars(...)
  *          codePointAt(i) / codePointBefore(i) / codePointCount(beg,end)
+ * <p>
  *
  *      Length & capacity
  *          length() / capacity() / ensureCapacity(min) / trimToSize() / setLength(n)
+ * <p>
  *
  *      Search
  *          indexOf(str)        indexOf(str, from)
  *          lastIndexOf(str)    lastIndexOf(str, from)
+ * <p>
  *
  *      Sub-sequence and output
  *          substring(begin) / substring(begin, end) / subSequence(begin, end)
  *          toString()
+ * <p>
  *
  *      Misc / modern additions
  *          reverse()
  *          chars() / codePoints()                       (Java 9+)
  *          compareTo(StringBuilder)                     (Java 11+)
  *          isEmpty()                                    (Java 15+)
+ * <p>
  *
  * Each method is demonstrated below.
  */

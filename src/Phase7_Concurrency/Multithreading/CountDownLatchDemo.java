@@ -9,23 +9,25 @@ import java.util.concurrent.TimeUnit;
  * A ONE-SHOT counter you initialise with N. Threads call await() to
  * block until the counter reaches zero. Other threads call countDown()
  * to decrement.
+ * <p>
  *
  *      CountDownLatch ready = new CountDownLatch(N);
  *      ready.await();              // blocks until count is 0
  *      ready.countDown();          // decrement
- *
+ * <p>
  *
  * Two classic uses
  * ----------------
  *   1. STARTING GATE — main thread holds workers behind a latch of 1.
  *      When everything is set up, main calls countDown() and they all
  *      sprint at once.
+ * <p>
  *
  *   2. COMPLETION GATE — main thread waits behind a latch of N workers.
  *      Each worker calls countDown() on finish. main wakes when the
  *      last one is done. Like join() across N threads, but expressed
  *      explicitly.
- *
+ * <p>
  *
  * Important properties
  * --------------------
@@ -34,7 +36,7 @@ import java.util.concurrent.TimeUnit;
  *   - await() is INTERRUPTIBLE.
  *   - getCount() returns the current value; for monitoring only.
  *   - countDown() past zero is harmless (count stays at 0).
- *
+ * <p>
  *
  * Pitfalls
  * --------

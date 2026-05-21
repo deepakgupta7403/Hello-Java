@@ -12,13 +12,13 @@ import java.util.Objects;
  * list, or - once a bucket gets too long - a balanced TREE (since Java 8,
  * for keys that implement Comparable). This last detail is why the worst
  * case is now O(log n) instead of O(n).
- *
+ * <p>
  *
  * Why It Exists
  * -------------
  * You frequently need "given a key, give me its value" with O(1)
  * lookup. HashMap is the simplest, fastest general-purpose answer.
- *
+ * <p>
  *
  * When To Use It
  * --------------
@@ -26,7 +26,7 @@ import java.util.Objects;
  *   - Caches.
  *   - Indexes / groupings (group records by some field).
  *   - Counters / frequency tables.
- *
+ * <p>
  *
  * Big-O (with a good hash distribution)
  * -------------------------------------
@@ -34,7 +34,7 @@ import java.util.Objects;
  *   iteration                                       O(capacity + size)
  *   worst case (all keys collide)                    O(log n) since Java 8
  *                                                    (tree-bucket fallback)
- *
+ * <p>
  *
  * The equals/hashCode Contract (Critical)
  * ---------------------------------------
@@ -42,13 +42,13 @@ import java.util.Objects;
  * consistently. The Map can't find an entry whose key has a different hash
  * than it had when inserted. Records (Java 16+) generate correct
  * equals/hashCode for you.
- *
+ * <p>
  *
  * Allows Null
  * -----------
  * HashMap allows ONE null KEY and ANY number of null VALUES. Hashtable,
  * ConcurrentHashMap, and Map.of(...) forbid nulls.
- *
+ * <p>
  *
  * Capacity / Load Factor
  * ----------------------
@@ -56,7 +56,7 @@ import java.util.Objects;
  *   - loadFactor       (default 0.75)
  * When size / capacity > loadFactor the table doubles. Pre-size to the
  * expected count to avoid rehashing in a hot loop.
- *
+ * <p>
  *
  * Constructors
  * ------------

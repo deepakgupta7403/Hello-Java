@@ -8,22 +8,24 @@ import java.util.regex.Pattern;
  * -------------------------
  * A GROUP is a section of a regex enclosed in parentheses ( ... ). Groups
  * serve TWO purposes:
+ * <p>
  *
  *   1. STRUCTURE      - they constrain alternation and quantifiers:
  *                          (gray|grey)        groups the alternatives
  *                          (ab)+              repeats "ab", not just "b"
+ * <p>
  *
  *   2. CAPTURE        - the matched substring is saved and can be read
  *                       back later via Matcher.group(...) or as a
  *                       BACKREFERENCE inside the regex itself.
- *
+ * <p>
  *
  * Numbering
  * ---------
  *   group(0)   - the WHOLE match
  *   group(1)   - the substring captured by the FIRST opening paren
  *   group(2)   - second, and so on (counted by opening parens, left to right)
- *
+ * <p>
  *
  * Variants of (... )
  * ------------------
@@ -36,26 +38,27 @@ import java.util.regex.Pattern;
  *   (?<=X)            positive lookbehind
  *   (?<!X)            negative lookbehind
  *   (?idmsuxU-idmsuxU:X)  inline flags applied to X only
- *
+ * <p>
  *
  * Backreferences
  * --------------
  * Inside the SAME regex:
  *      \1 \2 \3 ...        refer to capturing groups by number
  *      \k<name>            refer to a named group
+ * <p>
  *
  * Inside the REPLACEMENT string (used by replaceAll / replaceFirst):
  *      $1 $2 $3 ...        substitute group n
  *      ${name}             substitute a named group
  *      \$                  literal dollar
  *      \\                  literal backslash
- *
+ * <p>
  *
  * Why Non-Capturing Groups?
  * -------------------------
  *   - Performance: the engine doesn't save the substring.
  *   - Cleaner numbering: only the groups you actually need have indices.
- *
+ * <p>
  *
  * Why Named Groups?
  * -----------------

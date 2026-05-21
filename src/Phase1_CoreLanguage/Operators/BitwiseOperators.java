@@ -5,6 +5,7 @@ package Phase1_CoreLanguage.Operators;
  * ---------------------------
  * These operate on the individual BITS of integer types (byte, short, int, long,
  * char). Useful for low-level work: flags, masks, hashing, graphics, networking.
+ * <p>
  *
  *      &       AND
  *      |       OR
@@ -13,7 +14,7 @@ package Phase1_CoreLanguage.Operators;
  *      <<      left shift  (multiply by 2)
  *      >>      signed right shift  (divide by 2, keeps sign bit)
  *      >>>     unsigned right shift (fills high bit with 0)
- *
+ * <p>
  *
  * Why Use Them?
  * -------------
@@ -21,12 +22,13 @@ package Phase1_CoreLanguage.Operators;
  *  - Power-of-two multiplication:  x << 3  ==  x * 8
  *  - Quick parity check         :  (x & 1) == 0
  *  - Toggling bits              :  flags ^= MASK
- *
+ * <p>
  *
  * >> vs >>>  (Important!)
  * -----------------------
  * - >>  preserves the sign bit (so -8 >> 1 == -4).
  * - >>> shifts in zeros from the left (so -8 >>> 1 is a huge positive number).
+ * <p>
  *
  * Both Java's int and long are signed. There is no unsigned int. The >>> operator
  * is the workaround when you want to treat the bit pattern as unsigned.

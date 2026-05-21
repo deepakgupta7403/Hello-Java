@@ -3,11 +3,7 @@ package Phase5_CollectionsLambdasStreams.LambdaAndStreams;
 import java.util.Arrays;
 import java.util.IntSummaryStatistics;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.DoubleStream;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
+import java.util.stream.*;
 
 /**
  * Primitive Streams - IntStream, LongStream, DoubleStream
@@ -15,14 +11,14 @@ import java.util.stream.Stream;
  * Java has specialised streams for the three "numeric" primitives so you
  * can crunch numbers WITHOUT boxing every element into Integer/Long/Double.
  * That saves both memory and time.
- *
+ * <p>
  *
  * Why They Exist
  * --------------
  *   - Stream&lt;Integer&gt; boxes each int into an Integer (heap allocation).
  *     A million-element stream allocates a million Integer objects.
  *   - IntStream stores the primitives directly. No boxing.
- *
+ * <p>
  *
  * Specialised Methods
  * -------------------
@@ -35,17 +31,18 @@ import java.util.stream.Stream;
  *   boxed()                              IntStream -&gt; Stream&lt;Integer&gt;
  *   range(start, endExclusive)           [start, end)
  *   rangeClosed(start, end)              [start, end]
- *
+ * <p>
  *
  * Conversions in a Picture
  * ------------------------
+ * <p>
  *
  *      Stream&lt;Integer&gt;  ==  mapToInt   ==&gt;  IntStream
  *      IntStream         ==  boxed       ==&gt;  Stream&lt;Integer&gt;
  *      IntStream         ==  mapToObj    ==&gt;  Stream&lt;R&gt;
  *      IntStream         ==  asLongStream ==&gt;  LongStream
  *      IntStream         ==  asDoubleStream ==&gt;  DoubleStream
- *
+ * <p>
  *
  * Tip
  * ---

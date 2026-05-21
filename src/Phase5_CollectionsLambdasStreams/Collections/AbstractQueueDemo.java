@@ -10,7 +10,7 @@ import java.util.List;
  * -------------------------------------------------------
  * AbstractQueue is to Queue what AbstractList is to List - it does the
  * boilerplate so you only have to implement a few primitive operations.
- *
+ * <p>
  *
  * What You Must Provide
  * ---------------------
@@ -19,13 +19,14 @@ import java.util.List;
  *   boolean offer(E e)       - try to add; return true if successful
  *   Iterator&lt;E&gt; iterator()   - inherited via AbstractCollection
  *   int size()               - inherited via AbstractCollection
+ * <p>
  *
  * AbstractQueue then derives:
  *   add(e)         -> calls offer(e); throws IllegalStateException on false
  *   remove()       -> calls poll(); throws NoSuchElementException on null
  *   element()      -> calls peek(); throws NoSuchElementException on null
  *   addAll(c)      -> calls add(e) for each
- *
+ * <p>
  *
  * Why You'd Subclass It
  * ---------------------
@@ -33,7 +34,7 @@ import java.util.List;
  *     priority, bounded queue, side-effecting offer ...).
  *   - You want the throws-on-failure variants for free.
  *   - You want your queue to follow the same conventions as the JDK's.
- *
+ * <p>
  *
  * Real-World JDK Subclasses
  * -------------------------
@@ -42,10 +43,11 @@ import java.util.List;
  *   LinkedBlockingQueue                    - linked, optionally bounded
  *   ConcurrentLinkedQueue                  - lock-free
  *   DelayQueue                             - delayed elements
+ * <p>
  *
  * They all build on AbstractQueue rather than re-implementing the Queue
  * methods from scratch.
- *
+ * <p>
  *
  * The Demo Below
  * --------------
@@ -57,6 +59,7 @@ public class AbstractQueueDemo {
 
     /**
      * BoundedQueue - capped FIFO queue.
+     * <p>
      *
      * We only implement peek / poll / offer / size / iterator. AbstractQueue
      * supplies add / remove / element / addAll automatically with the

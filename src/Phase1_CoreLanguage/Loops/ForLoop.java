@@ -4,15 +4,17 @@ package Phase1_CoreLanguage.Loops;
  * For loop provides a concise way of writing the loop structure.
  * Unlike a while loop, a for statement consumes the initialization,
  * condition and increment/decrement in one line thereby providing a shorter, easy to debug structure of looping.
- *
+ * <p>
  *
  * Syntax:
  * for (initialization condition; testing condition; increment/decrement)
  * {
  *     statement(s)
  * }
+ * <p>
  *
  * FlowChart
+ * <p>
  *
  * Start---->Initialization---->Condition Checking---->if true---->Loop body---->Increment/Decrement---->false---->Exit from the Loop
  * Initialization condition: Here, we initialize the variable in use. It marks the start of a for loop. An already declared variable can be used or a variable can be declared, local to loop only.

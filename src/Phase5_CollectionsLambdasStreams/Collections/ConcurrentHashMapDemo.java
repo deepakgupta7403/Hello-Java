@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.LongAdder;
  * The thread-safe, high-throughput replacement for both Hashtable and
  * Collections.synchronizedMap. Internally it uses LOCK STRIPING + CAS - so
  * many threads can read and write concurrently without one big mutex.
- *
+ * <p>
  *
  * Why It Exists
  * -------------
@@ -19,10 +19,11 @@ import java.util.concurrent.atomic.LongAdder;
  *   - HashMap is not thread-safe at all.
  *   - Collections.synchronizedMap wraps a HashMap with one global lock,
  *     which serialises all access.
+ * <p>
  *
  * ConcurrentHashMap aims for the throughput of HashMap with the safety
  * of Hashtable.
- *
+ * <p>
  *
  * Key Properties
  * --------------
@@ -34,7 +35,7 @@ import java.util.concurrent.atomic.LongAdder;
  *     decision - "no value" can be reported with getOrDefault).
  *   - Aggregate operations (mappingCount, forEach, search, reduce) take
  *     a "parallelism threshold" - 1 means use the common ForkJoinPool.
- *
+ * <p>
  *
  * Atomic Idioms You'll Use Constantly
  * -----------------------------------
@@ -43,7 +44,7 @@ import java.util.concurrent.atomic.LongAdder;
  *   map.compute(k, fn)                 - atomic transform of one entry
  *   map.merge(k, value, mergeFn)       - the canonical counter pattern
  *   map.replace(k, oldV, newV)         - CAS-style update
- *
+ * <p>
  *
  * Big-O (Expected)
  * ----------------
@@ -51,7 +52,7 @@ import java.util.concurrent.atomic.LongAdder;
  *   contains / containsKey / size               O(1) (size is approximate at
  *                                                       any given instant)
  *   mappingCount()                              long-typed exact count
- *
+ * <p>
  *
  * When NOT To Use It
  * ------------------

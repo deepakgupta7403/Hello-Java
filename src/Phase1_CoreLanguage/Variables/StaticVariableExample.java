@@ -7,6 +7,7 @@ package Phase1_CoreLanguage.Variables;
  * Initialisation of Static Variable is not Mandatory. Its default value is 0.
  * If we access the static variable like Instance variable (through an object), the compiler will show the warning message and it won’t halt the program. The compiler will replace the object name to class name automatically.
  * If we access the static variable without the class name, Compiler will automatically append the class name.
+ * <p>
  *
  * To access static variables, we need not create an object of that class, we can simply access the variable as
  * class_name.variable_name;

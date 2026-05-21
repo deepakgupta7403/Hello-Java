@@ -10,24 +10,27 @@ import java.util.Map;
  * IdentityHashMap is just like HashMap except that it uses REFERENCE
  * EQUALITY for keys (the `==` operator) and System.identityHashCode for
  * hashing instead of equals/hashCode.
+ * <p>
  *
  *      HashMap            : `a.equals(b)` means same key
  *      IdentityHashMap    : `a == b`      means same key
- *
+ * <p>
  *
  * Why It Exists
  * -------------
  * The standard Map contract says "use equals", but sometimes you really
  * want OBJECT IDENTITY. Two main use cases:
+ * <p>
  *
  *   1. Graph traversal where each NODE OBJECT must be visited exactly
  *      once, even if two nodes happen to be equals().
  *      e.g. detecting cycles when serialising an object graph.
+ * <p>
  *
  *   2. Storing PER-OBJECT metadata where you specifically care that two
  *      different instances have separate entries even if they have the
  *      same contents.
- *
+ * <p>
  *
  * When To Use It
  * --------------
@@ -37,7 +40,7 @@ import java.util.Map;
  *   - Building serialisers that must remember which instances they have
  *     already written, regardless of contents.
  *   - Caches keyed by the precise instance you were given.
- *
+ * <p>
  *
  * Why You Should Normally Avoid It
  * --------------------------------
@@ -45,7 +48,7 @@ import java.util.Map;
  * IdentityHashMap when you really wanted HashMap silently produces wrong
  * lookups - two strings with the same content but different identities
  * will be treated as different keys.
- *
+ * <p>
  *
  * Other Notes
  * -----------

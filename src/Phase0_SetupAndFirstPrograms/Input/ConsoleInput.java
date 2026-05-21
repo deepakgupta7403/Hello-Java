@@ -7,18 +7,19 @@ import java.io.Console;
  * ------------------------------
  * The Console class (since Java 6) is the third common way of reading input.
  * Its key feature: it can read passwords WITHOUT echoing them on screen.
- *
+ * <p>
  *
  * IMPORTANT - Console can be null
  * -------------------------------
  * System.console() returns null when:
  *   - The JVM is launched without an attached terminal (e.g. from inside an IDE
  *     like IntelliJ / Eclipse, or when stdin/stdout is redirected).
+ * <p>
  *
  * To test this class, run it from a real terminal:
  *     javac ConsoleInput.java
  *     java  ConsoleInput
- *
+ * <p>
  *
  * Methods Used Here
  * -----------------

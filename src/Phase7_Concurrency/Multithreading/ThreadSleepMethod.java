@@ -8,31 +8,36 @@ import java.time.Instant;
  * -----------------
  * Static method on Thread that PAUSES the CURRENT thread for at least
  * the specified amount of time. Two overloads:
+ * <p>
  *
  *      Thread.sleep(long millis)
  *      Thread.sleep(long millis, int nanos)
  *      Thread.sleep(Duration d)            // Java 19+
- *
+ * <p>
  *
  * Key facts
  * ---------
  *   1. Sleep is for the CURRENT thread only. There is no "sleep that
  *      other thread" call. If you need that, signal it and have IT call
  *      sleep / wait on something.
+ * <p>
  *
  *   2. Sleep gives up the CPU. The thread enters TIMED_WAITING.
+ * <p>
  *
  *   3. Sleep does NOT release locks. If you fell asleep inside a
  *      synchronized block you still own the monitor — every other thread
  *      waiting on it stays blocked.
+ * <p>
  *
  *   4. Sleep is INTERRUPTIBLE. If another thread calls .interrupt() on
  *      this thread, sleep throws InterruptedException and clears the
  *      interrupt flag. You should usually restore it.
+ * <p>
  *
  *   5. Sleep duration is a LOWER BOUND, not exact. You can sleep longer
  *      than requested (OS scheduling, GC, etc.) but not less.
- *
+ * <p>
  *
  * What sleep is NOT for
  * ---------------------
@@ -40,6 +45,7 @@ import java.time.Instant;
  *     a CountDownLatch.
  *   - Throttling: use a real rate limiter or Semaphore.
  *   - Coordination: use join() / barriers / latches.
+ * <p>
  *
  * Polling with sleep is rarely correct and almost always wasteful.
  */

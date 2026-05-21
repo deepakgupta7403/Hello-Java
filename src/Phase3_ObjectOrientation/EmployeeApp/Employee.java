@@ -2,12 +2,13 @@ package Phase3_ObjectOrientation.EmployeeApp;
 
 /**
  * Employee - the core CONTRACT every staff member must satisfy.
+ * <p>
  *
  * Implemented as a SEALED INTERFACE (Java 17+) so the company knows exactly
  * which kinds of employees exist. Adding a new permitted record below will
  * cause every exhaustive `switch (employee) { ... }` elsewhere to fail to
  * compile until the new case is handled - a strong build-time safety net.
- *
+ * <p>
  *
  * Why an interface for the root type?
  * -----------------------------------
@@ -16,7 +17,7 @@ package Phase3_ObjectOrientation.EmployeeApp;
  *   - Records make great variants: immutable, compact, equality for free.
  *   - The interface carries shared DEFAULT behaviour (annualSalary,
  *     formattedId) that every implementor inherits.
- *
+ * <p>
  *
  * Interface members used here
  * ---------------------------

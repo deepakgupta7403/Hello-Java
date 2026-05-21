@@ -7,7 +7,7 @@ package Phase4_ErrorsAndTypeSafety.Annotations;
  * fields, parameters, type uses). They don't change the program's
  * behaviour directly — tools and runtime libraries read them and act
  * on them (compiler checks, frameworks, code generators, IDEs).
- *
+ * <p>
  *
  * The four families
  * -----------------
@@ -16,12 +16,13 @@ package Phase4_ErrorsAndTypeSafety.Annotations;
  *   3. Custom annotations YOU write           - @MyAnnotation
  *   4. Meta-annotations on annotations        - @Retention, @Target, @Inherited,
  *                                                @Repeatable, @Documented
- *
+ * <p>
  *
  * Anatomy of an annotation
  * ------------------------
  *      @MyAnnotation(name = "alice", priority = 5)
  *      public class C { ... }
+ * <p>
  *
  *   - The leading '@' marks it.
  *   - Optional ELEMENTS (name=..., priority=...) — must be compile-time
@@ -29,7 +30,7 @@ package Phase4_ErrorsAndTypeSafety.Annotations;
  *   - One-element annotations can drop the element name when it's
  *     called `value`:
  *          @Author("alice")
- *
+ * <p>
  *
  * Where annotations live
  * ----------------------
@@ -39,14 +40,14 @@ package Phase4_ErrorsAndTypeSafety.Annotations;
  *   - Fields, local variables
  *   - Type uses (Java 8+): List<@NonNull String>
  *   - Modules and packages
- *
+ * <p>
  *
  * Retention levels
  * ----------------
  *   SOURCE     - only visible to the compiler (lint).
  *   CLASS      - in the .class file but NOT loaded at runtime.
  *   RUNTIME    - in the .class AND visible via reflection at runtime.
- *
+ * <p>
  *
  * Real-world examples
  * -------------------

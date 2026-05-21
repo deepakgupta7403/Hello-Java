@@ -6,27 +6,29 @@ package Phase9_ModernJavaAndModules.ModernJava;
  * Java 21 finalises a powerful upgrade to switch: you can now match on the
  * TYPE of the value (and combine with guards) inside switch labels - no more
  * long chains of `if (x instanceof T) ... else if (...)`.
- *
+ * <p>
  *
  * Three Building Blocks
  * ---------------------
  *  1. Type Pattern in a case label:
  *        case Integer i -> ...
+ * <p>
  *
  *  2. Guarded Pattern with `when`:
  *        case Integer i when i > 0 -> "positive int"
+ * <p>
  *
  *  3. null Handling - traditionally switch threw NullPointerException on null.
  *     With pattern matching you can match null with an explicit case:
  *        case null -> "missing"
- *
+ * <p>
  *
  * Exhaustiveness
  * --------------
  * The compiler tracks the set of possible types and either you cover all of
  * them or you add a `default`. For SEALED types it can verify exhaustiveness
  * without any default at all.
- *
+ * <p>
  *
  * Old vs New
  * ----------
@@ -37,6 +39,7 @@ package Phase9_ModernJavaAndModules.ModernJava;
  *          else if (o == null)                return "null";
  *          else                                return "other";
  *      }
+ * <p>
  *
  *      // New: pattern matching switch
  *      String describe(Object o) {

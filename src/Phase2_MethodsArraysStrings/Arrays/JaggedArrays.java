@@ -9,50 +9,56 @@ import java.util.Arrays;
  * different length. Because Java implements multi-dim arrays as
  * "arrays of arrays", every row is an independent object - so different rows
  * naturally support different lengths.
+ * <p>
  *
  *      jagged -> [ ref0 ][ ref1 ][ ref2 ]
  *                  |       |       |
  *                  v       v       v
  *                 [1]    [1,2,3]  [1,2,3,4,5]              <- different lengths
- *
+ * <p>
  *
  * Why "Jagged"?
  * -------------
  * The visual silhouette of rows of different lengths looks like a jagged
  * (uneven) edge:
+ * <p>
  *
  *      X
  *      X X X
  *      X X X X X
- *
+ * <p>
  *
  * How to Build One
  * ----------------
  *  1. Allocate the OUTER array with a known number of rows.
  *  2. Allocate EACH row separately with its own length.
+ * <p>
  *
  *         int[][] jagged = new int[3][];                // 3 rows, no row arrays yet
  *         jagged[0] = new int[1];                       // length 1
  *         jagged[1] = new int[3];                       // length 3
  *         jagged[2] = new int[5];                       // length 5
+ * <p>
  *
  *  Or with a literal:
+ * <p>
  *
  *         int[][] jagged = {
  *             {1},
  *             {1, 2, 3},
  *             {1, 2, 3, 4, 5}
  *         };
- *
+ * <p>
  *
  * Iteration
  * ---------
  * Always use `row.length` (NOT a constant) when indexing each row:
+ * <p>
  *
  *         for (int r = 0; r < jagged.length; r++)
  *             for (int c = 0; c < jagged[r].length; c++)   // PER-ROW length!
  *                 ...
- *
+ * <p>
  *
  * Where Jagged Arrays Are Useful
  * ------------------------------

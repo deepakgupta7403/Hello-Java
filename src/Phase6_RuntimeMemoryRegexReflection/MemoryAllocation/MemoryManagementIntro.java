@@ -7,7 +7,7 @@ package Phase6_RuntimeMemoryRegexReflection.MemoryAllocation;
  * `new Customer()` and the OS getting the bytes back: where the object
  * lives, when it can be reclaimed, and which subsystem of the JVM owns
  * the space.
- *
+ * <p>
  *
  * Why You Care (even though Java is "garbage-collected")
  * ------------------------------------------------------
@@ -15,10 +15,11 @@ package Phase6_RuntimeMemoryRegexReflection.MemoryAllocation;
  *   - YOU configure heap size and the garbage collector.
  *   - YOU can introduce LEAKS that the GC cannot fix (see MemoryLeaks.java).
  *   - Understanding the layout helps you tune for latency or throughput.
- *
+ * <p>
  *
  * The Big Picture
  * ---------------
+ * <p>
  *
  *      +-----------------------------------------------+
  *      |                  JVM Process                  |
@@ -47,10 +48,11 @@ package Phase6_RuntimeMemoryRegexReflection.MemoryAllocation;
  *      |  | Stack A   | | Stack B   |   for JNI calls  |
  *      |  +-----------+ +-----------+                  |
  *      +-----------------------------------------------+
+ * <p>
  *
  *   - Method Area & Heap are SHARED by all threads.
  *   - Stack, PC, Native stack are PER-THREAD.
- *
+ * <p>
  *
  * Lifecycle of a Java Object
  * --------------------------
@@ -59,14 +61,14 @@ package Phase6_RuntimeMemoryRegexReflection.MemoryAllocation;
  *   3. UNREACHABILITY - no live reference points to the object anymore.
  *   4. RECLAMATION - the garbage collector eventually reclaims the space
  *                    and may compact / move the surviving objects.
- *
+ * <p>
  *
  * Things the Programmer Does NOT Control
  * --------------------------------------
  *   - WHEN the GC runs. `System.gc()` is just a HINT.
  *   - The exact ADDRESS of an object - it can move between GC cycles.
  *   - Stack frame layout. The JVM manages it.
- *
+ * <p>
  *
  * What This Folder Covers
  * -----------------------

@@ -2,6 +2,7 @@ package Phase1_CoreLanguage.Loops;
 
 /**do while loop is similar to while loop with only difference that it checks for condition after executing the statements,
  * and therefore is an example of Exit Control Loop.
+ * <p>
  *
  * Syntax:
  * do
@@ -9,7 +10,7 @@ package Phase1_CoreLanguage.Loops;
  *     statements..
  * }
  * while (condition);
- *
+ * <p>
  *
  * Flowchart:
  * start----> Loop Body----->Condition Checking----->if true----->Loop Body----->Condition Checking----->if false----->Loop exit

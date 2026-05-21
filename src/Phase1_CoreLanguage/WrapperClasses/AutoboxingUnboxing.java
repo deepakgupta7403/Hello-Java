@@ -8,29 +8,33 @@ import java.util.List;
  * ----------------------------
  * Since Java 5 the compiler converts between primitives and their wrappers
  * automatically:
+ * <p>
  *
  *      Integer boxed = 42;       // autoboxing  -> Integer.valueOf(42)
  *      int prim       = boxed;   // auto-unbox  -> boxed.intValue()
+ * <p>
  *
  * Conceptually this is just syntactic sugar - the compiler inserts the calls
  * to Integer.valueOf / intValue() for you.
- *
+ * <p>
  *
  * Where Autoboxing Helps
  * ----------------------
  *  - Putting primitives into collections:        list.add(5)        -> list.add(Integer.valueOf(5))
  *  - Arithmetic on wrappers:                     Integer sum = a + b
  *  - Methods that accept Object:                 sysout(int)        -> sysout(Integer.valueOf(int))
- *
+ * <p>
  *
  * Three Common Pitfalls
  * ---------------------
  *  1. NullPointerException when unboxing null - the most common bug.
  *     Integer i = null;     int x = i;     //  NullPointerException
+ * <p>
  *
  *  2. Using == on boxed values - reference comparison, not value comparison.
  *     Integer a = 200, b = 200;  a == b -> false (outside the -128..127 cache)
  *     Always use .equals().
+ * <p>
  *
  *  3. Performance cost in tight loops - boxing/unboxing allocates new objects.
  *     Prefer the primitive specialisations (IntStream over Stream<Integer>) when

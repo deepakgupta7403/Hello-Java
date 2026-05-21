@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 /**
  * Real-World Example 1 - Filtering Employees by Salary
+ * <p>
  *
  * Demonstrates: filter, sorted, map, mapToDouble, groupingBy, averaging,
  * Collectors.partitioningBy, toList. The classic "play with a list of

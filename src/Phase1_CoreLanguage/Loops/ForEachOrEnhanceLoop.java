@@ -6,6 +6,7 @@ package Phase1_CoreLanguage.Loops;
  * Also note that the object/variable is immutable when enhanced for loop is used i.e it ensures that the values in the array can not be modified,
  * so it can be said as read only loop where you can’t update the values as opposite to other loops where values can be modified.
  * We recommend using this form of the for statement instead of the general form whenever possible.(as per JAVA doc.)
+ * <p>
  *
  * Syntax:
  * for (T element:Collection obj/array)

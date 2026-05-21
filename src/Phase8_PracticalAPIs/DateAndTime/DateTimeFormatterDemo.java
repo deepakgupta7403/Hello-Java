@@ -17,14 +17,14 @@ import java.util.Locale;
  * Parse strings into date/time values and format them back. THREAD-SAFE
  * and IMMUTABLE — share instances freely. Replaces the legacy (and
  * broken) SimpleDateFormat.
- *
+ * <p>
  *
  * Three ways to get a formatter
  * -----------------------------
  *   1. CONSTANTS — DateTimeFormatter.ISO_LOCAL_DATE etc. for ISO-8601.
  *   2. PATTERN   — DateTimeFormatter.ofPattern("dd/MM/yyyy")
  *   3. BUILDER   — new DateTimeFormatterBuilder()... for full control.
- *
+ * <p>
  *
  * Common pattern letters
  * ----------------------
@@ -40,14 +40,14 @@ import java.util.Locale;
  *   z       zone abbreviation
  *   V       zone id
  *   x / X   offset (+0530 / +05:30)
- *
+ * <p>
  *
  * Locale matters
  * --------------
  * Month and day names depend on locale.
  *      ofPattern("MMM d", Locale.US)        -> Jul 4
  *      ofPattern("MMM d", Locale.GERMAN)    -> Jul 4
- *
+ * <p>
  *
  * Tips
  * ----

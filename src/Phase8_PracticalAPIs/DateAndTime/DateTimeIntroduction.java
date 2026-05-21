@@ -9,7 +9,7 @@ import java.time.LocalTime;
  * ----------------------------------------------------------
  * Java 8 replaced the chaos of java.util.Date / Calendar / SimpleDateFormat
  * with a clean, immutable, thread-safe set of value types in java.time.
- *
+ * <p>
  *
  * The headline types
  * ------------------
@@ -22,7 +22,7 @@ import java.time.LocalTime;
  *   Duration          - a length of time on the clock     (PT2H30M)
  *   Period            - a length of time on the calendar  (P1Y2M3D)
  *   Year, YearMonth, MonthDay, DayOfWeek, Month  - narrow value types
- *
+ * <p>
  *
  * Key properties
  * --------------
@@ -30,7 +30,7 @@ import java.time.LocalTime;
  *   THREAD-SAFE      - share freely.
  *   FLUENT           - .plusDays(2).minusHours(3).withYear(...)
  *   VALUE SEMANTICS  - equals/hashCode/toString all work.
- *
+ * <p>
  *
  * Java 8 was a long time ago — what's new since?
  * ----------------------------------------------
@@ -38,7 +38,7 @@ import java.time.LocalTime;
  *   Java 12  - LocalDate.formatted(formatter)
  *   Java 17  - Pattern matching on dates in switch
  *   Java 21  - Sequenced collections (returns LocalDate ordering helpers)
- *
+ * <p>
  *
  * This file is the orientation. Each of the headline types gets its own
  * dedicated file with detailed examples.

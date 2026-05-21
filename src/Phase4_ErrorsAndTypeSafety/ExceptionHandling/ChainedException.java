@@ -10,13 +10,14 @@ import java.sql.SQLException;
  * higher-level one while keeping the original around as the "cause". You
  * end up with a clear, domain-meaningful exception on top AND the
  * underlying technical detail for debugging.
+ * <p>
  *
  *      try {
  *          loadFromDatabase();
  *      } catch (SQLException sql) {
  *          throw new ServiceUnavailableException("user lookup failed", sql);
  *      }
- *
+ * <p>
  *
  * Why Chain Instead of Swallow?
  * -----------------------------
@@ -25,7 +26,7 @@ import java.sql.SQLException;
  *     to the caller ("oh now I have to know about SQL").
  *   - Wrapping converts to a more meaningful type while preserving the full
  *     diagnostic trail.
- *
+ * <p>
  *
  * API In Throwable
  * ----------------
@@ -37,7 +38,7 @@ import java.sql.SQLException;
  *   Throwable getRootCause()                          // NOT in JDK -
  *                                                     // libraries like Guava
  *                                                     // / commons-lang offer it
- *
+ * <p>
  *
  * Stack-Trace Anatomy of a Chained Exception
  * ------------------------------------------
@@ -46,24 +47,28 @@ import java.sql.SQLException;
  *      Caused by: java.sql.SQLException: connection refused
  *          at Database.connect(Database.java:42)
  *          at App.main(App.java:7)
+ * <p>
  *
  * Each "Caused by" is one level deeper into the chain. Read top-down to go
  * from the highest-level diagnosis to the root cause.
- *
+ * <p>
  *
  * SUPPRESSED Exceptions vs CAUSES
  * --------------------------------
  * Causes and suppressed exceptions are different:
+ * <p>
  *
  *   - CAUSE       : "this happened BECAUSE of that earlier thing"
  *                   - one cause per exception, chained.
  *   - SUPPRESSED  : "this exception was thrown WHILE another was already
  *                   in flight"
  *                   - many suppressed exceptions per exception.
+ * <p>
  *
  * Most commonly produced by try-with-resources when the close() of a resource
  * throws AFTER the body has already thrown a different exception. The body's
  * exception "wins" and the close() exception is added as suppressed.
+ * <p>
  *
  * See TryWithResources.java for the suppression demo.
  */

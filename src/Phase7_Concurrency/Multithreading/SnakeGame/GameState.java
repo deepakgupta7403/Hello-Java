@@ -1,23 +1,21 @@
 package Phase7_Concurrency.Multithreading.SnakeGame;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * GameState — the shared mutable state, accessed by:
+ * <p>
  *
  *   - GAME LOOP THREAD  (writes: ticks the snake, updates food, score, gameOver)
  *   - SWING EDT          (reads: paints the board)
  *   - SWING EDT          (writes via setDirection: keyboard input)
+ * <p>
  *
  * All mutating and reading operations go through a SINGLE ReentrantLock
  * so the EDT never paints a half-modified state. Critical sections are
  * SHORT — never call back into Swing while holding the lock.
- *
+ * <p>
  *
  * Why ReentrantLock instead of synchronized
  * -----------------------------------------
@@ -25,13 +23,14 @@ import java.util.concurrent.locks.ReentrantLock;
  *      (e.g. a paused/unpaused signal).
  *   2. Easier to reason about lock ordering vs the EDT.
  *   3. Demonstration purposes — see ReentrantLockDemo for depth.
- *
+ * <p>
  *
  * Snake representation
  * --------------------
  *   - body: Deque<Cell> — head is first(), tail is last().
  *   - bodySet: Set<Cell> — same cells, for O(1) self-collision check.
  *   - direction: current direction; pendingDirection: requested by input.
+ * <p>
  *
  *   On each tick the loop adopts pendingDirection (unless it's the
  *   opposite of `direction`), moves the head, optionally trims the tail.

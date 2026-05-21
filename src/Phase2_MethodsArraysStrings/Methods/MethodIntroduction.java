@@ -6,7 +6,7 @@ package Phase2_MethodsArraysStrings.Methods;
  * A METHOD is a reusable block of code that performs a specific task. It is the
  * primary unit of program organisation in Java: classes are built out of fields
  * (state) plus methods (behaviour).
- *
+ * <p>
  *
  * Why Methods?
  * ------------
@@ -15,7 +15,7 @@ package Phase2_MethodsArraysStrings.Methods;
  *  - MAINTAINABILITY- change behaviour in ONE place.
  *  - TESTABILITY    - small methods are easy to test in isolation.
  *  - ABSTRACTION    - callers know WHAT a method does, not HOW.
- *
+ * <p>
  *
  * Anatomy of a Method
  * -------------------
@@ -23,13 +23,15 @@ package Phase2_MethodsArraysStrings.Methods;
  *          // method body
  *          [return expression;]   // required unless returnType is void
  *      }
+ * <p>
  *
  *      public          static     int     add  ( int a, int b )    {
  *      |__modifier_|   |_static_| |type|  |name||___parameters___|
+ * <p>
  *
  *          return a + b;
  *      }
- *
+ * <p>
  *
  * The Pieces in Detail
  * --------------------
@@ -40,27 +42,30 @@ package Phase2_MethodsArraysStrings.Methods;
  *  4. Parameter list     - zero or more typed parameters.
  *  5. throws clause      - declares checked exceptions this method can throw.
  *  6. Body               - the code that runs; may include `return` statements.
- *
+ * <p>
  *
  * Method Signature
  * ----------------
  * The SIGNATURE is the method name PLUS the parameter types (in order).
  * The return type and modifiers are NOT part of the signature.
+ * <p>
  *
  *      add(int, int)            // signature
  *      add(double, double)      // different signature -> overloading allowed
- *
+ * <p>
  *
  * Method Overloading
  * ------------------
  * Two methods can share a name as long as their PARAMETER LISTS differ. The
  * compiler picks the best match at call time based on argument types.
+ * <p>
  *
  *      int    add(int a, int b)       { ... }
  *      double add(double a, double b) { ... }      // overload - OK
+ * <p>
  *
  * Differing ONLY by return type is NOT enough - it is a compile error.
- *
+ * <p>
  *
  * Parameter Passing - "Pass by Value"
  * -----------------------------------
@@ -69,7 +74,7 @@ package Phase2_MethodsArraysStrings.Methods;
  *  - For objects, a COPY of the REFERENCE is passed (so the called method can
  *    mutate the object's state but cannot make the caller's variable point to
  *    a different object).
- *
+ * <p>
  *
  * Return Statements
  * -----------------

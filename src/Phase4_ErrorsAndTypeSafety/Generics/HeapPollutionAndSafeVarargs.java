@@ -12,7 +12,7 @@ import java.util.List;
  * an object that does NOT match that type at runtime. Type erasure means
  * the JVM cannot stop you - so the compiler issues an "unchecked" warning
  * whenever you do something that could cause heap pollution.
- *
+ * <p>
  *
  * Where Heap Pollution Comes From
  * -------------------------------
@@ -22,7 +22,7 @@ import java.util.List;
  *   3. Generic VARARGS:    when a method takes T... it secretly creates an
  *                          Object[] - that array is heap pollution if T is
  *                          itself a generic type.
- *
+ * <p>
  *
  * The Varargs Bridge
  * ------------------
@@ -30,9 +30,10 @@ import java.util.List;
  * generic, the compiler must allocate an Object[] (it cannot create a
  * `new List&lt;String&gt;[N]` - generic-array creation is illegal). It then
  * issues a warning:
+ * <p>
  *
  *      "unchecked: Possible heap pollution from parameterized vararg type"
- *
+ * <p>
  *
  * @SafeVarargs
  * -----------
@@ -40,23 +41,26 @@ import java.util.List;
  *   - takes a generic varargs parameter, AND
  *   - PROMISES not to misuse it (no writes to the array, no leaks of the
  *     array to non-generic code).
+ * <p>
  *
  * Restrictions:
  *   - Allowed on `static`, `final`, or `private` methods, and on
  *     constructors. Since Java 9, also allowed on `private` instance methods.
  *   - You CANNOT use it on a non-final non-private instance method - a
  *     subclass could violate the promise.
- *
+ * <p>
  *
  * What Goes Wrong (The Concrete Bug)
  * ----------------------------------
  *      static &lt;T&gt; T[] toArray(T... a) { return a; }
+ * <p>
  *
  *      // caller:
  *      Object[] objs = toArray(List.of(1), List.of("a"));
  *      objs[0] = "anything";     // legal at runtime - it's an Object[]
  *      List&lt;Integer&gt; bad = (List&lt;Integer&gt;) objs[0];   // succeeds at type-erasure level
  *      Integer i = bad.get(0);    // ClassCastException far from the bug
+ * <p>
  *
  * The method exposed its INTERNAL Object[] to outside code - a leak. The
  * @SafeVarargs promise is "I won't do that."

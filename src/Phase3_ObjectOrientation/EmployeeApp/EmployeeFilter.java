@@ -2,12 +2,15 @@ package Phase3_ObjectOrientation.EmployeeApp;
 
 /**
  * EmployeeFilter - a NESTED + FUNCTIONAL interface.
+ * <p>
  *
  * Used by the repository's `find(...)` method to express arbitrary search
  * criteria as a lambda:
+ * <p>
  *
  *      repo.find(EmployeeFilter.byMinSalary(10_000)
  *                              .and(EmployeeFilter.byType(Intern.class)));
+ * <p>
  *
  * Demonstrates:
  *   - @FunctionalInterface annotation enforcing the SAM rule.

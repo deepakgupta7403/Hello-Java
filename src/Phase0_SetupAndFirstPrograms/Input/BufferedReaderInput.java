@@ -9,22 +9,22 @@ import java.io.InputStreamReader;
  * -------------------------------------
  * BufferedReader is the older (pre-Java-5) way to read input. It reads one whole
  * LINE at a time as a String - you have to parse the result yourself.
- *
- *
+ * <p>
+ * <p>
  * Why use BufferedReader over Scanner?
  * ------------------------------------
  * - Faster than Scanner because it does not do regex-based tokenizing.
- *   Commonly used in competitive programming for that reason.
+ * Commonly used in competitive programming for that reason.
  * - Larger buffer size by default (8192 chars vs Scanner's 1024).
- *
- *
+ * <p>
+ * <p>
  * Trade-offs
  * ----------
  * - Returns Strings only. You must convert with Integer.parseInt(),
- *   Double.parseDouble(), etc.
+ * Double.parseDouble(), etc.
  * - Throws checked IOException, so you must declare "throws" or wrap in try/catch.
  * - No built-in support for reading individual tokens of different types from the
- *   same line (you would split the line yourself).
+ * same line (you would split the line yourself).
  */
 
 public class BufferedReaderInput {

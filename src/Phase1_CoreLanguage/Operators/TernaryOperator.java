@@ -6,32 +6,34 @@ package Phase1_CoreLanguage.Operators;
  * The only TERNARY operator in Java - takes three operands - is the conditional
  * operator. It is a shorter alternative to a simple if-else when both branches
  * just compute a value.
+ * <p>
  *
  *      condition ? valueIfTrue : valueIfFalse
- *
+ * <p>
  *
  * Equivalent if-else
  * ------------------
  *      int max;
  *      if (a > b) max = a;
  *      else       max = b;
+ * <p>
  *
  *      // is the same as:
  *      int max = (a > b) ? a : b;
- *
+ * <p>
  *
  * When To Use It
  * --------------
  * - Good for short, expression-style assignments.
  * - Good for ternary chains that read well.
- *
+ * <p>
  *
  * When To Avoid It
  * ----------------
  * - When either branch has SIDE EFFECTS - use if/else for clarity.
  * - When the expression spans more than one line - readability suffers.
  * - When it nests deeply - "ternary tower" is a known anti-pattern.
- *
+ * <p>
  *
  * Type Rules
  * ----------

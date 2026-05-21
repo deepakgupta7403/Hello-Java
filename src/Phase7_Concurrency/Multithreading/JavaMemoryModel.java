@@ -7,7 +7,7 @@ package Phase7_Concurrency.Multithreading;
  * different threads interact. Without it, a program is at the mercy of
  * the JIT compiler, the CPU's memory subsystem, and the OS scheduler —
  * any of which may REORDER or CACHE memory operations.
- *
+ * <p>
  *
  * The Two Concerns
  * ----------------
@@ -16,12 +16,13 @@ package Phase7_Concurrency.Multithreading;
  *                  to be atomic on 32-bit platforms.)
  *   VISIBILITY  - when does a thread see another thread's write?
  *                 (Without synchronization, possibly never.)
- *
+ * <p>
  *
  * Happens-Before
  * --------------
  * The JMM defines a partial order called HAPPENS-BEFORE. If action A
  * happens-before action B, then A's effects are visible to B.
+ * <p>
  *
  * The standard happens-before edges:
  *   1. Program order within a single thread.
@@ -32,9 +33,11 @@ package Phase7_Concurrency.Multithreading;
  *   6. Default initialization (the JLS-defined zero-values) →
  *      any subsequent action.
  *   7. Transitively: A→B and B→C implies A→C.
+ * <p>
  *
  * If there is NO happens-before edge between two actions on different
  * threads, the JVM is allowed to reorder / cache them. Bugs that result:
+ * <p>
  *
  *   - The reader sees stale data forever (e.g., never-ending loop on
  *     a non-volatile flag).
@@ -42,7 +45,7 @@ package Phase7_Concurrency.Multithreading;
  *     another, even if the writer wrote them in order.
  *   - Constructor-leak: another thread sees a partially-initialised
  *     object via an unsafe publication.
- *
+ * <p>
  *
  * Safe Publication
  * ----------------
@@ -52,14 +55,14 @@ package Phase7_Concurrency.Multithreading;
  *   - Store into a `volatile` field.
  *   - Store into a field protected by a lock.
  *   - Use a thread-safe container (ConcurrentHashMap etc.).
- *
+ * <p>
  *
  * `final` Fields — Special Rule
  * -----------------------------
  * Final fields, once a constructor returns, are guaranteed visible to
  * any thread that gets a reference to the object — even without
  * synchronization. This is why immutable objects "just work."
- *
+ * <p>
  *
  * Tools in this file
  * ------------------

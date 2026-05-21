@@ -8,26 +8,30 @@ import java.util.ServiceLoader;
  * ---------------------------------------------------
  * ServiceLoader lets you declare a SERVICE INTERFACE and DISCOVER
  * implementations at runtime — without hard-coding their names.
- *
+ * <p>
  *
  * Two pieces
  * ----------
  *   1. A service INTERFACE (or abstract class).
  *   2. ONE or more implementations, declared so the JVM can find them.
- *
+ * <p>
  *
  * Declaring providers
  * -------------------
+ * <p>
  *
  *   Classpath / unnamed module: a META-INF/services/<interface name>
  *   text file listing implementation classes, one per line:
+ * <p>
  *
  *       META-INF/services/com.example.api.Codec
  *       -----------------------------------------
  *       com.example.codec.GzipCodec
  *       com.example.codec.SnappyCodec
+ * <p>
  *
  *   Modular projects: declare in module-info.java instead:
+ * <p>
  *
  *       module com.example.codec {
  *           requires com.example.api;
@@ -35,18 +39,19 @@ import java.util.ServiceLoader;
  *               with com.example.codec.GzipCodec,
  *                    com.example.codec.SnappyCodec;
  *       }
- *
+ * <p>
  *
  * Loading at runtime
  * ------------------
  *      ServiceLoader<Codec> loader = ServiceLoader.load(Codec.class);
  *      for (Codec c : loader) { ... }
+ * <p>
  *
  *      loader.stream()
  *            .map(ServiceLoader.Provider::get)
  *            .filter(c -> c.canHandle(input))
  *            .findFirst();
- *
+ * <p>
  *
  * Real-world examples
  * -------------------
@@ -54,7 +59,7 @@ import java.util.ServiceLoader;
  *     formalisation but now uses it.
  *   - Logging (SLF4J, java.util.spi providers).
  *   - Java Sound, Cryptography Providers, Locale providers, Charsets.
- *
+ * <p>
  *
  * Demo — this file
  * ----------------

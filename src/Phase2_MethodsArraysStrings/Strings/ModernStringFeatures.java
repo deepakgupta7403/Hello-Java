@@ -6,7 +6,7 @@ package Phase2_MethodsArraysStrings.Strings;
  * Java keeps adding small but useful String methods. This file is a quick
  * tour of everything Basics-level that landed in 11, 12, 15, and beyond -
  * all available on Java 21.
- *
+ * <p>
  *
  * Java 11
  * -------
@@ -16,23 +16,26 @@ package Phase2_MethodsArraysStrings.Strings;
  *          stripTrailing()
  *      repeat(int count)               - concat the string with itself N times
  *      chars() / codePoints()          - IntStream over the characters
+ * <p>
  *
  * Java 12
  * -------
  *      indent(int n)                   - add (or remove) leading spaces per line
  *      transform(Function<String, R>)  - apply any function, fluently
+ * <p>
  *
  * Java 15
  * -------
  *      Text Blocks  """ ... """        - multi-line string literals
  *      formatted(args)                 - instance form of String.format
+ * <p>
  *
  * Java 21
  * -------
  *      Pattern matching for switch     - match on `String` values with `when` guards
  *      String templates (preview only) - NOT covered here, the feature was
  *                                        retracted from later releases.
- *
+ * <p>
  *
  * Why These Matter
  * ----------------

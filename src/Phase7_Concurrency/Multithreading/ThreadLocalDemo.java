@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * A per-thread variable. Every thread that reads a given ThreadLocal
  * sees ITS OWN copy of the value. Threads cannot accidentally share
  * state because there is no shared storage to corrupt.
- *
+ * <p>
  *
  * Why ThreadLocal?
  * ----------------
@@ -24,7 +24,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  *     stack without passing them as parameters.
  *   - PER-THREAD CACHING — keep a non-thread-safe helper (e.g.
  *     SimpleDateFormat) one per thread to dodge synchronization.
- *
+ * <p>
  *
  * The API
  * -------
@@ -33,10 +33,11 @@ import java.util.concurrent.atomic.AtomicInteger;
  *   T get()                   - return this thread's value
  *   void set(T)               - set this thread's value
  *   void remove()             - delete this thread's value
+ * <p>
  *
  *   InheritableThreadLocal<T> - child threads inherit a (shallow) copy
  *                               from their parent at construction.
- *
+ * <p>
  *
  * Pitfalls
  * --------
@@ -49,7 +50,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  *   3. Hard to reason about across asynchronous boundaries. If you hop
  *      threads with CompletableFuture / executors / virtual threads,
  *      consider Scoped Values (Java 21 preview) instead.
- *
+ * <p>
  *
  * When NOT to use
  * ---------------

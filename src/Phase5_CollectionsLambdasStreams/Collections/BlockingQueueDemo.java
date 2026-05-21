@@ -1,33 +1,32 @@
 package Phase5_CollectionsLambdasStreams.Collections;
 
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.SynchronousQueue;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 /**
  * java.util.concurrent.BlockingQueue&lt;E&gt;
  * -------------------------------------
  * BlockingQueue is a Queue that BLOCKS the caller when an operation cannot
  * proceed immediately:
+ * <p>
  *
  *      put(e)   - blocks the producer if the queue is FULL
  *      take()   - blocks the consumer if the queue is EMPTY
+ * <p>
  *
  * That makes BlockingQueue the FUNDAMENTAL BUILDING BLOCK for the
  * producer/consumer pattern in concurrent code.
- *
+ * <p>
  *
  * Four Operation Modes Per Operation
  * ----------------------------------
+ * <p>
  *
  *                Throws            Returns special   Blocks            Times out
  *                ----------------- ----------------- ----------------- -----------------------------
  *   insert     | add(e)           | offer(e)        | put(e)          | offer(e, time, TimeUnit)
  *   remove     | remove()         | poll()          | take()          | poll(time, TimeUnit)
  *   peek       | element()        | peek()          | —               | —
- *
+ * <p>
  *
  * Implementations
  * ---------------
@@ -39,17 +38,19 @@ import java.util.concurrent.TimeUnit;
  *   PriorityBlockingQueue- unbounded, heap-ordered, blocking
  *   DelayQueue           - elements have a delay; take blocks until expiry
  *   LinkedTransferQueue  - extended transfer semantics (Java 7+)
- *
+ * <p>
  *
  * Why It Exists
  * -------------
  * Without BlockingQueue you would write loops like:
+ * <p>
  *
  *      while (queue.isEmpty()) Thread.sleep(1);   // CPU-burning poll
+ * <p>
  *
  * BlockingQueue offloads that wait into the OS scheduler - the thread
  * sleeps until there is something to do, no CPU spent waiting.
- *
+ * <p>
  *
  * When To Use Which
  * -----------------
@@ -58,7 +59,7 @@ import java.util.concurrent.TimeUnit;
  *   - Direct hand-off, no buffering       ->  SynchronousQueue
  *   - Priority order                       ->  PriorityBlockingQueue
  *   - Delayed-action scheduling            ->  DelayQueue
- *
+ * <p>
  *
  * Demo: A small producer / consumer with two threads.
  */

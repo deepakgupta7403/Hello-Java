@@ -7,13 +7,13 @@ package Phase9_ModernJavaAndModules.ModernJava;
  * style with `break` is verbose and easy to get wrong (fall-through bugs).
  * Java 14 promoted switch to also being an EXPRESSION that produces a value,
  * with a safer arrow form.
- *
+ * <p>
  *
  * Two New Things
  * --------------
  *  1. Arrow labels         ->     -  no fall-through, no break needed
  *  2. The yield keyword           -  return a value from a multi-statement case
- *
+ * <p>
  *
  * Old (Switch Statement)
  * ----------------------
@@ -23,6 +23,7 @@ package Phase9_ModernJavaAndModules.ModernJava;
  *          case 2:  name = "Tue"; break;
  *          default: name = "?";   break;
  *      }
+ * <p>
  *
  * New (Switch Expression)
  * -----------------------
@@ -31,7 +32,7 @@ package Phase9_ModernJavaAndModules.ModernJava;
  *          case 2 -> "Tue";
  *          default -> "?";
  *      };
- *
+ * <p>
  *
  * Key Properties
  * --------------
@@ -40,7 +41,7 @@ package Phase9_ModernJavaAndModules.ModernJava;
  *  - Multiple labels per arm:  case 1, 2, 3 -> "low";
  *  - The switch expression must be EXHAUSTIVE - either cover every possibility
  *    or include a `default`. Compiler enforces this for enums and sealed types.
- *
+ * <p>
  *
  * yield - When You Need More Than One Statement
  * ---------------------------------------------

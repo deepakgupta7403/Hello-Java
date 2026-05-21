@@ -5,30 +5,34 @@ package Phase1_CoreLanguage.Operators;
  * -----------------------
  * Tests whether an object is an instance of a particular class, sub-class, or
  * implements a particular interface. Result is a boolean.
+ * <p>
  *
  *      obj instanceof Type        // true if obj is non-null AND of that type
+ * <p>
  *
  * Returns FALSE if obj is null - so instanceof is also a handy null-safe check.
- *
+ * <p>
  *
  * Pattern Matching (Java 16+)
  * ---------------------------
  * Since Java 16 you can bind the cast variable in the same expression:
+ * <p>
  *
  *      if (obj instanceof String s) {
  *          // here 's' is already a String - no extra cast needed
  *          System.out.println(s.length());
  *      }
+ * <p>
  *
  * Inside the 'if' body 's' is in scope; outside it is not.
- *
+ * <p>
  *
  * When To Use It
  * --------------
  * - When you really do not know the runtime type (e.g. dealing with Object,
  *   external data, sealed hierarchies).
  * - In equals() implementations.
- *
+ * <p>
  *
  * When NOT To Use It
  * ------------------

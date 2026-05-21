@@ -1,41 +1,39 @@
 package Phase5_CollectionsLambdasStreams.Collections;
 
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.NavigableSet;
-import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * java.util.Set&lt;E&gt; - No Duplicates Allowed
  * ----------------------------------------
  * Set extends Collection but ADDS NO NEW METHODS. The contract is:
+ * <p>
  *
  *      "this collection contains NO duplicate elements"
+ * <p>
  *
  * What "duplicate" means is defined by .equals(...) - two elements are
  * considered duplicates if a.equals(b). This means YOUR custom classes
  * need a correct equals/hashCode for HashSet to work right.
- *
+ * <p>
  *
  * The Set Family
  * --------------
  *   HashSet         - hash-table backed.  ORDER NOT GUARANTEED.  O(1) ops.
  *   LinkedHashSet   - hash table + linked list. INSERTION ORDER.  O(1) ops.
  *   TreeSet         - red-black tree. SORTED ORDER.  O(log n) ops.
+ * <p>
  *
  *   Set.of(...)     - immutable, no nulls (Java 9+).
  *   EnumSet         - super-fast Set for enum keys; bit-vector internally.
  *   CopyOnWriteArraySet - concurrent; backed by COW array.
- *
+ * <p>
  *
  * SortedSet + NavigableSet (extra interfaces)
  * -------------------------------------------
  *   SortedSet methods:    first(), last(), headSet, tailSet, subSet
  *   NavigableSet adds:    floor(e), ceiling(e), lower(e), higher(e),
  *                         pollFirst(), pollLast(), descendingSet()
- *
+ * <p>
  *
  * When To Use Which
  * -----------------
@@ -43,7 +41,7 @@ import java.util.TreeSet;
  *   - Need to iterate in insertion order          -> LinkedHashSet.
  *   - Need elements always sorted                 -> TreeSet.
  *   - All elements are from one enum              -> EnumSet (fastest).
- *
+ * <p>
  *
  * Important Contract - equals/hashCode
  * ------------------------------------

@@ -7,37 +7,41 @@ package Phase2_MethodsArraysStrings.Methods;
  * ABSTRACT - no body allowed. To evolve an interface (e.g. add a new method),
  * you had to break every existing implementor. Java 8 fixed this with
  * `default` methods, and Java 9 finished the story with `private` methods.
- *
+ * <p>
  *
  * The Four Method Flavours Allowed in an Interface (since Java 9)
  * ---------------------------------------------------------------
+ * <p>
  *
  *      1. ABSTRACT  - no body, must be implemented by every concrete class.
  *                     `void doStuff();`
+ * <p>
  *
  *      2. DEFAULT   - has a body, inherited by implementors unless overridden.
  *                     `default void greet() { ... }`
+ * <p>
  *
  *      3. STATIC    - utility belonging to the interface itself.
  *                     `static Comparator<...> byLength() { ... }`
+ * <p>
  *
  *      4. PRIVATE   - helper for the interface's own default/static methods.
  *                     `private boolean isValid(String s) { ... }`
  *                     (Java 9+)
- *
+ * <p>
  *
  * Why `default` Was Added
  * -----------------------
  * Interfaces could not evolve without breaking implementors. Adding
  * `default forEach(Consumer)` to java.lang.Iterable in Java 8 was the
  * motivating example - every existing collection class got it for free.
- *
+ * <p>
  *
  * Why `private` Was Added (Java 9)
  * --------------------------------
  * To avoid duplicating helper code between default/static methods of the same
  * interface. Without `private`, you would have to expose the helper or copy it.
- *
+ * <p>
  *
  * Multiple Inheritance and the "Diamond" Problem
  * ----------------------------------------------
@@ -45,7 +49,7 @@ package Phase2_MethodsArraysStrings.Methods;
  * default methods with the same signature, the compiler forces you to override
  * the method in your class to disambiguate (you can call
  * `Interface.super.method()` to pick one).
- *
+ * <p>
  *
  * Modifier Quick Recap
  * --------------------

@@ -3,16 +3,19 @@ package Phase1_CoreLanguage.Loops;
 /**A while loop is a control flow statement that allows code to be executed repeatedly based on a given Boolean condition.
  * The while loop can be thought of as a repeating if statement.
  * While Loop first check the condition if the condition is true then it'll execute else exit form the loop.
+ * <p>
  *
  * Syntax :
  *             While(boolean condition){
  *                    loop body
  *             }
- *
+ * <p>
  *
  * FlowChart:
+ * <p>
  *
  * Start ----->Condition Check----->if true----->Loop Body Execute --------->Condition Check----->if false----->Exit
+ * <p>
  *
  * While loop starts with the checking of condition.
  * If it evaluated to true, then the loop body statements are executed otherwise first statement following the loop is executed.

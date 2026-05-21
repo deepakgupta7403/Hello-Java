@@ -1,12 +1,6 @@
 package Phase7_Concurrency.Multithreading;
 
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.SynchronousQueue;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -16,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * it's a disaster (thread creation is expensive, OS limits exist). A
  * THREAD POOL keeps a small set of WORKER threads alive and feeds them
  * tasks from a QUEUE.
- *
+ * <p>
  *
  * ThreadPoolExecutor — the core class
  * -----------------------------------
@@ -27,7 +21,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  *       BlockingQueue<Runnable> workQueue,- where tasks wait for a worker
  *       ThreadFactory threadFactory,     - how to make threads
  *       RejectedExecutionHandler handler - what to do when full)
- *
+ * <p>
  *
  * How the pool routes a submitted task
  * ------------------------------------
@@ -35,7 +29,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  *   2. Otherwise: try to ENQUEUE the task on the workQueue.
  *   3. Queue full? -> If under maximumPoolSize, create a new worker.
  *   4. Pool also full? -> RejectedExecutionHandler fires.
- *
+ * <p>
  *
  * Rejection policies
  * ------------------
@@ -44,7 +38,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  *                                  (backpressure)
  *   DiscardPolicy                - silently drop the task
  *   DiscardOldestPolicy          - drop the oldest queued task, then submit
- *
+ * <p>
  *
  * Queue choice strongly affects behaviour
  * ---------------------------------------
@@ -54,7 +48,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  *                              grows. With Executors.newFixedThreadPool.
  *   ArrayBlockingQueue (bounded) - encourages the pool to grow up to max.
  *   PriorityBlockingQueue   - tasks must be Comparable.
- *
+ * <p>
  *
  * Why Executors.* sometimes bites you
  * -----------------------------------

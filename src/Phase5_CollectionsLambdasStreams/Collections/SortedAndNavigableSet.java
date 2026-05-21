@@ -9,6 +9,7 @@ import java.util.TreeSet;
  * SortedSet and NavigableSet - Two Layered Interfaces on Top of Set
  * -----------------------------------------------------------------
  * The Set hierarchy actually has three levels:
+ * <p>
  *
  *      Set            (no order at all)
  *      |
@@ -17,11 +18,12 @@ import java.util.TreeSet;
  *      |
  *      v
  *      NavigableSet   (SortedSet + neighbour queries + descending view)
+ * <p>
  *
  * Both extra interfaces exist primarily to give SORTED set implementations
  * a richer contract. TreeSet implements NavigableSet (and therefore
  * SortedSet); ConcurrentSkipListSet does too.
- *
+ * <p>
  *
  * SortedSet&lt;E&gt; - Methods Added Over Set
  * --------------------------------------
@@ -31,7 +33,7 @@ import java.util.TreeSet;
  *      SortedSet&lt;E&gt; headSet(E toEl)          - strictly less than toEl
  *      SortedSet&lt;E&gt; tailSet(E fromEl)        - fromEl inclusive
  *      SortedSet&lt;E&gt; subSet(E fromEl, E toEl) - fromEl inclusive, toEl exclusive
- *
+ * <p>
  *
  * NavigableSet&lt;E&gt; - Methods Added Over SortedSet
  * ----------------------------------------------
@@ -40,21 +42,24 @@ import java.util.TreeSet;
  *      E floor(E e)        - greatest element &lt;= e
  *      E ceiling(E e)      - smallest element &gt;= e
  *      E higher(E e)       - smallest element STRICTLY GREATER than e
+ * <p>
  *
  *   Polling (remove and return):
  *      E pollFirst()       - remove and return smallest, or null
  *      E pollLast()        - remove and return largest, or null
+ * <p>
  *
  *   Reverse views:
  *      NavigableSet&lt;E&gt; descendingSet()
  *      Iterator&lt;E&gt; descendingIterator()
+ * <p>
  *
  *   Inclusive-flag range views:
  *      NavigableSet&lt;E&gt; headSet(E toEl, boolean inclusive)
  *      NavigableSet&lt;E&gt; tailSet(E fromEl, boolean inclusive)
  *      NavigableSet&lt;E&gt; subSet(E from, boolean fromInclusive,
  *                              E to, boolean toInclusive)
- *
+ * <p>
  *
  * Why Have Both?
  * --------------
@@ -63,7 +68,7 @@ import java.util.TreeSet;
  * code is encouraged to type variables as NavigableSet whenever feasible -
  * you get the full toolkit and can still pass to APIs that accept SortedSet
  * or plain Set.
- *
+ * <p>
  *
  * Implementations
  * ---------------

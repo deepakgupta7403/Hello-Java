@@ -1,25 +1,22 @@
 package Phase7_Concurrency.Multithreading;
 
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-import java.util.concurrent.locks.StampedLock;
+import java.util.concurrent.locks.*;
 
 /**
  * Locks in Java
  * -------------
  * Java offers TWO families of locking primitives:
+ * <p>
  *
  *   1. INTRINSIC LOCKS (a.k.a. monitor locks) — every Object has one.
  *      Used via `synchronized` blocks / methods and Object.wait/notify.
  *      Simple, baked into the language.
+ * <p>
  *
  *   2. EXPLICIT LOCKS — interfaces and classes in
  *      java.util.concurrent.locks. More features, more responsibilities.
- *
+ * <p>
  *
  * The Lock Interface
  * ------------------
@@ -29,13 +26,15 @@ import java.util.concurrent.locks.StampedLock;
  *      tryLock(time, unit)         - try up to a timeout
  *      unlock()                    - release
  *      newCondition()              - associated condition variable
+ * <p>
  *
  * MUST be used with try/finally:
+ * <p>
  *
  *      lock.lock();
  *      try { ... }
  *      finally { lock.unlock(); }
- *
+ * <p>
  *
  * Implementations in this file
  * ----------------------------
@@ -44,10 +43,11 @@ import java.util.concurrent.locks.StampedLock;
  *   ReentrantReadWriteLock - separate read/write locks; many readers OR
  *                            one writer.
  *   StampedLock          - optimistic reads + write/read modes; not reentrant.
+ * <p>
  *
  * For dedicated files, see ReentrantLockDemo, ReadWriteLockDemo,
  * StampedLockDemo.
- *
+ * <p>
  *
  * Lock vs synchronized — quick comparison
  * ---------------------------------------

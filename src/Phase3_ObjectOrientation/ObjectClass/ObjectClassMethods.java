@@ -11,10 +11,11 @@ import java.util.Set;
  * `class Foo {}` with no `extends` clause, the compiler inserts
  * `extends Object` automatically. That means EVERY OBJECT inherits ten methods
  * from Object - some you override constantly, some you should leave alone.
- *
+ * <p>
  *
  * Methods Inherited from Object
  * -----------------------------
+ * <p>
  *
  *      1. equals(Object o)              - logical equality test
  *      2. hashCode()                    - integer hash (used by HashMap / HashSet)
@@ -24,14 +25,14 @@ import java.util.Set;
  *      6. finalize()                    - DEPRECATED, JVM cleanup hook
  *      7. wait() / wait(timeout)        - thread coordination
  *      8. notify() / notifyAll()        - thread coordination
- *
+ * <p>
  *
  * Methods You Almost Always OVERRIDE
  * ----------------------------------
  *      equals(Object)   - to define "two objects are logically the same"
  *      hashCode()       - MUST be overridden together with equals()
  *      toString()       - for human-readable logging / debugging
- *
+ * <p>
  *
  * The equals/hashCode Contract
  * ----------------------------
@@ -41,7 +42,7 @@ import java.util.Set;
  *    null-safe (a.equals(null) -> false).
  *  - Break this contract and HashMap / HashSet / HashTable / LinkedHashSet
  *    will silently misbehave.
- *
+ * <p>
  *
  * What NOT to Override
  * --------------------
@@ -50,7 +51,7 @@ import java.util.Set;
  *  - finalize()  is DEPRECATED for removal; use try-with-resources or Cleaner.
  *  - wait/notify - use higher-level concurrency utilities (Lock, Semaphore,
  *                  CompletableFuture) instead of these primitives.
- *
+ * <p>
  *
  * Modern Tip
  * ----------

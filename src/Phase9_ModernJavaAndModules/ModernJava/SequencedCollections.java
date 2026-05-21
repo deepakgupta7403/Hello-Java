@@ -1,12 +1,6 @@
 package Phase9_ModernJavaAndModules.ModernJava;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.SequencedCollection;
-import java.util.SequencedMap;
-import java.util.SequencedSet;
+import java.util.*;
 
 /**
  * Sequenced Collections (Java 21)
@@ -14,26 +8,31 @@ import java.util.SequencedSet;
  * Before Java 21, getting the FIRST or LAST element of a List, LinkedHashSet,
  * or LinkedHashMap was awkward: list.get(0), list.get(list.size()-1),
  * iterator().next(), etc.
+ * <p>
  *
  * Java 21 introduces three new interfaces under java.util:
+ * <p>
  *
  *      SequencedCollection<E>      (parent of List, Deque, LinkedHashSet)
  *      SequencedSet<E>             (extends SequencedCollection)
  *      SequencedMap<K, V>          (LinkedHashMap, TreeMap)
+ * <p>
  *
  * They provide a UNIFORM API for ordered collections:
+ * <p>
  *
  *      addFirst(e)        addLast(e)
  *      getFirst()         getLast()
  *      removeFirst()      removeLast()
  *      reversed()                              // a view in reverse order
+ * <p>
  *
  * SequencedMap adds:
  *      firstEntry()       lastEntry()
  *      putFirst(k, v)     putLast(k, v)
  *      pollFirstEntry()   pollLastEntry()
  *      sequencedKeySet()  sequencedValues()  sequencedEntrySet()
- *
+ * <p>
  *
  * Why It Matters
  * --------------

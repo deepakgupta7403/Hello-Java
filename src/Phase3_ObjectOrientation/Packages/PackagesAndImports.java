@@ -4,41 +4,47 @@ package Phase3_ObjectOrientation.Packages;
 // IMPORTS - bring other classes into scope (the file's PROLOGUE)
 // ============================================================
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;                 // single-type import
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
 
-// Wildcard import - "any class from java.time"
-import java.time.*;
-
-// Static import - lets you use members without the class qualifier
 import static java.lang.Math.PI;
 import static java.lang.Math.sqrt;
+
+// Wildcard import - "any class from java.time"
+// Static import - lets you use members without the class qualifier
 
 /**
  * Packages and Imports
  * --------------------
  * A PACKAGE is a Java NAMESPACE - a logical container for a group of related
  * classes/interfaces/enums/records. Packages do two big things:
+ * <p>
  *
  *   1. AVOID NAME CLASHES - your com.acme.user.User does not collide with
  *      org.example.user.User.
  *   2. ACCESS CONTROL - package-private (no modifier) members are visible
  *      ONLY inside the same package; this scopes implementation details.
- *
+ * <p>
  *
  * Declaring a Package
  * -------------------
  * The first non-comment line of every .java file is the package declaration:
+ * <p>
  *
  *      package OOPSConcepts.Packages;
+ * <p>
  *
  * The package name must match the directory structure under your source root.
  * In this repository, this file lives at:
+ * <p>
  *
  *      src/OOPSConcepts/Packages/PackagesAndImports.java
- *
+ * <p>
  *
  * Imports
  * -------
@@ -47,11 +53,12 @@ import static java.lang.Math.sqrt;
  *                   (NO recursion - java.util.* does NOT include java.util.concurrent)
  *   Static type:    import static java.lang.Math.PI;
  *   Static wild:    import static java.lang.Math.*;
+ * <p>
  *
  * What you do NOT need to import:
  *   - java.lang.*  - always implicitly imported (String, System, Math, ...).
  *   - Classes in the SAME PACKAGE.
- *
+ * <p>
  *
  * Naming Conventions
  * ------------------
@@ -59,25 +66,26 @@ import static java.lang.Math.sqrt;
  *         com.mycompany.product.subsystem
  *   - One class per file for any class declared public; the file name
  *     must match the public class name.
- *
+ * <p>
  *
  * The Unnamed (Default) Package
  * -----------------------------
  * A class without a package declaration is in the "unnamed" package. It is
  * legal but discouraged - you cannot import unnamed-package classes from
  * code that DOES have a package.
- *
+ * <p>
  *
  * Java 9 Modules (One-Level Above Packages)
  * -----------------------------------------
  * Since Java 9 a `module-info.java` can group packages into a MODULE and
  * declare which packages to `exports`, what it `requires`, and so on. Modules
  * are optional and orthogonal to packages.
- *
+ * <p>
  *
  * Running This Example
  * --------------------
  * From the project root, compile and run with the fully qualified name:
+ * <p>
  *
  *      javac src/OOPSConcepts/Packages/PackagesAndImports.java
  *      cd src

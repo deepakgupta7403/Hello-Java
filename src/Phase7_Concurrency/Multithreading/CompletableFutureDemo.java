@@ -5,8 +5,6 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-import java.util.stream.Collectors;
 
 /**
  * CompletableFuture — Composable Async (Java 8+)
@@ -15,7 +13,7 @@ import java.util.stream.Collectors;
  * CompletableFuture is composable: chain transformations, combine
  * multiple futures, handle errors inline, run async stages on the
  * executor of your choice.
- *
+ * <p>
  *
  * Creating
  * --------
@@ -24,7 +22,7 @@ import java.util.stream.Collectors;
  *   CompletableFuture.supplyAsync(Supplier<V>)              (uses commonPool)
  *   CompletableFuture.supplyAsync(Supplier<V>, Executor)
  *   CompletableFuture.runAsync(Runnable[, Executor])
- *
+ * <p>
  *
  * Transformations
  * ---------------
@@ -33,7 +31,7 @@ import java.util.stream.Collectors;
  *   thenAccept(Consumer)       - side-effect on the value
  *   thenRun(Runnable)          - side-effect, ignores the value
  *   thenCompose(F -> CF<V>)    - flatMap; chain another async stage
- *
+ * <p>
  *
  * Combinators
  * -----------
@@ -42,26 +40,26 @@ import java.util.stream.Collectors;
  *   applyToEither / acceptEither      - whichever completes first
  *   allOf(cf...)                       - wait for all (returns CF<Void>)
  *   anyOf(cf...)                       - first to finish (returns CF<Object>)
- *
+ * <p>
  *
  * Error handling
  * --------------
  *   exceptionally(Function<Throwable, V>)        - fallback value
  *   handle(BiFunction<V, Throwable, V>)           - see both result and error
  *   whenComplete(BiConsumer<V, Throwable>)        - side-effect on either
- *
+ * <p>
  *
  * Timeouts (Java 9+)
  * ------------------
  *   orTimeout(time, unit)                         - fail with TimeoutException
  *   completeOnTimeout(value, time, unit)          - fall back to value
- *
+ * <p>
  *
  * delayedExecutor (Java 9+)
  * -------------------------
  *   CompletableFuture.delayedExecutor(d, unit)   - returns an Executor that
  *                                                   schedules `delay` later.
- *
+ * <p>
  *
  * Threading note
  * --------------

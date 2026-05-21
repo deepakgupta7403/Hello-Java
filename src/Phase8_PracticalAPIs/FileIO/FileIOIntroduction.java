@@ -6,20 +6,23 @@ import java.io.File;
  * File I/O — Introduction
  * -----------------------
  * Java has TWO file APIs you should know:
+ * <p>
  *
  *   1. java.io           - "classic" stream-based I/O, since 1.0.
  *                          Byte streams (InputStream/OutputStream) and
  *                          character streams (Reader/Writer). Still the
  *                          most common API for reading/writing files.
+ * <p>
  *
  *   2. java.nio.file     - "new I/O" file API, since Java 7.
  *                          Path / Files utility methods that are
  *                          shorter, safer, and more flexible. PREFERRED
  *                          for new code.
+ * <p>
  *
  * They INTEROPERATE: a Path can become a File (path.toFile()), and a
  * File can become a Path (file.toPath()).
- *
+ * <p>
  *
  * The stream/reader/writer hierarchy
  * ----------------------------------
@@ -28,7 +31,7 @@ import java.io.File;
  *      Buffered*                      - decorators that add buffering
  *      Data*                          - decorators for primitive types
  *      Object*                        - serialization
- *
+ * <p>
  *
  * Why two APIs?
  * -------------
@@ -39,7 +42,7 @@ import java.io.File;
  *       - Atomic + copy/move/delete utilities.
  *       - File system events (WatchService).
  *       - Symlinks, attributes, ACLs.
- *
+ * <p>
  *
  * Quick guide: which class for what
  * ---------------------------------
@@ -50,24 +53,26 @@ import java.io.File;
  *   "Random access in a big file"        - FileChannel / RandomAccessFile
  *   "Stream of files in a directory"     - Files.list / Files.walk
  *   "Be notified of changes"             - WatchService
- *
+ * <p>
  *
  * Resource hygiene
  * ----------------
  * Anything that opens a file should be in a try-with-resources block:
+ * <p>
  *
  *      try (var reader = Files.newBufferedReader(path)) {
  *          ...
  *      }
+ * <p>
  *
  * The JVM does NOT close streams on GC promptly — leaks happen.
- *
+ * <p>
  *
  * Character encodings
  * -------------------
  * Always specify the charset for text I/O. The platform default is a
  * landmine on Windows. Use StandardCharsets.UTF_8.
- *
+ * <p>
  *
  * This file just shows the legacy `File` API to ground later examples.
  * The juicy stuff lives in the other files in this folder.

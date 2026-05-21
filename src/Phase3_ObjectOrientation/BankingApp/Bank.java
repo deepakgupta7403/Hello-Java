@@ -7,6 +7,7 @@ import java.util.Optional;
 
 /**
  * Bank - aggregate root that owns many Accounts.
+ * <p>
  *
  * Demonstrates:
  *   - ENCAPSULATION  - accounts list is hidden; callers go through openAccount,

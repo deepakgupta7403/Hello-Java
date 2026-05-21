@@ -8,22 +8,27 @@ package Phase7_Concurrency.Multithreading;
  * sanely. In Java the canonical primitive is the `synchronized` keyword
  * — a built-in lock attached to every object (called the MONITOR or
  * INTRINSIC LOCK).
- *
+ * <p>
  *
  * Three forms of `synchronized`
  * -----------------------------
  *   1. Synchronized INSTANCE method  - locks `this`.
+ * <p>
  *
  *           public synchronized void m() { ... }
+ * <p>
  *
  *   2. Synchronized STATIC method    - locks the Class object.
+ * <p>
  *
  *           public static synchronized void m() { ... }   // locks YourClass.class
+ * <p>
  *
  *   3. Synchronized BLOCK             - locks any object reference.
+ * <p>
  *
  *           synchronized (lockObj) { ... }
- *
+ * <p>
  *
  * What synchronized guarantees
  * ----------------------------
@@ -33,7 +38,7 @@ package Phase7_Concurrency.Multithreading;
  *                       happens-before: release → subsequent acquire.)
  *   ORDERING         - the JIT/CPU cannot reorder reads & writes across
  *                       the lock boundaries in observable ways.
- *
+ * <p>
  *
  * What synchronized does NOT do
  * -----------------------------
@@ -41,14 +46,14 @@ package Phase7_Concurrency.Multithreading;
  *     that is atomic, not the calls inside).
  *   - Prevent deadlock — that's on you.
  *   - Time out. Use ReentrantLock.tryLock if you need that.
- *
+ * <p>
  *
  * Reentrancy
  * ----------
  * Java monitors are REENTRANT — the SAME thread can lock the same
  * monitor multiple times without deadlocking itself. Each acquire
  * needs a matching release.
- *
+ * <p>
  *
  * Common rules
  * ------------
@@ -58,7 +63,7 @@ package Phase7_Concurrency.Multithreading;
  *   - DON'T hold a lock while calling unknown code (callbacks,
  *     overrides, lambdas you don't own) — invitation to deadlock.
  *   - Keep critical sections SHORT.
- *
+ * <p>
  *
  * Class lock vs object lock
  * -------------------------

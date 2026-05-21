@@ -6,44 +6,52 @@ package Phase2_MethodsArraysStrings.Strings;
  * In Java a String object cannot be CHANGED after creation. Methods like
  * `toUpperCase()`, `substring(...)`, `concat(...)` always RETURN A NEW STRING
  * instead of mutating the receiver. The original object is untouched.
+ * <p>
  *
  *      String s = "java";
  *      s.toUpperCase();              // returns "JAVA" but ignored
  *      System.out.println(s);        // still prints "java"
+ * <p>
  *
  *      s = s.toUpperCase();          // now s points to the NEW "JAVA"
- *
+ * <p>
  *
  * Reasons Java's Designers Chose Immutability
  * -------------------------------------------
+ * <p>
  *
  *  1. STRING POOL / Memory Sharing
  *     - If a literal could change, two variables pointing to the same pool
  *       object would surprise each other. Immutability lets the JVM safely
  *       cache and share literals.
+ * <p>
  *
  *  2. THREAD SAFETY
  *     - Immutable objects are inherently thread-safe; they need no locks.
  *       Strings can be passed between threads with no risk of mutation.
+ * <p>
  *
  *  3. SECURITY
  *     - Many security-critical APIs accept Strings: class names, file paths,
  *       URLs, network endpoints, SQL fragments, login credentials. If they
  *       were mutable, attackers could change the value AFTER the security
  *       check but BEFORE the use ("time-of-check vs time-of-use" attacks).
+ * <p>
  *
  *  4. HASHCODE CACHING
  *     - String hashCode is computed once and stored. HashMap / HashSet lookups
  *       stay fast and correct because the hash never changes.
+ * <p>
  *
  *  5. CLASS LOADING
  *     - Class names in Java are Strings. Immutability is the simplest way to
  *       guarantee they never change between load and use.
+ * <p>
  *
  *  6. SAFE TO PASS AROUND
  *     - No defensive copies needed when accepting or returning a String. The
  *       receiver cannot break the sender's invariants.
- *
+ * <p>
  *
  * What "Immutable" Actually Means
  * -------------------------------
@@ -54,7 +62,7 @@ package Phase2_MethodsArraysStrings.Strings;
  *  - Reflection could technically reach in and overwrite the final array,
  *    but doing so violates the JVM specification and breaks the language
  *    guarantees - don't do it.
- *
+ * <p>
  *
  * Demonstration
  * -------------

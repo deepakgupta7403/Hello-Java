@@ -1,11 +1,6 @@
 package Phase3_ObjectOrientation.Interfaces;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.NotSerializableException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.*;
 
 /**
  * Marker Interfaces
@@ -14,14 +9,16 @@ import java.io.Serializable;
  * "mark" a class as having some property. The JVM, frameworks, or your own
  * code can then check `instanceof MarkerName` and choose to treat marked
  * classes specially.
+ * <p>
  *
  *      interface Serializable {}        // empty - just a tag
  *      class Customer implements Serializable {}
+ * <p>
  *
  *      if (obj instanceof Serializable) {
  *          // safe to serialize
  *      }
- *
+ * <p>
  *
  * Famous Built-In Markers
  * -----------------------
@@ -29,17 +26,18 @@ import java.io.Serializable;
  *   java.lang.Cloneable    - "I support Object.clone() - else CloneNotSupportedException".
  *   java.rmi.Remote        - "I can be invoked from a remote JVM via RMI".
  *   javax.ejb.EnterpriseBean (legacy) - tagged a class as an EJB.
+ * <p>
  *
  * Each of these is empty; the SEMANTIC contract lives in the documentation
  * and is enforced by some external machinery (the JVM serialiser, the
  * `clone()` mechanism, the RMI stub generator).
- *
+ * <p>
  *
  * Why Marker Interfaces Existed
  * -----------------------------
  * Before Java 5 introduced ANNOTATIONS, marker interfaces were the only way
  * to attach METADATA to a class that other code could inspect.
- *
+ * <p>
  *
  * Markers vs Annotations
  * ----------------------
@@ -52,6 +50,7 @@ import java.io.Serializable;
  *      <T extends Marker>    | reflection check).
  *  Cannot carry data         | Can carry parameters: @Retention(RUNTIME)
  *  All-or-nothing            | Can be applied with options.
+ * <p>
  *
  * MODERN GUIDANCE
  * ---------------
@@ -60,7 +59,7 @@ import java.io.Serializable;
  *     of the TYPE (e.g. for `instanceof` checks or as a generic upper bound).
  *   - The JDK keeps `Serializable` and `Cloneable` as interfaces partly for
  *     historical reasons - they predate annotations.
- *
+ * <p>
  *
  * This file demonstrates:
  *   - using the built-in marker Serializable

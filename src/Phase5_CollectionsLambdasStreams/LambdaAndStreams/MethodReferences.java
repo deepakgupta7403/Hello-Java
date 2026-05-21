@@ -14,54 +14,64 @@ import java.util.stream.Collectors;
  * -----------------------------------------------
  * A METHOD REFERENCE is a compact replacement for a lambda whose body just
  * calls an existing method. The syntax is `Target::method`.
+ * <p>
  *
  *      // these two are equivalent
  *      list.stream().map(s -&gt; s.toUpperCase());
  *      list.stream().map(String::toUpperCase);
- *
+ * <p>
  *
  * The Four Forms
  * --------------
+ * <p>
  *
  *   1. STATIC method                Class::staticMethod
+ * <p>
  *
  *         stream.map(Integer::parseInt);
  *         stream.mapToInt(Integer::parseInt);
+ * <p>
  *
  *   2. INSTANCE of a specific OBJECT     instance::method
+ * <p>
  *
  *         System.out::println              // calls println on System.out
+ * <p>
  *
  *         List&lt;String&gt; out = new ArrayList&lt;&gt;();
  *         stream.forEach(out::add);        // calls add on this specific List
+ * <p>
  *
  *   3. INSTANCE method of an ARBITRARY object of a type   Class::method
+ * <p>
  *
  *         stream.map(String::toUpperCase); // first arg is the receiver
  *         stream.filter(String::isEmpty);
  *         list.sort(String::compareTo);
+ * <p>
  *
  *   4. CONSTRUCTOR                  Class::new
+ * <p>
  *
  *         stream.toArray(String[]::new);
  *         Supplier&lt;ArrayList&lt;String&gt;&gt; mk = ArrayList::new;
  *         BiFunction&lt;Integer, Integer, int[]&gt; arrays = int[]::new;   // hmm - this is tricky
  *         Function&lt;String, StringBuilder&gt; wrap = StringBuilder::new;
- *
+ * <p>
  *
  * Why Prefer Method References?
  * -----------------------------
  *   - More readable than `s -&gt; s.toUpperCase()`.
  *   - Reads almost like English: "stream of names, sorted by length".
  *   - The compiler resolves the SAM target the same way as a lambda.
- *
+ * <p>
  *
  * When To Keep The Lambda
  * -----------------------
  *   - The body does more than one method call.
  *   - The receiver/argument order is unusual.
  *   - The method is overloaded and the inference becomes ambiguous.
- *
+ * <p>
  *
  * See Also
  * --------

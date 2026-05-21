@@ -8,7 +8,7 @@ import java.io.IOException;
  * ----------------------------------------
  * When a subclass OVERRIDES a method, there are strict rules about what
  * exceptions the override may declare in its `throws` clause.
- *
+ * <p>
  *
  * The Rule (Checked Exceptions Only)
  * ----------------------------------
@@ -16,29 +16,33 @@ import java.io.IOException;
  *     - the SAME checked exceptions as the parent, OR
  *     - SUBCLASSES of those checked exceptions, OR
  *     - NOTHING (declare fewer checked exceptions than the parent).
+ * <p>
  *
  *   It may NOT throw:
  *     - a NEW BROADER checked exception that the parent did not declare,
  *     - a checked exception that is unrelated to those the parent declared,
  *     - a checked exception that is a SUPERTYPE of one the parent declared.
+ * <p>
  *
  * Why this rule? CALLER COMPATIBILITY. Code that calls the parent type only
  * knows about the parent's `throws` clause. If a subclass introduced a brand-
  * new checked exception, callers wouldn't be required to handle it - they'd
  * be surprised at runtime.
- *
+ * <p>
  *
  * Unchecked Exceptions
  * --------------------
  * The rule does NOT apply to unchecked exceptions (RuntimeException and its
  * descendants). A subclass override may throw any RuntimeException it likes,
  * declared or not. Callers were already on the hook for unchecked exceptions.
- *
+ * <p>
  *
  * What Counts as "Same or Subclass"?
  * ----------------------------------
+ * <p>
  *
  *      Parent declares throws IOException
+ * <p>
  *
  *      OK   :  throws  (nothing)
  *      OK   :  throws  IOException
@@ -46,7 +50,7 @@ import java.io.IOException;
  *      BAD  :  throws  Exception                 (broader)
  *      BAD  :  throws  SQLException              (unrelated checked)
  *      OK   :  throws  IOException, RuntimeException   (RTE allowed anywhere)
- *
+ * <p>
  *
  * Interface Methods
  * -----------------
@@ -54,7 +58,7 @@ import java.io.IOException;
  * implementor. If a class implements multiple interfaces that declare the
  * same method with DIFFERENT throws clauses, the implementation must obey
  * the INTERSECTION of those clauses (or omit `throws` entirely).
- *
+ * <p>
  *
  * Constructors
  * ------------

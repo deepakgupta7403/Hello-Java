@@ -9,19 +9,21 @@ package Phase1_CoreLanguage.Operators;
  *      &     non-short-circuit AND  (rare - evaluates BOTH sides always)
  *      |     non-short-circuit OR   (rare - evaluates BOTH sides always)
  *      ^     XOR (exclusive or)
- *
+ * <p>
  *
  * Short-Circuit vs Non-Short-Circuit
  * ----------------------------------
  * - && and || stop evaluating as soon as the result is known. This is the SAFE
  *   way to combine null checks with method calls:
+ * <p>
  *
  *      if (s != null && s.length() > 0) { ... }   // safe - no NPE
  *      if (s != null & s.length() > 0)  { ... }   // dangerous - both sides evaluate
+ * <p>
  *
  * - & and | are used when the right side has SIDE EFFECTS you want to keep
  *   regardless. Almost always you want && and ||.
- *
+ * <p>
  *
  * Truth Tables
  * ------------

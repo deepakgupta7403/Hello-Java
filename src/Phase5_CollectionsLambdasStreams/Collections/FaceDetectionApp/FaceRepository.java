@@ -1,24 +1,11 @@
 package Phase5_CollectionsLambdasStreams.Collections.FaceDetectionApp;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.NavigableMap;
-import java.util.PriorityQueue;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * FaceRepository - the heart of the demo. ONE class that uses every
  * collection type from the framework:
+ * <p>
  *
  *   List&lt;Face&gt;                    - history of all detections (ArrayList)
  *   Deque&lt;List&lt;Face&gt;&gt;             - sliding window of recent FRAMES (ArrayDeque)
@@ -28,6 +15,7 @@ import java.util.TreeMap;
  *   Map&lt;String, Long&gt;             - per-person detection counter (HashMap)
  *   NavigableMap&lt;Long, Face&gt;      - timeline by timestamp (TreeMap)
  *   PriorityQueue&lt;Face&gt;           - alerts queue ranked by confidence
+ * <p>
  *
  * Each collection is justified by what the OPERATION needs. That is the
  * design lesson: choose the data structure that makes the dominant query

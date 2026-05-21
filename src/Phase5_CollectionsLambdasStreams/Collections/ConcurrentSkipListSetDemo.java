@@ -8,12 +8,13 @@ import java.util.concurrent.ConcurrentSkipListSet;
  * The thread-safe twin of TreeSet. It is BUILT on a skip list - a
  * probabilistic data structure that supports O(log n) sorted operations
  * with cheap LOCK-FREE concurrent access (it uses CAS, not locks).
+ * <p>
  *
  *      Backed by:   ConcurrentSkipListMap (similar relationship to
  *                   TreeSet -> TreeMap)
  *      Implements:  NavigableSet&lt;E&gt;, SortedSet&lt;E&gt;, Set&lt;E&gt;
  *      Concurrency: lock-free reads, weakly-consistent iterators
- *
+ * <p>
  *
  * Why It Exists
  * -------------
@@ -22,7 +23,7 @@ import java.util.concurrent.ConcurrentSkipListSet;
  *     contention crushes throughput under load.
  *   - ConcurrentSkipListSet allows many threads to read and write
  *     concurrently with no global lock.
- *
+ * <p>
  *
  * When To Use It
  * --------------
@@ -30,7 +31,7 @@ import java.util.concurrent.ConcurrentSkipListSet;
  *   - You want NavigableSet-style queries (floor / ceiling / range / etc.)
  *     in concurrent code.
  *   - Read-heavy or moderately write-heavy scenarios.
- *
+ * <p>
  *
  * When NOT To Use It
  * ------------------
@@ -38,21 +39,21 @@ import java.util.concurrent.ConcurrentSkipListSet;
  *   - You need contains/add to be the absolute fastest in a multi-threaded
  *     context AND you do not need ordering -> a ConcurrentHashMap's
  *     KeySet view is faster, but unordered.
- *
+ * <p>
  *
  * Big-O
  * -----
  *   add / remove / contains / size                 O(log n) expected
  *   first / last / floor / ceiling / lower / higher  O(log n) expected
  *   iteration                                      O(n)
- *
+ * <p>
  *
  * Weakly Consistent Iterators
  * ---------------------------
  * Iterators do NOT throw ConcurrentModificationException. They reflect the
  * state of the set AT SOME POINT after the iterator was created, and may
  * or may not see concurrent updates. They never break, just blur.
- *
+ * <p>
  *
  * Null is NOT Allowed
  * -------------------

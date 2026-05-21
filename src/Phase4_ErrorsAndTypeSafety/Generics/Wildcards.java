@@ -10,47 +10,53 @@ import java.util.List;
  * A WILDCARD `?` is an "unknown type" placeholder used in TYPE ARGUMENTS
  * (when REFERRING to a generic type), never in type PARAMETER lists. It is
  * how Java relaxes the "generics are not covariant" rule when you need it.
- *
+ * <p>
  *
  * Three Flavours
  * --------------
+ * <p>
  *
  *   UNBOUNDED      List&lt;?&gt;
  *      - "a list of SOMETHING - I don't know or care what"
  *      - You can read elements only as Object.
  *      - You cannot add anything except null.
  *      - Useful for size, isEmpty, clear, toString, iteration as Object.
+ * <p>
  *
  *   UPPER-BOUNDED  List&lt;? extends Number&gt;
  *      - "a list of Number or some subtype" (PRODUCER)
  *      - You can READ elements as Number.
  *      - You CANNOT add anything (except null) - we don't know which subtype.
+ * <p>
  *
  *   LOWER-BOUNDED  List&lt;? super Integer&gt;
  *      - "a list that can hold Integer (Integer or any supertype)" (CONSUMER)
  *      - You can ADD Integer (and its subtypes).
  *      - Reads come back typed as Object.
- *
+ * <p>
  *
  * Why Wildcards Exist
  * -------------------
  * Generics are INVARIANT: List&lt;String&gt; is NOT a List&lt;Object&gt; even though
  * String is-a Object. This rule prevents you from putting a Date into a
  * List&lt;String&gt; via an Object-typed reference - a feature, not a bug.
+ * <p>
  *
  * But sometimes you only want to READ from a list of unknown type, or only
  * WRITE Integers into a list of Numbers. Wildcards bridge the gap safely.
- *
+ * <p>
  *
  * The PECS Mnemonic
  * -----------------
  *      Producer Extends, Consumer Super.
+ * <p>
  *
  * - If a parameter PRODUCES T values for you, use `? extends T`.
  * - If a parameter CONSUMES T values from you, use `? super T`.
+ * <p>
  *
  * See PecsPrinciple.java for worked examples.
- *
+ * <p>
  *
  * Wildcards vs Type Parameters - When to Use Which
  * ------------------------------------------------
@@ -59,6 +65,7 @@ import java.util.List;
  *        -> use a NAMED type parameter   &lt;T&gt;
  *   - Just consuming the collection or producing values from it?
  *        -> a WILDCARD is more flexible.
+ * <p>
  *
  *      static &lt;T&gt; T firstOf(List&lt;T&gt; xs)              // need to RETURN a T
  *      static void printAll(List&lt;?&gt; xs)                // just iterating

@@ -2,11 +2,7 @@ package Phase8_PracticalAPIs.FileIO;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.nio.file.StandardOpenOption;
+import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
 import java.util.List;
@@ -15,14 +11,16 @@ import java.util.List;
  * java.nio.file — Path and Files
  * ------------------------------
  * The modern Java file API (since 7). Two main types:
+ * <p>
  *
  *      Path       - an immutable file-system path. Replaces File.
  *                   Made via Path.of(...) or Paths.get(...).
+ * <p>
  *
  *      Files      - a class of STATIC utility methods that DO the work:
  *                   read, write, copy, move, delete, walk, attributes,
  *                   streams, etc. ~90% of file code lives in here.
- *
+ * <p>
  *
  * Why prefer this over java.io.File?
  * ----------------------------------
@@ -34,7 +32,7 @@ import java.util.List;
  *   - Streams (Files.lines, Files.list, Files.walk).
  *   - File-system events (WatchService).
  *   - Pluggable file systems (ZIP file as a virtual FS).
- *
+ * <p>
  *
  * Common Path operations
  * ----------------------
@@ -48,7 +46,7 @@ import java.util.List;
  *      p.toAbsolutePath()            - relative -> absolute
  *      p.toRealPath()                - resolves symlinks too
  *      p.startsWith / endsWith       - structural matching
- *
+ * <p>
  *
  * Common Files operations
  * -----------------------

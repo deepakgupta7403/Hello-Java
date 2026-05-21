@@ -6,7 +6,7 @@ package Phase5_CollectionsLambdasStreams.Collections;
  * The COLLECTIONS FRAMEWORK is the standard library for storing and
  * manipulating groups of objects. It is one of the most important pieces of
  * the JDK; almost every non-trivial Java program uses it.
- *
+ * <p>
  *
  * Why a Framework, Not Just Arrays?
  * ---------------------------------
@@ -15,6 +15,7 @@ package Phase5_CollectionsLambdasStreams.Collections;
  *   - One ELEMENT TYPE only.
  *   - Few BUILT-IN OPERATIONS (no search, sort, remove-by-value).
  *   - No POLYMORPHISM across "list-like things".
+ * <p>
  *
  * The Collections Framework gives you:
  *   - GROWABLE containers that resize automatically.
@@ -23,10 +24,11 @@ package Phase5_CollectionsLambdasStreams.Collections;
  *   - INTERFACES so you can swap implementations without changing callers.
  *   - INTEROPERABILITY with streams, lambdas, parallel processing, and the
  *     rest of java.util.
- *
+ * <p>
  *
  * The Hierarchy in One Picture
  * ----------------------------
+ * <p>
  *
  *      Iterable<E>
  *          |
@@ -53,10 +55,11 @@ package Phase5_CollectionsLambdasStreams.Collections;
  *          |             |-- ArrayDeque
  *          |             |-- LinkedList (yes, also a List!)
  *          |             `-- BlockingDeque (concurrent)
+ * <p>
  *
  * NOTE: Map is NOT a sub-type of Collection. A Map is a separate root
  * because its operations work on KEY/VALUE PAIRS, not on single elements.
- *
+ * <p>
  *
  * Three "Buckets" of Implementations
  * ----------------------------------
@@ -64,7 +67,7 @@ package Phase5_CollectionsLambdasStreams.Collections;
  *      meaningful "first / last".
  *   2. UNIQUENESS (Set) - no duplicates, no positional access by default.
  *   3. KEY -> VALUE (Map) - look up a value by a key.
- *
+ * <p>
  *
  * Picking The Right Implementation (90% Of Real-World Use)
  * --------------------------------------------------------
@@ -79,7 +82,7 @@ package Phase5_CollectionsLambdasStreams.Collections;
  *   FIFO queue                           -> ArrayDeque
  *   Priority queue                       -> PriorityQueue
  *   Stack                                -> ArrayDeque (push / pop / peek)
- *
+ * <p>
  *
  * What This Folder Covers
  * -----------------------

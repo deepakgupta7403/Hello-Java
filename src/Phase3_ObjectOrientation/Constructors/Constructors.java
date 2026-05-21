@@ -6,7 +6,7 @@ package Phase3_ObjectOrientation.Constructors;
  * A CONSTRUCTOR is a special method that runs automatically when a new object
  * is created with `new`. Its job is to put the object into a valid initial
  * state: assign fields, allocate resources, register the object somewhere.
- *
+ * <p>
  *
  * Constructor Rules
  * -----------------
@@ -21,7 +21,7 @@ package Phase3_ObjectOrientation.Constructors;
  *    `super();` unless you wrote `this(...)` or `super(...)` explicitly.
  *  - Constructors are NOT inherited (subclasses must define their own and
  *    call super(...) if needed).
- *
+ * <p>
  *
  * Types Demonstrated Here
  * -----------------------
@@ -32,7 +32,7 @@ package Phase3_ObjectOrientation.Constructors;
  *  5. COPY constructor             - "deep" or "shallow" copy of another object
  *  6. PRIVATE constructor          - blocks `new` from outside (singletons,
  *                                    utility classes, builders)
- *
+ * <p>
  *
  * Common Errors / Pitfalls
  * ------------------------

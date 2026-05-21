@@ -12,6 +12,7 @@ import java.util.concurrent.Future;
  * ----------------------------------------------
  * A virtual thread is a thread implemented by the JVM rather than the
  * OS. It looks and behaves exactly like a normal Thread, but:
+ * <p>
  *
  *   - Creating one is CHEAP (microseconds, kilobytes).
  *   - The JVM can multiplex MILLIONS of them on a small pool of
@@ -20,11 +21,12 @@ import java.util.concurrent.Future;
  *   - When a virtual thread blocks on an I/O call (or other JDK
  *     blocking primitive), the JVM UNMOUNTS it from its carrier so
  *     the carrier can run another virtual thread.
+ * <p>
  *
  * Net effect: you write old-fashioned synchronous, blocking code with
  * Thread.sleep / readLine / Socket.read, and the JVM gives you the
  * scalability of an event-loop runtime.
- *
+ * <p>
  *
  * Creating them
  * -------------
@@ -32,7 +34,7 @@ import java.util.concurrent.Future;
  *   Thread.ofVirtual().name("vt-1").start(r)
  *   Thread.ofVirtual().factory()                  - ThreadFactory
  *   Executors.newVirtualThreadPerTaskExecutor()  - one VT per task
- *
+ * <p>
  *
  * What they're great at
  * ---------------------
@@ -40,24 +42,25 @@ import java.util.concurrent.Future;
  *   - Per-request handling without "reactive" obfuscation.
  *   - Replacing thread pools whose only purpose was to limit thread
  *     COUNT (not to limit upstream concurrency).
- *
+ * <p>
  *
  * What they don't help with
  * -------------------------
  *   - Pure CPU-bound work. The carrier count is your real parallelism.
  *   - Code that PINS the virtual thread to its carrier (see below).
- *
+ * <p>
  *
  * Pinning
  * -------
  * A virtual thread is pinned to its carrier (can't be unmounted) when:
  *   - It is inside a `synchronized` block (Java 21).
  *   - It calls a native method via JNI.
+ * <p>
  *
  * For high-throughput VT code, replace synchronized critical sections
  * around long-running operations with ReentrantLock. (Future Java
  * releases plan to lift the synchronized-pinning restriction.)
- *
+ * <p>
  *
  * ThreadLocal and virtual threads
  * -------------------------------

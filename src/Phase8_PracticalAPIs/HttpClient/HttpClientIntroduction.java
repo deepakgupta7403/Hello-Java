@@ -11,14 +11,14 @@ import java.time.Duration;
  * -----------------------------------------------
  * Built into Java 11+. Modern API for HTTP/1.1, HTTP/2, and WebSocket.
  * Replaces the awkward HttpURLConnection.
- *
+ * <p>
  *
  * The three actors
  * ----------------
  *   HttpClient        - long-lived, thread-safe; build once, reuse.
  *   HttpRequest       - immutable, built via a Builder.
  *   HttpResponse<T>   - immutable; T is the body-handler's payload type.
- *
+ * <p>
  *
  * Hello, world
  * ------------
@@ -28,7 +28,7 @@ import java.time.Duration;
  *                                    .build();
  *      HttpResponse<String> res = client.send(req, BodyHandlers.ofString());
  *      System.out.println(res.statusCode() + " " + res.body());
- *
+ * <p>
  *
  * Body handlers (built-in)
  * ------------------------
@@ -38,7 +38,7 @@ import java.time.Duration;
  *   ofFile(path)            - dump straight to a file
  *   ofLines()               - Stream<String> of response lines
  *   discarding()            - throw away the body
- *
+ * <p>
  *
  * Body publishers (for sending bodies)
  * ------------------------------------
@@ -47,13 +47,13 @@ import java.time.Duration;
  *   ofByteArray(byte[])
  *   ofFile(path)
  *   ofInputStream(supplier)
- *
+ * <p>
  *
  * Sync vs async
  * -------------
  *   client.send(req, handler)              - blocks
  *   client.sendAsync(req, handler)         - returns CompletableFuture<HttpResponse>
- *
+ * <p>
  *
  * Configuration
  * -------------
@@ -65,7 +65,7 @@ import java.time.Duration;
  *       .authenticator(Authenticator.requestPasswordAuthentication...)
  *       .executor(myExecutor)               // for async callbacks
  *       .build();
- *
+ * <p>
  *
  * Network requirement
  * -------------------

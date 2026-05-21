@@ -2,6 +2,7 @@ package Phase7_Concurrency.Multithreading.SnakeGame;
 
 /**
  * Four-direction movement enum for the snake.
+ * <p>
  *
  * Each direction carries its (dx, dy) cell delta and knows which
  * direction is its OPPOSITE — we use that to reject illegal 180° turns

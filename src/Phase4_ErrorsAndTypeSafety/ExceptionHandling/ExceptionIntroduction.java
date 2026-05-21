@@ -7,15 +7,17 @@ package Phase4_ErrorsAndTypeSafety.ExceptionHandling;
  * program. When an exception is THROWN, the JVM looks up the call stack for
  * a matching handler; if it finds none, the program terminates and the JVM
  * prints the stack trace.
+ * <p>
  *
  * Java's exception system has three jobs:
  *   1. SEPARATE error handling from regular code (no error codes mixed in).
  *   2. PROPAGATE failures up the stack until something handles them.
  *   3. ENFORCE certain kinds of failure to be acknowledged (checked exceptions).
- *
+ * <p>
  *
  * The Throwable Hierarchy
  * -----------------------
+ * <p>
  *
  *      Throwable                                         (top of the chain)
  *      |
@@ -36,7 +38,7 @@ package Phase4_ErrorsAndTypeSafety.ExceptionHandling;
  *                  |-- ArithmeticException
  *                  |-- NumberFormatException
  *                  |-- ConcurrentModificationException
- *
+ * <p>
  *
  * Checked vs Unchecked - Quick Rule
  * ---------------------------------
@@ -44,11 +46,12 @@ package Phase4_ErrorsAndTypeSafety.ExceptionHandling;
  *               FORCES you to either catch them or declare them with `throws`.
  *               Used for failures the caller is expected to plan for
  *               (a file might be missing, the DB might be down).
+ * <p>
  *
  *   UNCHECKED - RuntimeException and its descendants, plus all Errors. The
  *               compiler does NOT force you to acknowledge them. Used for
  *               programming bugs (NPE, IOOBE) and unrecoverable conditions.
- *
+ * <p>
  *
  * Anatomy of a Stack Trace
  * ------------------------
@@ -57,10 +60,11 @@ package Phase4_ErrorsAndTypeSafety.ExceptionHandling;
  *          at java.base/java.lang.Integer.parseInt(...)
  *          at MyApp.run(MyApp.java:17)            <- your code, your line
  *          at MyApp.main(MyApp.java:9)
+ * <p>
  *
  * Read it top to bottom: the EXCEPTION type, its message, then the call
  * chain (newest first). The first `at MyApp.X(...)` line is usually the bug.
- *
+ * <p>
  *
  * Five Keywords That Make Exception Handling Work
  * -----------------------------------------------
@@ -70,7 +74,7 @@ package Phase4_ErrorsAndTypeSafety.ExceptionHandling;
  *      throw      - raise an exception explicitly
  *      throws     - declare that a method may propagate certain checked
  *                   exceptions to its caller
- *
+ * <p>
  *
  * What This Folder Covers
  * -----------------------

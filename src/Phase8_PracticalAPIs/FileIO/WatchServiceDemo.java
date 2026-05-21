@@ -2,13 +2,7 @@ package Phase8_PracticalAPIs.FileIO;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardWatchEventKinds;
-import java.nio.file.WatchEvent;
-import java.nio.file.WatchKey;
-import java.nio.file.WatchService;
+import java.nio.file.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -17,7 +11,7 @@ import java.util.concurrent.TimeUnit;
  * The OS knows when files change; the JVM exposes that through a
  * WatchService. You REGISTER directories with the service for events
  * of interest, then POLL for changes.
- *
+ * <p>
  *
  * Event kinds
  * -----------
@@ -25,7 +19,7 @@ import java.util.concurrent.TimeUnit;
  *   ENTRY_MODIFY   - contents changed
  *   ENTRY_DELETE   - deleted
  *   OVERFLOW       - events were lost (buffer ran out)
- *
+ * <p>
  *
  * Lifecycle
  * ---------
@@ -33,13 +27,14 @@ import java.util.concurrent.TimeUnit;
  *      WatchKey key = dir.register(ws,
  *              StandardWatchEventKinds.ENTRY_CREATE,
  *              StandardWatchEventKinds.ENTRY_MODIFY);
+ * <p>
  *
  *      while (true) {
  *          WatchKey k = ws.take();           // or poll(timeout, unit)
  *          for (WatchEvent<?> ev : k.pollEvents()) { ... }
  *          if (!k.reset()) break;            // key invalid -> dir gone
  *      }
- *
+ * <p>
  *
  * Caveats
  * -------
@@ -50,7 +45,7 @@ import java.util.concurrent.TimeUnit;
  *     report MODIFY twice in quick succession.
  *   - One ENTRY_MODIFY may correspond to several writes (debounce).
  *   - It DOES NOT block the JVM from exiting.
- *
+ * <p>
  *
  * This demo writes a few files in a separate thread and polls for the
  * events for a couple of seconds.

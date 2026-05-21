@@ -5,10 +5,11 @@ package Phase3_ObjectOrientation.Interfaces;
  * -----------------------------------------
  * Both classes and interfaces describe a TYPE in Java. The difference is in
  * what each can carry and how Java's inheritance model treats them.
- *
+ * <p>
  *
  * Side-by-Side
  * ------------
+ * <p>
  *
  *  Aspect              | class                         | interface
  *  --------------------+-------------------------------+-------------------------------
@@ -26,7 +27,7 @@ package Phase3_ObjectOrientation.Interfaces;
  *  Access modifiers    | public / protected / pkg /    | members may be public (default)
  *  on members          |   private                     |   or private (Java 9+)
  *  Used to express     | "what an object IS"           | "what an object CAN DO"
- *
+ * <p>
  *
  * Picking Between Them
  * --------------------
@@ -34,17 +35,18 @@ package Phase3_ObjectOrientation.Interfaces;
  *   - Want a CONTRACT a class can adopt alongside its existing parent? -> INTERFACE.
  *   - Need to target LAMBDAS? -> functional INTERFACE (single abstract method).
  *   - Want a CLOSED set of subtypes you control? -> sealed CLASS or sealed INTERFACE.
- *
+ * <p>
  *
  * Real-World JDK Examples
  * -----------------------
  *   List<E>            - INTERFACE  (the contract)
  *   AbstractList<E>    - CLASS      (a skeleton implementation - shared code)
  *   ArrayList<E>       - CLASS extends AbstractList implements List
+ * <p>
  *
  *   The JDK consistently pairs interfaces (contract) with abstract classes
  *   (shared code) - a pattern worth copying in your own designs.
- *
+ * <p>
  *
  * See Also
  * --------

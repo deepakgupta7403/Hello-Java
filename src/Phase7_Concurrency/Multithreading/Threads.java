@@ -6,18 +6,19 @@ package Phase7_Concurrency.Multithreading;
  * Thread is the JVM-level representation of a thread of execution.
  * Every Java program starts with one Thread (the "main" thread). All
  * other threads must be CREATED explicitly.
- *
+ * <p>
  *
  * Two Ways To Define Work
  * -----------------------
  *   1. EXTEND Thread             - override run(). Couples your code to
  *                                  the Thread class. Cannot also extend
  *                                  another class.
+ * <p>
  *
  *   2. IMPLEMENT Runnable        - pass to a Thread / ExecutorService.
  *                                  PREFERRED — separates the work from
  *                                  the mechanism. Works with thread pools.
- *
+ * <p>
  *
  * Important Constructors
  * ----------------------
@@ -25,7 +26,7 @@ package Phase7_Concurrency.Multithreading;
  *   new Thread(Runnable r)                  - run r.run() on a new thread.
  *   new Thread(Runnable r, String name)     - give it a debugging-friendly name.
  *   new Thread(ThreadGroup g, Runnable r)   - join a thread group (rarely used).
- *
+ * <p>
  *
  * Important Instance Methods
  * --------------------------
@@ -41,7 +42,7 @@ package Phase7_Concurrency.Multithreading;
  *   getPriority() / setPriority(int)
  *   setDaemon(boolean) - daemon threads don't keep the JVM alive.
  *   getState()        - lifecycle state (NEW, RUNNABLE, ...).
- *
+ * <p>
  *
  * Important Static Methods
  * ------------------------
@@ -50,14 +51,14 @@ package Phase7_Concurrency.Multithreading;
  *   yield()           - hint to the scheduler: I'm OK to wait.
  *   onSpinWait()      - hint inside a busy-wait loop (Java 9+).
  *   activeCount()     - number of active threads in the current group.
- *
+ * <p>
  *
  * Static Methods Java 19+ — Virtual Threads
  * -----------------------------------------
  *   ofPlatform()      - builder for a classic OS-backed thread.
  *   ofVirtual()       - builder for a virtual (user-mode) thread.
  *   startVirtualThread(Runnable) - one-shot virtual thread.
- *
+ * <p>
  *
  * Naming, IDs, Equality
  * ---------------------

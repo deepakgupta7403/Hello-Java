@@ -11,13 +11,15 @@ import java.util.stream.Stream;
  * Sequential vs Parallel Streams
  * ------------------------------
  * Every Stream is one of:
+ * <p>
  *
  *   SEQUENTIAL - one thread walks the pipeline element by element.
  *                The DEFAULT mode.
+ * <p>
  *
  *   PARALLEL   - the source is SPLIT into chunks, each chunk processed on
  *                a worker thread, and the results are MERGED at the end.
- *
+ * <p>
  *
  * How to Get Each
  * ---------------
@@ -25,7 +27,7 @@ import java.util.stream.Stream;
  *      list.parallelStream()               // parallel from the start
  *      anyStream.parallel()                 // toggle on
  *      anyStream.sequential()               // toggle back
- *
+ * <p>
  *
  * What Drives the Parallelism
  * ---------------------------
@@ -33,7 +35,7 @@ import java.util.stream.Stream;
  * its size is `Runtime.getRuntime().availableProcessors() - 1`. That means
  * EVERY parallel stream in your JVM shares the same workers. Long-running
  * tasks in one parallel pipeline can starve another.
- *
+ * <p>
  *
  * When Parallel Streams Help
  * --------------------------
@@ -44,7 +46,7 @@ import java.util.stream.Stream;
  *     split well. LinkedList, Stream.iterate(...) do not.
  *   - The terminal op is well-defined for parallel: reduce, collect with
  *     proper collectors. forEach is OK, forEachOrdered is slow.
- *
+ * <p>
  *
  * When Parallel HURTS
  * -------------------
@@ -53,13 +55,13 @@ import java.util.stream.Stream;
  *   - The source is hard to split (LinkedList, iterators).
  *   - You need ENCOUNTER ORDER (forEachOrdered serialises everything).
  *   - Your lambdas have SIDE EFFECTS or non-thread-safe state.
- *
+ * <p>
  *
  * Side-Effect Trap
  * ----------------
  * Parallel streams running side-effecting code is a data-race waiting to
  * happen. Use proper reductions / collectors instead.
- *
+ * <p>
  *
  * Order Differences
  * -----------------
@@ -67,7 +69,7 @@ import java.util.stream.Stream;
  *   findAny                  parallel-friendly - may return any matching
  *   forEach                  in parallel, no order guarantee
  *   forEachOrdered           preserves encounter order even in parallel
- *
+ * <p>
  *
  * Rule of Thumb
  * -------------

@@ -1,11 +1,6 @@
 package Phase5_CollectionsLambdasStreams.LambdaAndStreams;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.IntSummaryStatistics;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -16,14 +11,16 @@ import java.util.stream.Stream;
  * A TERMINAL operation kicks off the pipeline and produces a side effect
  * or a value. After a terminal op runs, the stream is CLOSED.
  * <p>
- * <p>
+ *
  * Common Terminal Operations
  * --------------------------
  * <p>
+ *
  * Side-effecting
  * forEach(Consumer)
  * forEachOrdered(Consumer)             - preserves encounter order, even in parallel
  * <p>
+ *
  * Reduction / aggregation
  * reduce(identity, BinaryOperator)
  * reduce(BinaryOperator) -&gt; Optional&lt;T&gt;
@@ -33,6 +30,7 @@ import java.util.stream.Stream;
  * min(Comparator) / max(Comparator) -&gt; Optional
  * sum / average / IntStream.sum / .summaryStatistics  (primitive streams)
  * <p>
+ *
  * Existence / search (SHORT-CIRCUIT)
  * anyMatch(Predicate)                  - true if any element matches
  * allMatch(Predicate)                  - true if every element matches
@@ -40,29 +38,36 @@ import java.util.stream.Stream;
  * findFirst()                          - Optional of first element
  * findAny()                            - Optional of any element (parallel-friendly)
  * <p>
+ *
  * Conversion
  * toArray() / toArray(IntFunction)
  * toList()                             - Java 16+, returns unmodifiable List
  * iterator()                            - bridge back to Iterator
  * <p>
- * <p>
+ *
  * Reduce - Three Forms Explained
  * ------------------------------
  * <p>
+ *
  * 1. T reduce(T identity, BinaryOperator&lt;T&gt; op)
  * <p>
+ *
  * int sum = stream.reduce(0, Integer::sum);
  * <p>
+ *
  * 2. Optional&lt;T&gt; reduce(BinaryOperator&lt;T&gt; op)
  * <p>
+ *
  * Optional&lt;Integer&gt; max = stream.reduce(Integer::max);
  * <p>
+ *
  * 3. &lt;U&gt; U reduce(U identity, BiFunction&lt;U, T, U&gt; accumulator,
  * BinaryOperator&lt;U&gt; combiner)
  * <p>
+ *
  * The "U is a different type" form, useful for parallel streams.
  * <p>
- * <p>
+ *
  * Match Operations Short-Circuit
  * ------------------------------
  * anyMatch / allMatch / noneMatch return as soon as the answer is decided.

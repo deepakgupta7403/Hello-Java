@@ -6,27 +6,31 @@ package Phase3_ObjectOrientation.SealedClasses;
  * A SEALED class or interface gives you EXPLICIT CONTROL over which classes
  * can extend or implement it. Before sealed classes you could only choose
  * between:
+ * <p>
  *
  *   - public         - anyone can subclass / implement
  *   - final          - nobody can subclass
  *   - package-private- only the same package can subclass
+ * <p>
  *
  * Sealed gives you a middle ground: list the ALLOWED subtypes by name.
+ * <p>
  *
  *      public sealed interface Shape
  *          permits Circle, Square, Triangle { ... }
+ * <p>
  *
  *      public final  class Circle   implements Shape { ... }
  *      public final  class Square   implements Shape { ... }
  *      public non-sealed class Triangle implements Shape { ... }
- *
+ * <p>
  *
  * Three Subclass Choices (every permitted child must pick one)
  * ------------------------------------------------------------
  *   1. final         - cannot be extended further.
  *   2. sealed        - extendable, but only by another permits list.
  *   3. non-sealed    - extendable by anyone; ends the sealing chain.
- *
+ * <p>
  *
  * Where Sealed Classes Are Useful
  * -------------------------------
@@ -35,7 +39,7 @@ package Phase3_ObjectOrientation.SealedClasses;
  *   - Letting the compiler verify EXHAUSTIVENESS in a `switch` expression -
  *     no `default` needed when you cover every permitted subtype.
  *   - Building algebraic-data-type-like designs without third-party libraries.
- *
+ * <p>
  *
  * Layout Requirements
  * -------------------
@@ -46,7 +50,7 @@ package Phase3_ObjectOrientation.SealedClasses;
  *     omitted and the compiler infers it.
  *   - Every permitted subtype must DIRECTLY extend or implement the sealed
  *     type.
- *
+ * <p>
  *
  * Sealed Classes + Pattern Matching (Java 21)
  * -------------------------------------------
@@ -54,6 +58,7 @@ package Phase3_ObjectOrientation.SealedClasses;
  * because the compiler knows all the cases. Add a new permitted subtype and
  * every switch becomes a compile error until you handle the new case -
  * exactly what you want.
+ * <p>
  *
  *      String describe(Shape s) {
  *          return switch (s) {
@@ -62,7 +67,7 @@ package Phase3_ObjectOrientation.SealedClasses;
  *              case Triangle t  -> "triangle";
  *          };
  *      }
- *
+ * <p>
  *
  * This file fits the whole demo into ONE file using nested classes; the
  * `permits` clause is OPTIONAL when the permitted subtypes are in the same

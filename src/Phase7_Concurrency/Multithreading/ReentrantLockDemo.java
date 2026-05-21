@@ -10,18 +10,20 @@ import java.util.concurrent.locks.ReentrantLock;
  * java.util.concurrent.locks.ReentrantLock
  * ----------------------------------------
  * A drop-in upgrade from `synchronized` with these extras:
+ * <p>
  *
  *   - tryLock()                 - non-blocking attempt
  *   - tryLock(time, unit)       - timed attempt
  *   - lockInterruptibly()       - cancel mid-acquire
  *   - constructor(boolean fair) - FIFO acquisition order
  *   - newCondition() x N        - multiple condition variables
+ * <p>
  *
  * It is REENTRANT — the same thread can acquire it multiple times, each
  * needing a matching unlock(). It is NOT held forever if your thread
  * dies: but if your code forgets to unlock(), nobody else can ever
  * acquire it. ALWAYS use try/finally.
- *
+ * <p>
  *
  * Fair vs unfair
  * --------------
@@ -29,24 +31,26 @@ import java.util.concurrent.locks.ReentrantLock;
  *                      Higher throughput. Possible STARVATION.
  *   Fair:             waiters acquire in FIFO order. Lower throughput.
  *                      Predictable.
- *
+ * <p>
  *
  * Conditions
  * ----------
  * Each ReentrantLock can have ANY NUMBER of Condition objects. Each is
  * its own wait queue. Classic example: a bounded buffer with notEmpty
  * and notFull conditions instead of a single notifyAll firing for both.
+ * <p>
  *
  *      Lock        lock     = new ReentrantLock();
  *      Condition   notEmpty = lock.newCondition();
  *      Condition   notFull  = lock.newCondition();
+ * <p>
  *
  * Condition methods:
  *      await()                 / signal()
  *      await(time, unit)       / signalAll()
  *      awaitUntil(deadline)
  *      awaitUninterruptibly()
- *
+ * <p>
  *
  * Diagnostics
  * -----------

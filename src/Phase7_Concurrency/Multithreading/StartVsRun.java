@@ -4,13 +4,15 @@ package Phase7_Concurrency.Multithreading;
  * Thread.start() vs Thread.run()
  * ------------------------------
  * One of the most common interview / debugging traps in Java.
+ * <p>
  *
  *   start()  - Asks the JVM to create a new OS thread (or virtual thread)
  *              and run() will be invoked ON THAT NEW THREAD.
+ * <p>
  *
  *   run()    - Just a normal method. Calling it directly executes the body
  *              on the CURRENT thread — no new thread is created at all.
- *
+ * <p>
  *
  * Why It Matters
  * --------------
@@ -18,7 +20,7 @@ package Phase7_Concurrency.Multithreading;
  * sleeping) APPEARS to "work" if you call run() — it just runs serially
  * on the caller. No parallelism, no throughput, no concurrency bugs to
  * catch. The bug only shows when load arrives.
- *
+ * <p>
  *
  * Other Rules
  * -----------
@@ -27,7 +29,7 @@ package Phase7_Concurrency.Multithreading;
  *   - run() can be called any number of times like any normal method.
  *   - You override run() to define the work, but you NEVER call it. The
  *     JVM calls it for you when start() spins up the new thread.
- *
+ * <p>
  *
  * In Modern Java
  * --------------

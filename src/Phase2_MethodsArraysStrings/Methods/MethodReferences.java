@@ -12,44 +12,50 @@ import java.util.function.Supplier;
  * ---------------------------
  * A method reference is a compact, expressive ALTERNATIVE TO A LAMBDA when the
  * lambda just calls an existing method. Syntax:
+ * <p>
  *
  *      Target::methodName
- *
+ * <p>
  *
  * Four Forms of Method References
  * -------------------------------
+ * <p>
  *
  *  1. STATIC method                    Class::staticMethod
+ * <p>
  *
  *         Function<String, Integer> p = Integer::parseInt;
  *         // equivalent lambda:  s -> Integer.parseInt(s)
- *
+ * <p>
  *
  *  2. INSTANCE method of a PARTICULAR object    instance::method
+ * <p>
  *
  *         StringBuilder sb = new StringBuilder();
  *         Consumer<String> append = sb::append;
  *         // equivalent lambda:  s -> sb.append(s)
- *
+ * <p>
  *
  *  3. INSTANCE method of an ARBITRARY object of a type    Class::method
+ * <p>
  *
  *         Function<String, Integer> len = String::length;
  *         // equivalent lambda:  s -> s.length()
- *
+ * <p>
  *
  *  4. CONSTRUCTOR reference            Class::new
+ * <p>
  *
  *         Supplier<ArrayList<String>> mk = ArrayList::new;
  *         Function<String, StringBuilder> wrap = StringBuilder::new;
- *
+ * <p>
  *
  * Why Use Them?
  * -------------
  *  - Less noise than the equivalent lambda.
  *  - Reads almost like English: "stream of names, sort by String::length".
  *  - Encourages thinking in terms of WHAT to apply rather than HOW.
- *
+ * <p>
  *
  * When To Stick With a Lambda
  * ---------------------------

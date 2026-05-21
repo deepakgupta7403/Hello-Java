@@ -1,56 +1,56 @@
 package Phase4_ErrorsAndTypeSafety.Annotations;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Repeatable;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 /**
  * Custom Annotations
  * ------------------
  * Declare with `@interface` and decorate with meta-annotations.
+ * <p>
  *
  *      @Retention(RetentionPolicy.RUNTIME)
  *      @Target(ElementType.METHOD)
  *      public @interface Audited {
  *          String label() default "";
  *      }
- *
+ * <p>
  *
  * Allowed element types
  * ---------------------
  *   - Primitives, String, Class, an enum type
  *   - Other annotations
  *   - Arrays of any of the above
- *
+ * <p>
  *
  * Defaults
  * --------
  * Elements without `default` MUST be provided at the use site.
- *
+ * <p>
  *
  * Single-element shorthand
  * ------------------------
  * If the only element is named `value`, callers can omit the name:
+ * <p>
  *
  *      @Tag("urgent")          // same as @Tag(value = "urgent")
- *
+ * <p>
  *
  * Repeatable annotations (Java 8+)
  * --------------------------------
  *      @Schedule("MON") @Schedule("WED")
  *      void cron() { ... }
+ * <p>
  *
  * Requires:
  *   - A "container" annotation whose value is an array of the repeatable.
  *   - The repeatable annotation is marked @Repeatable(Container.class).
- *
+ * <p>
  *
  * Type-use annotations (Java 8+)
  * ------------------------------
  *      @Target(ElementType.TYPE_USE)
  *      public @interface NonNull {}
+ * <p>
  *
  *      List<@NonNull String> names;
  *      String s = (@NonNull String) o;

@@ -9,21 +9,21 @@ import java.util.Set;
  * EnumSet is a SPECIALISED Set implementation for enum types. Internally it
  * stores membership as a single BIT VECTOR (a long for ≤64 constants, a
  * long[] otherwise). add/remove/contains are TRIVIAL bitwise operations.
- *
+ * <p>
  *
  * Why It Exists
  * -------------
  *   - SPEED. Bit operations are dramatically faster than hashing.
  *   - MEMORY. One bit per constant, period.
  *   - SAFETY. The enum's compile-time type system rules out invalid members.
- *
+ * <p>
  *
  * When To Use It
  * --------------
  *   - Any time the elements come from an enum type and you need a Set.
  *   - Flags / option sets: EnumSet of Permission, Day, MimeType ...
  *   - Pre-computed lookups: EnumSet.range(Day.MON, Day.FRI) for weekdays.
- *
+ * <p>
  *
  * Construction (no public constructors - use the static factories)
  * ----------------------------------------------------------------
@@ -35,14 +35,14 @@ import java.util.Set;
  *   EnumSet.copyOf(otherEnumSet)
  *   EnumSet.copyOf(anyCollectionOfEnum)
  *   EnumSet.complementOf(otherEnumSet)          - "everything NOT in the other"
- *
+ * <p>
  *
  * Restrictions
  * ------------
  *   - All elements MUST be of the SAME enum type (the generic E is bounded).
  *   - NULLS are not allowed.
  *   - Not thread-safe. Use Collections.synchronizedSet(...) if needed.
- *
+ * <p>
  *
  * Big-O
  * -----

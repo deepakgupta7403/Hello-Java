@@ -3,12 +3,7 @@ package Phase5_CollectionsLambdasStreams.LambdaAndStreams;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.BinaryOperator;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.function.*;
 
 /**
  * Lambda Expressions (Java 8+)
@@ -16,11 +11,12 @@ import java.util.function.Supplier;
  * A LAMBDA EXPRESSION is a short, anonymous function you can pass around
  * like a value. Lambdas let you write functional-style code WITHOUT writing
  * a class.
+ * <p>
  *
  *      Runnable r = () -&gt; System.out.println("hello");      // no params, one statement
  *      Comparator&lt;String&gt; c = (a, b) -&gt; a.length() - b.length();
  *      Function&lt;Integer, Integer&gt; sq = n -&gt; n * n;
- *
+ * <p>
  *
  * Syntax Forms
  * ------------
@@ -30,40 +26,44 @@ import java.util.function.Supplier;
  *      (x, y)       -&gt; expr           // multiple params
  *      (int x, int y) -&gt; expr         // explicit parameter types
  *      x            -&gt; { ...; return v; }   // block body
- *
+ * <p>
  *
  * Target Typing
  * -------------
  * A lambda has no intrinsic type. The compiler infers its type from the
  * CONTEXT (the assignment, parameter, or return position):
+ * <p>
  *
  *      Runnable      r = () -&gt; ...     // SAM = run
  *      Callable&lt;Integer&gt; c = () -&gt; 42  // SAM = call returning Integer
+ * <p>
  *
  * The compiler picks the FUNCTIONAL INTERFACE (single abstract method) that
  * matches.
- *
+ * <p>
  *
  * Variable Capture - "Effectively Final"
  * --------------------------------------
  * A lambda can READ local variables from its enclosing scope but ONLY if
  * those variables are EFFECTIVELY FINAL - i.e. never reassigned after the
  * initial assignment.
+ * <p>
  *
  *      int n = 5;
  *      Runnable r = () -&gt; System.out.println(n);   // OK
  *      // n = 10;                                   // would make `n` non-final
  *                                                   // and break the lambda
+ * <p>
  *
  * Lambdas freely READ and MUTATE fields of the enclosing object.
- *
+ * <p>
  *
  * `this` Inside a Lambda
  * ----------------------
  * Unlike an anonymous class, `this` inside a lambda refers to the
  * ENCLOSING instance - NOT the lambda. This was a deliberate change to
  * make lambdas behave like inline code.
- *
+ * <p>
  *
  * Lambda vs Anonymous Inner Class
  * -------------------------------
@@ -71,7 +71,7 @@ import java.util.function.Supplier;
  *   - Lambda has no state, no `this` of its own.
  *   - Lambda only works for FUNCTIONAL interfaces (one abstract method).
  *   - Anonymous classes can implement multiple methods, hold fields, etc.
- *
+ * <p>
  *
  * The Built-In Functional Interfaces (java.util.function)
  * -------------------------------------------------------
@@ -86,7 +86,7 @@ import java.util.function.Supplier;
  *      Callable&lt;V&gt;          V call() throws Exception
  *      Comparator&lt;T&gt;        int compare(T, T)
  *      Plus primitive-specialised variants: IntFunction, ToIntFunction, ...
- *
+ * <p>
  *
  * See Also
  * --------

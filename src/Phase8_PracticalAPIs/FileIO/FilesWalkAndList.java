@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.List;
 import java.util.stream.Stream;
 
 /**
@@ -13,17 +11,18 @@ import java.util.stream.Stream;
  * ----------------------------------------------------------
  * Stream-returning methods that let you traverse directories and process
  * files in a functional pipeline.
- *
+ * <p>
  *
  *   Files.list(dir)                 - direct children only
  *   Files.walk(dir [, maxDepth])    - dir and all descendants
  *   Files.find(dir, depth, matcher) - walk + filter via BiPredicate
  *   Files.lines(file [, charset])   - lines as a Stream<String>
  *   Files.walkFileTree(...)         - visitor pattern (lowest level)
+ * <p>
  *
  * ALL of these return java.util.stream.Stream<...>. They consume an OS
  * file handle and MUST be closed — wrap in try-with-resources.
- *
+ * <p>
  *
  * walk vs walkFileTree
  * --------------------

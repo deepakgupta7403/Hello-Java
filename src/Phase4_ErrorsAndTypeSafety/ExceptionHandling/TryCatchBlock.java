@@ -9,6 +9,7 @@ import java.sql.SQLException;
  * `try` marks a block of code that may throw an exception. `catch` clauses
  * decide what to do when one is thrown. `finally` runs no matter what -
  * normal completion, return, or thrown exception.
+ * <p>
  *
  *      try {
  *          // protected code
@@ -17,7 +18,7 @@ import java.sql.SQLException;
  *      } finally {
  *          // ALWAYS runs (except System.exit / JVM crash)
  *      }
- *
+ * <p>
  *
  * Six Forms You Need To Know
  * --------------------------
@@ -27,14 +28,14 @@ import java.sql.SQLException;
  *  4. try / finally with no catch               cleanup but propagate
  *  5. Nested try                                inner try inside a catch or another try
  *  6. try-with-resources (Java 7+, see TryWithResources.java)
- *
+ * <p>
  *
  * Catch Ordering Rule
  * -------------------
  * More SPECIFIC catches must come BEFORE more GENERAL ones. A
  * `catch (Exception)` will swallow an IOException, so listing
  * `catch (IOException)` AFTER it is a compile error ("unreachable").
- *
+ * <p>
  *
  * Multi-Catch Restrictions
  * ------------------------
@@ -44,7 +45,7 @@ import java.sql.SQLException;
  *   - Inside a multi-catch, the exception variable is IMPLICITLY FINAL - you
  *     cannot reassign it. Its type is the COMMON SUPERTYPE of the listed
  *     exceptions.
- *
+ * <p>
  *
  * finally Caveats
  * ---------------
@@ -55,7 +56,7 @@ import java.sql.SQLException;
  *   - finally does NOT run if the JVM dies (System.exit, kill -9, OS crash).
  *   - finally also does not run if the thread is killed by an uncatchable
  *     condition (e.g. Thread.stop on an outdated JVM).
- *
+ * <p>
  *
  * try Cannot Be Empty
  * -------------------

@@ -4,33 +4,36 @@ package Phase1_CoreLanguage.Operators;
  * Arithmetic Operators
  * --------------------
  * Java provides the standard five arithmetic operators:
+ * <p>
  *
  *      +     addition         (and string concatenation when an operand is String)
  *      -     subtraction
  *      *     multiplication
  *      /     division         (integer division if both operands are integers)
  *      %     modulus          (remainder of integer division)
- *
+ * <p>
  *
  * Integer Division vs Floating-Point Division
  * -------------------------------------------
  * If BOTH operands are integers, '/' performs INTEGER division and discards the
  * fractional part. If EITHER operand is a floating-point value, '/' performs
  * floating-point division.
+ * <p>
  *
  *      7 / 2     -> 3        (integer division)
  *      7 / 2.0   -> 3.5      (one operand is double - promoted to floating-point)
- *
+ * <p>
  *
  * Overflow
  * --------
  * Integer arithmetic in Java WRAPS AROUND silently on overflow - there is no
  * exception. If you need overflow detection use Math.addExact, multiplyExact,
  * etc. (they throw ArithmeticException).
+ * <p>
  *
  *      Integer.MAX_VALUE + 1   -> -2147483648  (silent overflow)
  *      Math.addExact(Integer.MAX_VALUE, 1)     -> throws ArithmeticException
- *
+ * <p>
  *
  * Division by Zero
  * ----------------
@@ -39,13 +42,14 @@ package Phase1_CoreLanguage.Operators;
  *      positive / 0.0  ->  Infinity
  *      negative / 0.0  -> -Infinity
  *      0.0 / 0.0       ->  NaN
- *
+ * <p>
  *
  * Operator Precedence (highest first, partial list)
  * -------------------------------------------------
  *      unary +, -, ++, --
  *      *, /, %
  *      +, -
+ * <p>
  *
  * Use parentheses for clarity rather than relying on memory.
  */

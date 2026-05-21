@@ -5,6 +5,7 @@ package Phase1_CoreLanguage.DecisionMaking;
  * It provides an easy way to dispatch execution to different parts of code based on the value of the expression.
  * Basically, the expression can be byte, short, char, and int primitive data types.
  * Beginning with JDK7, it also works with enumerated types ( Enums in java), the String class and Wrapper classes.
+ * <p>
  *
  * Syntax:
  // switch statement
@@ -175,6 +176,7 @@ public class SwitchCaseStatement {
      *
      * We can use a switch as part of the statement sequence of an outer switch. This is called a nested switch.
      * Since a switch statement defines its own block, no conflicts arise between the case constants in the inner switch and those in the outer switch.
+     * <p>
      *
      * **/
 

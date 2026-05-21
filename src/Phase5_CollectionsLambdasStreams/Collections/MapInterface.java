@@ -11,7 +11,7 @@ import java.util.TreeMap;
  * A Map stores ENTRIES of KEY -> VALUE pairs. Keys are UNIQUE; values may
  * repeat. Maps are NOT part of the Collection hierarchy - they have their
  * own root because their operations work on PAIRS, not single elements.
- *
+ * <p>
  *
  *      +-----------+        +----------+
  *      |  "alice"  |  ->    |   30     |
@@ -19,10 +19,11 @@ import java.util.TreeMap;
  *      |  "carol"  |  ->    |   28     |
  *      +-----------+        +----------+
  *           keys              values
- *
+ * <p>
  *
  * The Method Catalogue (Java 8+ included)
  * ---------------------------------------
+ * <p>
  *
  *   Basic CRUD
  *      put(K, V)              - returns the previous value, or null
@@ -31,14 +32,17 @@ import java.util.TreeMap;
  *      containsKey(Object)
  *      containsValue(Object)
  *      size(), isEmpty(), clear()
+ * <p>
  *
  *   Bulk
  *      putAll(Map)
+ * <p>
  *
  *   Views
  *      keySet()       - Set&lt;K&gt;
  *      values()       - Collection&lt;V&gt;
  *      entrySet()     - Set&lt;Map.Entry&lt;K,V&gt;&gt;
+ * <p>
  *
  *   Defaults (Java 8+)
  *      getOrDefault(key, default)
@@ -50,13 +54,14 @@ import java.util.TreeMap;
  *      forEach(BiConsumer)                    - iterate pairs
  *      replace(key, value) / replace(key, old, new)
  *      replaceAll(BiFunction)
+ * <p>
  *
  *   Static factories (Java 9+)
  *      Map.of(k1, v1, ..., k10, v10)          - immutable, no nulls
  *      Map.ofEntries(Map.entry(k, v), ...)
  *      Map.entry(k, v)
  *      Map.copyOf(otherMap)
- *
+ * <p>
  *
  * Implementations
  * ---------------
@@ -66,7 +71,7 @@ import java.util.TreeMap;
  *   ConcurrentHashMap - lock-striped, thread-safe.
  *   EnumMap         - super-fast, enum keys only.
  *   Hashtable       - LEGACY synchronized hash table - avoid.
- *
+ * <p>
  *
  * Picking The Right Map
  * ---------------------

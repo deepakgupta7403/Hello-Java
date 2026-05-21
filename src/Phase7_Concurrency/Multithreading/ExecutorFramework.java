@@ -2,24 +2,21 @@ package Phase7_Concurrency.Multithreading;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 /**
  * The Executor Framework
  * ----------------------
  * Introduced in Java 5, the framework decouples WORK from the THREAD
  * that runs it. The hierarchy:
+ * <p>
  *
  *      Executor                 - execute(Runnable)
  *         |
  *      ExecutorService          - submit, invokeAll, invokeAny, shutdown
  *         |
  *      ScheduledExecutorService - schedule(...), scheduleAtFixedRate, ...
- *
+ * <p>
  *
  * Why use it
  * ----------
@@ -27,7 +24,7 @@ import java.util.concurrent.TimeUnit;
  *   - Bounded resources (no thread bombs).
  *   - Structured result handling (Future/Callable).
  *   - Built-in shutdown semantics.
- *
+ * <p>
  *
  * Common factories (Executors.*)
  * ------------------------------
@@ -37,13 +34,13 @@ import java.util.concurrent.TimeUnit;
  *   newScheduledThreadPool(n)   - delayed and periodic tasks.
  *   newVirtualThreadPerTaskExecutor()       - Java 21, one VT per task.
  *   newWorkStealingPool(parallelism)        - ForkJoinPool wrapper.
- *
+ * <p>
  *
  * Java 19+ goodies
  * ----------------
  *   - ExecutorService now implements AutoCloseable — use try-with-resources.
  *   - newVirtualThreadPerTaskExecutor — perfect for I/O-bound fan-out.
- *
+ * <p>
  *
  * Key methods
  * -----------

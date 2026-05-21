@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
  * --------------------
  * "Concatenation" means joining two or more Strings end-to-end. Java offers
  * several mechanisms:
+ * <p>
  *
  *      1. The '+' operator                  "Hello, " + name
  *      2. String.concat(other)              "Hello, ".concat(name)
@@ -18,7 +19,7 @@ import java.util.stream.Collectors;
  *      6. Stream.collect(Collectors.joining(...))   Java 8+
  *      7. String.format / String.formatted  printf-style composition
  *      8. Text blocks                       Java 15+, multi-line literals
- *
+ * <p>
  *
  * Behind the scenes
  * -----------------
@@ -26,25 +27,29 @@ import java.util.stream.Collectors;
  * `makeConcatWithConstants` invoke-dynamic call that the JVM optimises at
  * runtime. For most simple expressions like `"x=" + x` you do NOT need to
  * reach for StringBuilder yourself - the compiler does the right thing.
+ * <p>
  *
  * The big EXCEPTION is concatenation INSIDE A LOOP:
+ * <p>
  *
  *      String s = "";
  *      for (int i = 0; i < N; i++) s += part(i);     // O(N^2) - BAD
+ * <p>
  *
  *      StringBuilder sb = new StringBuilder();
  *      for (int i = 0; i < N; i++) sb.append(part(i)); // O(N) - GOOD
  *      String s = sb.toString();
+ * <p>
  *
  * Each `+=` allocates and copies the whole prefix again because Strings are
  * immutable.
- *
+ * <p>
  *
  * Type Coercion - the '+' Trap
  * ----------------------------
  *      "Sum = " + 1 + 2      ==  "Sum = 12"      (left-to-right concatenation)
  *      "Sum = " + (1 + 2)    ==  "Sum = 3"       (parens force int addition)
- *
+ * <p>
  *
  * Performance Demo
  * ----------------

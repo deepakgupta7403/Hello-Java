@@ -10,47 +10,56 @@ import java.util.function.Function;
  * ------------------
  * Just like classes, an INTERFACE can declare type parameters. Generic
  * interfaces are the foundation of almost every modern Java API:
+ * <p>
  *
  *      interface Comparable&lt;T&gt; { int compareTo(T o); }
  *      interface Comparator&lt;T&gt; { int compare(T a, T b); }
  *      interface Iterable&lt;T&gt;   { Iterator&lt;T&gt; iterator(); }
  *      interface Function&lt;T, R&gt; { R apply(T t); }
  *      interface Map.Entry&lt;K, V&gt; { K getKey(); V getValue(); }
- *
+ * <p>
  *
  * Two Ways To Implement A Generic Interface
  * -----------------------------------------
+ * <p>
  *
  *   1. FIX the type parameter:
+ * <p>
  *
  *         class Customer implements Comparable&lt;Customer&gt; {
  *             public int compareTo(Customer o) { ... }
  *         }
+ * <p>
  *
  *   2. PASS THROUGH a type parameter the implementing class also declares:
+ * <p>
  *
  *         class Stack&lt;E&gt; implements Iterable&lt;E&gt; {
  *             public Iterator&lt;E&gt; iterator() { ... }
  *         }
- *
+ * <p>
  *
  * Multiple Generic Interfaces
  * ---------------------------
  * A class can implement more than one generic interface as long as their
  * parameter bindings are consistent:
+ * <p>
  *
  *      class Customer implements Comparable&lt;Customer&gt;, Serializable { ... }
+ * <p>
  *
  * You CANNOT implement the same generic interface with two different
  * type arguments:
+ * <p>
  *
  *      class Bad implements Comparable&lt;Integer&gt;, Comparable&lt;String&gt; { ... }
  *      // ^^^ COMPILE ERROR
- *
+ * <p>
  *
  * Functional Generic Interfaces - The Lambdas Bridge
  * --------------------------------------------------
  * Java's standard functional interfaces are all generic:
+ * <p>
  *
  *      Function&lt;T, R&gt;        R apply(T)
  *      BiFunction&lt;T, U, R&gt;   R apply(T, U)
@@ -58,7 +67,7 @@ import java.util.function.Function;
  *      Consumer&lt;T&gt;           void accept(T)
  *      Supplier&lt;T&gt;           T get()
  *      Comparator&lt;T&gt;         int compare(T, T)
- *
+ * <p>
  *
  * Implementations Below
  * ---------------------

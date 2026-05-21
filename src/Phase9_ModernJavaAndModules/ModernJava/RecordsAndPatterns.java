@@ -5,39 +5,45 @@ package Phase9_ModernJavaAndModules.ModernJava;
  * ------------------------------------------------
  * A RECORD is a special kind of class introduced in Java 16 for IMMUTABLE
  * data carriers. The compiler generates the boilerplate for you:
+ * <p>
  *
  *      public record Point(int x, int y) {}
+ * <p>
  *
  *  - Final class, cannot be subclassed.
  *  - Final fields x and y - immutable after construction.
  *  - Canonical constructor (int x, int y).
  *  - Accessor methods: x() and y().            (NOT getX() / getY())
  *  - equals(), hashCode(), toString() generated based on the components.
- *
+ * <p>
  *
  * Why Records?
  * ------------
  * Before records, a simple data class needed 30+ lines of boilerplate. With
  * records:
+ * <p>
  *
  *      record Point(int x, int y) {}     // that's it.
- *
+ * <p>
  *
  * Record Patterns (Java 21)
  * -------------------------
  * Java 21 lets you DECONSTRUCT a record value inside an `instanceof` or a
  * switch case, binding the components to local variables:
+ * <p>
  *
  *      if (obj instanceof Point(int x, int y)) {
  *          // x and y are usable directly here
  *      }
+ * <p>
  *
  * Record patterns can NEST - deconstruct records inside records:
+ * <p>
  *
  *      if (shape instanceof Rect(Point(int x1, int y1), Point(int x2, int y2))) {
  *          ...
  *      }
- *
+ * <p>
  *
  * Customising a Record
  * --------------------

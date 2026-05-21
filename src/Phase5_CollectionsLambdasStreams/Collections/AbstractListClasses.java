@@ -1,10 +1,6 @@
 package Phase5_CollectionsLambdasStreams.Collections;
 
-import java.util.AbstractList;
-import java.util.AbstractSequentialList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 /**
  * AbstractList and AbstractSequentialList - Skeletal Implementations
@@ -13,44 +9,51 @@ import java.util.ListIterator;
  * INTERFACE has a companion ABSTRACT SKELETON CLASS that takes care of the
  * boilerplate so concrete subclasses only need to implement a handful of
  * primitive operations.
+ * <p>
  *
  *      Collection         -> AbstractCollection
  *      List               -> AbstractList      -> AbstractSequentialList
  *      Set                -> AbstractSet
  *      Queue              -> AbstractQueue
  *      Map                -> AbstractMap
- *
+ * <p>
  *
  * AbstractList&lt;E&gt; - For Random-Access Lists
  * -----------------------------------------
  * To build a List you only need to implement:
+ * <p>
  *
  *      E get(int index)
  *      int size()
+ * <p>
  *
  * That gives you a READ-ONLY list. To add mutation, override one or more of:
+ * <p>
  *
  *      E set(int index, E element)         - replace
  *      void add(int index, E element)       - insert
  *      E remove(int index)                  - delete
+ * <p>
  *
  * AbstractList provides correct implementations of iterator(), listIterator(),
  * indexOf, lastIndexOf, equals, hashCode, toString, sublist, and the fail-fast
  * modCount machinery - all on top of YOUR primitive overrides.
- *
+ * <p>
  *
  * AbstractSequentialList&lt;E&gt; - For Linked Lists
  * --------------------------------------------
  * If random access (get(int)) is EXPENSIVE for your data structure, extend
  * AbstractSequentialList instead. You only need to implement:
+ * <p>
  *
  *      ListIterator&lt;E&gt; listIterator(int index)
  *      int size()
+ * <p>
  *
  * The class then derives get / set / add / remove from ListIterator
  * operations - typically O(n) but appropriate for chained nodes. java.util.LinkedList
  * uses this skeleton.
- *
+ * <p>
  *
  * Why You'd Use Them
  * ------------------
@@ -58,11 +61,12 @@ import java.util.ListIterator;
  *     int[], a database-backed list, an "ints from a to b" range.
  *   - Implementing the List contract correctly without re-deriving all the
  *     bookkeeping (iterator state, hashCode order, equals semantics).
+ * <p>
  *
  * In day-to-day code you reach for ArrayList / LinkedList - but knowing the
  * abstract skeletons exist is part of understanding how the framework is
  * put together.
- *
+ * <p>
  *
  * Demo
  * ----

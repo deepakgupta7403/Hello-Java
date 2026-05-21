@@ -3,13 +3,7 @@ package Phase3_ObjectOrientation.Interfaces;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.BinaryOperator;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
+import java.util.function.*;
 import java.util.stream.Collectors;
 
 /**
@@ -18,15 +12,17 @@ import java.util.stream.Collectors;
  * A FUNCTIONAL INTERFACE is an interface with EXACTLY ONE ABSTRACT METHOD
  * (SAM = Single Abstract Method). Such interfaces can be the TARGET TYPE of
  * lambda expressions and method references.
+ * <p>
  *
  *      @FunctionalInterface
  *      interface Calculator {
  *          int apply(int a, int b);
  *      }
+ * <p>
  *
  *      Calculator add = (a, b) -> a + b;     // lambda
  *      Calculator max = Math::max;           // method reference
- *
+ * <p>
  *
  * The @FunctionalInterface Annotation
  * -----------------------------------
@@ -34,7 +30,7 @@ import java.util.stream.Collectors;
  * interface has exactly one abstract method. Adding a second abstract method
  * later won't silently break callers - the compiler will refuse to compile
  * the annotation.
- *
+ * <p>
  *
  * What Does NOT Count Toward the "one abstract method" Limit
  * ----------------------------------------------------------
@@ -42,7 +38,7 @@ import java.util.stream.Collectors;
  *   - static methods          (have a body)
  *   - private methods         (have a body, Java 9+)
  *   - methods inherited from java.lang.Object (toString, equals, hashCode ...)
- *
+ * <p>
  *
  * The java.util.function Package - Quick Cheatsheet
  * -------------------------------------------------
@@ -54,10 +50,11 @@ import java.util.stream.Collectors;
  *   Consumer<T>          : void accept(T t)
  *   BiConsumer<T,U>      : void accept(T t, U u)
  *   Supplier<T>          : T get()
+ * <p>
  *
  *   Specialised for primitives to avoid boxing:
  *      IntFunction<R>, ToIntFunction<T>, IntPredicate, IntUnaryOperator, ...
- *
+ * <p>
  *
  * Common Use Cases
  * ----------------
@@ -66,7 +63,7 @@ import java.util.stream.Collectors;
  *   - Strategy pattern    pass behaviour as an argument
  *   - Callbacks           event handlers, listeners
  *   - Builders / fluent APIs
- *
+ * <p>
  *
  * Lambda Capture Rules (brief recap)
  * ----------------------------------
@@ -74,7 +71,7 @@ import java.util.stream.Collectors;
  *     EFFECTIVELY FINAL (assigned once).
  *   - Lambdas freely read/write fields of the enclosing object via `this`.
  *   - `this` inside a lambda refers to the ENCLOSING class - not the lambda.
- *
+ * <p>
  *
  * For default / static / private interface members see InterfaceIntro.java
  * and Basics/Methods/InterfaceMethods.java.

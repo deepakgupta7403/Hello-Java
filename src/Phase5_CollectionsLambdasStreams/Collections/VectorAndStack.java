@@ -11,20 +11,24 @@ import java.util.Vector;
  * Vector and Stack were part of Java 1.0, predating the Collections Framework
  * (which arrived in 1.2). They were RETROFITTED into the framework when it
  * shipped:
+ * <p>
  *
  *      Vector implements List         (and is essentially a synchronized ArrayList)
  *      Stack   extends Vector         (LIFO operations on top of Vector)
+ * <p>
  *
  * Both are STILL in the JDK for backwards compatibility, but modern code
  * avoids them. The JDK Javadoc explicitly recommends using:
+ * <p>
  *
  *      Vector  ->  ArrayList            (if no synchronization needed)
  *                  Collections.synchronizedList(new ArrayList<>())
  *                                       (if you really want coarse-grained sync)
  *                  CopyOnWriteArrayList (read-mostly concurrent use)
+ * <p>
  *
  *      Stack   ->  ArrayDeque           (push / pop / peek - faster, not sync)
- *
+ * <p>
  *
  * Why Are They Legacy?
  * --------------------
@@ -35,7 +39,7 @@ import java.util.Vector;
  *      Stack inherits index-based add/remove from List, which lets you
  *      poke holes in the middle of what should be a stack.
  *   3. Both expose Enumeration alongside Iterator - two ways to iterate.
- *
+ * <p>
  *
  * Vector-Specific Methods (beyond List)
  * -------------------------------------
@@ -46,7 +50,7 @@ import java.util.Vector;
  *   addElement / insertElementAt / removeElement* / setElementAt
  *                                    legacy method names
  *   elements()                      returns an Enumeration
- *
+ * <p>
  *
  * Stack-Specific Methods
  * ----------------------
@@ -55,7 +59,7 @@ import java.util.Vector;
  *   peek()                returns the top without removing
  *   empty()               isEmpty() alias
  *   search(o)             1-based position from the top, -1 if absent
- *
+ * <p>
  *
  * This File Demonstrates Both - and Then The Modern Replacement.
  */

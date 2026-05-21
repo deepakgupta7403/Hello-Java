@@ -9,7 +9,7 @@ import java.util.concurrent.locks.LockSupport;
  * -------------------
  * Java has NO safe way to forcefully stop another thread. Instead it has
  * a COOPERATIVE cancellation mechanism: the INTERRUPT FLAG.
- *
+ * <p>
  *
  * The Three Calls
  * ---------------
@@ -18,13 +18,15 @@ import java.util.concurrent.locks.LockSupport;
  *                                   (sleep, wait, join, park, etc.) it
  *                                   throws InterruptedException AND the
  *                                   flag is CLEARED.
+ * <p>
  *
  *   t.isInterrupted()             - read t's flag without changing it.
+ * <p>
  *
  *   Thread.interrupted()          - STATIC. Read AND CLEAR the current
  *                                   thread's flag. Use sparingly — you
  *                                   often want to keep the flag set.
- *
+ * <p>
  *
  * What gets interrupted
  * ---------------------
@@ -38,10 +40,11 @@ import java.util.concurrent.locks.LockSupport;
  *     Lock.lockInterruptibly / Condition.await
  *     Future.get
  *     LockSupport.park*  (sets the flag; does NOT throw)
+ * <p>
  *
  * Plain compute loops are NOT interrupted automatically — you must
  * check the flag yourself with isInterrupted() / Thread.interrupted().
- *
+ * <p>
  *
  * Best Practices
  * --------------
@@ -50,12 +53,15 @@ import java.util.concurrent.locks.LockSupport;
  *        b) Wrap and rethrow as a domain exception.
  *      A library that hides the interrupt makes its callers' shutdown
  *      logic impossible.
+ * <p>
  *
  *   2. In compute loops, sprinkle:
  *        if (Thread.currentThread().isInterrupted()) break;   // exit cleanly
+ * <p>
  *
  *   3. Prefer interruption over a custom "stop" boolean — it integrates
  *      with every JDK blocking primitive for free.
+ * <p>
  *
  *   4. interrupt() is the modern replacement for the deprecated
  *      Thread.stop(). Forget Thread.stop ever existed.

@@ -1,13 +1,13 @@
 package Phase7_Concurrency.Multithreading.SnakeGame;
 
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
-import javax.swing.WindowConstants;
+import javax.swing.*;
 
 /**
  * SnakeGame — main runner.
+ * <p>
  *
  * Demonstrates the canonical "GUI + simulation" thread split:
+ * <p>
  *
  *   - Swing's EVENT-DISPATCH THREAD (EDT) builds the JFrame, owns the
  *     SnakeBoard, dispatches input, paints frames.
@@ -15,14 +15,14 @@ import javax.swing.WindowConstants;
  *     and asks the EDT to repaint via SwingUtilities.invokeLater.
  *   - The shared GameState is guarded by a ReentrantLock so the two
  *     threads never tear each other's view of the world.
- *
+ * <p>
  *
  * Lifecycle
  * ---------
  *   1. main() invokeAndWait's onto the EDT to build the UI.
  *   2. Once the JFrame is visible, main starts the GameLoop thread.
  *   3. On window close, main stops the loop and joins the thread.
- *
+ * <p>
  *
  * Tweakables
  * ----------

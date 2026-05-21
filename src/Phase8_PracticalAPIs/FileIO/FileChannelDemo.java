@@ -15,6 +15,7 @@ import java.nio.file.StandardOpenOption;
  * --------------------------------------------------
  * FileChannel is the NIO answer to RandomAccessFile and a bunch of OS-level
  * features:
+ * <p>
  *
  *   - Random access (seek with position()).
  *   - Bulk reads/writes via ByteBuffer.
@@ -23,13 +24,13 @@ import java.nio.file.StandardOpenOption;
  *     like a giant array.
  *   - File LOCKS — advisory, OS-level locking for shared / exclusive
  *     access.
- *
+ * <p>
  *
  * How to obtain one
  * -----------------
  *      FileChannel.open(path, options...)             // preferred
  *      new RandomAccessFile(file, "rw").getChannel()  // legacy
- *
+ * <p>
  *
  * The mental model
  * ----------------
@@ -38,7 +39,7 @@ import java.nio.file.StandardOpenOption;
  *   - ByteBuffer has its own position / limit / capacity. Don't forget
  *     to call buf.flip() between writing-into-the-buffer and reading-
  *     out-of-it.
- *
+ * <p>
  *
  * Memory-mapped files
  * -------------------
@@ -48,7 +49,7 @@ import java.nio.file.StandardOpenOption;
  *     specific (sun.misc.Unsafe, etc.) — avoid mapping huge files in a
  *     loop.
  *   - On Windows, the file may stay locked until the JVM exits.
- *
+ * <p>
  *
  * When to use FileChannel
  * -----------------------

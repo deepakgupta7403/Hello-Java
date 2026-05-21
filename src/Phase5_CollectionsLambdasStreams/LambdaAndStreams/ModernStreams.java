@@ -10,7 +10,7 @@ import java.util.stream.Stream;
  * Modern Stream Features (Java 9 -&gt; 21)
  * ------------------------------------
  * A short tour of the upgrades the Stream API has received over the years.
- *
+ * <p>
  *
  * Java 9
  * ------
@@ -19,32 +19,37 @@ import java.util.stream.Stream;
  *   Stream.iterate(seed, hasNext, next)          FINITE iterate
  *   Stream.ofNullable(T)                         zero-or-one stream
  *   Optional.stream()                            Optional -&gt; Stream of 0 or 1
+ * <p>
  *
  * Java 10
  * -------
  *   Collectors.toUnmodifiableList / Set / Map    immutable results
+ * <p>
  *
  * Java 11
  * -------
  *   String.lines()                                  Stream&lt;String&gt; of lines
  *   Files.readString / Files.writeString            (file I/O - see StreamFileIO)
  *   Collection.toArray(IntFunction)                 typed array conversion
+ * <p>
  *
  * Java 12
  * -------
  *   Collectors.teeing(c1, c2, combiner)             split into TWO collectors, combine
+ * <p>
  *
  * Java 16
  * -------
  *   Stream.toList()                                  unmodifiable List - the new default
  *   Stream.mapMulti                                  flatMap alternative for tiny expansions
+ * <p>
  *
  * Java 21
  * -------
  *   Sequenced Collections - getFirst/getLast/reversed on List/Deque/LinkedHashSet
  *   Pattern matching in switch for stream classification
  *   (Gatherers - preview in Java 22; not yet final in 21)
- *
+ * <p>
  *
  * Examples Below
  * --------------

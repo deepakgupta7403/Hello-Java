@@ -11,7 +11,7 @@ import java.util.TreeMap;
  * TreeMap keeps its entries in SORTED order by key. It uses either the
  * key's natural ordering (key must implement Comparable) or a Comparator
  * you supply at construction.
- *
+ * <p>
  *
  * Why It Exists
  * -------------
@@ -19,7 +19,7 @@ import java.util.TreeMap;
  *   - "Range queries" - all entries between two keys - are O(log n).
  *   - "Neighbour queries" - floorKey, ceilingKey, etc. - are O(log n) and
  *     unique to TreeMap.
- *
+ * <p>
  *
  * When To Use It
  * --------------
@@ -28,7 +28,7 @@ import java.util.TreeMap;
  *     A and B".
  *   - You want a stable iteration order without writing a Comparator at
  *     each iteration site.
- *
+ * <p>
  *
  * Big-O
  * -----
@@ -36,10 +36,10 @@ import java.util.TreeMap;
  *   iteration (in order)                                      O(n)
  *   first / last / floor / ceiling / lower / higher           O(log n)
  *   subMap / headMap / tailMap (range views)                  O(log n) to create
- *
+ * <p>
  *
  * Implements: NavigableMap, SortedMap, Map
- *
+ * <p>
  *
  * Key Methods Beyond the Map Contract
  * -----------------------------------
@@ -49,6 +49,7 @@ import java.util.TreeMap;
  *        tailMap(fromKey)          - fromKey inclusive
  *        subMap(fromKey, toKey)    - fromKey inclusive, toKey exclusive
  *        comparator()
+ * <p>
  *
  *   - NavigableMap:
  *        firstEntry / lastEntry / pollFirstEntry / pollLastEntry

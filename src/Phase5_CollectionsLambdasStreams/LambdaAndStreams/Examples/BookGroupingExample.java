@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 /**
  * Real-World Example 3 - Grouping Books by Author
+ * <p>
  *
  * Demonstrates: groupingBy with downstream collectors, multi-level grouping,
  * mapping + counting + summarizing combinators, sorted stream output,

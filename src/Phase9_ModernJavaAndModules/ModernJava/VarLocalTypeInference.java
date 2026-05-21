@@ -3,7 +3,6 @@ package Phase9_ModernJavaAndModules.ModernJava;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * var - Local Variable Type Inference (Java 10+)
@@ -11,18 +10,19 @@ import java.util.Map;
  * Since Java 10 you can declare a LOCAL variable with the keyword 'var' instead
  * of writing the full type. The compiler INFERS the type from the right-hand
  * side - this is purely a compile-time feature, the bytecode is identical.
+ * <p>
  *
  *      var x = 42;                  // inferred as int
  *      var s = "Hello";             // inferred as String
  *      var list = new ArrayList<String>();  // ArrayList<String>
- *
+ * <p>
  *
  * Where 'var' Works
  * -----------------
  *  - Local variables inside methods, constructors, initializer blocks.
  *  - The loop variable in for / for-each loops.
  *  - Try-with-resources variable.
- *
+ * <p>
  *
  * Where 'var' Does NOT Work
  * -------------------------
@@ -33,11 +33,11 @@ import java.util.Map;
  *  - With null literal                 var x = null;          // ERROR
  *  - With a lambda                     var f = () -> 1;       // ERROR (no target type)
  *  - With an array initializer         var a = {1, 2, 3};     // ERROR
- *
+ * <p>
  *
  * Note - 'var' is a RESTRICTED IDENTIFIER, not a reserved keyword. You can
  * still declare a variable named 'var' (legacy code) - but please do not.
- *
+ * <p>
  *
  * When To Use It (Style Guide)
  * ----------------------------

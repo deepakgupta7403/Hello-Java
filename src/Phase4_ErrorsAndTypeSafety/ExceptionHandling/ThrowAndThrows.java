@@ -6,47 +6,52 @@ import java.io.IOException;
  * throw vs throws
  * ---------------
  * Two single-letter-different keywords with very different roles.
+ * <p>
  *
  *      throw       (STATEMENT)   - actually RAISES an exception object now.
  *      throws      (CLAUSE)      - DECLARES that a method may PROPAGATE
  *                                   certain checked exceptions to its caller.
- *
+ * <p>
  *
  * throw - the statement
  * ---------------------
  *      throw new IllegalArgumentException("bad input");
+ * <p>
  *
  *   - Used at the point you decide something is wrong.
  *   - The argument must be a Throwable instance (always an exception object).
  *   - Execution jumps out of the current code path until a matching `catch`
  *     in the call stack handles it.
- *
+ * <p>
  *
  * throws - the clause
  * -------------------
  *      void readFile() throws IOException, SQLException { ... }
+ * <p>
  *
  *   - Goes at the END of a method signature.
  *   - REQUIRED for any CHECKED exceptions the method may propagate.
  *   - OPTIONAL for unchecked exceptions (you may list them as documentation,
  *     but the compiler does not require it).
  *   - Subclasses must follow the OVERRIDING RULES (see ExceptionInOverriding.java).
- *
+ * <p>
  *
  * Exception Propagation
  * ---------------------
  * When `throw` runs, the JVM looks up the call stack for the nearest matching
  * `catch`:
+ * <p>
  *
  *      main() ---> a() ---> b() ---> c() throws ex
  *                                       ^
  *                                       finds no catch, propagates up...
  *      main() ---> a()  catches ex
+ * <p>
  *
  * Any method on the path that mentions the checked exception in its `throws`
  * clause is letting it bubble up. The first `catch` block on the path handles
  * it.
- *
+ * <p>
  *
  * Note - "Throw early, catch late"
  * --------------------------------

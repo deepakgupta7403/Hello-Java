@@ -9,34 +9,38 @@ import java.util.LinkedList;
  * -----------------------------------------
  * A Deque (pronounced "deck") is a queue that supports insert and remove
  * at BOTH ENDS. It can be used as a queue, a stack, or both.
+ * <p>
  *
  *      addFirst -> [A][B][C][D] <- addLast
  *      pollFirst <- [A][B][C][D] -> pollLast
- *
+ * <p>
  *
  * The Three "Personalities" of a Deque
  * ------------------------------------
  *   QUEUE  (FIFO):    offer / poll        (same as Queue interface)
  *   STACK  (LIFO):    push  / pop         (push = addFirst, pop = removeFirst)
  *   DEQUE  (both):    addFirst / addLast / pollFirst / pollLast / peek...
+ * <p>
  *
  * The same Deque object can do all three at the same time.
- *
+ * <p>
  *
  * Method Cheatsheet
  * -----------------
+ * <p>
  *
  *      Throws on failure          Returns special value
  *      ----------------------     ----------------------
  *      addFirst(e) / addLast(e)   offerFirst(e) / offerLast(e)
  *      removeFirst() / removeLast() pollFirst() / pollLast()
  *      getFirst() / getLast()     peekFirst() / peekLast()
+ * <p>
  *
  *   Stack flavour:
  *      push(e)     -> addFirst(e)
  *      pop()       -> removeFirst()
  *      peek()      -> peekFirst()
- *
+ * <p>
  *
  * Implementations
  * ---------------
@@ -45,17 +49,18 @@ import java.util.LinkedList;
  *   LinkedList  - doubly-linked list. Allows nulls. Slower in benchmarks
  *                 but is also a List.
  *   ConcurrentLinkedDeque, LinkedBlockingDeque - concurrent variants.
- *
+ * <p>
  *
  * Why You Should Prefer ArrayDeque For Stacks
  * -------------------------------------------
  * The legacy java.util.Stack class extends Vector (synchronized). It is
  * slow and discouraged. The modern recommendation in the JDK Javadoc:
+ * <p>
  *
  *      "Deque interface and its implementations provide a more complete
  *       and consistent set of LIFO stack operations, which should be used
  *       in preference to this class."
- *
+ * <p>
  *
  * The Big-O
  * ---------

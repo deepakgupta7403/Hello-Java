@@ -12,36 +12,36 @@ import java.util.stream.Stream;
  * Modern File I/O — Java 11 → 21 conveniences
  * -------------------------------------------
  * The text-handling shortcuts most of your code should reach for first.
- *
+ * <p>
  *
  * Java 11
  * -------
  *   Files.readString(path[, charset])
  *   Files.writeString(path, charSequence[, charset][, options...])
  *   String.lines() / String.repeat() / String.isBlank() / String.strip()
- *
+ * <p>
  *
  * Java 12+
  * --------
  *   String.indent(n) / String.transform(Function<String,R>)
- *
+ * <p>
  *
  * Java 13+
  * --------
  *   String.formatted(args)
  *   Text blocks ("""...""")
- *
+ * <p>
  *
  * Java 16+
  * --------
  *   Stream.toList() — convenient over Collectors.toList()
- *
+ * <p>
  *
  * Java 17+
  * --------
  *   Sealed type hierarchies + pattern matching make the surface around
  *   reading "different shapes of records" cleaner.
- *
+ * <p>
  *
  * Java 21 hot tip
  * ---------------

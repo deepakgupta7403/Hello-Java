@@ -9,19 +9,22 @@ import java.util.regex.Pattern;
  * A METACHARACTER is a character that has special meaning inside a regex
  * rather than matching itself. An ANCHOR is a zero-width metacharacter that
  * matches a POSITION in the input, not an actual character.
- *
+ * <p>
  *
  * The 12 Metacharacters You Must Know
  * -----------------------------------
  *      .   ?   *   +   {   }   |   ^   $   (   )   [   ]   \
+ * <p>
  *
  * To match one of them LITERALLY, prefix it with a backslash:
+ * <p>
  *
  *      \.    matches a literal dot
  *      \(    matches a literal opening paren
+ * <p>
  *
  * In a Java string literal, that becomes "\\." and "\\(" respectively.
- *
+ * <p>
  *
  * Anchors (Zero-Width)
  * --------------------
@@ -33,35 +36,39 @@ import java.util.regex.Pattern;
  *      \z        absolute end   of the input (ignores MULTILINE)
  *      \Z        absolute end except final newline
  *      \G        end of the previous match (useful in scan loops)
+ * <p>
  *
  * "Zero-width" means they match a POSITION between characters and consume
  * nothing.
- *
+ * <p>
  *
  * Alternation
  * -----------
  *      X | Y      matches X or Y (lowest precedence; group it with (...))
+ * <p>
  *
  *      gray|grey            -> matches "gray" or "grey"
  *      gr(a|e)y             -> same, with the alternation grouped
- *
+ * <p>
  *
  * Word Boundaries
  * ---------------
  * `\b` matches the POSITION between a word character (\w) and a non-word
  * character. Use it to match WHOLE words:
+ * <p>
  *
  *      regex \bcat\b
  *      "cat"      -> match
  *      "catnap"   -> no match
  *      "scat"     -> no match
  *      "the cat sat"  -> match on "cat"
- *
+ * <p>
  *
  * Escaping User Input
  * -------------------
  * To match arbitrary user-supplied text literally, use Pattern.quote(str)
  * - it produces a regex that matches `str` exactly, escaping every meta.
+ * <p>
  *
  *      String userInput = "Hello? (yes)";
  *      Pattern p = Pattern.compile(Pattern.quote(userInput));

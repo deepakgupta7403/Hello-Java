@@ -3,12 +3,15 @@ package Phase1_CoreLanguage.SpecialKeyword;
 /**A final variable in Java can be assigned a value only once, we can assign a value either in declaration or later.
  *     final int i = 10;
  *     i = 30; // Error because i is final.
+ * <p>
  *
  *blank final variable in Java is a final variable that is not initialized during declaration. Below is a simple example of blank final.
+ * <p>
  *
  *     // A simple blank final example
  *     final int i;
  *     i = 30;
+ * <p>
  *
  *     **/
 

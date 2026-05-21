@@ -10,7 +10,7 @@ import java.lang.management.MemoryUsage;
  * ------------------------------------------
  * The Java Virtual Machine specification divides runtime memory into five
  * conceptual areas:
- *
+ * <p>
  *
  *   1. METHOD AREA  (a.k.a. Metaspace since Java 8)
  *      - SHARED across all threads.
@@ -19,7 +19,7 @@ import java.lang.management.MemoryUsage;
  *      - Pre-Java 8 it was a fixed "PermGen" inside the heap; from Java 8
  *        it lives in NATIVE memory (Metaspace) and grows by default.
  *      - Tuning: -XX:MaxMetaspaceSize.
- *
+ * <p>
  *
  *   2. HEAP
  *      - SHARED across all threads.
@@ -28,7 +28,7 @@ import java.lang.management.MemoryUsage;
  *          Young    -> Eden + Survivor0 + Survivor1
  *          Old (Tenured)
  *      - Tuning: -Xms (initial), -Xmx (max), -XX:NewSize, etc.
- *
+ * <p>
  *
  *   3. JVM STACK         (also called "Java Stack")
  *      - PER-THREAD.
@@ -40,35 +40,37 @@ import java.lang.management.MemoryUsage;
  *        recursion). OutOfMemoryError("unable to create new native thread")
  *        = OS refused another thread.
  *      - Tuning: -Xss (per-thread stack size).
- *
+ * <p>
  *
  *   4. PC REGISTER
  *      - PER-THREAD.
  *      - Holds the ADDRESS of the bytecode instruction currently being
  *        executed by that thread. For native methods it is undefined.
  *      - You never touch this directly; the JVM uses it internally.
- *
+ * <p>
  *
  *   5. NATIVE METHOD STACK
  *      - PER-THREAD.
  *      - Used by NATIVE (C/C++) code reached via JNI. Has nothing to do
  *        with your Java stack frames.
- *
+ * <p>
  *
  * Heap Generations (HotSpot / G1 / ZGC view)
  * ------------------------------------------
+ * <p>
  *
  *      Young Gen                        Old Gen
  *      +--------+---------+---------+   +------------------+
  *      |  Eden  | Surv 0  | Surv 1  |   |  Tenured         |
  *      +--------+---------+---------+   +------------------+
  *      new objects start here -->       long-lived stuff here
+ * <p>
  *
  *   - Objects are born in EDEN.
  *   - Minor GC promotes survivors to S0 / S1 alternately.
  *   - Survive enough minor GCs and the object is promoted to OLD.
  *   - The "generational hypothesis": most objects die young.
- *
+ * <p>
  *
  * Beyond the Spec
  * ---------------
@@ -76,6 +78,7 @@ import java.lang.management.MemoryUsage;
  *   - CODE CACHE        - JIT-compiled native code lives here.
  *   - DIRECT BUFFERS    - off-heap NIO byte buffers (ByteBuffer.allocateDirect).
  *   - THREAD STACKS     - native stacks owned by the OS.
+ * <p>
  *
  * This main() prints what the running JVM reports for each of these.
  */

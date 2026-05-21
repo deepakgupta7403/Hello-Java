@@ -6,7 +6,7 @@ package Phase7_Concurrency.Multithreading;
  * The original Java inter-thread signalling primitives. They are
  * INSTANCE methods on `Object` — every object's intrinsic monitor lock
  * doubles as a condition variable.
- *
+ * <p>
  *
  * Rules
  * -----
@@ -16,22 +16,25 @@ package Phase7_Concurrency.Multithreading;
  *      waiter, notifyAll() wakes all of them. The woken thread then has
  *      to re-acquire the monitor before returning from wait().
  *   3. Always loop the predicate:
+ * <p>
  *
  *           while (!ready) lock.wait();
+ * <p>
  *
  *      Spurious wakeups exist; predicates can also change between
  *      notify and the wait return.
- *
+ * <p>
  *
  * The three methods
  * -----------------
  *   wait()                  - wait indefinitely
  *   wait(long ms)           - wait up to ms milliseconds
  *   wait(long ms, int nanos)
+ * <p>
  *
  *   notify()                - wake ONE waiter (which one is undefined)
  *   notifyAll()             - wake ALL waiters
- *
+ * <p>
  *
  * notify vs notifyAll
  * -------------------
@@ -41,18 +44,20 @@ package Phase7_Concurrency.Multithreading;
  *   - notify is a micro-optimisation for one-predicate cases. It is
  *     easy to introduce missed-signal bugs if you reach for it without
  *     thinking through every waiter.
- *
+ * <p>
  *
  * Modern alternative: Lock + Condition
  * ------------------------------------
  *   Lock lock = new ReentrantLock();
  *   Condition cond = lock.newCondition();
+ * <p>
  *
  *   lock.lock();
  *   try {
  *       while (!ready) cond.await();
  *       ...
  *   } finally { lock.unlock(); }
+ * <p>
  *
  * Conditions let you have MULTIPLE wait-sets per lock (e.g. notFull /
  * notEmpty in a bounded buffer).

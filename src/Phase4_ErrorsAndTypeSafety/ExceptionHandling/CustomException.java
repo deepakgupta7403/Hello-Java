@@ -7,40 +7,43 @@ package Phase4_ErrorsAndTypeSafety.ExceptionHandling;
  * exception class lets callers catch your particular failure with a precise
  * `catch` and lets you carry extra data (account id, retry-after seconds,
  * error code) along with the message.
- *
+ * <p>
  *
  * Two Flavours
  * ------------
  *   - CHECKED   : extend Exception                  (forced to handle)
  *   - UNCHECKED : extend RuntimeException           (NOT forced to handle)
+ * <p>
  *
  * Pick CHECKED for failures the CALLER is expected to recover from
  * (FileNotFoundException - try a different file). Pick UNCHECKED for
  * programmer errors and invariant violations (IllegalStateException) -
  * forcing every caller to handle them just clutters the code.
- *
+ * <p>
  *
  * Recommended Constructors (the four-constructor convention)
  * ----------------------------------------------------------
  * Mirror the standard ones from the parent. The compiler will pick the
  * right overload at the call site:
+ * <p>
  *
  *      public MyException()                                 { super(); }
  *      public MyException(String message)                   { super(message); }
  *      public MyException(String message, Throwable cause)  { super(message, cause); }
  *      public MyException(Throwable cause)                  { super(cause); }
- *
+ * <p>
  *
  * Naming Convention
  * -----------------
  * Class names should end with the word "Exception" - `InsufficientFundsException`,
  * `PaymentDeclinedException`, etc.
- *
+ * <p>
  *
  * Carrying Extra Data
  * -------------------
  * You can add fields and constructor parameters to capture context. Common
  * extras: an error code, the offending value, a "retry after" timestamp.
+ * <p>
  *
  *      public class RateLimitException extends RuntimeException {
  *          private final long retryAfterMs;
@@ -50,7 +53,7 @@ package Phase4_ErrorsAndTypeSafety.ExceptionHandling;
  *          }
  *          public long getRetryAfterMs() { return retryAfterMs; }
  *      }
- *
+ * <p>
  *
  * Tip
  * ---

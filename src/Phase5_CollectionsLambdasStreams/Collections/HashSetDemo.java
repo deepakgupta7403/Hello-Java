@@ -10,47 +10,52 @@ import java.util.Objects;
  * HashSet is the default Set implementation. Internally it is a wrapper
  * around a HashMap whose keys are your elements and whose values are a
  * single shared dummy object.
+ * <p>
  *
  *      hashSet.add(x)  ===  hashMap.put(x, PRESENT)
  *      hashSet.contains(x) === hashMap.containsKey(x)
- *
+ * <p>
  *
  * Why It Exists
  * -------------
  * You frequently need "do I already have this thing?" with O(1) lookup,
  * and you do not care about order. Lists scan linearly - O(n) per lookup;
  * HashSet collapses that to constant time on average.
- *
+ * <p>
  *
  * When To Use It
  * --------------
  *   - Deduplicate a collection.
  *   - Track "seen" items (visited URLs, sent IDs, ...).
  *   - Fast membership tests in a stream-style pipeline.
- *
+ * <p>
  *
  * The equals/hashCode Contract (Critical)
  * ---------------------------------------
  * If you store your own classes in a HashSet you MUST override BOTH
  * equals and hashCode. The contract says:
+ * <p>
  *
  *      if a.equals(b)  then  a.hashCode() == b.hashCode()
+ * <p>
  *
  * Violating it does not throw - it silently produces a "broken" set with
  * duplicates and missing lookups.
+ * <p>
  *
  * Records (Java 16+) generate correct equals/hashCode for you.
- *
+ * <p>
  *
  * Big-O (Expected, Assuming a Good Hash)
  * --------------------------------------
  *   add / remove / contains / size       O(1)
  *   iteration                            O(capacity + size)
+ * <p>
  *
  * Worst case (every element hashes to the same bucket) is O(n) per
  * operation, but modern HashSet/HashMap balance with a tree once a bucket
  * gets too long.
- *
+ * <p>
  *
  * Constructors
  * ------------

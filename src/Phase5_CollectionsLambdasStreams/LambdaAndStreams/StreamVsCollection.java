@@ -11,10 +11,11 @@ import java.util.stream.Stream;
  * -------------------------------------------
  * Streams and Collections both have iterator() but they serve different
  * purposes. Knowing which to reach for is half the job.
- *
+ * <p>
  *
  * Side-by-Side
  * ------------
+ * <p>
  *
  *   Aspect             | Collection                | Stream
  *   -------------------+---------------------------+------------------------------
@@ -29,21 +30,21 @@ import java.util.stream.Stream;
  *   Order              | Defined by impl           | May be ordered or not
  *   Parallelism        | Manual (Threads, ES, ...) | One method: .parallel()
  *   Size               | size() always known       | usually unknown / unbounded
- *
+ * <p>
  *
  * "Compute" vs "Store" - The Big Idea
  * -----------------------------------
  * A List is a COLLECTION OF EXISTING DATA you can come back to. A Stream
  * is a RECIPE for processing - you describe filter / map / reduce and the
  * runtime walks the source once. After the terminal op, the stream is gone.
- *
+ * <p>
  *
  * Crossing the Boundary
  * ---------------------
  *   Collection -&gt; Stream:    list.stream() / set.parallelStream()
  *   Stream     -&gt; Collection: stream.collect(Collectors.toList()) / toSet()
  *                              stream.toList()  (Java 16+, unmodifiable)
- *
+ * <p>
  *
  * Common Confusion
  * ----------------

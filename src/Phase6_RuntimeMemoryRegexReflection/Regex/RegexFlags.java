@@ -9,14 +9,16 @@ import java.util.regex.Pattern;
  * Flags change HOW the engine matches a pattern. You can pass them to
  * Pattern.compile as the second argument, or set them inline inside the
  * pattern via `(?flags)` so the regex itself is self-describing.
+ * <p>
  *
  *      Pattern.compile("hello", Pattern.CASE_INSENSITIVE);
  *      Pattern.compile("(?i)hello");                            // inline
  *      Pattern.compile("(?i:HEL)lo");                            // scoped inline
- *
+ * <p>
  *
  * The Flags You Will Actually Use
  * -------------------------------
+ * <p>
  *
  *   Pattern.CASE_INSENSITIVE   (?i)   - "hello" matches "HELLO" too
  *   Pattern.MULTILINE          (?m)   - ^ and $ match per-line, not just at the
@@ -34,28 +36,33 @@ import java.util.regex.Pattern;
  *                                       literal string (no metacharacters)
  *   Pattern.CANON_EQ           (no inline form) - canonical equivalence of
  *                                       Unicode sequences (rarely needed)
- *
+ * <p>
  *
  * Combining Flags
  * ---------------
  * Bitwise OR them:
+ * <p>
  *
  *      Pattern.compile(regex, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
+ * <p>
  *
  * Or chain inline:
+ * <p>
  *
  *      Pattern.compile("(?im)^hello");           // case-insensitive + multiline
- *
+ * <p>
  *
  * Scoped Inline Flags - (?flags:X)
  * --------------------------------
  * Apply flags ONLY to a sub-expression:
+ * <p>
  *
  *      Pattern.compile("(?i:hel)lo");
+ * <p>
  *
  * Matches "Hello", "HELlo", "HELLo" but NOT "Hellol" or "Hellol".
  * (Outside the (?i:...) the matching is case-sensitive again.)
- *
+ * <p>
  *
  * Flag Quick Demos Below
  * ----------------------

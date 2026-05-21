@@ -4,11 +4,12 @@ package Phase0_SetupAndFirstPrograms.Output;
  * Advanced Formatted Output
  * -------------------------
  * Beyond plain printf, Java offers two more ways to produce formatted text:
+ * <p>
  *
  *   1. String.format(...)  -> returns the formatted string (does not print).
  *   2. java.util.Formatter -> the lower-level engine behind printf and format.
  *   3. Text Blocks (Java 15+) -> multi-line string literals using """ delimiters.
- *
+ * <p>
  *
  * Common Format Specifiers (Recap)
  * --------------------------------
@@ -23,7 +24,7 @@ package Phase0_SetupAndFirstPrograms.Output;
  *      %b   - boolean
  *      %t   - date/time (followed by a sub-specifier like %tY for year)
  *      %n   - platform-specific line separator
- *
+ * <p>
  *
  * Argument Index
  * --------------

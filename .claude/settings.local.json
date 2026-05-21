@@ -18,7 +18,9 @@
       "Bash(rmdir src/Overview)",
       "Bash(xargs -I{} sh -c 'head -1 \"$1\" | grep -E \"^package \" > /dev/null || echo \"MISSING_PACKAGE: $1\"' _ {})",
       "Bash(sed -i -E 's|^import Basics\\\\.Annotations\\\\.|import Phase4_ErrorsAndTypeSafety.Annotations.|' src/Phase4_ErrorsAndTypeSafety/Annotations/RuntimeAnnotations.java)",
-      "Bash(grep -r \"^import Basics\\\\.\\\\|^import OOPSConcepts\\\\.\\\\|^import Overview\\\\.\" src --include=\"*.java\")"
+      "Bash(grep -r \"^import Basics\\\\.\\\\|^import OOPSConcepts\\\\.\\\\|^import Overview\\\\.\" src --include=\"*.java\")",
+      "Bash(python *)",
+      "Bash(git checkout *)"
     ]
   }
 }

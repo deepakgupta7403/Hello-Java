@@ -3,9 +3,11 @@ package Phase1_CoreLanguage.Extra;
 /**
  *In Java, all objects are dynamically allocated on Heap. This is different from C++ where objects can be allocated memory either on Stack or on Heap.
  * In C++, when we allocate the object using new(), the object is allocated on Heap, otherwise on Stack if not global or static.
+ * <p>
  *
  * In Java, when we only declare a variable of a class type, only a reference is created (memory is not allocated for the object). To allocate memory to an object, we must use new().
  * So the object is always allocated memory on heap (See this for more details).
+ * <p>
  *
  * If we create a class variable then it'll not allocate the memory in memory Heap.
  * When we use new keyWord then then it'll allocate the memory in memory Heap.

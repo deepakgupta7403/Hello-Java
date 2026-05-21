@@ -1,17 +1,15 @@
 package Phase3_ObjectOrientation.EmployeeApp;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * EmployeeRepository - the aggregate that owns the in-memory employee table.
+ * <p>
  *
  * Programs against the Employee INTERFACE rather than any specific record,
  * which is the whole point of interface-driven design: the repository works
  * unchanged no matter how many new permitted variants we add.
+ * <p>
  *
  * Demonstrates:
  *   - Programming to an interface (Employee).

@@ -3,6 +3,7 @@ package Phase1_CoreLanguage.PrimitiveDataTypes;
 /**
  * The long data type is a 64-bit two’s complement integer.
  * <p>
+ *
  * Size: 64 bit
  * Value: -2^63 to 2^63-1.
  * Minimum value is -9,223,372,036,854,775,808(-2^63)

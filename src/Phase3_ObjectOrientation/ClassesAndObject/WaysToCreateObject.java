@@ -4,6 +4,7 @@ package Phase3_ObjectOrientation.ClassesAndObject;
  * There are four ways to create objects in java.
  * Strictly speaking there is only one way(by using new keyword),and the rest internally use new keyword.
  * <p>
+ *
  * 1) Using new keyword.
  * 2) Using Class.forName(String className) method
  * 3) Using clone() method

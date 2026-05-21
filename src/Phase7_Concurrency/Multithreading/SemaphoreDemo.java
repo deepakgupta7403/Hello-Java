@@ -10,12 +10,13 @@ import java.util.concurrent.atomic.AtomicInteger;
  * A counter that hands out PERMITS. acquire() blocks until a permit is
  * available; release() returns one. With N permits you can let UP TO N
  * threads through a section at once — classic resource-limiting tool.
+ * <p>
  *
  *      Semaphore s = new Semaphore(N);          // N permits
  *      s.acquire();
  *      try { ...use the resource... }
  *      finally { s.release(); }
- *
+ * <p>
  *
  * What semaphores model
  * ---------------------
@@ -24,7 +25,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  *   - A CAP on concurrency — at most N requests in flight.
  *   - A signalling mechanism — release() can be called more times than
  *     acquire() (creating MORE permits than you started with).
- *
+ * <p>
  *
  * Methods
  * -------
@@ -36,13 +37,13 @@ import java.util.concurrent.atomic.AtomicInteger;
  *   acquire(n) / release(n)  - permits in bulk
  *   availablePermits()       - approx free count
  *   drainPermits()           - take all available, return how many
- *
+ * <p>
  *
  * Fair vs unfair
  * --------------
  *   new Semaphore(N)         - unfair, faster; possible starvation
  *   new Semaphore(N, true)   - FIFO order; slower
- *
+ * <p>
  *
  * "Binary semaphore" trick
  * ------------------------
@@ -50,7 +51,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  *   thread that releases need NOT be the one that acquired. Useful for
  *   handing off control between threads (e.g., one thread acquires,
  *   another releases).
- *
+ * <p>
  *
  * Pitfalls
  * --------

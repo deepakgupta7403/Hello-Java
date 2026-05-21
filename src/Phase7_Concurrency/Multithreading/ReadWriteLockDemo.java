@@ -10,23 +10,26 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * java.util.concurrent.locks.ReadWriteLock
  * ----------------------------------------
  * Two locks for the price of one:
+ * <p>
  *
  *   READ LOCK   - many threads may hold it simultaneously.
  *   WRITE LOCK  - exclusive; no readers or writers can be active.
+ * <p>
  *
  * Use when reads VASTLY OUTNUMBER writes — a configuration cache,
  * lookup table, in-memory index.
- *
+ * <p>
  *
  * The canonical implementation
  * ----------------------------
  *      ReadWriteLock rw = new ReentrantReadWriteLock();
  *      Lock r = rw.readLock();
  *      Lock w = rw.writeLock();
+ * <p>
  *
  *      r.lock();  try { ...read...  } finally { r.unlock(); }
  *      w.lock();  try { ...write... } finally { w.unlock(); }
- *
+ * <p>
  *
  * Important properties
  * --------------------
@@ -38,7 +41,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  *   - FAIR option behaves like ReentrantLock's.
  *   - Both locks share a single CONDITION namespace — only the WRITE
  *     lock can produce Conditions.
- *
+ * <p>
  *
  * Pitfalls
  * --------

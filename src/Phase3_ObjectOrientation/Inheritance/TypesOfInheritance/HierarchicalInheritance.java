@@ -2,18 +2,19 @@ package Phase3_ObjectOrientation.Inheritance.TypesOfInheritance;
 
 /**In Hierarchical OOPSConcepts.Inheritance, one class serves as a superclass (base class) for more than one sub class.
  * In below image, the class A serves as a base class for the derived class B,C and D.
+ * <p>
  *
  * Class A
  *  |--------Class B
  *  |--------Class C
  *  |--------Class D
+ * <p>
  *
  *  **/
 
 
 // Java program to illustrate the
 // concept of Hierarchical inheritance
-import java.lang.*;
 
 class AOne
 {

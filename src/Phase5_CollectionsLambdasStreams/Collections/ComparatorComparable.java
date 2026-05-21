@@ -1,51 +1,50 @@
 package Phase5_CollectionsLambdasStreams.Collections;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * Comparable vs Comparator
  * ------------------------
  * Two interfaces in the JDK control how objects get ordered. They look
  * similar but have different jobs.
- *
+ * <p>
  *
  * Comparable&lt;T&gt;  -  "I know how I compare to other Ts"
  * --------------------------------------------------
  *   - Defined ON the class whose objects need an order.
  *   - One abstract method:  int compareTo(T other)
  *   - Used as the NATURAL ORDERING by Collections.sort, TreeSet, TreeMap.
+ * <p>
  *
  *      class Money implements Comparable&lt;Money&gt; {
  *          public int compareTo(Money o) { ... }
  *      }
- *
+ * <p>
  *
  * Comparator&lt;T&gt;  -  "External rule for ordering Ts"
  * -------------------------------------------------
  *   - Defined OUTSIDE the class - any number of comparators per type.
  *   - One abstract method:  int compare(T a, T b)
  *   - Lets the SAME class be sorted multiple different ways.
+ * <p>
  *
  *      Comparator&lt;Person&gt; byName    = Comparator.comparing(Person::name);
  *      Comparator&lt;Person&gt; byAgeDesc = Comparator.comparingInt(Person::age).reversed();
- *
+ * <p>
  *
  * compareTo / compare Return Value Contract
  * -----------------------------------------
  *   negative -> this object is LESS THAN the other
  *   zero      -> equal in the ordering
  *   positive  -> this object is GREATER THAN the other
+ * <p>
  *
  * Implementations MUST be:
  *   - REFLEXIVE:    a.compareTo(a) == 0
  *   - ANTI-SYMMETRIC: a.compareTo(b) and b.compareTo(a) have opposite signs
  *   - TRANSITIVE:   if a &lt; b and b &lt; c then a &lt; c
  *   - CONSISTENT with equals(): strongly recommended but not required
- *
+ * <p>
  *
  * Comparator Combinators (Java 8+)
  * --------------------------------
@@ -56,14 +55,14 @@ import java.util.TreeSet;
  *      cmp.thenComparing(keyExtractor)
  *      Comparator.naturalOrder() / reverseOrder()
  *      Comparator.nullsFirst(cmp) / nullsLast(cmp)
- *
+ * <p>
  *
  * When To Use Which
  * -----------------
  *   - You own the class AND there is ONE natural ordering    ->  Comparable.
  *   - You don't own the class, or you need MULTIPLE orderings ->  Comparator.
  *   - You have BOTH                                          ->  perfectly fine.
- *
+ * <p>
  *
  * Common Pitfall - subtraction in compare()
  * -----------------------------------------

@@ -12,53 +12,61 @@ import java.util.stream.Stream;
  * A stream is INFINITE when its source can produce values forever. The
  * stream itself is fine; the program crashes only if you forget to bound
  * it with a short-circuit operation.
- *
+ * <p>
  *
  * Two Ways To Build One
  * ---------------------
+ * <p>
  *
  *   Stream.iterate(seed, UnaryOperator)
  *      Produces: seed, op(seed), op(op(seed)), ...
  *      Example : Stream.iterate(1, n -&gt; n * 2)
+ * <p>
  *
  *   Stream.generate(Supplier)
  *      Produces: supplier.get(), supplier.get(), ...
  *      Example : Stream.generate(Math::random)
- *
+ * <p>
  *
  * Bounding an Infinite Stream
  * ---------------------------
  * The short-circuit intermediate / terminal operations are:
+ * <p>
  *
  *      limit(n)                    keep the first n
  *      takeWhile(predicate)        keep until the predicate fails    (Java 9+)
  *      anyMatch / allMatch /       short-circuit terminals
  *        noneMatch
  *      findFirst / findAny
+ * <p>
  *
  * Forget all of these and the JVM will run until you ctrl-C it.
- *
+ * <p>
  *
  * Finite Version of iterate (Java 9+)
  * -----------------------------------
  *      Stream.iterate(seed, hasNext, next)
+ * <p>
  *
  *      Example: Stream.iterate(1, n -&gt; n &lt; 100, n -&gt; n * 2)
  *               -&gt; 1, 2, 4, 8, ..., 64
+ * <p>
  *
  * The middle argument is a PREDICATE applied to each element. When it
  * returns false the stream ends - no `.limit` needed.
- *
+ * <p>
  *
  * Order Matters
  * -------------
  *   Stream.iterate(0, n -&gt; n + 1)
  *         .filter(n -&gt; n % 7 == 0)
  *         .limit(5)                  // OK - limit short-circuits filter
+ * <p>
  *
  *   Stream.iterate(0, n -&gt; n + 1)
  *         .limit(100)                // OK - finite stream
  *         .filter(n -&gt; n % 7 == 0)   // also fine
+ * <p>
  *
  *   Stream.iterate(0, n -&gt; n + 1)
  *         .filter(n -&gt; false)

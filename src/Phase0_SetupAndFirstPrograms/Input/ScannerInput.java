@@ -9,7 +9,7 @@ import java.util.Scanner;
  * It wraps an InputStream (System.in for the console, but it can also read from
  * files, strings, etc.) and provides typed convenience methods like nextInt(),
  * nextDouble(), nextLine().
- *
+ * <p>
  *
  * Typical Methods
  * ---------------
@@ -22,7 +22,7 @@ import java.util.Scanner;
  *   nextBoolean() - reads next token as boolean
  *   next()        - reads next WORD (whitespace-delimited)
  *   nextLine()    - reads the rest of the CURRENT LINE (including spaces)
- *
+ * <p>
  *
  * The classic "Scanner Pitfall"
  * -----------------------------
@@ -30,7 +30,7 @@ import java.util.Scanner;
  * left in the buffer. A subsequent nextLine() will read that empty line instead
  * of waiting for new input. The fix is to call an extra sc.nextLine() to consume
  * the leftover newline. The example below demonstrates both the bug and the fix.
- *
+ * <p>
  *
  * Closing the Scanner
  * -------------------

@@ -14,22 +14,25 @@ import java.util.stream.Stream;
  * The Collectors class is a giant library of reusable collectors for use
  * with `stream.collect(...)`. Almost every "build a structured result"
  * task in stream code uses one.
- *
+ * <p>
  *
  * The Cheatsheet
  * --------------
+ * <p>
  *
  *   Building collections
  *      toList()                          mutable List (Java 8) - prefer Stream.toList() for unmodifiable
  *      toSet()
  *      toUnmodifiableList / Set / Map    immutable (Java 10+)
  *      toCollection(Supplier)            specific collection type
+ * <p>
  *
  *   Maps
  *      toMap(keyFn, valueFn)
  *      toMap(keyFn, valueFn, mergeFn)              resolve key conflicts
  *      toMap(keyFn, valueFn, mergeFn, mapFactory)  pick the Map impl
  *      toConcurrentMap(...)
+ * <p>
  *
  *   Grouping
  *      groupingBy(classifier)
@@ -38,6 +41,7 @@ import java.util.stream.Stream;
  *      partitioningBy(predicate)                   true/false split
  *      partitioningBy(predicate, downstreamCollector)
  *      groupingByConcurrent(...)
+ * <p>
  *
  *   Counting + summarising
  *      counting()
@@ -46,11 +50,13 @@ import java.util.stream.Stream;
  *      summarizingInt / summarizingLong / summarizingDouble
  *      maxBy(Comparator), minBy(Comparator)
  *      reducing(...)
+ * <p>
  *
  *   String building
  *      joining()
  *      joining(separator)
  *      joining(separator, prefix, suffix)
+ * <p>
  *
  *   Composing
  *      mapping(mapper, downstream)
@@ -58,12 +64,13 @@ import java.util.stream.Stream;
  *      filtering(predicate, downstream)            (Java 9+)
  *      flatMapping(mapper, downstream)             (Java 9+)
  *      teeing(c1, c2, combiner)                    (Java 12+, very powerful)
- *
+ * <p>
  *
  * The "downstream" Pattern
  * ------------------------
  * Many collectors take a "downstream" collector that processes the values
  * inside each group. That is how you compose interesting analytics:
+ * <p>
  *
  *      groupingBy(department, summingDouble(Employee::salary))
  *      groupingBy(department, mapping(Employee::name, toList()))

@@ -8,23 +8,26 @@ package Phase3_ObjectOrientation.Introduction;
  * between objects. The OOP paradigm models a system as a network of
  * cooperating objects, each holding STATE (fields) and exposing BEHAVIOUR
  * (methods).
- *
+ * <p>
  *
  * The Four Pillars of OOP
  * -----------------------
+ * <p>
  *
  *  1. ABSTRACTION
  *     Hiding implementation details and exposing only the relevant interface.
  *     "What does it do" without "how does it do it".
+ * <p>
  *
  *         abstract class Shape {
  *             abstract double area();
  *         }
- *
+ * <p>
  *
  *  2. ENCAPSULATION
  *     Bundling data + the code that operates on the data inside a single
  *     unit (a class) and controlling access via modifiers.
+ * <p>
  *
  *         class Account {
  *             private double balance;          // private state
@@ -32,25 +35,27 @@ package Phase3_ObjectOrientation.Introduction;
  *                 if (v > 0) balance += v;
  *             }
  *         }
- *
+ * <p>
  *
  *  3. INHERITANCE
  *     A subclass acquires fields and methods from a parent class and can
  *     add or override behaviour. Reuses code, expresses an "is-a" relationship.
+ * <p>
  *
  *         class Animal { void eat() {...} }
  *         class Dog extends Animal { void bark() {...} }    // Dog IS-A Animal
- *
+ * <p>
  *
  *  4. POLYMORPHISM
  *     One name, many forms. Two flavours in Java:
  *       - Compile-time (overloading) - same method name, different signatures.
  *       - Runtime (overriding) - subclass redefines a parent method; the call
  *         is dispatched based on the ACTUAL OBJECT TYPE at runtime.
+ * <p>
  *
  *         Animal a = new Dog();
  *         a.makeSound();        // runs Dog's version
- *
+ * <p>
  *
  * Why OOP?
  * --------
@@ -60,7 +65,7 @@ package Phase3_ObjectOrientation.Introduction;
  *  - MAINTAIN-  - encapsulation isolates change behind interfaces.
  *  - REAL-WORLD - models domains the way humans think about them ("a
  *                  customer has accounts", "a car is-a vehicle").
- *
+ * <p>
  *
  * OOP Building Blocks in Java
  * ---------------------------
@@ -76,7 +81,7 @@ package Phase3_ObjectOrientation.Introduction;
  *      enum             a fixed set of named instances
  *      sealed class     a class with an EXPLICIT list of allowed subclasses
  *                       (Java 17+)
- *
+ * <p>
  *
  * What This Folder Covers
  * -----------------------

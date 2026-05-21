@@ -8,41 +8,45 @@ import java.util.List;
  * --------------------------------------------------------
  * LinkedList implements BOTH List AND Deque. Internally it is a chain of
  * nodes; each node holds the value plus a previous/next pointer:
+ * <p>
  *
  *      head -> [ A ] &lt;-> [ B ] &lt;-> [ C ] &lt;- tail
- *
+ * <p>
  *
  * Why It Exists
  * -------------
  * Constant-time INSERT/REMOVE at either end and at a known cursor (via
  * ListIterator). That makes it convenient for queue/stack/deque use, and
  * historically for "lots of inserts in the middle" workloads.
- *
+ * <p>
  *
  * When To Use It
  * --------------
  *   - You need a DEQUE - add/remove at BOTH ends in O(1).
  *   - You build up a list at the FRONT (Linked.addFirst is O(1); ArrayList
  *     would shift on each prepend).
+ * <p>
  *
  * Honest reality check: ArrayList wins MOST benchmarks because of cache
  * friendliness. Reach for LinkedList only when you specifically need its
  * deque characteristics; otherwise prefer ArrayDeque or ArrayList.
- *
+ * <p>
  *
  * Big-O
  * -----
  *   addFirst / addLast / removeFirst / removeLast        O(1)
  *   get(i) / set(i) / add(i, e) / remove(i)              O(n)  (walk the chain)
  *   contains, indexOf, lastIndexOf                       O(n)
- *
+ * <p>
  *
  * The List-and-Deque Dual Personality
  * -----------------------------------
  * Because LinkedList implements Deque too, the SAME object exposes both:
+ * <p>
  *
  *   List API:  add, get, set, indexOf, subList ...
  *   Deque API: addFirst, peekLast, pollFirst, push, pop ...
+ * <p>
  *
  * In modern code, prefer ArrayDeque for deque/stack/queue duties - it is
  * smaller, faster and has no random-access methods at all.

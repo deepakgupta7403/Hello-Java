@@ -5,6 +5,7 @@ package Phase0_SetupAndFirstPrograms.JDKvsJREvsJVM;
  * -----------------
  * These three are the most commonly confused acronyms in the Java world. They
  * are nested - the JDK contains the JRE, and the JRE contains the JVM:
+ * <p>
  *
  *      +----------------------------------------------+
  *      |                    JDK                       |
@@ -20,7 +21,7 @@ package Phase0_SetupAndFirstPrograms.JDKvsJREvsJVM;
  *      |   |   +--------------------------+   |       |
  *      |   +----------------------------------+       |
  *      +----------------------------------------------+
- *
+ * <p>
  *
  * 1) JVM - Java Virtual Machine
  * -----------------------------
@@ -34,7 +35,7 @@ package Phase0_SetupAndFirstPrograms.JDKvsJREvsJVM;
  *     * Executing bytecode (Interpreter + Just-In-Time compiler)
  *     * Allocating memory and reclaiming it (Garbage Collector)
  *     * Managing native method calls (JNI)
- *
+ * <p>
  *
  * 2) JRE - Java Runtime Environment
  * ---------------------------------
@@ -42,7 +43,7 @@ package Phase0_SetupAndFirstPrograms.JDKvsJREvsJVM;
  * - Enough to RUN a compiled Java program but NOT to compile one.
  * - Was distributed separately until Java 8. Since Java 9, the JRE is part of the
  *   JDK and Oracle no longer ships a standalone JRE.
- *
+ * <p>
  *
  * 3) JDK - Java Development Kit
  * -----------------------------
@@ -56,7 +57,7 @@ package Phase0_SetupAndFirstPrograms.JDKvsJREvsJVM;
  *     jshell   - interactive REPL (Java 9+)
  *     jdb      - Java debugger
  *     jlink    - creates a custom runtime image (Java 9+)
- *
+ * <p>
  *
  * Side-by-Side Comparison
  * -----------------------
@@ -69,7 +70,7 @@ package Phase0_SetupAndFirstPrograms.JDKvsJREvsJVM;
  * |           |                           |                     | (bytecode independent)|
  * | Need it?  | Required to compile       | Required to run     | Embedded in JRE/JDK  |
  * +-----------+---------------------------+---------------------+----------------------+
- *
+ * <p>
  *
  * JVM Internal Architecture (Deep Dive)
  * -------------------------------------
@@ -81,6 +82,7 @@ package Phase0_SetupAndFirstPrograms.JDKvsJREvsJVM;
  *      a) Loading      - locates and reads the .class file
  *      b) Linking      - verification + preparation (default values) + resolution
  *      c) Initialization - executes static blocks and assigns static fields
+ * <p>
  *
  * 2. Runtime Data Areas (Memory)
  *    - Method Area (per JVM)  - class metadata, static variables, constant pool
@@ -88,23 +90,26 @@ package Phase0_SetupAndFirstPrograms.JDKvsJREvsJVM;
  *    - Stack    (per thread)  - frames per method call, local variables, partial results
  *    - PC Register (per thread) - address of the current bytecode instruction
  *    - Native Method Stack (per thread) - for native (C/C++) code
+ * <p>
  *
  * 3. Execution Engine
  *    - Interpreter        - reads bytecode line by line (slow but starts fast)
  *    - JIT Compiler       - converts hot bytecode into native machine code at runtime
  *    - Garbage Collector  - reclaims unreachable objects from the heap
+ * <p>
  *
  * 4. Native Method Interface (JNI)
  *    - Bridge between Java code and native code (libraries written in C/C++)
- *
+ * <p>
  *
  * Common Question - "Is JVM platform independent?"
  * ------------------------------------------------
  * NO. The JVM is platform DEPENDENT (different binaries for Windows / Mac / Linux).
  * The BYTECODE that the JVM consumes is platform INDEPENDENT.
+ * <p>
  *
  * That is what enables WORA - Write Once, Run Anywhere.
- *
+ * <p>
  *
  * This file is documentation only. Running main() simply confirms which JVM
  * implementation is executing this code.

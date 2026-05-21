@@ -10,49 +10,58 @@ import java.util.List;
  * ---------------------
  * A type parameter can have a bound that REFERENCES ITSELF. The canonical
  * example is:
+ * <p>
  *
  *      &lt;T extends Comparable&lt;T&gt;&gt;
+ * <p>
  *
  * Read as "T is comparable to ITS OWN TYPE". This is exactly the constraint
  * the JDK's Collections.max / Collections.min / Collections.sort etc. need.
- *
+ * <p>
  *
  * Why You Need It
  * ---------------
  * Without the recursive bound you could pass nonsensical types:
+ * <p>
  *
  *      static &lt;T extends Comparable&gt; T max(List&lt;T&gt; xs)  // BAD
+ * <p>
  *
  *      A class `Foo implements Comparable&lt;String&gt;` satisfies that signature
  *      but compareTo on a Foo expects a String - we'd mis-compare.
+ * <p>
  *
  * The recursive bound forbids that.
- *
+ * <p>
  *
  * The Builder Pattern's Cousin
  * ----------------------------
  * Another classic recursive-bound use:
+ * <p>
  *
  *      class Builder&lt;B extends Builder&lt;B&gt;&gt; {
  *          B self() { return (B) this; }
  *          B name(String n) { ...; return self(); }
  *      }
+ * <p>
  *
  * Subclasses inherit the fluent return type as their OWN type, not the
  * parent's. That lets you keep chaining subclass methods.
- *
+ * <p>
  *
  * Enum&lt;E extends Enum&lt;E&gt;&gt; - the JDK's most famous example
  * ------------------------------------------------------
  * java.lang.Enum is declared:
+ * <p>
  *
  *      public abstract class Enum&lt;E extends Enum&lt;E&gt;&gt;
  *          implements Comparable&lt;E&gt;, Serializable { ... }
+ * <p>
  *
  * That is why Day.MONDAY.compareTo(Day.FRIDAY) returns an int but
  * Day.MONDAY.compareTo(Color.RED) is a COMPILE ERROR - the bound nails
  * E down to "your own enum type, please".
- *
+ * <p>
  *
  * Two demos below: a typed min/max method and a "fluent self-typed builder".
  */

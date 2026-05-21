@@ -12,20 +12,24 @@ import java.util.stream.Stream;
  * Collection&lt;E&gt; is the shared API that List, Set, Queue, and Deque all
  * inherit. Programs against Collection get a generic API that works on any
  * implementation:
+ * <p>
  *
  *      void process(Collection&lt;String&gt; c) { for (String s : c) ... }
- *
+ * <p>
  *
  * The Methods (Complete API)
  * --------------------------
+ * <p>
  *
  *   - Size / emptiness
  *       size()                  - element count
  *       isEmpty()               - size() == 0
+ * <p>
  *
  *   - Membership
  *       contains(Object o)
  *       containsAll(Collection&lt;?&gt; c)
+ * <p>
  *
  *   - Modification
  *       add(E e)                - true if changed (Set may return false)
@@ -35,6 +39,7 @@ import java.util.stream.Stream;
  *       retainAll(Collection&lt;?&gt; c)        - intersection
  *       removeIf(Predicate&lt;? super E&gt; p)  - Java 8+
  *       clear()
+ * <p>
  *
  *   - Iteration / conversion
  *       iterator()
@@ -44,11 +49,12 @@ import java.util.stream.Stream;
  *       forEach(Consumer&lt;? super E&gt;)      - Java 8+
  *       stream() / parallelStream()       - Java 8+
  *       spliterator()                     - Java 8+
+ * <p>
  *
  *   - Equality / identity
  *       equals(Object o)
  *       hashCode()
- *
+ * <p>
  *
  * The Optional-Operation Convention
  * ---------------------------------
@@ -56,14 +62,14 @@ import java.util.stream.Stream;
  * mutator on them throws UnsupportedOperationException. The Java spec
  * permits any Collection method to be "optional" - read the docs for each
  * implementation.
- *
+ * <p>
  *
  * Equality - Two Collections Are Equal If...
  * ------------------------------------------
  *   - Same TYPE family (a List is never .equals to a Set).
  *   - Same SIZE.
  *   - Same ELEMENTS in the same iteration order (for ordered types).
- *
+ * <p>
  *
  * Iteration Gotcha - ConcurrentModificationException
  * --------------------------------------------------

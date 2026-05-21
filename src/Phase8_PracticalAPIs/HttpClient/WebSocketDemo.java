@@ -12,13 +12,13 @@ import java.util.concurrent.TimeUnit;
  * WebSocket API — java.net.http.WebSocket (Java 11+)
  * --------------------------------------------------
  * Full-duplex messaging. Built on the same HttpClient.
- *
+ * <p>
  *
  * The two roles
  * -------------
  *   WebSocket            - the connection.
  *   WebSocket.Listener   - callback interface for incoming events.
- *
+ * <p>
  *
  * Listener methods
  * ----------------
@@ -29,22 +29,24 @@ import java.util.concurrent.TimeUnit;
  *   onPong(WebSocket, ByteBuffer)
  *   onClose(WebSocket, int statusCode, String reason)
  *   onError(WebSocket, Throwable)
+ * <p>
  *
  *   Each callback returns a CompletionStage<?>; return null to mean
  *   "done, ready for more." The runtime requests one frame at a time
  *   via webSocket.request(n).
- *
+ * <p>
  *
  * Building & sending
  * ------------------
  *   HttpClient.newHttpClient()
  *             .newWebSocketBuilder()
  *             .buildAsync(uri, listener)            -> CompletableFuture<WebSocket>
+ * <p>
  *
  *   webSocket.sendText("hello", boolean last)       -> CompletableFuture<WebSocket>
  *   webSocket.sendBinary(buf, boolean last)
  *   webSocket.sendPing / sendPong / sendClose
- *
+ * <p>
  *
  * Common pitfalls
  * ---------------
@@ -53,7 +55,7 @@ import java.util.concurrent.TimeUnit;
  *   - Call webSocket.request(1) (or larger) inside onText to keep
  *     receiving — the default Listener defaults to 1 per callback.
  *   - sendClose must be matched on both sides.
- *
+ * <p>
  *
  * Example endpoint
  * ----------------

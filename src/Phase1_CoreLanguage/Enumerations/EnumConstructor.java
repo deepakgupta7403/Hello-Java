@@ -5,6 +5,7 @@ package Phase1_CoreLanguage.Enumerations;
  * We can’t create enum objects explicitly and hence we can’t invoke enum constructor directly.
  * enum and methods :
  * <p>
+ *
  * enum can contain concrete methods only i.e. no any abstract method.
  * filter_none
  **/

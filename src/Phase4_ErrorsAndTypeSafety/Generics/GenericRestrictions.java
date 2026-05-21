@@ -10,45 +10,53 @@ import java.util.function.Supplier;
  * Type erasure (see TypeErasure.java) makes Java generics simple to bolt on
  * to the existing JVM, but it forbids a number of things that look like
  * they should work. Knowing the rules saves hours of frustration.
- *
+ * <p>
  *
  * The Forbidden List (with workarounds)
  * -------------------------------------
+ * <p>
  *
  *   1. Cannot use a PRIMITIVE as a type argument
  *         List&lt;int&gt; xs;                     // ERROR
  *         List&lt;Integer&gt; xs;                  // OK (boxing)
+ * <p>
  *
  *   2. Cannot instantiate a TYPE PARAMETER directly
  *         T t = new T();                      // ERROR
  *         WORKAROUND: pass a Class&lt;T&gt; "type token" or a Supplier&lt;T&gt;.
+ * <p>
  *
  *   3. Cannot create a GENERIC ARRAY directly
  *         T[]      a = new T[10];             // ERROR
  *         List&lt;String&gt;[] b = new List&lt;String&gt;[10]; // ERROR
  *         WORKAROUND: Object[] cast, or use ArrayList&lt;T&gt;.
+ * <p>
  *
  *   4. Cannot use `instanceof` with a parameterised type
  *         if (x instanceof List&lt;String&gt;) ... // ERROR
  *         if (x instanceof List&lt;?&gt;)      ... // OK (wildcard)
+ * <p>
  *
  *   5. Cannot CATCH a parameterised exception
  *         catch (T e) ...                     // ERROR
  *         class MyException&lt;T&gt; extends Exception { } // also illegal
+ * <p>
  *
  *   6. Cannot have STATIC fields whose type uses T
  *         class Box&lt;T&gt; { static T DEFAULT; }  // ERROR
  *         static methods CAN have their OWN type parameter though.
+ * <p>
  *
  *   7. Cannot OVERLOAD methods that have the SAME erased signature
  *         void m(List&lt;String&gt;)                // both erase to m(List)
  *         void m(List&lt;Integer&gt;)               // ERROR
+ * <p>
  *
  *   8. Cannot CAST to a parameterised type (warning rather than error)
  *         List&lt;String&gt; ls = (List&lt;String&gt;) obj;   // unchecked-cast WARNING
  *         // The cast is REAL-CHECKED at the erased type (List), but the
  *         // <String> bit is unverifiable.
- *
+ * <p>
  *
  * Each restriction is demonstrated below - the FORBIDDEN line is commented
  * with `// ERROR:` so you can uncomment and see for yourself.

@@ -2,6 +2,7 @@ package Phase3_ObjectOrientation.Inheritance.TypesOfInheritance;
 
 /**In single inheritance, subclasses inherit the features of one superclass.
  * In image below, the class A serves as a base class for the derived class B.
+ * <p>
  *
  * Class A ---------------------------> Class B**/
 

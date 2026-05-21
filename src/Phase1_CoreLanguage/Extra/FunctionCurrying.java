@@ -7,8 +7,10 @@ import java.util.function.Function;
  * In other words, its a technique of simplifying a multi-valued argument function into single-valued argument multi-functions.
  * example:-
  * addThreeNumberFun(a,b,c){(return a+b+c)} -----After applying Function Currying addNumberOne(a){return addnumberTwo(b) return addNumberThree(c){return (a+b+c)}}}
+ * <p>
  *
  * Currying breaks down higher order functions into a series of smaller cascaded functions which take in one argument and return a function except for the last cascaded function which returns the desired value.
+ * <p>
  *
  * **/
 

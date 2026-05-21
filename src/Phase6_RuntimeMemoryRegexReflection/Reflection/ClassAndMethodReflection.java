@@ -1,17 +1,13 @@
 package Phase6_RuntimeMemoryRegexReflection.Reflection;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.lang.reflect.Parameter;
+import java.lang.reflect.*;
 import java.util.Arrays;
 
 /**
  * Class, Method, Field — in depth
  * --------------------------------
  * Most useful inspection / manipulation patterns.
- *
+ * <p>
  *
  * Finding the right method
  * ------------------------
@@ -19,42 +15,45 @@ import java.util.Arrays;
  *   getDeclaredMethod("name", paramTypes...)    - includes private, this class only
  *   getMethods()                                  - all PUBLIC (incl. inherited)
  *   getDeclaredMethods()                          - declared here, any access
+ * <p>
  *
  * For OVERLOADED methods you must match parameter types EXACTLY.
- *
+ * <p>
  *
  * Invocation
  * ----------
  *   method.invoke(instance, args...)
+ * <p>
  *
  *   - Static method? Pass null for instance.
  *   - Returns Object (boxed for primitives).
  *   - Wraps user exceptions in InvocationTargetException — unwrap with
  *     getCause().
- *
+ * <p>
  *
  * Fields
  * ------
  *   field.get(instance)     - read
  *   field.set(instance, v)  - write
  *   field.getInt(instance)  - primitive variant (faster, no boxing)
+ * <p>
  *
  *   - Final fields: writable via setAccessible(true) ONLY on instance
  *     fields, NOT on `static final` constants (the JIT may have inlined
  *     them).
- *
+ * <p>
  *
  * Modifiers
  * ---------
  *   int m = method.getModifiers();
  *   Modifier.isStatic(m), isFinal(m), isPublic(m), isPrivate(m), ...
- *
+ * <p>
  *
  * Parameters (Java 8+, requires `-parameters` at compile time for names)
  * ----------------------------------------------------------------------
  *   method.getParameters() -> Parameter[]
  *   parameter.getName(), .getType(), .isVarArgs()
- *
+ * <p>
  *
  * Generic type info
  * -----------------

@@ -10,28 +10,32 @@ import java.util.List;
  * Marking an array variable `final` is a frequent source of confusion. It only
  * means the variable CANNOT BE REASSIGNED to point to a different array. The
  * elements INSIDE the array remain mutable.
+ * <p>
  *
  *      final int[] nums = {1, 2, 3};
  *      nums[0] = 99;            // OK    - element is reassigned, not the variable
  *      nums = new int[]{4,5,6}; // ERROR - cannot reassign `nums`
- *
+ * <p>
  *
  * Java Has No Built-In Immutable Array
  * ------------------------------------
  * Unlike Kotlin's `IntArray` + `val` distinction, Java arrays are mutable. To
  * publish data that callers cannot tamper with, you must work AROUND this.
  * Patterns to achieve real immutability:
+ * <p>
  *
  *  1. Wrap in `List.of(...)`        - true immutable List (since Java 9).
  *     Best choice for new code.
+ * <p>
  *
  *  2. Return a defensive COPY       - getter returns arr.clone() so callers
  *     see a snapshot and cannot mutate the original.
+ * <p>
  *
  *  3. Wrap in `Collections.unmodifiableList(Arrays.asList(arr))` -
  *     unmodifiable VIEW over an array (still backed by the array - if you
  *     hold onto the original, you can still mutate via that reference).
- *
+ * <p>
  *
  * Compile-Time Constants
  * ----------------------
@@ -40,7 +44,7 @@ import java.util.List;
  * arrays cannot be inlined, only their REFERENCE is final. That is why
  * `public static final int[] PUBLIC_API = ...` is considered an antipattern
  * and IDEs warn about it - callers can still mutate the elements.
- *
+ * <p>
  *
  * Constant Object Arrays
  * ----------------------

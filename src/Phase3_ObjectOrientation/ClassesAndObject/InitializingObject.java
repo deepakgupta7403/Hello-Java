@@ -2,10 +2,12 @@ package Phase3_ObjectOrientation.ClassesAndObject;
 
 /**The new operator instantiates a class by allocating memory for a new object and returning a reference to that memory.
  * The new operator also invokes the class constructor.
+ * <p>
  *
  * This class contains a single constructor. We can recognize a constructor because its declaration uses the same name as the class and it has no return type.
  * The Java compiler differentiates the constructors based on the number and the type of the arguments. The constructor in the Dog class takes four arguments.
  * The following statement provides “tuffy”,”papillon”,5,”white” as values for those arguments:
+ * <p>
  *
  * Dog tuffy = new Dog("tuffy","papillon",5, "white");**/
 

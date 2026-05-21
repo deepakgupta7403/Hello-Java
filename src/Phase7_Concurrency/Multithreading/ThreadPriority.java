@@ -4,14 +4,16 @@ package Phase7_Concurrency.Multithreading;
  * Thread Priority
  * ---------------
  * Every Thread has an integer PRIORITY between 1 and 10 (inclusive):
+ * <p>
  *
  *      Thread.MIN_PRIORITY   = 1
  *      Thread.NORM_PRIORITY  = 5     (the default)
  *      Thread.MAX_PRIORITY   = 10
+ * <p>
  *
  * Priority is a HINT to the OS scheduler that this thread should be
  * preferred over lower-priority ones. It is NOT a guarantee.
- *
+ * <p>
  *
  * What actually happens
  * ---------------------
@@ -22,26 +24,26 @@ package Phase7_Concurrency.Multithreading;
  *         macOS  - QoS-influenced; not a strict ordering.
  *   - On most modern desktops/servers, priority has very little effect.
  *     Do NOT rely on it for correctness.
- *
+ * <p>
  *
  * Inheritance
  * -----------
  * A new Thread inherits its priority from the thread that created it
  * (unless explicitly set before start()).
- *
+ * <p>
  *
  * Validity
  * --------
  *   setPriority(int) throws IllegalArgumentException if out of [1, 10].
  *   setPriority is also capped by the parent ThreadGroup's max priority.
- *
+ * <p>
  *
  * When NOT to use priorities
  * --------------------------
  *   - To "make this thread go faster than another." It rarely does.
  *   - To ensure ordering or fairness — use a queue / synchronizer.
  *   - To prevent starvation — priority-based starvation is a thing.
- *
+ * <p>
  *
  * When priorities can help
  * ------------------------

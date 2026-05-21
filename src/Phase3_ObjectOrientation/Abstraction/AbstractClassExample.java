@@ -6,10 +6,11 @@ package Phase3_ObjectOrientation.Abstraction;
  * ABSTRACTION is the OOP pillar that hides implementation details and exposes
  * only the behaviour a caller needs. In Java you achieve abstraction with two
  * mechanisms:
+ * <p>
  *
  *      1. abstract classes  (this file)
  *      2. interfaces        (see InterfaceExample.java)
- *
+ * <p>
  *
  * What is an abstract class?
  * --------------------------
@@ -17,6 +18,7 @@ package Phase3_ObjectOrientation.Abstraction;
  *   - concrete fields and methods (with bodies)
  *   - abstract methods (no body, must end with a semicolon)
  *   - constructors (called by subclass constructors via super(...))
+ * <p>
  *
  * Properties:
  *   - You CANNOT instantiate an abstract class directly:
@@ -24,7 +26,7 @@ package Phase3_ObjectOrientation.Abstraction;
  *   - A subclass either provides bodies for ALL inherited abstract methods,
  *     or it must ALSO be declared abstract.
  *   - An abstract class is essentially a "partial class" - you finish it.
- *
+ * <p>
  *
  * When to use an abstract class
  * -----------------------------
@@ -33,12 +35,13 @@ package Phase3_ObjectOrientation.Abstraction;
  *   - You want to share STATE (fields) across all subclasses - interfaces
  *     can have constants but not regular fields.
  *   - You want non-public constructors (to control how subclasses construct).
- *
+ * <p>
  *
  * Template Method Pattern
  * -----------------------
  * The classic use case. A concrete method in the abstract class defines the
  * overall ALGORITHM and calls abstract "hooks" that subclasses override:
+ * <p>
  *
  *      abstract class Game {
  *          public final void play() {            // template method - final
@@ -51,7 +54,7 @@ package Phase3_ObjectOrientation.Abstraction;
  *          protected abstract boolean isOver();
  *          protected abstract void finish();
  *      }
- *
+ * <p>
  *
  * The Example Below
  * -----------------
@@ -107,6 +110,7 @@ public class AbstractClassExample {
     /**
      * A subclass that does NOT override all abstract methods would itself be
      * abstract. Uncomment to see the compile error:
+     * <p>
      *
      *   static class Triangle extends Shape {
      *       public Triangle() { super("Triangle"); }

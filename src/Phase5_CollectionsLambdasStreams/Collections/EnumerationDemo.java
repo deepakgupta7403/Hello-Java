@@ -1,30 +1,25 @@
 package Phase5_CollectionsLambdasStreams.Collections;
 
-import java.util.Collections;
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.List;
-import java.util.StringTokenizer;
-import java.util.Vector;
+import java.util.*;
 
 /**
  * java.util.Enumeration&lt;E&gt; - The Original (Java 1.0) Iterator
  * -----------------------------------------------------------
  * Enumeration is the LEGACY ancestor of Iterator. It is the iteration
  * contract used by the original Java 1.0 collection classes:
+ * <p>
  *
  *      Vector / Stack / Hashtable
  *      StringTokenizer
  *      ZipFile / NetworkInterface (some IO classes still expose Enumerations)
- *
+ * <p>
  *
  * Methods
  * -------
  *      boolean hasMoreElements()
  *      E       nextElement()
  *      default Iterator&lt;E&gt; asIterator()   (Java 9+, useful bridge)
- *
+ * <p>
  *
  * Enumeration vs Iterator
  * -----------------------
@@ -35,11 +30,12 @@ import java.util.Vector;
  *   nextElement()           next()
  *   - no remove             remove() (optional)
  *   - no forEach (until 9)  forEachRemaining()
+ * <p>
  *
  * Iterator superseded Enumeration in Java 1.2. The Collections Framework
  * uses Iterator everywhere. Enumeration is kept for backwards compatibility
  * with very old APIs.
- *
+ * <p>
  *
  * When You Still See It
  * ---------------------
@@ -48,7 +44,7 @@ import java.util.Vector;
  *   - some classloader APIs: `getResources(name)` returns Enumeration&lt;URL&gt;.
  *   - StringTokenizer (also legacy - prefer String.split or Scanner).
  *   - any code targeting JDK 1.1 or older libraries.
- *
+ * <p>
  *
  * Bridging Enumeration &lt;-&gt; Iterator
  * ---------------------------------

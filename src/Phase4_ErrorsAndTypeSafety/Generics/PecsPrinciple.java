@@ -10,11 +10,12 @@ import java.util.List;
  * ---------------------------------------
  * The most famous rule of generic API design, coined by Joshua Bloch in
  * "Effective Java". It tells you which wildcard to use:
+ * <p>
  *
  *      PRODUCER produces T values for me  ->  Collection&lt;? extends T&gt;
  *      CONSUMER consumes T values from me ->  Collection&lt;? super T&gt;
  *      Neither (does both)                 ->  plain Collection&lt;T&gt; (no wildcard)
- *
+ * <p>
  *
  * Why It Matters
  * --------------
@@ -22,21 +23,24 @@ import java.util.List;
  * be. A method that "reads Numbers from a list" should accept
  * `List&lt;? extends Number&gt;`, not just `List&lt;Number&gt;` - otherwise callers
  * with a `List&lt;Integer&gt;` get a compile error.
- *
+ * <p>
  *
  * Worked Example: Collections.copy / addAll / sort
  * ------------------------------------------------
  * The JDK applies PECS systematically:
+ * <p>
  *
  *      // copy(dest, src) - src PRODUCES, dest CONSUMES
  *      public static &lt;T&gt; void copy(List&lt;? super T&gt; dest, List&lt;? extends T&gt; src)
+ * <p>
  *
  *      // addAll(c, elements) - c CONSUMES the varargs PRODUCER
  *      public static &lt;T&gt; boolean addAll(Collection&lt;? super T&gt; c, T... elements)
+ * <p>
  *
  *      // sort with a comparator that COMPARES (consumes) T or any supertype
  *      public static &lt;T&gt; void sort(List&lt;T&gt; list, Comparator&lt;? super T&gt; c)
- *
+ * <p>
  *
  * The Quick Test
  * --------------

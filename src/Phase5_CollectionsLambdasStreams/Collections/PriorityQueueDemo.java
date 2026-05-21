@@ -11,7 +11,7 @@ import java.util.PriorityQueue;
  * the order they were added. Internally it uses a BINARY HEAP stored in an
  * array, so the "top" element (smallest by natural order, by default) is
  * always at index 0.
- *
+ * <p>
  *
  * Why It Exists
  * -------------
@@ -19,7 +19,7 @@ import java.util.PriorityQueue;
  * thing next" - earliest deadline first, shortest path next, highest
  * priority task next, top-K elements. A PriorityQueue does that in
  * O(log n) per add/remove.
- *
+ * <p>
  *
  * When To Use It
  * --------------
@@ -27,7 +27,7 @@ import java.util.PriorityQueue;
  *   - Task schedulers ranked by priority or deadline.
  *   - Top-K problems (keep the K smallest / largest seen so far).
  *   - Event simulators that fire events in time order.
- *
+ * <p>
  *
  * Big-O
  * -----
@@ -35,23 +35,24 @@ import java.util.PriorityQueue;
  *   peek / element                          O(1)
  *   contains                                O(n)
  *   remove(Object o) (not head)             O(n)
- *
+ * <p>
  *
  * Ordering
  * --------
  * By default a PriorityQueue is a MIN-HEAP using natural ordering. You
  * change the order by supplying a Comparator in the constructor.
+ * <p>
  *
  *      new PriorityQueue<>()                                  // min-heap
  *      new PriorityQueue<>(Comparator.reverseOrder())          // max-heap
  *      new PriorityQueue<>(Comparator.comparing(Task::deadline))
- *
+ * <p>
  *
  * Iteration is NOT Ordered
  * ------------------------
  * The Iterator and toString walk the underlying array, NOT in priority
  * order. To see elements in order, repeatedly poll().
- *
+ * <p>
  *
  * Constructors
  * ------------

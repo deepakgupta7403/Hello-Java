@@ -9,22 +9,24 @@ import java.util.concurrent.atomic.AtomicInteger;
  * A LOCK-FREE, UNBOUNDED FIFO queue suitable for many producers and many
  * consumers. Internally it uses a singly-linked list with atomic CAS
  * (compare-and-swap) operations - no locks, no blocking.
+ * <p>
  *
  *      head -> [A] -> [B] -> [C] -> tail
- *
+ * <p>
  *
  * Why It Exists
  * -------------
  *   - LinkedList / ArrayDeque are NOT thread-safe.
  *   - Collections.synchronizedQueue / Vector lock the entire collection.
  *   - BlockingQueue blocks; sometimes you do not want to block.
+ * <p>
  *
  * ConcurrentLinkedQueue is the right pick when:
  *   - Many threads call offer() and poll() concurrently.
  *   - You do not need backpressure (no max capacity).
  *   - You do not want callers to wait when the queue is empty (poll
  *     returns null - no blocking).
- *
+ * <p>
  *
  * Differences From BlockingQueue
  * ------------------------------
@@ -35,7 +37,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  *   Unbounded                    Often bounded for backpressure
  *   poll() returns null          take() blocks until an element exists
  *   No "fair" option              Some have a fairness mode
- *
+ * <p>
  *
  * Methods That Matter
  * -------------------
@@ -46,7 +48,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  *   size()               - O(n)! Walks the list, not a counter.
  *   isEmpty()            - O(1)
  *   iterator()           - weakly consistent, never throws CME
- *
+ * <p>
  *
  * Why size() Is O(n)
  * ------------------
@@ -54,7 +56,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * coordinating. There is no maintained counter because keeping one in sync
  * would require its own CAS loop. If you need to check whether the queue
  * is empty, use isEmpty() - that one is O(1).
- *
+ * <p>
  *
  * Big-O
  * -----

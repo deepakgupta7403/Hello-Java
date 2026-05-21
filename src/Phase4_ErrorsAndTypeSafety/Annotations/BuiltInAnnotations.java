@@ -7,28 +7,32 @@ import java.util.List;
  * Built-In Annotations
  * --------------------
  * The standard ones every Java developer should recognise.
- *
+ * <p>
  *
  * Compiler / language family
  * --------------------------
  *   @Override              - "I'm overriding a superclass method." The
  *                            compiler errors if the signature doesn't
  *                            actually override anything.
+ * <p>
  *
  *   @Deprecated            - "This is going away. Don't add new uses."
  *                            Java 9+ adds elements: since, forRemoval.
+ * <p>
  *
  *   @SuppressWarnings("unchecked", "rawtypes", ...)
  *                          - Tell the compiler to ignore named warnings
  *                            in the smallest scope you can manage.
+ * <p>
  *
  *   @SafeVarargs           - "This varargs method is safe even though it
  *                            uses a generic type." See Generics section.
+ * <p>
  *
  *   @FunctionalInterface   - On an interface: error if it has more than
  *                            one abstract method. Catches typos in
  *                            single-method contracts.
- *
+ * <p>
  *
  * Meta-annotation family (used on YOUR annotations)
  * -------------------------------------------------
@@ -37,7 +41,7 @@ import java.util.List;
  *   @Inherited             - sub-classes inherit it from a class
  *   @Repeatable            - declares an annotation as repeatable
  *   @Documented            - include in javadoc
- *
+ * <p>
  *
  * Reflection / serialization family
  * ---------------------------------

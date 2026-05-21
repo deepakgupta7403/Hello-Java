@@ -2,8 +2,6 @@ package Phase8_PracticalAPIs.DateAndTime;
 
 import java.time.Duration;
 import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 
 /**
@@ -12,10 +10,11 @@ import java.time.temporal.ChronoUnit;
  * Duration measures EXACT, MACHINE-LEVEL TIME — seconds and nanos.
  * "2 hours 30 minutes 15 seconds." Used with Instant, LocalTime, and
  * any precision below a day.
+ * <p>
  *
  * Contrast with Period (P1Y2M3D) which is CALENDAR-LENGTH — variable
  * because months / years differ.
- *
+ * <p>
  *
  * Construction
  * ------------
@@ -23,19 +22,19 @@ import java.time.temporal.ChronoUnit;
  *   Duration.of(amount, ChronoUnit)
  *   Duration.between(a, b)              - signed difference
  *   Duration.parse("PT2H30M15S")        - ISO-8601 duration text
- *
+ * <p>
  *
  * Arithmetic
  * ----------
  *   plus / minus / multipliedBy / dividedBy / negated / abs
- *
+ * <p>
  *
  * Accessors
  * ---------
  *   toDays / toHours / toMinutes / toSeconds / toMillis / toNanos
  *   toDaysPart / toHoursPart / toMinutesPart / toSecondsPart / toNanosPart  (Java 9+)
  *   isNegative / isZero
- *
+ * <p>
  *
  * Common use cases
  * ----------------
@@ -43,7 +42,7 @@ import java.time.temporal.ChronoUnit;
  *   - HTTP timeouts: HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(5))
  *   - Cache TTLs.
  *   - Retry backoff schedules.
- *
+ * <p>
  *
  * Pitfall: Duration.ofDays uses 24 hours, NOT a calendar day. Over a
  * DST boundary "1 day" can be 23 or 25 hours of clock time — Period

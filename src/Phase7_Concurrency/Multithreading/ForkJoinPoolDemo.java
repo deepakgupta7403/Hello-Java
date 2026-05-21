@@ -12,13 +12,13 @@ import java.util.concurrent.RecursiveTask;
  * use WORK-STEALING: when a worker's own deque runs dry, it steals
  * tasks from the back of a busier worker's deque. This is what makes
  * recursive task decomposition fast.
- *
+ * <p>
  *
  * Two task base classes
  * ---------------------
  *   RecursiveAction       - no result; subclass and implement compute()
  *   RecursiveTask<V>      - returns V; subclass and implement compute() : V
- *
+ * <p>
  *
  * Inside compute()
  * ----------------
@@ -27,13 +27,14 @@ import java.util.concurrent.RecursiveTask;
  *   3. FORK      — submit one subtask asynchronously.
  *   4. COMPUTE   — run the other subtask on the CURRENT worker.
  *   5. JOIN      — wait for the forked subtask and combine results.
+ * <p>
  *
  *      Pattern:
  *          ForkJoinTask<V> left = leftTask.fork();
  *          V rightResult = rightTask.compute();
  *          V leftResult = left.join();
  *          return combine(leftResult, rightResult);
- *
+ * <p>
  *
  * The Common Pool
  * ---------------
@@ -41,11 +42,12 @@ import java.util.concurrent.RecursiveTask;
  *     - parallel streams (.parallelStream / .parallel())
  *     - CompletableFuture default-executor async stages
  *     - your own fork/join tasks if you don't supply a pool
+ * <p>
  *
  *   Default parallelism = availableProcessors() - 1. Heavy work in one
  *   place starves the others. For dedicated workloads, create your own
  *   ForkJoinPool.
- *
+ * <p>
  *
  * Don't do these
  * --------------

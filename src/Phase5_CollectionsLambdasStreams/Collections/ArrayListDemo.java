@@ -1,10 +1,6 @@
 package Phase5_CollectionsLambdasStreams.Collections;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 /**
  * java.util.ArrayList - Resizing-Array Implementation of List
@@ -12,7 +8,7 @@ import java.util.ListIterator;
  * ArrayList is the DEFAULT List implementation in Java. Internally it stores
  * elements in an Object[] and grows the array (typically by 1.5x) when it
  * gets full.
- *
+ * <p>
  *
  * Why It Exists
  * -------------
@@ -22,7 +18,7 @@ import java.util.ListIterator;
  *   - the full List API,
  *   - bidirectional iteration,
  *   - integration with the rest of java.util.
- *
+ * <p>
  *
  * When To Use It
  * --------------
@@ -30,7 +26,7 @@ import java.util.ListIterator;
  *   - Most modifications are at the END (append).
  *   - Random get() is frequent.
  *   - Single-threaded or read-mostly.
- *
+ * <p>
  *
  * When NOT To Use It
  * ------------------
@@ -38,7 +34,7 @@ import java.util.ListIterator;
  *     -> consider LinkedList (rarely) or a different structure entirely.
  *   - You need uniqueness ->  HashSet.
  *   - You need concurrent writers -> CopyOnWriteArrayList or external sync.
- *
+ * <p>
  *
  * Big-O
  * -----
@@ -47,21 +43,21 @@ import java.util.ListIterator;
  *   add/remove at index i                            O(n - i)
  *   contains, indexOf, lastIndexOf                   O(n)
  *   iterator/iteration                               O(n)
- *
+ * <p>
  *
  * Constructors
  * ------------
  *   new ArrayList&lt;&gt;()                          // initial capacity 10
  *   new ArrayList&lt;&gt;(int initialCapacity)        // pre-size for known load
  *   new ArrayList&lt;&gt;(Collection&lt;? extends E&gt; c)  // copy of another
- *
+ * <p>
  *
  * Capacity vs Size
  * ----------------
  *   - capacity: how big the internal array currently is.
  *   - size:     how many elements you have actually added.
  * ensureCapacity(int) grows ahead of time; trimToSize() shrinks to size().
- *
+ * <p>
  *
  * Methods (Complete API, in addition to those inherited from List/Collection)
  * --------------------------------------------------------------------------

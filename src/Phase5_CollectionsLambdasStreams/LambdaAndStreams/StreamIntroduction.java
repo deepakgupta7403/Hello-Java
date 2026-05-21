@@ -13,50 +13,59 @@ import java.util.stream.Stream;
  * functional-style operations. Streams are NOT data structures: they
  * compute on data from a source (a Collection, array, file, generator, ...)
  * and emit results.
+ * <p>
  *
  *      List&lt;Integer&gt; nums = List.of(1, 2, 3, 4, 5);
+ * <p>
  *
  *      int sumOfSquaresOfEvens = nums.stream()
  *                                   .filter(n -&gt; n % 2 == 0)
  *                                   .mapToInt(n -&gt; n * n)
  *                                   .sum();
+ * <p>
  *
  * That one expression DECLARES the result; the JVM figures out HOW to
  * compute it.
- *
+ * <p>
  *
  * Stream Properties
  * -----------------
  *   - LAZY            Intermediate operations do nothing until a terminal
  *                     operation runs. The pipeline is fused and consumed
  *                     in one pass.
+ * <p>
  *
  *   - ONE-SHOT        Once a stream's terminal operation has run, the
  *                     stream is consumed - you cannot iterate it again.
+ * <p>
  *
  *   - DECLARATIVE     "What" not "how" - the JVM gets to optimise.
+ * <p>
  *
  *   - POSSIBLY        Streams can have an ENCOUNTER ORDER (e.g. List) or be
  *     ORDERED         unordered (e.g. HashSet). Order affects parallelism
  *                     behaviour and methods like findFirst vs findAny.
+ * <p>
  *
  *   - INDEPENDENT     A Stream does not modify its source. Filtering does
  *                     not remove from the underlying List.
- *
+ * <p>
  *
  * Streams vs Loops
  * ----------------
  *      int total = 0;
  *      for (int n : nums) if (n % 2 == 0) total += n * n;     // imperative
+ * <p>
  *
  *      int total = nums.stream()
  *                      .filter(n -&gt; n % 2 == 0)
  *                      .mapToInt(n -&gt; n * n)
  *                      .sum();                                 // declarative
+ * <p>
  *
  * Streams shine for COMPOSITIONS (filter + map + reduce). Plain loops still
  * win for very simple work or when you need fine-grained control.
- *
+ * <p>
  *
  * The Big Picture - The Files in This Folder
  * ------------------------------------------

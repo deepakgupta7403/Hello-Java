@@ -6,6 +6,7 @@ import java.util.concurrent.locks.StampedLock;
  * java.util.concurrent.locks.StampedLock  (Java 8+)
  * -------------------------------------------------
  * Three modes:
+ * <p>
  *
  *   WRITE LOCK     - exclusive (like a write lock).
  *   READ LOCK      - shared (like a read lock).
@@ -13,12 +14,13 @@ import java.util.concurrent.locks.StampedLock;
  *                    validates the stamp after reading. If a writer
  *                    completed in the meantime, the validation fails
  *                    and you fall back to a real read lock.
+ * <p>
  *
  * Optimistic reads are CHEAP — basically a volatile read — but you must
  * COPY the fields you read to LOCAL VARIABLES before validating. If you
  * dereference a stale reference during the optimistic window you can
  * get inconsistent or even unsafe values.
- *
+ * <p>
  *
  * Key API
  * -------
@@ -31,7 +33,7 @@ import java.util.concurrent.locks.StampedLock;
  *   long tryConvertToWriteLock(stamp)-> upgrade (returns 0 on failure)
  *   long tryConvertToReadLock(stamp) -> downgrade
  *   boolean isWriteLocked()
- *
+ * <p>
  *
  * Important differences from ReadWriteLock
  * ----------------------------------------
@@ -39,13 +41,14 @@ import java.util.concurrent.locks.StampedLock;
  *   - No Conditions.
  *   - Often faster under read-heavy contention.
  *   - Slightly more code to use correctly.
- *
+ * <p>
  *
  * Pattern: read-mostly Point class
  * --------------------------------
  *      class Point {
  *          private double x, y;
  *          private final StampedLock sl = new StampedLock();
+ * <p>
  *
  *          double distanceFromOrigin() {
  *              long stamp = sl.tryOptimisticRead();
@@ -58,6 +61,7 @@ import java.util.concurrent.locks.StampedLock;
  *              }
  *              return Math.hypot(localX, localY);
  *          }
+ * <p>
  *
  *          void move(double dx, double dy) {
  *              long stamp = sl.writeLock();

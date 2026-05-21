@@ -2,32 +2,27 @@ package Phase7_Concurrency.Multithreading;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
+import java.util.concurrent.*;
 
 /**
  * Callable<V> and Future<V>
  * -------------------------
  * Runnable is great when the work has NO RETURN VALUE and never throws
  * checked exceptions. When you need a RESULT, use:
+ * <p>
  *
  *      @FunctionalInterface
  *      public interface Callable<V> {
  *          V call() throws Exception;
  *      }
+ * <p>
  *
  * Submit it to an ExecutorService and you get a Future<V>:
+ * <p>
  *
  *      Future<V> f = executor.submit(callable);
  *      V result = f.get();        // blocks until ready
- *
+ * <p>
  *
  * Future contract
  * ---------------
@@ -37,7 +32,7 @@ import java.util.concurrent.TimeoutException;
  *                              task is running, interrupt the worker.
  *   isDone()                  - finished normally, exceptionally, or cancelled.
  *   isCancelled()
- *
+ * <p>
  *
  * What .get() throws
  * ------------------
@@ -46,17 +41,18 @@ import java.util.concurrent.TimeoutException;
  *                              the original exception.
  *   CancellationException   - the task was cancelled.
  *   TimeoutException        - (timed version only) deadline passed.
- *
+ * <p>
  *
  * FutureTask
  * ----------
  * A Runnable + Future. Useful when you want to run a Callable on a raw
  * Thread (without an ExecutorService) and still grab the result:
+ * <p>
  *
  *      FutureTask<Integer> task = new FutureTask<>(() -> 42);
  *      new Thread(task).start();
  *      int x = task.get();
- *
+ * <p>
  *
  * Modern alternatives
  * -------------------

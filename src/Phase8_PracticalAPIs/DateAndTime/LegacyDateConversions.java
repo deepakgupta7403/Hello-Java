@@ -3,7 +3,6 @@ package Phase8_PracticalAPIs.DateAndTime;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Calendar;
@@ -15,31 +14,36 @@ import java.util.TimeZone;
  * Legacy <-> Modern Date Conversions
  * ----------------------------------
  * Most code should use java.time. But you'll hit legacy APIs:
+ * <p>
  *
  *   java.util.Date           - mutable long-wrapper
  *   java.util.Calendar       - "subclasses for various calendars" (mostly Gregorian)
  *   java.sql.Date / Time / Timestamp - JDBC subclasses (deprecated for new code)
  *   java.util.TimeZone       - legacy zone class
- *
+ * <p>
  *
  * Conversion table
  * ----------------
  *      Date  -> Instant            : date.toInstant()
  *      Instant -> Date             : Date.from(instant)
+ * <p>
  *
  *      Calendar -> ZonedDateTime   : (Calendar).toInstant().atZone(zoneId)
  *      ZonedDateTime -> Calendar   : GregorianCalendar.from(zdt)
+ * <p>
  *
  *      Date -> LocalDate           : date.toInstant().atZone(zone).toLocalDate()
  *      LocalDate -> Date           : Date.from(ld.atStartOfDay(zone).toInstant())
+ * <p>
  *
  *      java.sql.Timestamp <-> Instant  : .toInstant() / Timestamp.from(...)
  *      java.sql.Date     <-> LocalDate : .toLocalDate() / java.sql.Date.valueOf(ld)
  *      java.sql.Time     <-> LocalTime : .toLocalTime() / java.sql.Time.valueOf(lt)
+ * <p>
  *
  *      TimeZone -> ZoneId          : tz.toZoneId()
  *      ZoneId   -> TimeZone        : TimeZone.getTimeZone(zoneId)
- *
+ * <p>
  *
  * Best practice
  * -------------

@@ -5,9 +5,10 @@ package Phase7_Concurrency.Multithreading;
  * --------------
  * A HINT to the scheduler that the current thread is willing to give up
  * its current time slice. It is a STATIC method.
+ * <p>
  *
  *      Thread.yield();
- *
+ * <p>
  *
  * What it really does
  * -------------------
@@ -17,7 +18,7 @@ package Phase7_Concurrency.Multithreading;
  *   - There is NO guaranteed effect. The JVM spec gives no promise of
  *     ordering or fairness.
  *   - It does NOT release locks. It does NOT block.
- *
+ * <p>
  *
  * When to use yield
  * -----------------
@@ -25,6 +26,7 @@ package Phase7_Concurrency.Multithreading;
  *   - Most production code uses synchronizers, queues, latches, or
  *     park()/unpark() — which actually coordinate.
  *   - yield is a "be polite" hint, not a synchronization primitive.
+ * <p>
  *
  * Two niche real uses:
  *   1. Long-running CPU loops in single-threaded benchmarks where you
@@ -32,7 +34,7 @@ package Phase7_Concurrency.Multithreading;
  *   2. Implementing a custom spin-wait alongside Thread.onSpinWait()
  *      (Java 9+) — yield is the bigger hammer, onSpinWait is the lighter
  *      CPU-pipeline hint.
- *
+ * <p>
  *
  * yield vs sleep vs wait
  * ----------------------

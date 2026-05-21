@@ -10,22 +10,25 @@ import java.util.Queue;
  * -------------------------------------------
  * A Queue holds elements waiting to be processed. The classic model is
  * FIRST-IN-FIRST-OUT - the element you add first comes out first.
+ * <p>
  *
  *      enqueue ->  [A][B][C][D]  -> dequeue
- *
+ * <p>
  *
  * The Queue API - Two Method Families
  * -----------------------------------
+ * <p>
  *
  *   Throws on failure                Returns a special value
  *   --------------------------       ------------------------
  *   add(e)        - capacity full -> exception   |  offer(e)  -> returns false
  *   remove()      - empty queue   -> exception   |  poll()    -> returns null
  *   element()     - empty queue   -> exception   |  peek()    -> returns null
+ * <p>
  *
  * Pick ONE style consistently in a code base. `offer` / `poll` / `peek` are
  * the safer default - exceptions tend to be unwanted control flow.
- *
+ * <p>
  *
  * Common Implementations
  * ----------------------
@@ -36,14 +39,14 @@ import java.util.Queue;
  *   LinkedBlockingQueue- optionally bounded, thread-safe
  *   SynchronousQueue   - hand-off queue with zero capacity
  *   ConcurrentLinkedQueue - lock-free unbounded queue
- *
+ * <p>
  *
  * When To Use Which
  * -----------------
  *   - Single-threaded FIFO              ->  ArrayDeque (fastest plain Queue).
  *   - Priority-ordered processing       ->  PriorityQueue.
  *   - Multi-producer / multi-consumer   ->  the concurrent queues.
- *
+ * <p>
  *
  * Deque vs Queue
  * --------------

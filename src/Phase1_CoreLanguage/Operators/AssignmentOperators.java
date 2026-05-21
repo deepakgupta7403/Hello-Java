@@ -5,6 +5,7 @@ package Phase1_CoreLanguage.Operators;
  * --------------------
  * The basic assignment operator is = and the COMPOUND assignment operators
  * combine an arithmetic / bitwise operator with assignment:
+ * <p>
  *
  *      =      simple assignment
  *      +=     a += b   -> a = a + b
@@ -18,24 +19,27 @@ package Phase1_CoreLanguage.Operators;
  *      <<=    a <<= b  -> a = a << b
  *      >>=    a >>= b  -> a = a >> b
  *      >>>=   a >>>= b -> a = a >>> b
- *
+ * <p>
  *
  * The Hidden Cast in Compound Assignments
  * ---------------------------------------
  * Compound assignment operators perform an IMPLICIT cast back to the variable's
  * type. The plain '=' does not.
+ * <p>
  *
  *      short s = 10;
  *      s = s + 1;       // ERROR - s + 1 is int, can't assign int to short
  *      s += 1;          // OK    - += quietly casts back to short
+ * <p>
  *
  * This is convenient but can MASK BUGS - the cast can lose data without warning.
- *
+ * <p>
  *
  * Right-to-Left Associativity / Chained Assignment
  * ------------------------------------------------
  *      int x, y, z;
  *      x = y = z = 5;     // assigns 5 to z, then y, then x
+ * <p>
  *
  * Avoid in real code - too easy to misread.
  */

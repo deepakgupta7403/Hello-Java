@@ -7,35 +7,38 @@ package Phase2_MethodsArraysStrings.Strings;
  * an OBJECT of the class java.lang.String. Internally a String stores its
  * characters in a private final array, which is one reason Strings are
  * immutable (see StringImmutability.java for the deep dive).
- *
+ * <p>
  *
  * Two Ways to Create a String
  * ---------------------------
  *  1. STRING LITERAL              "hello"
  *     - The compiler interns the literal into the JVM's STRING POOL.
  *     - Every literal with the same content shares ONE object.
+ * <p>
  *
  *  2. EXPLICIT CONSTRUCTOR        new String("hello")
  *     - Always allocates a NEW object on the heap, NOT in the pool.
  *     - Verbose and almost always unnecessary - use literals.
- *
+ * <p>
  *
  * String Pool (a.k.a. String Constant Pool)
  * -----------------------------------------
  * A region inside the JVM heap (since Java 7) that caches String literals.
  * The point: identical literals share memory, which saves space and lets the
  * compiler treat constant expressions as compile-time constants.
+ * <p>
  *
  *      String a = "java";
  *      String b = "java";
  *      String c = new String("java");
  *      String d = c.intern();         // returns the pooled instance
+ * <p>
  *
  *      a == b      -> true   (same pool object)
  *      a == c      -> false  (c was forced into the heap)
  *      a == d      -> true   (intern returned the pool object)
  *      a.equals(c) -> true   (always compare content with .equals)
- *
+ * <p>
  *
  * String Backing Store
  * --------------------
@@ -43,11 +46,12 @@ package Phase2_MethodsArraysStrings.Strings;
  *      private final byte[] value;
  *      private final byte    coder;     // LATIN1 (1 byte) or UTF16 (2 bytes)
  *      private int           hash;      // cached on first call to hashCode
+ * <p>
  *
  * Since Java 9 - "Compact Strings" - if a string is ASCII / Latin-1, the JVM
  * stores 1 byte per character to save memory. UTF-16 is used only when
  * needed.
- *
+ * <p>
  *
  * Bridges Between char[] and String
  * ---------------------------------
@@ -55,12 +59,13 @@ package Phase2_MethodsArraysStrings.Strings;
  *      str.toCharArray()                 -> String to char[]
  *      String.valueOf(anyType)           -> primitive/Object to String
  *      Integer.parseInt(str)             -> String to int (and similar)
- *
+ * <p>
  *
  * String vs char
  * --------------
  *      'a'        - a single CHAR (primitive, 16 bits, in single quotes)
  *      "a"        - a STRING of length 1 (Object, double quotes)
+ * <p>
  *
  * Mixing them with `+` works because String overloads `+` for any operand.
  */

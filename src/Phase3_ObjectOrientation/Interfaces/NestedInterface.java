@@ -9,12 +9,13 @@ import java.util.Iterator;
  * a NESTED INTERFACE. It is a way to scope a contract to the type that owns
  * it - the interface "belongs" to the outer type both conceptually and in
  * its fully qualified name.
+ * <p>
  *
  *      class List {
  *          interface Iterator { ... }       // nested
  *      }
  *      // fully qualified name: List.Iterator
- *
+ * <p>
  *
  * Two Flavours
  * ------------
@@ -24,10 +25,11 @@ import java.util.Iterator;
  *          for clarity but is the default for nested interfaces too).
  *        - Can be private / protected / package-private / public (controls
  *          who outside the file can see it).
+ * <p>
  *
  *   2. Nested inside an INTERFACE
  *        - Implicitly PUBLIC and STATIC.
- *
+ * <p>
  *
  * Why Nest an Interface?
  * ----------------------
@@ -36,7 +38,7 @@ import java.util.Iterator;
  *   - NAMESPACE HYGIENE - prevents top-level name pollution.
  *   - ACCESS CONTROL - a `private` nested interface is invisible to other
  *     files, useful for internal abstractions inside a class.
- *
+ * <p>
  *
  * JDK Examples
  * ------------
@@ -45,14 +47,16 @@ import java.util.Iterator;
  *                                    but historically it was nested)
  *   AbstractMap.SimpleEntry<K,V>  - a class implementing Map.Entry
  *   Builder patterns              - inner Builder interface owned by the type
- *
+ * <p>
  *
  * Rules To Remember
  * -----------------
  *   - You CANNOT instantiate an interface directly - nested or not.
  *   - Use the qualified name to refer to it from outside:
+ * <p>
  *
  *         Outer.NestedInterface nested = new Outer.NestedInterface() { ... };
+ * <p>
  *
  *   - A nested interface can extend other interfaces, just like a top-level one.
  *   - Inside the outer type's body you refer to it by its simple name.

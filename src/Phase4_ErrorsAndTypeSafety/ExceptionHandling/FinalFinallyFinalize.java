@@ -5,7 +5,7 @@ package Phase4_ErrorsAndTypeSafety.ExceptionHandling;
  * ----------------------------
  * Three words that look almost identical and do COMPLETELY different things.
  * This file untangles them once and for all.
- *
+ * <p>
  *
  *  Keyword     | What it is              | Where it appears          | Purpose
  *  ------------+-------------------------+---------------------------+-----------------------------
@@ -21,7 +21,7 @@ package Phase4_ErrorsAndTypeSafety.ExceptionHandling;
  *              |                         | (DEPRECATED for removal)  | reclaiming an object. DON'T use it.
  *              |                         |                           |   Use try-with-resources or
  *              |                         |                           |   java.lang.ref.Cleaner instead.
- *
+ * <p>
  *
  * Why finalize() is Deprecated
  * ----------------------------
@@ -30,22 +30,26 @@ package Phase4_ErrorsAndTypeSafety.ExceptionHandling;
  *   - Unsafe: can resurrect partially-collected objects.
  *   - Removed since: deprecated for removal in Java 9, marked for actual
  *     removal in newer releases.
+ * <p>
  *
  *   For deterministic clean-up use:
  *      - try-with-resources  (see TryWithResources.java)
  *      - java.lang.ref.Cleaner (since Java 9, replaces finalize properly)
- *
+ * <p>
  *
  * The three keywords visually:
  * ---------------------------
+ * <p>
  *
  *   final int LIMIT = 100;          // CONSTANT
+ * <p>
  *
  *   try {
  *      doWork();
  *   } finally {                     // ALWAYS-RUN cleanup
  *      cleanup();
  *   }
+ * <p>
  *
  *   class Foo {
  *      @Override

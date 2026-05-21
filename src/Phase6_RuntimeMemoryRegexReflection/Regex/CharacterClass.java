@@ -8,11 +8,12 @@ import java.util.regex.Pattern;
  * -----------------
  * A CHARACTER CLASS is a regex construct that matches ONE CHARACTER drawn
  * from a defined set. Three kinds:
+ * <p>
  *
  *   1. CUSTOM SETS                 [abc], [a-z], [a-zA-Z0-9_], [^abc]
  *   2. PREDEFINED CLASSES          \d  \D  \w  \W  \s  \S  .
  *   3. POSIX / UNICODE CLASSES     \p{Alpha}, \p{Digit}, \p{IsAlphabetic}
- *
+ * <p>
  *
  * 1) Custom Character Sets
  * ------------------------
@@ -21,10 +22,11 @@ import java.util.regex.Pattern;
  *   [a-z]      any lowercase letter (range)
  *   [a-zA-Z]   union of ranges
  *   [a-z&&[^aeiou]]  intersection - "lowercase consonant"
+ * <p>
  *
  * Inside [ ] most metacharacters lose their special meaning. The exceptions
  * are:  ]  \  ^ (at the start)  - (in the middle)
- *
+ * <p>
  *
  * 2) Predefined Classes (shortcuts)
  * ---------------------------------
@@ -37,7 +39,7 @@ import java.util.regex.Pattern;
  *   \S      NOT whitespace
  *   \h \H   horizontal whitespace / not (Java 8+)
  *   \v \V   vertical whitespace / not   (Java 8+)
- *
+ * <p>
  *
  * 3) POSIX & Unicode Classes
  * --------------------------
@@ -49,6 +51,7 @@ import java.util.regex.Pattern;
  *   \p{Space}     whitespace
  *   \p{Punct}     punctuation
  *   \p{ASCII}     ASCII range 0..127
+ * <p>
  *
  *   Unicode aware (require the UNICODE_CHARACTER_CLASS flag, or use \p{IsX}):
  *   \p{IsAlphabetic}      letters from any script
@@ -56,13 +59,13 @@ import java.util.regex.Pattern;
  *   \p{IsGreek}           Greek script
  *   \p{InCyrillic}        Unicode "block" (where the code point lives)
  *   \p{N}                 Number (general category)
- *
+ * <p>
  *
  * Negation
  * --------
  *   \P{Alpha}     opposite of \p{Alpha}
  *   [^abc]        negated custom set
- *
+ * <p>
  *
  * Why care?
  * ---------

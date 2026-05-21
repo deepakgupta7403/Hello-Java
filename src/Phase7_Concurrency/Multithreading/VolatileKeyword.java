@@ -5,10 +5,11 @@ package Phase7_Concurrency.Multithreading;
  * ----------------------
  * `volatile` is a FIELD modifier that gives you two memory-model
  * guarantees — but NOT mutual exclusion.
+ * <p>
  *
  *      private volatile boolean stop;
  *      private volatile State state;
- *
+ * <p>
  *
  * What volatile guarantees
  * ------------------------
@@ -18,7 +19,7 @@ package Phase7_Concurrency.Multithreading;
  *      subsequent read of that volatile (the "release/acquire" pair).
  *   3. ATOMIC FOR LONG/DOUBLE — reads and writes of volatile longs and
  *      doubles are atomic even on 32-bit JVMs.
- *
+ * <p>
  *
  * What volatile DOES NOT do
  * -------------------------
@@ -26,7 +27,7 @@ package Phase7_Concurrency.Multithreading;
  *     is still racy because the increment is a read-modify-write.
  *   - It does NOT make compound operations atomic. Use an Atomic*, a
  *     lock, or synchronized for that.
- *
+ * <p>
  *
  * The classic safe-publication pattern: DOUBLE-CHECKED LOCKING
  * ------------------------------------------------------------
@@ -43,10 +44,11 @@ package Phase7_Concurrency.Multithreading;
  *              return c;
  *          }
  *      }
+ * <p>
  *
  * Without `volatile`, another thread could see a non-null INSTANCE
  * whose fields are still default values (broken initialisation).
- *
+ * <p>
  *
  * Idiomatic uses of `volatile`
  * ----------------------------

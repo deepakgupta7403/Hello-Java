@@ -11,30 +11,32 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * array. Iteration walks the SNAPSHOT taken when the Iterator was created -
  * it never sees subsequent writes and never throws
  * ConcurrentModificationException.
- *
+ * <p>
  *
  * Cost / Benefit
  * --------------
+ * <p>
  *
  *   Reads (get, iterator, contains):    very FAST. No synchronization
  *                                       because the snapshot never changes.
+ * <p>
  *
  *   Writes (add, set, remove):          EXPENSIVE. Each one allocates a
  *                                       new internal array.
- *
+ * <p>
  *
  * When To Use It
  * --------------
  *   - READ-MOSTLY shared lists: event listeners, observer registrations,
  *     configuration snapshots, plugins.
  *   - When you want simple iteration with no locks and few writers.
- *
+ * <p>
  *
  * When NOT To Use It
  * ------------------
  *   - Write-heavy or large collections - the copy cost dominates.
  *   - Single-threaded code - ArrayList is much cheaper.
- *
+ * <p>
  *
  * Snapshot Iteration Semantics
  * ----------------------------
@@ -45,17 +47,18 @@ import java.util.concurrent.CopyOnWriteArrayList;
  *      it.next()                       // sees B
  *      it.next()                       // sees C
  *      it.hasNext()                    // false - the iterator's snapshot ended
+ * <p>
  *
  * Iterator also DOES NOT SUPPORT remove()/set()/add() - the snapshot is
  * immutable.
- *
+ * <p>
  *
  * Specific Methods
  * ----------------
  *   addIfAbsent(e)                          - add only if not already present
  *   addAllAbsent(c)                         - bulk addIfAbsent
  *   These two are useful for "set-like" registrations.
- *
+ * <p>
  *
  * Cousin Class
  * ------------

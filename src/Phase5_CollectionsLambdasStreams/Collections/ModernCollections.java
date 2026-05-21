@@ -1,13 +1,6 @@
 package Phase5_CollectionsLambdasStreams.Collections;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -16,7 +9,7 @@ import java.util.stream.Stream;
  * -----------------------------------------
  * The collections framework has had many additions over the years - factory
  * methods, stream collectors, sequenced types. This file is a focused tour.
- *
+ * <p>
  *
  * Java 8 - Streams + functional Map APIs
  * --------------------------------------
@@ -24,29 +17,29 @@ import java.util.stream.Stream;
  *   Map.getOrDefault / putIfAbsent / computeIfAbsent / computeIfPresent
  *      / compute / merge / forEach / replaceAll
  *   Collectors.toList / toSet / toMap / groupingBy / partitioningBy
- *
+ * <p>
  *
  * Java 9 - Immutable factory methods
  * ----------------------------------
  *   List.of(...), Set.of(...), Map.of(...), Map.ofEntries(Map.entry(k, v))
  *   List.copyOf / Set.copyOf / Map.copyOf
- *
+ * <p>
  *
  * Java 10 - Collectors.toUnmodifiable*
  * ------------------------------------
  *   Collectors.toUnmodifiableList / toUnmodifiableSet / toUnmodifiableMap
  *   List.copyOf / Set.copyOf / Map.copyOf  (also Java 10)
- *
+ * <p>
  *
  * Java 11 - Collection.toArray(IntFunction)
  * -----------------------------------------
  *   String[] arr = list.toArray(String[]::new);
- *
+ * <p>
  *
  * Java 16 - Stream.toList()
  * -------------------------
  *   stream.toList()                            (returns an unmodifiable list)
- *
+ * <p>
  *
  * Java 21 - Sequenced Collections
  * -------------------------------
@@ -54,10 +47,12 @@ import java.util.stream.Stream;
  *                                       LinkedHashSet
  *   SequencedSet&lt;E&gt;                   implemented by LinkedHashSet
  *   SequencedMap&lt;K, V&gt;                implemented by LinkedHashMap, TreeMap
+ * <p>
  *
  *   New methods: getFirst, getLast, addFirst, addLast, reversed,
  *                 putFirst, putLast, firstEntry, lastEntry, pollFirstEntry,
  *                 pollLastEntry.
+ * <p>
  *
  *   See Basics/ModernJava/SequencedCollections.java for the deep dive.
  */

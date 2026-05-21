@@ -2,11 +2,13 @@ package Phase1_CoreLanguage.Conversion;
 
 /**
  * Widening conversion takes place when two data types are automatically converted. This happens when:
+ * <p>
  *
  * The two data types are compatible.
  * When we assign value of a smaller data type to a bigger data type.
  * For Example, in java the numeric data types are compatible with each other but no automatic conversion is supported from numeric type to char or boolean.
  * Also, char and boolean are not compatible with each other.
+ * <p>
  *
  *   Byte------->Short------->Int------->Long-------->Float------->Double
  *   **/

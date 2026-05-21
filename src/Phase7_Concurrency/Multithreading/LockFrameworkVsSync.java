@@ -8,15 +8,18 @@ import java.util.concurrent.locks.ReentrantLock;
  * Lock Framework vs Thread Synchronization (`synchronized`)
  * ---------------------------------------------------------
  * Same goal — guard shared state. Different tradeoffs.
+ * <p>
  *
  * This file builds a tiny BANK ACCOUNT three ways:
+ * <p>
  *
  *   1. UnsafeAccount        - no synchronization at all (race condition).
  *   2. SyncAccount          - `synchronized` methods.
  *   3. LockAccount          - explicit ReentrantLock with tryLock.
+ * <p>
  *
  * Then it measures and compares the three.
- *
+ * <p>
  *
  * Decision Cheatsheet
  * -------------------
@@ -29,7 +32,7 @@ import java.util.concurrent.locks.ReentrantLock;
  *   I want the simplest code possible       yes
  *   It's a short critical section            yes
  *   I want auto-release on exit              yes
- *
+ * <p>
  *
  * Modern Practical Rule of Thumb
  * ------------------------------

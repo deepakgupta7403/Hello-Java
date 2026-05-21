@@ -2,6 +2,7 @@ package Phase3_ObjectOrientation.EmployeeApp;
 
 /**
  * Contractor - external worker paid a flat monthly retainer.
+ * <p>
  *
  * No auto-promotion, no marker. Demonstrates an Employee variant that opts
  * INTO the smallest possible surface - only the Employee contract itself.

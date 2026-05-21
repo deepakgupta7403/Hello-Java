@@ -6,7 +6,7 @@ package Phase7_Concurrency.Multithreading;
  * When you launch a Java program, the JVM creates a thread named "main"
  * and calls your public static void main(String[]) on it. Everything
  * runs on that thread until you spawn another one.
- *
+ * <p>
  *
  * Properties of the main thread
  * -----------------------------
@@ -15,17 +15,18 @@ package Phase7_Concurrency.Multithreading;
  *   - Daemon            : false (it KEEPS the JVM alive)
  *   - Default priority  : 5 (Thread.NORM_PRIORITY)
  *   - Uncaught handler  : ThreadGroup default, which prints to System.err
- *
+ * <p>
  *
  * Special role
  * ------------
  *   - The JVM CONTINUES TO RUN as long as ANY non-daemon thread is alive.
  *     If you never spawn a non-daemon thread, the JVM exits when main()
  *     returns. If you do spawn non-daemons, the JVM waits for them too.
+ * <p>
  *
  *   - main() returning does NOT immediately terminate other threads —
  *     they keep running until they finish or call System.exit.
- *
+ * <p>
  *
  * Background JVM threads
  * ----------------------
@@ -36,6 +37,7 @@ package Phase7_Concurrency.Multithreading;
  *   - Common-Cleaner     - java.lang.ref.Cleaner workers
  *   - Notification Thread - JMX
  *   - GC threads         - depends on collector (G1, ZGC, ...)
+ * <p>
  *
  * They are DAEMON threads so the JVM exits once your user threads do.
  */

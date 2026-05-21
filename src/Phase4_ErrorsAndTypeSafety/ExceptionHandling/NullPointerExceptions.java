@@ -11,6 +11,7 @@ import java.util.Optional;
  * The famous NullPointerException is thrown when your code tries to USE a
  * variable that holds `null` as if it were a real object. Six operations
  * can trigger it:
+ * <p>
  *
  *   1. Calling an instance method on null         null.foo()
  *   2. Reading or writing an instance field       null.f = 1
@@ -18,22 +19,25 @@ import java.util.Optional;
  *   4. Throwing a null Throwable                  throw null
  *   5. Acquiring the monitor of null              synchronized (null) { }
  *   6. Auto-unboxing a null wrapper               int x = (Integer) null
+ * <p>
  *
  * Anything else (e.g. comparing with `==`) is safe.
- *
+ * <p>
  *
  * Helpful NullPointerException (Java 14+)
  * ---------------------------------------
  * Since Java 14 the JVM enhances the NPE message to tell you EXACTLY WHICH
  * variable was null. Compare:
+ * <p>
  *
  *      OLD : Exception in thread "main" java.lang.NullPointerException
  *      NEW : Cannot invoke "String.length()" because "name" is null
+ * <p>
  *
  * Run with -XX:+ShowCodeDetailsInExceptionMessages on Java 14 (enabled by
  * default since Java 15). Project SDK is 21 in this repo, so you get it
  * automatically.
- *
+ * <p>
  *
  * How To Avoid NPEs
  * -----------------
@@ -44,7 +48,7 @@ import java.util.Optional;
  *   - DEFENSIVE checks at edges    APIs / user input / parsed data.
  *   - SAFE-NAVIGATION patterns     a == null ? "" : a.toUpperCase()
  *   - REACH for libraries          @NonNull / @Nullable annotations + tools.
- *
+ * <p>
  *
  * Optional - the modern null replacement
  * --------------------------------------
@@ -54,6 +58,7 @@ import java.util.Optional;
  *      opt.isPresent() / isEmpty()
  *      opt.orElse(default) / orElseGet / orElseThrow
  *      opt.map(...).flatMap(...).filter(...)
+ * <p>
  *
  * Optional is meant for RETURN TYPES, not fields or parameters - the JDK
  * authors are explicit about that.

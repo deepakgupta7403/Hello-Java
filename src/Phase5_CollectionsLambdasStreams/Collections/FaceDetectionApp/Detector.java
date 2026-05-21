@@ -8,9 +8,11 @@ import java.util.Random;
  * detected Faces. In a real system this would hand the image to OpenCV or
  * an ML model; here we generate deterministic-but-varied data so the demo
  * is reproducible.
+ * <p>
  *
  * The class exposes a single method, detect(int frameNo), which returns a
  * fresh List of Face records.
+ * <p>
  *
  * NOTE: We use a seeded Random so multiple runs produce the same output.
  */

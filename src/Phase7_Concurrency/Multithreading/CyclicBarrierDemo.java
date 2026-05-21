@@ -11,13 +11,15 @@ import java.util.concurrent.TimeUnit;
  * calls await(), which blocks. When all N parties have arrived, they
  * are RELEASED at the same time, and the barrier resets for the next
  * round.
+ * <p>
  *
  *      CyclicBarrier b = new CyclicBarrier(N);
  *      CyclicBarrier b = new CyclicBarrier(N, barrierAction);
+ * <p>
  *
  * Optionally an action runs ONCE per round, on the last-arriving
  * thread, BEFORE any party returns from await().
- *
+ * <p>
  *
  * Use cases
  * ---------
@@ -25,7 +27,7 @@ import java.util.concurrent.TimeUnit;
  *     wait for the round to finish before starting the next).
  *   - Game-loop tick synchronisation across worker threads.
  *   - Simulation steps.
- *
+ * <p>
  *
  * Important methods
  * -----------------
@@ -35,7 +37,7 @@ import java.util.concurrent.TimeUnit;
  *   getNumberWaiting()     - how many have already arrived
  *   reset()                - break and reset the barrier (waiters throw
  *                              BrokenBarrierException)
- *
+ * <p>
  *
  * BrokenBarrier semantics
  * -----------------------

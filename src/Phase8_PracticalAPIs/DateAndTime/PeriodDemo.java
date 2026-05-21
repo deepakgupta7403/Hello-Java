@@ -9,13 +9,15 @@ import java.time.temporal.ChronoUnit;
  * -------------------------------------
  * Period represents an interval in YEARS, MONTHS, and DAYS — the units
  * humans use to talk about ages and trial periods.
+ * <p>
  *
  *      P1Y2M3D   = 1 year 2 months 3 days
  *      P10D      = 10 days
+ * <p>
  *
  * Unlike Duration, Period is CALENDAR-AWARE: adding 1 month to Jan 31
  * does NOT give Feb 31. It clamps to the last valid day.
- *
+ * <p>
  *
  * Construction
  * ------------
@@ -23,26 +25,26 @@ import java.time.temporal.ChronoUnit;
  *   Period.of(y, m, d)
  *   Period.between(start, end)          - LocalDate to LocalDate
  *   Period.parse("P1Y2M3D")
- *
+ * <p>
  *
  * Arithmetic
  * ----------
  *   plus / minus / multipliedBy / negated
  *   normalized()   - rolls 13 months into 1Y1M
- *
+ * <p>
  *
  * Accessors
  * ---------
  *   getYears() / getMonths() / getDays()
  *   isZero() / isNegative()
- *
+ * <p>
  *
  * Common use cases
  * ----------------
  *   - "How old is someone?"   -> Period.between(birthday, today).getYears()
  *   - Trial / lease periods.
  *   - Recurring schedules expressed in months / years.
- *
+ * <p>
  *
  * The Jan 31 + 1 month puzzle
  * ---------------------------

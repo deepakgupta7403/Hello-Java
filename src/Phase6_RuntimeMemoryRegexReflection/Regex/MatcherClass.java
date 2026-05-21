@@ -9,12 +9,14 @@ import java.util.regex.Pattern;
  * A Matcher is the STATEFUL OBJECT that runs a Pattern against a particular
  * input. It tracks the position in the input, the last match's bounds, the
  * captured groups, and replacement state.
+ * <p>
  *
  *      Pattern p = Pattern.compile("\\d+");
  *      Matcher m = p.matcher("abc 12 xy 345");
+ * <p>
  *
  * Matchers are NOT thread-safe. Create one per thread (or per call).
- *
+ * <p>
  *
  * Matching Methods
  * ----------------
@@ -24,7 +26,7 @@ import java.util.regex.Pattern;
  *      find(int start)  - starts the search at `start`.
  *      reset()          - sets the matcher back to the beginning of the input.
  *      reset(CharSequence input) - switches to a new input but keeps the pattern.
- *
+ * <p>
  *
  * Inspecting the Last Match
  * -------------------------
@@ -35,7 +37,7 @@ import java.util.regex.Pattern;
  *      start(n) / end(n)
  *      groupCount()     - number of CAPTURING groups in the pattern.
  *      results()        - Stream<MatchResult> of all matches (Java 9+).
- *
+ * <p>
  *
  * Replacement
  * -----------
@@ -44,15 +46,17 @@ import java.util.regex.Pattern;
  *      replaceAll(Function<MatchResult,String> fn)   - per-match dynamic replacement (Java 9+).
  *      appendReplacement(sb, replacement)   - streaming custom replacement
  *      appendTail(sb)                       - copy the rest after the last match
+ * <p>
  *
  * Inside the replacement string:
  *      $0, $1, $2, ...  - reference capturing groups by number.
  *      ${name}          - reference a named capturing group.
  *      \\$              - a literal $ in the replacement.
  *      \\\\             - a literal \ in the replacement.
+ * <p>
  *
  * Use Matcher.quoteReplacement(s) to safely embed user-supplied text.
- *
+ * <p>
  *
  * Region & Anchors
  * ----------------

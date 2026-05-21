@@ -6,17 +6,19 @@ import java.time.Duration;
  * Thread.join(...)
  * ----------------
  * Wait for another thread to finish.
+ * <p>
  *
  *      otherThread.join();             // wait forever
  *      otherThread.join(ms);           // wait up to ms milliseconds
  *      otherThread.join(ms, nanos);    // ditto, plus nanos
  *      otherThread.join(Duration d);   // Java 19+
+ * <p>
  *
  * The CURRENT thread is parked until either:
  *   (a) `otherThread` reaches TERMINATED, or
  *   (b) the optional timeout elapses, or
  *   (c) the current thread is interrupted (InterruptedException).
- *
+ * <p>
  *
  * Why join?
  * ---------
@@ -26,14 +28,14 @@ import java.time.Duration;
  *   - Make sure a worker has done its job before reading the result it
  *     produced (the JMM guarantees a happens-before edge from the joined
  *     thread's last action to the joiner's wake-up).
- *
+ * <p>
  *
  * Memory model promise
  * --------------------
  * Everything `otherThread` did BEFORE finishing is visible to the caller
  * of `otherThread.join()` AFTER the join returns. This is one of the
  * cleanest happens-before relationships you get for free.
- *
+ * <p>
  *
  * Pitfalls
  * --------

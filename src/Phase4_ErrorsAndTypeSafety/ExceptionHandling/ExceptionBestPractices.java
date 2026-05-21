@@ -10,43 +10,53 @@ import java.util.logging.Logger;
  * -----------------------------------
  * A condensed list of the do's and don'ts that come up over and over in
  * code reviews, with quick code snippets you can read at a glance.
- *
+ * <p>
  *
  * Top 10 Rules
  * ------------
+ * <p>
  *
  *  1. THROW EARLY - validate inputs at the boundary and fail with a clear
  *                   message. Don't propagate a NullPointerException ten
  *                   stack frames deep.
+ * <p>
  *
  *  2. CATCH LATE  - handle exceptions at the layer that can do something
  *                   meaningful (retry, user message, log+continue). Don't
  *                   catch deep inside a helper if you have nothing to do.
+ * <p>
  *
  *  3. NEVER SWALLOW. Empty catch blocks are bugs. At a minimum log the
  *                   exception with full context.
+ * <p>
  *
  *  4. DON'T CATCH Throwable / Error. Catching Throwable hides JVM-level
  *                   problems (OutOfMemoryError, StackOverflowError) that
  *                   you cannot meaningfully recover from anyway.
+ * <p>
  *
  *  5. PREFER UNCHECKED for programmer bugs. Use checked exceptions for
  *                   conditions a reasonable caller is expected to handle.
+ * <p>
  *
  *  6. INCLUDE CONTEXT in the message. Bad: "lookup failed".
  *                                       Good: "lookup failed for userId=42".
+ * <p>
  *
  *  7. CHAIN CAUSES. When wrapping, always pass the original as the cause:
  *                   throw new HighLevel("...", lowLevel).
+ * <p>
  *
  *  8. USE try-with-resources for anything implementing AutoCloseable.
+ * <p>
  *
  *  9. AVOID using exceptions for FLOW CONTROL. Exceptions are
  *                  performance-expensive and obscure intent.
+ * <p>
  *
  * 10. DOCUMENT exceptions with Javadoc @throws so callers know what to plan
  *                  for - both checked and the important unchecked ones.
- *
+ * <p>
  *
  * Each rule has a tiny example below.
  */
@@ -123,6 +133,7 @@ public class ExceptionBestPractices {
     /**
      * Validate inputs at the boundary - fail fast with a precise message.
      * Notice the @throws Javadoc tag so callers know what to expect.
+     * <p>
      *
      * @param name  must not be null
      * @param age   must be in [0, 150]

@@ -14,21 +14,23 @@ import java.util.WeakHashMap;
  * Java's garbage collector reclaims memory occupied by objects that are no
  * longer "reachable" from the program. You never `free` or `delete`
  * yourself - the JVM does it for you, on a schedule it controls.
- *
+ * <p>
  *
  * Reachability - The Core Rule
  * ----------------------------
  * An object is REACHABLE if some chain of references can be traced to it
  * from a GC ROOT. GC roots include:
+ * <p>
  *
  *   - Local variables in active stack frames (stack roots).
  *   - Static fields of loaded classes.
  *   - Active JNI references from native code.
  *   - Currently executing threads.
+ * <p>
  *
  * Anything else - no path back to a root - is UNREACHABLE and may be
  * collected at any time.
- *
+ * <p>
  *
  * The Classic Mark-and-Sweep
  * --------------------------
@@ -37,17 +39,18 @@ import java.util.WeakHashMap;
  *   2. SWEEP  - walk the heap and reclaim space occupied by anything not
  *               marked. (Modern collectors also COMPACT to keep the heap
  *               un-fragmented.)
- *
+ * <p>
  *
  * The Generational Hypothesis
  * ---------------------------
  *   - Most objects DIE YOUNG.
  *   - Long-lived objects rarely reference young ones.
+ * <p>
  *
  * Modern collectors exploit this by splitting the heap into a YOUNG
  * generation (cheap, frequent "minor" GCs) and an OLD generation
  * (expensive "major" GCs, but rarely needed).
- *
+ * <p>
  *
  * Three Kinds of References (java.lang.ref)
  * -----------------------------------------
@@ -60,13 +63,13 @@ import java.util.WeakHashMap;
  *                  code holds the KEY.
  *   PHANTOM      - never returns the referent; useful for resource cleanup
  *                  via java.lang.ref.Cleaner.
- *
+ * <p>
  *
  * Cleaner (Java 9+) - the Modern Replacement for finalize()
  * ----------------------------------------------------------
  * `Object.finalize()` is unreliable, deprecated, and slow. Use Cleaner for
  * deterministic, predictable cleanup of off-heap or native resources.
- *
+ * <p>
  *
  * What System.gc() Does
  * ---------------------

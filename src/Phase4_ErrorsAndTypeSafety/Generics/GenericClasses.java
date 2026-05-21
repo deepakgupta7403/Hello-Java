@@ -9,24 +9,27 @@ import java.util.Objects;
  * ---------------
  * A class is GENERIC when it declares one or more TYPE PARAMETERS in
  * angle brackets after its name:
+ * <p>
  *
  *      public class Box&lt;T&gt; { ... }
  *      public class Pair&lt;K, V&gt; { ... }
  *      public class Triple&lt;A, B, C&gt; { ... }
+ * <p>
  *
  * Inside the class body the type parameter behaves like a real type:
  * fields, method parameters, return types - all can reference T.
- *
+ * <p>
  *
  * Instantiation - The Diamond Operator (Java 7+)
  * ----------------------------------------------
  *      Box&lt;String&gt; b = new Box&lt;&gt;("hi");        // compiler infers <String>
  *      var          c = new Box&lt;&gt;("hi");        // works (Java 10+)
  *      Box          d = new Box&lt;&gt;("hi");        // raw type left side: warning
+ * <p>
  *
  * Pre-Java-7 you had to repeat the type on both sides:
  *      Box&lt;String&gt; b = new Box&lt;String&gt;("hi");
- *
+ * <p>
  *
  * Multiple Type Parameters
  * ------------------------
@@ -35,33 +38,40 @@ import java.util.Objects;
  *          private final V value;
  *          ...
  *      }
+ * <p>
  *
  * No limit, but in practice 1-3 type parameters is the readable maximum.
- *
+ * <p>
  *
  * Type Parameters Are NOT Static
  * ------------------------------
  * Each INSTANCE of a generic class binds the type parameter independently:
+ * <p>
  *
  *      Box&lt;String&gt;  s = new Box&lt;&gt;("hello");
  *      Box&lt;Integer&gt; i = new Box&lt;&gt;(42);
+ * <p>
  *
  * The type parameter T cannot be referenced from a `static` member - statics
  * are shared across all parameterisations. (See GenericRestrictions.java.)
- *
+ * <p>
  *
  * Generic Class Hierarchies
  * -------------------------
  * One generic class may extend another. You either fix the parameter or
  * pass it through:
+ * <p>
  *
  *      class Stack&lt;E&gt; extends ArrayList&lt;E&gt; { ... }          // pass through
  *      class IntStack    extends Stack&lt;Integer&gt;     { ... }   // fix to Integer
+ * <p>
  *
  * IMPORTANT: Generic types are NOT covariant.
+ * <p>
  *
  *      List&lt;String&gt; ls = ...;
  *      List&lt;Object&gt; lo = ls;                                  // COMPILE ERROR
+ * <p>
  *
  * Even though String is-a Object, List&lt;String&gt; is NOT a List&lt;Object&gt;. To
  * relax this, use wildcards (Wildcards.java).

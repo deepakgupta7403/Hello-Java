@@ -6,10 +6,11 @@ package Phase2_MethodsArraysStrings.Strings;
  * Java offers THREE classes for textual data. They look similar but have very
  * different mutation, thread-safety, and performance characteristics. Picking
  * the right one is a recurring interview question and a real performance lever.
- *
+ * <p>
  *
  * Side-by-Side Comparison
  * -----------------------
+ * <p>
  *
  *  Aspect             | String                | StringBuffer        | StringBuilder
  *  -------------------+-----------------------+---------------------+---------------------
@@ -28,15 +29,16 @@ package Phase2_MethodsArraysStrings.Strings;
  *                     |                       | (inherits Object!)  | (inherits Object!)
  *  Class introduced   | Java 1.0              | Java 1.0            | Java 5
  *  Internal storage   | private final byte[]  | char[] / byte[]     | char[] / byte[]
- *
+ * <p>
  *
  * Important Detail - equals() on StringBuffer/StringBuilder
  * --------------------------------------------------------
  * Neither StringBuffer nor StringBuilder override equals(). Two builders with
  * IDENTICAL CONTENT are NOT equal by .equals(). Convert to String first:
+ * <p>
  *
  *      sb1.toString().equals(sb2.toString());
- *
+ * <p>
  *
  * When To Use Which
  * -----------------
@@ -45,7 +47,7 @@ package Phase2_MethodsArraysStrings.Strings;
  *                    default for most "compose a string" needs).
  *  - STRINGBUFFER:  for the rare case of MULTIPLE THREADS appending to the
  *                    same buffer concurrently. Otherwise prefer StringBuilder.
- *
+ * <p>
  *
  * Performance Benchmark (in main())
  * ---------------------------------

@@ -13,17 +13,19 @@ import java.util.Map;
  * check your code and insert the necessary casts. After that, all the
  * generic information is THROWN AWAY ("erased"): a List&lt;String&gt; and a
  * List&lt;Integer&gt; have the SAME runtime class.
+ * <p>
  *
  *      ----------- source code -----------
  *      List&lt;String&gt; names = new ArrayList&lt;&gt;();
  *      names.add("Alice");
  *      String s = names.get(0);
+ * <p>
  *
  *      ----- after compilation (roughly) -----
  *      List names = new ArrayList();
  *      names.add("Alice");
  *      String s = (String) names.get(0);
- *
+ * <p>
  *
  * Why Erase?
  * ----------
@@ -31,37 +33,45 @@ import java.util.Map;
  * highest priority. Old class files and old code without generics had to
  * keep working with new generic code. Erasure was the chosen path: existing
  * `.class` files don't change, the JVM doesn't need to learn new tricks.
+ * <p>
  *
  * The cost: many things that "feel obvious" are actually IMPOSSIBLE - see
  * GenericRestrictions.java for the full list.
- *
+ * <p>
  *
  * How Erasure Looks At Runtime
  * ----------------------------
+ * <p>
  *
  *   1. Type parameters become their UPPER BOUND (Object by default):
+ * <p>
  *
  *         class Box&lt;T&gt; { T value; }
+ * <p>
  *
  *      becomes:
+ * <p>
  *
  *         class Box { Object value; }
+ * <p>
  *
  *   2. CASTS are inserted by the compiler wherever the generic value is
  *      read out:
+ * <p>
  *
  *         String s = box.get();             // (String) box.get()
+ * <p>
  *
  *   3. BRIDGE METHODS are generated to keep polymorphism consistent. See
  *      the demo below.
- *
+ * <p>
  *
  * Bounded Type Parameters Erase To Their Bound
  * --------------------------------------------
  *      class Repo&lt;T extends Number&gt; { T value; }
  *      // erases to:
  *      class Repo                    { Number value; }
- *
+ * <p>
  *
  * Consequences of Erasure
  * -----------------------
@@ -71,23 +81,25 @@ import java.util.Map;
  *   - You CANNOT have static fields of type T (statics are shared across
  *     parameterisations, but each parameterisation might want a different T).
  *   - Overloading with same erasure is FORBIDDEN:
+ * <p>
  *
  *         void doX(List&lt;String&gt;) { }
  *         void doX(List&lt;Integer&gt;){ }    // ERROR - same erased signature
- *
+ * <p>
  *
  * Bridge Methods - The Compiler's Polymorphism Glue
  * -------------------------------------------------
  * When a generic method overrides a method whose signature changed under
  * erasure, the compiler emits a "bridge method" so virtual dispatch still
  * works. main() prints them via reflection.
- *
+ * <p>
  *
  * Reflection Can Still See Some Generic Info
  * ------------------------------------------
  * Generic signatures DO appear in fields, method declarations, and class
  * declarations - they are kept in the `.class` file's Signature attribute.
  * Use ParameterizedType to inspect, e.g.,
+ * <p>
  *
  *      Field f = MyClass.class.getDeclaredField("data");
  *      ParameterizedType pt = (ParameterizedType) f.getGenericType();

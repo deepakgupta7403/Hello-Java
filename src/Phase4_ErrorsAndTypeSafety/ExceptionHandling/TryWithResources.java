@@ -9,6 +9,7 @@ import java.io.StringReader;
  * ------------------------------------------------
  * Resources like file handles, database connections, sockets, and locks must
  * be CLOSED whether the work succeeds or fails. The classic pattern was
+ * <p>
  *
  *      Reader r = null;
  *      try {
@@ -17,16 +18,19 @@ import java.io.StringReader;
  *      } finally {
  *          if (r != null) r.close();         // and close() might throw too!
  *      }
+ * <p>
  *
  * try-with-resources reduces all that boilerplate to:
+ * <p>
  *
  *      try (Reader r = new FileReader("x")) {
  *          ...
  *      }
+ * <p>
  *
  * The compiler generates the close() call AND handles the exception
  * semantics correctly.
- *
+ * <p>
  *
  * The Contract
  * ------------
@@ -37,27 +41,31 @@ import java.io.StringReader;
  *   - Resources are closed in REVERSE order of declaration.
  *   - If both the body and close() throw, the BODY's exception is "primary"
  *     and close()'s exception is added as a SUPPRESSED exception.
- *
+ * <p>
  *
  * Java 9 Enhancement - "effectively final" resources
  * --------------------------------------------------
  * Pre-Java-9 you had to declare the variable inside the parentheses:
+ * <p>
  *
  *      try (Resource r = open()) { ... }
+ * <p>
  *
  * Since Java 9, you can use a variable that is already EFFECTIVELY FINAL:
+ * <p>
  *
  *      Resource r = open();
  *      try (r) { ... }
- *
+ * <p>
  *
  * AutoCloseable vs Closeable
  * --------------------------
  *   AutoCloseable.close()  throws Exception   (anything)
  *   Closeable.close()      throws IOException (narrower, for I/O streams)
+ * <p>
  *
  * For your own resources, implement AutoCloseable unless they are truly I/O.
- *
+ * <p>
  *
  * Suppressed Exceptions
  * ---------------------

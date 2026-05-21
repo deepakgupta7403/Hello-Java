@@ -5,29 +5,34 @@ package Phase2_MethodsArraysStrings.Methods;
  * ----------------------
  * When you launch a Java program, anything you type after the class name on the
  * command line is passed to `main` as a String array:
+ * <p>
  *
  *      public static void main(String[] args)
+ * <p>
  *
  * Each whitespace-separated token becomes one element of `args`. Arguments are
  * ALWAYS Strings - you must parse them yourself if you need numbers.
- *
+ * <p>
  *
  * Running This File
  * -----------------
  * Compile first:
  *      javac src/Basics/Methods/CommandLineArguments.java
+ * <p>
  *
  * Then run (from the src directory) with whatever arguments you want:
  *      cd src
  *      java Basics.Methods.CommandLineArguments alpha beta 42
+ * <p>
  *
  * Or, single-file mode (Java 11+):
  *      java src/Basics/Methods/CommandLineArguments.java alpha beta 42
+ * <p>
  *
  * In IntelliJ - right-click -> "Modify Run Configuration..." -> "Program
  * arguments" field. List tokens separated by spaces. Quote tokens that contain
  * spaces: "Hello World".
- *
+ * <p>
  *
  * Things To Know
  * --------------
@@ -36,7 +41,7 @@ package Phase2_MethodsArraysStrings.Methods;
  *    args[0] is the FIRST user argument.
  *  - Quote any argument that contains spaces:   "Hello World".
  *  - Standard input is separate: command-line args are not the same as Scanner.
- *
+ * <p>
  *
  * Demo
  * ----

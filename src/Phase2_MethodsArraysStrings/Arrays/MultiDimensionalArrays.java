@@ -8,58 +8,66 @@ import java.util.Arrays;
  * Java does NOT have true multi-dimensional arrays the way Fortran or C do.
  * Instead, a "2D array" is really an ARRAY OF ARRAYS - each row is itself a
  * separate one-dimensional array on the heap, linked from a parent array.
+ * <p>
  *
  *      int[][] grid = new int[3][4];
+ * <p>
  *
  *      grid -> [ ref0 ][ ref1 ][ ref2 ]                  (3 row-references)
  *               |       |       |
  *               v       v       v
  *              [0,0,0,0][0,0,0,0][0,0,0,0]               (each row is 4 ints)
- *
+ * <p>
  *
  * Declaration Styles
  * ------------------
  *      int[][]  a;       // preferred
  *      int   a[][];      // legal but unusual
  *      int[] a[];        // legal but ugly
- *
+ * <p>
  *
  * Three Ways to Create a 2D Array
  * -------------------------------
  *  1. Allocate both dimensions, default-filled:
+ * <p>
  *
  *         int[][] grid = new int[3][4];        // 3 rows, each of length 4
+ * <p>
  *
  *  2. Allocate the outer array first, then each row separately:
+ * <p>
  *
  *         int[][] grid = new int[3][];
  *         grid[0] = new int[]{1, 2, 3};
  *         grid[1] = new int[]{4, 5, 6};
+ * <p>
  *
  *  3. Literal:
+ * <p>
  *
  *         int[][] grid = { {1, 2, 3},
  *                          {4, 5, 6},
  *                          {7, 8, 9} };
- *
+ * <p>
  *
  * Iteration
  * ---------
  *      for (int r = 0; r < grid.length; r++)
  *          for (int c = 0; c < grid[r].length; c++)
  *              ... grid[r][c] ...
+ * <p>
  *
  *      for (int[] row : grid)
  *          for (int v : row)
  *              ... v ...
- *
+ * <p>
  *
  * Useful Helpers
  * --------------
  *      Arrays.toString(intRow)        - print a single row
  *      Arrays.deepToString(grid)      - print the whole multi-dim array
  *      Arrays.deepEquals(a, b)        - element-by-element equality (any depth)
- *
+ * <p>
  *
  * Notes
  * -----

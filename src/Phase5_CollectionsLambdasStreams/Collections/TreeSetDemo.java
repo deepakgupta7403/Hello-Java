@@ -1,10 +1,6 @@
 package Phase5_CollectionsLambdasStreams.Collections;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.NavigableSet;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * java.util.TreeSet&lt;E&gt; - Sorted Set Backed by a Red-Black Tree
@@ -12,7 +8,7 @@ import java.util.TreeSet;
  * TreeSet keeps its elements in SORTED ORDER, using either:
  *   - the natural ordering (E must implement Comparable&lt;E&gt;), or
  *   - a Comparator&lt;E&gt; you provide at construction.
- *
+ * <p>
  *
  * Why It Exists
  * -------------
@@ -20,17 +16,18 @@ import java.util.TreeSet;
  *   - Range queries (subSet / headSet / tailSet) are O(log n).
  *   - "Nearest neighbour" lookups (floor / ceiling / lower / higher) are
  *     O(log n) and unique to TreeSet.
- *
+ * <p>
  *
  * When To Use It
  * --------------
  *   - You need elements in sorted order on every iteration.
  *   - You ask range / neighbour questions: "all events between 10 AM and
  *     noon", "smallest score >= 60", "largest price under $100".
+ * <p>
  *
  *   For pure "is this in my set?" with no ordering needs, HashSet is
  *   faster: O(1) vs O(log n).
- *
+ * <p>
  *
  * Big-O
  * -----
@@ -38,7 +35,7 @@ import java.util.TreeSet;
  *   iteration (in order)                         O(n)
  *   first / last / floor / ceiling / lower / higher   O(log n)
  *   range views (sub / head / tail)              O(log n) to create, O(k) to iterate
- *
+ * <p>
  *
  * Constructors
  * ------------
@@ -46,7 +43,7 @@ import java.util.TreeSet;
  *   new TreeSet&lt;&gt;(Comparator&lt;? super E&gt;)
  *   new TreeSet&lt;&gt;(Collection&lt;? extends E&gt;)
  *   new TreeSet&lt;&gt;(SortedSet&lt;E&gt;)
- *
+ * <p>
  *
  * Key Methods (Beyond the Inherited Set Contract)
  * -----------------------------------------------
@@ -56,6 +53,7 @@ import java.util.TreeSet;
  *        tailSet(fromE) - fromE inclusive
  *        subSet(fromE, toE) - fromE inclusive, toE exclusive
  *        comparator()
+ * <p>
  *
  *   - NavigableSet:
  *        floor(e)   - greatest element &lt;= e

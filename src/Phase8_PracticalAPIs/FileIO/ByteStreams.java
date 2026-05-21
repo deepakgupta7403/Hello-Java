@@ -1,12 +1,6 @@
 package Phase8_PracticalAPIs.FileIO;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -16,7 +10,7 @@ import java.nio.file.Path;
  * The grandparents of Java I/O. They read and write RAW BYTES, one or
  * many at a time. Used for non-textual files (images, audio, archives)
  * or as the lower layer beneath character streams.
- *
+ * <p>
  *
  * InputStream — read bytes
  * ------------------------
@@ -27,7 +21,7 @@ import java.nio.file.Path;
  *      void close()
  *      byte[] readAllBytes()       (Java 9+)
  *      long transferTo(OutputStream)
- *
+ * <p>
  *
  * OutputStream — write bytes
  * --------------------------
@@ -36,14 +30,14 @@ import java.nio.file.Path;
  *      void write(byte[] b, off, len)
  *      void flush()
  *      void close()
- *
+ * <p>
  *
  * Concrete file-flavoured impls
  * -----------------------------
  *      FileInputStream   - read bytes from a file.
  *      FileOutputStream  - write bytes (optional append mode).
  *      ByteArrayInputStream / ByteArrayOutputStream - memory streams.
- *
+ * <p>
  *
  * Best practices
  * --------------
@@ -52,7 +46,7 @@ import java.nio.file.Path;
  *     time is dramatically slower.
  *   - Better still, wrap with a BufferedInputStream (see BufferedStreams.java).
  *   - For text, use Reader/Writer, NOT InputStream/OutputStream + new String(...).
- *
+ * <p>
  *
  * Java 9+ shortcuts
  * -----------------

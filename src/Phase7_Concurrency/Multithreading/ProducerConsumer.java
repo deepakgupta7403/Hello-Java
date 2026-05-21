@@ -12,21 +12,23 @@ import java.util.concurrent.locks.ReentrantLock;
  * The Producer-Consumer Pattern
  * -----------------------------
  * Producers and consumers communicate via a SHARED, BOUNDED queue.
+ * <p>
  *
  *     producer -> [ . . . . ] -> consumer
+ * <p>
  *
  * Bounding lets the system push back: if consumers fall behind, the
  * queue fills, and producers block until there's space. The pattern
  * shows up everywhere — task pipelines, log aggregators, web crawlers,
  * media players.
- *
+ * <p>
  *
  * Three implementations in this file
  * ----------------------------------
  *   1. wait/notifyAll on a hand-rolled buffer (old-school).
  *   2. ReentrantLock with two Conditions (notEmpty, notFull).
  *   3. BlockingQueue from java.util.concurrent (idiomatic modern).
- *
+ * <p>
  *
  * Key correctness rules
  * ---------------------

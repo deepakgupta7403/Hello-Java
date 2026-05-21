@@ -8,6 +8,7 @@ import java.util.List;
  * Account - Abstract Base Class for the Banking Project
  * -----------------------------------------------------
  * Demonstrates several OOP pillars in one place:
+ * <p>
  *
  *   - ABSTRACTION   - declares the SHAPE of an account but leaves the
  *                     interest calculation to each subclass (abstract method).
@@ -17,7 +18,7 @@ import java.util.List;
  *                     and reuse the shared behaviour.
  *   - POLYMORPHISM  - the Bank deals with an Account reference and the JVM
  *                     dispatches to the subclass's overridden method at runtime.
- *
+ * <p>
  *
  * Design Notes
  * ------------

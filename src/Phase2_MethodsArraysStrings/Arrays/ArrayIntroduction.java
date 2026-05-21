@@ -6,65 +6,71 @@ package Phase2_MethodsArraysStrings.Arrays;
  * An ARRAY is a CONTAINER OBJECT that holds a FIXED NUMBER of values of a
  * SINGLE TYPE. The length is established when the array is created and never
  * changes after that.
- *
- *      +---+---+---+---+---+
- *      |10 |20 |30 |40 |50 |     int[] nums = new int[5];
- *      +---+---+---+---+---+
- *        0   1   2   3   4       indices (always start at 0)
- *
- *
+ * <p>
+ * <p>
+ * +---+---+---+---+---+
+ * |10 |20 |30 |40 |50 |     int[] nums = new int[5];
+ * +---+---+---+---+---+
+ * 0   1   2   3   4       indices (always start at 0)
+ * <p>
+ * <p>
  * Key Properties
  * --------------
- *  - HOMOGENEOUS - every element has the same declared type.
- *  - FIXED SIZE  - once created the length cannot grow or shrink. If you need
- *                  a growable container, use ArrayList instead.
- *  - INDEXED     - elements are accessed via an integer index from 0 to
- *                  length-1. Out-of-range access throws ArrayIndexOutOfBoundsException.
- *  - OBJECTS     - even an int[] is itself an Object that lives on the heap.
- *                  arr.length is a FIELD, not a method (no parentheses).
- *  - DEFAULTS    - new int[3] -> {0, 0, 0}; new String[3] -> {null, null, null}.
- *
- *
+ * - HOMOGENEOUS - every element has the same declared type.
+ * - FIXED SIZE  - once created the length cannot grow or shrink. If you need
+ * a growable container, use ArrayList instead.
+ * - INDEXED     - elements are accessed via an integer index from 0 to
+ * length-1. Out-of-range access throws ArrayIndexOutOfBoundsException.
+ * - OBJECTS     - even an int[] is itself an Object that lives on the heap.
+ * arr.length is a FIELD, not a method (no parentheses).
+ * - DEFAULTS    - new int[3] -> {0, 0, 0}; new String[3] -> {null, null, null}.
+ * <p>
+ * <p>
  * Three Ways to Create an Array
  * -----------------------------
- *  1. Declare-then-allocate with default values:
- *
- *         int[] nums = new int[5];           // {0, 0, 0, 0, 0}
- *
- *  2. Allocate AND initialise inline using an array literal:
- *
- *         int[] nums = {10, 20, 30};         // shorthand, length inferred
- *
- *  3. Use `new` with an initialiser (needed when not at declaration site):
- *
- *         int[] nums;
- *         nums = new int[]{10, 20, 30};      // explicit `new int[]`
- *
- *
+ * 1. Declare-then-allocate with default values:
+ * <p>
+ * <p>
+ * int[] nums = new int[5];           // {0, 0, 0, 0, 0}
+ * <p>
+ * <p>
+ * 2. Allocate AND initialise inline using an array literal:
+ * <p>
+ * <p>
+ * int[] nums = {10, 20, 30};         // shorthand, length inferred
+ * <p>
+ * <p>
+ * 3. Use `new` with an initialiser (needed when not at declaration site):
+ * <p>
+ * <p>
+ * int[] nums;
+ * nums = new int[]{10, 20, 30};      // explicit `new int[]`
+ * <p>
+ * <p>
  * Stack vs Heap
  * -------------
- *      int[] nums = new int[3];
- *                ^
- *                'nums' lives on the STACK as a reference. The actual 3-element
- *                array object lives on the HEAP and is garbage-collected when
- *                no references remain.
- *
- *
+ * int[] nums = new int[3];
+ * ^
+ * 'nums' lives on the STACK as a reference. The actual 3-element
+ * array object lives on the HEAP and is garbage-collected when
+ * no references remain.
+ * <p>
+ * <p>
  * Iterating Over an Array
  * -----------------------
- *      for (int i = 0; i < arr.length; i++) { ... }     // index-based
- *      for (int x : arr)                  { ... }       // enhanced for-each
- *      Arrays.stream(arr).forEach(...);                 // Stream API (Java 8+)
- *
- *
+ * for (int i = 0; i < arr.length; i++) { ... }     // index-based
+ * for (int x : arr)                  { ... }       // enhanced for-each
+ * Arrays.stream(arr).forEach(...);                 // Stream API (Java 8+)
+ * <p>
+ * <p>
  * Common Pitfalls
  * ---------------
- *  - arr.length is the FIELD - no parentheses (unlike String.length()).
- *  - The first index is 0 and the last is arr.length-1.
- *  - Default for object arrays is null - dereferencing an empty slot
- *    causes NullPointerException.
- *  - Arrays.toString(arr) prints the contents; raw `arr` prints something
- *    cryptic like [I@1540e19d (a JVM-internal identifier).
+ * - arr.length is the FIELD - no parentheses (unlike String.length()).
+ * - The first index is 0 and the last is arr.length-1.
+ * - Default for object arrays is null - dereferencing an empty slot
+ * causes NullPointerException.
+ * - Arrays.toString(arr) prints the contents; raw `arr` prints something
+ * cryptic like [I@1540e19d (a JVM-internal identifier).
  */
 
 public class ArrayIntroduction {
@@ -109,10 +115,10 @@ public class ArrayIntroduction {
         System.out.println();
 
         // --- 5) Default values ---
-        int[]     ints    = new int[3];           // {0, 0, 0}
-        double[]  doubles = new double[3];        // {0.0, 0.0, 0.0}
-        boolean[] bools   = new boolean[3];       // {false, false, false}
-        String[]  strs    = new String[3];        // {null, null, null}
+        int[] ints = new int[3];           // {0, 0, 0}
+        double[] doubles = new double[3];        // {0.0, 0.0, 0.0}
+        boolean[] bools = new boolean[3];       // {false, false, false}
+        String[] strs = new String[3];        // {null, null, null}
 
         System.out.println("\nDefault values");
         System.out.println("int[]     = " + java.util.Arrays.toString(ints));

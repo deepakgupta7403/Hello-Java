@@ -11,28 +11,30 @@ import java.util.List;
  * threading through its entries in the order they were inserted. The
  * hash-table operations are still O(1); the linked list just costs you a
  * few extra pointers per element.
- *
+ * <p>
  *
  * Why It Exists
  * -------------
  * Two problems with plain HashSet:
  *   - Iteration order is unpredictable.
  *   - Two runs of the same program may iterate in different orders.
+ * <p>
  *
  * LinkedHashSet gives you the FAST membership of HashSet AND a STABLE,
  * insertion-based iteration order - good for logging, UI lists, and
  * deduplicating a stream while preserving the first-seen order.
- *
+ * <p>
  *
  * Big-O
  * -----
  *   add / remove / contains / size              O(1)  (same as HashSet)
  *   iteration                                   O(size)
+ * <p>
  *
  * (HashSet's iteration is O(capacity + size); LinkedHashSet's iteration
  * cost is proportional to the number of elements, not the bucket array
  * size - a tiny win in sparse sets.)
- *
+ * <p>
  *
  * Constructors
  * ------------
@@ -40,13 +42,13 @@ import java.util.List;
  *   new LinkedHashSet&lt;&gt;(int initialCapacity)
  *   new LinkedHashSet&lt;&gt;(int initialCapacity, float loadFactor)
  *   new LinkedHashSet&lt;&gt;(Collection&lt;? extends E&gt;)
- *
+ * <p>
  *
  * No New Methods
  * --------------
  * The API surface is the same as HashSet. The difference is purely the
  * iteration order it guarantees.
- *
+ * <p>
  *
  * Java 21 - SequencedSet
  * ----------------------

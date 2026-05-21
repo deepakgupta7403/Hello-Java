@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
  * A cookbook of ready-to-copy regex patterns. Each one has the regex in a
  * compiled Pattern constant, a short note on what it accepts and rejects,
  * and a few test cases printed.
- *
+ * <p>
  *
  * Warning - "Validation" is a Trade-Off
  * -------------------------------------

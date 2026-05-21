@@ -4,6 +4,7 @@ package Phase1_CoreLanguage.Operators;
  * Relational (Comparison) Operators
  * ---------------------------------
  * Relational operators compare two values and produce a boolean result.
+ * <p>
  *
  *      ==    equal to
  *      !=    not equal to
@@ -11,7 +12,7 @@ package Phase1_CoreLanguage.Operators;
  *      <     less than
  *      >=    greater than or equal
  *      <=    less than or equal
- *
+ * <p>
  *
  * IMPORTANT - == on Objects vs Primitives
  * ---------------------------------------
@@ -19,12 +20,13 @@ package Phase1_CoreLanguage.Operators;
  * - On REFERENCE TYPES, == compares REFERENCES (do both variables point to the
  *   same object on the heap?). To compare logical equality of objects, use the
  *   .equals(...) method.
+ * <p>
  *
  *      String a = new String("hi");
  *      String b = new String("hi");
  *      a == b          -> false   (different objects)
  *      a.equals(b)     -> true    (same content)
- *
+ * <p>
  *
  * NaN Comparisons
  * ---------------

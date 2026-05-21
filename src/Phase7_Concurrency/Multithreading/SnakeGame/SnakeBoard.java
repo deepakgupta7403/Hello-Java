@@ -1,30 +1,26 @@
 package Phase7_Concurrency.Multithreading.SnakeGame;
 
-import javax.swing.JPanel;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 /**
  * SnakeBoard — the rendering component.
+ * <p>
  *
  * Lives on the SWING EVENT-DISPATCH THREAD (EDT). All painting happens
  * on the EDT, courtesy of the AWT framework. Key events arrive on the
  * EDT and we hand them to GameState via setDirection — that call is
  * thread-safe because GameState itself synchronizes.
- *
+ * <p>
  *
  * Threading contract
  * ------------------
  *   - paintComponent(g) reads a state snapshot ONCE under the lock,
  *     then paints — no chance of seeing a half-modified snake.
  *   - keyPressed forwards to GameState.setDirection / GameState.reset.
- *
+ * <p>
  *
  * Look & feel
  * -----------

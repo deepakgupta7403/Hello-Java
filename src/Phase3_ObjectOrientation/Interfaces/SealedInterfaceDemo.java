@@ -6,18 +6,19 @@ package Phase3_ObjectOrientation.Interfaces;
  * A SEALED INTERFACE restricts WHO IS ALLOWED TO IMPLEMENT IT. Before sealed
  * interfaces, every public interface was open to the entire world. Sealed
  * interfaces close that hole - you list the permitted implementors.
+ * <p>
  *
  *      sealed interface Result permits Success, Failure {}
  *      record Success(String data) implements Result {}
  *      record Failure(String err)  implements Result {}
- *
+ * <p>
  *
  * Three Choices Each Permitted Subtype Must Make
  * ----------------------------------------------
  *   1. final         - cannot be extended further.            (record is implicitly final)
  *   2. sealed        - extendable, but with its OWN permits list.
  *   3. non-sealed    - extendable by anyone; ends the seal.
- *
+ * <p>
  *
  * Why Sealed?
  * -----------
@@ -29,7 +30,7 @@ package Phase3_ObjectOrientation.Interfaces;
  *                              error - exactly what you want.
  *  - DOCUMENTATION          - the permits list IS the documentation of "all
  *                              implementors".
- *
+ * <p>
  *
  * Common Patterns
  * ---------------
@@ -37,7 +38,7 @@ package Phase3_ObjectOrientation.Interfaces;
  *   Json              Null | Boolean | Number | String | Array | Object
  *   Token             Plus | Minus | Number | Eof
  *   HttpResponse      Ok | Redirect | NotFound | ServerError
- *
+ * <p>
  *
  * Rules
  * -----
@@ -46,7 +47,7 @@ package Phase3_ObjectOrientation.Interfaces;
  *   - When permitted subtypes are in the SAME FILE the `permits` clause may
  *     be omitted - the compiler infers it. This file uses that shortcut.
  *   - Every permitted subtype must DIRECTLY implement the sealed interface.
- *
+ * <p>
  *
  * Related: SealedClassesDemo.java in OOPSConcepts/SealedClasses shows the
  * same idea on classes; sealed interfaces tend to be more common because

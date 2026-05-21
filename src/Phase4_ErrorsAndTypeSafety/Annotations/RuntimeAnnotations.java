@@ -1,31 +1,34 @@
 package Phase4_ErrorsAndTypeSafety.Annotations;
 
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Method;
-
 import Phase4_ErrorsAndTypeSafety.Annotations.CustomAnnotations.Audited;
 import Phase4_ErrorsAndTypeSafety.Annotations.CustomAnnotations.Author;
 import Phase4_ErrorsAndTypeSafety.Annotations.CustomAnnotations.Schedule;
 import Phase4_ErrorsAndTypeSafety.Annotations.CustomAnnotations.Service;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
+
 /**
  * Reading Annotations at Runtime
  * ------------------------------
  * For runtime-retained annotations, the Reflection API gives you:
+ * <p>
  *
  *      class.getAnnotation(MyAnnot.class)
  *      class.getAnnotationsByType(MyAnnot.class)   // repeatables
  *      class.isAnnotationPresent(MyAnnot.class)
  *      class.getAnnotations()                       // declared on class
  *      class.getDeclaredAnnotations()               // not inherited
+ * <p>
  *
  *      method.getAnnotation(MyAnnot.class)
  *      method.getAnnotationsByType(MyAnnot.class)
  *      method.getParameterAnnotations()
+ * <p>
  *
  * This is the API frameworks like Spring, JUnit, Jackson, and Hibernate
  * use to drive their behaviour.
- *
+ * <p>
  *
  * Pattern: hand-rolled @Audited interceptor
  * -----------------------------------------

@@ -1,10 +1,6 @@
 package Phase5_CollectionsLambdasStreams.Collections;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * java.util.Collections - The Utility Class
@@ -13,12 +9,14 @@ import java.util.List;
  *      java.util.Collection&lt;E&gt;   - the INTERFACE every collection implements.
  *      java.util.Collections     - a CLASS of static helpers that work on
  *                                  those collections.
+ * <p>
  *
  * It is the rough equivalent of java.util.Arrays but for collections.
- *
+ * <p>
  *
  * Methods Grouped By Purpose
  * --------------------------
+ * <p>
  *
  *   Sorting & ordering
  *      sort(List)
@@ -28,6 +26,7 @@ import java.util.List;
  *      shuffle(List, Random)
  *      rotate(List, int distance)
  *      swap(List, int i, int j)
+ * <p>
  *
  *   Searching
  *      binarySearch(List, key)
@@ -37,12 +36,14 @@ import java.util.List;
  *      min/max(Collection, Comparator)
  *      frequency(Collection, Object)
  *      disjoint(Collection, Collection)
+ * <p>
  *
  *   Population / fill
  *      fill(List, element)
  *      nCopies(int, element)             - immutable list of N copies
  *      replaceAll(List, oldVal, newVal)
  *      copy(List dest, List src)
+ * <p>
  *
  *   Wrappers (return VIEWS that wrap the original)
  *      unmodifiableList / Set / Map / Collection / SortedSet / SortedMap
@@ -50,6 +51,7 @@ import java.util.List;
  *      checkedList / Set / Map ...       - dynamic type-check wrapper
  *      emptyList / emptySet / emptyMap   - return shared immutable empties
  *      singletonList / singleton / singletonMap
+ * <p>
  *
  *   Conversion / decoration
  *      addAll(Collection, T...)
@@ -57,7 +59,7 @@ import java.util.List;
  *      enumeration(Collection)           - bridge to legacy Enumeration
  *      newSetFromMap(Map)                - back a Set with any Map
  *      asLifoQueue(Deque)                - stack-style view of a Deque
- *
+ * <p>
  *
  * Modern Alternatives (Java 9+)
  * -----------------------------

@@ -9,6 +9,7 @@ import java.util.stream.Stream;
  * --------------------------------------------------
  * A STREAM PIPELINE is the chain that takes data from a source through a
  * series of transformations to a final result. It always has THREE parts:
+ * <p>
  *
  *      +---------+    +---------------------------+    +-------------+
  *      | SOURCE  | -&gt; | Intermediate Op (lazy)... | -&gt; | Terminal Op |
@@ -16,7 +17,7 @@ import java.util.stream.Stream;
  *      List/Array      filter, map, sorted,            forEach, collect,
  *      Stream.of(...)  distinct, skip, limit,          reduce, count,
  *      Files.lines     peek, flatMap, ...              anyMatch, findFirst
- *
+ * <p>
  *
  * Rules
  * -----
@@ -24,49 +25,55 @@ import java.util.stream.Stream;
  *   - ZERO OR MORE intermediate operations - they are LAZY and return new streams.
  *   - EXACTLY ONE terminal operation - it produces a side effect or a value.
  *   - Once the terminal operation has run, the stream is CLOSED.
- *
+ * <p>
  *
  * Lazy Evaluation
  * ---------------
  * Intermediate operations DO NOTHING until a terminal operation pulls. The
  * pipeline is then FUSED: each element flows through every step before the
  * next one starts (not "filter all then map all then collect all").
+ * <p>
  *
  *      sourceList.stream()
  *                .filter(...)
  *                .map(...)
  *                .collect(...);     // only HERE does anything actually run
- *
+ * <p>
  *
  * Short-Circuit Operations
  * ------------------------
  * Some terminal operations can stop early as soon as they have the answer:
+ * <p>
  *
  *      findFirst, findAny
  *      anyMatch, allMatch, noneMatch
  *      limit (intermediate but short-circuit)
+ * <p>
  *
  * This is what makes infinite streams usable.
- *
+ * <p>
  *
  * Statefulness
  * ------------
  *   - STATELESS intermediates - filter, map, peek, flatMap
  *     They can run independently per element.
+ * <p>
  *
  *   - STATEFUL intermediates - sorted, distinct, limit, skip
  *     They must see other elements to decide. They cost more, especially in
  *     parallel.
- *
+ * <p>
  *
  * Reading the Pipeline
  * --------------------
  * Read top-down like a recipe:
+ * <p>
  *
  *      "Start with the people list.
  *       Keep only the engineers.
  *       Get each person's salary.
  *       Sum them up."
+ * <p>
  *
  *      people.stream()
  *            .filter(p -&gt; p.role() == Role.ENGINEER)

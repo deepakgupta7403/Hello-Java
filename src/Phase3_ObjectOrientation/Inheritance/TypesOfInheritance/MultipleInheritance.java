@@ -5,6 +5,7 @@ package Phase3_ObjectOrientation.Inheritance.TypesOfInheritance;
  * Please note that Java does not support multiple inheritance with classes.
  * In java, we can achieve multiple inheritance only through Interfaces.
  * below, Class C is derived from interface A and B.
+ * <p>
  *
  * Class A----------------------------->|
  *                                      |Class C
@@ -13,7 +14,6 @@ package Phase3_ObjectOrientation.Inheritance.TypesOfInheritance;
 
 // Java program to illustrate the
 // concept of Multiple inheritance
-import java.lang.*;
 
 interface Intone{
     public void print_geeks();

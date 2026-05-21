@@ -11,7 +11,7 @@ import java.util.concurrent.Future;
  * -------------------------------------
  * The JVM and JDK keep getting better at memory. A short tour of the
  * changes that matter most to everyday Java code.
- *
+ * <p>
  *
  * Java 9
  * ------
@@ -22,20 +22,20 @@ import java.util.concurrent.Future;
  *   - java.lang.ref.Cleaner        Reliable replacement for finalize() to
  *                                  clean up native / off-heap resources.
  *   - String.intern() table moves to native memory (Metaspace).
- *
+ * <p>
  *
  * Java 10
  * -------
  *   - APPLICATION CLASS-DATA SHARING (AppCDS)
  *     Pre-load a shared archive of your app classes for faster startup
  *     and smaller per-JVM footprint.
- *
+ * <p>
  *
  * Java 11
  * -------
  *   - EPSILON GC                   "do-nothing" allocator for benchmarks.
  *   - ZGC                          Experimental low-pause collector.
- *
+ * <p>
  *
  * Java 14
  * -------
@@ -43,25 +43,25 @@ import java.util.concurrent.Future;
  *     you which dereference was null).
  *   - Foreign-Memory Access API (incubator) - precursor to the Foreign
  *     Function & Memory API.
- *
+ * <p>
  *
  * Java 15
  * -------
  *   - ZGC and Shenandoah                       PRODUCTION-READY.
- *
+ * <p>
  *
  * Java 16
  * -------
  *   - Records                      Smaller, immutable data carriers.
  *   - Foreign Linker API           (incubator)
- *
+ * <p>
  *
  * Java 17 (LTS)
  * -------------
  *   - Sealed classes / records mature.
  *   - Strongly Encapsulate JDK Internals (sun.misc.Unsafe etc.) - moves Java
  *     away from low-level memory hacks.
- *
+ * <p>
  *
  * Java 19 / 20
  * ------------
@@ -69,7 +69,7 @@ import java.util.concurrent.Future;
  *                                  on a small pool of OS carrier threads.
  *                                  Changes the memory cost of "one thread
  *                                  per request".
- *
+ * <p>
  *
  * Java 21 (LTS)
  * -------------
@@ -85,11 +85,12 @@ import java.util.concurrent.Future;
  *   - Foreign Function & Memory API (preview, finalized in Java 22)
  *                                  Safe, supported replacement for JNI and
  *                                  Unsafe for OFF-HEAP memory access.
- *
+ * <p>
  *
  * Things You Can Actually Run
  * ---------------------------
  * The demos below show:
+ * <p>
  *
  *   1. Compact-string effect on byte usage (informational - JVM does it).
  *   2. Cleaner-based cleanup of a "resource".

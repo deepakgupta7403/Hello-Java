@@ -8,13 +8,14 @@ import java.util.function.IntSupplier;
  * Local and Anonymous Classes
  * ---------------------------
  * Two ways to declare a class INSIDE A METHOD or other block. They:
+ * <p>
  *
  *   - Can use the surrounding method's locals — but ONLY EFFECTIVELY
  *     FINAL ones (assigned once, never reassigned after).
  *   - Cannot be declared `public` / `protected` / `private` — they have
  *     no scope larger than the enclosing block.
  *   - Cannot have static members (except compile-time constants).
- *
+ * <p>
  *
  * Local class
  * -----------
@@ -22,23 +23,25 @@ import java.util.function.IntSupplier;
  *          class Helper { ... }
  *          new Helper().something();
  *      }
+ * <p>
  *
  *   - Has a name. Can be instantiated multiple times.
  *   - Can extend / implement anything.
  *   - Useful when you need TWO instances of the helper, or you want a
  *     constructor with arguments.
- *
+ * <p>
  *
  * Anonymous class
  * ---------------
  *      Runnable r = new Runnable() {
  *          @Override public void run() { ... }
  *      };
+ * <p>
  *
  *   - No name. Instantiated EXACTLY ONCE at the declaration site.
  *   - Can extend ONE class OR implement ONE interface — never both.
  *   - Constructor arguments forwarded to the parent.
- *
+ * <p>
  *
  * Lambda vs anonymous class
  * -------------------------
@@ -48,14 +51,14 @@ import java.util.function.IntSupplier;
  *   - You need to override `equals` / `hashCode` / `toString`.
  *   - You need a name for `this` (lambdas' `this` is the enclosing
  *     instance, not the lambda).
- *
+ * <p>
  *
  * Capture rules
  * -------------
  *   - Outer fields:                  visible, read/write.
  *   - Outer LOCAL variables:         visible, READ-ONLY (effectively final).
  *   - The enclosing 'this':           accessible as Outer.this (anon/local).
- *
+ * <p>
  *
  * Java 16+
  * --------

@@ -11,10 +11,11 @@ import java.util.concurrent.locks.ReentrantLock;
  * --------------------------
  * Two or more threads each holding a lock the other needs. None ever
  * progresses.
+ * <p>
  *
  *      Thread 1: holds A, waiting for B
  *      Thread 2: holds B, waiting for A
- *
+ * <p>
  *
  * The Four Conditions (Coffman, 1971)
  * -----------------------------------
@@ -22,9 +23,10 @@ import java.util.concurrent.locks.ReentrantLock;
  *   2. HOLD-AND-WAIT     - a thread holding one resource asks for another.
  *   3. NO PREEMPTION     - resources can only be released voluntarily.
  *   4. CIRCULAR WAIT     - a cycle of threads each waiting on the next.
+ * <p>
  *
  * Breaking ANY of the four eliminates deadlock.
- *
+ * <p>
  *
  * How to prevent deadlock
  * -----------------------
@@ -36,14 +38,14 @@ import java.util.concurrent.locks.ReentrantLock;
  *   4. LOCK-FREE DATA STRUCTURES. ConcurrentHashMap, Atomic*.
  *   5. STRUCTURED TASK SCOPES (Java 21 preview) — make hierarchical
  *      cancellation explicit.
- *
+ * <p>
  *
  * Detecting deadlock at runtime
  * -----------------------------
  *   ThreadMXBean.findDeadlockedThreads() — JMX-level API that returns
  *   the thread ids stuck in a deadlock. Useful in monitoring / liveness
  *   probes.
- *
+ * <p>
  *
  * This file demonstrates:
  *   1. A textbook deadlock.

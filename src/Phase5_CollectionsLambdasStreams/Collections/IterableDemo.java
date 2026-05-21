@@ -10,23 +10,26 @@ import java.util.Spliterator;
  * -----------------------------------------------
  * Any class that implements Iterable can be used in Java's enhanced
  * for-each loop:
+ * <p>
  *
  *      for (Item i : container) { ... }
+ * <p>
  *
  * The compiler rewrites that loop to call iterator() on `container` and
  * then drive it. Implementing Iterable is therefore the simplest way to
  * make your own class loopable.
- *
+ * <p>
  *
  * The Iterable Contract (Java 8+)
  * -------------------------------
  *      Iterator&lt;T&gt; iterator()                    [required]
  *      default void forEach(Consumer&lt;? super T&gt;) [added in Java 8]
  *      default Spliterator&lt;T&gt; spliterator()      [added in Java 8]
+ * <p>
  *
  * The two defaults give every Iterable a forEach(...) and stream()
  * (indirectly through spliterator) for free.
- *
+ * <p>
  *
  * Relationship to Other Types
  * ---------------------------
@@ -35,7 +38,7 @@ import java.util.Spliterator;
  *         v
  *      Collection<T>     - List, Set, Queue, Deque
  *      Path, FileChannel.LinesStream, ...       - various other types
- *
+ * <p>
  *
  * Why Implement Iterable?
  * -----------------------
@@ -45,7 +48,7 @@ import java.util.Spliterator;
  *     StreamSupport.stream(it.spliterator(), false).
  *   - Any user of your type can stop caring whether you store data in an
  *     ArrayList, a database cursor, or a generator.
- *
+ * <p>
  *
  * Two Custom Iterables Below
  * --------------------------

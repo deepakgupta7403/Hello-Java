@@ -9,11 +9,12 @@ import java.util.List;
  * ArrayDeque is a RESIZABLE CIRCULAR ARRAY implementation of Deque. It can
  * be used as either a QUEUE, a STACK, or a true DEQUE. In most cases it is
  * the right answer:
+ * <p>
  *
  *      Stack       prefer ArrayDeque over java.util.Stack
  *      Queue       prefer ArrayDeque over LinkedList
  *      Deque       prefer ArrayDeque over LinkedList
- *
+ * <p>
  *
  * Why It Exists
  * -------------
@@ -22,29 +23,31 @@ import java.util.List;
  *     pointers, and worse cache locality.
  *   - ArrayDeque packs elements in one contiguous array - smaller memory,
  *     better cache behaviour, no synchronisation tax.
- *
+ * <p>
  *
  * Constructors
  * ------------
  *   new ArrayDeque&lt;&gt;()                 capacity 16
  *   new ArrayDeque&lt;&gt;(int numElements)  initial capacity
  *   new ArrayDeque&lt;&gt;(Collection)        copy of another collection
- *
+ * <p>
  *
  * Methods - Three Faces of the Same Object
  * ----------------------------------------
+ * <p>
  *
  *   FIFO (Queue)              LIFO (Stack)           Deque (both ends)
  *   ----------------------    --------------------   --------------------
  *   offer/offerLast (e)       push (e)                addFirst/addLast (e)
  *   poll/pollFirst ()          pop ()                  pollFirst/pollLast ()
  *   peek/peekFirst ()          peek ()                 peekFirst/peekLast ()
+ * <p>
  *
  * Throw-on-failure variants:
  *   add(e)/addLast(e)/addFirst(e)
  *   remove() / removeFirst() / removeLast()
  *   element() / getFirst() / getLast()
- *
+ * <p>
  *
  * Restrictions
  * ------------
@@ -53,13 +56,13 @@ import java.util.List;
  *     to store nulls (rare).
  *   - NOT thread-safe. For concurrent access use a ConcurrentLinkedDeque or
  *     a BlockingDeque.
- *
+ * <p>
  *
  * Big-O
  * -----
  *   add / remove / peek at either end                O(1) amortised
  *   contains / remove(Object)                        O(n)
- *
+ * <p>
  *
  * Iteration
  * ---------

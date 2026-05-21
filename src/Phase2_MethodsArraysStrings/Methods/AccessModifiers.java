@@ -5,6 +5,7 @@ package Phase2_MethodsArraysStrings.Methods;
  * ------------------------
  * Access modifiers control the VISIBILITY of classes, methods, fields, and
  * constructors. Java has FOUR access levels:
+ * <p>
  *
  *      Modifier      | Same class | Same pkg | Subclass | World
  *      --------------+------------+----------+----------+-------
@@ -14,7 +15,7 @@ package Phase2_MethodsArraysStrings.Methods;
  *      (package-     |            |          |          |
  *       private)     |            |          |          |
  *      private       |   YES      |   no     |   no     |  no
- *
+ * <p>
  *
  * Quick Rule Of Thumb
  * -------------------
@@ -23,7 +24,7 @@ package Phase2_MethodsArraysStrings.Methods;
  *  - Use `protected` when you specifically want subclasses to override or call.
  *  - Package-private (no modifier) is great for "internal to this package"
  *    helpers - not visible outside the package but more open than private.
- *
+ * <p>
  *
  * Where Each Modifier May Appear
  * ------------------------------
@@ -35,14 +36,14 @@ package Phase2_MethodsArraysStrings.Methods;
  *  ORS         instantiation (useful for utility classes and singletons).
  *  INTERFACE : interface methods are implicitly `public`. Java 9+ also allows
  *  MEMBERS     `private` interface methods (helper code) - see InterfaceMethods.
- *
+ * <p>
  *
  * Subtle Point - `protected` Across Packages
  * ------------------------------------------
  * A `protected` member is visible to a subclass in a different package, but
  * ONLY through a reference of the subclass type (or its subtypes). Direct
  * access via a parent-typed reference outside the package is not allowed.
- *
+ * <p>
  *
  * This file demonstrates all four modifiers on a single Box class plus the
  * common patterns (private fields + public getters/setters, private constructor

@@ -5,10 +5,11 @@ package Phase3_ObjectOrientation.Abstraction;
  * ---------------------------
  * Both achieve ABSTRACTION but they have different trade-offs. Picking the
  * right one is one of the most common design decisions in Java.
- *
+ * <p>
  *
  * Side-by-Side Comparison
  * -----------------------
+ * <p>
  *
  *  Aspect            | Abstract Class                | Interface
  *  ------------------+-------------------------------+--------------------------------
@@ -29,7 +30,7 @@ package Phase3_ObjectOrientation.Abstraction;
  *  Instantiation     | NO (cannot be `new`-ed)       | NO (cannot be `new`-ed)
  *  Used for          | shared CODE + partial state   | shared TYPE / CONTRACT
  *  Java keyword      | extends                       | implements
- *
+ * <p>
  *
  * When To Use Abstract Class
  * --------------------------
@@ -37,7 +38,7 @@ package Phase3_ObjectOrientation.Abstraction;
  *  - You want a TEMPLATE method that calls hooks subclasses fill in.
  *  - You want to control how subclasses are constructed (non-public ctors).
  *  - Common code is more important than multi-typing.
- *
+ * <p>
  *
  * When To Use Interface
  * ---------------------
@@ -46,18 +47,19 @@ package Phase3_ObjectOrientation.Abstraction;
  *    Serializable + AutoCloseable).
  *  - You want a target type for lambdas (functional interfaces).
  *  - The behaviour is orthogonal to the inheritance chain.
- *
+ * <p>
  *
  * Hybrid Approach
  * ---------------
  * It is very common to define an INTERFACE for the contract and provide a
  * SKELETON ABSTRACT CLASS with common code that implementors can extend.
  * The JDK does this all over the place:
+ * <p>
  *
  *      List<E>            <- interface (contract)
  *      AbstractList<E>    <- abstract class (skeleton)
  *      ArrayList<E>       <- concrete class extends AbstractList implements List
- *
+ * <p>
  *
  * The Example Below
  * -----------------

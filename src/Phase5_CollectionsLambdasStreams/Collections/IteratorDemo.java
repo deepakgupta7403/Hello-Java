@@ -1,21 +1,18 @@
 package Phase5_CollectionsLambdasStreams.Collections;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Spliterator;
+import java.util.*;
 
 /**
  * Iterator and Friends
  * --------------------
  * An ITERATOR is a cursor that walks through a collection one element at a
  * time. Java has three flavours, each more powerful than the previous:
+ * <p>
  *
  *      Iterator&lt;E&gt;          - one-way, basic
  *      ListIterator&lt;E&gt;      - bidirectional, position-aware, mutating
  *      Spliterator&lt;E&gt;       - splittable, used by Stream parallelism
- *
+ * <p>
  *
  * Iterator&lt;E&gt; - The Original
  * --------------------------
@@ -25,17 +22,20 @@ import java.util.Spliterator;
  *      remove()               - delete the element just returned by next()
  *                                (optional - some implementations refuse)
  *      forEachRemaining(c)    - apply a Consumer to every remaining element (Java 8+)
+ * <p>
  *
  * The enhanced for loop is sugar over Iterator. These two are the same:
+ * <p>
  *
  *      for (E e : list) { ... }
+ * <p>
  *
  *      Iterator&lt;E&gt; it = list.iterator();
  *      while (it.hasNext()) {
  *          E e = it.next();
  *          ...
  *      }
- *
+ * <p>
  *
  * ListIterator&lt;E&gt; - Bidirectional, Position-Aware
  * -----------------------------------------------
@@ -43,14 +43,14 @@ import java.util.Spliterator;
  *      add(e)                 - insert AT the cursor
  *      set(e)                 - replace the last element returned
  * Available only on List implementations.
- *
+ * <p>
  *
  * Spliterator&lt;E&gt; (Java 8+)
  * ------------------------
  * Iterates AND can SPLIT itself in half - that is what enables
  * `Collection.parallelStream()`. You almost never need to write one
  * yourself; you use it via streams.
- *
+ * <p>
  *
  * fail-fast vs fail-safe
  * ----------------------
@@ -60,12 +60,13 @@ import java.util.Spliterator;
  * collections are FAIL-SAFE - they iterate over a snapshot taken at the
  * moment iterator() was called, so they never throw, but they may see
  * stale data.
- *
+ * <p>
  *
  * Removing While Iterating - the Two Right Ways
  * ---------------------------------------------
  *   - Iterator.remove() inside an explicit while loop.
  *   - Collection.removeIf(Predicate)  - Java 8+, preferred when applicable.
+ * <p>
  *
  * NEVER call list.remove(x) from inside a for-each loop - that throws CME.
  */

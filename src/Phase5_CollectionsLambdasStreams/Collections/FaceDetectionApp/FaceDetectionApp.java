@@ -5,17 +5,19 @@ import java.util.Map;
 
 /**
  * FaceDetectionApp - runnable demo that ties everything together.
+ * <p>
  *
  * The program SIMULATES 20 video frames from a Detector. Each frame is fed
  * into a FaceRepository which exercises every collection type. Then we
  * print a series of reports that exercise the queries those data structures
  * make cheap.
+ * <p>
  *
  * Run:
  *      cd src
  *      javac Basics/Collections/FaceDetectionApp/*.java
  *      java  Basics.Collections.FaceDetectionApp.FaceDetectionApp
- *
+ * <p>
  *
  * Collection cheat-sheet for this demo
  * ------------------------------------

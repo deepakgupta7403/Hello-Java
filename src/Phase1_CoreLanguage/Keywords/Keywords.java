@@ -6,43 +6,43 @@ package Phase1_CoreLanguage.Keywords;
  * Keywords are words RESERVED by the Java language. You cannot use them as
  * identifiers (variable, class, method names). Java has 50+ reserved words,
  * grouped here by purpose.
- *
+ * <p>
  *
  * 1) Primitive Types (8)
  * ----------------------
  *      boolean, byte, char, short, int, long, float, double
- *
+ * <p>
  *
  * 2) Flow Control (11)
  * --------------------
  *      if, else, switch, case, default,
  *      for, while, do,
  *      break, continue, return
- *
+ * <p>
  *
  * 3) Class / Object Related (10)
  * ------------------------------
  *      class, interface, enum, extends, implements,
  *      new, this, super, instanceof, package
- *
+ * <p>
  *
  * 4) Access Modifiers (3)
  * -----------------------
  *      public, private, protected
  *      (the fourth - "default" / package-private - has NO keyword)
- *
+ * <p>
  *
  * 5) Non-Access Modifiers (7)
  * ---------------------------
  *      static, final, abstract, synchronized,
  *      transient, volatile, native, strictfp
  *      (strictfp became implicit in Java 17, but it is still a reserved word)
- *
+ * <p>
  *
  * 6) Exception Handling (5)
  * -------------------------
  *      try, catch, finally, throw, throws
- *
+ * <p>
  *
  * 7) Miscellaneous (4)
  * --------------------
@@ -51,12 +51,12 @@ package Phase1_CoreLanguage.Keywords;
  *      assert        - debug-time invariant check (Java 1.4+)
  *      const, goto   - RESERVED but UNUSED, kept reserved so you cannot use them
  *                      as identifiers (Java does NOT actually support goto/const).
- *
+ * <p>
  *
  * 8) Reserved Literals (3) - technically literals, not keywords
  * -------------------------------------------------------------
  *      true, false, null
- *
+ * <p>
  *
  * 9) Contextual Keywords (Restricted - act as keywords ONLY in certain contexts)
  * -----------------------------------------------------------------------------
@@ -65,11 +65,12 @@ package Phase1_CoreLanguage.Keywords;
  *      record    (Java 16+) - immutable data class
  *      sealed, non-sealed, permits (Java 17+) - sealed class hierarchies
  *      _         (Java 9 deprecated, Java 21+ reserved as unnamed pattern variable)
+ * <p>
  *
  * These are NOT fully reserved - you CAN still name a variable "var" or "yield"
  * if you really want to (though it is confusing). They are only treated as
  * keywords in the specific syntactic positions where they apply.
- *
+ * <p>
  *
  * Why "const" and "goto" are Reserved but Unused
  * -----------------------------------------------
@@ -77,7 +78,7 @@ package Phase1_CoreLanguage.Keywords;
  * helpful error message ("goto is not supported") instead of treating them as
  * regular identifiers. The Java designers chose final + labeled break/continue
  * over const + goto for safer, more readable code.
- *
+ * <p>
  *
  * This class only demonstrates that you CANNOT use keywords as identifiers.
  * The illegal lines are commented - uncomment any of them to see the compile

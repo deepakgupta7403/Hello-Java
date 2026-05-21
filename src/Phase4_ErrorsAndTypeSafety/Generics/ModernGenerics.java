@@ -1,10 +1,6 @@
 package Phase4_ErrorsAndTypeSafety.Generics;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -14,55 +10,59 @@ import java.util.stream.Stream;
  * ------------------------------
  * Generics arrived in Java 5 but the syntax has been refined over many
  * releases. A short tour of the additions that matter.
- *
+ * <p>
  *
  * Java 7 - Diamond Operator
  * -------------------------
  * No need to repeat type arguments on the right-hand side:
+ * <p>
  *
  *      Map&lt;String, List&lt;Integer&gt;&gt; m = new HashMap&lt;&gt;();
  *      // instead of:
  *      Map&lt;String, List&lt;Integer&gt;&gt; m = new HashMap&lt;String, List&lt;Integer&gt;&gt;();
- *
+ * <p>
  *
  * Java 8 - Lambda + Target Type Inference
  * ---------------------------------------
  * Lambdas pick up generic type information from their TARGET type:
+ * <p>
  *
  *      Function&lt;String, Integer&gt; len = s -&gt; s.length();
  *      Comparator&lt;Person&gt; byAge      = (a, b) -&gt; Integer.compare(a.age, b.age);
+ * <p>
  *
  * Generic methods returning functional interfaces let you build elegant
  * pipelines: Stream&lt;T&gt;, Optional&lt;T&gt;, Function&lt;T, R&gt;, ...
- *
+ * <p>
  *
  * Java 9 - Private interface methods + diamond with anonymous classes
  * -------------------------------------------------------------------
  *      Comparator&lt;Integer&gt; cmp = new Comparator&lt;&gt;() {        // diamond on anonymous
  *          public int compare(Integer a, Integer b) { return a - b; }
  *      };
- *
+ * <p>
  *
  * Java 10 - var + Generics
  * ------------------------
  *      var list = new ArrayList&lt;String&gt;();                    // OK - infers List/ArrayList<String>
  *      var list = new ArrayList&lt;&gt;();                          // BAD - infers ArrayList<Object>
- *
+ * <p>
  *
  * Java 16 - Records with type parameters
  * --------------------------------------
  *      record Pair&lt;K, V&gt;(K key, V value) { }
+ * <p>
  *
  * Generic records compose well with collectors, streams, and pattern
  * matching.
- *
+ * <p>
  *
  * Java 17 - Sealed generic interfaces
  * -----------------------------------
  *      sealed interface Result&lt;T, E&gt; permits Ok, Err { }
  *      record Ok&lt;T, E&gt;(T value)  implements Result&lt;T, E&gt; { }
  *      record Err&lt;T, E&gt;(E error) implements Result&lt;T, E&gt; { }
- *
+ * <p>
  *
  * Java 21 - Pattern matching for switch on generic types
  * ------------------------------------------------------
@@ -71,8 +71,10 @@ import java.util.stream.Stream;
  *          case Ok&lt;String, Throwable&gt;  ok  -&gt; ok.value();
  *          case Err&lt;String, Throwable&gt; err -&gt; "fail: " + err.error();
  *      };
+ * <p>
  *
  * Generic record patterns can also DECONSTRUCT:
+ * <p>
  *
  *      case Ok&lt;String, ?&gt;(String value) -&gt; ...
  */

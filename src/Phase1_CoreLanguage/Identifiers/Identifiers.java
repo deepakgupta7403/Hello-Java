@@ -6,10 +6,11 @@ package Phase1_CoreLanguage.Identifiers;
  * An IDENTIFIER is the name given to any program element: a class, method,
  * variable, package, label, interface, etc. Identifiers are how you refer to
  * things in your code.
+ * <p>
  *
  *      int age;                  //   ^^^   "age" is an identifier
  *      class Customer { ... }    //   ^^^^^^^^ "Customer" is an identifier
- *
+ * <p>
  *
  * Rules for Valid Identifiers (Strict - enforced by the compiler)
  * ---------------------------------------------------------------
@@ -23,7 +24,7 @@ package Phase1_CoreLanguage.Identifiers;
  *  7. Cannot contain whitespace.
  *  8. Java allows Unicode letters - so non-English names like  android , greek
  *     letters work. Usually avoided in professional code.
- *
+ * <p>
  *
  * Style Conventions (Soft Rules - not enforced, but everyone follows them)
  * -----------------------------------------------------------------------
@@ -34,18 +35,19 @@ package Phase1_CoreLanguage.Identifiers;
  *                        separated, no _
  *  - Generic type vars : single uppercase      -> T, K, V, E
  *  - Boolean variables : start with is/has/can -> isActive, hasNext, canEdit
- *
+ * <p>
  *
  * Special About Dollar Sign and Underscore
  * ----------------------------------------
  * - $ is technically allowed but reserved for code-generation tools (the Java
  *   compiler itself uses it for inner-class file names like Outer$Inner.class).
  *   Avoid using $ in your own identifiers.
+ * <p>
  *
  * - Standalone underscore "_" was deprecated as an identifier in Java 9 and is
  *   actually a RESERVED keyword from Java 21 onward (used for unnamed variables
  *   in pattern matching). Use a meaningful name instead.
- *
+ * <p>
  *
  * This class demonstrates legal and illegal identifiers (the illegal ones are
  * commented out - uncomment one at a time to see the compile errors).

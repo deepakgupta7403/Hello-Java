@@ -11,6 +11,7 @@ import java.util.NoSuchElementException;
  * An inner class is a NON-STATIC nested class. Every instance carries a
  * HIDDEN REFERENCE to an instance of the enclosing outer class. That
  * lets it access outer fields and methods directly.
+ * <p>
  *
  *      public class Outer {
  *          private int n;
@@ -18,10 +19,11 @@ import java.util.NoSuchElementException;
  *              int twice() { return n * 2; }  // 'n' belongs to the outer
  *          }
  *      }
+ * <p>
  *
  *      Outer o = new Outer();
  *      Inner i = o.new Inner();                 // note the prefix
- *
+ * <p>
  *
  * The hidden reference
  * --------------------
@@ -29,14 +31,14 @@ import java.util.NoSuchElementException;
  * That's why event listeners declared as inner classes can leak the
  * Activity / Fragment / Frame they live in. PREFER static nested for
  * helpers that don't need outer state.
- *
+ * <p>
  *
  * `Outer.this`
  * ------------
  * Inside the inner class, `this` refers to the inner instance and
  * `Outer.this` refers to the enclosing instance. Useful when names
  * shadow each other.
- *
+ * <p>
  *
  * Use cases (legitimate)
  * ----------------------

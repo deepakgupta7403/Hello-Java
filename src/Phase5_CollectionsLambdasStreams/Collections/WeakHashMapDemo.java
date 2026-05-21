@@ -9,19 +9,20 @@ import java.util.WeakHashMap;
  * WeakHashMap stores its KEYS using WeakReference. When the JVM's garbage
  * collector decides that no other strong reference points to a key, the
  * entry vanishes from the map automatically.
+ * <p>
  *
  *      Map<MyObj, ResourceState> states = new WeakHashMap<>();
  *      ...
  *      // when MyObj goes out of scope and the GC runs, the corresponding
  *      // (key, value) entry disappears.
- *
+ * <p>
  *
  * Why It Exists
  * -------------
  *   - To attach metadata to an object WITHOUT preventing it from being
  *     garbage-collected.
  *   - To build caches keyed by an external object's lifetime.
- *
+ * <p>
  *
  * Classic Use Case - "Attach data to a foreign object"
  * ----------------------------------------------------
@@ -29,14 +30,14 @@ import java.util.WeakHashMap;
  * something per instance. Put it in a WeakHashMap keyed by the instance.
  * When the instance is collected, your associated entry disappears too -
  * no leak.
- *
+ * <p>
  *
  * Important Pitfall - VALUES Are Held STRONGLY
  * --------------------------------------------
  * If your VALUE references back to the key (directly or transitively),
  * the key can never be collected and the entry never disappears. Break
  * the cycle with a WeakReference value or by storing only "key-free" data.
- *
+ * <p>
  *
  * Other Notes
  * -----------
@@ -44,7 +45,7 @@ import java.util.WeakHashMap;
  *     map as having a stochastic size.
  *   - Iteration is fail-fast and BUSY: it must filter out cleared entries.
  *   - Not thread-safe. Wrap with Collections.synchronizedMap if needed.
- *
+ * <p>
  *
  * Comparison To Other "Special" Maps
  * ----------------------------------

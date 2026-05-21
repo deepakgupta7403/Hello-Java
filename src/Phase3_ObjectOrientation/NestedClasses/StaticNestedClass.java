@@ -8,13 +8,15 @@ import java.util.Objects;
  * A nested class declared `static`. It is just a top-level class that
  * happens to live INSIDE another for namespace reasons. It has NO
  * implicit reference to an instance of the outer class.
+ * <p>
  *
  *      public class Owner {
  *          public static class Helper { ... }
  *      }
+ * <p>
  *
  *      Owner.Helper h = new Owner.Helper();    // no Owner instance required
- *
+ * <p>
  *
  * Use cases
  * ---------
@@ -23,7 +25,7 @@ import java.util.Objects;
  *   - Enums (every enum IS a static nested class implicitly)
  *   - Iterators                (private static class Itr ...)
  *   - Strategy / Comparator helpers tightly bound to the owner.
- *
+ * <p>
  *
  * Visibility tricks
  * -----------------

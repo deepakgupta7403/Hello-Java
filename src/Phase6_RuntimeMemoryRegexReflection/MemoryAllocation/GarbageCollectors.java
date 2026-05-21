@@ -9,16 +9,18 @@ import java.lang.management.ManagementFactory;
  * OpenJDK / HotSpot ships several different garbage collectors. They have
  * different trade-offs between THROUGHPUT (total work done) and LATENCY
  * (longest pause). You pick one with a JVM flag at launch time.
- *
+ * <p>
  *
  * The Big Five (HotSpot / OpenJDK)
  * --------------------------------
+ * <p>
  *
  *   1. SERIAL GC                    -XX:+UseSerialGC
  *      - Single-threaded. Stops the world to mark + sweep.
  *      - Tiny memory footprint.
  *      - DEFAULT for small heaps / single-core / client-class machines.
  *      - Use when : embedded devices, very low resource environments.
+ * <p>
  *
  *   2. PARALLEL GC (a.k.a. "throughput")  -XX:+UseParallelGC
  *      - Multi-threaded young + old collection. Stops the world.
@@ -26,6 +28,7 @@ import java.lang.management.ManagementFactory;
  *      - Was the default in JDK 8.
  *      - Use when : batch jobs / scientific computing where total time
  *                    matters more than tail latency.
+ * <p>
  *
  *   3. G1 GC ("Garbage First")              -XX:+UseG1GC
  *      - DEFAULT since Java 9.
@@ -33,6 +36,7 @@ import java.lang.management.ManagementFactory;
  *        regions first to meet a TARGET PAUSE goal.
  *      - Multi-threaded, mostly concurrent, with short stop-the-world phases.
  *      - Use when : interactive servers up to ~ 100 GB heap.
+ * <p>
  *
  *   4. ZGC ("Z Garbage Collector")          -XX:+UseZGC
  *      - Concurrent, region-based, NUMA-aware. Pause times often < 1 ms,
@@ -41,24 +45,27 @@ import java.lang.management.ManagementFactory;
  *        ("ZGC: Generational" - much better throughput for typical apps).
  *      - Use when : huge heaps (multi-TB), strict latency requirements.
  *      - JDK 21 flag: -XX:+UseZGC -XX:+ZGenerational
+ * <p>
  *
  *   5. SHENANDOAH                            -XX:+UseShenandoahGC
  *      - Concurrent, low-pause collector from Red Hat. Pauses similar to ZGC.
  *      - Available in Eclipse Temurin and OpenJDK distributions.
  *      - Use when : low-latency servers; alternative to ZGC.
- *
+ * <p>
  *
  * Two "Special" Collectors
  * ------------------------
+ * <p>
  *
  *   6. EPSILON                              -XX:+UseEpsilonGC
  *      - The "do nothing" collector. Allocates but NEVER reclaims.
  *      - For performance testing, very short-lived programs, and
  *        understanding allocator overhead without GC noise.
+ * <p>
  *
  *   7. CMS (Concurrent Mark-Sweep)
  *      - Old low-pause collector. REMOVED in Java 14. Use G1 / ZGC instead.
- *
+ * <p>
  *
  * How To Pick a Collector
  * -----------------------
@@ -67,7 +74,7 @@ import java.lang.management.ManagementFactory;
  *   - "I want max throughput and don't care about pauses"
  *                                                   -> Parallel.
  *   - "I have a tiny embedded device"                -> Serial.
- *
+ * <p>
  *
  * Useful Flags (just-the-flags cheatsheet)
  * ----------------------------------------
@@ -79,7 +86,7 @@ import java.lang.management.ManagementFactory;
  *   -Xlog:gc*                       turn on detailed GC logging
  *   -XX:+HeapDumpOnOutOfMemoryError dump heap to a file on OOM
  *   -XX:HeapDumpPath=/path/dump.hprof
- *
+ * <p>
  *
  * Inspecting the Live Collector
  * -----------------------------

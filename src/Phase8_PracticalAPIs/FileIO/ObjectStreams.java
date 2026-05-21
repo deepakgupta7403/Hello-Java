@@ -1,12 +1,6 @@
 package Phase8_PracticalAPIs.FileIO;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serial;
-import java.io.Serializable;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
@@ -18,14 +12,14 @@ import java.util.List;
  * implement Serializable; the stream then records every reachable field.
  * Used by RMI historically, by Java's built-in clone-via-serialization,
  * and occasionally for cache files.
- *
+ * <p>
  *
  * Methods you actually use
  * ------------------------
  *      out.writeObject(obj)
  *      Object o = in.readObject();           // throws ClassNotFoundException
  *      in.close() / out.close()
- *
+ * <p>
  *
  * Serializable contract
  * ---------------------
@@ -34,7 +28,7 @@ import java.util.List;
  *   - Non-serializable fields must be `transient`.
  *   - super-class chain must be Serializable, or must have a no-arg
  *     constructor reachable for deserialization.
- *
+ * <p>
  *
  * DON'T USE THIS FOR REAL EXTERNAL DATA
  * -------------------------------------
@@ -43,10 +37,11 @@ import java.util.List;
  *     (gadget chains).
  *   - VERSIONING FRAGILITY — small field changes break the format.
  *   - VERBOSITY and SLOWNESS vs JSON/Protobuf.
+ * <p>
  *
  * Use this API only for trusted, internal, short-lived data. For
  * config, APIs, cross-language: use JSON / Protobuf / Avro.
- *
+ * <p>
  *
  * Java 17+
  * --------

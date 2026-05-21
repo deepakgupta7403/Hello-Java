@@ -5,6 +5,7 @@ package Phase1_CoreLanguage.WrapperClasses;
  * -----------------------
  * Every primitive in Java has a corresponding WRAPPER class that lives in the
  * java.lang package. A wrapper is an OBJECT that holds a single primitive value.
+ * <p>
  *
  *      primitive | wrapper       | size of primitive
  *      ----------+---------------+-------------------
@@ -16,7 +17,7 @@ package Phase1_CoreLanguage.WrapperClasses;
  *      double    | Double        | 64 bits
  *      char      | Character     | 16 bits  (note - NOT "Char")
  *      boolean   | Boolean       | JVM-dep.
- *
+ * <p>
  *
  * Why Do Wrapper Classes Exist?
  * -----------------------------
@@ -27,7 +28,7 @@ package Phase1_CoreLanguage.WrapperClasses;
  *     compare(), min(), max(), MAX_VALUE / MIN_VALUE constants.
  *  4. They participate in generics, reflection, and serialization frameworks.
  *  5. They are IMMUTABLE - safe to share across threads.
- *
+ * <p>
  *
  * Boxing and Unboxing
  * -------------------
@@ -35,22 +36,25 @@ package Phase1_CoreLanguage.WrapperClasses;
  *                 int -> Integer.
  * - Unboxing    = the reverse: wrapper -> primitive.
  * - Autoboxing  = the compiler does this for you automatically (since Java 5).
+ * <p>
  *
  *      Integer boxed   = 42;        // autoboxing  -> Integer.valueOf(42)
  *      int     primit  = boxed;     // auto-unbox  -> boxed.intValue()
- *
+ * <p>
  *
  * The Famous Integer Cache (Performance Trap)
  * -------------------------------------------
  * Integer.valueOf(int) caches the integers in the range -128..127. Two boxed
  * Integers in that range share the SAME object - so == happens to return true.
  * Outside that range, two boxed Integers are different objects and == is false.
+ * <p>
  *
  *      Integer a = 100, b = 100;   //   a == b   -> true   (cached)
  *      Integer c = 200, d = 200;   //   c == d   -> false  (NOT cached)
+ * <p>
  *
  * Lesson: ALWAYS compare wrappers with .equals(), never with ==.
- *
+ * <p>
  *
  * Useful Helpers
  * --------------
@@ -64,7 +68,7 @@ package Phase1_CoreLanguage.WrapperClasses;
  *   Boolean.parseBoolean("true")  -> true
  *   Character.isDigit('5')        -> true
  *   Character.toUpperCase('a')    -> 'A'
- *
+ * <p>
  *
  * See AutoboxingUnboxing.java in this package for the boxing/unboxing demo.
  */

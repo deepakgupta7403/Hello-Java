@@ -11,12 +11,13 @@ import java.lang.reflect.Proxy;
  * Dynamic Invocation
  * ------------------
  * Two faster / safer alternatives to Method.invoke:
+ * <p>
  *
  *   1. MethodHandles — typed, closer to direct call speed.
  *   2. Dynamic Proxies — create a class at runtime that implements
  *                        a set of interfaces by routing every call
  *                        through an InvocationHandler.
- *
+ * <p>
  *
  * MethodHandle vs Method
  * ----------------------
@@ -27,7 +28,7 @@ import java.lang.reflect.Proxy;
  *      Wraps user exceptions                Throws user exceptions directly
  *      Auto-boxes primitives                Strongly typed
  *      Generic via getClass / String        Explicit MethodType
- *
+ * <p>
  *
  * Dynamic Proxy — when to use
  * ---------------------------
@@ -35,7 +36,7 @@ import java.lang.reflect.Proxy;
  *   - Add cross-cutting concerns (logging, timing, transactions) around
  *     a set of interfaces.
  *   - This is the trick Spring AOP uses for JDK-proxy beans.
- *
+ * <p>
  *
  * Limitations
  * -----------

@@ -5,16 +5,18 @@ package Phase7_Concurrency.Multithreading;
  * ------------------
  * The simplest description of "a unit of work that can be run by a
  * thread." It is a FUNCTIONAL interface with one method:
+ * <p>
  *
  *      @FunctionalInterface
  *      public interface Runnable {
  *          void run();
  *      }
+ * <p>
  *
  *   - No arguments
  *   - No return value
  *   - No checked exceptions (you must catch / wrap)
- *
+ * <p>
  *
  * Why prefer Runnable over extending Thread?
  * ------------------------------------------
@@ -24,14 +26,14 @@ package Phase7_Concurrency.Multithreading;
  *      ScheduledExecutorService, ForkJoinPool, etc.
  *   3. INHERITANCE — you can extend any other class you like.
  *   4. LAMBDAS — Runnable r = () -> ...; is concise and capture-friendly.
- *
+ * <p>
  *
  * Variants you should know
  * ------------------------
  *   Runnable     - void run(), no exceptions, used by Thread / Executor.execute
  *   Callable<V>  - V call() throws Exception. Used by ExecutorService.submit.
  *   RunnableFuture / FutureTask - Runnable + Future, used internally.
- *
+ * <p>
  *
  * Common patterns
  * ---------------

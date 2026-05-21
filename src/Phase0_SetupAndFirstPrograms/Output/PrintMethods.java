@@ -6,23 +6,25 @@ package Phase0_SetupAndFirstPrograms.Output;
  * Java exposes the standard output stream as the static field System.out, which
  * is an instance of java.io.PrintStream. PrintStream offers three families of
  * methods for writing text to the console:
+ * <p>
  *
  *      System.out.print(...)    -> writes the argument, does NOT add a newline
  *      System.out.println(...)  -> writes the argument and then a newline
  *      System.out.printf(...)   -> C-style formatted output (no trailing newline)
  *      System.out.format(...)   -> same as printf - alias
+ * <p>
  *
  * There is also System.err - a separate PrintStream used for error messages.
  * Conceptually identical to System.out but typically rendered in red in IDEs and
  * goes to a different OS file descriptor (stderr).
- *
+ * <p>
  *
  * Performance Note
  * ----------------
  * System.out is "auto-flush" so each call performs an I/O operation. For tight
  * loops printing millions of lines, wrap it in a BufferedWriter for ~10x speedup:
  *     PrintWriter pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
- *
+ * <p>
  *
  * String Concatenation vs printf
  * ------------------------------

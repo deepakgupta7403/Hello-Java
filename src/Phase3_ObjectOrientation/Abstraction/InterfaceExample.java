@@ -6,6 +6,7 @@ package Phase3_ObjectOrientation.Abstraction;
  * An INTERFACE is a CONTRACT - a list of methods a class promises to provide.
  * Interfaces are pure abstraction: they describe WHAT a type can do without
  * forcing HOW it does it.
+ * <p>
  *
  *      interface Comparable<T> {
  *          int compareTo(T other);
@@ -13,7 +14,7 @@ package Phase3_ObjectOrientation.Abstraction;
  *      class Customer implements Comparable<Customer> {
  *          public int compareTo(Customer other) { ... }
  *      }
- *
+ * <p>
  *
  * Modern Interface Members (Java 8 / 9)
  * -------------------------------------
@@ -22,10 +23,11 @@ package Phase3_ObjectOrientation.Abstraction;
  *  - static  methods  (Java 8)  - utility tied to the interface itself.
  *  - private methods  (Java 9)  - helper for default/static methods.
  *  - public static final constants (no other fields are allowed).
+ * <p>
  *
  * (For a deeper dive into default/static/private interface methods see
  *  Basics/Methods/InterfaceMethods.java.)
- *
+ * <p>
  *
  * Key Properties
  * --------------
@@ -35,15 +37,17 @@ package Phase3_ObjectOrientation.Abstraction;
  *  - All fields are implicitly PUBLIC STATIC FINAL.
  *  - Interfaces cannot have INSTANCE fields and cannot define a constructor.
  *  - An interface variable can hold any concrete implementor:
+ * <p>
  *
  *         List<String> xs = new ArrayList<>();   // List is an interface
- *
+ * <p>
  *
  * Functional Interfaces
  * ---------------------
  * An interface with exactly ONE abstract method (SAM - Single Abstract
  * Method). It can be the target of a lambda expression or method reference.
  * Annotate with @FunctionalInterface so the compiler enforces the SAM rule.
+ * <p>
  *
  *      @FunctionalInterface
  *      interface Calculator {
@@ -51,7 +55,7 @@ package Phase3_ObjectOrientation.Abstraction;
  *      }
  *      Calculator add = (a, b) -> a + b;
  *      add.apply(2, 3);    // -> 5
- *
+ * <p>
  *
  * The Example Below
  * -----------------

@@ -1,48 +1,50 @@
 package Phase5_CollectionsLambdasStreams.Collections;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 /**
  * java.util.List&lt;E&gt; - Ordered, Indexable, Duplicates Allowed
  * ----------------------------------------------------------
  * List extends Collection with POSITIONAL access - every element has an
  * INTEGER INDEX from 0 to size()-1.
+ * <p>
  *
  *      +---+---+---+---+
  *      | A | B | C | D |     List of 4 elements
  *      +---+---+---+---+
  *        0   1   2   3
- *
+ * <p>
  *
  * What List Adds Over Collection
  * ------------------------------
+ * <p>
  *
  *   Positional access
  *      get(int index)
  *      set(int index, E e)              - replace; returns the old value
  *      add(int index, E e)              - INSERT at index, shifting right
  *      remove(int index)                - REMOVE at index, shifting left
+ * <p>
  *
  *   Position-based search
  *      indexOf(Object o)                - first index, or -1
  *      lastIndexOf(Object o)            - last index, or -1
+ * <p>
  *
  *   Sub-list views
  *      subList(int from, int to)        - LIVE view, mutations propagate
+ * <p>
  *
  *   Iteration
  *      listIterator()                   - bidirectional iterator
  *      listIterator(int index)
+ * <p>
  *
  *   Bulk
  *      addAll(int index, Collection)    - insert another collection at a position
  *      replaceAll(UnaryOperator)        - Java 8+
  *      sort(Comparator)                 - Java 8+ (replaces Collections.sort)
- *
+ * <p>
  *
  * Implementations
  * ---------------
@@ -51,7 +53,7 @@ import java.util.ListIterator;
  *   Vector / Stack       - LEGACY synchronized lists - avoid in new code.
  *   CopyOnWriteArrayList - concurrent, copy on every write. Reads cheap.
  *   List.of(...)         - immutable, no nulls (Java 9+).
- *
+ * <p>
  *
  * When to Pick Which
  * ------------------
@@ -59,6 +61,7 @@ import java.util.ListIterator;
  *   - Frequent add/remove in the MIDDLE          ->  LinkedList (rare)
  *   - "Mostly read, occasional write, many readers" -> CopyOnWriteArrayList
  *   - Constant data set at startup                ->  List.of(...)
+ * <p>
  *
  * In practice, ArrayList wins almost every benchmark - it is the default.
  */

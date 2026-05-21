@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 /**
  * Structured Concurrency
@@ -12,6 +11,7 @@ import java.util.concurrent.Future;
  * Java 21 ships StructuredTaskScope as a PREVIEW API (JEP 453, evolved
  * further in 22/23). It treats a GROUP of concurrent subtasks as a
  * SINGLE UNIT OF WORK with a SCOPED LIFETIME:
+ * <p>
  *
  *      try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
  *          Subtask<String> user  = scope.fork(() -> loadUser(id));
@@ -20,11 +20,12 @@ import java.util.concurrent.Future;
  *          scope.throwIfFailed();    // rethrow first error if any
  *          return new Bundle(user.get(), cart.get());
  *      }
+ * <p>
  *
  * The scope GUARANTEES that all forked tasks finish (succeed, fail, or
  * are cancelled) before the try-with-resources exits. Errors propagate
  * naturally; cancellation propagates to every child.
- *
+ * <p>
  *
  * Why it matters
  * --------------
@@ -33,24 +34,26 @@ import java.util.concurrent.Future;
  *   - Treats "fan out N concurrent tasks, get all/any of their results"
  *     as a structured statement — just like try-with-resources made
  *     resource handling structured.
- *
+ * <p>
  *
  * Two built-in policies (Java 21)
  * -------------------------------
  *   ShutdownOnFailure  - cancel all on first failure (the most common).
  *   ShutdownOnSuccess  - cancel all on first success (parallel race).
+ * <p>
  *
  * You can subclass StructuredTaskScope for custom policies.
- *
+ * <p>
  *
  * Preview API
  * -----------
  * StructuredTaskScope is in `java.util.concurrent` but PREVIEW. To
  * compile/run this file:
+ * <p>
  *
  *      javac --release 21 --enable-preview StructuredConcurrency.java
  *      java  --enable-preview  Basics.Multithreading.StructuredConcurrency
- *
+ * <p>
  *
  * Implementation note for this repo
  * ---------------------------------

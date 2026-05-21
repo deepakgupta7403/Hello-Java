@@ -5,17 +5,18 @@ package Phase7_Concurrency.Multithreading;
  * --------------
  * A thread can be a USER thread (default) or a DAEMON thread. The
  * difference is only one thing — and it's about JVM SHUTDOWN:
+ * <p>
  *
  *      The JVM EXITS when all USER threads have finished.
  *      Any remaining DAEMON threads are killed abruptly.
- *
+ * <p>
  *
  * Use cases
  * ---------
  *   - Background maintenance: GC helpers, log flushing, metrics
  *     sampling, cache eviction.
  *   - Anything that shouldn't keep the JVM alive on its own.
- *
+ * <p>
  *
  * Rules
  * -----
@@ -26,7 +27,7 @@ package Phase7_Concurrency.Multithreading;
  *     blocks may not run, resources may not be closed. So:
  *        DO NOT use daemons for tasks that MUST clean up
  *        (DB writers, file appenders, network flushes).
- *
+ * <p>
  *
  * Daemons in the JDK
  * ------------------
@@ -34,7 +35,7 @@ package Phase7_Concurrency.Multithreading;
  *   - GC threads, JIT compiler, Reference Handler, Finalizer
  *   - Common-ForkJoin pool's workers (when not user-set)
  *   - Timer threads (if you opt in)
- *
+ * <p>
  *
  * Daemons and ExecutorService
  * ---------------------------

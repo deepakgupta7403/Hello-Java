@@ -11,28 +11,33 @@ import java.util.stream.IntStream;
  * `Arrays` is a final class of STATIC HELPERS for working with Java arrays:
  * print, sort, search, copy, fill, compare, convert to a List or Stream.
  * It is one of the most useful classes in the JDK - learn it well.
- *
+ * <p>
  *
  * Methods Covered Here (most-used selection)
  * ------------------------------------------
  *      Printing :    Arrays.toString(arr)          single dim
  *                    Arrays.deepToString(grid)     multi dim
+ * <p>
  *
  *      Sorting  :    Arrays.sort(arr)              full sort
  *                    Arrays.sort(arr, from, to)    partial sort
  *                    Arrays.sort(arr, comparator)  custom order (objects)
  *                    Arrays.parallelSort(arr)      multi-threaded sort
+ * <p>
  *
  *      Searching:    Arrays.binarySearch(arr, key)  array MUST be sorted
+ * <p>
  *
  *      Copying  :    Arrays.copyOf(arr, newLen)
  *                    Arrays.copyOfRange(arr, from, to)
  *                    System.arraycopy(...)         lower-level, faster
  *                    arr.clone()                   single-dim shallow copy
+ * <p>
  *
  *      Filling  :    Arrays.fill(arr, value)
  *                    Arrays.fill(arr, from, to, value)
  *                    Arrays.setAll(arr, i -> ...)        (Java 8+)
+ * <p>
  *
  *      Equality :    Arrays.equals(a, b)
  *                    Arrays.deepEquals(a, b)        for nested arrays
@@ -40,10 +45,11 @@ import java.util.stream.IntStream;
  *                    Arrays.mismatch(a, b)          Java 9+, first diff index
  *                    Arrays.hashCode(arr)
  *                    Arrays.deepHashCode(grid)
+ * <p>
  *
  *      Bridges  :    Arrays.asList(...)             FIXED-SIZE list view
  *                    Arrays.stream(arr)             open a Stream over arr
- *
+ * <p>
  *
  * Common Gotchas
  * --------------

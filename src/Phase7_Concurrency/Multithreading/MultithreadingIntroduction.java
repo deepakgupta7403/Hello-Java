@@ -7,24 +7,27 @@ package Phase7_Concurrency.Multithreading;
  * one OS process. Inside that process, work is performed by THREADS —
  * lightweight, independent paths of execution that share the process's
  * heap and code segment but have their own STACK and PROGRAM COUNTER.
+ * <p>
  *
  * MULTITHREADING is the ability of a CPU (or several CPUs) to provide
  * multiple threads of execution concurrently. A single Java program can
  * spawn many threads to do work in parallel, react to events, or keep a
  * UI responsive.
- *
+ * <p>
  *
  * Concurrency vs Parallelism
  * --------------------------
  *   CONCURRENCY  - dealing with many things at once (structure).
  *                  Threads take turns on a single core, time-sliced by
  *                  the OS scheduler.
+ * <p>
  *
  *   PARALLELISM  - doing many things at once (execution).
  *                  Multiple cores run multiple threads simultaneously.
+ * <p>
  *
  * Java's concurrency primitives let you express both.
- *
+ * <p>
  *
  * Why Multithreading?
  * -------------------
@@ -36,7 +39,7 @@ package Phase7_Concurrency.Multithreading;
  *                            (servers, schedulers, pipelines).
  *   - MODEL THE PROBLEM    - some problems are naturally concurrent
  *                            (producer/consumer, game loops, sensors).
- *
+ * <p>
  *
  * Threads vs Processes
  * --------------------
@@ -46,7 +49,7 @@ package Phase7_Concurrency.Multithreading;
  *   Creation cost      Heavy                       Light
  *   Communication      IPC (pipes, sockets...)    Shared variables
  *   Crash blast        Isolated                    Whole process dies
- *
+ * <p>
  *
  * What Java Gives You
  * -------------------
@@ -60,7 +63,7 @@ package Phase7_Concurrency.Multithreading;
  *                                   tasks as a single unit of work.
  *   7. Scoped Values              - JEP 446 preview, immutable
  *                                   alternative to ThreadLocal.
- *
+ * <p>
  *
  * Hello, threads!
  * ---------------

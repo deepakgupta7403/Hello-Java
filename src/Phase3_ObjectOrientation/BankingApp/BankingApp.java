@@ -4,6 +4,7 @@ package Phase3_ObjectOrientation.BankingApp;
  * BankingApp - runnable demo of the Simple Banking Application
  * ------------------------------------------------------------
  * This `main` ties together every OOP pillar from the rest of the folder:
+ * <p>
  *
  *   - ABSTRACTION    : `Account` is abstract; callers code against it.
  *   - ENCAPSULATION  : balances and transaction histories are private and
@@ -15,9 +16,10 @@ package Phase3_ObjectOrientation.BankingApp;
  *                      dispatched at runtime.
  *   - PACKAGES       : every file lives in package OOPSConcepts.BankingApp.
  *   - RECORDS        : `Transaction` is an immutable record.
- *
+ * <p>
  *
  * Run from project root:
+ * <p>
  *
  *      javac src/OOPSConcepts/BankingApp/*.java
  *      cd src

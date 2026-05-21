@@ -4,6 +4,7 @@ package Phase1_CoreLanguage.Operators;
  * Unary Operators
  * ---------------
  * Unary operators act on a SINGLE operand.
+ * <p>
  *
  *      +x      unary plus  (rarely useful; promotes byte/short to int)
  *      -x      unary minus (negation)
@@ -13,18 +14,20 @@ package Phase1_CoreLanguage.Operators;
  *      x++     post-increment (use, then increment)
  *      --x     pre-decrement
  *      x--     post-decrement
- *
+ * <p>
  *
  * Pre vs Post Increment
  * ---------------------
  * The difference matters only when the expression is USED:
+ * <p>
  *
  *      int i = 5;
  *      int a = ++i;     // i becomes 6, then a = 6  -> a=6, i=6
+ * <p>
  *
  *      int j = 5;
  *      int b = j++;     // b = 5 (old j), then j becomes 6 -> b=5, j=6
- *
+ * <p>
  *
  * Classic Interview Trap
  * ----------------------

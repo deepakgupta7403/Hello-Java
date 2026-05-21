@@ -9,6 +9,7 @@ import java.util.concurrent.Future;
  * -----------------------------------------
  * A modern alternative to ThreadLocal for sharing IMMUTABLE per-call
  * data with deeply nested code. Unlike ThreadLocal:
+ * <p>
  *
  *   - Values are SCOPE-BOUND: they exist only inside a bounded scope
  *     and are automatically unbound on exit. No leaks across tasks.
@@ -17,30 +18,33 @@ import java.util.concurrent.Future;
  *   - Cheap with millions of virtual threads: scoped values don't pay
  *     the per-thread map cost.
  *   - Inherited by child threads of a StructuredTaskScope automatically.
- *
+ * <p>
  *
  * The API in comments (preview)
  * -----------------------------
  *      public static final ScopedValue<String> USER = ScopedValue.newInstance();
+ * <p>
  *
  *      ScopedValue.where(USER, "alice").run(() -> {
  *          // anywhere in here, USER.get() == "alice"
  *          callDeep();
  *      });
+ * <p>
  *
  *      ScopedValue.where(USER, "alice").call(() -> doWork());
+ * <p>
  *
  *      ScopedValue.where(USER, "alice")
  *                 .where(LOCALE, Locale.US)
  *                 .run(...);                       // bind several at once
- *
+ * <p>
  *
  * Inside the body
  * ---------------
  *      USER.get()                  - the value (throws if unbound)
  *      USER.isBound()              - is there a value in scope?
  *      USER.orElse(defaultV)       - safe accessor
- *
+ * <p>
  *
  * Why preview, why care
  * ---------------------
@@ -48,7 +52,7 @@ import java.util.concurrent.Future;
  * virtual-thread world. Each VT inherits the scope, not a private
  * ThreadLocal map. They're a great fit for tracing, security
  * principals, request IDs.
- *
+ * <p>
  *
  * Implementation note for this repo
  * ---------------------------------
@@ -107,6 +111,7 @@ public class ScopedValuesDemo {
 
     /**
      * Helper that emulates ScopedValue.where(USER, name).run(body).
+     * <p>
      *
      * It SETS the ThreadLocal, runs the body, and RESTORES the previous
      * value in a finally — guaranteeing scope-bound cleanup.

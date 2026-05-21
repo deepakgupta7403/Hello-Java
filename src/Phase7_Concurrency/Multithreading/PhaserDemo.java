@@ -6,19 +6,22 @@ import java.util.concurrent.Phaser;
  * Phaser (Java 7+)
  * ----------------
  * The flexible cousin of CyclicBarrier and CountDownLatch. A Phaser:
+ * <p>
  *
  *   - Has a varying number of REGISTERED parties (register / arriveAndDeregister).
  *   - Has a PHASE counter that increases each round.
  *   - Lets parties signal arrival with several methods:
+ * <p>
  *
  *           arriveAndAwaitAdvance()    - "I'm here; wait for the rest"
  *           arrive()                    - "I'm here; don't wait" (returns the phase)
  *           arriveAndDeregister()       - "I'm here; drop me from the pool"
  *           awaitAdvance(phase)         - block until we move past `phase`
+ * <p>
  *
  *   - Supports a HOOK: override onAdvance(phase, registered) to control
  *     when termination occurs and run per-phase actions.
- *
+ * <p>
  *
  * When to pick Phaser over CyclicBarrier
  * --------------------------------------
@@ -26,7 +29,7 @@ import java.util.concurrent.Phaser;
  *   - You want a hook that decides when to terminate (e.g. when all
  *     parties have deregistered, or after K phases).
  *   - You want non-blocking arrivals (arrive() returns immediately).
- *
+ * <p>
  *
  * Termination
  * -----------

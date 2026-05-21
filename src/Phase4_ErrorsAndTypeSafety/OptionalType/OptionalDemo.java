@@ -1,10 +1,6 @@
 package Phase4_ErrorsAndTypeSafety.OptionalType;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import java.util.OptionalInt;
-import java.util.OptionalLong;
+import java.util.*;
 import java.util.stream.Stream;
 
 /**
@@ -13,17 +9,18 @@ import java.util.stream.Stream;
  * A container that holds EITHER a value or no value. Used to make
  * "this method may not return anything" explicit in the type system —
  * removes the trap of forgetting to null-check.
+ * <p>
  *
  *      Optional<User> u = repo.find(id);
  *      u.ifPresent(this::greet);
- *
+ * <p>
  *
  * What Optional is FOR
  * --------------------
  *   - Return values when "nothing" is a legitimate result.
  *   - Stream pipelines that may not find a match (findFirst, findAny,
  *     max, min, reduce).
- *
+ * <p>
  *
  * What Optional is NOT for
  * ------------------------
@@ -32,16 +29,17 @@ import java.util.stream.Stream;
  *     overloads if "absent" is meaningful.
  *   - Collections. Use an empty collection instead.
  *   - Map values. Use Map.getOrDefault or .computeIfAbsent.
+ * <p>
  *
  * Optional is HEAP-ALLOCATED and not free; using it everywhere is a
  * code smell. Use it where it earns its keep — return types.
- *
+ * <p>
  *
  * Primitive specialisations
  * -------------------------
  *      OptionalInt / OptionalLong / OptionalDouble
  * Avoid boxing overhead and pair with IntStream / LongStream / DoubleStream.
- *
+ * <p>
  *
  * Key API
  * -------

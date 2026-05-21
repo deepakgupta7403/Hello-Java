@@ -2,11 +2,13 @@ package Phase5_CollectionsLambdasStreams.Collections.FaceDetectionApp;
 
 /**
  * Face - the single domain record used throughout the Face Detection app.
+ * <p>
  *
  * Implemented as a Java RECORD (Java 16+). This gives us:
  *   - immutable value semantics suitable for use as a Map key,
  *   - equals/hashCode generated from all components,
  *   - a Comparable natural order (by confidence) we define ourselves below.
+ * <p>
  *
  * Fields
  * ------
@@ -15,6 +17,7 @@ package Phase5_CollectionsLambdasStreams.Collections.FaceDetectionApp;
  *   confidence  - 0.0..1.0 confidence of the match
  *   timestampMs - when the face was detected (epoch ms)
  *   x, y, w, h  - bounding box in the source image
+ * <p>
  *
  * Natural ordering = descending confidence (so a sorted collection
  * surfaces the most-confident match first).

@@ -9,16 +9,17 @@ import java.util.Map;
  * LinkedHashMap extends HashMap. Internally it weaves a doubly-linked list
  * through its entries so iteration follows a predictable order. The hash-
  * table operations remain O(1); the linked list just adds a few pointers.
- *
+ * <p>
  *
  * Two Order Modes
  * ---------------
  *   1. INSERTION ORDER (default)
  *      Entries iterated in the order put() first added them.
+ * <p>
  *
  *   2. ACCESS ORDER       new LinkedHashMap&lt;&gt;(16, 0.75f, true)
  *      Every get() / put() moves that entry to the END. Perfect for LRU.
- *
+ * <p>
  *
  * Why It Exists
  * -------------
@@ -26,13 +27,13 @@ import java.util.Map;
  *     (insertion or access).
  *   - You want to build a simple LRU CACHE by overriding removeEldestEntry.
  *   - You want JSON / config dumps to iterate in the order keys were added.
- *
+ * <p>
  *
  * Big-O
  * -----
  *   put / get / remove / containsKey       O(1)  (same as HashMap)
  *   iteration                              O(size)
- *
+ * <p>
  *
  * Constructors
  * ------------
@@ -41,7 +42,7 @@ import java.util.Map;
  *   new LinkedHashMap&lt;&gt;(int initialCapacity, float loadFactor)
  *   new LinkedHashMap&lt;&gt;(int initialCapacity, float loadFactor, boolean accessOrder)
  *   new LinkedHashMap&lt;&gt;(Map&lt;? extends K, ? extends V&gt; m)
- *
+ * <p>
  *
  * Java 21 - SequencedMap
  * ----------------------

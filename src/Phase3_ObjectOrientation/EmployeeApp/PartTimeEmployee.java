@@ -2,14 +2,17 @@ package Phase3_ObjectOrientation.EmployeeApp;
 
 /**
  * PartTimeEmployee - paid by the hour, capped at a monthly hour budget.
+ * <p>
  *
  * Records:
  *   - id          : numeric id
  *   - name        : staff name
  *   - hourlyRate  : currency per hour
  *   - hoursLogged : hours worked this month
+ * <p>
  *
  * monthlyPay() = hourlyRate * hoursLogged
+ * <p>
  *
  * Implements Auditable but NOT Promotable - part-time staff in this model
  * get raised by changing hourlyRate, not by a `promote(...)` call.

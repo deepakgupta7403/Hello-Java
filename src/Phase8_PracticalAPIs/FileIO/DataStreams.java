@@ -1,13 +1,6 @@
 package Phase8_PracticalAPIs.FileIO;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.EOFException;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -16,20 +9,22 @@ import java.nio.file.Path;
  * --------------------------------------------------
  * DECORATORS on top of byte streams that read and write Java's PRIMITIVE
  * TYPES in a portable, fixed-width binary format:
+ * <p>
  *
  *      int (4 bytes), long (8), short (2), byte (1),
  *      float (4), double (8), boolean (1), char (2),
  *      "modified UTF-8" strings via writeUTF / readUTF.
+ * <p>
  *
  * Byte order is BIG-ENDIAN, regardless of platform.
- *
+ * <p>
  *
  * Why this exists
  * ---------------
  * Without DataStreams you'd have to encode/decode each primitive by
  * hand (shifts, masks, byte arrays). DataStreams give you the same
  * format any other Java program will agree on.
- *
+ * <p>
  *
  * Pattern
  * -------
@@ -41,7 +36,7 @@ import java.nio.file.Path;
  *          int n = in.readInt();
  *          String s = in.readUTF();
  *      }
- *
+ * <p>
  *
  * Caveats
  * -------

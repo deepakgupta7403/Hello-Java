@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 /**
  * Real-World Example 2 - Streams in a Grocery Store
+ * <p>
  *
  * Demonstrates: filtering by category, sorting, summing prices, grouping
  * by category, finding cheapest item, joining names, building a receipt.

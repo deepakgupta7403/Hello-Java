@@ -4,12 +4,14 @@ import java.time.LocalDateTime;
 
 /**
  * Transaction - immutable log entry for a single account event.
+ * <p>
  *
  * Implemented as a Java RECORD (Java 16+):
  *   - All fields are final.
  *   - equals / hashCode / toString are generated.
  *   - The compiler also synthesises a canonical constructor and accessor
  *     methods type(), amount(), balanceAfter(), timestamp().
+ * <p>
  *
  * The nested `Type` enum makes the kind of event explicit and lets us
  * use exhaustive `switch` statements in any caller code.

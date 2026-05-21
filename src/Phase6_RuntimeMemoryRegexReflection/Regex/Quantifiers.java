@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
  * A QUANTIFIER controls how many times the immediately preceding element
  * may repeat. Java supports three FLAVOURS for every quantifier - greedy,
  * reluctant (a.k.a. lazy), and possessive.
- *
+ * <p>
  *
  * Counts
  * ------
@@ -19,44 +19,48 @@ import java.util.regex.Pattern;
  *   X{n}       exactly n times
  *   X{n,}      n or more
  *   X{n,m}     between n and m (inclusive)
- *
+ * <p>
  *
  * Three Flavours
  * --------------
  *   GREEDY      Default. Matches as MUCH as possible, then backtracks if the
  *               rest of the pattern fails.        X*  X+  X?  X{n,m}
+ * <p>
  *
  *   RELUCTANT   Add `?` after. Matches as LITTLE as possible, then expands
  *               only when the rest of the pattern needs more characters.
  *                                                  X*?  X+?  X??  X{n,m}?
+ * <p>
  *
  *   POSSESSIVE  Add `+` after. Like greedy but NEVER gives back what it
  *               matched - no backtracking. Useful for performance and to
  *               prevent catastrophic backtracking.
  *                                                  X*+  X++  X?+  X{n,m}+
- *
+ * <p>
  *
  * The Classic Example (greedy vs reluctant)
  * -----------------------------------------
  *      regex  : <.+>
  *      input  : "<a><b><c>"
+ * <p>
  *
  *      greedy    .+   matches everything between the FIRST '<' and the LAST '>'
  *                     -> single match  "<a><b><c>"
  *      reluctant .+?  matches the minimum
  *                     -> three matches "<a>", "<b>", "<c>"
- *
+ * <p>
  *
  * Catastrophic Backtracking (use possessive or atomic groups)
  * -----------------------------------------------------------
  *      regex  : (a+)+b
  *      input  : "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaac"
+ * <p>
  *
  *      Greedy regexes can take EXPONENTIAL time on inputs that almost match.
  *      Possessive quantifiers prevent the backtracking that causes the
  *      blow-up:
  *          (a++)+b           // possessive inner - linear time
- *
+ * <p>
  *
  * Common Patterns
  * ---------------

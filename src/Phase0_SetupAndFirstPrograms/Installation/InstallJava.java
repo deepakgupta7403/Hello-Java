@@ -18,6 +18,7 @@ package Phase0_SetupAndFirstPrograms.Installation;
  *   - Azul Zulu                  - https://www.azul.com/downloads/
  *   - Microsoft Build of OpenJDK - https://learn.microsoft.com/java/openjdk/
  * <p>
+ *
  * For learning, prefer an LTS (Long Term Support) version: Java 17 or Java 21.
  * <p>
  *
@@ -32,12 +33,14 @@ package Phase0_SetupAndFirstPrograms.Installation;
  *           (e.g. C:\Program Files\Java\jdk-21).
  *        c. Edit PATH and add %JAVA_HOME%\bin
  * <p>
+ *
  * macOS:
  *   1. Download the .pkg installer or install via Homebrew:
  *        brew install --cask temurin
  *   2. Verify JAVA_HOME (zsh):
  *        export JAVA_HOME=$(/usr/libexec/java_home -v 21)
  * <p>
+ *
  * Linux (Debian/Ubuntu):
  *        sudo apt update
  *        sudo apt install openjdk-21-jdk
@@ -47,14 +50,17 @@ package Phase0_SetupAndFirstPrograms.Installation;
  * --------------------------------
  * Open a fresh terminal/PowerShell and run:
  * <p>
+ *
  *        java -version
  *        javac -version
  * <p>
+ *
  * Expected output (versions will vary):
  *        openjdk version "21.0.2" 2024-01-16 LTS
  *        OpenJDK Runtime Environment Temurin-21.0.2+13 (build 21.0.2+13-LTS)
  *        OpenJDK 64-Bit Server VM Temurin-21.0.2+13 (build 21.0.2+13-LTS, mixed mode)
  * <p>
+ *
  *        javac 21.0.2
  * <p>
  *
@@ -70,11 +76,14 @@ package Phase0_SetupAndFirstPrograms.Installation;
  * ------------------------------------------------------
  * Without an IDE, the workflow is:
  * <p>
+ *
  *        javac HelloWorld.java     // produces HelloWorld.class (bytecode)
  *        java HelloWorld           // executes the bytecode in the JVM
  * <p>
+ *
  * Since Java 11 you can also run a single-file program directly without compiling:
  * <p>
+ *
  *        java HelloWorld.java
  * <p>
  *

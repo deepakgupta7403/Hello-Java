@@ -1,11 +1,6 @@
 package Phase7_Concurrency.Multithreading;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Map;
-import java.util.Vector;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -16,7 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * A class is THREAD-SAFE when it behaves correctly when used from
  * multiple threads, with NO additional synchronization required from
  * the caller (Brian Goetz).
- *
+ * <p>
  *
  * Strategies for Thread Safety
  * ----------------------------
@@ -24,28 +19,33 @@ import java.util.concurrent.atomic.AtomicInteger;
  *        - All fields final, no mutator methods.
  *        - Once constructed safely, no other thread can change state.
  *        - Examples: String, Integer, java.time.LocalDate, records.
+ * <p>
  *
  *   2. CONFINEMENT
  *        - Only one thread ever touches the object.
  *        - Examples: a local variable (stack confinement), ThreadLocal,
  *          GUI components on the EDT (Swing rule).
+ * <p>
  *
  *   3. SYNCHRONIZATION
  *        - synchronized / Lock guarantees mutual exclusion + visibility.
  *        - Vector, Hashtable, Collections.synchronizedList(...) are the
  *          classic synchronized-wrapper approach (compound ops still
  *          need external synchronization).
+ * <p>
  *
  *   4. ATOMIC PRIMITIVES
  *        - Atomic*, LongAdder, LongAccumulator — lock-free counters.
+ * <p>
  *
  *   5. CONCURRENT COLLECTIONS
  *        - ConcurrentHashMap, CopyOnWriteArrayList, ConcurrentLinkedQueue,
  *          BlockingQueue.
+ * <p>
  *
  *   6. VOLATILE
  *        - Visibility-only for SINGLE-WRITER fields (e.g. a stop flag).
- *
+ * <p>
  *
  * Levels of Thread Safety (Goetz et al.)
  * --------------------------------------
@@ -57,15 +57,18 @@ import java.util.concurrent.atomic.AtomicInteger;
  *   Thread-compatible  - the class works in single-threaded code; the
  *                        caller adds synchronization (ArrayList).
  *   Thread-hostile     - cannot be made safe (broken on purpose).
- *
+ * <p>
  *
  * Compound operations
  * -------------------
  * Even a "thread-safe" container can be misused if you compose calls:
+ * <p>
  *
  *      if (!map.containsKey(k)) map.put(k, v);   // race between two calls
+ * <p>
  *
  * Use the SINGLE atomic methods instead:
+ * <p>
  *
  *      map.putIfAbsent(k, v);
  *      map.computeIfAbsent(k, key -> compute(key));

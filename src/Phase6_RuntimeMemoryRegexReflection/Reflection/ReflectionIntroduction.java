@@ -11,7 +11,7 @@ import java.lang.reflect.Modifier;
  * Reflection lets your code INSPECT and MANIPULATE other code at
  * runtime: classes, methods, fields, constructors, annotations,
  * generic information.
- *
+ * <p>
  *
  * Why use it?
  * -----------
@@ -20,7 +20,7 @@ import java.lang.reflect.Modifier;
  *   - Plugins / service loaders.
  *   - Tooling: debuggers, profilers, IDE-level features.
  *   - Generic test helpers.
- *
+ * <p>
  *
  * Why NOT to use it (in business code)
  * ------------------------------------
@@ -29,17 +29,18 @@ import java.lang.reflect.Modifier;
  *   - May break under the module system without `opens`.
  *   - Confusing stack traces (InvocationTargetException unwraps).
  *   - Hard to refactor — renaming a field becomes a runtime bomb.
- *
+ * <p>
  *
  * The starting point: Class<?>
  * ----------------------------
  *   - Class<T> object describes a class loaded into the JVM.
  *   - Three ways to obtain one:
+ * <p>
  *
  *       String.class
  *       someString.getClass()
  *       Class.forName("java.lang.String")
- *
+ * <p>
  *
  * The headline types in java.lang.reflect
  * ---------------------------------------
@@ -50,7 +51,7 @@ import java.lang.reflect.Modifier;
  *   Parameter         - a parameter of a method/constructor
  *   Modifier          - static helpers to decode int modifier bits
  *   Array             - reflective array creation/access
- *
+ * <p>
  *
  * Java 9+ module restrictions
  * ---------------------------

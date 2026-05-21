@@ -2,6 +2,7 @@ package Phase3_ObjectOrientation.BankingApp;
 
 /**
  * SavingsAccount - "is-a" Account with an interest rate.
+ * <p>
  *
  * Demonstrates:
  *   - INHERITANCE   - extends Account, reuses its encapsulated balance API.

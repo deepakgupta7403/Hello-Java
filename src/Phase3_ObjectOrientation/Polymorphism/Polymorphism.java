@@ -6,16 +6,18 @@ package Phase3_ObjectOrientation.Polymorphism;
  * POLYMORPHISM means "many forms" - the ability of ONE name (a method or a
  * reference) to behave differently depending on context. Java offers TWO
  * kinds:
+ * <p>
  *
  *  1. COMPILE-TIME POLYMORPHISM (a.k.a. Static / Early-binding)
  *     - Resolved at COMPILE time by the compiler based on argument types.
  *     - Implemented via METHOD OVERLOADING and OPERATOR OVERLOADING (only
  *       `+` for Strings - Java does not let you overload other operators).
+ * <p>
  *
  *  2. RUNTIME POLYMORPHISM (a.k.a. Dynamic / Late-binding)
  *     - Resolved at RUNTIME based on the ACTUAL OBJECT TYPE.
  *     - Implemented via METHOD OVERRIDING.
- *
+ * <p>
  *
  * Method Overloading - Rules
  * --------------------------
@@ -24,11 +26,12 @@ package Phase3_ObjectOrientation.Polymorphism;
  *      - type of parameters,
  *      - order of parameter types.
  *  Return type ALONE is NOT enough.
+ * <p>
  *
  *      int    add(int a, int b)       { ... }   // overload
  *      double add(double a, double b) { ... }   // overload
  *      int    add(int b, int a)       { ... }   // ERROR - same signature
- *
+ * <p>
  *
  * Method Overriding - Rules
  * -------------------------
@@ -41,16 +44,17 @@ package Phase3_ObjectOrientation.Polymorphism;
  *        not overriding).
  *  Mark overrides with @Override - the compiler then verifies the override
  *  contract for you.
- *
+ * <p>
  *
  * Dynamic Dispatch
  * ----------------
  * When you call a method on a REFERENCE, the JVM looks at the actual OBJECT
  * to decide which body to run. This is what makes polymorphism powerful.
+ * <p>
  *
  *      Animal a = new Dog();
  *      a.makeSound();        // runs Dog.makeSound(), not Animal.makeSound()
- *
+ * <p>
  *
  * What Dynamic Dispatch Does NOT Apply To
  * ---------------------------------------
@@ -59,11 +63,12 @@ package Phase3_ObjectOrientation.Polymorphism;
  *  - PRIVATE methods   - cannot be overridden, so always the declaring class's.
  *  - FINAL methods     - cannot be overridden by design.
  *  - CONSTRUCTORS      - never overridden (they are not inherited).
- *
+ * <p>
  *
  * Pattern Matching (Java 21) and Polymorphism
  * -------------------------------------------
  * Java 21 lets you write SWITCH-BASED polymorphism via pattern matching:
+ * <p>
  *
  *      String describe(Object o) {
  *          return switch (o) {
