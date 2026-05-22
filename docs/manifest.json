@@ -1,0 +1,2586 @@
+[
+  {
+    "title": "Hello World",
+    "slug": "Phase0_SetupAndFirstPrograms__HelloWorld",
+    "path": "Phase0_SetupAndFirstPrograms/HelloWorld.java",
+    "phaseLabel": "Phase 0 \u2014 Setup & First Programs",
+    "section": "Overview",
+    "summary": ""
+  },
+  {
+    "title": "Is Main Compulsory",
+    "slug": "Phase0_SetupAndFirstPrograms__IsMainCompulsory",
+    "path": "Phase0_SetupAndFirstPrograms/IsMainCompulsory.java",
+    "phaseLabel": "Phase 0 \u2014 Setup & First Programs",
+    "section": "Overview",
+    "summary": "The answer to this question depends on the version of java you are using. Prior to JDK 7, the main method was not mandatory in a java program. You could write your full code under static block and it ran normally. The..."
+  },
+  {
+    "title": "Hello",
+    "slug": "Phase0_SetupAndFirstPrograms__ClassNameMyth__Hello",
+    "path": "Phase0_SetupAndFirstPrograms/ClassNameMyth/Hello.java",
+    "phaseLabel": "Phase 0 \u2014 Setup & First Programs",
+    "section": "Class Name Myth",
+    "summary": "The Final Conclusion If the class is public and file name are same as class name then it's working fine. If the class is public and file name are different as class name then it's throw the error class name and file n..."
+  },
+  {
+    "title": "Buffered Reader Input",
+    "slug": "Phase0_SetupAndFirstPrograms__Input__BufferedReaderInput",
+    "path": "Phase0_SetupAndFirstPrograms/Input/BufferedReaderInput.java",
+    "phaseLabel": "Phase 0 \u2014 Setup & First Programs",
+    "section": "Input",
+    "summary": "Taking Input - java.io.BufferedReader"
+  },
+  {
+    "title": "Console Input",
+    "slug": "Phase0_SetupAndFirstPrograms__Input__ConsoleInput",
+    "path": "Phase0_SetupAndFirstPrograms/Input/ConsoleInput.java",
+    "phaseLabel": "Phase 0 \u2014 Setup & First Programs",
+    "section": "Input",
+    "summary": "Taking Input - java.io.Console"
+  },
+  {
+    "title": "Scanner Input",
+    "slug": "Phase0_SetupAndFirstPrograms__Input__ScannerInput",
+    "path": "Phase0_SetupAndFirstPrograms/Input/ScannerInput.java",
+    "phaseLabel": "Phase 0 \u2014 Setup & First Programs",
+    "section": "Input",
+    "summary": "Taking Input - java.util.Scanner"
+  },
+  {
+    "title": "Install Java",
+    "slug": "Phase0_SetupAndFirstPrograms__Installation__InstallJava",
+    "path": "Phase0_SetupAndFirstPrograms/Installation/InstallJava.java",
+    "phaseLabel": "Phase 0 \u2014 Setup & First Programs",
+    "section": "Installation",
+    "summary": "To run any Java program you need the JDK (Java Development Kit) installed on your machine. The JDK contains the compiler (javac), the runtime (java), and various development tools (jar, javadoc, jshell, etc.)."
+  },
+  {
+    "title": "Introduction",
+    "slug": "Phase0_SetupAndFirstPrograms__Introduction__Introduction",
+    "path": "Phase0_SetupAndFirstPrograms/Introduction/Introduction.java",
+    "phaseLabel": "Phase 0 \u2014 Setup & First Programs",
+    "section": "Introduction",
+    "summary": "Java is a high-level, class-based, object-oriented programming language designed by James Gosling at Sun Microsystems in 1995 (now owned by Oracle Corporation). It follows the principle of WORA - \"Write Once, Run Anyw..."
+  },
+  {
+    "title": "JD Kvs JR Evs JVM",
+    "slug": "Phase0_SetupAndFirstPrograms__JDKvsJREvsJVM__JDKvsJREvsJVM",
+    "path": "Phase0_SetupAndFirstPrograms/JDKvsJREvsJVM/JDKvsJREvsJVM.java",
+    "phaseLabel": "Phase 0 \u2014 Setup & First Programs",
+    "section": "JD Kvs JR Evs JVM",
+    "summary": "These three are the most commonly confused acronyms in the Java world. They are nested - the JDK contains the JRE, and the JRE contains the JVM:"
+  },
+  {
+    "title": "Formatted Output",
+    "slug": "Phase0_SetupAndFirstPrograms__Output__FormattedOutput",
+    "path": "Phase0_SetupAndFirstPrograms/Output/FormattedOutput.java",
+    "phaseLabel": "Phase 0 \u2014 Setup & First Programs",
+    "section": "Output",
+    "summary": "Beyond plain printf, Java offers two more ways to produce formatted text:"
+  },
+  {
+    "title": "Print Methods",
+    "slug": "Phase0_SetupAndFirstPrograms__Output__PrintMethods",
+    "path": "Phase0_SetupAndFirstPrograms/Output/PrintMethods.java",
+    "phaseLabel": "Phase 0 \u2014 Setup & First Programs",
+    "section": "Output",
+    "summary": "Java exposes the standard output stream as the static field System.out, which is an instance of java.io.PrintStream. PrintStream offers three families of methods for writing text to the console:"
+  },
+  {
+    "title": "Documentation Comments",
+    "slug": "Phase1_CoreLanguage__Comments__DocumentationComments",
+    "path": "Phase1_CoreLanguage/Comments/DocumentationComments.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Comments",
+    "summary": "This type of comments are used generally when writing code for a project/software package, since it helps to generate a documentation page for reference, which can be used for getting information about methods present..."
+  },
+  {
+    "title": "Multi Line Comment",
+    "slug": "Phase1_CoreLanguage__Comments__MultiLineComment",
+    "path": "Phase1_CoreLanguage/Comments/MultiLineComment.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Comments",
+    "summary": "To describe a full method in a code or a complex snippet single line comments can be tedious to write, since we have to give \u2018//\u2019 at every line. So to overcome this multi line comments can be used. Syntax:"
+  },
+  {
+    "title": "Single Line Comments",
+    "slug": "Phase1_CoreLanguage__Comments__SingleLineComments",
+    "path": "Phase1_CoreLanguage/Comments/SingleLineComments.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Comments",
+    "summary": "A beginner level programmer uses mostly single-line comments for describing the code functionality. Its the most easiest typed comments. Syntax:"
+  },
+  {
+    "title": "Automatic Type Conversion",
+    "slug": "Phase1_CoreLanguage__Conversion__AutomaticTypeConversion",
+    "path": "Phase1_CoreLanguage/Conversion/AutomaticTypeConversion.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Conversion",
+    "summary": "Widening conversion takes place when two data types are automatically converted. This happens when:"
+  },
+  {
+    "title": "Explicit Type Conversion",
+    "slug": "Phase1_CoreLanguage__Conversion__ExplicitTypeConversion",
+    "path": "Phase1_CoreLanguage/Conversion/ExplicitTypeConversion.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Conversion",
+    "summary": "If we want to assign a value of larger data type to a smaller data type we perform explicit type casting or narrowing."
+  },
+  {
+    "title": "Widening Primitive",
+    "slug": "Phase1_CoreLanguage__Conversion__WideningPrimitive",
+    "path": "Phase1_CoreLanguage/Conversion/WideningPrimitive.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Conversion",
+    "summary": "When we use double quotes, the text is treated as a string and \u201cYO\u201d is printed, but when we use single quotes, the characters \u2018L\u2019 and \u2018O\u2019 are converted to int. This is called widening primitive conversion. After conve..."
+  },
+  {
+    "title": "Data Types Intro",
+    "slug": "Phase1_CoreLanguage__DataTypes__DataTypesIntro",
+    "path": "Phase1_CoreLanguage/DataTypes/DataTypesIntro.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Data Types",
+    "summary": "Java is a STATICALLY-TYPED language - every variable must have a declared type known at compile time. Java data types fall into two top-level categories:"
+  },
+  {
+    "title": "If Else If Statement",
+    "slug": "Phase1_CoreLanguage__DecisionMaking__IfElseIfStatement",
+    "path": "Phase1_CoreLanguage/DecisionMaking/IfElseIfStatement.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Decision Making",
+    "summary": "Here, a user can decide among multiple options.The if statements are executed from the top down. As soon as one of the conditions controlling the if is true, the statement associated with that if is executed, and the..."
+  },
+  {
+    "title": "If Else Statement",
+    "slug": "Phase1_CoreLanguage__DecisionMaking__IfElseStatement",
+    "path": "Phase1_CoreLanguage/DecisionMaking/IfElseStatement.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Decision Making",
+    "summary": "The if statement alone tells us that if a condition is true it will execute a block of statements and if the condition is false it won\u2019t. But what if we want to do something else if the condition is false. Here comes..."
+  },
+  {
+    "title": "If Statement",
+    "slug": "Phase1_CoreLanguage__DecisionMaking__IfStatement",
+    "path": "Phase1_CoreLanguage/DecisionMaking/IfStatement.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Decision Making",
+    "summary": "if statement is the most simple decision making statement. It is used to decide whether a certain statement or block of statements will be executed or not i.e if a certain condition is true then a block of statement i..."
+  },
+  {
+    "title": "Break Statement",
+    "slug": "Phase1_CoreLanguage__DecisionMaking__JumpStatement__BreakStatement",
+    "path": "Phase1_CoreLanguage/DecisionMaking/JumpStatement/BreakStatement.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Decision Making",
+    "summary": "In Java, break is majorly used for: Terminate a sequence in a switch statement (discussed above). To exit a loop. Used as a \u201ccivilized\u201d form of goto. Using break to exit a Loop"
+  },
+  {
+    "title": "Continue Statement",
+    "slug": "Phase1_CoreLanguage__DecisionMaking__JumpStatement__ContinueStatement",
+    "path": "Phase1_CoreLanguage/DecisionMaking/JumpStatement/ContinueStatement.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Decision Making",
+    "summary": "Sometimes it is useful to force an early iteration of a loop. That is, you might want to continue running the loop but stop processing the remainder of the code in its body for this particular iteration. This is, in e..."
+  },
+  {
+    "title": "Label Statement",
+    "slug": "Phase1_CoreLanguage__DecisionMaking__JumpStatement__LabelStatement",
+    "path": "Phase1_CoreLanguage/DecisionMaking/JumpStatement/LabelStatement.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Decision Making",
+    "summary": "Java does not have a goto statement because it provides a way to branch in an arbitrary and unstructured manner. Java uses label. A Label is use to identifies a block of code. Syntax:"
+  },
+  {
+    "title": "Return Statement",
+    "slug": "Phase1_CoreLanguage__DecisionMaking__JumpStatement__ReturnStatement",
+    "path": "Phase1_CoreLanguage/DecisionMaking/JumpStatement/ReturnStatement.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Decision Making",
+    "summary": "The return statement is used to explicitly return from a method. That is, it causes a program control to transfer back to the caller of the method.*"
+  },
+  {
+    "title": "Nested If Statement",
+    "slug": "Phase1_CoreLanguage__DecisionMaking__NestedIfStatement",
+    "path": "Phase1_CoreLanguage/DecisionMaking/NestedIfStatement.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Decision Making",
+    "summary": "A nested if is an if statement that is the target of another if or else. Nested if statements means an if statement inside an if statement. Yes, java allows us to nest if statements within if statements. i.e, we can p..."
+  },
+  {
+    "title": "Switch Case Statement",
+    "slug": "Phase1_CoreLanguage__DecisionMaking__SwitchCaseStatement",
+    "path": "Phase1_CoreLanguage/DecisionMaking/SwitchCaseStatement.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Decision Making",
+    "summary": "The switch statement is a multi-way branch statement. It provides an easy way to dispatch execution to different parts of code based on the value of the expression. Basically, the expression can be byte, short, char,..."
+  },
+  {
+    "title": "Enum Constructor",
+    "slug": "Phase1_CoreLanguage__Enumerations__EnumConstructor",
+    "path": "Phase1_CoreLanguage/Enumerations/EnumConstructor.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Enumerations",
+    "summary": "enum can contain constructor and it is executed separately for each enum constant at the time of enum class loading. We can\u2019t create enum objects explicitly and hence we can\u2019t invoke enum constructor directly. enum an..."
+  },
+  {
+    "title": "Enum Methods",
+    "slug": "Phase1_CoreLanguage__Enumerations__EnumMethods",
+    "path": "Phase1_CoreLanguage/Enumerations/EnumMethods.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Enumerations",
+    "summary": "values(), ordinal() and valueOf() methods :"
+  },
+  {
+    "title": "Enum With Customized Val",
+    "slug": "Phase1_CoreLanguage__Enumerations__EnumWithCustomizedVal",
+    "path": "Phase1_CoreLanguage/Enumerations/EnumWithCustomizedVal.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Enumerations",
+    "summary": "By default enums have their own string values, we can also assign some custom values to enums. Consider below example for that."
+  },
+  {
+    "title": "Enum With Switch Case",
+    "slug": "Phase1_CoreLanguage__Enumerations__EnumWithSwitchCase",
+    "path": "Phase1_CoreLanguage/Enumerations/EnumWithSwitchCase.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Enumerations",
+    "summary": ""
+  },
+  {
+    "title": "Inside Class Enum",
+    "slug": "Phase1_CoreLanguage__Enumerations__InsideClassEnum",
+    "path": "Phase1_CoreLanguage/Enumerations/InsideClassEnum.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Enumerations",
+    "summary": ""
+  },
+  {
+    "title": "Main Inside Enum",
+    "slug": "Phase1_CoreLanguage__Enumerations__MainInsideEnum",
+    "path": "Phase1_CoreLanguage/Enumerations/MainInsideEnum.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Enumerations",
+    "summary": ""
+  },
+  {
+    "title": "Outside Class Enum",
+    "slug": "Phase1_CoreLanguage__Enumerations__OutsideClassEnum",
+    "path": "Phase1_CoreLanguage/Enumerations/OutsideClassEnum.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Enumerations",
+    "summary": ""
+  },
+  {
+    "title": "Binary Search",
+    "slug": "Phase1_CoreLanguage__Extra__BinarySearch",
+    "path": "Phase1_CoreLanguage/Extra/BinarySearch.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Extra",
+    "summary": "There are two ways to do binary search in Java. 1) Arrays.binarysearch() works for arrays which can be of primitive data type also. 2) Collections.binarysearch() works for objects Collections like ArrayList and Linked..."
+  },
+  {
+    "title": "Facts About Null",
+    "slug": "Phase1_CoreLanguage__Extra__FactsAboutNull",
+    "path": "Phase1_CoreLanguage/Extra/FactsAboutNull.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Extra",
+    "summary": "Almost all the programming languages are bonded with null. There is hardly a programmer, who is not troubled by null. In Java, null is associated java.lang.NullPointerException. As it is a class in java.lang package,..."
+  },
+  {
+    "title": "Function Currying",
+    "slug": "Phase1_CoreLanguage__Extra__FunctionCurrying",
+    "path": "Phase1_CoreLanguage/Extra/FunctionCurrying.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Extra",
+    "summary": "Function Currying is a concept of breaking a function with many arguments into many functions with single argument in such a way, that the output is same. In other words, its a technique of simplifying a multi-valued..."
+  },
+  {
+    "title": "Is Java Support Goto",
+    "slug": "Phase1_CoreLanguage__Extra__IsJavaSupportGoto",
+    "path": "Phase1_CoreLanguage/Extra/IsJavaSupportGoto.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Extra",
+    "summary": "Java does not support goto, it is reserved as a keyword just in case they wanted to add it to a later version. Unlike C/C++, Java does not have goto statement, but java supports label. The only place where a label is..."
+  },
+  {
+    "title": "Object Memory Allocation",
+    "slug": "Phase1_CoreLanguage__Extra__ObjectMemoryAllocation",
+    "path": "Phase1_CoreLanguage/Extra/ObjectMemoryAllocation.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Extra",
+    "summary": "In Java, all objects are dynamically allocated on Heap. This is different from C++ where objects can be allocated memory either on Stack or on Heap. In C++, when we allocate the object using new(), the object is alloc..."
+  },
+  {
+    "title": "Sorting",
+    "slug": "Phase1_CoreLanguage__Extra__Sorting",
+    "path": "Phase1_CoreLanguage/Extra/Sorting.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Extra",
+    "summary": "There are two in-built methods to sort in Java. 1) Arrays.Sort() works for arrays which can be of primitive data type also. 2) Collections.sort() works for objects Collections like ArrayList and LinkedList"
+  },
+  {
+    "title": "Underscore In Number",
+    "slug": "Phase1_CoreLanguage__Extra__UnderscoreInNumber",
+    "path": "Phase1_CoreLanguage/Extra/UnderscoreInNumber.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Extra",
+    "summary": "A new feature was introduced by JDKJREJVM 7 which allows to write numeric literals using the underscore character. Numeric literals are broken to enhance the readability. This feature enables us to separate groups of..."
+  },
+  {
+    "title": "Identifiers",
+    "slug": "Phase1_CoreLanguage__Identifiers__Identifiers",
+    "path": "Phase1_CoreLanguage/Identifiers/Identifiers.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Identifiers",
+    "summary": "An IDENTIFIER is the name given to any program element: a class, method, variable, package, label, interface, etc. Identifiers are how you refer to things in your code."
+  },
+  {
+    "title": "Keywords",
+    "slug": "Phase1_CoreLanguage__Keywords__Keywords",
+    "path": "Phase1_CoreLanguage/Keywords/Keywords.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Keywords",
+    "summary": "Keywords are words RESERVED by the Java language. You cannot use them as identifiers (variable, class, method names). Java has 50+ reserved words, grouped here by purpose."
+  },
+  {
+    "title": "Do While Loop",
+    "slug": "Phase1_CoreLanguage__Loops__DoWhileLoop",
+    "path": "Phase1_CoreLanguage/Loops/DoWhileLoop.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Loops",
+    "summary": "do while loop is similar to while loop with only difference that it checks for condition after executing the statements, and therefore is an example of Exit Control Loop."
+  },
+  {
+    "title": "For Each Or Enhance Loop",
+    "slug": "Phase1_CoreLanguage__Loops__ForEachOrEnhanceLoop",
+    "path": "Phase1_CoreLanguage/Loops/ForEachOrEnhanceLoop.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Loops",
+    "summary": "Java also includes another version of for loop introduced in Java 5. Enhanced for loop provides a simpler way to iterate through the elements of a collection or array. It is inflexible and should be used only when the..."
+  },
+  {
+    "title": "For Loop",
+    "slug": "Phase1_CoreLanguage__Loops__ForLoop",
+    "path": "Phase1_CoreLanguage/Loops/ForLoop.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Loops",
+    "summary": "For loop provides a concise way of writing the loop structure. Unlike a while loop, a for statement consumes the initialization, condition and increment/decrement in one line thereby providing a shorter, easy to debug..."
+  },
+  {
+    "title": "For Loop Important",
+    "slug": "Phase1_CoreLanguage__Loops__ForLoopImportant",
+    "path": "Phase1_CoreLanguage/Loops/ForLoopImportant.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Loops",
+    "summary": "The structure of basic for loop:"
+  },
+  {
+    "title": "Infinite Loop",
+    "slug": "Phase1_CoreLanguage__Loops__InfiniteLoop",
+    "path": "Phase1_CoreLanguage/Loops/InfiniteLoop.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Loops",
+    "summary": "One of the most common mistakes while implementing any sort of looping is that that it may not ever exit, that is the loop runs for infinite time. This happens when the condition fails for some reason.*"
+  },
+  {
+    "title": "While Loop",
+    "slug": "Phase1_CoreLanguage__Loops__WhileLoop",
+    "path": "Phase1_CoreLanguage/Loops/WhileLoop.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Loops",
+    "summary": "A while loop is a control flow statement that allows code to be executed repeatedly based on a given Boolean condition. The while loop can be thought of as a repeating if statement. While Loop first check the conditio..."
+  },
+  {
+    "title": "Arithmetic Operators",
+    "slug": "Phase1_CoreLanguage__Operators__ArithmeticOperators",
+    "path": "Phase1_CoreLanguage/Operators/ArithmeticOperators.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Operators",
+    "summary": "Java provides the standard five arithmetic operators:"
+  },
+  {
+    "title": "Assignment Operators",
+    "slug": "Phase1_CoreLanguage__Operators__AssignmentOperators",
+    "path": "Phase1_CoreLanguage/Operators/AssignmentOperators.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Operators",
+    "summary": "The basic assignment operator is = and the COMPOUND assignment operators combine an arithmetic / bitwise operator with assignment:"
+  },
+  {
+    "title": "Bitwise Operators",
+    "slug": "Phase1_CoreLanguage__Operators__BitwiseOperators",
+    "path": "Phase1_CoreLanguage/Operators/BitwiseOperators.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Operators",
+    "summary": "These operate on the individual BITS of integer types (byte, short, int, long, char). Useful for low-level work: flags, masks, hashing, graphics, networking."
+  },
+  {
+    "title": "Instanceof Operator",
+    "slug": "Phase1_CoreLanguage__Operators__InstanceofOperator",
+    "path": "Phase1_CoreLanguage/Operators/InstanceofOperator.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Operators",
+    "summary": "Tests whether an object is an instance of a particular class, sub-class, or implements a particular interface. Result is a boolean."
+  },
+  {
+    "title": "Logical Operators",
+    "slug": "Phase1_CoreLanguage__Operators__LogicalOperators",
+    "path": "Phase1_CoreLanguage/Operators/LogicalOperators.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Operators",
+    "summary": "if (s != null && s.length() > 0) { ... }   // safe - no NPE if (s != null & s.length() > 0)  { ... }   // dangerous - both sides evaluate"
+  },
+  {
+    "title": "Relational Operators",
+    "slug": "Phase1_CoreLanguage__Operators__RelationalOperators",
+    "path": "Phase1_CoreLanguage/Operators/RelationalOperators.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Operators",
+    "summary": "Relational operators compare two values and produce a boolean result."
+  },
+  {
+    "title": "Ternary Operator",
+    "slug": "Phase1_CoreLanguage__Operators__TernaryOperator",
+    "path": "Phase1_CoreLanguage/Operators/TernaryOperator.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Operators",
+    "summary": "The only TERNARY operator in Java - takes three operands - is the conditional operator. It is a shorter alternative to a simple if-else when both branches just compute a value."
+  },
+  {
+    "title": "Unary Operators",
+    "slug": "Phase1_CoreLanguage__Operators__UnaryOperators",
+    "path": "Phase1_CoreLanguage/Operators/UnaryOperators.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Operators",
+    "summary": "Unary operators act on a SINGLE operand."
+  },
+  {
+    "title": "Boolean Example",
+    "slug": "Phase1_CoreLanguage__PrimitiveDataTypes__BooleanExample",
+    "path": "Phase1_CoreLanguage/PrimitiveDataTypes/BooleanExample.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Primitive Data Types",
+    "summary": "Boolean: boolean data type represents only one bit of information either true or false . There are only two possible values: true and false This data type is used for simple flags that track true/false conditions Defa..."
+  },
+  {
+    "title": "Byte Example",
+    "slug": "Phase1_CoreLanguage__PrimitiveDataTypes__ByteExample",
+    "path": "Phase1_CoreLanguage/PrimitiveDataTypes/ByteExample.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Primitive Data Types",
+    "summary": "Byte :- The byte data type is an 8-bit signed two\u2019s complement integer. The byte data type is useful for saving memory in large arrays. Mainly in place of integers, since a byte is four times smaller than an integer...."
+  },
+  {
+    "title": "Char Example",
+    "slug": "Phase1_CoreLanguage__PrimitiveDataTypes__CharExample",
+    "path": "Phase1_CoreLanguage/PrimitiveDataTypes/CharExample.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Primitive Data Types",
+    "summary": "The char data type is a single 16-bit Unicode character. A char is a single character. Value: \u2018\\u0000\u2019 (or null) to \u2018\\uffff\u2019 65535 Minimum value is '\\u0000' (or 0) Maximum value is '\\uffff' (or 65,535 inclusive) Char..."
+  },
+  {
+    "title": "Double Example",
+    "slug": "Phase1_CoreLanguage__PrimitiveDataTypes__DoubleExample",
+    "path": "Phase1_CoreLanguage/PrimitiveDataTypes/DoubleExample.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Primitive Data Types",
+    "summary": "The double data type is a double-precision 64-bit IEEE 754 floating point. This data type is generally used as the default data type for decimal values, generally the default choice Double data type should never be us..."
+  },
+  {
+    "title": "Float Example",
+    "slug": "Phase1_CoreLanguage__PrimitiveDataTypes__FloatExample",
+    "path": "Phase1_CoreLanguage/PrimitiveDataTypes/FloatExample.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Primitive Data Types",
+    "summary": "Float data type is a single-precision 32-bit IEEE 754 floating point Use a float (instead of double) if you need to save memory in large arrays of floating point numbers. Size: 32 bits Suffix : F/f Example: 9.8f Float..."
+  },
+  {
+    "title": "Integer Example",
+    "slug": "Phase1_CoreLanguage__PrimitiveDataTypes__IntegerExample",
+    "path": "Phase1_CoreLanguage/PrimitiveDataTypes/IntegerExample.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Primitive Data Types",
+    "summary": "Integer (int) :- It is a 32-bit signed two\u2019s complement integer. Size: 32 bit Value: -2^31 to 2^31-1 -2.147 billion to 2.147 billion Min Value = -2,147,483,648  || Max Value = 2,147,483,647 Integer is generally used a..."
+  },
+  {
+    "title": "Long Example",
+    "slug": "Phase1_CoreLanguage__PrimitiveDataTypes__LongExample",
+    "path": "Phase1_CoreLanguage/PrimitiveDataTypes/LongExample.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Primitive Data Types",
+    "summary": "The long data type is a 64-bit two\u2019s complement integer."
+  },
+  {
+    "title": "Short Example",
+    "slug": "Phase1_CoreLanguage__PrimitiveDataTypes__ShortExample",
+    "path": "Phase1_CoreLanguage/PrimitiveDataTypes/ShortExample.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Primitive Data Types",
+    "summary": "Short:- The short data type is a 16-bit signed two\u2019s complement integer. Similar to byte, use a short to save memory in large arrays, in situations where the memory savings actually matters. If The short value increas..."
+  },
+  {
+    "title": "Final Keyword Example",
+    "slug": "Phase1_CoreLanguage__SpecialKeyword__FinalKeywordExample",
+    "path": "Phase1_CoreLanguage/SpecialKeyword/FinalKeywordExample.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Special Keyword",
+    "summary": "A final variable in Java can be assigned a value only once, we can assign a value either in declaration or later. final int i = 10; i = 30; // Error because i is final."
+  },
+  {
+    "title": "Instance Variable Example",
+    "slug": "Phase1_CoreLanguage__Variables__InstanceVariableExample",
+    "path": "Phase1_CoreLanguage/Variables/InstanceVariableExample.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Variables",
+    "summary": "Instance variables are non-static variables and are declared in a class outside any method, constructor or block. As instance variables are declared in a class, these variables are created when an object of the class..."
+  },
+  {
+    "title": "Local Variable Example",
+    "slug": "Phase1_CoreLanguage__Variables__LocalVariableExample",
+    "path": "Phase1_CoreLanguage/Variables/LocalVariableExample.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Variables",
+    "summary": "A variable defined within a block or method or constructor is called local variable. These variable are created when the block in entered or the function is called and destroyed after exiting from the block or when th..."
+  },
+  {
+    "title": "Scope Of Variable",
+    "slug": "Phase1_CoreLanguage__Variables__ScopeOfVariable",
+    "path": "Phase1_CoreLanguage/Variables/ScopeOfVariable.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Variables",
+    "summary": "These variables must be declared inside class (outside any function). They can be directly accessed anywhere in class. Let\u2019s take a look at an example:"
+  },
+  {
+    "title": "Static Variable Example",
+    "slug": "Phase1_CoreLanguage__Variables__StaticVariableExample",
+    "path": "Phase1_CoreLanguage/Variables/StaticVariableExample.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Variables",
+    "summary": "Static variables are also known as Class variables. These variables are declared similarly as instance variables, the difference is that static variables are declared using the static keyword within a class outside an..."
+  },
+  {
+    "title": "Autoboxing Unboxing",
+    "slug": "Phase1_CoreLanguage__WrapperClasses__AutoboxingUnboxing",
+    "path": "Phase1_CoreLanguage/WrapperClasses/AutoboxingUnboxing.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Wrapper Classes",
+    "summary": "Since Java 5 the compiler converts between primitives and their wrappers automatically:"
+  },
+  {
+    "title": "Wrapper Classes Intro",
+    "slug": "Phase1_CoreLanguage__WrapperClasses__WrapperClassesIntro",
+    "path": "Phase1_CoreLanguage/WrapperClasses/WrapperClassesIntro.java",
+    "phaseLabel": "Phase 1 \u2014 Core Language",
+    "section": "Wrapper Classes",
+    "summary": "Every primitive in Java has a corresponding WRAPPER class that lives in the java.lang package. A wrapper is an OBJECT that holds a single primitive value."
+  },
+  {
+    "title": "Array Introduction",
+    "slug": "Phase2_MethodsArraysStrings__Arrays__ArrayIntroduction",
+    "path": "Phase2_MethodsArraysStrings/Arrays/ArrayIntroduction.java",
+    "phaseLabel": "Phase 2 \u2014 Methods, Arrays, Strings",
+    "section": "Arrays",
+    "summary": "An ARRAY is a CONTAINER OBJECT that holds a FIXED NUMBER of values of a SINGLE TYPE. The length is established when the array is created and never changes after that."
+  },
+  {
+    "title": "Arrays Class",
+    "slug": "Phase2_MethodsArraysStrings__Arrays__ArraysClass",
+    "path": "Phase2_MethodsArraysStrings/Arrays/ArraysClass.java",
+    "phaseLabel": "Phase 2 \u2014 Methods, Arrays, Strings",
+    "section": "Arrays",
+    "summary": "java.util.Arrays - The Array Utility Class"
+  },
+  {
+    "title": "Final Arrays",
+    "slug": "Phase2_MethodsArraysStrings__Arrays__FinalArrays",
+    "path": "Phase2_MethodsArraysStrings/Arrays/FinalArrays.java",
+    "phaseLabel": "Phase 2 \u2014 Methods, Arrays, Strings",
+    "section": "Arrays",
+    "summary": "Marking an array variable `final` is a frequent source of confusion. It only means the variable CANNOT BE REASSIGNED to point to a different array. The elements INSIDE the array remain mutable."
+  },
+  {
+    "title": "Jagged Arrays",
+    "slug": "Phase2_MethodsArraysStrings__Arrays__JaggedArrays",
+    "path": "Phase2_MethodsArraysStrings/Arrays/JaggedArrays.java",
+    "phaseLabel": "Phase 2 \u2014 Methods, Arrays, Strings",
+    "section": "Arrays",
+    "summary": "A JAGGED ARRAY is a multi-dimensional array where each ROW can have a different length. Because Java implements multi-dim arrays as \"arrays of arrays\", every row is an independent object - so different rows naturally..."
+  },
+  {
+    "title": "Multi Dimensional Arrays",
+    "slug": "Phase2_MethodsArraysStrings__Arrays__MultiDimensionalArrays",
+    "path": "Phase2_MethodsArraysStrings/Arrays/MultiDimensionalArrays.java",
+    "phaseLabel": "Phase 2 \u2014 Methods, Arrays, Strings",
+    "section": "Arrays",
+    "summary": "Java does NOT have true multi-dimensional arrays the way Fortran or C do. Instead, a \"2D array\" is really an ARRAY OF ARRAYS - each row is itself a separate one-dimensional array on the heap, linked from a parent array."
+  },
+  {
+    "title": "Access Modifiers",
+    "slug": "Phase2_MethodsArraysStrings__Methods__AccessModifiers",
+    "path": "Phase2_MethodsArraysStrings/Methods/AccessModifiers.java",
+    "phaseLabel": "Phase 2 \u2014 Methods, Arrays, Strings",
+    "section": "Methods",
+    "summary": "Access modifiers control the VISIBILITY of classes, methods, fields, and constructors. Java has FOUR access levels:"
+  },
+  {
+    "title": "Command Line Arguments",
+    "slug": "Phase2_MethodsArraysStrings__Methods__CommandLineArguments",
+    "path": "Phase2_MethodsArraysStrings/Methods/CommandLineArguments.java",
+    "phaseLabel": "Phase 2 \u2014 Methods, Arrays, Strings",
+    "section": "Methods",
+    "summary": "When you launch a Java program, anything you type after the class name on the command line is passed to `main` as a String array:"
+  },
+  {
+    "title": "Interface Methods",
+    "slug": "Phase2_MethodsArraysStrings__Methods__InterfaceMethods",
+    "path": "Phase2_MethodsArraysStrings/Methods/InterfaceMethods.java",
+    "phaseLabel": "Phase 2 \u2014 Methods, Arrays, Strings",
+    "section": "Methods",
+    "summary": "Before Java 8, every method declared in an interface was implicitly PUBLIC ABSTRACT - no body allowed. To evolve an interface (e.g. add a new method), you had to break every existing implementor. Java 8 fixed this wit..."
+  },
+  {
+    "title": "Method Introduction",
+    "slug": "Phase2_MethodsArraysStrings__Methods__MethodIntroduction",
+    "path": "Phase2_MethodsArraysStrings/Methods/MethodIntroduction.java",
+    "phaseLabel": "Phase 2 \u2014 Methods, Arrays, Strings",
+    "section": "Methods",
+    "summary": "A METHOD is a reusable block of code that performs a specific task. It is the primary unit of program organisation in Java: classes are built out of fields (state) plus methods (behaviour)."
+  },
+  {
+    "title": "Method References",
+    "slug": "Phase2_MethodsArraysStrings__Methods__MethodReferences",
+    "path": "Phase2_MethodsArraysStrings/Methods/MethodReferences.java",
+    "phaseLabel": "Phase 2 \u2014 Methods, Arrays, Strings",
+    "section": "Methods",
+    "summary": "A method reference is a compact, expressive ALTERNATIVE TO A LAMBDA when the lambda just calls an existing method. Syntax:"
+  },
+  {
+    "title": "Static Vs Instance Methods",
+    "slug": "Phase2_MethodsArraysStrings__Methods__StaticVsInstanceMethods",
+    "path": "Phase2_MethodsArraysStrings/Methods/StaticVsInstanceMethods.java",
+    "phaseLabel": "Phase 2 \u2014 Methods, Arrays, Strings",
+    "section": "Methods",
+    "summary": "A method in Java is one of two flavours:"
+  },
+  {
+    "title": "Varargs",
+    "slug": "Phase2_MethodsArraysStrings__Methods__Varargs",
+    "path": "Phase2_MethodsArraysStrings/Methods/Varargs.java",
+    "phaseLabel": "Phase 2 \u2014 Methods, Arrays, Strings",
+    "section": "Methods",
+    "summary": "A VARARGS parameter lets a method accept ANY NUMBER of arguments of a given type, including zero. Syntax:"
+  },
+  {
+    "title": "Modern String Features",
+    "slug": "Phase2_MethodsArraysStrings__Strings__ModernStringFeatures",
+    "path": "Phase2_MethodsArraysStrings/Strings/ModernStringFeatures.java",
+    "phaseLabel": "Phase 2 \u2014 Methods, Arrays, Strings",
+    "section": "Strings",
+    "summary": "Java keeps adding small but useful String methods. This file is a quick tour of everything Basics-level that landed in 11, 12, 15, and beyond - all available on Java 21."
+  },
+  {
+    "title": "String Buffer Class",
+    "slug": "Phase2_MethodsArraysStrings__Strings__StringBufferClass",
+    "path": "Phase2_MethodsArraysStrings/Strings/StringBufferClass.java",
+    "phaseLabel": "Phase 2 \u2014 Methods, Arrays, Strings",
+    "section": "Strings",
+    "summary": "StringBuffer (since Java 1.0) is a MUTABLE counterpart to String. You can append, insert, delete, or modify characters in place without creating new objects."
+  },
+  {
+    "title": "String Builder Class",
+    "slug": "Phase2_MethodsArraysStrings__Strings__StringBuilderClass",
+    "path": "Phase2_MethodsArraysStrings/Strings/StringBuilderClass.java",
+    "phaseLabel": "Phase 2 \u2014 Methods, Arrays, Strings",
+    "section": "Strings",
+    "summary": "StringBuilder is the modern, NON-SYNCHRONIZED counterpart to StringBuffer. It has the EXACT SAME API but skips the locking, so it is faster. Use it for almost every \"build up a string\" scenario - StringBuilder is the..."
+  },
+  {
+    "title": "String Concatenation",
+    "slug": "Phase2_MethodsArraysStrings__Strings__StringConcatenation",
+    "path": "Phase2_MethodsArraysStrings/Strings/StringConcatenation.java",
+    "phaseLabel": "Phase 2 \u2014 Methods, Arrays, Strings",
+    "section": "Strings",
+    "summary": "\"Concatenation\" means joining two or more Strings end-to-end. Java offers several mechanisms:"
+  },
+  {
+    "title": "String Immutability",
+    "slug": "Phase2_MethodsArraysStrings__Strings__StringImmutability",
+    "path": "Phase2_MethodsArraysStrings/Strings/StringImmutability.java",
+    "phaseLabel": "Phase 2 \u2014 Methods, Arrays, Strings",
+    "section": "Strings",
+    "summary": "In Java a String object cannot be CHANGED after creation. Methods like `toUpperCase()`, `substring(...)`, `concat(...)` always RETURN A NEW STRING instead of mutating the receiver. The original object is untouched."
+  },
+  {
+    "title": "String Introduction",
+    "slug": "Phase2_MethodsArraysStrings__Strings__StringIntroduction",
+    "path": "Phase2_MethodsArraysStrings/Strings/StringIntroduction.java",
+    "phaseLabel": "Phase 2 \u2014 Methods, Arrays, Strings",
+    "section": "Strings",
+    "summary": "A String is a sequence of characters. In Java it is NOT a primitive - it is an OBJECT of the class java.lang.String. Internally a String stores its characters in a private final array, which is one reason Strings are..."
+  },
+  {
+    "title": "String Methods",
+    "slug": "Phase2_MethodsArraysStrings__Strings__StringMethods",
+    "path": "Phase2_MethodsArraysStrings/Strings/StringMethods.java",
+    "phaseLabel": "Phase 2 \u2014 Methods, Arrays, Strings",
+    "section": "Strings",
+    "summary": "This file is a guided tour through the most-used methods of java.lang.String. Each method has a short comment explaining what it does and a runnable example with the expected output."
+  },
+  {
+    "title": "String Vs Buffer Vs Builder",
+    "slug": "Phase2_MethodsArraysStrings__Strings__StringVsBufferVsBuilder",
+    "path": "Phase2_MethodsArraysStrings/Strings/StringVsBufferVsBuilder.java",
+    "phaseLabel": "Phase 2 \u2014 Methods, Arrays, Strings",
+    "section": "Strings",
+    "summary": "Java offers THREE classes for textual data. They look similar but have very different mutation, thread-safety, and performance characteristics. Picking the right one is a recurring interview question and a real perfor..."
+  },
+  {
+    "title": "Abstract Class Example",
+    "slug": "Phase3_ObjectOrientation__Abstraction__AbstractClassExample",
+    "path": "Phase3_ObjectOrientation/Abstraction/AbstractClassExample.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Abstraction",
+    "summary": "Abstraction - Part 1: ABSTRACT CLASSES"
+  },
+  {
+    "title": "Abstract Class Vs Interface",
+    "slug": "Phase3_ObjectOrientation__Abstraction__AbstractClassVsInterface",
+    "path": "Phase3_ObjectOrientation/Abstraction/AbstractClassVsInterface.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Abstraction",
+    "summary": "Both achieve ABSTRACTION but they have different trade-offs. Picking the right one is one of the most common design decisions in Java."
+  },
+  {
+    "title": "Interface Example",
+    "slug": "Phase3_ObjectOrientation__Abstraction__InterfaceExample",
+    "path": "Phase3_ObjectOrientation/Abstraction/InterfaceExample.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Abstraction",
+    "summary": "Abstraction - Part 2: INTERFACES"
+  },
+  {
+    "title": "Account",
+    "slug": "Phase3_ObjectOrientation__BankingApp__Account",
+    "path": "Phase3_ObjectOrientation/BankingApp/Account.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Banking App",
+    "summary": "Demonstrates several OOP pillars in one place:"
+  },
+  {
+    "title": "Bank",
+    "slug": "Phase3_ObjectOrientation__BankingApp__Bank",
+    "path": "Phase3_ObjectOrientation/BankingApp/Bank.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Banking App",
+    "summary": "Bank - aggregate root that owns many Accounts."
+  },
+  {
+    "title": "Banking App",
+    "slug": "Phase3_ObjectOrientation__BankingApp__BankingApp",
+    "path": "Phase3_ObjectOrientation/BankingApp/BankingApp.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Banking App",
+    "summary": "This `main` ties together every OOP pillar from the rest of the folder:"
+  },
+  {
+    "title": "Checking Account",
+    "slug": "Phase3_ObjectOrientation__BankingApp__CheckingAccount",
+    "path": "Phase3_ObjectOrientation/BankingApp/CheckingAccount.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Banking App",
+    "summary": "CheckingAccount - \"is-a\" Account designed for day-to-day spending."
+  },
+  {
+    "title": "Savings Account",
+    "slug": "Phase3_ObjectOrientation__BankingApp__SavingsAccount",
+    "path": "Phase3_ObjectOrientation/BankingApp/SavingsAccount.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Banking App",
+    "summary": "SavingsAccount - \"is-a\" Account with an interest rate."
+  },
+  {
+    "title": "Transaction",
+    "slug": "Phase3_ObjectOrientation__BankingApp__Transaction",
+    "path": "Phase3_ObjectOrientation/BankingApp/Transaction.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Banking App",
+    "summary": "Transaction - immutable log entry for a single account event."
+  },
+  {
+    "title": "Initializing Object",
+    "slug": "Phase3_ObjectOrientation__ClassesAndObject__InitializingObject",
+    "path": "Phase3_ObjectOrientation/ClassesAndObject/InitializingObject.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Classes And Object",
+    "summary": "The new operator instantiates a class by allocating memory for a new object and returning a reference to that memory. The new operator also invokes the class constructor."
+  },
+  {
+    "title": "Ways To Create Object",
+    "slug": "Phase3_ObjectOrientation__ClassesAndObject__WaysToCreateObject",
+    "path": "Phase3_ObjectOrientation/ClassesAndObject/WaysToCreateObject.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Classes And Object",
+    "summary": "There are four ways to create objects in java. Strictly speaking there is only one way(by using new keyword),and the rest internally use new keyword."
+  },
+  {
+    "title": "Constructors",
+    "slug": "Phase3_ObjectOrientation__Constructors__Constructors",
+    "path": "Phase3_ObjectOrientation/Constructors/Constructors.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Constructors",
+    "summary": "A CONSTRUCTOR is a special method that runs automatically when a new object is created with `new`. Its job is to put the object into a valid initial state: assign fields, allocate resources, register the object somewh..."
+  },
+  {
+    "title": "Auditable",
+    "slug": "Phase3_ObjectOrientation__EmployeeApp__Auditable",
+    "path": "Phase3_ObjectOrientation/EmployeeApp/Auditable.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Employee App",
+    "summary": "Auditable - a MARKER INTERFACE."
+  },
+  {
+    "title": "Contractor",
+    "slug": "Phase3_ObjectOrientation__EmployeeApp__Contractor",
+    "path": "Phase3_ObjectOrientation/EmployeeApp/Contractor.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Employee App",
+    "summary": "Contractor - external worker paid a flat monthly retainer."
+  },
+  {
+    "title": "Employee",
+    "slug": "Phase3_ObjectOrientation__EmployeeApp__Employee",
+    "path": "Phase3_ObjectOrientation/EmployeeApp/Employee.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Employee App",
+    "summary": "Employee - the core CONTRACT every staff member must satisfy."
+  },
+  {
+    "title": "Employee App",
+    "slug": "Phase3_ObjectOrientation__EmployeeApp__EmployeeApp",
+    "path": "Phase3_ObjectOrientation/EmployeeApp/EmployeeApp.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Employee App",
+    "summary": "EmployeeApp - runnable demo of the Employee Management System."
+  },
+  {
+    "title": "Employee Filter",
+    "slug": "Phase3_ObjectOrientation__EmployeeApp__EmployeeFilter",
+    "path": "Phase3_ObjectOrientation/EmployeeApp/EmployeeFilter.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Employee App",
+    "summary": "EmployeeFilter - a NESTED + FUNCTIONAL interface."
+  },
+  {
+    "title": "Employee Repository",
+    "slug": "Phase3_ObjectOrientation__EmployeeApp__EmployeeRepository",
+    "path": "Phase3_ObjectOrientation/EmployeeApp/EmployeeRepository.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Employee App",
+    "summary": "EmployeeRepository - the aggregate that owns the in-memory employee table."
+  },
+  {
+    "title": "Full Time Employee",
+    "slug": "Phase3_ObjectOrientation__EmployeeApp__FullTimeEmployee",
+    "path": "Phase3_ObjectOrientation/EmployeeApp/FullTimeEmployee.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Employee App",
+    "summary": "FullTimeEmployee - permanent staff paid a fixed monthly salary."
+  },
+  {
+    "title": "Intern",
+    "slug": "Phase3_ObjectOrientation__EmployeeApp__Intern",
+    "path": "Phase3_ObjectOrientation/EmployeeApp/Intern.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Employee App",
+    "summary": "Intern - stipend-based employee. Not Promotable, but is Auditable so HR tracks them in compliance reports."
+  },
+  {
+    "title": "Part Time Employee",
+    "slug": "Phase3_ObjectOrientation__EmployeeApp__PartTimeEmployee",
+    "path": "Phase3_ObjectOrientation/EmployeeApp/PartTimeEmployee.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Employee App",
+    "summary": "PartTimeEmployee - paid by the hour, capped at a monthly hour budget."
+  },
+  {
+    "title": "Promotable",
+    "slug": "Phase3_ObjectOrientation__EmployeeApp__Promotable",
+    "path": "Phase3_ObjectOrientation/EmployeeApp/Promotable.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Employee App",
+    "summary": "Promotable - capability interface for employees who can receive a raise."
+  },
+  {
+    "title": "Test Encapsulation",
+    "slug": "Phase3_ObjectOrientation__Encapsulation__TestEncapsulation",
+    "path": "Phase3_ObjectOrientation/Encapsulation/TestEncapsulation.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Encapsulation",
+    "summary": ""
+  },
+  {
+    "title": "Inheritance Java",
+    "slug": "Phase3_ObjectOrientation__Inheritance__InheritanceJava",
+    "path": "Phase3_ObjectOrientation/Inheritance/InheritanceJava.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Inheritance",
+    "summary": "In below example of inheritance, class Bicycle is a base class, class MountainBike is a derived class which extends Bicycle class and class InheritanceJava is a driver class to run program."
+  },
+  {
+    "title": "Hierarchical Inheritance",
+    "slug": "Phase3_ObjectOrientation__Inheritance__TypesOfInheritance__HierarchicalInheritance",
+    "path": "Phase3_ObjectOrientation/Inheritance/TypesOfInheritance/HierarchicalInheritance.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Inheritance",
+    "summary": "In Hierarchical OOPSConcepts.Inheritance, one class serves as a superclass (base class) for more than one sub class. In below image, the class A serves as a base class for the derived class B,C and D."
+  },
+  {
+    "title": "Hybrid Inheritance",
+    "slug": "Phase3_ObjectOrientation__Inheritance__TypesOfInheritance__HybridInheritance",
+    "path": "Phase3_ObjectOrientation/Inheritance/TypesOfInheritance/HybridInheritance.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Inheritance",
+    "summary": "Hybrid OOPSConcepts.Inheritance(Through Interfaces) : It is a mix of two or more of the above types of inheritance. Since java doesn\u2019t support multiple inheritance with classes, the hybrid inheritance is also not poss..."
+  },
+  {
+    "title": "Multi Level Inheritance",
+    "slug": "Phase3_ObjectOrientation__Inheritance__TypesOfInheritance__MultiLevelInheritance",
+    "path": "Phase3_ObjectOrientation/Inheritance/TypesOfInheritance/MultiLevelInheritance.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Inheritance",
+    "summary": "In Multilevel OOPSConcepts.Inheritance, a derived class will be inheriting a base class and as well as the derived class also act as the base class to other class. In below image, the class A serves as a base class fo..."
+  },
+  {
+    "title": "Multiple Inheritance",
+    "slug": "Phase3_ObjectOrientation__Inheritance__TypesOfInheritance__MultipleInheritance",
+    "path": "Phase3_ObjectOrientation/Inheritance/TypesOfInheritance/MultipleInheritance.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Inheritance",
+    "summary": "In Multiple inheritance ,one class can have more than one superclass and inherit features from all parent classes. Please note that Java does not support multiple inheritance with classes. In java, we can achieve mult..."
+  },
+  {
+    "title": "Single Inheritance",
+    "slug": "Phase3_ObjectOrientation__Inheritance__TypesOfInheritance__SingleInheritance",
+    "path": "Phase3_ObjectOrientation/Inheritance/TypesOfInheritance/SingleInheritance.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Inheritance",
+    "summary": "In single inheritance, subclasses inherit the features of one superclass. In image below, the class A serves as a base class for the derived class B."
+  },
+  {
+    "title": "Class Vs Interface",
+    "slug": "Phase3_ObjectOrientation__Interfaces__ClassVsInterface",
+    "path": "Phase3_ObjectOrientation/Interfaces/ClassVsInterface.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Interfaces",
+    "summary": "Both classes and interfaces describe a TYPE in Java. The difference is in what each can carry and how Java's inheritance model treats them."
+  },
+  {
+    "title": "Functional Interface Demo",
+    "slug": "Phase3_ObjectOrientation__Interfaces__FunctionalInterfaceDemo",
+    "path": "Phase3_ObjectOrientation/Interfaces/FunctionalInterfaceDemo.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Interfaces",
+    "summary": "A FUNCTIONAL INTERFACE is an interface with EXACTLY ONE ABSTRACT METHOD (SAM = Single Abstract Method). Such interfaces can be the TARGET TYPE of lambda expressions and method references."
+  },
+  {
+    "title": "Interface Intro",
+    "slug": "Phase3_ObjectOrientation__Interfaces__InterfaceIntro",
+    "path": "Phase3_ObjectOrientation/Interfaces/InterfaceIntro.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Interfaces",
+    "summary": "An INTERFACE is a CONTRACT - a list of methods (and optional default code) that any implementing class promises to provide. Interfaces give Java its primary form of ABSTRACTION and let one class fulfil MULTIPLE TYPES,..."
+  },
+  {
+    "title": "Marker Interface",
+    "slug": "Phase3_ObjectOrientation__Interfaces__MarkerInterface",
+    "path": "Phase3_ObjectOrientation/Interfaces/MarkerInterface.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Interfaces",
+    "summary": "A MARKER INTERFACE is an interface with NO METHODS - its sole purpose is to \"mark\" a class as having some property. The JVM, frameworks, or your own code can then check `instanceof MarkerName` and choose to treat mark..."
+  },
+  {
+    "title": "Nested Interface",
+    "slug": "Phase3_ObjectOrientation__Interfaces__NestedInterface",
+    "path": "Phase3_ObjectOrientation/Interfaces/NestedInterface.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Interfaces",
+    "summary": "An interface declared INSIDE another type (a class or another interface) is a NESTED INTERFACE. It is a way to scope a contract to the type that owns it - the interface \"belongs\" to the outer type both conceptually an..."
+  },
+  {
+    "title": "Sealed Interface Demo",
+    "slug": "Phase3_ObjectOrientation__Interfaces__SealedInterfaceDemo",
+    "path": "Phase3_ObjectOrientation/Interfaces/SealedInterfaceDemo.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Interfaces",
+    "summary": "A SEALED INTERFACE restricts WHO IS ALLOWED TO IMPLEMENT IT. Before sealed interfaces, every public interface was open to the entire world. Sealed interfaces close that hole - you list the permitted implementors."
+  },
+  {
+    "title": "Oop Introduction",
+    "slug": "Phase3_ObjectOrientation__Introduction__OopIntroduction",
+    "path": "Phase3_ObjectOrientation/Introduction/OopIntroduction.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Introduction",
+    "summary": "Java is fundamentally OBJECT-ORIENTED: every line of meaningful code lives inside a class, and the program runs by sending messages (method calls) between objects. The OOP paradigm models a system as a network of coop..."
+  },
+  {
+    "title": "Inner Class",
+    "slug": "Phase3_ObjectOrientation__NestedClasses__InnerClass",
+    "path": "Phase3_ObjectOrientation/NestedClasses/InnerClass.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Nested Classes",
+    "summary": "An inner class is a NON-STATIC nested class. Every instance carries a HIDDEN REFERENCE to an instance of the enclosing outer class. That lets it access outer fields and methods directly."
+  },
+  {
+    "title": "Local And Anonymous Class",
+    "slug": "Phase3_ObjectOrientation__NestedClasses__LocalAndAnonymousClass",
+    "path": "Phase3_ObjectOrientation/NestedClasses/LocalAndAnonymousClass.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Nested Classes",
+    "summary": "Two ways to declare a class INSIDE A METHOD or other block. They:"
+  },
+  {
+    "title": "Nested Classes Introduction",
+    "slug": "Phase3_ObjectOrientation__NestedClasses__NestedClassesIntroduction",
+    "path": "Phase3_ObjectOrientation/NestedClasses/NestedClassesIntroduction.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Nested Classes",
+    "summary": "Java has FOUR kinds of nested classes. They differ in:"
+  },
+  {
+    "title": "Static Nested Class",
+    "slug": "Phase3_ObjectOrientation__NestedClasses__StaticNestedClass",
+    "path": "Phase3_ObjectOrientation/NestedClasses/StaticNestedClass.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Nested Classes",
+    "summary": "A nested class declared `static`. It is just a top-level class that happens to live INSIDE another for namespace reasons. It has NO implicit reference to an instance of the outer class."
+  },
+  {
+    "title": "Object Class Methods",
+    "slug": "Phase3_ObjectOrientation__ObjectClass__ObjectClassMethods",
+    "path": "Phase3_ObjectOrientation/ObjectClass/ObjectClassMethods.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Object Class",
+    "summary": "java.lang.Object - The Root of Every Class"
+  },
+  {
+    "title": "Packages And Imports",
+    "slug": "Phase3_ObjectOrientation__Packages__PackagesAndImports",
+    "path": "Phase3_ObjectOrientation/Packages/PackagesAndImports.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Packages",
+    "summary": "A PACKAGE is a Java NAMESPACE - a logical container for a group of related classes/interfaces/enums/records. Packages do two big things:"
+  },
+  {
+    "title": "Polymorphism",
+    "slug": "Phase3_ObjectOrientation__Polymorphism__Polymorphism",
+    "path": "Phase3_ObjectOrientation/Polymorphism/Polymorphism.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Polymorphism",
+    "summary": "POLYMORPHISM means \"many forms\" - the ability of ONE name (a method or a reference) to behave differently depending on context. Java offers TWO kinds:"
+  },
+  {
+    "title": "Sealed Classes Demo",
+    "slug": "Phase3_ObjectOrientation__SealedClasses__SealedClassesDemo",
+    "path": "Phase3_ObjectOrientation/SealedClasses/SealedClassesDemo.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Sealed Classes",
+    "summary": "A SEALED class or interface gives you EXPLICIT CONTROL over which classes can extend or implement it. Before sealed classes you could only choose between:"
+  },
+  {
+    "title": "Demo One Model",
+    "slug": "Phase3_ObjectOrientation__SerializationDeserialization__DemoOneModel",
+    "path": "Phase3_ObjectOrientation/SerializationDeserialization/DemoOneModel.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Serialization Deserialization",
+    "summary": ""
+  },
+  {
+    "title": "Demo Two Model",
+    "slug": "Phase3_ObjectOrientation__SerializationDeserialization__DemoTwoModel",
+    "path": "Phase3_ObjectOrientation/SerializationDeserialization/DemoTwoModel.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Serialization Deserialization",
+    "summary": ""
+  },
+  {
+    "title": "Serialization Deserialization Demo One",
+    "slug": "Phase3_ObjectOrientation__SerializationDeserialization__SerializationDeserializationDemoOne",
+    "path": "Phase3_ObjectOrientation/SerializationDeserialization/SerializationDeserializationDemoOne.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Serialization Deserialization",
+    "summary": ""
+  },
+  {
+    "title": "Serialization Deserialization Demo Two",
+    "slug": "Phase3_ObjectOrientation__SerializationDeserialization__SerializationDeserializationDemoTwo",
+    "path": "Phase3_ObjectOrientation/SerializationDeserialization/SerializationDeserializationDemoTwo.java",
+    "phaseLabel": "Phase 3 \u2014 Object Orientation",
+    "section": "Serialization Deserialization",
+    "summary": ""
+  },
+  {
+    "title": "Annotations Introduction",
+    "slug": "Phase4_ErrorsAndTypeSafety__Annotations__AnnotationsIntroduction",
+    "path": "Phase4_ErrorsAndTypeSafety/Annotations/AnnotationsIntroduction.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Annotations",
+    "summary": "Annotations are METADATA you attach to code (classes, methods, fields, parameters, type uses). They don't change the program's behaviour directly \u2014 tools and runtime libraries read them and act on them (compiler check..."
+  },
+  {
+    "title": "Built In Annotations",
+    "slug": "Phase4_ErrorsAndTypeSafety__Annotations__BuiltInAnnotations",
+    "path": "Phase4_ErrorsAndTypeSafety/Annotations/BuiltInAnnotations.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Annotations",
+    "summary": "The standard ones every Java developer should recognise."
+  },
+  {
+    "title": "Custom Annotations",
+    "slug": "Phase4_ErrorsAndTypeSafety__Annotations__CustomAnnotations",
+    "path": "Phase4_ErrorsAndTypeSafety/Annotations/CustomAnnotations.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Annotations",
+    "summary": "Declare with `@interface` and decorate with meta-annotations."
+  },
+  {
+    "title": "Runtime Annotations",
+    "slug": "Phase4_ErrorsAndTypeSafety__Annotations__RuntimeAnnotations",
+    "path": "Phase4_ErrorsAndTypeSafety/Annotations/RuntimeAnnotations.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Annotations",
+    "summary": "For runtime-retained annotations, the Reflection API gives you:"
+  },
+  {
+    "title": "Chained Exception",
+    "slug": "Phase4_ErrorsAndTypeSafety__ExceptionHandling__ChainedException",
+    "path": "Phase4_ErrorsAndTypeSafety/ExceptionHandling/ChainedException.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Exception Handling",
+    "summary": "CHAINING is the practice of wrapping a low-level exception inside a higher-level one while keeping the original around as the \"cause\". You end up with a clear, domain-meaningful exception on top AND the underlying tec..."
+  },
+  {
+    "title": "Custom Exception",
+    "slug": "Phase4_ErrorsAndTypeSafety__ExceptionHandling__CustomException",
+    "path": "Phase4_ErrorsAndTypeSafety/ExceptionHandling/CustomException.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Exception Handling",
+    "summary": "Sometimes the standard exceptions are too generic. A domain-specific exception class lets callers catch your particular failure with a precise `catch` and lets you carry extra data (account id, retry-after seconds, er..."
+  },
+  {
+    "title": "Exception Best Practices",
+    "slug": "Phase4_ErrorsAndTypeSafety__ExceptionHandling__ExceptionBestPractices",
+    "path": "Phase4_ErrorsAndTypeSafety/ExceptionHandling/ExceptionBestPractices.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Exception Handling",
+    "summary": "A condensed list of the do's and don'ts that come up over and over in code reviews, with quick code snippets you can read at a glance."
+  },
+  {
+    "title": "Exception In Overriding",
+    "slug": "Phase4_ErrorsAndTypeSafety__ExceptionHandling__ExceptionInOverriding",
+    "path": "Phase4_ErrorsAndTypeSafety/ExceptionHandling/ExceptionInOverriding.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Exception Handling",
+    "summary": "When a subclass OVERRIDES a method, there are strict rules about what exceptions the override may declare in its `throws` clause."
+  },
+  {
+    "title": "Exception Introduction",
+    "slug": "Phase4_ErrorsAndTypeSafety__ExceptionHandling__ExceptionIntroduction",
+    "path": "Phase4_ErrorsAndTypeSafety/ExceptionHandling/ExceptionIntroduction.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Exception Handling",
+    "summary": "An EXCEPTION is an abnormal event that disrupts the normal flow of a program. When an exception is THROWN, the JVM looks up the call stack for a matching handler; if it finds none, the program terminates and the JVM p..."
+  },
+  {
+    "title": "Final Finally Finalize",
+    "slug": "Phase4_ErrorsAndTypeSafety__ExceptionHandling__FinalFinallyFinalize",
+    "path": "Phase4_ErrorsAndTypeSafety/ExceptionHandling/FinalFinallyFinalize.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Exception Handling",
+    "summary": "Three words that look almost identical and do COMPLETELY different things. This file untangles them once and for all."
+  },
+  {
+    "title": "Null Pointer Exceptions",
+    "slug": "Phase4_ErrorsAndTypeSafety__ExceptionHandling__NullPointerExceptions",
+    "path": "Phase4_ErrorsAndTypeSafety/ExceptionHandling/NullPointerExceptions.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Exception Handling",
+    "summary": "The famous NullPointerException is thrown when your code tries to USE a variable that holds `null` as if it were a real object. Six operations can trigger it:"
+  },
+  {
+    "title": "Throw And Throws",
+    "slug": "Phase4_ErrorsAndTypeSafety__ExceptionHandling__ThrowAndThrows",
+    "path": "Phase4_ErrorsAndTypeSafety/ExceptionHandling/ThrowAndThrows.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Exception Handling",
+    "summary": "Two single-letter-different keywords with very different roles."
+  },
+  {
+    "title": "Try Catch Block",
+    "slug": "Phase4_ErrorsAndTypeSafety__ExceptionHandling__TryCatchBlock",
+    "path": "Phase4_ErrorsAndTypeSafety/ExceptionHandling/TryCatchBlock.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Exception Handling",
+    "summary": "`try` marks a block of code that may throw an exception. `catch` clauses decide what to do when one is thrown. `finally` runs no matter what - normal completion, return, or thrown exception."
+  },
+  {
+    "title": "Try With Resources",
+    "slug": "Phase4_ErrorsAndTypeSafety__ExceptionHandling__TryWithResources",
+    "path": "Phase4_ErrorsAndTypeSafety/ExceptionHandling/TryWithResources.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Exception Handling",
+    "summary": "Resources like file handles, database connections, sockets, and locks must be CLOSED whether the work succeeds or fails. The classic pattern was"
+  },
+  {
+    "title": "Bounded Type Parameters",
+    "slug": "Phase4_ErrorsAndTypeSafety__Generics__BoundedTypeParameters",
+    "path": "Phase4_ErrorsAndTypeSafety/Generics/BoundedTypeParameters.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Generics",
+    "summary": "A BOUND restricts what types can be used for a type parameter. The syntax is `T extends X` (read as \"T which is some subtype of X\"). The bound applies whether X is a CLASS or an INTERFACE - the keyword is always `exte..."
+  },
+  {
+    "title": "Generic Classes",
+    "slug": "Phase4_ErrorsAndTypeSafety__Generics__GenericClasses",
+    "path": "Phase4_ErrorsAndTypeSafety/Generics/GenericClasses.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Generics",
+    "summary": "A class is GENERIC when it declares one or more TYPE PARAMETERS in angle brackets after its name:"
+  },
+  {
+    "title": "Generic Interfaces",
+    "slug": "Phase4_ErrorsAndTypeSafety__Generics__GenericInterfaces",
+    "path": "Phase4_ErrorsAndTypeSafety/Generics/GenericInterfaces.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Generics",
+    "summary": "Just like classes, an INTERFACE can declare type parameters. Generic interfaces are the foundation of almost every modern Java API:"
+  },
+  {
+    "title": "Generic Methods",
+    "slug": "Phase4_ErrorsAndTypeSafety__Generics__GenericMethods",
+    "path": "Phase4_ErrorsAndTypeSafety/Generics/GenericMethods.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Generics",
+    "summary": "A method is GENERIC when it declares its OWN type parameters in front of the return type, regardless of whether the enclosing class is generic."
+  },
+  {
+    "title": "Generic Restrictions",
+    "slug": "Phase4_ErrorsAndTypeSafety__Generics__GenericRestrictions",
+    "path": "Phase4_ErrorsAndTypeSafety/Generics/GenericRestrictions.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Generics",
+    "summary": "Type erasure (see TypeErasure.java) makes Java generics simple to bolt on to the existing JVM, but it forbids a number of things that look like they should work. Knowing the rules saves hours of frustration."
+  },
+  {
+    "title": "Generics Introduction",
+    "slug": "Phase4_ErrorsAndTypeSafety__Generics__GenericsIntroduction",
+    "path": "Phase4_ErrorsAndTypeSafety/Generics/GenericsIntroduction.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Generics",
+    "summary": "GENERICS let you write classes, interfaces, and methods that work with a PARAMETER TYPE chosen by the caller. The result is code that is reusable AND type-safe at compile time:"
+  },
+  {
+    "title": "Heap Pollution And Safe Varargs",
+    "slug": "Phase4_ErrorsAndTypeSafety__Generics__HeapPollutionAndSafeVarargs",
+    "path": "Phase4_ErrorsAndTypeSafety/Generics/HeapPollutionAndSafeVarargs.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Generics",
+    "summary": "HEAP POLLUTION happens when a variable of a parameterised type refers to an object that does NOT match that type at runtime. Type erasure means the JVM cannot stop you - so the compiler issues an \"unchecked\" warning w..."
+  },
+  {
+    "title": "Modern Generics",
+    "slug": "Phase4_ErrorsAndTypeSafety__Generics__ModernGenerics",
+    "path": "Phase4_ErrorsAndTypeSafety/Generics/ModernGenerics.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Generics",
+    "summary": "Generics arrived in Java 5 but the syntax has been refined over many releases. A short tour of the additions that matter."
+  },
+  {
+    "title": "Pecs Principle",
+    "slug": "Phase4_ErrorsAndTypeSafety__Generics__PecsPrinciple",
+    "path": "Phase4_ErrorsAndTypeSafety/Generics/PecsPrinciple.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Generics",
+    "summary": "The most famous rule of generic API design, coined by Joshua Bloch in \"Effective Java\". It tells you which wildcard to use:"
+  },
+  {
+    "title": "Recursive Type Bounds",
+    "slug": "Phase4_ErrorsAndTypeSafety__Generics__RecursiveTypeBounds",
+    "path": "Phase4_ErrorsAndTypeSafety/Generics/RecursiveTypeBounds.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Generics",
+    "summary": "A type parameter can have a bound that REFERENCES ITSELF. The canonical example is:"
+  },
+  {
+    "title": "Type Erasure",
+    "slug": "Phase4_ErrorsAndTypeSafety__Generics__TypeErasure",
+    "path": "Phase4_ErrorsAndTypeSafety/Generics/TypeErasure.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Generics",
+    "summary": "Generics are a COMPILE-TIME feature. The compiler uses type parameters to check your code and insert the necessary casts. After that, all the generic information is THROWN AWAY (\"erased\"): a List&lt;String&gt; and a L..."
+  },
+  {
+    "title": "Wildcards",
+    "slug": "Phase4_ErrorsAndTypeSafety__Generics__Wildcards",
+    "path": "Phase4_ErrorsAndTypeSafety/Generics/Wildcards.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Generics",
+    "summary": "A WILDCARD `?` is an \"unknown type\" placeholder used in TYPE ARGUMENTS (when REFERRING to a generic type), never in type PARAMETER lists. It is how Java relaxes the \"generics are not covariant\" rule when you need it."
+  },
+  {
+    "title": "Optional Demo",
+    "slug": "Phase4_ErrorsAndTypeSafety__OptionalType__OptionalDemo",
+    "path": "Phase4_ErrorsAndTypeSafety/OptionalType/OptionalDemo.java",
+    "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
+    "section": "Optional Type",
+    "summary": "A container that holds EITHER a value or no value. Used to make \"this method may not return anything\" explicit in the type system \u2014 removes the trap of forgetting to null-check."
+  },
+  {
+    "title": "Abstract List Classes",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__AbstractListClasses",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/AbstractListClasses.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "The Collections Framework follows a common pattern: every public INTERFACE has a companion ABSTRACT SKELETON CLASS that takes care of the boilerplate so concrete subclasses only need to implement a handful of primitiv..."
+  },
+  {
+    "title": "Abstract Queue Demo",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__AbstractQueueDemo",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/AbstractQueueDemo.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "java.util.AbstractQueue - Skeletal Queue Implementation"
+  },
+  {
+    "title": "Array Deque Demo",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__ArrayDequeDemo",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/ArrayDequeDemo.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "java.util.ArrayDeque - The Modern Stack-and-Queue Champion"
+  },
+  {
+    "title": "Array List Demo",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__ArrayListDemo",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/ArrayListDemo.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "java.util.ArrayList - Resizing-Array Implementation of List"
+  },
+  {
+    "title": "Blocking Queue Demo",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__BlockingQueueDemo",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/BlockingQueueDemo.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "BlockingQueue is a Queue that BLOCKS the caller when an operation cannot proceed immediately:"
+  },
+  {
+    "title": "Collection Interface",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__CollectionInterface",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/CollectionInterface.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "java.util.Collection&lt;E&gt; - The Root Interface"
+  },
+  {
+    "title": "Collections Class",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__CollectionsClass",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/CollectionsClass.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "java.util.Collections - The Utility Class"
+  },
+  {
+    "title": "Collections Introduction",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__CollectionsIntroduction",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/CollectionsIntroduction.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "The COLLECTIONS FRAMEWORK is the standard library for storing and manipulating groups of objects. It is one of the most important pieces of the JDK; almost every non-trivial Java program uses it."
+  },
+  {
+    "title": "Comparator Comparable",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__ComparatorComparable",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/ComparatorComparable.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "Two interfaces in the JDK control how objects get ordered. They look similar but have different jobs."
+  },
+  {
+    "title": "Concurrent Hash Map Demo",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__ConcurrentHashMapDemo",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/ConcurrentHashMapDemo.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "The thread-safe, high-throughput replacement for both Hashtable and Collections.synchronizedMap. Internally it uses LOCK STRIPING + CAS - so many threads can read and write concurrently without one big mutex."
+  },
+  {
+    "title": "Concurrent Linked Queue Demo",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__ConcurrentLinkedQueueDemo",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/ConcurrentLinkedQueueDemo.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "A LOCK-FREE, UNBOUNDED FIFO queue suitable for many producers and many consumers. Internally it uses a singly-linked list with atomic CAS (compare-and-swap) operations - no locks, no blocking."
+  },
+  {
+    "title": "Concurrent Skip List Set Demo",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__ConcurrentSkipListSetDemo",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/ConcurrentSkipListSetDemo.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "The thread-safe twin of TreeSet. It is BUILT on a skip list - a probabilistic data structure that supports O(log n) sorted operations with cheap LOCK-FREE concurrent access (it uses CAS, not locks)."
+  },
+  {
+    "title": "Copy On Write Array List Demo",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__CopyOnWriteArrayListDemo",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/CopyOnWriteArrayListDemo.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "A thread-safe List variant where EVERY MUTATION COPIES the underlying array. Iteration walks the SNAPSHOT taken when the Iterator was created - it never sees subsequent writes and never throws ConcurrentModificationEx..."
+  },
+  {
+    "title": "Deque Interface",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__DequeInterface",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/DequeInterface.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "java.util.Deque&lt;E&gt; - \"Double-Ended Queue\""
+  },
+  {
+    "title": "Enumeration Demo",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__EnumerationDemo",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/EnumerationDemo.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "java.util.Enumeration&lt;E&gt; - The Original (Java 1.0) Iterator"
+  },
+  {
+    "title": "Enum Set Demo",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__EnumSetDemo",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/EnumSetDemo.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "java.util.EnumSet&lt;E extends Enum&lt;E&gt;&gt; - Fastest Set for Enum Keys"
+  },
+  {
+    "title": "Detector",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__FaceDetectionApp__Detector",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/FaceDetectionApp/Detector.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "Detector - a fake \"ML model\" that turns a Frame number into a list of detected Faces. In a real system this would hand the image to OpenCV or an ML model; here we generate deterministic-but-varied data so the demo is..."
+  },
+  {
+    "title": "Face",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__FaceDetectionApp__Face",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/FaceDetectionApp/Face.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "Face - the single domain record used throughout the Face Detection app."
+  },
+  {
+    "title": "Face Detection App",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__FaceDetectionApp__FaceDetectionApp",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/FaceDetectionApp/FaceDetectionApp.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "FaceDetectionApp - runnable demo that ties everything together."
+  },
+  {
+    "title": "Face Repository",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__FaceDetectionApp__FaceRepository",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/FaceDetectionApp/FaceRepository.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "FaceRepository - the heart of the demo. ONE class that uses every collection type from the framework:"
+  },
+  {
+    "title": "Hash Map Demo",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__HashMapDemo",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/HashMapDemo.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "java.util.HashMap&lt;K, V&gt; - The Default Map Implementation"
+  },
+  {
+    "title": "Hash Set Demo",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__HashSetDemo",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/HashSetDemo.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "java.util.HashSet&lt;E&gt; - Hash-Table-Backed Set"
+  },
+  {
+    "title": "Hashtable Demo",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__HashtableDemo",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/HashtableDemo.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "java.util.Hashtable&lt;K, V&gt; - The Original Java 1.0 Map"
+  },
+  {
+    "title": "Identity Hash Map Demo",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__IdentityHashMapDemo",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/IdentityHashMapDemo.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "java.util.IdentityHashMap&lt;K, V&gt; - Map That Compares With `==`"
+  },
+  {
+    "title": "Iterable Demo",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__IterableDemo",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/IterableDemo.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "java.lang.Iterable&lt;T&gt; - The \"for-each\" Contract"
+  },
+  {
+    "title": "Iterator Demo",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__IteratorDemo",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/IteratorDemo.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "An ITERATOR is a cursor that walks through a collection one element at a time. Java has three flavours, each more powerful than the previous:"
+  },
+  {
+    "title": "Linked Hash Map Demo",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__LinkedHashMapDemo",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/LinkedHashMapDemo.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "java.util.LinkedHashMap&lt;K, V&gt; - HashMap with Predictable Order"
+  },
+  {
+    "title": "Linked Hash Set Demo",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__LinkedHashSetDemo",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/LinkedHashSetDemo.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "java.util.LinkedHashSet&lt;E&gt; - \"HashSet that Remembers Insertion Order\""
+  },
+  {
+    "title": "Linked List Demo",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__LinkedListDemo",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/LinkedListDemo.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "java.util.LinkedList - Doubly-Linked List Implementation"
+  },
+  {
+    "title": "List Interface",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__ListInterface",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/ListInterface.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "java.util.List&lt;E&gt; - Ordered, Indexable, Duplicates Allowed"
+  },
+  {
+    "title": "Map Interface",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__MapInterface",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/MapInterface.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "java.util.Map&lt;K, V&gt; - Key-Value Lookup"
+  },
+  {
+    "title": "Modern Collections",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__ModernCollections",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/ModernCollections.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "The collections framework has had many additions over the years - factory methods, stream collectors, sequenced types. This file is a focused tour."
+  },
+  {
+    "title": "Priority Queue Demo",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__PriorityQueueDemo",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/PriorityQueueDemo.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "java.util.PriorityQueue&lt;E&gt; - Heap-Backed Priority Queue"
+  },
+  {
+    "title": "Queue Interface",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__QueueInterface",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/QueueInterface.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "java.util.Queue&lt;E&gt; - FIFO Linear Collection"
+  },
+  {
+    "title": "Set Interface",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__SetInterface",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/SetInterface.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "java.util.Set&lt;E&gt; - No Duplicates Allowed"
+  },
+  {
+    "title": "Sorted And Navigable Set",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__SortedAndNavigableSet",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/SortedAndNavigableSet.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "The Set hierarchy actually has three levels:"
+  },
+  {
+    "title": "Tree Map Demo",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__TreeMapDemo",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/TreeMapDemo.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "java.util.TreeMap&lt;K, V&gt; - Sorted Map (Red-Black Tree)"
+  },
+  {
+    "title": "Tree Set Demo",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__TreeSetDemo",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/TreeSetDemo.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "java.util.TreeSet&lt;E&gt; - Sorted Set Backed by a Red-Black Tree"
+  },
+  {
+    "title": "Vector And Stack",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__VectorAndStack",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/VectorAndStack.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "Vector and Stack were part of Java 1.0, predating the Collections Framework (which arrived in 1.2). They were RETROFITTED into the framework when it shipped:"
+  },
+  {
+    "title": "Weak Hash Map Demo",
+    "slug": "Phase5_CollectionsLambdasStreams__Collections__WeakHashMapDemo",
+    "path": "Phase5_CollectionsLambdasStreams/Collections/WeakHashMapDemo.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Collections",
+    "summary": "java.util.WeakHashMap&lt;K, V&gt; - Map With Weakly-Referenced Keys"
+  },
+  {
+    "title": "Collectors Class",
+    "slug": "Phase5_CollectionsLambdasStreams__LambdaAndStreams__CollectorsClass",
+    "path": "Phase5_CollectionsLambdasStreams/LambdaAndStreams/CollectorsClass.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Lambda And Streams",
+    "summary": "java.util.stream.Collectors - The Collect-Toolbox"
+  },
+  {
+    "title": "Book Grouping Example",
+    "slug": "Phase5_CollectionsLambdasStreams__LambdaAndStreams__Examples__BookGroupingExample",
+    "path": "Phase5_CollectionsLambdasStreams/LambdaAndStreams/Examples/BookGroupingExample.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Lambda And Streams",
+    "summary": "Demonstrates: groupingBy with downstream collectors, multi-level grouping, mapping + counting + summarizing combinators, sorted stream output, partition by year range."
+  },
+  {
+    "title": "Employee Salary Example",
+    "slug": "Phase5_CollectionsLambdasStreams__LambdaAndStreams__Examples__EmployeeSalaryExample",
+    "path": "Phase5_CollectionsLambdasStreams/LambdaAndStreams/Examples/EmployeeSalaryExample.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Lambda And Streams",
+    "summary": "Demonstrates: filter, sorted, map, mapToDouble, groupingBy, averaging, Collectors.partitioningBy, toList. The classic \"play with a list of Employee records\" workout."
+  },
+  {
+    "title": "Grocery Store Example",
+    "slug": "Phase5_CollectionsLambdasStreams__LambdaAndStreams__Examples__GroceryStoreExample",
+    "path": "Phase5_CollectionsLambdasStreams/LambdaAndStreams/Examples/GroceryStoreExample.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Lambda And Streams",
+    "summary": "Demonstrates: filtering by category, sorting, summing prices, grouping by category, finding cheapest item, joining names, building a receipt."
+  },
+  {
+    "title": "Infinite Streams",
+    "slug": "Phase5_CollectionsLambdasStreams__LambdaAndStreams__InfiniteStreams",
+    "path": "Phase5_CollectionsLambdasStreams/LambdaAndStreams/InfiniteStreams.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Lambda And Streams",
+    "summary": "A stream is INFINITE when its source can produce values forever. The stream itself is fine; the program crashes only if you forget to bound it with a short-circuit operation."
+  },
+  {
+    "title": "Intermediate Operations",
+    "slug": "Phase5_CollectionsLambdasStreams__LambdaAndStreams__IntermediateOperations",
+    "path": "Phase5_CollectionsLambdasStreams/LambdaAndStreams/IntermediateOperations.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Lambda And Streams",
+    "summary": "Intermediate operations RETURN A NEW STREAM and do not run until a terminal operation pulls them. Most are STATELESS - they process each element independently. A few are STATEFUL and must see multiple elements to decide."
+  },
+  {
+    "title": "Lambda Expressions",
+    "slug": "Phase5_CollectionsLambdasStreams__LambdaAndStreams__LambdaExpressions",
+    "path": "Phase5_CollectionsLambdasStreams/LambdaAndStreams/LambdaExpressions.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Lambda And Streams",
+    "summary": "A LAMBDA EXPRESSION is a short, anonymous function you can pass around like a value. Lambdas let you write functional-style code WITHOUT writing a class."
+  },
+  {
+    "title": "Method References",
+    "slug": "Phase5_CollectionsLambdasStreams__LambdaAndStreams__MethodReferences",
+    "path": "Phase5_CollectionsLambdasStreams/LambdaAndStreams/MethodReferences.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Lambda And Streams",
+    "summary": "A METHOD REFERENCE is a compact replacement for a lambda whose body just calls an existing method. The syntax is `Target::method`."
+  },
+  {
+    "title": "Modern Streams",
+    "slug": "Phase5_CollectionsLambdasStreams__LambdaAndStreams__ModernStreams",
+    "path": "Phase5_CollectionsLambdasStreams/LambdaAndStreams/ModernStreams.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Lambda And Streams",
+    "summary": "A short tour of the upgrades the Stream API has received over the years."
+  },
+  {
+    "title": "Primitive Streams",
+    "slug": "Phase5_CollectionsLambdasStreams__LambdaAndStreams__PrimitiveStreams",
+    "path": "Phase5_CollectionsLambdasStreams/LambdaAndStreams/PrimitiveStreams.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Lambda And Streams",
+    "summary": "Java has specialised streams for the three \"numeric\" primitives so you can crunch numbers WITHOUT boxing every element into Integer/Long/Double. That saves both memory and time."
+  },
+  {
+    "title": "Sequential Vs Parallel",
+    "slug": "Phase5_CollectionsLambdasStreams__LambdaAndStreams__SequentialVsParallel",
+    "path": "Phase5_CollectionsLambdasStreams/LambdaAndStreams/SequentialVsParallel.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Lambda And Streams",
+    "summary": "Every Stream is one of:"
+  },
+  {
+    "title": "Stream Creation",
+    "slug": "Phase5_CollectionsLambdasStreams__LambdaAndStreams__StreamCreation",
+    "path": "Phase5_CollectionsLambdasStreams/LambdaAndStreams/StreamCreation.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Lambda And Streams",
+    "summary": "There is no single \"Stream constructor\". You build a Stream from a source - and Java offers many sources to choose from."
+  },
+  {
+    "title": "Stream File IO",
+    "slug": "Phase5_CollectionsLambdasStreams__LambdaAndStreams__StreamFileIO",
+    "path": "Phase5_CollectionsLambdasStreams/LambdaAndStreams/StreamFileIO.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Lambda And Streams",
+    "summary": "Streams + File I/O (java.nio.file.Files)"
+  },
+  {
+    "title": "Stream Introduction",
+    "slug": "Phase5_CollectionsLambdasStreams__LambdaAndStreams__StreamIntroduction",
+    "path": "Phase5_CollectionsLambdasStreams/LambdaAndStreams/StreamIntroduction.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Lambda And Streams",
+    "summary": "A STREAM is a sequence of values from a source that supports a chain of functional-style operations. Streams are NOT data structures: they compute on data from a source (a Collection, array, file, generator, ...) and..."
+  },
+  {
+    "title": "Stream Pipeline",
+    "slug": "Phase5_CollectionsLambdasStreams__LambdaAndStreams__StreamPipeline",
+    "path": "Phase5_CollectionsLambdasStreams/LambdaAndStreams/StreamPipeline.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Lambda And Streams",
+    "summary": "A STREAM PIPELINE is the chain that takes data from a source through a series of transformations to a final result. It always has THREE parts:"
+  },
+  {
+    "title": "Stream Vs Collection",
+    "slug": "Phase5_CollectionsLambdasStreams__LambdaAndStreams__StreamVsCollection",
+    "path": "Phase5_CollectionsLambdasStreams/LambdaAndStreams/StreamVsCollection.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Lambda And Streams",
+    "summary": "Streams and Collections both have iterator() but they serve different purposes. Knowing which to reach for is half the job."
+  },
+  {
+    "title": "Terminal Operations",
+    "slug": "Phase5_CollectionsLambdasStreams__LambdaAndStreams__TerminalOperations",
+    "path": "Phase5_CollectionsLambdasStreams/LambdaAndStreams/TerminalOperations.java",
+    "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
+    "section": "Lambda And Streams",
+    "summary": "A TERMINAL operation kicks off the pipeline and produces a side effect or a value. After a terminal op runs, the stream is CLOSED."
+  },
+  {
+    "title": "Garbage Collection",
+    "slug": "Phase6_RuntimeMemoryRegexReflection__MemoryAllocation__GarbageCollection",
+    "path": "Phase6_RuntimeMemoryRegexReflection/MemoryAllocation/GarbageCollection.java",
+    "phaseLabel": "Phase 6 \u2014 Runtime, Memory, Regex, Reflection",
+    "section": "Memory Allocation",
+    "summary": "Java's garbage collector reclaims memory occupied by objects that are no longer \"reachable\" from the program. You never `free` or `delete` yourself - the JVM does it for you, on a schedule it controls."
+  },
+  {
+    "title": "Garbage Collectors",
+    "slug": "Phase6_RuntimeMemoryRegexReflection__MemoryAllocation__GarbageCollectors",
+    "path": "Phase6_RuntimeMemoryRegexReflection/MemoryAllocation/GarbageCollectors.java",
+    "phaseLabel": "Phase 6 \u2014 Runtime, Memory, Regex, Reflection",
+    "section": "Memory Allocation",
+    "summary": "OpenJDK / HotSpot ships several different garbage collectors. They have different trade-offs between THROUGHPUT (total work done) and LATENCY (longest pause). You pick one with a JVM flag at launch time."
+  },
+  {
+    "title": "Jvm Memory Areas",
+    "slug": "Phase6_RuntimeMemoryRegexReflection__MemoryAllocation__JvmMemoryAreas",
+    "path": "Phase6_RuntimeMemoryRegexReflection/MemoryAllocation/JvmMemoryAreas.java",
+    "phaseLabel": "Phase 6 \u2014 Runtime, Memory, Regex, Reflection",
+    "section": "Memory Allocation",
+    "summary": "The Java Virtual Machine specification divides runtime memory into five conceptual areas:"
+  },
+  {
+    "title": "Memory Leaks",
+    "slug": "Phase6_RuntimeMemoryRegexReflection__MemoryAllocation__MemoryLeaks",
+    "path": "Phase6_RuntimeMemoryRegexReflection/MemoryAllocation/MemoryLeaks.java",
+    "phaseLabel": "Phase 6 \u2014 Runtime, Memory, Regex, Reflection",
+    "section": "Memory Allocation",
+    "summary": "Java is garbage-collected, but the GC cannot help you if your code is STILL holding a reference to data you no longer need. The garbage collector reclaims only UNREACHABLE objects - so any \"live\" path back to the heap..."
+  },
+  {
+    "title": "Memory Management Intro",
+    "slug": "Phase6_RuntimeMemoryRegexReflection__MemoryAllocation__MemoryManagementIntro",
+    "path": "Phase6_RuntimeMemoryRegexReflection/MemoryAllocation/MemoryManagementIntro.java",
+    "phaseLabel": "Phase 6 \u2014 Runtime, Memory, Regex, Reflection",
+    "section": "Memory Allocation",
+    "summary": "\"Memory management\" is everything the JVM does between you writing `new Customer()` and the OS getting the bytes back: where the object lives, when it can be reclaimed, and which subsystem of the JVM owns the space."
+  },
+  {
+    "title": "Modern Memory Features",
+    "slug": "Phase6_RuntimeMemoryRegexReflection__MemoryAllocation__ModernMemoryFeatures",
+    "path": "Phase6_RuntimeMemoryRegexReflection/MemoryAllocation/ModernMemoryFeatures.java",
+    "phaseLabel": "Phase 6 \u2014 Runtime, Memory, Regex, Reflection",
+    "section": "Memory Allocation",
+    "summary": "The JVM and JDK keep getting better at memory. A short tour of the changes that matter most to everyday Java code."
+  },
+  {
+    "title": "Objects In Memory",
+    "slug": "Phase6_RuntimeMemoryRegexReflection__MemoryAllocation__ObjectsInMemory",
+    "path": "Phase6_RuntimeMemoryRegexReflection/MemoryAllocation/ObjectsInMemory.java",
+    "phaseLabel": "Phase 6 \u2014 Runtime, Memory, Regex, Reflection",
+    "section": "Memory Allocation",
+    "summary": "Every Java object lives on the HEAP, even tiny wrappers like Integer. The exact byte layout is JVM-specific, but on HotSpot / OpenJDK every object is built from three pieces:"
+  },
+  {
+    "title": "Stack Vs Heap",
+    "slug": "Phase6_RuntimeMemoryRegexReflection__MemoryAllocation__StackVsHeap",
+    "path": "Phase6_RuntimeMemoryRegexReflection/MemoryAllocation/StackVsHeap.java",
+    "phaseLabel": "Phase 6 \u2014 Runtime, Memory, Regex, Reflection",
+    "section": "Memory Allocation",
+    "summary": "One of the most-asked Java interview questions and one of the most useful mental models for reasoning about your code."
+  },
+  {
+    "title": "Class And Method Reflection",
+    "slug": "Phase6_RuntimeMemoryRegexReflection__Reflection__ClassAndMethodReflection",
+    "path": "Phase6_RuntimeMemoryRegexReflection/Reflection/ClassAndMethodReflection.java",
+    "phaseLabel": "Phase 6 \u2014 Runtime, Memory, Regex, Reflection",
+    "section": "Reflection",
+    "summary": "Most useful inspection / manipulation patterns."
+  },
+  {
+    "title": "Dynamic Invocation",
+    "slug": "Phase6_RuntimeMemoryRegexReflection__Reflection__DynamicInvocation",
+    "path": "Phase6_RuntimeMemoryRegexReflection/Reflection/DynamicInvocation.java",
+    "phaseLabel": "Phase 6 \u2014 Runtime, Memory, Regex, Reflection",
+    "section": "Reflection",
+    "summary": "Two faster / safer alternatives to Method.invoke:"
+  },
+  {
+    "title": "Reflection Introduction",
+    "slug": "Phase6_RuntimeMemoryRegexReflection__Reflection__ReflectionIntroduction",
+    "path": "Phase6_RuntimeMemoryRegexReflection/Reflection/ReflectionIntroduction.java",
+    "phaseLabel": "Phase 6 \u2014 Runtime, Memory, Regex, Reflection",
+    "section": "Reflection",
+    "summary": "Reflection lets your code INSPECT and MANIPULATE other code at runtime: classes, methods, fields, constructors, annotations, generic information."
+  },
+  {
+    "title": "Character Class",
+    "slug": "Phase6_RuntimeMemoryRegexReflection__Regex__CharacterClass",
+    "path": "Phase6_RuntimeMemoryRegexReflection/Regex/CharacterClass.java",
+    "phaseLabel": "Phase 6 \u2014 Runtime, Memory, Regex, Reflection",
+    "section": "Regex",
+    "summary": "A CHARACTER CLASS is a regex construct that matches ONE CHARACTER drawn from a defined set. Three kinds:"
+  },
+  {
+    "title": "Groups And Backreferences",
+    "slug": "Phase6_RuntimeMemoryRegexReflection__Regex__GroupsAndBackreferences",
+    "path": "Phase6_RuntimeMemoryRegexReflection/Regex/GroupsAndBackreferences.java",
+    "phaseLabel": "Phase 6 \u2014 Runtime, Memory, Regex, Reflection",
+    "section": "Regex",
+    "summary": "A GROUP is a section of a regex enclosed in parentheses ( ... ). Groups serve TWO purposes:"
+  },
+  {
+    "title": "Lookaround Assertions",
+    "slug": "Phase6_RuntimeMemoryRegexReflection__Regex__LookaroundAssertions",
+    "path": "Phase6_RuntimeMemoryRegexReflection/Regex/LookaroundAssertions.java",
+    "phaseLabel": "Phase 6 \u2014 Runtime, Memory, Regex, Reflection",
+    "section": "Regex",
+    "summary": "LOOKAROUND ASSERTIONS check WHAT IS AROUND a position WITHOUT consuming any characters. They are zero-width assertions, like anchors."
+  },
+  {
+    "title": "Matcher Class",
+    "slug": "Phase6_RuntimeMemoryRegexReflection__Regex__MatcherClass",
+    "path": "Phase6_RuntimeMemoryRegexReflection/Regex/MatcherClass.java",
+    "phaseLabel": "Phase 6 \u2014 Runtime, Memory, Regex, Reflection",
+    "section": "Regex",
+    "summary": "java.util.regex.Matcher - The Regex Engine"
+  },
+  {
+    "title": "Metacharacters And Anchors",
+    "slug": "Phase6_RuntimeMemoryRegexReflection__Regex__MetacharactersAndAnchors",
+    "path": "Phase6_RuntimeMemoryRegexReflection/Regex/MetacharactersAndAnchors.java",
+    "phaseLabel": "Phase 6 \u2014 Runtime, Memory, Regex, Reflection",
+    "section": "Regex",
+    "summary": "A METACHARACTER is a character that has special meaning inside a regex rather than matching itself. An ANCHOR is a zero-width metacharacter that matches a POSITION in the input, not an actual character."
+  },
+  {
+    "title": "Modern Regex Features",
+    "slug": "Phase6_RuntimeMemoryRegexReflection__Regex__ModernRegexFeatures",
+    "path": "Phase6_RuntimeMemoryRegexReflection/Regex/ModernRegexFeatures.java",
+    "phaseLabel": "Phase 6 \u2014 Runtime, Memory, Regex, Reflection",
+    "section": "Regex",
+    "summary": "Pattern / Matcher have collected a few quality-of-life additions over the years that fit the modern functional / stream style."
+  },
+  {
+    "title": "Quantifiers",
+    "slug": "Phase6_RuntimeMemoryRegexReflection__Regex__Quantifiers",
+    "path": "Phase6_RuntimeMemoryRegexReflection/Regex/Quantifiers.java",
+    "phaseLabel": "Phase 6 \u2014 Runtime, Memory, Regex, Reflection",
+    "section": "Regex",
+    "summary": "A QUANTIFIER controls how many times the immediately preceding element may repeat. Java supports three FLAVOURS for every quantifier - greedy, reluctant (a.k.a. lazy), and possessive."
+  },
+  {
+    "title": "Regex Examples",
+    "slug": "Phase6_RuntimeMemoryRegexReflection__Regex__RegexExamples",
+    "path": "Phase6_RuntimeMemoryRegexReflection/Regex/RegexExamples.java",
+    "phaseLabel": "Phase 6 \u2014 Runtime, Memory, Regex, Reflection",
+    "section": "Regex",
+    "summary": "A cookbook of ready-to-copy regex patterns. Each one has the regex in a compiled Pattern constant, a short note on what it accepts and rejects, and a few test cases printed."
+  },
+  {
+    "title": "Regex Flags",
+    "slug": "Phase6_RuntimeMemoryRegexReflection__Regex__RegexFlags",
+    "path": "Phase6_RuntimeMemoryRegexReflection/Regex/RegexFlags.java",
+    "phaseLabel": "Phase 6 \u2014 Runtime, Memory, Regex, Reflection",
+    "section": "Regex",
+    "summary": "Flags change HOW the engine matches a pattern. You can pass them to Pattern.compile as the second argument, or set them inline inside the pattern via `(?flags)` so the regex itself is self-describing."
+  },
+  {
+    "title": "Regex Introduction",
+    "slug": "Phase6_RuntimeMemoryRegexReflection__Regex__RegexIntroduction",
+    "path": "Phase6_RuntimeMemoryRegexReflection/Regex/RegexIntroduction.java",
+    "phaseLabel": "Phase 6 \u2014 Runtime, Memory, Regex, Reflection",
+    "section": "Regex",
+    "summary": "A REGULAR EXPRESSION (regex) is a small language for describing patterns of text. Java exposes it through the package java.util.regex, which contains two main classes:"
+  },
+  {
+    "title": "Atomic Variables",
+    "slug": "Phase7_Concurrency__Multithreading__AtomicVariables",
+    "path": "Phase7_Concurrency/Multithreading/AtomicVariables.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "Lock-free counters / references built on COMPARE-AND-SET (CAS) \u2014 a hardware instruction that atomically updates a memory cell only if it still matches an expected old value."
+  },
+  {
+    "title": "Callable And Future",
+    "slug": "Phase7_Concurrency__Multithreading__CallableAndFuture",
+    "path": "Phase7_Concurrency/Multithreading/CallableAndFuture.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "Runnable is great when the work has NO RETURN VALUE and never throws checked exceptions. When you need a RESULT, use:"
+  },
+  {
+    "title": "Completable Future Demo",
+    "slug": "Phase7_Concurrency__Multithreading__CompletableFutureDemo",
+    "path": "Phase7_Concurrency/Multithreading/CompletableFutureDemo.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "Future is great for \"submit and get later\" \u2014 but every .get() BLOCKS. CompletableFuture is composable: chain transformations, combine multiple futures, handle errors inline, run async stages on the executor of your ch..."
+  },
+  {
+    "title": "Count Down Latch Demo",
+    "slug": "Phase7_Concurrency__Multithreading__CountDownLatchDemo",
+    "path": "Phase7_Concurrency/Multithreading/CountDownLatchDemo.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "A ONE-SHOT counter you initialise with N. Threads call await() to block until the counter reaches zero. Other threads call countDown() to decrement."
+  },
+  {
+    "title": "Cyclic Barrier Demo",
+    "slug": "Phase7_Concurrency__Multithreading__CyclicBarrierDemo",
+    "path": "Phase7_Concurrency/Multithreading/CyclicBarrierDemo.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "A RESETTABLE barrier for a FIXED number of \"parties.\" Each party calls await(), which blocks. When all N parties have arrived, they are RELEASED at the same time, and the barrier resets for the next round."
+  },
+  {
+    "title": "Daemon Thread",
+    "slug": "Phase7_Concurrency__Multithreading__DaemonThread",
+    "path": "Phase7_Concurrency/Multithreading/DaemonThread.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "A thread can be a USER thread (default) or a DAEMON thread. The difference is only one thing \u2014 and it's about JVM SHUTDOWN:"
+  },
+  {
+    "title": "Deadlock Demo",
+    "slug": "Phase7_Concurrency__Multithreading__DeadlockDemo",
+    "path": "Phase7_Concurrency/Multithreading/DeadlockDemo.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "Two or more threads each holding a lock the other needs. None ever progresses."
+  },
+  {
+    "title": "Executor Framework",
+    "slug": "Phase7_Concurrency__Multithreading__ExecutorFramework",
+    "path": "Phase7_Concurrency/Multithreading/ExecutorFramework.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "Introduced in Java 5, the framework decouples WORK from the THREAD that runs it. The hierarchy:"
+  },
+  {
+    "title": "Fork Join Pool Demo",
+    "slug": "Phase7_Concurrency__Multithreading__ForkJoinPoolDemo",
+    "path": "Phase7_Concurrency/Multithreading/ForkJoinPoolDemo.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "A SPECIALISED thread pool for DIVIDE-AND-CONQUER algorithms. Workers use WORK-STEALING: when a worker's own deque runs dry, it steals tasks from the back of a busier worker's deque. This is what makes recursive task d..."
+  },
+  {
+    "title": "Java Memory Model",
+    "slug": "Phase7_Concurrency__Multithreading__JavaMemoryModel",
+    "path": "Phase7_Concurrency/Multithreading/JavaMemoryModel.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "The JMM is the formal specification of how reads and writes from different threads interact. Without it, a program is at the mercy of the JIT compiler, the CPU's memory subsystem, and the OS scheduler \u2014 any of which m..."
+  },
+  {
+    "title": "Java Synchronization",
+    "slug": "Phase7_Concurrency__Multithreading__JavaSynchronization",
+    "path": "Phase7_Concurrency/Multithreading/JavaSynchronization.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "SYNCHRONIZATION is the discipline of letting only ONE thread at a time touch shared state, so that updates from different threads compose sanely. In Java the canonical primitive is the `synchronized` keyword \u2014 a built..."
+  },
+  {
+    "title": "Lock Framework Vs Sync",
+    "slug": "Phase7_Concurrency__Multithreading__LockFrameworkVsSync",
+    "path": "Phase7_Concurrency/Multithreading/LockFrameworkVsSync.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "Same goal \u2014 guard shared state. Different tradeoffs."
+  },
+  {
+    "title": "Locks In Java",
+    "slug": "Phase7_Concurrency__Multithreading__LocksInJava",
+    "path": "Phase7_Concurrency/Multithreading/LocksInJava.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "Java offers TWO families of locking primitives:"
+  },
+  {
+    "title": "Lock Vs Monitor",
+    "slug": "Phase7_Concurrency__Multithreading__LockVsMonitor",
+    "path": "Phase7_Concurrency/Multithreading/LockVsMonitor.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "\"Monitor\" here means the INTRINSIC LOCK on every Object, accessed via `synchronized`, with `wait/notify/notifyAll` as the condition variable."
+  },
+  {
+    "title": "Main Thread",
+    "slug": "Phase7_Concurrency__Multithreading__MainThread",
+    "path": "Phase7_Concurrency/Multithreading/MainThread.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "When you launch a Java program, the JVM creates a thread named \"main\" and calls your public static void main(String[]) on it. Everything runs on that thread until you spawn another one."
+  },
+  {
+    "title": "Multithreading Complete Tutorial",
+    "slug": "Phase7_Concurrency__Multithreading__MultithreadingCompleteTutorial",
+    "path": "Phase7_Concurrency/Multithreading/MultithreadingCompleteTutorial.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "One file, end-to-end, touching every major topic in the section. Pair this with the dedicated files for depth."
+  },
+  {
+    "title": "Multithreading Introduction",
+    "slug": "Phase7_Concurrency__Multithreading__MultithreadingIntroduction",
+    "path": "Phase7_Concurrency/Multithreading/MultithreadingIntroduction.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "A PROCESS is an instance of a running program. The JVM itself runs as one OS process. Inside that process, work is performed by THREADS \u2014 lightweight, independent paths of execution that share the process's heap and c..."
+  },
+  {
+    "title": "Phaser Demo",
+    "slug": "Phase7_Concurrency__Multithreading__PhaserDemo",
+    "path": "Phase7_Concurrency/Multithreading/PhaserDemo.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "The flexible cousin of CyclicBarrier and CountDownLatch. A Phaser:"
+  },
+  {
+    "title": "Producer Consumer",
+    "slug": "Phase7_Concurrency__Multithreading__ProducerConsumer",
+    "path": "Phase7_Concurrency/Multithreading/ProducerConsumer.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "Producers and consumers communicate via a SHARED, BOUNDED queue."
+  },
+  {
+    "title": "Race Condition Starvation Livelock",
+    "slug": "Phase7_Concurrency__Multithreading__RaceConditionStarvationLivelock",
+    "path": "Phase7_Concurrency/Multithreading/RaceConditionStarvationLivelock.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "The four classic concurrency hazards."
+  },
+  {
+    "title": "Read Write Lock Demo",
+    "slug": "Phase7_Concurrency__Multithreading__ReadWriteLockDemo",
+    "path": "Phase7_Concurrency/Multithreading/ReadWriteLockDemo.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "Two locks for the price of one:"
+  },
+  {
+    "title": "Reentrant Lock Demo",
+    "slug": "Phase7_Concurrency__Multithreading__ReentrantLockDemo",
+    "path": "Phase7_Concurrency/Multithreading/ReentrantLockDemo.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "A drop-in upgrade from `synchronized` with these extras:"
+  },
+  {
+    "title": "Runnable Interface",
+    "slug": "Phase7_Concurrency__Multithreading__RunnableInterface",
+    "path": "Phase7_Concurrency/Multithreading/RunnableInterface.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "The simplest description of \"a unit of work that can be run by a thread.\" It is a FUNCTIONAL interface with one method:"
+  },
+  {
+    "title": "Scheduled Executor Demo",
+    "slug": "Phase7_Concurrency__Multithreading__ScheduledExecutorDemo",
+    "path": "Phase7_Concurrency/Multithreading/ScheduledExecutorDemo.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "Delayed and recurring tasks without writing your own scheduler."
+  },
+  {
+    "title": "Scoped Values Demo",
+    "slug": "Phase7_Concurrency__Multithreading__ScopedValuesDemo",
+    "path": "Phase7_Concurrency/Multithreading/ScopedValuesDemo.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "A modern alternative to ThreadLocal for sharing IMMUTABLE per-call data with deeply nested code. Unlike ThreadLocal:"
+  },
+  {
+    "title": "Semaphore Demo",
+    "slug": "Phase7_Concurrency__Multithreading__SemaphoreDemo",
+    "path": "Phase7_Concurrency/Multithreading/SemaphoreDemo.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "A counter that hands out PERMITS. acquire() blocks until a permit is available; release() returns one. With N permits you can let UP TO N threads through a section at once \u2014 classic resource-limiting tool."
+  },
+  {
+    "title": "Cell",
+    "slug": "Phase7_Concurrency__Multithreading__SnakeGame__Cell",
+    "path": "Phase7_Concurrency/Multithreading/SnakeGame/Cell.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "Immutable grid coordinate. Records are perfect for this \u2014 value semantics, free equals/hashCode/toString, safe to share across threads."
+  },
+  {
+    "title": "Direction",
+    "slug": "Phase7_Concurrency__Multithreading__SnakeGame__Direction",
+    "path": "Phase7_Concurrency/Multithreading/SnakeGame/Direction.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "Four-direction movement enum for the snake."
+  },
+  {
+    "title": "Game Loop",
+    "slug": "Phase7_Concurrency__Multithreading__SnakeGame__GameLoop",
+    "path": "Phase7_Concurrency/Multithreading/SnakeGame/GameLoop.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "GameLoop \u2014 the simulation thread."
+  },
+  {
+    "title": "Game State",
+    "slug": "Phase7_Concurrency__Multithreading__SnakeGame__GameState",
+    "path": "Phase7_Concurrency/Multithreading/SnakeGame/GameState.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "GameState \u2014 the shared mutable state, accessed by:"
+  },
+  {
+    "title": "Snake Board",
+    "slug": "Phase7_Concurrency__Multithreading__SnakeGame__SnakeBoard",
+    "path": "Phase7_Concurrency/Multithreading/SnakeGame/SnakeBoard.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "SnakeBoard \u2014 the rendering component."
+  },
+  {
+    "title": "Snake Game",
+    "slug": "Phase7_Concurrency__Multithreading__SnakeGame__SnakeGame",
+    "path": "Phase7_Concurrency/Multithreading/SnakeGame/SnakeGame.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "SnakeGame \u2014 main runner."
+  },
+  {
+    "title": "Stamped Lock Demo",
+    "slug": "Phase7_Concurrency__Multithreading__StampedLockDemo",
+    "path": "Phase7_Concurrency/Multithreading/StampedLockDemo.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "Optimistic reads are CHEAP \u2014 basically a volatile read \u2014 but you must COPY the fields you read to LOCAL VARIABLES before validating. If you dereference a stale reference during the optimistic window you can get incons..."
+  },
+  {
+    "title": "Start Vs Run",
+    "slug": "Phase7_Concurrency__Multithreading__StartVsRun",
+    "path": "Phase7_Concurrency/Multithreading/StartVsRun.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "One of the most common interview / debugging traps in Java."
+  },
+  {
+    "title": "Structured Concurrency",
+    "slug": "Phase7_Concurrency__Multithreading__StructuredConcurrency",
+    "path": "Phase7_Concurrency/Multithreading/StructuredConcurrency.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "Java 21 ships StructuredTaskScope as a PREVIEW API (JEP 453, evolved further in 22/23). It treats a GROUP of concurrent subtasks as a SINGLE UNIT OF WORK with a SCOPED LIFETIME:"
+  },
+  {
+    "title": "Thread Interruption",
+    "slug": "Phase7_Concurrency__Multithreading__ThreadInterruption",
+    "path": "Phase7_Concurrency/Multithreading/ThreadInterruption.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "Java has NO safe way to forcefully stop another thread. Instead it has a COOPERATIVE cancellation mechanism: the INTERRUPT FLAG."
+  },
+  {
+    "title": "Thread Join Method",
+    "slug": "Phase7_Concurrency__Multithreading__ThreadJoinMethod",
+    "path": "Phase7_Concurrency/Multithreading/ThreadJoinMethod.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "Wait for another thread to finish."
+  },
+  {
+    "title": "Thread Lifecycle",
+    "slug": "Phase7_Concurrency__Multithreading__ThreadLifecycle",
+    "path": "Phase7_Concurrency/Multithreading/ThreadLifecycle.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "A Thread moves through a small set of states defined by Thread.State:"
+  },
+  {
+    "title": "Thread Local Demo",
+    "slug": "Phase7_Concurrency__Multithreading__ThreadLocalDemo",
+    "path": "Phase7_Concurrency/Multithreading/ThreadLocalDemo.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "A per-thread variable. Every thread that reads a given ThreadLocal sees ITS OWN copy of the value. Threads cannot accidentally share state because there is no shared storage to corrupt."
+  },
+  {
+    "title": "Thread Pools",
+    "slug": "Phase7_Concurrency__Multithreading__ThreadPools",
+    "path": "Phase7_Concurrency/Multithreading/ThreadPools.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "Creating one Thread per task is fine for tens of tasks; for thousands it's a disaster (thread creation is expensive, OS limits exist). A THREAD POOL keeps a small set of WORKER threads alive and feeds them tasks from..."
+  },
+  {
+    "title": "Thread Priority",
+    "slug": "Phase7_Concurrency__Multithreading__ThreadPriority",
+    "path": "Phase7_Concurrency/Multithreading/ThreadPriority.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "Every Thread has an integer PRIORITY between 1 and 10 (inclusive):"
+  },
+  {
+    "title": "Threads",
+    "slug": "Phase7_Concurrency__Multithreading__Threads",
+    "path": "Phase7_Concurrency/Multithreading/Threads.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "Thread is the JVM-level representation of a thread of execution. Every Java program starts with one Thread (the \"main\" thread). All other threads must be CREATED explicitly."
+  },
+  {
+    "title": "Thread Safety",
+    "slug": "Phase7_Concurrency__Multithreading__ThreadSafety",
+    "path": "Phase7_Concurrency/Multithreading/ThreadSafety.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "A class is THREAD-SAFE when it behaves correctly when used from multiple threads, with NO additional synchronization required from the caller (Brian Goetz)."
+  },
+  {
+    "title": "Thread Sleep Method",
+    "slug": "Phase7_Concurrency__Multithreading__ThreadSleepMethod",
+    "path": "Phase7_Concurrency/Multithreading/ThreadSleepMethod.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "Static method on Thread that PAUSES the CURRENT thread for at least the specified amount of time. Two overloads:"
+  },
+  {
+    "title": "Thread Yield Method",
+    "slug": "Phase7_Concurrency__Multithreading__ThreadYieldMethod",
+    "path": "Phase7_Concurrency/Multithreading/ThreadYieldMethod.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "A HINT to the scheduler that the current thread is willing to give up its current time slice. It is a STATIC method."
+  },
+  {
+    "title": "Virtual Threads",
+    "slug": "Phase7_Concurrency__Multithreading__VirtualThreads",
+    "path": "Phase7_Concurrency/Multithreading/VirtualThreads.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "A virtual thread is a thread implemented by the JVM rather than the OS. It looks and behaves exactly like a normal Thread, but:"
+  },
+  {
+    "title": "Volatile Keyword",
+    "slug": "Phase7_Concurrency__Multithreading__VolatileKeyword",
+    "path": "Phase7_Concurrency/Multithreading/VolatileKeyword.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "`volatile` is a FIELD modifier that gives you two memory-model guarantees \u2014 but NOT mutual exclusion."
+  },
+  {
+    "title": "Wait Notify Notify All",
+    "slug": "Phase7_Concurrency__Multithreading__WaitNotifyNotifyAll",
+    "path": "Phase7_Concurrency/Multithreading/WaitNotifyNotifyAll.java",
+    "phaseLabel": "Phase 7 \u2014 Concurrency",
+    "section": "Multithreading",
+    "summary": "Object.wait / notify / notifyAll"
+  },
+  {
+    "title": "Date Time Formatter Demo",
+    "slug": "Phase8_PracticalAPIs__DateAndTime__DateTimeFormatterDemo",
+    "path": "Phase8_PracticalAPIs/DateAndTime/DateTimeFormatterDemo.java",
+    "phaseLabel": "Phase 8 \u2014 Practical APIs",
+    "section": "Date And Time",
+    "summary": "Parse strings into date/time values and format them back. THREAD-SAFE and IMMUTABLE \u2014 share instances freely. Replaces the legacy (and broken) SimpleDateFormat."
+  },
+  {
+    "title": "Date Time Introduction",
+    "slug": "Phase8_PracticalAPIs__DateAndTime__DateTimeIntroduction",
+    "path": "Phase8_PracticalAPIs/DateAndTime/DateTimeIntroduction.java",
+    "phaseLabel": "Phase 8 \u2014 Practical APIs",
+    "section": "Date And Time",
+    "summary": "Date and Time API \u2014 Introduction (java.time, since Java 8)"
+  },
+  {
+    "title": "Duration Demo",
+    "slug": "Phase8_PracticalAPIs__DateAndTime__DurationDemo",
+    "path": "Phase8_PracticalAPIs/DateAndTime/DurationDemo.java",
+    "phaseLabel": "Phase 8 \u2014 Practical APIs",
+    "section": "Date And Time",
+    "summary": "Duration measures EXACT, MACHINE-LEVEL TIME \u2014 seconds and nanos. \"2 hours 30 minutes 15 seconds.\" Used with Instant, LocalTime, and any precision below a day."
+  },
+  {
+    "title": "Instant Demo",
+    "slug": "Phase8_PracticalAPIs__DateAndTime__InstantDemo",
+    "path": "Phase8_PracticalAPIs/DateAndTime/InstantDemo.java",
+    "phaseLabel": "Phase 8 \u2014 Practical APIs",
+    "section": "Date And Time",
+    "summary": "An Instant is a single, unambiguous point in time, measured in NANOSECONDS since 1970-01-01T00:00Z (the \"epoch\"). It has NO zone \u2014 it's \"the same instant\" everywhere on Earth."
+  },
+  {
+    "title": "Legacy Date Conversions",
+    "slug": "Phase8_PracticalAPIs__DateAndTime__LegacyDateConversions",
+    "path": "Phase8_PracticalAPIs/DateAndTime/LegacyDateConversions.java",
+    "phaseLabel": "Phase 8 \u2014 Practical APIs",
+    "section": "Date And Time",
+    "summary": "Most code should use java.time. But you'll hit legacy APIs:"
+  },
+  {
+    "title": "Local Date Local Time Local Date Time",
+    "slug": "Phase8_PracticalAPIs__DateAndTime__LocalDateLocalTimeLocalDateTime",
+    "path": "Phase8_PracticalAPIs/DateAndTime/LocalDateLocalTimeLocalDateTime.java",
+    "phaseLabel": "Phase 8 \u2014 Practical APIs",
+    "section": "Date And Time",
+    "summary": "Three \"local\" types \u2014 no zone info, no offset. Use them whenever the time zone is implicit or irrelevant (a birthday, an alarm, a calendar entry that doesn't travel across time zones)."
+  },
+  {
+    "title": "Period Demo",
+    "slug": "Phase8_PracticalAPIs__DateAndTime__PeriodDemo",
+    "path": "Phase8_PracticalAPIs/DateAndTime/PeriodDemo.java",
+    "phaseLabel": "Phase 8 \u2014 Practical APIs",
+    "section": "Date And Time",
+    "summary": "Period represents an interval in YEARS, MONTHS, and DAYS \u2014 the units humans use to talk about ages and trial periods."
+  },
+  {
+    "title": "Zoned Date Time Demo",
+    "slug": "Phase8_PracticalAPIs__DateAndTime__ZonedDateTimeDemo",
+    "path": "Phase8_PracticalAPIs/DateAndTime/ZonedDateTimeDemo.java",
+    "phaseLabel": "Phase 8 \u2014 Practical APIs",
+    "section": "Date And Time",
+    "summary": "ZoneId knows about DAYLIGHT SAVING rules and historical changes \u2014 \"America/New_York\" can be -05:00 or -04:00 depending on the date. ZoneOffset is a static number of hours/minutes from UTC."
+  },
+  {
+    "title": "Buffered Streams",
+    "slug": "Phase8_PracticalAPIs__FileIO__BufferedStreams",
+    "path": "Phase8_PracticalAPIs/FileIO/BufferedStreams.java",
+    "phaseLabel": "Phase 8 \u2014 Practical APIs",
+    "section": "File IO",
+    "summary": "Reading or writing one byte (or char) at a time hits the OS for EVERY call. A buffer slurps a big chunk at once, then serves it from memory. Cheap, easy, ~10-50x faster for byte-by-byte loops."
+  },
+  {
+    "title": "Byte Streams",
+    "slug": "Phase8_PracticalAPIs__FileIO__ByteStreams",
+    "path": "Phase8_PracticalAPIs/FileIO/ByteStreams.java",
+    "phaseLabel": "Phase 8 \u2014 Practical APIs",
+    "section": "File IO",
+    "summary": "The grandparents of Java I/O. They read and write RAW BYTES, one or many at a time. Used for non-textual files (images, audio, archives) or as the lower layer beneath character streams."
+  },
+  {
+    "title": "Character Streams",
+    "slug": "Phase8_PracticalAPIs__FileIO__CharacterStreams",
+    "path": "Phase8_PracticalAPIs/FileIO/CharacterStreams.java",
+    "phaseLabel": "Phase 8 \u2014 Practical APIs",
+    "section": "File IO",
+    "summary": "Java 1.1 added Reader / Writer to address the fundamental mismatch between bytes and characters in modern encodings (UTF-8, UTF-16, GB-18030, ...). A single character can be 1-4 bytes, so reading \"text\" through an Inp..."
+  },
+  {
+    "title": "Data Streams",
+    "slug": "Phase8_PracticalAPIs__FileIO__DataStreams",
+    "path": "Phase8_PracticalAPIs/FileIO/DataStreams.java",
+    "phaseLabel": "Phase 8 \u2014 Practical APIs",
+    "section": "File IO",
+    "summary": "DECORATORS on top of byte streams that read and write Java's PRIMITIVE TYPES in a portable, fixed-width binary format:"
+  },
+  {
+    "title": "File Channel Demo",
+    "slug": "Phase8_PracticalAPIs__FileIO__FileChannelDemo",
+    "path": "Phase8_PracticalAPIs/FileIO/FileChannelDemo.java",
+    "phaseLabel": "Phase 8 \u2014 Practical APIs",
+    "section": "File IO",
+    "summary": "FileChannel is the NIO answer to RandomAccessFile and a bunch of OS-level features:"
+  },
+  {
+    "title": "File IO Introduction",
+    "slug": "Phase8_PracticalAPIs__FileIO__FileIOIntroduction",
+    "path": "Phase8_PracticalAPIs/FileIO/FileIOIntroduction.java",
+    "phaseLabel": "Phase 8 \u2014 Practical APIs",
+    "section": "File IO",
+    "summary": "Java has TWO file APIs you should know:"
+  },
+  {
+    "title": "Files And Paths",
+    "slug": "Phase8_PracticalAPIs__FileIO__FilesAndPaths",
+    "path": "Phase8_PracticalAPIs/FileIO/FilesAndPaths.java",
+    "phaseLabel": "Phase 8 \u2014 Practical APIs",
+    "section": "File IO",
+    "summary": "java.nio.file \u2014 Path and Files"
+  },
+  {
+    "title": "Files Walk And List",
+    "slug": "Phase8_PracticalAPIs__FileIO__FilesWalkAndList",
+    "path": "Phase8_PracticalAPIs/FileIO/FilesWalkAndList.java",
+    "phaseLabel": "Phase 8 \u2014 Practical APIs",
+    "section": "File IO",
+    "summary": "Walking the file system \u2014 Files.list / walk / find / lines"
+  },
+  {
+    "title": "Modern File IO",
+    "slug": "Phase8_PracticalAPIs__FileIO__ModernFileIO",
+    "path": "Phase8_PracticalAPIs/FileIO/ModernFileIO.java",
+    "phaseLabel": "Phase 8 \u2014 Practical APIs",
+    "section": "File IO",
+    "summary": "The text-handling shortcuts most of your code should reach for first."
+  },
+  {
+    "title": "Object Streams",
+    "slug": "Phase8_PracticalAPIs__FileIO__ObjectStreams",
+    "path": "Phase8_PracticalAPIs/FileIO/ObjectStreams.java",
+    "phaseLabel": "Phase 8 \u2014 Practical APIs",
+    "section": "File IO",
+    "summary": "Read and write WHOLE OBJECT GRAPHS with one call each. The class must implement Serializable; the stream then records every reachable field. Used by RMI historically, by Java's built-in clone-via-serialization, and oc..."
+  },
+  {
+    "title": "Watch Service Demo",
+    "slug": "Phase8_PracticalAPIs__FileIO__WatchServiceDemo",
+    "path": "Phase8_PracticalAPIs/FileIO/WatchServiceDemo.java",
+    "phaseLabel": "Phase 8 \u2014 Practical APIs",
+    "section": "File IO",
+    "summary": "The OS knows when files change; the JVM exposes that through a WatchService. You REGISTER directories with the service for events of interest, then POLL for changes."
+  },
+  {
+    "title": "Http Client Introduction",
+    "slug": "Phase8_PracticalAPIs__HttpClient__HttpClientIntroduction",
+    "path": "Phase8_PracticalAPIs/HttpClient/HttpClientIntroduction.java",
+    "phaseLabel": "Phase 8 \u2014 Practical APIs",
+    "section": "Http Client",
+    "summary": "Java HTTP Client (java.net.http) \u2014 Introduction"
+  },
+  {
+    "title": "Sync And Async Requests",
+    "slug": "Phase8_PracticalAPIs__HttpClient__SyncAndAsyncRequests",
+    "path": "Phase8_PracticalAPIs/HttpClient/SyncAndAsyncRequests.java",
+    "phaseLabel": "Phase 8 \u2014 Practical APIs",
+    "section": "Http Client",
+    "summary": "SYNC  - simple scripts, single call, blocking thread is fine. ASYNC - many parallel requests; compose with thenCompose / thenApply."
+  },
+  {
+    "title": "Web Socket Demo",
+    "slug": "Phase8_PracticalAPIs__HttpClient__WebSocketDemo",
+    "path": "Phase8_PracticalAPIs/HttpClient/WebSocketDemo.java",
+    "phaseLabel": "Phase 8 \u2014 Practical APIs",
+    "section": "Http Client",
+    "summary": "WebSocket API \u2014 java.net.http.WebSocket (Java 11+)"
+  },
+  {
+    "title": "Pattern Matching Switch",
+    "slug": "Phase9_ModernJavaAndModules__ModernJava__PatternMatchingSwitch",
+    "path": "Phase9_ModernJavaAndModules/ModernJava/PatternMatchingSwitch.java",
+    "phaseLabel": "Phase 9 \u2014 Modern Java & Modules",
+    "section": "Modern Java",
+    "summary": "Java 21 finalises a powerful upgrade to switch: you can now match on the TYPE of the value (and combine with guards) inside switch labels - no more long chains of `if (x instanceof T) ... else if (...)`."
+  },
+  {
+    "title": "Records And Patterns",
+    "slug": "Phase9_ModernJavaAndModules__ModernJava__RecordsAndPatterns",
+    "path": "Phase9_ModernJavaAndModules/ModernJava/RecordsAndPatterns.java",
+    "phaseLabel": "Phase 9 \u2014 Modern Java & Modules",
+    "section": "Modern Java",
+    "summary": "A RECORD is a special kind of class introduced in Java 16 for IMMUTABLE data carriers. The compiler generates the boilerplate for you:"
+  },
+  {
+    "title": "Sequenced Collections",
+    "slug": "Phase9_ModernJavaAndModules__ModernJava__SequencedCollections",
+    "path": "Phase9_ModernJavaAndModules/ModernJava/SequencedCollections.java",
+    "phaseLabel": "Phase 9 \u2014 Modern Java & Modules",
+    "section": "Modern Java",
+    "summary": "Before Java 21, getting the FIRST or LAST element of a List, LinkedHashSet, or LinkedHashMap was awkward: list.get(0), list.get(list.size()-1), iterator().next(), etc."
+  },
+  {
+    "title": "Switch Expression",
+    "slug": "Phase9_ModernJavaAndModules__ModernJava__SwitchExpression",
+    "path": "Phase9_ModernJavaAndModules/ModernJava/SwitchExpression.java",
+    "phaseLabel": "Phase 9 \u2014 Modern Java & Modules",
+    "section": "Modern Java",
+    "summary": "Classic switch is a STATEMENT - it does not return a value, and the colon style with `break` is verbose and easy to get wrong (fall-through bugs). Java 14 promoted switch to also being an EXPRESSION that produces a va..."
+  },
+  {
+    "title": "Var Local Type Inference",
+    "slug": "Phase9_ModernJavaAndModules__ModernJava__VarLocalTypeInference",
+    "path": "Phase9_ModernJavaAndModules/ModernJava/VarLocalTypeInference.java",
+    "phaseLabel": "Phase 9 \u2014 Modern Java & Modules",
+    "section": "Modern Java",
+    "summary": "Since Java 10 you can declare a LOCAL variable with the keyword 'var' instead of writing the full type. The compiler INFERS the type from the right-hand side - this is purely a compile-time feature, the bytecode is id..."
+  },
+  {
+    "title": "Module Examples",
+    "slug": "Phase9_ModernJavaAndModules__Modules__ModuleExamples",
+    "path": "Phase9_ModernJavaAndModules/Modules/ModuleExamples.java",
+    "phaseLabel": "Phase 9 \u2014 Modern Java & Modules",
+    "section": "Modules",
+    "summary": "Module Examples \u2014 sample `module-info.java` shapes"
+  },
+  {
+    "title": "Modules Introduction",
+    "slug": "Phase9_ModernJavaAndModules__Modules__ModulesIntroduction",
+    "path": "Phase9_ModernJavaAndModules/Modules/ModulesIntroduction.java",
+    "phaseLabel": "Phase 9 \u2014 Modern Java & Modules",
+    "section": "Modules",
+    "summary": "Introduced in Java 9 (JEP 261). Adds an EXPLICIT, COMPILE-TIME unit called a MODULE: a named collection of related packages plus a descriptor file `module-info.java`."
+  },
+  {
+    "title": "Service Loader Demo",
+    "slug": "Phase9_ModernJavaAndModules__Modules__ServiceLoaderDemo",
+    "path": "Phase9_ModernJavaAndModules/Modules/ServiceLoaderDemo.java",
+    "phaseLabel": "Phase 9 \u2014 Modern Java & Modules",
+    "section": "Modules",
+    "summary": "ServiceLoader lets you declare a SERVICE INTERFACE and DISCOVER implementations at runtime \u2014 without hard-coding their names."
+  }
+]

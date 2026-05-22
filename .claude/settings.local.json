@@ -20,7 +20,14 @@
       "Bash(sed -i -E 's|^import Basics\\\\.Annotations\\\\.|import Phase4_ErrorsAndTypeSafety.Annotations.|' src/Phase4_ErrorsAndTypeSafety/Annotations/RuntimeAnnotations.java)",
       "Bash(grep -r \"^import Basics\\\\.\\\\|^import OOPSConcepts\\\\.\\\\|^import Overview\\\\.\" src --include=\"*.java\")",
       "Bash(python *)",
-      "Bash(git checkout *)"
+      "Bash(git checkout *)",
+      "Bash(curl -s -o /dev/null -w \"index: %{http_code}\\\\n\" http://localhost:8765/index.html)",
+      "Bash(curl -s -o /dev/null -w \"phase: %{http_code}\\\\n\" http://localhost:8765/phase/Phase0_SetupAndFirstPrograms.html)",
+      "Bash(curl -s -o /dev/null -w \"code: %{http_code}\\\\n\" http://localhost:8765/code/Phase1_CoreLanguage__Operators__ArithmeticOperators.html)",
+      "Bash(curl -s -o /dev/null -w \"css: %{http_code}\\\\n\" http://localhost:8765/assets/site.css)",
+      "Bash(curl -s -o /dev/null -w \"js: %{http_code}\\\\n\" http://localhost:8765/assets/site.js)",
+      "Bash(node -e \"new Function\\(require\\('fs'\\).readFileSync\\('assets/site.js','utf8'\\)\\)\")",
+      "Bash(kill %1)"
     ]
   }
 }

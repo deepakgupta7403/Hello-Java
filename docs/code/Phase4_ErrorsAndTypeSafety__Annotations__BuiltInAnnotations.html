@@ -1,0 +1,1537 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Built In Annotations · HelloJava</title>
+    <meta name="description" content="A hands-on, topic-by-topic walkthrough of Java 21 LTS.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&family=Material+Icons&display=swap"
+          rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/mdb-ui-kit@7.3.2/css/mdb.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css"
+          rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+    <link href="../assets/site.css" rel="stylesheet">
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg fixed-top shadow-0 hj-navbar">
+    <div class="container-fluid">
+        <button class="btn btn-link text-white d-lg-none me-2 p-2" type="button" data-mdb-toggle="offcanvas"
+                data-mdb-target="#sidebar" aria-controls="sidebar">
+            <span class="material-icons">menu</span>
+        </button>
+        <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
+            <span class="material-icons me-2">coffee</span>
+            <span>HelloJava</span>
+            <span class="badge bg-light text-dark ms-2 fw-normal">Java 21 LTS</span>
+        </a>
+        <div class="d-flex align-items-center ms-auto gap-2">
+            <div class="hj-search d-none d-md-flex">
+                <span class="material-icons">search</span>
+                <input type="search" id="hj-search" placeholder="Search topics..." autocomplete="off">
+                <div id="hj-search-results"></div>
+            </div>
+            <a class="btn btn-link text-white p-2" href="https://github.com" target="_blank" rel="noopener"
+               title="View on GitHub" id="hj-github-link">
+                <span class="material-icons">open_in_new</span>
+            </a>
+            <button class="btn btn-link text-white p-2" id="hj-theme-toggle" title="Toggle theme">
+                <span class="material-icons" id="hj-theme-icon">dark_mode</span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+<div class="offcanvas-lg offcanvas-start hj-sidebar" tabindex="-1" id="sidebar">
+    <div class="offcanvas-header">
+        <h6 class="offcanvas-title fw-bold">All Phases</h6>
+        <button type="button" class="btn-close" data-mdb-dismiss="offcanvas" data-mdb-target="#sidebar"
+                aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body p-0">
+        <div class="accordion accordion-flush" id="hj-sidebar-acc">
+
+            <div class="accordion-item bg-transparent border-0">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase0_SetupAndFirstPrograms" aria-expanded="false">
+                        <span class="material-icons me-2 text-primary">play_circle</span>
+                        <span class="flex-grow-1">
+              <small class="text-muted d-block">Phase 0</small>
+              <span class="fw-bold">Setup &amp; First Programs</span>
+            </span>
+                        <span class="badge bg-light text-dark ms-2">11</span>
+                    </button>
+                </h2>
+                <div id="sb-Phase0_SetupAndFirstPrograms" class="accordion-collapse collapse ">
+                    <div class="accordion-body p-0">
+                        <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
+                           href="../phase/Phase0_SetupAndFirstPrograms.html">
+                            <span class="material-icons-outlined small me-1">summarize</span>Phase overview
+                        </a>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase0_SetupAndFirstPrograms__HelloWorld.html"><span
+                                class="material-icons-outlined small me-1">description</span>Hello World</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase0_SetupAndFirstPrograms__IsMainCompulsory.html"><span
+                            class="material-icons-outlined small me-1">description</span>Is Main Compulsory</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Class Name Myth
+                        </div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase0_SetupAndFirstPrograms__ClassNameMyth__Hello.html"><span
+                                class="material-icons-outlined small me-1">description</span>Hello</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Input</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase0_SetupAndFirstPrograms__Input__BufferedReaderInput.html"><span
+                                class="material-icons-outlined small me-1">description</span>Buffered Reader Input</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase0_SetupAndFirstPrograms__Input__ConsoleInput.html"><span
+                            class="material-icons-outlined small me-1">description</span>Console Input</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase0_SetupAndFirstPrograms__Input__ScannerInput.html"><span
+                            class="material-icons-outlined small me-1">description</span>Scanner Input</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Installation
+                        </div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase0_SetupAndFirstPrograms__Installation__InstallJava.html"><span
+                                class="material-icons-outlined small me-1">description</span>Install Java</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Introduction
+                        </div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase0_SetupAndFirstPrograms__Introduction__Introduction.html"><span
+                                class="material-icons-outlined small me-1">description</span>Introduction</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">JD Kvs JR Evs
+                            JVM
+                        </div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase0_SetupAndFirstPrograms__JDKvsJREvsJVM__JDKvsJREvsJVM.html"><span
+                                class="material-icons-outlined small me-1">description</span>JD Kvs JR Evs JVM</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Output</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase0_SetupAndFirstPrograms__Output__FormattedOutput.html"><span
+                                class="material-icons-outlined small me-1">description</span>Formatted Output</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase0_SetupAndFirstPrograms__Output__PrintMethods.html"><span
+                            class="material-icons-outlined small me-1">description</span>Print Methods</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-transparent border-0">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase1_CoreLanguage" aria-expanded="false">
+                        <span class="material-icons me-2 text-primary">code</span>
+                        <span class="flex-grow-1">
+              <small class="text-muted d-block">Phase 1</small>
+              <span class="fw-bold">Core Language</span>
+            </span>
+                        <span class="badge bg-light text-dark ms-2">61</span>
+                    </button>
+                </h2>
+                <div id="sb-Phase1_CoreLanguage" class="accordion-collapse collapse ">
+                    <div class="accordion-body p-0">
+                        <a class="hj-sidebar-link d-block px-3 py-2 fw-bold" href="../phase/Phase1_CoreLanguage.html">
+                            <span class="material-icons-outlined small me-1">summarize</span>Phase overview
+                        </a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Comments</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase1_CoreLanguage__Comments__DocumentationComments.html"><span
+                                class="material-icons-outlined small me-1">description</span>Documentation
+                            Comments</a><a class="hj-sidebar-link d-block px-3 py-1"
+                                           href="../code/Phase1_CoreLanguage__Comments__MultiLineComment.html"><span
+                            class="material-icons-outlined small me-1">description</span>Multi Line Comment</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Comments__SingleLineComments.html"><span
+                            class="material-icons-outlined small me-1">description</span>Single Line Comments</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Conversion</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase1_CoreLanguage__Conversion__AutomaticTypeConversion.html"><span
+                                class="material-icons-outlined small me-1">description</span>Automatic Type
+                            Conversion</a><a class="hj-sidebar-link d-block px-3 py-1"
+                                             href="../code/Phase1_CoreLanguage__Conversion__ExplicitTypeConversion.html"><span
+                            class="material-icons-outlined small me-1">description</span>Explicit Type Conversion</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Conversion__WideningPrimitive.html"><span
+                            class="material-icons-outlined small me-1">description</span>Widening Primitive</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Data Types</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase1_CoreLanguage__DataTypes__DataTypesIntro.html"><span
+                                class="material-icons-outlined small me-1">description</span>Data Types Intro</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Decision Making
+                        </div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase1_CoreLanguage__DecisionMaking__IfElseIfStatement.html"><span
+                                class="material-icons-outlined small me-1">description</span>If Else If Statement</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__DecisionMaking__IfElseStatement.html"><span
+                            class="material-icons-outlined small me-1">description</span>If Else Statement</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__DecisionMaking__IfStatement.html"><span
+                            class="material-icons-outlined small me-1">description</span>If Statement</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__DecisionMaking__JumpStatement__BreakStatement.html"><span
+                            class="material-icons-outlined small me-1">description</span>Break Statement</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__DecisionMaking__JumpStatement__ContinueStatement.html"><span
+                            class="material-icons-outlined small me-1">description</span>Continue Statement</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__DecisionMaking__JumpStatement__LabelStatement.html"><span
+                            class="material-icons-outlined small me-1">description</span>Label Statement</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__DecisionMaking__JumpStatement__ReturnStatement.html"><span
+                            class="material-icons-outlined small me-1">description</span>Return Statement</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__DecisionMaking__NestedIfStatement.html"><span
+                            class="material-icons-outlined small me-1">description</span>Nested If Statement</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__DecisionMaking__SwitchCaseStatement.html"><span
+                            class="material-icons-outlined small me-1">description</span>Switch Case Statement</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Enumerations
+                        </div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase1_CoreLanguage__Enumerations__EnumConstructor.html"><span
+                                class="material-icons-outlined small me-1">description</span>Enum Constructor</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Enumerations__EnumMethods.html"><span
+                            class="material-icons-outlined small me-1">description</span>Enum Methods</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Enumerations__EnumWithCustomizedVal.html"><span
+                            class="material-icons-outlined small me-1">description</span>Enum With Customized Val</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Enumerations__EnumWithSwitchCase.html"><span
+                            class="material-icons-outlined small me-1">description</span>Enum With Switch Case</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Enumerations__InsideClassEnum.html"><span
+                            class="material-icons-outlined small me-1">description</span>Inside Class Enum</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Enumerations__MainInsideEnum.html"><span
+                            class="material-icons-outlined small me-1">description</span>Main Inside Enum</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Enumerations__OutsideClassEnum.html"><span
+                            class="material-icons-outlined small me-1">description</span>Outside Class Enum</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Extra</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase1_CoreLanguage__Extra__BinarySearch.html"><span
+                                class="material-icons-outlined small me-1">description</span>Binary Search</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Extra__FactsAboutNull.html"><span
+                            class="material-icons-outlined small me-1">description</span>Facts About Null</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Extra__FunctionCurrying.html"><span
+                            class="material-icons-outlined small me-1">description</span>Function Currying</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Extra__IsJavaSupportGoto.html"><span
+                            class="material-icons-outlined small me-1">description</span>Is Java Support Goto</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Extra__ObjectMemoryAllocation.html"><span
+                            class="material-icons-outlined small me-1">description</span>Object Memory Allocation</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Extra__Sorting.html"><span
+                            class="material-icons-outlined small me-1">description</span>Sorting</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Extra__UnderscoreInNumber.html"><span
+                            class="material-icons-outlined small me-1">description</span>Underscore In Number</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Identifiers</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase1_CoreLanguage__Identifiers__Identifiers.html"><span
+                                class="material-icons-outlined small me-1">description</span>Identifiers</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Keywords</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase1_CoreLanguage__Keywords__Keywords.html"><span
+                                class="material-icons-outlined small me-1">description</span>Keywords</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Loops</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase1_CoreLanguage__Loops__DoWhileLoop.html"><span
+                                class="material-icons-outlined small me-1">description</span>Do While Loop</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Loops__ForEachOrEnhanceLoop.html"><span
+                            class="material-icons-outlined small me-1">description</span>For Each Or Enhance Loop</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Loops__ForLoop.html"><span
+                            class="material-icons-outlined small me-1">description</span>For Loop</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Loops__ForLoopImportant.html"><span
+                            class="material-icons-outlined small me-1">description</span>For Loop Important</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Loops__InfiniteLoop.html"><span
+                            class="material-icons-outlined small me-1">description</span>Infinite Loop</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Loops__WhileLoop.html"><span
+                            class="material-icons-outlined small me-1">description</span>While Loop</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Operators</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase1_CoreLanguage__Operators__ArithmeticOperators.html"><span
+                                class="material-icons-outlined small me-1">description</span>Arithmetic Operators</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Operators__AssignmentOperators.html"><span
+                            class="material-icons-outlined small me-1">description</span>Assignment Operators</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Operators__BitwiseOperators.html"><span
+                            class="material-icons-outlined small me-1">description</span>Bitwise Operators</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Operators__InstanceofOperator.html"><span
+                            class="material-icons-outlined small me-1">description</span>Instanceof Operator</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Operators__LogicalOperators.html"><span
+                            class="material-icons-outlined small me-1">description</span>Logical Operators</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Operators__RelationalOperators.html"><span
+                            class="material-icons-outlined small me-1">description</span>Relational Operators</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Operators__TernaryOperator.html"><span
+                            class="material-icons-outlined small me-1">description</span>Ternary Operator</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Operators__UnaryOperators.html"><span
+                            class="material-icons-outlined small me-1">description</span>Unary Operators</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Primitive Data
+                            Types
+                        </div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase1_CoreLanguage__PrimitiveDataTypes__BooleanExample.html"><span
+                                class="material-icons-outlined small me-1">description</span>Boolean Example</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__PrimitiveDataTypes__ByteExample.html"><span
+                            class="material-icons-outlined small me-1">description</span>Byte Example</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__PrimitiveDataTypes__CharExample.html"><span
+                            class="material-icons-outlined small me-1">description</span>Char Example</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__PrimitiveDataTypes__DoubleExample.html"><span
+                            class="material-icons-outlined small me-1">description</span>Double Example</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__PrimitiveDataTypes__FloatExample.html"><span
+                            class="material-icons-outlined small me-1">description</span>Float Example</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__PrimitiveDataTypes__IntegerExample.html"><span
+                            class="material-icons-outlined small me-1">description</span>Integer Example</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__PrimitiveDataTypes__LongExample.html"><span
+                            class="material-icons-outlined small me-1">description</span>Long Example</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__PrimitiveDataTypes__ShortExample.html"><span
+                            class="material-icons-outlined small me-1">description</span>Short Example</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Special Keyword
+                        </div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase1_CoreLanguage__SpecialKeyword__FinalKeywordExample.html"><span
+                                class="material-icons-outlined small me-1">description</span>Final Keyword Example</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Variables</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase1_CoreLanguage__Variables__InstanceVariableExample.html"><span
+                                class="material-icons-outlined small me-1">description</span>Instance Variable
+                            Example</a><a class="hj-sidebar-link d-block px-3 py-1"
+                                          href="../code/Phase1_CoreLanguage__Variables__LocalVariableExample.html"><span
+                            class="material-icons-outlined small me-1">description</span>Local Variable Example</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Variables__ScopeOfVariable.html"><span
+                            class="material-icons-outlined small me-1">description</span>Scope Of Variable</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__Variables__StaticVariableExample.html"><span
+                            class="material-icons-outlined small me-1">description</span>Static Variable Example</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Wrapper Classes
+                        </div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase1_CoreLanguage__WrapperClasses__AutoboxingUnboxing.html"><span
+                                class="material-icons-outlined small me-1">description</span>Autoboxing Unboxing</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase1_CoreLanguage__WrapperClasses__WrapperClassesIntro.html"><span
+                            class="material-icons-outlined small me-1">description</span>Wrapper Classes Intro</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-transparent border-0">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase2_MethodsArraysStrings" aria-expanded="false">
+                        <span class="material-icons me-2 text-primary">data_array</span>
+                        <span class="flex-grow-1">
+              <small class="text-muted d-block">Phase 2</small>
+              <span class="fw-bold">Methods, Arrays, Strings</span>
+            </span>
+                        <span class="badge bg-light text-dark ms-2">20</span>
+                    </button>
+                </h2>
+                <div id="sb-Phase2_MethodsArraysStrings" class="accordion-collapse collapse ">
+                    <div class="accordion-body p-0">
+                        <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
+                           href="../phase/Phase2_MethodsArraysStrings.html">
+                            <span class="material-icons-outlined small me-1">summarize</span>Phase overview
+                        </a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Arrays</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase2_MethodsArraysStrings__Arrays__ArrayIntroduction.html"><span
+                                class="material-icons-outlined small me-1">description</span>Array Introduction</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase2_MethodsArraysStrings__Arrays__ArraysClass.html"><span
+                            class="material-icons-outlined small me-1">description</span>Arrays Class</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase2_MethodsArraysStrings__Arrays__FinalArrays.html"><span
+                            class="material-icons-outlined small me-1">description</span>Final Arrays</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase2_MethodsArraysStrings__Arrays__JaggedArrays.html"><span
+                            class="material-icons-outlined small me-1">description</span>Jagged Arrays</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase2_MethodsArraysStrings__Arrays__MultiDimensionalArrays.html"><span
+                            class="material-icons-outlined small me-1">description</span>Multi Dimensional Arrays</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Methods</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase2_MethodsArraysStrings__Methods__AccessModifiers.html"><span
+                                class="material-icons-outlined small me-1">description</span>Access Modifiers</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase2_MethodsArraysStrings__Methods__CommandLineArguments.html"><span
+                            class="material-icons-outlined small me-1">description</span>Command Line Arguments</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase2_MethodsArraysStrings__Methods__InterfaceMethods.html"><span
+                            class="material-icons-outlined small me-1">description</span>Interface Methods</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase2_MethodsArraysStrings__Methods__MethodIntroduction.html"><span
+                            class="material-icons-outlined small me-1">description</span>Method Introduction</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase2_MethodsArraysStrings__Methods__MethodReferences.html"><span
+                            class="material-icons-outlined small me-1">description</span>Method References</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase2_MethodsArraysStrings__Methods__StaticVsInstanceMethods.html"><span
+                            class="material-icons-outlined small me-1">description</span>Static Vs Instance
+                        Methods</a><a class="hj-sidebar-link d-block px-3 py-1"
+                                      href="../code/Phase2_MethodsArraysStrings__Methods__Varargs.html"><span
+                            class="material-icons-outlined small me-1">description</span>Varargs</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Strings</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase2_MethodsArraysStrings__Strings__ModernStringFeatures.html"><span
+                                class="material-icons-outlined small me-1">description</span>Modern String
+                            Features</a><a class="hj-sidebar-link d-block px-3 py-1"
+                                           href="../code/Phase2_MethodsArraysStrings__Strings__StringBufferClass.html"><span
+                            class="material-icons-outlined small me-1">description</span>String Buffer Class</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase2_MethodsArraysStrings__Strings__StringBuilderClass.html"><span
+                            class="material-icons-outlined small me-1">description</span>String Builder Class</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase2_MethodsArraysStrings__Strings__StringConcatenation.html"><span
+                            class="material-icons-outlined small me-1">description</span>String Concatenation</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase2_MethodsArraysStrings__Strings__StringImmutability.html"><span
+                            class="material-icons-outlined small me-1">description</span>String Immutability</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase2_MethodsArraysStrings__Strings__StringIntroduction.html"><span
+                            class="material-icons-outlined small me-1">description</span>String Introduction</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase2_MethodsArraysStrings__Strings__StringMethods.html"><span
+                            class="material-icons-outlined small me-1">description</span>String Methods</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase2_MethodsArraysStrings__Strings__StringVsBufferVsBuilder.html"><span
+                            class="material-icons-outlined small me-1">description</span>String Vs Buffer Vs Builder</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-transparent border-0">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase3_ObjectOrientation" aria-expanded="false">
+                        <span class="material-icons me-2 text-primary">category</span>
+                        <span class="flex-grow-1">
+              <small class="text-muted d-block">Phase 3</small>
+              <span class="fw-bold">Object Orientation</span>
+            </span>
+                        <span class="badge bg-light text-dark ms-2">48</span>
+                    </button>
+                </h2>
+                <div id="sb-Phase3_ObjectOrientation" class="accordion-collapse collapse ">
+                    <div class="accordion-body p-0">
+                        <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
+                           href="../phase/Phase3_ObjectOrientation.html">
+                            <span class="material-icons-outlined small me-1">summarize</span>Phase overview
+                        </a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Abstraction</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase3_ObjectOrientation__Abstraction__AbstractClassExample.html"><span
+                                class="material-icons-outlined small me-1">description</span>Abstract Class
+                            Example</a><a class="hj-sidebar-link d-block px-3 py-1"
+                                          href="../code/Phase3_ObjectOrientation__Abstraction__AbstractClassVsInterface.html"><span
+                            class="material-icons-outlined small me-1">description</span>Abstract Class Vs Interface</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__Abstraction__InterfaceExample.html"><span
+                            class="material-icons-outlined small me-1">description</span>Interface Example</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Banking App</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase3_ObjectOrientation__BankingApp__Account.html"><span
+                                class="material-icons-outlined small me-1">description</span>Account</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__BankingApp__Bank.html"><span
+                            class="material-icons-outlined small me-1">description</span>Bank</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__BankingApp__BankingApp.html"><span
+                            class="material-icons-outlined small me-1">description</span>Banking App</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__BankingApp__CheckingAccount.html"><span
+                            class="material-icons-outlined small me-1">description</span>Checking Account</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__BankingApp__SavingsAccount.html"><span
+                            class="material-icons-outlined small me-1">description</span>Savings Account</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__BankingApp__Transaction.html"><span
+                            class="material-icons-outlined small me-1">description</span>Transaction</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Classes And
+                            Object
+                        </div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase3_ObjectOrientation__ClassesAndObject__InitializingObject.html"><span
+                                class="material-icons-outlined small me-1">description</span>Initializing Object</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__ClassesAndObject__WaysToCreateObject.html"><span
+                            class="material-icons-outlined small me-1">description</span>Ways To Create Object</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Constructors
+                        </div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase3_ObjectOrientation__Constructors__Constructors.html"><span
+                                class="material-icons-outlined small me-1">description</span>Constructors</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Employee App
+                        </div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase3_ObjectOrientation__EmployeeApp__Auditable.html"><span
+                                class="material-icons-outlined small me-1">description</span>Auditable</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__EmployeeApp__Contractor.html"><span
+                            class="material-icons-outlined small me-1">description</span>Contractor</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__EmployeeApp__Employee.html"><span
+                            class="material-icons-outlined small me-1">description</span>Employee</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__EmployeeApp__EmployeeApp.html"><span
+                            class="material-icons-outlined small me-1">description</span>Employee App</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__EmployeeApp__EmployeeFilter.html"><span
+                            class="material-icons-outlined small me-1">description</span>Employee Filter</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__EmployeeApp__EmployeeRepository.html"><span
+                            class="material-icons-outlined small me-1">description</span>Employee Repository</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__EmployeeApp__FullTimeEmployee.html"><span
+                            class="material-icons-outlined small me-1">description</span>Full Time Employee</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__EmployeeApp__Intern.html"><span
+                            class="material-icons-outlined small me-1">description</span>Intern</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__EmployeeApp__PartTimeEmployee.html"><span
+                            class="material-icons-outlined small me-1">description</span>Part Time Employee</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__EmployeeApp__Promotable.html"><span
+                            class="material-icons-outlined small me-1">description</span>Promotable</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Encapsulation
+                        </div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase3_ObjectOrientation__Encapsulation__TestEncapsulation.html"><span
+                                class="material-icons-outlined small me-1">description</span>Test Encapsulation</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Inheritance</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase3_ObjectOrientation__Inheritance__InheritanceJava.html"><span
+                                class="material-icons-outlined small me-1">description</span>Inheritance Java</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__Inheritance__TypesOfInheritance__HierarchicalInheritance.html"><span
+                            class="material-icons-outlined small me-1">description</span>Hierarchical Inheritance</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__Inheritance__TypesOfInheritance__HybridInheritance.html"><span
+                            class="material-icons-outlined small me-1">description</span>Hybrid Inheritance</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__Inheritance__TypesOfInheritance__MultiLevelInheritance.html"><span
+                            class="material-icons-outlined small me-1">description</span>Multi Level Inheritance</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__Inheritance__TypesOfInheritance__MultipleInheritance.html"><span
+                            class="material-icons-outlined small me-1">description</span>Multiple Inheritance</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__Inheritance__TypesOfInheritance__SingleInheritance.html"><span
+                            class="material-icons-outlined small me-1">description</span>Single Inheritance</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Interfaces</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase3_ObjectOrientation__Interfaces__ClassVsInterface.html"><span
+                                class="material-icons-outlined small me-1">description</span>Class Vs Interface</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__Interfaces__FunctionalInterfaceDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Functional Interface Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__Interfaces__InterfaceIntro.html"><span
+                            class="material-icons-outlined small me-1">description</span>Interface Intro</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__Interfaces__MarkerInterface.html"><span
+                            class="material-icons-outlined small me-1">description</span>Marker Interface</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__Interfaces__NestedInterface.html"><span
+                            class="material-icons-outlined small me-1">description</span>Nested Interface</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__Interfaces__SealedInterfaceDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Sealed Interface Demo</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Introduction
+                        </div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase3_ObjectOrientation__Introduction__OopIntroduction.html"><span
+                                class="material-icons-outlined small me-1">description</span>Oop Introduction</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Nested Classes
+                        </div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase3_ObjectOrientation__NestedClasses__InnerClass.html"><span
+                                class="material-icons-outlined small me-1">description</span>Inner Class</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__NestedClasses__LocalAndAnonymousClass.html"><span
+                            class="material-icons-outlined small me-1">description</span>Local And Anonymous Class</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__NestedClasses__NestedClassesIntroduction.html"><span
+                            class="material-icons-outlined small me-1">description</span>Nested Classes Introduction</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__NestedClasses__StaticNestedClass.html"><span
+                            class="material-icons-outlined small me-1">description</span>Static Nested Class</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Object Class
+                        </div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase3_ObjectOrientation__ObjectClass__ObjectClassMethods.html"><span
+                                class="material-icons-outlined small me-1">description</span>Object Class Methods</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Packages</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase3_ObjectOrientation__Packages__PackagesAndImports.html"><span
+                                class="material-icons-outlined small me-1">description</span>Packages And Imports</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Polymorphism
+                        </div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase3_ObjectOrientation__Polymorphism__Polymorphism.html"><span
+                                class="material-icons-outlined small me-1">description</span>Polymorphism</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Sealed Classes
+                        </div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase3_ObjectOrientation__SealedClasses__SealedClassesDemo.html"><span
+                                class="material-icons-outlined small me-1">description</span>Sealed Classes Demo</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Serialization
+                            Deserialization
+                        </div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase3_ObjectOrientation__SerializationDeserialization__DemoOneModel.html"><span
+                                class="material-icons-outlined small me-1">description</span>Demo One Model</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__SerializationDeserialization__DemoTwoModel.html"><span
+                            class="material-icons-outlined small me-1">description</span>Demo Two Model</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase3_ObjectOrientation__SerializationDeserialization__SerializationDeserializationDemoOne.html"><span
+                            class="material-icons-outlined small me-1">description</span>Serialization Deserialization
+                        Demo One</a><a class="hj-sidebar-link d-block px-3 py-1"
+                                       href="../code/Phase3_ObjectOrientation__SerializationDeserialization__SerializationDeserializationDemoTwo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Serialization Deserialization
+                        Demo Two</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-transparent border-0">
+                <h2 class="accordion-header">
+                    <button class="accordion-button  bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase4_ErrorsAndTypeSafety" aria-expanded="true">
+                        <span class="material-icons me-2 text-primary">shield</span>
+                        <span class="flex-grow-1">
+              <small class="text-muted d-block">Phase 4</small>
+              <span class="fw-bold">Errors &amp; Type Safety</span>
+            </span>
+                        <span class="badge bg-light text-dark ms-2">27</span>
+                    </button>
+                </h2>
+                <div id="sb-Phase4_ErrorsAndTypeSafety" class="accordion-collapse collapse show">
+                    <div class="accordion-body p-0">
+                        <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
+                           href="../phase/Phase4_ErrorsAndTypeSafety.html">
+                            <span class="material-icons-outlined small me-1">summarize</span>Phase overview
+                        </a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Annotations</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase4_ErrorsAndTypeSafety__Annotations__AnnotationsIntroduction.html"><span
+                                class="material-icons-outlined small me-1">description</span>Annotations
+                            Introduction</a><a class="hj-sidebar-link d-block px-3 py-1"
+                                               href="../code/Phase4_ErrorsAndTypeSafety__Annotations__BuiltInAnnotations.html"><span
+                            class="material-icons-outlined small me-1">description</span>Built In Annotations</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase4_ErrorsAndTypeSafety__Annotations__CustomAnnotations.html"><span
+                            class="material-icons-outlined small me-1">description</span>Custom Annotations</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase4_ErrorsAndTypeSafety__Annotations__RuntimeAnnotations.html"><span
+                            class="material-icons-outlined small me-1">description</span>Runtime Annotations</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Exception
+                            Handling
+                        </div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase4_ErrorsAndTypeSafety__ExceptionHandling__ChainedException.html"><span
+                                class="material-icons-outlined small me-1">description</span>Chained Exception</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase4_ErrorsAndTypeSafety__ExceptionHandling__CustomException.html"><span
+                            class="material-icons-outlined small me-1">description</span>Custom Exception</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase4_ErrorsAndTypeSafety__ExceptionHandling__ExceptionBestPractices.html"><span
+                            class="material-icons-outlined small me-1">description</span>Exception Best Practices</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase4_ErrorsAndTypeSafety__ExceptionHandling__ExceptionInOverriding.html"><span
+                            class="material-icons-outlined small me-1">description</span>Exception In Overriding</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase4_ErrorsAndTypeSafety__ExceptionHandling__ExceptionIntroduction.html"><span
+                            class="material-icons-outlined small me-1">description</span>Exception Introduction</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase4_ErrorsAndTypeSafety__ExceptionHandling__FinalFinallyFinalize.html"><span
+                            class="material-icons-outlined small me-1">description</span>Final Finally Finalize</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase4_ErrorsAndTypeSafety__ExceptionHandling__NullPointerExceptions.html"><span
+                            class="material-icons-outlined small me-1">description</span>Null Pointer Exceptions</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase4_ErrorsAndTypeSafety__ExceptionHandling__ThrowAndThrows.html"><span
+                            class="material-icons-outlined small me-1">description</span>Throw And Throws</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase4_ErrorsAndTypeSafety__ExceptionHandling__TryCatchBlock.html"><span
+                            class="material-icons-outlined small me-1">description</span>Try Catch Block</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase4_ErrorsAndTypeSafety__ExceptionHandling__TryWithResources.html"><span
+                            class="material-icons-outlined small me-1">description</span>Try With Resources</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Generics</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase4_ErrorsAndTypeSafety__Generics__BoundedTypeParameters.html"><span
+                                class="material-icons-outlined small me-1">description</span>Bounded Type Parameters</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase4_ErrorsAndTypeSafety__Generics__GenericClasses.html"><span
+                            class="material-icons-outlined small me-1">description</span>Generic Classes</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase4_ErrorsAndTypeSafety__Generics__GenericInterfaces.html"><span
+                            class="material-icons-outlined small me-1">description</span>Generic Interfaces</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase4_ErrorsAndTypeSafety__Generics__GenericMethods.html"><span
+                            class="material-icons-outlined small me-1">description</span>Generic Methods</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase4_ErrorsAndTypeSafety__Generics__GenericRestrictions.html"><span
+                            class="material-icons-outlined small me-1">description</span>Generic Restrictions</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase4_ErrorsAndTypeSafety__Generics__GenericsIntroduction.html"><span
+                            class="material-icons-outlined small me-1">description</span>Generics Introduction</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase4_ErrorsAndTypeSafety__Generics__HeapPollutionAndSafeVarargs.html"><span
+                            class="material-icons-outlined small me-1">description</span>Heap Pollution And Safe Varargs</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase4_ErrorsAndTypeSafety__Generics__ModernGenerics.html"><span
+                            class="material-icons-outlined small me-1">description</span>Modern Generics</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase4_ErrorsAndTypeSafety__Generics__PecsPrinciple.html"><span
+                            class="material-icons-outlined small me-1">description</span>Pecs Principle</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase4_ErrorsAndTypeSafety__Generics__RecursiveTypeBounds.html"><span
+                            class="material-icons-outlined small me-1">description</span>Recursive Type Bounds</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase4_ErrorsAndTypeSafety__Generics__TypeErasure.html"><span
+                            class="material-icons-outlined small me-1">description</span>Type Erasure</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase4_ErrorsAndTypeSafety__Generics__Wildcards.html"><span
+                            class="material-icons-outlined small me-1">description</span>Wildcards</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Optional Type
+                        </div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase4_ErrorsAndTypeSafety__OptionalType__OptionalDemo.html"><span
+                                class="material-icons-outlined small me-1">description</span>Optional Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-transparent border-0">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase5_CollectionsLambdasStreams" aria-expanded="false">
+                        <span class="material-icons me-2 text-primary">stream</span>
+                        <span class="flex-grow-1">
+              <small class="text-muted d-block">Phase 5</small>
+              <span class="fw-bold">Collections, Lambdas &amp; Streams</span>
+            </span>
+                        <span class="badge bg-light text-dark ms-2">57</span>
+                    </button>
+                </h2>
+                <div id="sb-Phase5_CollectionsLambdasStreams" class="accordion-collapse collapse ">
+                    <div class="accordion-body p-0">
+                        <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
+                           href="../phase/Phase5_CollectionsLambdasStreams.html">
+                            <span class="material-icons-outlined small me-1">summarize</span>Phase overview
+                        </a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Collections</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase5_CollectionsLambdasStreams__Collections__AbstractListClasses.html"><span
+                                class="material-icons-outlined small me-1">description</span>Abstract List Classes</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__AbstractQueueDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Abstract Queue Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__ArrayDequeDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Array Deque Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__ArrayListDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Array List Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__BlockingQueueDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Blocking Queue Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__CollectionInterface.html"><span
+                            class="material-icons-outlined small me-1">description</span>Collection Interface</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__CollectionsClass.html"><span
+                            class="material-icons-outlined small me-1">description</span>Collections Class</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__CollectionsIntroduction.html"><span
+                            class="material-icons-outlined small me-1">description</span>Collections Introduction</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__ComparatorComparable.html"><span
+                            class="material-icons-outlined small me-1">description</span>Comparator Comparable</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__ConcurrentHashMapDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Concurrent Hash Map Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__ConcurrentLinkedQueueDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Concurrent Linked Queue
+                        Demo</a><a class="hj-sidebar-link d-block px-3 py-1"
+                                   href="../code/Phase5_CollectionsLambdasStreams__Collections__ConcurrentSkipListSetDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Concurrent Skip List Set
+                        Demo</a><a class="hj-sidebar-link d-block px-3 py-1"
+                                   href="../code/Phase5_CollectionsLambdasStreams__Collections__CopyOnWriteArrayListDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Copy On Write Array List
+                        Demo</a><a class="hj-sidebar-link d-block px-3 py-1"
+                                   href="../code/Phase5_CollectionsLambdasStreams__Collections__DequeInterface.html"><span
+                            class="material-icons-outlined small me-1">description</span>Deque Interface</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__EnumerationDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Enumeration Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__EnumSetDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Enum Set Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__FaceDetectionApp__Detector.html"><span
+                            class="material-icons-outlined small me-1">description</span>Detector</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__FaceDetectionApp__Face.html"><span
+                            class="material-icons-outlined small me-1">description</span>Face</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__FaceDetectionApp__FaceDetectionApp.html"><span
+                            class="material-icons-outlined small me-1">description</span>Face Detection App</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__FaceDetectionApp__FaceRepository.html"><span
+                            class="material-icons-outlined small me-1">description</span>Face Repository</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__HashMapDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Hash Map Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__HashSetDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Hash Set Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__HashtableDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Hashtable Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__IdentityHashMapDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Identity Hash Map Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__IterableDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Iterable Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__IteratorDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Iterator Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__LinkedHashMapDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Linked Hash Map Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__LinkedHashSetDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Linked Hash Set Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__LinkedListDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Linked List Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__ListInterface.html"><span
+                            class="material-icons-outlined small me-1">description</span>List Interface</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__MapInterface.html"><span
+                            class="material-icons-outlined small me-1">description</span>Map Interface</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__ModernCollections.html"><span
+                            class="material-icons-outlined small me-1">description</span>Modern Collections</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__PriorityQueueDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Priority Queue Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__QueueInterface.html"><span
+                            class="material-icons-outlined small me-1">description</span>Queue Interface</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__SetInterface.html"><span
+                            class="material-icons-outlined small me-1">description</span>Set Interface</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__SortedAndNavigableSet.html"><span
+                            class="material-icons-outlined small me-1">description</span>Sorted And Navigable Set</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__TreeMapDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Tree Map Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__TreeSetDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Tree Set Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__VectorAndStack.html"><span
+                            class="material-icons-outlined small me-1">description</span>Vector And Stack</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__Collections__WeakHashMapDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Weak Hash Map Demo</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Lambda And
+                            Streams
+                        </div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase5_CollectionsLambdasStreams__LambdaAndStreams__CollectorsClass.html"><span
+                                class="material-icons-outlined small me-1">description</span>Collectors Class</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__LambdaAndStreams__Examples__BookGroupingExample.html"><span
+                            class="material-icons-outlined small me-1">description</span>Book Grouping Example</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__LambdaAndStreams__Examples__EmployeeSalaryExample.html"><span
+                            class="material-icons-outlined small me-1">description</span>Employee Salary Example</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__LambdaAndStreams__Examples__GroceryStoreExample.html"><span
+                            class="material-icons-outlined small me-1">description</span>Grocery Store Example</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__LambdaAndStreams__InfiniteStreams.html"><span
+                            class="material-icons-outlined small me-1">description</span>Infinite Streams</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__LambdaAndStreams__IntermediateOperations.html"><span
+                            class="material-icons-outlined small me-1">description</span>Intermediate Operations</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__LambdaAndStreams__LambdaExpressions.html"><span
+                            class="material-icons-outlined small me-1">description</span>Lambda Expressions</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__LambdaAndStreams__MethodReferences.html"><span
+                            class="material-icons-outlined small me-1">description</span>Method References</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__LambdaAndStreams__ModernStreams.html"><span
+                            class="material-icons-outlined small me-1">description</span>Modern Streams</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__LambdaAndStreams__PrimitiveStreams.html"><span
+                            class="material-icons-outlined small me-1">description</span>Primitive Streams</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__LambdaAndStreams__SequentialVsParallel.html"><span
+                            class="material-icons-outlined small me-1">description</span>Sequential Vs Parallel</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__LambdaAndStreams__StreamCreation.html"><span
+                            class="material-icons-outlined small me-1">description</span>Stream Creation</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__LambdaAndStreams__StreamFileIO.html"><span
+                            class="material-icons-outlined small me-1">description</span>Stream File IO</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__LambdaAndStreams__StreamIntroduction.html"><span
+                            class="material-icons-outlined small me-1">description</span>Stream Introduction</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__LambdaAndStreams__StreamPipeline.html"><span
+                            class="material-icons-outlined small me-1">description</span>Stream Pipeline</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__LambdaAndStreams__StreamVsCollection.html"><span
+                            class="material-icons-outlined small me-1">description</span>Stream Vs Collection</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase5_CollectionsLambdasStreams__LambdaAndStreams__TerminalOperations.html"><span
+                            class="material-icons-outlined small me-1">description</span>Terminal Operations</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-transparent border-0">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase6_RuntimeMemoryRegexReflection" aria-expanded="false">
+                        <span class="material-icons me-2 text-primary">memory</span>
+                        <span class="flex-grow-1">
+              <small class="text-muted d-block">Phase 6</small>
+              <span class="fw-bold">Runtime, Memory, Regex, Reflection</span>
+            </span>
+                        <span class="badge bg-light text-dark ms-2">21</span>
+                    </button>
+                </h2>
+                <div id="sb-Phase6_RuntimeMemoryRegexReflection" class="accordion-collapse collapse ">
+                    <div class="accordion-body p-0">
+                        <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
+                           href="../phase/Phase6_RuntimeMemoryRegexReflection.html">
+                            <span class="material-icons-outlined small me-1">summarize</span>Phase overview
+                        </a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Memory
+                            Allocation
+                        </div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase6_RuntimeMemoryRegexReflection__MemoryAllocation__GarbageCollection.html"><span
+                                class="material-icons-outlined small me-1">description</span>Garbage Collection</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase6_RuntimeMemoryRegexReflection__MemoryAllocation__GarbageCollectors.html"><span
+                            class="material-icons-outlined small me-1">description</span>Garbage Collectors</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase6_RuntimeMemoryRegexReflection__MemoryAllocation__JvmMemoryAreas.html"><span
+                            class="material-icons-outlined small me-1">description</span>Jvm Memory Areas</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase6_RuntimeMemoryRegexReflection__MemoryAllocation__MemoryLeaks.html"><span
+                            class="material-icons-outlined small me-1">description</span>Memory Leaks</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase6_RuntimeMemoryRegexReflection__MemoryAllocation__MemoryManagementIntro.html"><span
+                            class="material-icons-outlined small me-1">description</span>Memory Management Intro</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase6_RuntimeMemoryRegexReflection__MemoryAllocation__ModernMemoryFeatures.html"><span
+                            class="material-icons-outlined small me-1">description</span>Modern Memory Features</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase6_RuntimeMemoryRegexReflection__MemoryAllocation__ObjectsInMemory.html"><span
+                            class="material-icons-outlined small me-1">description</span>Objects In Memory</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase6_RuntimeMemoryRegexReflection__MemoryAllocation__StackVsHeap.html"><span
+                            class="material-icons-outlined small me-1">description</span>Stack Vs Heap</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Reflection</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase6_RuntimeMemoryRegexReflection__Reflection__ClassAndMethodReflection.html"><span
+                                class="material-icons-outlined small me-1">description</span>Class And Method Reflection</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase6_RuntimeMemoryRegexReflection__Reflection__DynamicInvocation.html"><span
+                            class="material-icons-outlined small me-1">description</span>Dynamic Invocation</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase6_RuntimeMemoryRegexReflection__Reflection__ReflectionIntroduction.html"><span
+                            class="material-icons-outlined small me-1">description</span>Reflection Introduction</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Regex</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase6_RuntimeMemoryRegexReflection__Regex__CharacterClass.html"><span
+                                class="material-icons-outlined small me-1">description</span>Character Class</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase6_RuntimeMemoryRegexReflection__Regex__GroupsAndBackreferences.html"><span
+                            class="material-icons-outlined small me-1">description</span>Groups And Backreferences</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase6_RuntimeMemoryRegexReflection__Regex__LookaroundAssertions.html"><span
+                            class="material-icons-outlined small me-1">description</span>Lookaround Assertions</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase6_RuntimeMemoryRegexReflection__Regex__MatcherClass.html"><span
+                            class="material-icons-outlined small me-1">description</span>Matcher Class</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase6_RuntimeMemoryRegexReflection__Regex__MetacharactersAndAnchors.html"><span
+                            class="material-icons-outlined small me-1">description</span>Metacharacters And
+                        Anchors</a><a class="hj-sidebar-link d-block px-3 py-1"
+                                      href="../code/Phase6_RuntimeMemoryRegexReflection__Regex__ModernRegexFeatures.html"><span
+                            class="material-icons-outlined small me-1">description</span>Modern Regex Features</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase6_RuntimeMemoryRegexReflection__Regex__Quantifiers.html"><span
+                            class="material-icons-outlined small me-1">description</span>Quantifiers</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase6_RuntimeMemoryRegexReflection__Regex__RegexExamples.html"><span
+                            class="material-icons-outlined small me-1">description</span>Regex Examples</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase6_RuntimeMemoryRegexReflection__Regex__RegexFlags.html"><span
+                            class="material-icons-outlined small me-1">description</span>Regex Flags</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase6_RuntimeMemoryRegexReflection__Regex__RegexIntroduction.html"><span
+                            class="material-icons-outlined small me-1">description</span>Regex Introduction</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-transparent border-0">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase7_Concurrency" aria-expanded="false">
+                        <span class="material-icons me-2 text-primary">settings_input_component</span>
+                        <span class="flex-grow-1">
+              <small class="text-muted d-block">Phase 7</small>
+              <span class="fw-bold">Concurrency</span>
+            </span>
+                        <span class="badge bg-light text-dark ms-2">48</span>
+                    </button>
+                </h2>
+                <div id="sb-Phase7_Concurrency" class="accordion-collapse collapse ">
+                    <div class="accordion-body p-0">
+                        <a class="hj-sidebar-link d-block px-3 py-2 fw-bold" href="../phase/Phase7_Concurrency.html">
+                            <span class="material-icons-outlined small me-1">summarize</span>Phase overview
+                        </a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Multithreading
+                        </div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase7_Concurrency__Multithreading__AtomicVariables.html"><span
+                                class="material-icons-outlined small me-1">description</span>Atomic Variables</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__CallableAndFuture.html"><span
+                            class="material-icons-outlined small me-1">description</span>Callable And Future</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__CompletableFutureDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Completable Future Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__CountDownLatchDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Count Down Latch Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__CyclicBarrierDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Cyclic Barrier Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__DaemonThread.html"><span
+                            class="material-icons-outlined small me-1">description</span>Daemon Thread</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__DeadlockDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Deadlock Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__ExecutorFramework.html"><span
+                            class="material-icons-outlined small me-1">description</span>Executor Framework</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__ForkJoinPoolDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Fork Join Pool Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__JavaMemoryModel.html"><span
+                            class="material-icons-outlined small me-1">description</span>Java Memory Model</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__JavaSynchronization.html"><span
+                            class="material-icons-outlined small me-1">description</span>Java Synchronization</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__LockFrameworkVsSync.html"><span
+                            class="material-icons-outlined small me-1">description</span>Lock Framework Vs Sync</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__LocksInJava.html"><span
+                            class="material-icons-outlined small me-1">description</span>Locks In Java</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__LockVsMonitor.html"><span
+                            class="material-icons-outlined small me-1">description</span>Lock Vs Monitor</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__MainThread.html"><span
+                            class="material-icons-outlined small me-1">description</span>Main Thread</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__MultithreadingCompleteTutorial.html"><span
+                            class="material-icons-outlined small me-1">description</span>Multithreading Complete
+                        Tutorial</a><a class="hj-sidebar-link d-block px-3 py-1"
+                                       href="../code/Phase7_Concurrency__Multithreading__MultithreadingIntroduction.html"><span
+                            class="material-icons-outlined small me-1">description</span>Multithreading Introduction</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__PhaserDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Phaser Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__ProducerConsumer.html"><span
+                            class="material-icons-outlined small me-1">description</span>Producer Consumer</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__RaceConditionStarvationLivelock.html"><span
+                            class="material-icons-outlined small me-1">description</span>Race Condition Starvation
+                        Livelock</a><a class="hj-sidebar-link d-block px-3 py-1"
+                                       href="../code/Phase7_Concurrency__Multithreading__ReadWriteLockDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Read Write Lock Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__ReentrantLockDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Reentrant Lock Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__RunnableInterface.html"><span
+                            class="material-icons-outlined small me-1">description</span>Runnable Interface</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__ScheduledExecutorDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Scheduled Executor Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__ScopedValuesDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Scoped Values Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__SemaphoreDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Semaphore Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__SnakeGame__Cell.html"><span
+                            class="material-icons-outlined small me-1">description</span>Cell</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__SnakeGame__Direction.html"><span
+                            class="material-icons-outlined small me-1">description</span>Direction</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__SnakeGame__GameLoop.html"><span
+                            class="material-icons-outlined small me-1">description</span>Game Loop</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__SnakeGame__GameState.html"><span
+                            class="material-icons-outlined small me-1">description</span>Game State</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__SnakeGame__SnakeBoard.html"><span
+                            class="material-icons-outlined small me-1">description</span>Snake Board</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__SnakeGame__SnakeGame.html"><span
+                            class="material-icons-outlined small me-1">description</span>Snake Game</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__StampedLockDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Stamped Lock Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__StartVsRun.html"><span
+                            class="material-icons-outlined small me-1">description</span>Start Vs Run</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__StructuredConcurrency.html"><span
+                            class="material-icons-outlined small me-1">description</span>Structured Concurrency</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__ThreadInterruption.html"><span
+                            class="material-icons-outlined small me-1">description</span>Thread Interruption</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__ThreadJoinMethod.html"><span
+                            class="material-icons-outlined small me-1">description</span>Thread Join Method</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__ThreadLifecycle.html"><span
+                            class="material-icons-outlined small me-1">description</span>Thread Lifecycle</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__ThreadLocalDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Thread Local Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__ThreadPools.html"><span
+                            class="material-icons-outlined small me-1">description</span>Thread Pools</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__ThreadPriority.html"><span
+                            class="material-icons-outlined small me-1">description</span>Thread Priority</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__Threads.html"><span
+                            class="material-icons-outlined small me-1">description</span>Threads</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__ThreadSafety.html"><span
+                            class="material-icons-outlined small me-1">description</span>Thread Safety</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__ThreadSleepMethod.html"><span
+                            class="material-icons-outlined small me-1">description</span>Thread Sleep Method</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__ThreadYieldMethod.html"><span
+                            class="material-icons-outlined small me-1">description</span>Thread Yield Method</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__VirtualThreads.html"><span
+                            class="material-icons-outlined small me-1">description</span>Virtual Threads</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__VolatileKeyword.html"><span
+                            class="material-icons-outlined small me-1">description</span>Volatile Keyword</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase7_Concurrency__Multithreading__WaitNotifyNotifyAll.html"><span
+                            class="material-icons-outlined small me-1">description</span>Wait Notify Notify All</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-transparent border-0">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase8_PracticalAPIs" aria-expanded="false">
+                        <span class="material-icons me-2 text-primary">api</span>
+                        <span class="flex-grow-1">
+              <small class="text-muted d-block">Phase 8</small>
+              <span class="fw-bold">Practical APIs</span>
+            </span>
+                        <span class="badge bg-light text-dark ms-2">22</span>
+                    </button>
+                </h2>
+                <div id="sb-Phase8_PracticalAPIs" class="accordion-collapse collapse ">
+                    <div class="accordion-body p-0">
+                        <a class="hj-sidebar-link d-block px-3 py-2 fw-bold" href="../phase/Phase8_PracticalAPIs.html">
+                            <span class="material-icons-outlined small me-1">summarize</span>Phase overview
+                        </a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Date And Time
+                        </div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase8_PracticalAPIs__DateAndTime__DateTimeFormatterDemo.html"><span
+                                class="material-icons-outlined small me-1">description</span>Date Time Formatter
+                            Demo</a><a class="hj-sidebar-link d-block px-3 py-1"
+                                       href="../code/Phase8_PracticalAPIs__DateAndTime__DateTimeIntroduction.html"><span
+                            class="material-icons-outlined small me-1">description</span>Date Time Introduction</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase8_PracticalAPIs__DateAndTime__DurationDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Duration Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase8_PracticalAPIs__DateAndTime__InstantDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Instant Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase8_PracticalAPIs__DateAndTime__LegacyDateConversions.html"><span
+                            class="material-icons-outlined small me-1">description</span>Legacy Date Conversions</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase8_PracticalAPIs__DateAndTime__LocalDateLocalTimeLocalDateTime.html"><span
+                            class="material-icons-outlined small me-1">description</span>Local Date Local Time Local
+                        Date Time</a><a class="hj-sidebar-link d-block px-3 py-1"
+                                        href="../code/Phase8_PracticalAPIs__DateAndTime__PeriodDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Period Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase8_PracticalAPIs__DateAndTime__ZonedDateTimeDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Zoned Date Time Demo</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">File IO</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase8_PracticalAPIs__FileIO__BufferedStreams.html"><span
+                                class="material-icons-outlined small me-1">description</span>Buffered Streams</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase8_PracticalAPIs__FileIO__ByteStreams.html"><span
+                            class="material-icons-outlined small me-1">description</span>Byte Streams</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase8_PracticalAPIs__FileIO__CharacterStreams.html"><span
+                            class="material-icons-outlined small me-1">description</span>Character Streams</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase8_PracticalAPIs__FileIO__DataStreams.html"><span
+                            class="material-icons-outlined small me-1">description</span>Data Streams</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase8_PracticalAPIs__FileIO__FileChannelDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>File Channel Demo</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase8_PracticalAPIs__FileIO__FileIOIntroduction.html"><span
+                            class="material-icons-outlined small me-1">description</span>File IO Introduction</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase8_PracticalAPIs__FileIO__FilesAndPaths.html"><span
+                            class="material-icons-outlined small me-1">description</span>Files And Paths</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase8_PracticalAPIs__FileIO__FilesWalkAndList.html"><span
+                            class="material-icons-outlined small me-1">description</span>Files Walk And List</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase8_PracticalAPIs__FileIO__ModernFileIO.html"><span
+                            class="material-icons-outlined small me-1">description</span>Modern File IO</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase8_PracticalAPIs__FileIO__ObjectStreams.html"><span
+                            class="material-icons-outlined small me-1">description</span>Object Streams</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase8_PracticalAPIs__FileIO__WatchServiceDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Watch Service Demo</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Http Client</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase8_PracticalAPIs__HttpClient__HttpClientIntroduction.html"><span
+                                class="material-icons-outlined small me-1">description</span>Http Client
+                            Introduction</a><a class="hj-sidebar-link d-block px-3 py-1"
+                                               href="../code/Phase8_PracticalAPIs__HttpClient__SyncAndAsyncRequests.html"><span
+                            class="material-icons-outlined small me-1">description</span>Sync And Async Requests</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase8_PracticalAPIs__HttpClient__WebSocketDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Web Socket Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-transparent border-0">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase9_ModernJavaAndModules" aria-expanded="false">
+                        <span class="material-icons me-2 text-primary">auto_awesome</span>
+                        <span class="flex-grow-1">
+              <small class="text-muted d-block">Phase 9</small>
+              <span class="fw-bold">Modern Java &amp; Modules</span>
+            </span>
+                        <span class="badge bg-light text-dark ms-2">8</span>
+                    </button>
+                </h2>
+                <div id="sb-Phase9_ModernJavaAndModules" class="accordion-collapse collapse ">
+                    <div class="accordion-body p-0">
+                        <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
+                           href="../phase/Phase9_ModernJavaAndModules.html">
+                            <span class="material-icons-outlined small me-1">summarize</span>Phase overview
+                        </a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Modern Java</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase9_ModernJavaAndModules__ModernJava__PatternMatchingSwitch.html"><span
+                                class="material-icons-outlined small me-1">description</span>Pattern Matching Switch</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase9_ModernJavaAndModules__ModernJava__RecordsAndPatterns.html"><span
+                            class="material-icons-outlined small me-1">description</span>Records And Patterns</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase9_ModernJavaAndModules__ModernJava__SequencedCollections.html"><span
+                            class="material-icons-outlined small me-1">description</span>Sequenced Collections</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase9_ModernJavaAndModules__ModernJava__SwitchExpression.html"><span
+                            class="material-icons-outlined small me-1">description</span>Switch Expression</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase9_ModernJavaAndModules__ModernJava__VarLocalTypeInference.html"><span
+                            class="material-icons-outlined small me-1">description</span>Var Local Type Inference</a>
+                        <div class="hj-sidebar-section px-3 pt-2 pb-1 text-muted small text-uppercase">Modules</div>
+                        <a class="hj-sidebar-link d-block px-3 py-1"
+                           href="../code/Phase9_ModernJavaAndModules__Modules__ModuleExamples.html"><span
+                                class="material-icons-outlined small me-1">description</span>Module Examples</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase9_ModernJavaAndModules__Modules__ModulesIntroduction.html"><span
+                            class="material-icons-outlined small me-1">description</span>Modules Introduction</a><a
+                            class="hj-sidebar-link d-block px-3 py-1"
+                            href="../code/Phase9_ModernJavaAndModules__Modules__ServiceLoaderDemo.html"><span
+                            class="material-icons-outlined small me-1">description</span>Service Loader Demo</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<main class="hj-main">
+    <section class="hj-page-hero hj-code-hero py-4">
+        <div class="container-fluid px-4">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-2 small">
+                    <li class="breadcrumb-item"><a href="../index.html" class="text-white-50">Home</a></li>
+                    <li class="breadcrumb-item"><a href="../phase/Phase4_ErrorsAndTypeSafety.html"
+                                                   class="text-white-50">Phase 4</a></li>
+                    <li class="breadcrumb-item active text-white" aria-current="page">Annotations</li>
+                </ol>
+            </nav>
+            <div class="d-flex align-items-center flex-wrap gap-3">
+                <div class="hj-page-icon hj-page-icon-sm">
+                    <span class="material-icons">description</span>
+                </div>
+                <div class="flex-grow-1">
+                    <h1 class="text-white fw-bold mb-1">Built In Annotations</h1>
+                    <code class="text-white-50 small">src/Phase4_ErrorsAndTypeSafety/Annotations/BuiltInAnnotations.java</code>
+                </div>
+                <div class="d-flex gap-2">
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 111 lines</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-4">
+        <div class="container-fluid px-4">
+
+            <div class="alert hj-summary mb-4" role="note">
+                <div class="d-flex">
+                    <span class="material-icons me-2 text-primary">info</span>
+                    <div>The standard ones every Java developer should recognise.</div>
+                </div>
+            </div>
+
+            <div class="hj-code-card card shadow-2">
+                <div class="card-header d-flex justify-content-between align-items-center bg-dark text-white">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="hj-traffic-light bg-danger"></span>
+                        <span class="hj-traffic-light bg-warning"></span>
+                        <span class="hj-traffic-light bg-success"></span>
+                        <span class="ms-2 font-monospace small">BuiltInAnnotations.java</span>
+                    </div>
+                    <span class="badge bg-warning text-dark">Java 21</span>
+                </div>
+                <div class="card-body p-0">
+          <pre class="line-numbers m-0"><code class="language-java">package Phase4_ErrorsAndTypeSafety.Annotations;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Built-In Annotations
+ * --------------------
+ * The standard ones every Java developer should recognise.
+ * &lt;p&gt;
+ *
+ * Compiler / language family
+ * --------------------------
+ *   @Override              - &quot;I&#x27;m overriding a superclass method.&quot; The
+ *                            compiler errors if the signature doesn&#x27;t
+ *                            actually override anything.
+ * &lt;p&gt;
+ *
+ *   @Deprecated            - &quot;This is going away. Don&#x27;t add new uses.&quot;
+ *                            Java 9+ adds elements: since, forRemoval.
+ * &lt;p&gt;
+ *
+ *   @SuppressWarnings(&quot;unchecked&quot;, &quot;rawtypes&quot;, ...)
+ *                          - Tell the compiler to ignore named warnings
+ *                            in the smallest scope you can manage.
+ * &lt;p&gt;
+ *
+ *   @SafeVarargs           - &quot;This varargs method is safe even though it
+ *                            uses a generic type.&quot; See Generics section.
+ * &lt;p&gt;
+ *
+ *   @FunctionalInterface   - On an interface: error if it has more than
+ *                            one abstract method. Catches typos in
+ *                            single-method contracts.
+ * &lt;p&gt;
+ *
+ * Meta-annotation family (used on YOUR annotations)
+ * -------------------------------------------------
+ *   @Retention             - SOURCE / CLASS / RUNTIME
+ *   @Target                - what code element it can attach to
+ *   @Inherited             - sub-classes inherit it from a class
+ *   @Repeatable            - declares an annotation as repeatable
+ *   @Documented            - include in javadoc
+ * &lt;p&gt;
+ *
+ * Reflection / serialization family
+ * ---------------------------------
+ *   @Native                - hint for native bytecode tools (rarely used).
+ *   @Serial (Java 14+)     - &quot;this is a serialization-related member.&quot;
+ *   @SuppressWarnings(&quot;serial&quot;) - skip the missing-serialVersionUID warning.
+ */
+
+@SuppressWarnings(&quot;unused&quot;)   // class-level scope, suppresses unused-warnings inside
+public class BuiltInAnnotations {
+
+    // ----- @Override -----
+    @Override public String toString() { return &quot;demo&quot;; }
+
+    // ----- @Deprecated (modern form) -----
+    @Deprecated(since = &quot;1.5&quot;, forRemoval = true)
+    public static String oldGreet() { return &quot;hello, old API&quot;; }
+
+    // ----- @SuppressWarnings — keep it tight -----
+    @SuppressWarnings({&quot;unchecked&quot;, &quot;rawtypes&quot;})
+    public static List badList() {
+        List l = new ArrayList();
+        l.add(&quot;string&quot;);
+        l.add(42);
+        return l;
+    }
+
+    // ----- @SafeVarargs — see Generics section -----
+    @SafeVarargs
+    public static &lt;T&gt; List&lt;T&gt; listOf(T... items) {
+        return List.of(items);
+    }
+
+    // ----- @FunctionalInterface -----
+    @FunctionalInterface
+    public interface Transformer&lt;T, R&gt; {
+        R apply(T in);
+        // adding a second abstract method here would be a COMPILE ERROR.
+    }
+
+    public static void main(String[] args) {
+
+        section(&quot;1) @Override — compile-time safety net&quot;);
+        System.out.println(new BuiltInAnnotations());
+
+        section(&quot;2) @Deprecated — flagged in javadoc, IDEs, and tools&quot;);
+        System.out.println(oldGreet());
+
+        section(&quot;3) @SuppressWarnings — minimum scope wins&quot;);
+        System.out.println(badList());
+
+        section(&quot;4) @SafeVarargs — silence unchecked-warning on generic varargs&quot;);
+        System.out.println(listOf(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;));
+
+        section(&quot;5) @FunctionalInterface&quot;);
+        Transformer&lt;String, Integer&gt; length = String::length;
+        System.out.println(&quot;len(&#x27;hi&#x27;) = &quot; + length.apply(&quot;hi&quot;));
+
+        section(&quot;done&quot;);
+    }
+
+    private static void section(String title) {
+        System.out.println();
+        System.out.println(&quot;=== &quot; + title + &quot; ===&quot;);
+    }
+}
+</code></pre>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-4 pt-4 border-top">
+                <a class="btn btn-outline-primary"
+                   href="Phase4_ErrorsAndTypeSafety__Annotations__AnnotationsIntroduction.html"><span
+                        class="material-icons me-1">arrow_back</span>Annotations Introduction</a>
+                <a class="btn btn-primary" href="Phase4_ErrorsAndTypeSafety__Annotations__CustomAnnotations.html">Custom
+                    Annotations<span class="material-icons ms-1">arrow_forward</span></a>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+<footer class="hj-footer text-center py-4 mt-5">
+    <small class="text-muted">
+        HelloJava · A topic-by-topic walkthrough of Java 21 ·
+        Built with <a href="https://mdbootstrap.com/" target="_blank" rel="noopener">MDB</a>
+        and <a href="https://prismjs.com/" target="_blank" rel="noopener">Prism.js</a>
+    </small>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/mdb-ui-kit@7.3.2/js/mdb.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>
+

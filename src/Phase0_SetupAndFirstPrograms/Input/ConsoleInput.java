@@ -1,6 +1,7 @@
 package Phase0_SetupAndFirstPrograms.Input;
 
 import java.io.Console;
+import java.util.Arrays;
 
 /**
  * Taking Input - java.io.Console
@@ -49,7 +50,7 @@ public class ConsoleInput {
         console.printf("Password length: %d characters%n", password.length);
 
         // Best practice: clear the password from memory once it has been used.
-        java.util.Arrays.fill(password, ' ');
+        Arrays.fill(password, ' ');
 
         // SAMPLE RUN (from a terminal)
         // Username: deepak
