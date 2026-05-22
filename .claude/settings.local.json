@@ -27,7 +27,8 @@
       "Bash(curl -s -o /dev/null -w \"css: %{http_code}\\\\n\" http://localhost:8765/assets/site.css)",
       "Bash(curl -s -o /dev/null -w \"js: %{http_code}\\\\n\" http://localhost:8765/assets/site.js)",
       "Bash(node -e \"new Function\\(require\\('fs'\\).readFileSync\\('assets/site.js','utf8'\\)\\)\")",
-      "Bash(kill %1)"
+      "Bash(kill %1)",
+      "Bash(curl -s http://localhost:8765/index.html)"
     ]
   }
 }
