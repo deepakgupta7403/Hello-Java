@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase3_ObjectOrientation/Abstraction/InterfaceExample.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 163 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 96 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,76 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Abstraction - Part 2: INTERFACES</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Abstraction - Part 2: INTERFACES</h2>
+                    <p>An INTERFACE is a CONTRACT - a list of methods a class promises to provide. Interfaces are pure
+                        abstraction: they describe WHAT a type can do without forcing HOW it does it.</p>
+                    <pre class="hj-doc-art">     interface Comparable&lt;T&gt; {
+         int compareTo(T other);
+     }
+     class Customer implements Comparable&lt;Customer&gt; {
+         public int compareTo(Customer other) { ... }
+     }</pre>
+                    <h3>Modern Interface Members (Java 8 / 9)</h3>
+                    <ul>
+                        <li>ABSTRACT methods - implicit public, no body. The original purpose.
+                        </li>
+                        <li>default methods (Java 8) - have a body; implementors inherit them.
+                        </li>
+                        <li>static methods (Java 8) - utility tied to the interface itself.
+                        </li>
+                        <li>private methods (Java 9) - helper for default/static methods.
+                        </li>
+                        <li>public static final constants (no other fields are allowed).
+                        </li>
+                    </ul>
+                    <p>(For a deeper dive into default/static/private interface methods see
+                        Basics/Methods/InterfaceMethods.java.)</p>
+                    <h3>Key Properties</h3>
+                    <ul>
+                        <li>A class can IMPLEMENT MULTIPLE interfaces (Java&#x27;s answer to multiple
+                        </li>
+                    </ul>
+                    <p>inheritance of TYPE - not of state).</p>
+                    <ul>
+                        <li>All members are implicitly PUBLIC unless declared private.
+                        </li>
+                        <li>All fields are implicitly PUBLIC STATIC FINAL.
+                        </li>
+                        <li>Interfaces cannot have INSTANCE fields and cannot define a constructor.
+                        </li>
+                        <li>An interface variable can hold any concrete implementor:
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">        List&lt;String&gt; xs = new ArrayList&lt;&gt;();   // List is an interface</pre>
+                    <h3>Functional Interfaces</h3>
+                    <p>An interface with exactly ONE abstract method (SAM - Single Abstract Method). It can be the
+                        target of a lambda expression or method reference. Annotate with @FunctionalInterface so the
+                        compiler enforces the SAM rule.</p>
+                    <pre class="hj-doc-art">     @FunctionalInterface
+     interface Calculator {
+         int apply(int a, int b);
+     }
+     Calculator add = (a, b) -&gt; a + b;
+     add.apply(2, 3);    // -&gt; 5</pre>
+                    <h3>The Example Below</h3>
+                    <ul>
+                        <li>Drawable - interface with an abstract method + a default + a static helper
+                        </li>
+                        <li>Resizable - separate interface (demonstrates MULTIPLE implementation)
+                        </li>
+                        <li>Calculator - functional interface used with a lambda
+                        </li>
+                        <li>Circle implements Drawable, Resizable
+                        </li>
+                        <li>Rectangle implements Drawable (only)
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1393,72 +1459,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase3_ObjectOrientation.Abstraction;
-
-/**
- * Abstraction - Part 2: INTERFACES
- * --------------------------------
- * An INTERFACE is a CONTRACT - a list of methods a class promises to provide.
- * Interfaces are pure abstraction: they describe WHAT a type can do without
- * forcing HOW it does it.
- * &lt;p&gt;
- *
- *      interface Comparable&lt;T&gt; {
- *          int compareTo(T other);
- *      }
- *      class Customer implements Comparable&lt;Customer&gt; {
- *          public int compareTo(Customer other) { ... }
- *      }
- * &lt;p&gt;
- *
- * Modern Interface Members (Java 8 / 9)
- * -------------------------------------
- *  - ABSTRACT methods - implicit public, no body. The original purpose.
- *  - default methods  (Java 8)  - have a body; implementors inherit them.
- *  - static  methods  (Java 8)  - utility tied to the interface itself.
- *  - private methods  (Java 9)  - helper for default/static methods.
- *  - public static final constants (no other fields are allowed).
- * &lt;p&gt;
- *
- * (For a deeper dive into default/static/private interface methods see
- *  Basics/Methods/InterfaceMethods.java.)
- * &lt;p&gt;
- *
- * Key Properties
- * --------------
- *  - A class can IMPLEMENT MULTIPLE interfaces (Java&#x27;s answer to multiple
- *    inheritance of TYPE - not of state).
- *  - All members are implicitly PUBLIC unless declared private.
- *  - All fields are implicitly PUBLIC STATIC FINAL.
- *  - Interfaces cannot have INSTANCE fields and cannot define a constructor.
- *  - An interface variable can hold any concrete implementor:
- * &lt;p&gt;
- *
- *         List&lt;String&gt; xs = new ArrayList&lt;&gt;();   // List is an interface
- * &lt;p&gt;
- *
- * Functional Interfaces
- * ---------------------
- * An interface with exactly ONE abstract method (SAM - Single Abstract
- * Method). It can be the target of a lambda expression or method reference.
- * Annotate with @FunctionalInterface so the compiler enforces the SAM rule.
- * &lt;p&gt;
- *
- *      @FunctionalInterface
- *      interface Calculator {
- *          int apply(int a, int b);
- *      }
- *      Calculator add = (a, b) -&gt; a + b;
- *      add.apply(2, 3);    // -&gt; 5
- * &lt;p&gt;
- *
- * The Example Below
- * -----------------
- *   - Drawable           - interface with an abstract method + a default + a static helper
- *   - Resizable          - separate interface (demonstrates MULTIPLE implementation)
- *   - Calculator         - functional interface used with a lambda
- *   - Circle implements Drawable, Resizable
- *   - Rectangle implements Drawable (only)
- */
 
 public class InterfaceExample {
 

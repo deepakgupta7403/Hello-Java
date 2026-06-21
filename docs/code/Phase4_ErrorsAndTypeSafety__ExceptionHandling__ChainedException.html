@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase4_ErrorsAndTypeSafety/ExceptionHandling/ChainedException.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 200 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 129 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,70 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>CHAINING is the practice of wrapping a low-level exception inside a higher-level one while
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Chained Exceptions</h2>
+                    <p>CHAINING is the practice of wrapping a low-level exception inside a higher-level one while
                         keeping the original around as the &quot;cause&quot;. You end up with a clear, domain-meaningful
-                        exception on top AND the underlying tec...
-                    </div>
+                        exception on top AND the underlying technical detail for debugging.</p>
+                    <pre class="hj-doc-art">     try {
+         loadFromDatabase();
+     } catch (SQLException sql) {
+         throw new ServiceUnavailableException(&quot;user lookup failed&quot;, sql);
+     }</pre>
+                    <h3>Why Chain Instead of Swallow?</h3>
+                    <ul>
+                        <li>Swallowing (catch-and-ignore) hides bugs forever - never do this.
+                        </li>
+                        <li>Re-throwing the SAME low-level exception leaks implementation details
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    to the caller (&quot;oh now I have to know about SQL&quot;).</pre>
+                    <ul>
+                        <li>Wrapping converts to a more meaningful type while preserving the full
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    diagnostic trail.</pre>
+                    <h3>API In Throwable</h3>
+                    <p>Throwable(String message, Throwable cause) // recommended constructor Throwable(Throwable cause)
+                        // shortcut initCause(Throwable cause) // for legacy exceptions</p>
+                    <pre class="hj-doc-art">                                                    // without (msg, cause) ctor</pre>
+                    <p>Throwable getCause() // walk back the chain Throwable getRootCause() // NOT in JDK -</p>
+                    <pre class="hj-doc-art">                                                    // libraries like Guava
+                                                    // / commons-lang offer it</pre>
+                    <h3>Stack-Trace Anatomy of a Chained Exception</h3>
+                    <pre class="hj-doc-art">     Exception in thread &quot;main&quot; ServiceUnavailableException: user lookup failed
+         at App.main(App.java:9)
+     Caused by: java.sql.SQLException: connection refused
+         at Database.connect(Database.java:42)
+         at App.main(App.java:7)</pre>
+                    <p>Each &quot;Caused by&quot; is one level deeper into the chain. Read top-down to go from the
+                        highest-level diagnosis to the root cause.</p>
+                    <h3>SUPPRESSED Exceptions vs CAUSES</h3>
+                    <p>Causes and suppressed exceptions are different:</p>
+                    <ul>
+                        <li>CAUSE : &quot;this happened BECAUSE of that earlier thing&quot;
+                            <ul>
+                                <li>one cause per exception, chained.
+                                </li>
+                            </ul>
+                        </li>
+                        <li>SUPPRESSED : &quot;this exception was thrown WHILE another was already
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                  in flight&quot;</pre>
+                    <ul>
+                        <li>many suppressed exceptions per exception.
+                        </li>
+                    </ul>
+                    <p>Most commonly produced by try-with-resources when the close() of a resource throws AFTER the body
+                        has already thrown a different exception. The body&#x27;s exception &quot;wins&quot; and the
+                        close() exception is added as suppressed.</p>
+                    <p>See TryWithResources.java for the suppression demo.</p>
                 </div>
             </div>
 
@@ -1399,76 +1456,6 @@
 
 import java.io.IOException;
 import java.sql.SQLException;
-
-/**
- * Chained Exceptions
- * ------------------
- * CHAINING is the practice of wrapping a low-level exception inside a
- * higher-level one while keeping the original around as the &quot;cause&quot;. You
- * end up with a clear, domain-meaningful exception on top AND the
- * underlying technical detail for debugging.
- * &lt;p&gt;
- *
- *      try {
- *          loadFromDatabase();
- *      } catch (SQLException sql) {
- *          throw new ServiceUnavailableException(&quot;user lookup failed&quot;, sql);
- *      }
- * &lt;p&gt;
- *
- * Why Chain Instead of Swallow?
- * -----------------------------
- *   - Swallowing (catch-and-ignore) hides bugs forever - never do this.
- *   - Re-throwing the SAME low-level exception leaks implementation details
- *     to the caller (&quot;oh now I have to know about SQL&quot;).
- *   - Wrapping converts to a more meaningful type while preserving the full
- *     diagnostic trail.
- * &lt;p&gt;
- *
- * API In Throwable
- * ----------------
- *   Throwable(String message, Throwable cause)        // recommended constructor
- *   Throwable(Throwable cause)                        // shortcut
- *   initCause(Throwable cause)                        // for legacy exceptions
- *                                                     // without (msg, cause) ctor
- *   Throwable getCause()                              // walk back the chain
- *   Throwable getRootCause()                          // NOT in JDK -
- *                                                     // libraries like Guava
- *                                                     // / commons-lang offer it
- * &lt;p&gt;
- *
- * Stack-Trace Anatomy of a Chained Exception
- * ------------------------------------------
- *      Exception in thread &quot;main&quot; ServiceUnavailableException: user lookup failed
- *          at App.main(App.java:9)
- *      Caused by: java.sql.SQLException: connection refused
- *          at Database.connect(Database.java:42)
- *          at App.main(App.java:7)
- * &lt;p&gt;
- *
- * Each &quot;Caused by&quot; is one level deeper into the chain. Read top-down to go
- * from the highest-level diagnosis to the root cause.
- * &lt;p&gt;
- *
- * SUPPRESSED Exceptions vs CAUSES
- * --------------------------------
- * Causes and suppressed exceptions are different:
- * &lt;p&gt;
- *
- *   - CAUSE       : &quot;this happened BECAUSE of that earlier thing&quot;
- *                   - one cause per exception, chained.
- *   - SUPPRESSED  : &quot;this exception was thrown WHILE another was already
- *                   in flight&quot;
- *                   - many suppressed exceptions per exception.
- * &lt;p&gt;
- *
- * Most commonly produced by try-with-resources when the close() of a resource
- * throws AFTER the body has already thrown a different exception. The body&#x27;s
- * exception &quot;wins&quot; and the close() exception is added as suppressed.
- * &lt;p&gt;
- *
- * See TryWithResources.java for the suppression demo.
- */
 
 public class ChainedException {
 

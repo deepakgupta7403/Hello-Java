@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase8_PracticalAPIs/DateAndTime/DateTimeIntroduction.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 94 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 53 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,33 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Date and Time API — Introduction (java.time, since Java 8)</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Date and Time API — Introduction (java.time, since Java 8)</h2>
+                    <p>Java 8 replaced the chaos of java.util.Date / Calendar / SimpleDateFormat with a clean,
+                        immutable, thread-safe set of value types in java.time.</p>
+                    <h3>The headline types</h3>
+                    <p>LocalDate - a date with NO time, NO zone (2026-05-20) LocalTime - a time with NO date, NO zone
+                        (14:30:00.000) LocalDateTime - both, but still NO zone (2026-05-20T14:30) ZonedDateTime -
+                        date+time WITH a time zone (2026-05-20T14:30+05:30[Asia/Kolkata]) OffsetDateTime - date+time +
+                        fixed offset, NO zone (2026-05-20T14:30+05:30) Instant - a moment on the global timeline
+                        (epoch-seconds + nanos) Duration - a length of time on the clock (PT2H30M) Period - a length of
+                        time on the calendar (P1Y2M3D) Year, YearMonth, MonthDay, DayOfWeek, Month - narrow value
+                        types</p>
+                    <h3>Key properties</h3>
+                    <p>IMMUTABLE - every operation returns a new value. THREAD-SAFE - share freely. FLUENT -
+                        .plusDays(2).minusHours(3).withYear(...) VALUE SEMANTICS - equals/hashCode/toString all
+                        work.</p>
+                    <h3>Java 8 was a long time ago — what&#x27;s new since?</h3>
+                    <p>Java 9 - LocalDate.datesUntil(end) -&gt; Stream&lt;LocalDate&gt; Java 12 -
+                        LocalDate.formatted(formatter) Java 17 - Pattern matching on dates in switch Java 21 - Sequenced
+                        collections (returns LocalDate ordering helpers)</p>
+                    <p>This file is the orientation. Each of the headline types gets its own dedicated file with
+                        detailed examples.</p>
                 </div>
             </div>
 
@@ -1397,46 +1420,6 @@
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-
-/**
- * Date and Time API — Introduction (java.time, since Java 8)
- * ----------------------------------------------------------
- * Java 8 replaced the chaos of java.util.Date / Calendar / SimpleDateFormat
- * with a clean, immutable, thread-safe set of value types in java.time.
- * &lt;p&gt;
- *
- * The headline types
- * ------------------
- *   LocalDate         - a date with NO time, NO zone     (2026-05-20)
- *   LocalTime         - a time with NO date, NO zone     (14:30:00.000)
- *   LocalDateTime     - both, but still NO zone           (2026-05-20T14:30)
- *   ZonedDateTime     - date+time WITH a time zone        (2026-05-20T14:30+05:30[Asia/Kolkata])
- *   OffsetDateTime    - date+time + fixed offset, NO zone (2026-05-20T14:30+05:30)
- *   Instant           - a moment on the global timeline   (epoch-seconds + nanos)
- *   Duration          - a length of time on the clock     (PT2H30M)
- *   Period            - a length of time on the calendar  (P1Y2M3D)
- *   Year, YearMonth, MonthDay, DayOfWeek, Month  - narrow value types
- * &lt;p&gt;
- *
- * Key properties
- * --------------
- *   IMMUTABLE        - every operation returns a new value.
- *   THREAD-SAFE      - share freely.
- *   FLUENT           - .plusDays(2).minusHours(3).withYear(...)
- *   VALUE SEMANTICS  - equals/hashCode/toString all work.
- * &lt;p&gt;
- *
- * Java 8 was a long time ago — what&#x27;s new since?
- * ----------------------------------------------
- *   Java 9   - LocalDate.datesUntil(end) -&gt; Stream&lt;LocalDate&gt;
- *   Java 12  - LocalDate.formatted(formatter)
- *   Java 17  - Pattern matching on dates in switch
- *   Java 21  - Sequenced collections (returns LocalDate ordering helpers)
- * &lt;p&gt;
- *
- * This file is the orientation. Each of the headline types gets its own
- * dedicated file with detailed examples.
- */
 
 public class DateTimeIntroduction {
 

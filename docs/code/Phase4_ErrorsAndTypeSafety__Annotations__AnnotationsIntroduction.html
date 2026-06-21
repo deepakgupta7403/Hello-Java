@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase4_ErrorsAndTypeSafety/Annotations/AnnotationsIntroduction.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 93 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 34 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,75 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Annotations are METADATA you attach to code (classes, methods, fields, parameters, type uses).
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Annotations — Introduction</h2>
+                    <p>Annotations are METADATA you attach to code (classes, methods, fields, parameters, type uses).
                         They don&#x27;t change the program&#x27;s behaviour directly — tools and runtime libraries read
-                        them and act on them (compiler check...
-                    </div>
+                        them and act on them (compiler checks, frameworks, code generators, IDEs).</p>
+                    <h3>The four families</h3>
+                    <ul>
+                        <li>Built-in marker annotations - @Override, @Deprecated, ...
+                        </li>
+                        <li>Compiler hint annotations - @SuppressWarnings, @SafeVarargs
+                        </li>
+                        <li>Custom annotations YOU write - @MyAnnotation
+                        </li>
+                        <li>Meta-annotations on annotations - @Retention, @Target, @Inherited,
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                                               @Repeatable, @Documented</pre>
+                    <h3>Anatomy of an annotation</h3>
+                    <pre class="hj-doc-art">     @MyAnnotation(name = &quot;alice&quot;, priority = 5)
+     public class C { ... }</pre>
+                    <ul>
+                        <li>The leading &#x27;@&#x27; marks it.
+                        </li>
+                        <li>Optional ELEMENTS (name=..., priority=...) — must be compile-time
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    constants.</pre>
+                    <ul>
+                        <li>One-element annotations can drop the element name when it&#x27;s
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    called `value`:
+         @Author(&quot;alice&quot;)</pre>
+                    <h3>Where annotations live</h3>
+                    <ul>
+                        <li>Types (classes, interfaces, enums, records)
+                        </li>
+                        <li>Methods, constructors
+                        </li>
+                        <li>Parameters, return types
+                        </li>
+                        <li>Fields, local variables
+                        </li>
+                        <li>Type uses (Java 8+): List&lt;@NonNull String&gt;
+                        </li>
+                        <li>Modules and packages
+                        </li>
+                    </ul>
+                    <h3>Retention levels</h3>
+                    <p>SOURCE - only visible to the compiler (lint). CLASS - in the .class file but NOT loaded at
+                        runtime. RUNTIME - in the .class AND visible via reflection at runtime.</p>
+                    <h3>Real-world examples</h3>
+                    <ul>
+                        <li>JUnit: @Test, @BeforeEach
+                        </li>
+                        <li>Spring: @Component, @Autowired, @Transactional
+                        </li>
+                        <li>JPA: @Entity, @Id, @Column
+                        </li>
+                        <li>Lombok: @Data, @Builder (source-level code generation)
+                        </li>
+                        <li>Validation: @NotNull, @Size, @Email (Jakarta Validation)
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1396,64 +1458,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase4_ErrorsAndTypeSafety.Annotations;
-
-/**
- * Annotations — Introduction
- * --------------------------
- * Annotations are METADATA you attach to code (classes, methods,
- * fields, parameters, type uses). They don&#x27;t change the program&#x27;s
- * behaviour directly — tools and runtime libraries read them and act
- * on them (compiler checks, frameworks, code generators, IDEs).
- * &lt;p&gt;
- *
- * The four families
- * -----------------
- *   1. Built-in marker annotations            - @Override, @Deprecated, ...
- *   2. Compiler hint annotations              - @SuppressWarnings, @SafeVarargs
- *   3. Custom annotations YOU write           - @MyAnnotation
- *   4. Meta-annotations on annotations        - @Retention, @Target, @Inherited,
- *                                                @Repeatable, @Documented
- * &lt;p&gt;
- *
- * Anatomy of an annotation
- * ------------------------
- *      @MyAnnotation(name = &quot;alice&quot;, priority = 5)
- *      public class C { ... }
- * &lt;p&gt;
- *
- *   - The leading &#x27;@&#x27; marks it.
- *   - Optional ELEMENTS (name=..., priority=...) — must be compile-time
- *     constants.
- *   - One-element annotations can drop the element name when it&#x27;s
- *     called `value`:
- *          @Author(&quot;alice&quot;)
- * &lt;p&gt;
- *
- * Where annotations live
- * ----------------------
- *   - Types (classes, interfaces, enums, records)
- *   - Methods, constructors
- *   - Parameters, return types
- *   - Fields, local variables
- *   - Type uses (Java 8+): List&lt;@NonNull String&gt;
- *   - Modules and packages
- * &lt;p&gt;
- *
- * Retention levels
- * ----------------
- *   SOURCE     - only visible to the compiler (lint).
- *   CLASS      - in the .class file but NOT loaded at runtime.
- *   RUNTIME    - in the .class AND visible via reflection at runtime.
- * &lt;p&gt;
- *
- * Real-world examples
- * -------------------
- *   - JUnit: @Test, @BeforeEach
- *   - Spring: @Component, @Autowired, @Transactional
- *   - JPA:   @Entity, @Id, @Column
- *   - Lombok: @Data, @Builder (source-level code generation)
- *   - Validation: @NotNull, @Size, @Email (Jakarta Validation)
- */
 
 public class AnnotationsIntroduction {
 

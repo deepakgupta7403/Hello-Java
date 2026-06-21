@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/JavaMemoryModel.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 159 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 85 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,93 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>The JMM is the formal specification of how reads and writes from different threads interact.
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Java Memory Model (JMM)</h2>
+                    <p>The JMM is the formal specification of how reads and writes from different threads interact.
                         Without it, a program is at the mercy of the JIT compiler, the CPU&#x27;s memory subsystem, and
-                        the OS scheduler — any of which m...
-                    </div>
+                        the OS scheduler — any of which may REORDER or CACHE memory operations.</p>
+                    <h3>The Two Concerns</h3>
+                    <p>ATOMICITY - is the read/write a single indivisible step?</p>
+                    <pre class="hj-doc-art">                (long and double WITHOUT volatile are NOT guaranteed
+                 to be atomic on 32-bit platforms.)</pre>
+                    <p>VISIBILITY - when does a thread see another thread&#x27;s write?</p>
+                    <pre class="hj-doc-art">                (Without synchronization, possibly never.)</pre>
+                    <h3>Happens-Before</h3>
+                    <p>The JMM defines a partial order called HAPPENS-BEFORE. If action A happens-before action B, then
+                        A&#x27;s effects are visible to B.</p>
+                    <p>The standard happens-before edges:</p>
+                    <ul>
+                        <li>Program order within a single thread.
+                        </li>
+                        <li>Monitor unlock → subsequent lock of the SAME monitor.
+                        </li>
+                        <li>volatile write → subsequent volatile read of the SAME field.
+                        </li>
+                        <li>Thread.start() → first action of the started thread.
+                        </li>
+                        <li>Last action of a thread → Thread.join() returning in another.
+                        </li>
+                        <li>Default initialization (the JLS-defined zero-values) →
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     any subsequent action.</pre>
+                    <ul>
+                        <li>Transitively: A→B and B→C implies A→C.
+                        </li>
+                    </ul>
+                    <p>If there is NO happens-before edge between two actions on different threads, the JVM is allowed
+                        to reorder / cache them. Bugs that result:</p>
+                    <ul>
+                        <li>The reader sees stale data forever (e.g., never-ending loop on
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    a non-volatile flag).</pre>
+                    <ul>
+                        <li>The reader sees the new value of one field but the OLD value of
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    another, even if the writer wrote them in order.</pre>
+                    <ul>
+                        <li>Constructor-leak: another thread sees a partially-initialised
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    object via an unsafe publication.</pre>
+                    <h3>Safe Publication</h3>
+                    <p>Common idioms that publish an object safely:</p>
+                    <ul>
+                        <li>Initialize from a static initializer.
+                        </li>
+                        <li>Store into a `final` field of a properly constructed object.
+                        </li>
+                        <li>Store into a `volatile` field.
+                        </li>
+                        <li>Store into a field protected by a lock.
+                        </li>
+                        <li>Use a thread-safe container (ConcurrentHashMap etc.).
+                        </li>
+                    </ul>
+                    <h3>`final` Fields — Special Rule</h3>
+                    <p>Final fields, once a constructor returns, are guaranteed visible to any thread that gets a
+                        reference to the object — even without synchronization. This is why immutable objects &quot;just
+                        work.&quot;</p>
+                    <h3>Tools in this file</h3>
+                    <ul>
+                        <li>Visibility bug — non-volatile stop flag never sees the update.
+                        </li>
+                        <li>Fix with volatile.
+                        </li>
+                        <li>Long write tearing (in practice, hard to demonstrate on 64-bit).
+                        </li>
+                        <li>Reordering — write-then-write can appear to a reader in either order.
+                        </li>
+                        <li>final field safe-publication.
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1396,79 +1476,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase7_Concurrency.Multithreading;
-
-/**
- * Java Memory Model (JMM)
- * -----------------------
- * The JMM is the formal specification of how reads and writes from
- * different threads interact. Without it, a program is at the mercy of
- * the JIT compiler, the CPU&#x27;s memory subsystem, and the OS scheduler —
- * any of which may REORDER or CACHE memory operations.
- * &lt;p&gt;
- *
- * The Two Concerns
- * ----------------
- *   ATOMICITY   - is the read/write a single indivisible step?
- *                 (long and double WITHOUT volatile are NOT guaranteed
- *                  to be atomic on 32-bit platforms.)
- *   VISIBILITY  - when does a thread see another thread&#x27;s write?
- *                 (Without synchronization, possibly never.)
- * &lt;p&gt;
- *
- * Happens-Before
- * --------------
- * The JMM defines a partial order called HAPPENS-BEFORE. If action A
- * happens-before action B, then A&#x27;s effects are visible to B.
- * &lt;p&gt;
- *
- * The standard happens-before edges:
- *   1. Program order within a single thread.
- *   2. Monitor unlock → subsequent lock of the SAME monitor.
- *   3. volatile write → subsequent volatile read of the SAME field.
- *   4. Thread.start() → first action of the started thread.
- *   5. Last action of a thread → Thread.join() returning in another.
- *   6. Default initialization (the JLS-defined zero-values) →
- *      any subsequent action.
- *   7. Transitively: A→B and B→C implies A→C.
- * &lt;p&gt;
- *
- * If there is NO happens-before edge between two actions on different
- * threads, the JVM is allowed to reorder / cache them. Bugs that result:
- * &lt;p&gt;
- *
- *   - The reader sees stale data forever (e.g., never-ending loop on
- *     a non-volatile flag).
- *   - The reader sees the new value of one field but the OLD value of
- *     another, even if the writer wrote them in order.
- *   - Constructor-leak: another thread sees a partially-initialised
- *     object via an unsafe publication.
- * &lt;p&gt;
- *
- * Safe Publication
- * ----------------
- * Common idioms that publish an object safely:
- *   - Initialize from a static initializer.
- *   - Store into a `final` field of a properly constructed object.
- *   - Store into a `volatile` field.
- *   - Store into a field protected by a lock.
- *   - Use a thread-safe container (ConcurrentHashMap etc.).
- * &lt;p&gt;
- *
- * `final` Fields — Special Rule
- * -----------------------------
- * Final fields, once a constructor returns, are guaranteed visible to
- * any thread that gets a reference to the object — even without
- * synchronization. This is why immutable objects &quot;just work.&quot;
- * &lt;p&gt;
- *
- * Tools in this file
- * ------------------
- *   1. Visibility bug — non-volatile stop flag never sees the update.
- *   2. Fix with volatile.
- *   3. Long write tearing (in practice, hard to demonstrate on 64-bit).
- *   4. Reordering — write-then-write can appear to a reader in either order.
- *   5. final field safe-publication.
- */
 
 public class JavaMemoryModel {
 

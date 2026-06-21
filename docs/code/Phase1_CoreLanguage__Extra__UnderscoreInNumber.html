@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase1_CoreLanguage/Extra/UnderscoreInNumber.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 30 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 24 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,18 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A new feature was introduced by JDKJREJVM 7 which allows to write numeric literals using the
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>A new feature was introduced by JDKJREJVM 7 which allows to write numeric literals using the
                         underscore character. Numeric literals are broken to enhance the readability. This feature
-                        enables us to separate groups of...
-                    </div>
+                        enables us to separate groups of digits in numeric literals, which improves readability of code.
+                        For instance, if our code contains numbers with many digits, we can use an underscore character
+                        to separate digits in groups of three, similar to how we would use a punctuation mark like a
+                        comma, or a space, as a separator.</p>
                 </div>
             </div>
 
@@ -1396,11 +1401,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase1_CoreLanguage.Extra;
-
-/**A new feature was introduced by JDKJREJVM 7 which allows to write numeric literals using the underscore character.
- * Numeric literals are broken to enhance the readability.
- * This feature enables us to separate groups of digits in numeric literals, which improves readability of code.
- * For instance, if our code contains numbers with many digits, we can use an underscore character to separate digits in groups of three, similar to how we would use a punctuation mark like a comma, or a space, as a separator.**/
 
 public class UnderscoreInNumber {
     public static void main(String[] args) throws java.lang.Exception{

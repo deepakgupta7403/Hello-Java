@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/ComparatorComparable.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 158 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 89 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,72 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Two interfaces in the JDK control how objects get ordered. They look similar but have different
-                        jobs.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Comparable vs Comparator</h2>
+                    <p>Two interfaces in the JDK control how objects get ordered. They look similar but have different
+                        jobs.</p>
+                    <h3>Comparable&amp;lt;T&amp;gt; - &quot;I know how I compare to other Ts&quot;</h3>
+                    <ul>
+                        <li>Defined ON the class whose objects need an order.
+                        </li>
+                        <li>One abstract method: int compareTo(T other)
+                        </li>
+                        <li>Used as the NATURAL ORDERING by Collections.sort, TreeSet, TreeMap.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     class Money implements Comparable&amp;lt;Money&amp;gt; {
+         public int compareTo(Money o) { ... }
+     }</pre>
+                    <h3>Comparator&amp;lt;T&amp;gt; - &quot;External rule for ordering Ts&quot;</h3>
+                    <ul>
+                        <li>Defined OUTSIDE the class - any number of comparators per type.
+                        </li>
+                        <li>One abstract method: int compare(T a, T b)
+                        </li>
+                        <li>Lets the SAME class be sorted multiple different ways.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     Comparator&amp;lt;Person&amp;gt; byName    = Comparator.comparing(Person::name);
+     Comparator&amp;lt;Person&amp;gt; byAgeDesc = Comparator.comparingInt(Person::age).reversed();</pre>
+                    <h3>compareTo / compare Return Value Contract</h3>
+                    <p>negative -&gt; this object is LESS THAN the other zero -&gt; equal in the ordering positive -&gt;
+                        this object is GREATER THAN the other</p>
+                    <p>Implementations MUST be:</p>
+                    <ul>
+                        <li>REFLEXIVE: a.compareTo(a) == 0
+                        </li>
+                        <li>ANTI-SYMMETRIC: a.compareTo(b) and b.compareTo(a) have opposite signs
+                        </li>
+                        <li>TRANSITIVE: if a &amp;lt; b and b &amp;lt; c then a &amp;lt; c
+                        </li>
+                        <li>CONSISTENT with equals(): strongly recommended but not required
+                        </li>
+                    </ul>
+                    <h3>Comparator Combinators (Java 8+)</h3>
+                    <pre class="hj-doc-art">     Comparator.comparing(keyExtractor)
+     Comparator.comparingInt / comparingLong / comparingDouble
+     cmp.reversed()
+     cmp.thenComparing(otherCmp)
+     cmp.thenComparing(keyExtractor)
+     Comparator.naturalOrder() / reverseOrder()
+     Comparator.nullsFirst(cmp) / nullsLast(cmp)</pre>
+                    <h3>When To Use Which</h3>
+                    <ul>
+                        <li>You own the class AND there is ONE natural ordering -&gt; Comparable.
+                        </li>
+                        <li>You don&#x27;t own the class, or you need MULTIPLE orderings -&gt; Comparator.
+                        </li>
+                        <li>You have BOTH -&gt; perfectly fine.
+                        </li>
+                    </ul>
+                    <h3>Common Pitfall - subtraction in compare()</h3>
+                    <pre class="hj-doc-art">     return a.age - b.age;       // can OVERFLOW for very large ints
+     return Integer.compare(a.age, b.age);     // safe and clearer</pre>
                 </div>
             </div>
 
@@ -1397,74 +1457,6 @@
           <pre class="line-numbers m-0"><code class="language-java">package Phase5_CollectionsLambdasStreams.Collections;
 
 import java.util.*;
-
-/**
- * Comparable vs Comparator
- * ------------------------
- * Two interfaces in the JDK control how objects get ordered. They look
- * similar but have different jobs.
- * &lt;p&gt;
- *
- * Comparable&amp;lt;T&amp;gt;  -  &quot;I know how I compare to other Ts&quot;
- * --------------------------------------------------
- *   - Defined ON the class whose objects need an order.
- *   - One abstract method:  int compareTo(T other)
- *   - Used as the NATURAL ORDERING by Collections.sort, TreeSet, TreeMap.
- * &lt;p&gt;
- *
- *      class Money implements Comparable&amp;lt;Money&amp;gt; {
- *          public int compareTo(Money o) { ... }
- *      }
- * &lt;p&gt;
- *
- * Comparator&amp;lt;T&amp;gt;  -  &quot;External rule for ordering Ts&quot;
- * -------------------------------------------------
- *   - Defined OUTSIDE the class - any number of comparators per type.
- *   - One abstract method:  int compare(T a, T b)
- *   - Lets the SAME class be sorted multiple different ways.
- * &lt;p&gt;
- *
- *      Comparator&amp;lt;Person&amp;gt; byName    = Comparator.comparing(Person::name);
- *      Comparator&amp;lt;Person&amp;gt; byAgeDesc = Comparator.comparingInt(Person::age).reversed();
- * &lt;p&gt;
- *
- * compareTo / compare Return Value Contract
- * -----------------------------------------
- *   negative -&gt; this object is LESS THAN the other
- *   zero      -&gt; equal in the ordering
- *   positive  -&gt; this object is GREATER THAN the other
- * &lt;p&gt;
- *
- * Implementations MUST be:
- *   - REFLEXIVE:    a.compareTo(a) == 0
- *   - ANTI-SYMMETRIC: a.compareTo(b) and b.compareTo(a) have opposite signs
- *   - TRANSITIVE:   if a &amp;lt; b and b &amp;lt; c then a &amp;lt; c
- *   - CONSISTENT with equals(): strongly recommended but not required
- * &lt;p&gt;
- *
- * Comparator Combinators (Java 8+)
- * --------------------------------
- *      Comparator.comparing(keyExtractor)
- *      Comparator.comparingInt / comparingLong / comparingDouble
- *      cmp.reversed()
- *      cmp.thenComparing(otherCmp)
- *      cmp.thenComparing(keyExtractor)
- *      Comparator.naturalOrder() / reverseOrder()
- *      Comparator.nullsFirst(cmp) / nullsLast(cmp)
- * &lt;p&gt;
- *
- * When To Use Which
- * -----------------
- *   - You own the class AND there is ONE natural ordering    -&gt;  Comparable.
- *   - You don&#x27;t own the class, or you need MULTIPLE orderings -&gt;  Comparator.
- *   - You have BOTH                                          -&gt;  perfectly fine.
- * &lt;p&gt;
- *
- * Common Pitfall - subtraction in compare()
- * -----------------------------------------
- *      return a.age - b.age;       // can OVERFLOW for very large ints
- *      return Integer.compare(a.age, b.age);     // safe and clearer
- */
 
 public class ComparatorComparable {
 

@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase6_RuntimeMemoryRegexReflection/Reflection/ClassAndMethodReflection.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 145 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 83 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,48 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Most useful inspection / manipulation patterns.</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Class, Method, Field — in depth</h2>
+                    <p>Most useful inspection / manipulation patterns.</p>
+                    <h3>Finding the right method</h3>
+                    <p>getMethod(&quot;name&quot;, paramTypes...) - public only, includes inherited getDeclaredMethod(&quot;name&quot;,
+                        paramTypes...) - includes private, this class only getMethods() - all PUBLIC (incl. inherited)
+                        getDeclaredMethods() - declared here, any access</p>
+                    <p>For OVERLOADED methods you must match parameter types EXACTLY.</p>
+                    <h3>Invocation</h3>
+                    <p>method.invoke(instance, args...)</p>
+                    <ul>
+                        <li>Static method? Pass null for instance.
+                        </li>
+                        <li>Returns Object (boxed for primitives).
+                        </li>
+                        <li>Wraps user exceptions in InvocationTargetException — unwrap with
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    getCause().</pre>
+                    <h3>Fields</h3>
+                    <p>field.get(instance) - read field.set(instance, v) - write field.getInt(instance) - primitive
+                        variant (faster, no boxing)</p>
+                    <ul>
+                        <li>Final fields: writable via setAccessible(true) ONLY on instance
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    fields, NOT on `static final` constants (the JIT may have inlined
+    them).</pre>
+                    <h3>Modifiers</h3>
+                    <p>int m = method.getModifiers(); Modifier.isStatic(m), isFinal(m), isPublic(m), isPrivate(m),
+                        ...</p>
+                    <h3>Parameters (Java 8+, requires `-parameters` at compile time for names)</h3>
+                    <p>method.getParameters() -&gt; Parameter[] parameter.getName(), .getType(), .isVarArgs()</p>
+                    <h3>Generic type info</h3>
+                    <p>field.getGenericType() - includes &lt;T&gt; method.getGenericReturnType()
+                        method.getGenericParameterTypes() ParameterizedType type = (ParameterizedType)
+                        field.getGenericType(); type.getActualTypeArguments() -&gt; [String.class]</p>
                 </div>
             </div>
 
@@ -1396,67 +1434,6 @@
 
 import java.lang.reflect.*;
 import java.util.Arrays;
-
-/**
- * Class, Method, Field — in depth
- * --------------------------------
- * Most useful inspection / manipulation patterns.
- * &lt;p&gt;
- *
- * Finding the right method
- * ------------------------
- *   getMethod(&quot;name&quot;, paramTypes...)            - public only, includes inherited
- *   getDeclaredMethod(&quot;name&quot;, paramTypes...)    - includes private, this class only
- *   getMethods()                                  - all PUBLIC (incl. inherited)
- *   getDeclaredMethods()                          - declared here, any access
- * &lt;p&gt;
- *
- * For OVERLOADED methods you must match parameter types EXACTLY.
- * &lt;p&gt;
- *
- * Invocation
- * ----------
- *   method.invoke(instance, args...)
- * &lt;p&gt;
- *
- *   - Static method? Pass null for instance.
- *   - Returns Object (boxed for primitives).
- *   - Wraps user exceptions in InvocationTargetException — unwrap with
- *     getCause().
- * &lt;p&gt;
- *
- * Fields
- * ------
- *   field.get(instance)     - read
- *   field.set(instance, v)  - write
- *   field.getInt(instance)  - primitive variant (faster, no boxing)
- * &lt;p&gt;
- *
- *   - Final fields: writable via setAccessible(true) ONLY on instance
- *     fields, NOT on `static final` constants (the JIT may have inlined
- *     them).
- * &lt;p&gt;
- *
- * Modifiers
- * ---------
- *   int m = method.getModifiers();
- *   Modifier.isStatic(m), isFinal(m), isPublic(m), isPrivate(m), ...
- * &lt;p&gt;
- *
- * Parameters (Java 8+, requires `-parameters` at compile time for names)
- * ----------------------------------------------------------------------
- *   method.getParameters() -&gt; Parameter[]
- *   parameter.getName(), .getType(), .isVarArgs()
- * &lt;p&gt;
- *
- * Generic type info
- * -----------------
- *   field.getGenericType()                  - includes &lt;T&gt;
- *   method.getGenericReturnType()
- *   method.getGenericParameterTypes()
- *   ParameterizedType type = (ParameterizedType) field.getGenericType();
- *   type.getActualTypeArguments()           -&gt; [String.class]
- */
 
 public class ClassAndMethodReflection {
 

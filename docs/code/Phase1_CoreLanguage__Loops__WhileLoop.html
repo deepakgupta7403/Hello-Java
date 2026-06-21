@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase1_CoreLanguage/Loops/WhileLoop.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 49 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 25 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,29 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A while loop is a control flow statement that allows code to be executed repeatedly based on a
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>A while loop is a control flow statement that allows code to be executed repeatedly based on a
                         given Boolean condition. The while loop can be thought of as a repeating if statement. While
-                        Loop first check the conditio...
-                    </div>
+                        Loop first check the condition if the condition is true then it&#x27;ll execute else exit form
+                        the loop.</p>
+                    <p>Syntax :</p>
+                    <pre class="hj-doc-art">            While(boolean condition){
+                   loop body
+            }</pre>
+                    <p>FlowChart:</p>
+                    <p>Start -----&gt;Condition Check-----&gt;if true-----&gt;Loop Body Execute ---------&gt;Condition
+                        Check-----&gt;if false-----&gt;Exit</p>
+                    <p>While loop starts with the checking of condition. If it evaluated to true, then the loop body
+                        statements are executed otherwise first statement following the loop is executed. For this
+                        reason it is also called Entry control loop Once the condition is evaluated to true, the
+                        statements in the loop body are executed. Normally the statements contain an update value for
+                        the variable being processed for the next iteration. When the condition becomes false, the loop
+                        terminates which marks the end of its life cycle.</p>
                 </div>
             </div>
 
@@ -1397,29 +1413,6 @@
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase1_CoreLanguage.Loops;
 
-/**A while loop is a control flow statement that allows code to be executed repeatedly based on a given Boolean condition.
- * The while loop can be thought of as a repeating if statement.
- * While Loop first check the condition if the condition is true then it&#x27;ll execute else exit form the loop.
- * &lt;p&gt;
- *
- * Syntax :
- *             While(boolean condition){
- *                    loop body
- *             }
- * &lt;p&gt;
- *
- * FlowChart:
- * &lt;p&gt;
- *
- * Start -----&gt;Condition Check-----&gt;if true-----&gt;Loop Body Execute ---------&gt;Condition Check-----&gt;if false-----&gt;Exit
- * &lt;p&gt;
- *
- * While loop starts with the checking of condition.
- * If it evaluated to true, then the loop body statements are executed otherwise first statement following the loop is executed.
- * For this reason it is also called Entry control loop
- * Once the condition is evaluated to true, the statements in the loop body are executed.
- * Normally the statements contain an update value for the variable being processed for the next iteration.
- * When the condition becomes false, the loop terminates which marks the end of its life cycle.**/
 public class WhileLoop {
     public static void main(String args[])
     {

@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase1_CoreLanguage/Operators/InstanceofOperator.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 81 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 40 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,40 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Tests whether an object is an instance of a particular class, sub-class, or implements a
-                        particular interface. Result is a boolean.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>The instanceof Operator</h2>
+                    <p>Tests whether an object is an instance of a particular class, sub-class, or implements a
+                        particular interface. Result is a boolean.</p>
+                    <pre class="hj-doc-art">     obj instanceof Type        // true if obj is non-null AND of that type</pre>
+                    <p>Returns FALSE if obj is null - so instanceof is also a handy null-safe check.</p>
+                    <h3>Pattern Matching (Java 16+)</h3>
+                    <p>Since Java 16 you can bind the cast variable in the same expression:</p>
+                    <pre class="hj-doc-art">     if (obj instanceof String s) {
+         // here &#x27;s&#x27; is already a String - no extra cast needed
+         System.out.println(s.length());
+     }</pre>
+                    <p>Inside the &#x27;if&#x27; body &#x27;s&#x27; is in scope; outside it is not.</p>
+                    <h3>When To Use It</h3>
+                    <ul>
+                        <li>When you really do not know the runtime type (e.g. dealing with Object,
+                        </li>
+                    </ul>
+                    <p>external data, sealed hierarchies).</p>
+                    <ul>
+                        <li>In equals() implementations.
+                        </li>
+                    </ul>
+                    <h3>When NOT To Use It</h3>
+                    <ul>
+                        <li>As a stand-in for polymorphism. If you find yourself writing a long chain of
+                        </li>
+                    </ul>
+                    <p>instanceof / cast, consider overriding a method in each subclass instead.</p>
                 </div>
             </div>
 
@@ -1395,46 +1423,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase1_CoreLanguage.Operators;
-
-/**
- * The instanceof Operator
- * -----------------------
- * Tests whether an object is an instance of a particular class, sub-class, or
- * implements a particular interface. Result is a boolean.
- * &lt;p&gt;
- *
- *      obj instanceof Type        // true if obj is non-null AND of that type
- * &lt;p&gt;
- *
- * Returns FALSE if obj is null - so instanceof is also a handy null-safe check.
- * &lt;p&gt;
- *
- * Pattern Matching (Java 16+)
- * ---------------------------
- * Since Java 16 you can bind the cast variable in the same expression:
- * &lt;p&gt;
- *
- *      if (obj instanceof String s) {
- *          // here &#x27;s&#x27; is already a String - no extra cast needed
- *          System.out.println(s.length());
- *      }
- * &lt;p&gt;
- *
- * Inside the &#x27;if&#x27; body &#x27;s&#x27; is in scope; outside it is not.
- * &lt;p&gt;
- *
- * When To Use It
- * --------------
- * - When you really do not know the runtime type (e.g. dealing with Object,
- *   external data, sealed hierarchies).
- * - In equals() implementations.
- * &lt;p&gt;
- *
- * When NOT To Use It
- * ------------------
- * - As a stand-in for polymorphism. If you find yourself writing a long chain of
- *   instanceof / cast, consider overriding a method in each subclass instead.
- */
 
 public class InstanceofOperator {
 

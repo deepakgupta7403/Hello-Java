@@ -50,7 +50,7 @@
         const res = await fetch(depth + 'manifest.json');
         manifest = await res.json();
       } catch (e) {
-        console.warn('search manifest load failed', e);
+          console.warn('search manifest load failed', e);
       }
     }
 
@@ -81,7 +81,7 @@
 
     function escapeHtml(s) {
       return String(s).replace(/[&<>"']/g, function (c) {
-        return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c];
+          return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c];
       });
     }
   }

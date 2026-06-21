@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/VectorAndStack.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 153 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 93 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,52 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Vector and Stack were part of Java 1.0, predating the Collections Framework (which arrived in
-                        1.2). They were RETROFITTED into the framework when it shipped:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Vector and Stack - the Legacy List Classes</h2>
+                    <p>Vector and Stack were part of Java 1.0, predating the Collections Framework (which arrived in
+                        1.2). They were RETROFITTED into the framework when it shipped:</p>
+                    <pre class="hj-doc-art">     Vector implements List         (and is essentially a synchronized ArrayList)
+     Stack   extends Vector         (LIFO operations on top of Vector)</pre>
+                    <p>Both are STILL in the JDK for backwards compatibility, but modern code avoids them. The JDK
+                        Javadoc explicitly recommends using:</p>
+                    <pre class="hj-doc-art">     Vector  -&gt;  ArrayList            (if no synchronization needed)
+                 Collections.synchronizedList(new ArrayList&lt;&gt;())
+                                      (if you really want coarse-grained sync)
+                 CopyOnWriteArrayList (read-mostly concurrent use)</pre>
+                    <pre class="hj-doc-art">     Stack   -&gt;  ArrayDeque           (push / pop / peek - faster, not sync)</pre>
+                    <h3>Why Are They Legacy?</h3>
+                    <ul>
+                        <li>EVERY method on Vector is synchronized - a tax you pay even in
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     single-threaded code.</pre>
+                    <ul>
+                        <li>Stack extends Vector, which is widely considered a misuse of
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     inheritance (&quot;is-a&quot; was the wrong relationship). The result:
+     Stack inherits index-based add/remove from List, which lets you
+     poke holes in the middle of what should be a stack.</pre>
+                    <ul>
+                        <li>Both expose Enumeration alongside Iterator - two ways to iterate.
+                        </li>
+                    </ul>
+                    <h3>Vector-Specific Methods (beyond List)</h3>
+                    <p>capacity() current backing-array length ensureCapacity(int) grow ahead of time trimToSize()
+                        shrink to size() firstElement() / lastElement() shortcut accessors addElement / insertElementAt
+                        / removeElement* / setElementAt</p>
+                    <pre class="hj-doc-art">                                   legacy method names</pre>
+                    <p>elements() returns an Enumeration</p>
+                    <h3>Stack-Specific Methods</h3>
+                    <p>push(e) adds on top, returns the element pop() removes and returns the top, throws if empty
+                        peek() returns the top without removing empty() isEmpty() alias search(o) 1-based position from
+                        the top, -1 if absent</p>
+                    <p>This File Demonstrates Both - and Then The Modern Replacement.</p>
                 </div>
             </div>
 
@@ -1400,65 +1440,6 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.Stack;
 import java.util.Vector;
-
-/**
- * Vector and Stack - the Legacy List Classes
- * ------------------------------------------
- * Vector and Stack were part of Java 1.0, predating the Collections Framework
- * (which arrived in 1.2). They were RETROFITTED into the framework when it
- * shipped:
- * &lt;p&gt;
- *
- *      Vector implements List         (and is essentially a synchronized ArrayList)
- *      Stack   extends Vector         (LIFO operations on top of Vector)
- * &lt;p&gt;
- *
- * Both are STILL in the JDK for backwards compatibility, but modern code
- * avoids them. The JDK Javadoc explicitly recommends using:
- * &lt;p&gt;
- *
- *      Vector  -&gt;  ArrayList            (if no synchronization needed)
- *                  Collections.synchronizedList(new ArrayList&lt;&gt;())
- *                                       (if you really want coarse-grained sync)
- *                  CopyOnWriteArrayList (read-mostly concurrent use)
- * &lt;p&gt;
- *
- *      Stack   -&gt;  ArrayDeque           (push / pop / peek - faster, not sync)
- * &lt;p&gt;
- *
- * Why Are They Legacy?
- * --------------------
- *   1. EVERY method on Vector is synchronized - a tax you pay even in
- *      single-threaded code.
- *   2. Stack extends Vector, which is widely considered a misuse of
- *      inheritance (&quot;is-a&quot; was the wrong relationship). The result:
- *      Stack inherits index-based add/remove from List, which lets you
- *      poke holes in the middle of what should be a stack.
- *   3. Both expose Enumeration alongside Iterator - two ways to iterate.
- * &lt;p&gt;
- *
- * Vector-Specific Methods (beyond List)
- * -------------------------------------
- *   capacity()                      current backing-array length
- *   ensureCapacity(int)             grow ahead of time
- *   trimToSize()                    shrink to size()
- *   firstElement() / lastElement()  shortcut accessors
- *   addElement / insertElementAt / removeElement* / setElementAt
- *                                    legacy method names
- *   elements()                      returns an Enumeration
- * &lt;p&gt;
- *
- * Stack-Specific Methods
- * ----------------------
- *   push(e)               adds on top, returns the element
- *   pop()                 removes and returns the top, throws if empty
- *   peek()                returns the top without removing
- *   empty()               isEmpty() alias
- *   search(o)             1-based position from the top, -1 if absent
- * &lt;p&gt;
- *
- * This File Demonstrates Both - and Then The Modern Replacement.
- */
 
 public class VectorAndStack {
 

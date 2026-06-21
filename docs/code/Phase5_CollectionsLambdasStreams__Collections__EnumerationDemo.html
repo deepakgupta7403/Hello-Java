@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/EnumerationDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 129 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 77 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,50 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>java.util.Enumeration&amp;lt;E&amp;gt; - The Original (Java 1.0) Iterator</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.Enumeration&amp;lt;E&amp;gt; - The Original (Java 1.0) Iterator</h2>
+                    <p>Enumeration is the LEGACY ancestor of Iterator. It is the iteration contract used by the original
+                        Java 1.0 collection classes:</p>
+                    <pre class="hj-doc-art">     Vector / Stack / Hashtable
+     StringTokenizer
+     ZipFile / NetworkInterface (some IO classes still expose Enumerations)</pre>
+                    <h3>Methods</h3>
+                    <pre class="hj-doc-art">     boolean hasMoreElements()
+     E       nextElement()
+     default Iterator&amp;lt;E&amp;gt; asIterator()   (Java 9+, useful bridge)</pre>
+                    <h3>Enumeration vs Iterator</h3>
+                    <p>Enumeration Iterator (modern) -------------------- -------------------- Java 1.0 Java 1.2
+                        hasMoreElements() hasNext() nextElement() next()</p>
+                    <ul>
+                        <li>no remove remove() (optional)
+                        </li>
+                        <li>no forEach (until 9) forEachRemaining()
+                        </li>
+                    </ul>
+                    <p>Iterator superseded Enumeration in Java 1.2. The Collections Framework uses Iterator everywhere.
+                        Enumeration is kept for backwards compatibility with very old APIs.</p>
+                    <h3>When You Still See It</h3>
+                    <ul>
+                        <li>servlet APIs: `HttpServletRequest.getHeaderNames()` returns an
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    Enumeration&amp;lt;String&amp;gt; (kept for compatibility).</pre>
+                    <ul>
+                        <li>some classloader APIs: `getResources(name)` returns Enumeration&amp;lt;URL&amp;gt;.
+                        </li>
+                        <li>StringTokenizer (also legacy - prefer String.split or Scanner).
+                        </li>
+                        <li>any code targeting JDK 1.1 or older libraries.
+                        </li>
+                    </ul>
+                    <h3>Bridging Enumeration &amp;lt;-&amp;gt; Iterator</h3>
+                    <p>Enumeration.asIterator() Java 9+ Collections.enumeration(Collection) legacy direction
+                        Collections.list(Enumeration) drain to a List</p>
                 </div>
             </div>
 
@@ -1395,57 +1435,6 @@
           <pre class="line-numbers m-0"><code class="language-java">package Phase5_CollectionsLambdasStreams.Collections;
 
 import java.util.*;
-
-/**
- * java.util.Enumeration&amp;lt;E&amp;gt; - The Original (Java 1.0) Iterator
- * -----------------------------------------------------------
- * Enumeration is the LEGACY ancestor of Iterator. It is the iteration
- * contract used by the original Java 1.0 collection classes:
- * &lt;p&gt;
- *
- *      Vector / Stack / Hashtable
- *      StringTokenizer
- *      ZipFile / NetworkInterface (some IO classes still expose Enumerations)
- * &lt;p&gt;
- *
- * Methods
- * -------
- *      boolean hasMoreElements()
- *      E       nextElement()
- *      default Iterator&amp;lt;E&amp;gt; asIterator()   (Java 9+, useful bridge)
- * &lt;p&gt;
- *
- * Enumeration vs Iterator
- * -----------------------
- *   Enumeration            Iterator (modern)
- *   --------------------   --------------------
- *   Java 1.0                Java 1.2
- *   hasMoreElements()       hasNext()
- *   nextElement()           next()
- *   - no remove             remove() (optional)
- *   - no forEach (until 9)  forEachRemaining()
- * &lt;p&gt;
- *
- * Iterator superseded Enumeration in Java 1.2. The Collections Framework
- * uses Iterator everywhere. Enumeration is kept for backwards compatibility
- * with very old APIs.
- * &lt;p&gt;
- *
- * When You Still See It
- * ---------------------
- *   - servlet APIs: `HttpServletRequest.getHeaderNames()` returns an
- *     Enumeration&amp;lt;String&amp;gt; (kept for compatibility).
- *   - some classloader APIs: `getResources(name)` returns Enumeration&amp;lt;URL&amp;gt;.
- *   - StringTokenizer (also legacy - prefer String.split or Scanner).
- *   - any code targeting JDK 1.1 or older libraries.
- * &lt;p&gt;
- *
- * Bridging Enumeration &amp;lt;-&amp;gt; Iterator
- * ---------------------------------
- *   Enumeration.asIterator()                    Java 9+
- *   Collections.enumeration(Collection)         legacy direction
- *   Collections.list(Enumeration)               drain to a List
- */
 
 public class EnumerationDemo {
 

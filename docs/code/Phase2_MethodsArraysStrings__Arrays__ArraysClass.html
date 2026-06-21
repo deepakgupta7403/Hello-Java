@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase2_MethodsArraysStrings/Arrays/ArraysClass.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 188 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 130 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,57 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>java.util.Arrays - The Array Utility Class</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.Arrays - The Array Utility Class</h2>
+                    <p>`Arrays` is a final class of STATIC HELPERS for working with Java arrays: print, sort, search,
+                        copy, fill, compare, convert to a List or Stream. It is one of the most useful classes in the
+                        JDK - learn it well.</p>
+                    <h3>Methods Covered Here (most-used selection)</h3>
+                    <pre class="hj-doc-art">     Printing :    Arrays.toString(arr)          single dim
+                   Arrays.deepToString(grid)     multi dim</pre>
+                    <pre class="hj-doc-art">     Sorting  :    Arrays.sort(arr)              full sort
+                   Arrays.sort(arr, from, to)    partial sort
+                   Arrays.sort(arr, comparator)  custom order (objects)
+                   Arrays.parallelSort(arr)      multi-threaded sort</pre>
+                    <pre class="hj-doc-art">     Searching:    Arrays.binarySearch(arr, key)  array MUST be sorted</pre>
+                    <pre class="hj-doc-art">     Copying  :    Arrays.copyOf(arr, newLen)
+                   Arrays.copyOfRange(arr, from, to)
+                   System.arraycopy(...)         lower-level, faster
+                   arr.clone()                   single-dim shallow copy</pre>
+                    <pre class="hj-doc-art">     Filling  :    Arrays.fill(arr, value)
+                   Arrays.fill(arr, from, to, value)
+                   Arrays.setAll(arr, i -&gt; ...)        (Java 8+)</pre>
+                    <pre class="hj-doc-art">     Equality :    Arrays.equals(a, b)
+                   Arrays.deepEquals(a, b)        for nested arrays
+                   Arrays.compare(a, b)           Java 9+, lex order
+                   Arrays.mismatch(a, b)          Java 9+, first diff index
+                   Arrays.hashCode(arr)
+                   Arrays.deepHashCode(grid)</pre>
+                    <pre class="hj-doc-art">     Bridges  :    Arrays.asList(...)             FIXED-SIZE list view
+                   Arrays.stream(arr)             open a Stream over arr</pre>
+                    <h3>Common Gotchas</h3>
+                    <ul>
+                        <li>`arr.toString()` does NOT print contents; use Arrays.toString(arr).
+                        </li>
+                        <li>`Arrays.asList(arr)` of a PRIMITIVE array does the wrong thing - it
+                        </li>
+                    </ul>
+                    <p>returns a List with ONE element (the array itself). Use Integer[] or convert via IntStream /
+                        boxed().</p>
+                    <ul>
+                        <li>The list returned by `Arrays.asList(...)` is FIXED-SIZE - you cannot
+                        </li>
+                    </ul>
+                    <p>add or remove elements. To get a growable copy use `new ArrayList&lt;&gt;(...)`.</p>
+                    <ul>
+                        <li>`binarySearch` returns a negative insertion point if the key is missing.
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1398,63 +1445,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
-
-/**
- * java.util.Arrays - The Array Utility Class
- * ------------------------------------------
- * `Arrays` is a final class of STATIC HELPERS for working with Java arrays:
- * print, sort, search, copy, fill, compare, convert to a List or Stream.
- * It is one of the most useful classes in the JDK - learn it well.
- * &lt;p&gt;
- *
- * Methods Covered Here (most-used selection)
- * ------------------------------------------
- *      Printing :    Arrays.toString(arr)          single dim
- *                    Arrays.deepToString(grid)     multi dim
- * &lt;p&gt;
- *
- *      Sorting  :    Arrays.sort(arr)              full sort
- *                    Arrays.sort(arr, from, to)    partial sort
- *                    Arrays.sort(arr, comparator)  custom order (objects)
- *                    Arrays.parallelSort(arr)      multi-threaded sort
- * &lt;p&gt;
- *
- *      Searching:    Arrays.binarySearch(arr, key)  array MUST be sorted
- * &lt;p&gt;
- *
- *      Copying  :    Arrays.copyOf(arr, newLen)
- *                    Arrays.copyOfRange(arr, from, to)
- *                    System.arraycopy(...)         lower-level, faster
- *                    arr.clone()                   single-dim shallow copy
- * &lt;p&gt;
- *
- *      Filling  :    Arrays.fill(arr, value)
- *                    Arrays.fill(arr, from, to, value)
- *                    Arrays.setAll(arr, i -&gt; ...)        (Java 8+)
- * &lt;p&gt;
- *
- *      Equality :    Arrays.equals(a, b)
- *                    Arrays.deepEquals(a, b)        for nested arrays
- *                    Arrays.compare(a, b)           Java 9+, lex order
- *                    Arrays.mismatch(a, b)          Java 9+, first diff index
- *                    Arrays.hashCode(arr)
- *                    Arrays.deepHashCode(grid)
- * &lt;p&gt;
- *
- *      Bridges  :    Arrays.asList(...)             FIXED-SIZE list view
- *                    Arrays.stream(arr)             open a Stream over arr
- * &lt;p&gt;
- *
- * Common Gotchas
- * --------------
- *  - `arr.toString()` does NOT print contents; use Arrays.toString(arr).
- *  - `Arrays.asList(arr)` of a PRIMITIVE array does the wrong thing - it
- *    returns a List with ONE element (the array itself). Use Integer[] or
- *    convert via IntStream / boxed().
- *  - The list returned by `Arrays.asList(...)` is FIXED-SIZE - you cannot
- *    add or remove elements. To get a growable copy use `new ArrayList&lt;&gt;(...)`.
- *  - `binarySearch` returns a negative insertion point if the key is missing.
- */
 
 public class ArraysClass {
 

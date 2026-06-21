@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase1_CoreLanguage/DecisionMaking/SwitchCaseStatement.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 215 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 178 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,28 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>The switch statement is a multi-way branch statement. It provides an easy way to dispatch
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>The switch statement is a multi-way branch statement. It provides an easy way to dispatch
                         execution to different parts of code based on the value of the expression. Basically, the
-                        expression can be byte, short, char,...
-                    </div>
+                        expression can be byte, short, char, and int primitive data types. Beginning with JDK7, it also
+                        works with enumerated types ( Enums in java), the String class and Wrapper classes.</p>
+                    <p>Syntax: // switch statement switch(expression) { // case statements // values must be of same
+                        type of expression case value1 : // Statements break; // break is optional</p>
+                    <p>case value2 : // Statements break; // break is optional</p>
+                    <p>// We can have any number of case statements // below is default statement, used when none of the
+                        cases is true. // No break is needed in the default case. default : // Statements }</p>
+                    <p>Duplicate case values are not allowed. The value for a case must be the same data type as the
+                        variable in the switch. The value for a case must be a constant or a literal.Basics.Variables
+                        are not allowed. The break statement is used inside the switch to terminate a statement
+                        sequence. The break statement is optional. If omitted, execution will continue on into the next
+                        case. The default statement is optional, and can appear anywhere inside the switch block. In
+                        case, if it is not at the end, then a break statement must be kept after the default statement
+                        to omit the execution of next case statement.</p>
                 </div>
             </div>
 
@@ -1396,43 +1411,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase1_CoreLanguage.DecisionMaking;
-
-/**
- * The switch statement is a multi-way branch statement.
- * It provides an easy way to dispatch execution to different parts of code based on the value of the expression.
- * Basically, the expression can be byte, short, char, and int primitive data types.
- * Beginning with JDK7, it also works with enumerated types ( Enums in java), the String class and Wrapper classes.
- * &lt;p&gt;
- *
- * Syntax:
- // switch statement
- switch(expression)
- {
- // case statements
- // values must be of same type of expression
- case value1 :
- // Statements
- break; // break is optional
-
- case value2 :
- // Statements
- break; // break is optional
-
- // We can have any number of case statements
- // below is default statement, used when none of the cases is true.
- // No break is needed in the default case.
- default :
- // Statements
- }
- *
- * Duplicate case values are not allowed.
- * The value for a case must be the same data type as the variable in the switch.
- * The value for a case must be a constant or a literal.Basics.Variables are not allowed.
- * The break statement is used inside the switch to terminate a statement sequence.
- * The break statement is optional. If omitted, execution will continue on into the next case.
- * The default statement is optional, and can appear anywhere inside the switch block.
- * In case, if it is not at the end, then a break statement must be kept after the default statement to omit the execution of next case statement.
- **/
 
 public class SwitchCaseStatement {
     public static void main(String args[])
@@ -1609,7 +1587,8 @@ public class SwitchCaseStatement {
         //OUTPUT
         //lective courses : Machine Learning, Big Data
     }
-}</code></pre>
+}
+</code></pre>
                 </div>
             </div>
 

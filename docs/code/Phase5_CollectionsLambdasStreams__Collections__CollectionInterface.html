@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/CollectionInterface.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 196 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 122 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,74 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>java.util.Collection&amp;lt;E&amp;gt; - The Root Interface</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.Collection&amp;lt;E&amp;gt; - The Root Interface</h2>
+                    <p>Collection&amp;lt;E&amp;gt; is the shared API that List, Set, Queue, and Deque all inherit.
+                        Programs against Collection get a generic API that works on any implementation:</p>
+                    <pre class="hj-doc-art">     void process(Collection&amp;lt;String&amp;gt; c) { for (String s : c) ... }</pre>
+                    <h3>The Methods (Complete API)</h3>
+                    <ul>
+                        <li>Size / emptiness
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">      size()                  - element count
+      isEmpty()               - size() == 0</pre>
+                    <ul>
+                        <li>Membership
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">      contains(Object o)
+      containsAll(Collection&amp;lt;?&amp;gt; c)</pre>
+                    <ul>
+                        <li>Modification
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">      add(E e)                - true if changed (Set may return false)
+      remove(Object o)
+      addAll(Collection&amp;lt;? extends E&amp;gt; c)
+      removeAll(Collection&amp;lt;?&amp;gt; c)
+      retainAll(Collection&amp;lt;?&amp;gt; c)        - intersection
+      removeIf(Predicate&amp;lt;? super E&amp;gt; p)  - Java 8+
+      clear()</pre>
+                    <ul>
+                        <li>Iteration / conversion
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">      iterator()
+      toArray()
+      toArray(T[] a)
+      toArray(IntFunction&amp;lt;T[]&amp;gt;)         - Java 11+
+      forEach(Consumer&amp;lt;? super E&amp;gt;)      - Java 8+
+      stream() / parallelStream()       - Java 8+
+      spliterator()                     - Java 8+</pre>
+                    <ul>
+                        <li>Equality / identity
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">      equals(Object o)
+      hashCode()</pre>
+                    <h3>The Optional-Operation Convention</h3>
+                    <p>Some implementations are IMMUTABLE - List.of(...), Map.of(...). Calling a mutator on them throws
+                        UnsupportedOperationException. The Java spec permits any Collection method to be &quot;optional&quot;
+                        - read the docs for each implementation.</p>
+                    <h3>Equality - Two Collections Are Equal If...</h3>
+                    <ul>
+                        <li>Same TYPE family (a List is never .equals to a Set).
+                        </li>
+                        <li>Same SIZE.
+                        </li>
+                        <li>Same ELEMENTS in the same iteration order (for ordered types).
+                        </li>
+                    </ul>
+                    <h3>Iteration Gotcha - ConcurrentModificationException</h3>
+                    <p>Most collections are fail-fast: modifying them while iterating with a for-each loop will throw
+                        ConcurrentModificationException. Use the Iterator&#x27;s own remove() method, removeIf(...), or
+                        a CopyOnWrite* / Concurrent* collection.</p>
                 </div>
             </div>
 
@@ -1399,79 +1463,6 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Stream;
-
-/**
- * java.util.Collection&amp;lt;E&amp;gt; - The Root Interface
- * ---------------------------------------------
- * Collection&amp;lt;E&amp;gt; is the shared API that List, Set, Queue, and Deque all
- * inherit. Programs against Collection get a generic API that works on any
- * implementation:
- * &lt;p&gt;
- *
- *      void process(Collection&amp;lt;String&amp;gt; c) { for (String s : c) ... }
- * &lt;p&gt;
- *
- * The Methods (Complete API)
- * --------------------------
- * &lt;p&gt;
- *
- *   - Size / emptiness
- *       size()                  - element count
- *       isEmpty()               - size() == 0
- * &lt;p&gt;
- *
- *   - Membership
- *       contains(Object o)
- *       containsAll(Collection&amp;lt;?&amp;gt; c)
- * &lt;p&gt;
- *
- *   - Modification
- *       add(E e)                - true if changed (Set may return false)
- *       remove(Object o)
- *       addAll(Collection&amp;lt;? extends E&amp;gt; c)
- *       removeAll(Collection&amp;lt;?&amp;gt; c)
- *       retainAll(Collection&amp;lt;?&amp;gt; c)        - intersection
- *       removeIf(Predicate&amp;lt;? super E&amp;gt; p)  - Java 8+
- *       clear()
- * &lt;p&gt;
- *
- *   - Iteration / conversion
- *       iterator()
- *       toArray()
- *       toArray(T[] a)
- *       toArray(IntFunction&amp;lt;T[]&amp;gt;)         - Java 11+
- *       forEach(Consumer&amp;lt;? super E&amp;gt;)      - Java 8+
- *       stream() / parallelStream()       - Java 8+
- *       spliterator()                     - Java 8+
- * &lt;p&gt;
- *
- *   - Equality / identity
- *       equals(Object o)
- *       hashCode()
- * &lt;p&gt;
- *
- * The Optional-Operation Convention
- * ---------------------------------
- * Some implementations are IMMUTABLE - List.of(...), Map.of(...). Calling a
- * mutator on them throws UnsupportedOperationException. The Java spec
- * permits any Collection method to be &quot;optional&quot; - read the docs for each
- * implementation.
- * &lt;p&gt;
- *
- * Equality - Two Collections Are Equal If...
- * ------------------------------------------
- *   - Same TYPE family (a List is never .equals to a Set).
- *   - Same SIZE.
- *   - Same ELEMENTS in the same iteration order (for ordered types).
- * &lt;p&gt;
- *
- * Iteration Gotcha - ConcurrentModificationException
- * --------------------------------------------------
- * Most collections are fail-fast: modifying them while iterating with a
- * for-each loop will throw ConcurrentModificationException. Use the
- * Iterator&#x27;s own remove() method, removeIf(...), or a CopyOnWrite* /
- * Concurrent* collection.
- */
 
 public class CollectionInterface {
 

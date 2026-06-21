@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/ThreadPools.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 156 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 99 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,52 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Creating one Thread per task is fine for tens of tasks; for thousands it&#x27;s a disaster
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Thread Pools</h2>
+                    <p>Creating one Thread per task is fine for tens of tasks; for thousands it&#x27;s a disaster
                         (thread creation is expensive, OS limits exist). A THREAD POOL keeps a small set of WORKER
-                        threads alive and feeds them tasks from...
-                    </div>
+                        threads alive and feeds them tasks from a QUEUE.</p>
+                    <h3>ThreadPoolExecutor — the core class</h3>
+                    <p>new ThreadPoolExecutor(</p>
+                    <pre class="hj-doc-art">      int corePoolSize,                 - always-running workers
+      int maximumPoolSize,              - upper bound when busy
+      long keepAliveTime, TimeUnit unit,- idle workers above core are reaped
+      BlockingQueue&lt;Runnable&gt; workQueue,- where tasks wait for a worker
+      ThreadFactory threadFactory,     - how to make threads
+      RejectedExecutionHandler handler - what to do when full)</pre>
+                    <h3>How the pool routes a submitted task</h3>
+                    <ul>
+                        <li>Fewer than corePoolSize workers? -&gt; create a new worker for the task.
+                        </li>
+                        <li>Otherwise: try to ENQUEUE the task on the workQueue.
+                        </li>
+                        <li>Queue full? -&gt; If under maximumPoolSize, create a new worker.
+                        </li>
+                        <li>Pool also full? -&gt; RejectedExecutionHandler fires.
+                        </li>
+                    </ul>
+                    <h3>Rejection policies</h3>
+                    <p>AbortPolicy (default) - throw RejectedExecutionException CallerRunsPolicy - run the task on the
+                        SUBMITTING thread</p>
+                    <pre class="hj-doc-art">                                 (backpressure)</pre>
+                    <p>DiscardPolicy - silently drop the task DiscardOldestPolicy - drop the oldest queued task, then
+                        submit</p>
+                    <h3>Queue choice strongly affects behaviour</h3>
+                    <p>SynchronousQueue - zero capacity, hands off directly. With</p>
+                    <pre class="hj-doc-art">                             max=∞ this is Executors.newCachedThreadPool.</pre>
+                    <p>LinkedBlockingQueue (unbounded) - acts like a fixed pool that never</p>
+                    <pre class="hj-doc-art">                             grows. With Executors.newFixedThreadPool.</pre>
+                    <p>ArrayBlockingQueue (bounded) - encourages the pool to grow up to max. PriorityBlockingQueue -
+                        tasks must be Comparable.</p>
+                    <h3>Why Executors.* sometimes bites you</h3>
+                    <p>newFixedThreadPool - unbounded queue. Memory leak under overload. newCachedThreadPool - unbounded
+                        workers. Thread explosion. newSingleThreadExecutor - unbounded queue. For production, construct
+                        a ThreadPoolExecutor yourself with bounded queue + bounded max + a sane rejection policy.</p>
                 </div>
             </div>
 
@@ -1399,62 +1438,6 @@
 
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
-
-/**
- * Thread Pools
- * ------------
- * Creating one Thread per task is fine for tens of tasks; for thousands
- * it&#x27;s a disaster (thread creation is expensive, OS limits exist). A
- * THREAD POOL keeps a small set of WORKER threads alive and feeds them
- * tasks from a QUEUE.
- * &lt;p&gt;
- *
- * ThreadPoolExecutor — the core class
- * -----------------------------------
- *   new ThreadPoolExecutor(
- *       int corePoolSize,                 - always-running workers
- *       int maximumPoolSize,              - upper bound when busy
- *       long keepAliveTime, TimeUnit unit,- idle workers above core are reaped
- *       BlockingQueue&lt;Runnable&gt; workQueue,- where tasks wait for a worker
- *       ThreadFactory threadFactory,     - how to make threads
- *       RejectedExecutionHandler handler - what to do when full)
- * &lt;p&gt;
- *
- * How the pool routes a submitted task
- * ------------------------------------
- *   1. Fewer than corePoolSize workers? -&gt; create a new worker for the task.
- *   2. Otherwise: try to ENQUEUE the task on the workQueue.
- *   3. Queue full? -&gt; If under maximumPoolSize, create a new worker.
- *   4. Pool also full? -&gt; RejectedExecutionHandler fires.
- * &lt;p&gt;
- *
- * Rejection policies
- * ------------------
- *   AbortPolicy        (default) - throw RejectedExecutionException
- *   CallerRunsPolicy             - run the task on the SUBMITTING thread
- *                                  (backpressure)
- *   DiscardPolicy                - silently drop the task
- *   DiscardOldestPolicy          - drop the oldest queued task, then submit
- * &lt;p&gt;
- *
- * Queue choice strongly affects behaviour
- * ---------------------------------------
- *   SynchronousQueue        - zero capacity, hands off directly. With
- *                              max=∞ this is Executors.newCachedThreadPool.
- *   LinkedBlockingQueue (unbounded) - acts like a fixed pool that never
- *                              grows. With Executors.newFixedThreadPool.
- *   ArrayBlockingQueue (bounded) - encourages the pool to grow up to max.
- *   PriorityBlockingQueue   - tasks must be Comparable.
- * &lt;p&gt;
- *
- * Why Executors.* sometimes bites you
- * -----------------------------------
- *   newFixedThreadPool   - unbounded queue. Memory leak under overload.
- *   newCachedThreadPool  - unbounded workers. Thread explosion.
- *   newSingleThreadExecutor - unbounded queue.
- * For production, construct a ThreadPoolExecutor yourself with bounded
- * queue + bounded max + a sane rejection policy.
- */
 
 public class ThreadPools {
 

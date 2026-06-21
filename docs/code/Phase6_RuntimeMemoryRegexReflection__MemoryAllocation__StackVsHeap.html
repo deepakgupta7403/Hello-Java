@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase6_RuntimeMemoryRegexReflection/MemoryAllocation/StackVsHeap.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 160 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 75 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,71 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>One of the most-asked Java interview questions and one of the most useful mental models for
-                        reasoning about your code.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Stack vs Heap Memory Allocation</h2>
+                    <p>One of the most-asked Java interview questions and one of the most useful mental models for
+                        reasoning about your code.</p>
+                    <h3>Side-By-Side</h3>
+                    <pre class="hj-doc-art"> Aspect           | Stack                          | Heap
+ -----------------+--------------------------------+--------------------------------
+ Scope            | PER-THREAD                     | SHARED across all threads
+ Holds            | METHOD FRAMES with locals,     | ALL OBJECTS and arrays
+                  |   arguments, return address    |
+ Allocation       | push when method is entered    | `new` requests an allocation
+                  |   pop when method returns      |   from the GC
+ Deallocation     | AUTOMATIC at frame pop         | by the GARBAGE COLLECTOR
+                  |                                |   when the object becomes
+                  |                                |   unreachable
+ Speed            | very fast (just a pointer bump)| slower (object header, GC)
+ Size             | small per thread (~ 512 KB)    | large (often gigabytes)
+ Lifetime         | tied to the method call        | until no reference remains
+ Failure mode     | StackOverflowError             | OutOfMemoryError: Java heap
+                  |   (too-deep recursion)         |   space
+ Tuning           | -Xss (per-thread stack)        | -Xms, -Xmx, GC choice</pre>
+                    <h3>What Goes Where, Exactly</h3>
+                    <pre class="hj-doc-art">     void foo() {
+         int x = 5;                   // x is on the STACK (primitive local)
+         String s = &quot;hi&quot;;              // &#x27;s&#x27; is on the STACK; the String
+                                       //   object itself lives on the HEAP
+                                       //   (and is interned)
+         Customer c = new Customer(); // &#x27;c&#x27; is on the STACK (a reference);
+                                       //   the Customer instance is on the HEAP
+     }</pre>
+                    <p>When foo() returns:</p>
+                    <ul>
+                        <li>The frame is popped - x, s, c disappear instantly.
+                        </li>
+                        <li>The Customer object remains on the heap until the GC reclaims it.
+                        </li>
+                    </ul>
+                    <h3>Escape Analysis (HotSpot)</h3>
+                    <p>The JIT can prove that an object &quot;does not escape&quot; the method that created it - no
+                        reference leaves through return values, threads or fields</p>
+                    <ul>
+                        <li>and may then place it on the stack (or in registers) instead of the
+                        </li>
+                    </ul>
+                    <p>heap. This is invisible to your code; you only see the speedup.</p>
+                    <h3>Pass-By-Value Reminder</h3>
+                    <p>Java is always pass-by-value. For primitives a copy of the VALUE is pushed onto the called method&#x27;s
+                        frame. For references a copy of the REFERENCE (the pointer) is pushed - both frames point at the
+                        SAME heap object.</p>
+                    <h3>Common Misconceptions</h3>
+                    <p>&quot;primitives are always on the stack&quot; - WRONG. A primitive FIELD of an</p>
+                    <pre class="hj-doc-art">                                           object lives inside the object
+                                           on the heap.</pre>
+                    <p>&quot;the heap is slow&quot; - Not really; modern JVMs allocate</p>
+                    <pre class="hj-doc-art">                                           faster than malloc/free in C.</pre>
+                    <p>&quot;stack memory is freed by the GC&quot; - No - stack frames are popped</p>
+                    <pre class="hj-doc-art">                                           automatically when the method
+                                           returns.</pre>
+                    <p>&quot;smaller heap = faster GC&quot; - Often the opposite. Tiny heaps</p>
+                    <pre class="hj-doc-art">                                           mean MORE GC cycles.</pre>
                 </div>
             </div>
 
@@ -1395,90 +1454,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase6_RuntimeMemoryRegexReflection.MemoryAllocation;
-
-/**
- * Stack vs Heap Memory Allocation
- * -------------------------------
- * One of the most-asked Java interview questions and one of the most useful
- * mental models for reasoning about your code.
- * &lt;p&gt;
- *
- * Side-By-Side
- * ------------
- * &lt;p&gt;
- *
- *  Aspect           | Stack                          | Heap
- *  -----------------+--------------------------------+--------------------------------
- *  Scope            | PER-THREAD                     | SHARED across all threads
- *  Holds            | METHOD FRAMES with locals,     | ALL OBJECTS and arrays
- *                   |   arguments, return address    |
- *  Allocation       | push when method is entered    | `new` requests an allocation
- *                   |   pop when method returns      |   from the GC
- *  Deallocation     | AUTOMATIC at frame pop         | by the GARBAGE COLLECTOR
- *                   |                                |   when the object becomes
- *                   |                                |   unreachable
- *  Speed            | very fast (just a pointer bump)| slower (object header, GC)
- *  Size             | small per thread (~ 512 KB)    | large (often gigabytes)
- *  Lifetime         | tied to the method call        | until no reference remains
- *  Failure mode     | StackOverflowError             | OutOfMemoryError: Java heap
- *                   |   (too-deep recursion)         |   space
- *  Tuning           | -Xss (per-thread stack)        | -Xms, -Xmx, GC choice
- * &lt;p&gt;
- *
- * What Goes Where, Exactly
- * ------------------------
- * &lt;p&gt;
- *
- *      void foo() {
- *          int x = 5;                   // x is on the STACK (primitive local)
- *          String s = &quot;hi&quot;;              // &#x27;s&#x27; is on the STACK; the String
- *                                        //   object itself lives on the HEAP
- *                                        //   (and is interned)
- *          Customer c = new Customer(); // &#x27;c&#x27; is on the STACK (a reference);
- *                                        //   the Customer instance is on the HEAP
- *      }
- * &lt;p&gt;
- *
- * When foo() returns:
- *   - The frame is popped - x, s, c disappear instantly.
- *   - The Customer object remains on the heap until the GC reclaims it.
- * &lt;p&gt;
- *
- * Escape Analysis (HotSpot)
- * -------------------------
- * The JIT can prove that an object &quot;does not escape&quot; the method that
- * created it - no reference leaves through return values, threads or fields
- * - and may then place it on the stack (or in registers) instead of the
- * heap. This is invisible to your code; you only see the speedup.
- * &lt;p&gt;
- *
- * Pass-By-Value Reminder
- * ----------------------
- * Java is always pass-by-value. For primitives a copy of the VALUE is
- * pushed onto the called method&#x27;s frame. For references a copy of the
- * REFERENCE (the pointer) is pushed - both frames point at the SAME heap
- * object.
- * &lt;p&gt;
- *
- * Common Misconceptions
- * ---------------------
- *   &quot;primitives are always on the stack&quot;  - WRONG. A primitive FIELD of an
- *                                            object lives inside the object
- *                                            on the heap.
- * &lt;p&gt;
- *
- *   &quot;the heap is slow&quot;                     - Not really; modern JVMs allocate
- *                                            faster than malloc/free in C.
- * &lt;p&gt;
- *
- *   &quot;stack memory is freed by the GC&quot;      - No - stack frames are popped
- *                                            automatically when the method
- *                                            returns.
- * &lt;p&gt;
- *
- *   &quot;smaller heap = faster GC&quot;             - Often the opposite. Tiny heaps
- *                                            mean MORE GC cycles.
- */
 
 public class StackVsHeap {
 

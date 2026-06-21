@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase9_ModernJavaAndModules/Modules/ServiceLoaderDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 120 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 53 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,58 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>ServiceLoader lets you declare a SERVICE INTERFACE and DISCOVER implementations at runtime —
-                        without hard-coding their names.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>ServiceLoader — the Built-In Plugin / SPI Mechanism</h2>
+                    <p>ServiceLoader lets you declare a SERVICE INTERFACE and DISCOVER implementations at runtime —
+                        without hard-coding their names.</p>
+                    <h3>Two pieces</h3>
+                    <ul>
+                        <li>A service INTERFACE (or abstract class).
+                        </li>
+                        <li>ONE or more implementations, declared so the JVM can find them.
+                        </li>
+                    </ul>
+                    <h3>Declaring providers</h3>
+                    <p>Classpath / unnamed module: a META-INF/services/&lt;interface name&gt; text file listing
+                        implementation classes, one per line:</p>
+                    <h3>META-INF/services/com.example.api.Codec</h3>
+                    <pre class="hj-doc-art">      com.example.codec.GzipCodec
+      com.example.codec.SnappyCodec</pre>
+                    <p>Modular projects: declare in module-info.java instead:</p>
+                    <pre class="hj-doc-art">      module com.example.codec {
+          requires com.example.api;
+          provides com.example.api.Codec
+              with com.example.codec.GzipCodec,
+                   com.example.codec.SnappyCodec;
+      }</pre>
+                    <h3>Loading at runtime</h3>
+                    <pre class="hj-doc-art">     ServiceLoader&lt;Codec&gt; loader = ServiceLoader.load(Codec.class);
+     for (Codec c : loader) { ... }</pre>
+                    <pre class="hj-doc-art">     loader.stream()
+           .map(ServiceLoader.Provider::get)
+           .filter(c -&gt; c.canHandle(input))
+           .findFirst();</pre>
+                    <h3>Real-world examples</h3>
+                    <ul>
+                        <li>JDBC drivers (java.sql.Driver) — historic, before SPI
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    formalisation but now uses it.</pre>
+                    <ul>
+                        <li>Logging (SLF4J, java.util.spi providers).
+                        </li>
+                        <li>Java Sound, Cryptography Providers, Locale providers, Charsets.
+                        </li>
+                    </ul>
+                    <h3>Demo — this file</h3>
+                    <p>Without a module-info.java OR a META-INF/services entry, our demo Codec interface has zero
+                        registered providers. The file walks through the API and lists JDK-provided SPIs that DO have
+                        providers (so we can show ServiceLoader actually finding things).</p>
                 </div>
             </div>
 
@@ -1398,72 +1444,6 @@
 
 import java.util.Iterator;
 import java.util.ServiceLoader;
-
-/**
- * ServiceLoader — the Built-In Plugin / SPI Mechanism
- * ---------------------------------------------------
- * ServiceLoader lets you declare a SERVICE INTERFACE and DISCOVER
- * implementations at runtime — without hard-coding their names.
- * &lt;p&gt;
- *
- * Two pieces
- * ----------
- *   1. A service INTERFACE (or abstract class).
- *   2. ONE or more implementations, declared so the JVM can find them.
- * &lt;p&gt;
- *
- * Declaring providers
- * -------------------
- * &lt;p&gt;
- *
- *   Classpath / unnamed module: a META-INF/services/&lt;interface name&gt;
- *   text file listing implementation classes, one per line:
- * &lt;p&gt;
- *
- *       META-INF/services/com.example.api.Codec
- *       -----------------------------------------
- *       com.example.codec.GzipCodec
- *       com.example.codec.SnappyCodec
- * &lt;p&gt;
- *
- *   Modular projects: declare in module-info.java instead:
- * &lt;p&gt;
- *
- *       module com.example.codec {
- *           requires com.example.api;
- *           provides com.example.api.Codec
- *               with com.example.codec.GzipCodec,
- *                    com.example.codec.SnappyCodec;
- *       }
- * &lt;p&gt;
- *
- * Loading at runtime
- * ------------------
- *      ServiceLoader&lt;Codec&gt; loader = ServiceLoader.load(Codec.class);
- *      for (Codec c : loader) { ... }
- * &lt;p&gt;
- *
- *      loader.stream()
- *            .map(ServiceLoader.Provider::get)
- *            .filter(c -&gt; c.canHandle(input))
- *            .findFirst();
- * &lt;p&gt;
- *
- * Real-world examples
- * -------------------
- *   - JDBC drivers (java.sql.Driver) — historic, before SPI
- *     formalisation but now uses it.
- *   - Logging (SLF4J, java.util.spi providers).
- *   - Java Sound, Cryptography Providers, Locale providers, Charsets.
- * &lt;p&gt;
- *
- * Demo — this file
- * ----------------
- * Without a module-info.java OR a META-INF/services entry, our
- * demo Codec interface has zero registered providers. The file walks
- * through the API and lists JDK-provided SPIs that DO have providers
- * (so we can show ServiceLoader actually finding things).
- */
 
 public class ServiceLoaderDemo {
 

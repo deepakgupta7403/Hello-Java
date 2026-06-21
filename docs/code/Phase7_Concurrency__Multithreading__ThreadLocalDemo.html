@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/ThreadLocalDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 148 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 94 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,69 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A per-thread variable. Every thread that reads a given ThreadLocal sees ITS OWN copy of the
-                        value. Threads cannot accidentally share state because there is no shared storage to corrupt.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>ThreadLocal&amp;lt;T&amp;gt;</h2>
+                    <p>A per-thread variable. Every thread that reads a given ThreadLocal sees ITS OWN copy of the
+                        value. Threads cannot accidentally share state because there is no shared storage to
+                        corrupt.</p>
+                    <h3>Why ThreadLocal?</h3>
+                    <ul>
+                        <li>CONFINEMENT — escape the need for synchronization by making the
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    data thread-private.</pre>
+                    <ul>
+                        <li>PER-REQUEST CONTEXT — store the current user, locale, trace id,
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    transaction, security principal — accessible deep in the call
+    stack without passing them as parameters.</pre>
+                    <ul>
+                        <li>PER-THREAD CACHING — keep a non-thread-safe helper (e.g.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    SimpleDateFormat) one per thread to dodge synchronization.</pre>
+                    <h3>The API</h3>
+                    <p>ThreadLocal&lt;T&gt; - new ThreadLocal&lt;&gt;() withInitial(Supplier&lt;T&gt;) - lazy default
+                        supplier T get() - return this thread&#x27;s value void set(T) - set this thread&#x27;s value
+                        void remove() - delete this thread&#x27;s value</p>
+                    <p>InheritableThreadLocal&lt;T&gt; - child threads inherit a (shallow) copy</p>
+                    <pre class="hj-doc-art">                              from their parent at construction.</pre>
+                    <h3>Pitfalls</h3>
+                    <ul>
+                        <li>MEMORY LEAKS in thread pools. Workers live forever; a value set
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     on one task is still set on the next. Always remove() at the end
+     of a unit of work (try / finally), or wrap submissions.</pre>
+                    <ul>
+                        <li>InheritableThreadLocal copies the REFERENCE, not the value&#x27;s
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     internal state. Mutating it from a child still affects the
+     parent&#x27;s object.</pre>
+                    <ul>
+                        <li>Hard to reason about across asynchronous boundaries. If you hop
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     threads with CompletableFuture / executors / virtual threads,
+     consider Scoped Values (Java 21 preview) instead.</pre>
+                    <h3>When NOT to use</h3>
+                    <ul>
+                        <li>For things that should propagate across asynchronous calls,
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    consider Scoped Values (Java 21 preview).</pre>
+                    <ul>
+                        <li>For sharing data between threads — that&#x27;s the OPPOSITE of what
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    ThreadLocal is for; use a shared structure with proper sync.</pre>
                 </div>
             </div>
 
@@ -1402,59 +1459,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
-
-/**
- * ThreadLocal&amp;lt;T&amp;gt;
- * --------------
- * A per-thread variable. Every thread that reads a given ThreadLocal
- * sees ITS OWN copy of the value. Threads cannot accidentally share
- * state because there is no shared storage to corrupt.
- * &lt;p&gt;
- *
- * Why ThreadLocal?
- * ----------------
- *   - CONFINEMENT — escape the need for synchronization by making the
- *     data thread-private.
- *   - PER-REQUEST CONTEXT — store the current user, locale, trace id,
- *     transaction, security principal — accessible deep in the call
- *     stack without passing them as parameters.
- *   - PER-THREAD CACHING — keep a non-thread-safe helper (e.g.
- *     SimpleDateFormat) one per thread to dodge synchronization.
- * &lt;p&gt;
- *
- * The API
- * -------
- *   ThreadLocal&lt;T&gt;            - new ThreadLocal&lt;&gt;()
- *   withInitial(Supplier&lt;T&gt;)  - lazy default supplier
- *   T get()                   - return this thread&#x27;s value
- *   void set(T)               - set this thread&#x27;s value
- *   void remove()             - delete this thread&#x27;s value
- * &lt;p&gt;
- *
- *   InheritableThreadLocal&lt;T&gt; - child threads inherit a (shallow) copy
- *                               from their parent at construction.
- * &lt;p&gt;
- *
- * Pitfalls
- * --------
- *   1. MEMORY LEAKS in thread pools. Workers live forever; a value set
- *      on one task is still set on the next. Always remove() at the end
- *      of a unit of work (try / finally), or wrap submissions.
- *   2. InheritableThreadLocal copies the REFERENCE, not the value&#x27;s
- *      internal state. Mutating it from a child still affects the
- *      parent&#x27;s object.
- *   3. Hard to reason about across asynchronous boundaries. If you hop
- *      threads with CompletableFuture / executors / virtual threads,
- *      consider Scoped Values (Java 21 preview) instead.
- * &lt;p&gt;
- *
- * When NOT to use
- * ---------------
- *   - For things that should propagate across asynchronous calls,
- *     consider Scoped Values (Java 21 preview).
- *   - For sharing data between threads — that&#x27;s the OPPOSITE of what
- *     ThreadLocal is for; use a shared structure with proper sync.
- */
 
 public class ThreadLocalDemo {
 

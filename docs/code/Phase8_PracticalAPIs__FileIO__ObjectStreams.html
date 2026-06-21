@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase8_PracticalAPIs/FileIO/ObjectStreams.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 114 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 68 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,50 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Read and write WHOLE OBJECT GRAPHS with one call each. The class must implement Serializable;
-                        the stream then records every reachable field. Used by RMI historically, by Java&#x27;s built-in
-                        clone-via-serialization, and oc...
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Object Streams — ObjectOutputStream / ObjectInputStream</h2>
+                    <p>Read and write WHOLE OBJECT GRAPHS with one call each. The class must implement Serializable; the
+                        stream then records every reachable field. Used by RMI historically, by Java&#x27;s built-in
+                        clone-via-serialization, and occasionally for cache files.</p>
+                    <h3>Methods you actually use</h3>
+                    <pre class="hj-doc-art">     out.writeObject(obj)
+     Object o = in.readObject();           // throws ClassNotFoundException
+     in.close() / out.close()</pre>
+                    <h3>Serializable contract</h3>
+                    <ul>
+                        <li>Mark the class with `implements Serializable`.
+                        </li>
+                        <li>Declare a serialVersionUID. Annotate with @Serial (Java 14+).
+                        </li>
+                        <li>Non-serializable fields must be `transient`.
+                        </li>
+                        <li>super-class chain must be Serializable, or must have a no-arg
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    constructor reachable for deserialization.</pre>
+                    <h3>DON&#x27;T USE THIS FOR REAL EXTERNAL DATA</h3>
+                    <p>Java serialization is famous for:</p>
+                    <ul>
+                        <li>SECURITY HOLES — deserialising untrusted bytes can run code
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    (gadget chains).</pre>
+                    <ul>
+                        <li>VERSIONING FRAGILITY — small field changes break the format.
+                        </li>
+                        <li>VERBOSITY and SLOWNESS vs JSON/Protobuf.
+                        </li>
+                    </ul>
+                    <p>Use this API only for trusted, internal, short-lived data. For config, APIs, cross-language: use
+                        JSON / Protobuf / Avro.</p>
+                    <h3>Java 17+</h3>
+                    <p>The &quot;serialization filter&quot; (jdk.serialFilter / ObjectInputFilter) lets you allow-list
+                        classes that can be deserialised — partial mitigation for gadget-chain risk.</p>
                 </div>
             </div>
 
@@ -1401,51 +1438,6 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
-
-/**
- * Object Streams — ObjectOutputStream / ObjectInputStream
- * -------------------------------------------------------
- * Read and write WHOLE OBJECT GRAPHS with one call each. The class must
- * implement Serializable; the stream then records every reachable field.
- * Used by RMI historically, by Java&#x27;s built-in clone-via-serialization,
- * and occasionally for cache files.
- * &lt;p&gt;
- *
- * Methods you actually use
- * ------------------------
- *      out.writeObject(obj)
- *      Object o = in.readObject();           // throws ClassNotFoundException
- *      in.close() / out.close()
- * &lt;p&gt;
- *
- * Serializable contract
- * ---------------------
- *   - Mark the class with `implements Serializable`.
- *   - Declare a serialVersionUID. Annotate with @Serial (Java 14+).
- *   - Non-serializable fields must be `transient`.
- *   - super-class chain must be Serializable, or must have a no-arg
- *     constructor reachable for deserialization.
- * &lt;p&gt;
- *
- * DON&#x27;T USE THIS FOR REAL EXTERNAL DATA
- * -------------------------------------
- * Java serialization is famous for:
- *   - SECURITY HOLES — deserialising untrusted bytes can run code
- *     (gadget chains).
- *   - VERSIONING FRAGILITY — small field changes break the format.
- *   - VERBOSITY and SLOWNESS vs JSON/Protobuf.
- * &lt;p&gt;
- *
- * Use this API only for trusted, internal, short-lived data. For
- * config, APIs, cross-language: use JSON / Protobuf / Avro.
- * &lt;p&gt;
- *
- * Java 17+
- * --------
- * The &quot;serialization filter&quot; (jdk.serialFilter / ObjectInputFilter)
- * lets you allow-list classes that can be deserialised — partial
- * mitigation for gadget-chain risk.
- */
 
 public class ObjectStreams {
 

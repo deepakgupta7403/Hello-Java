@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase1_CoreLanguage/Loops/DoWhileLoop.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 39 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 20 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,25 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>do while loop is similar to while loop with only difference that it checks for condition after
-                        executing the statements, and therefore is an example of Exit Control Loop.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>do while loop is similar to while loop with only difference that it checks for condition after
+                        executing the statements, and therefore is an example of Exit Control Loop.</p>
+                    <p>Syntax: do {</p>
+                    <pre class="hj-doc-art">    statements..</pre>
+                    <p>} while (condition);</p>
+                    <p>Flowchart: start----&gt; Loop Body-----&gt;Condition Checking-----&gt;if true-----&gt;Loop
+                        Body-----&gt;Condition Checking-----&gt;if false-----&gt;Loop exit do while loop starts with the
+                        execution of the statement(s). There is no checking of any condition for the first time. After
+                        the execution of the statements, and update of the variable value, the condition is checked for
+                        true or false value. If it is evaluated to true, next iteration of loop starts. When the
+                        condition becomes false, the loop terminates which marks the end of its life cycle. It is
+                        important to note that the do-while loop will execute its statements atleast once before any
+                        condition is checked, and therefore is an example of exit control loop.</p>
                 </div>
             </div>
 
@@ -1396,24 +1409,6 @@
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase1_CoreLanguage.Loops;
 
-/**do while loop is similar to while loop with only difference that it checks for condition after executing the statements,
- * and therefore is an example of Exit Control Loop.
- * &lt;p&gt;
- *
- * Syntax:
- * do
- * {
- *     statements..
- * }
- * while (condition);
- * &lt;p&gt;
- *
- * Flowchart:
- * start----&gt; Loop Body-----&gt;Condition Checking-----&gt;if true-----&gt;Loop Body-----&gt;Condition Checking-----&gt;if false-----&gt;Loop exit
- * do while loop starts with the execution of the statement(s). There is no checking of any condition for the first time.
- * After the execution of the statements, and update of the variable value, the condition is checked for true or false value. If it is evaluated to true, next iteration of loop starts.
- * When the condition becomes false, the loop terminates which marks the end of its life cycle.
- * It is important to note that the do-while loop will execute its statements atleast once before any condition is checked, and therefore is an example of exit control loop.**/
 public class DoWhileLoop {
     public static void main(String args[])
     {

@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase1_CoreLanguage/Enumerations/EnumWithCustomizedVal.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 55 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 40 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,19 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>By default enums have their own string values, we can also assign some custom values to enums.
-                        Consider below example for that.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>By default enums have their own string values, we can also assign some custom values to enums.
+                        Consider below example for that.</p>
+                    <p>enum Fruits {</p>
+                    <pre class="hj-doc-art">    APPLE(“RED”), BANANA(“YELLOW”), GRAPES(“GREEN”);</pre>
+                    <p>}</p>
+                    <p>In above example we can see that the Fruits enum have three members i.e APPLE, BANANA and GRAPES
+                        with have their own different custom values RED, YELLOW and GREEN respectively.</p>
                 </div>
             </div>
 
@@ -1395,20 +1402,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase1_CoreLanguage.Enumerations;
-
-/**By default enums have their own string values, we can also assign some custom values to enums.
- * Consider below example for that.
- * &lt;p&gt;
- *
- * enum  Fruits
- * {
- *     APPLE(“RED”), BANANA(“YELLOW”), GRAPES(“GREEN”);
- * }
- * &lt;p&gt;
- *
- *In above example we can see that the Fruits enum have three members i.e APPLE, BANANA and GRAPES with have their own
- * different custom values RED, YELLOW and GREEN respectively.**/
-
 
 // Java program to demonstrate how values can be assigned to enums.
 enum FRUITS{

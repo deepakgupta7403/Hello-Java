@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase2_MethodsArraysStrings/Strings/StringBuilderClass.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 193 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 123 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,56 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>StringBuilder is the modern, NON-SYNCHRONIZED counterpart to StringBuffer. It has the EXACT
-                        SAME API but skips the locking, so it is faster. Use it for almost every &quot;build up a string&quot;
-                        scenario - StringBuilder is the...
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>StringBuilder - Mutable, Single-Threaded Character Sequence (Java 5+)</h2>
+                    <p>StringBuilder is the modern, NON-SYNCHRONIZED counterpart to StringBuffer. It has the EXACT SAME
+                        API but skips the locking, so it is faster. Use it for almost every &quot;build up a string&quot;
+                        scenario - StringBuilder is the default choice in single-threaded code (which most code is).</p>
+                    <pre class="hj-doc-art">     StringBuilder sb = new StringBuilder();
+     sb.append(&quot;Hello&quot;).append(&quot;, &quot;).append(&quot;World&quot;);
+     String s = sb.toString();      // &quot;Hello, World&quot;</pre>
+                    <h3>StringBuffer vs StringBuilder - One-Line Recap</h3>
+                    <pre class="hj-doc-art">     StringBuffer  - synchronized, thread-safe, slower.
+     StringBuilder - NOT synchronized, NOT thread-safe, faster.</pre>
+                    <h3>When To Use It</h3>
+                    <ul>
+                        <li>Building a String from many pieces in a loop.
+                        </li>
+                        <li>Composing structured text (CSV, JSON, HTML) at runtime.
+                        </li>
+                        <li>Anywhere you used to write `s += ...` inside a loop.
+                        </li>
+                    </ul>
+                    <h3>Common Methods - Quick Catalogue</h3>
+                    <pre class="hj-doc-art">     Constructors
+         new StringBuilder()                   capacity 16
+         new StringBuilder(int cap)            custom capacity
+         new StringBuilder(String s)           seeded with s
+         new StringBuilder(CharSequence)       seeded with any CharSequence</pre>
+                    <pre class="hj-doc-art">     Append / Insert / Replace / Delete - identical to StringBuffer
+         append(...) / insert(...) / replace(...) / delete(...) / deleteCharAt(...)</pre>
+                    <pre class="hj-doc-art">     Read / write
+         charAt(i) / setCharAt(i, ch) / getChars(...)
+         codePointAt(i) / codePointBefore(i) / codePointCount(beg,end)</pre>
+                    <pre class="hj-doc-art">     Length &amp; capacity
+         length() / capacity() / ensureCapacity(min) / trimToSize() / setLength(n)</pre>
+                    <pre class="hj-doc-art">     Search
+         indexOf(str)        indexOf(str, from)
+         lastIndexOf(str)    lastIndexOf(str, from)</pre>
+                    <pre class="hj-doc-art">     Sub-sequence and output
+         substring(begin) / substring(begin, end) / subSequence(begin, end)
+         toString()</pre>
+                    <pre class="hj-doc-art">     Misc / modern additions
+         reverse()
+         chars() / codePoints()                       (Java 9+)
+         compareTo(StringBuilder)                     (Java 11+)
+         isEmpty()                                    (Java 15+)</pre>
+                    <p>Each method is demonstrated below.</p>
                 </div>
             </div>
 
@@ -1396,75 +1439,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase2_MethodsArraysStrings.Strings;
-
-/**
- * StringBuilder - Mutable, Single-Threaded Character Sequence (Java 5+)
- * --------------------------------------------------------------------
- * StringBuilder is the modern, NON-SYNCHRONIZED counterpart to StringBuffer.
- * It has the EXACT SAME API but skips the locking, so it is faster. Use it
- * for almost every &quot;build up a string&quot; scenario - StringBuilder is the
- * default choice in single-threaded code (which most code is).
- * &lt;p&gt;
- *
- *      StringBuilder sb = new StringBuilder();
- *      sb.append(&quot;Hello&quot;).append(&quot;, &quot;).append(&quot;World&quot;);
- *      String s = sb.toString();      // &quot;Hello, World&quot;
- * &lt;p&gt;
- *
- * StringBuffer vs StringBuilder - One-Line Recap
- * ----------------------------------------------
- *      StringBuffer  - synchronized, thread-safe, slower.
- *      StringBuilder - NOT synchronized, NOT thread-safe, faster.
- * &lt;p&gt;
- *
- * When To Use It
- * --------------
- *  - Building a String from many pieces in a loop.
- *  - Composing structured text (CSV, JSON, HTML) at runtime.
- *  - Anywhere you used to write `s += ...` inside a loop.
- * &lt;p&gt;
- *
- * Common Methods - Quick Catalogue
- * --------------------------------
- *      Constructors
- *          new StringBuilder()                   capacity 16
- *          new StringBuilder(int cap)            custom capacity
- *          new StringBuilder(String s)           seeded with s
- *          new StringBuilder(CharSequence)       seeded with any CharSequence
- * &lt;p&gt;
- *
- *      Append / Insert / Replace / Delete - identical to StringBuffer
- *          append(...) / insert(...) / replace(...) / delete(...) / deleteCharAt(...)
- * &lt;p&gt;
- *
- *      Read / write
- *          charAt(i) / setCharAt(i, ch) / getChars(...)
- *          codePointAt(i) / codePointBefore(i) / codePointCount(beg,end)
- * &lt;p&gt;
- *
- *      Length &amp; capacity
- *          length() / capacity() / ensureCapacity(min) / trimToSize() / setLength(n)
- * &lt;p&gt;
- *
- *      Search
- *          indexOf(str)        indexOf(str, from)
- *          lastIndexOf(str)    lastIndexOf(str, from)
- * &lt;p&gt;
- *
- *      Sub-sequence and output
- *          substring(begin) / substring(begin, end) / subSequence(begin, end)
- *          toString()
- * &lt;p&gt;
- *
- *      Misc / modern additions
- *          reverse()
- *          chars() / codePoints()                       (Java 9+)
- *          compareTo(StringBuilder)                     (Java 11+)
- *          isEmpty()                                    (Java 15+)
- * &lt;p&gt;
- *
- * Each method is demonstrated below.
- */
 
 public class StringBuilderClass {
 

@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/SortedAndNavigableSet.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 145 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 73 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,55 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>The Set hierarchy actually has three levels:</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>SortedSet and NavigableSet - Two Layered Interfaces on Top of Set</h2>
+                    <p>The Set hierarchy actually has three levels:</p>
+                    <pre class="hj-doc-art">     Set            (no order at all)
+     |
+     v
+     SortedSet      (elements come out in an order; range queries)
+     |
+     v
+     NavigableSet   (SortedSet + neighbour queries + descending view)</pre>
+                    <p>Both extra interfaces exist primarily to give SORTED set implementations a richer contract.
+                        TreeSet implements NavigableSet (and therefore SortedSet); ConcurrentSkipListSet does too.</p>
+                    <h3>SortedSet&amp;lt;E&amp;gt; - Methods Added Over Set</h3>
+                    <pre class="hj-doc-art">     Comparator&amp;lt;? super E&amp;gt; comparator()    - the order rule; null = natural
+     E first()                              - smallest element (throws if empty)
+     E last()                               - largest  element (throws if empty)
+     SortedSet&amp;lt;E&amp;gt; headSet(E toEl)          - strictly less than toEl
+     SortedSet&amp;lt;E&amp;gt; tailSet(E fromEl)        - fromEl inclusive
+     SortedSet&amp;lt;E&amp;gt; subSet(E fromEl, E toEl) - fromEl inclusive, toEl exclusive</pre>
+                    <h3>NavigableSet&amp;lt;E&amp;gt; - Methods Added Over SortedSet</h3>
+                    <p>Neighbour queries (return null if not found):</p>
+                    <pre class="hj-doc-art">     E lower(E e)        - greatest element STRICTLY LESS than e
+     E floor(E e)        - greatest element &amp;lt;= e
+     E ceiling(E e)      - smallest element &amp;gt;= e
+     E higher(E e)       - smallest element STRICTLY GREATER than e</pre>
+                    <p>Polling (remove and return):</p>
+                    <pre class="hj-doc-art">     E pollFirst()       - remove and return smallest, or null
+     E pollLast()        - remove and return largest, or null</pre>
+                    <p>Reverse views:</p>
+                    <pre class="hj-doc-art">     NavigableSet&amp;lt;E&amp;gt; descendingSet()
+     Iterator&amp;lt;E&amp;gt; descendingIterator()</pre>
+                    <p>Inclusive-flag range views:</p>
+                    <pre class="hj-doc-art">     NavigableSet&amp;lt;E&amp;gt; headSet(E toEl, boolean inclusive)
+     NavigableSet&amp;lt;E&amp;gt; tailSet(E fromEl, boolean inclusive)
+     NavigableSet&amp;lt;E&amp;gt; subSet(E from, boolean fromInclusive,
+                             E to, boolean toInclusive)</pre>
+                    <h3>Why Have Both?</h3>
+                    <p>SortedSet has been around since Java 1.2. NavigableSet (added in Java 6) is the strict superset
+                        with the more useful &quot;find a neighbour&quot; API. New code is encouraged to type variables
+                        as NavigableSet whenever feasible - you get the full toolkit and can still pass to APIs that
+                        accept SortedSet or plain Set.</p>
+                    <h3>Implementations</h3>
+                    <p>TreeSet - the everyday choice. Red-black tree. ConcurrentSkipListSet - same operations,
+                        thread-safe.</p>
                 </div>
             </div>
 
@@ -1398,77 +1443,6 @@ import java.util.Comparator;
 import java.util.NavigableSet;
 import java.util.SortedSet;
 import java.util.TreeSet;
-
-/**
- * SortedSet and NavigableSet - Two Layered Interfaces on Top of Set
- * -----------------------------------------------------------------
- * The Set hierarchy actually has three levels:
- * &lt;p&gt;
- *
- *      Set            (no order at all)
- *      |
- *      v
- *      SortedSet      (elements come out in an order; range queries)
- *      |
- *      v
- *      NavigableSet   (SortedSet + neighbour queries + descending view)
- * &lt;p&gt;
- *
- * Both extra interfaces exist primarily to give SORTED set implementations
- * a richer contract. TreeSet implements NavigableSet (and therefore
- * SortedSet); ConcurrentSkipListSet does too.
- * &lt;p&gt;
- *
- * SortedSet&amp;lt;E&amp;gt; - Methods Added Over Set
- * --------------------------------------
- *      Comparator&amp;lt;? super E&amp;gt; comparator()    - the order rule; null = natural
- *      E first()                              - smallest element (throws if empty)
- *      E last()                               - largest  element (throws if empty)
- *      SortedSet&amp;lt;E&amp;gt; headSet(E toEl)          - strictly less than toEl
- *      SortedSet&amp;lt;E&amp;gt; tailSet(E fromEl)        - fromEl inclusive
- *      SortedSet&amp;lt;E&amp;gt; subSet(E fromEl, E toEl) - fromEl inclusive, toEl exclusive
- * &lt;p&gt;
- *
- * NavigableSet&amp;lt;E&amp;gt; - Methods Added Over SortedSet
- * ----------------------------------------------
- *   Neighbour queries (return null if not found):
- *      E lower(E e)        - greatest element STRICTLY LESS than e
- *      E floor(E e)        - greatest element &amp;lt;= e
- *      E ceiling(E e)      - smallest element &amp;gt;= e
- *      E higher(E e)       - smallest element STRICTLY GREATER than e
- * &lt;p&gt;
- *
- *   Polling (remove and return):
- *      E pollFirst()       - remove and return smallest, or null
- *      E pollLast()        - remove and return largest, or null
- * &lt;p&gt;
- *
- *   Reverse views:
- *      NavigableSet&amp;lt;E&amp;gt; descendingSet()
- *      Iterator&amp;lt;E&amp;gt; descendingIterator()
- * &lt;p&gt;
- *
- *   Inclusive-flag range views:
- *      NavigableSet&amp;lt;E&amp;gt; headSet(E toEl, boolean inclusive)
- *      NavigableSet&amp;lt;E&amp;gt; tailSet(E fromEl, boolean inclusive)
- *      NavigableSet&amp;lt;E&amp;gt; subSet(E from, boolean fromInclusive,
- *                              E to, boolean toInclusive)
- * &lt;p&gt;
- *
- * Why Have Both?
- * --------------
- * SortedSet has been around since Java 1.2. NavigableSet (added in Java 6)
- * is the strict superset with the more useful &quot;find a neighbour&quot; API. New
- * code is encouraged to type variables as NavigableSet whenever feasible -
- * you get the full toolkit and can still pass to APIs that accept SortedSet
- * or plain Set.
- * &lt;p&gt;
- *
- * Implementations
- * ---------------
- *   TreeSet                        - the everyday choice. Red-black tree.
- *   ConcurrentSkipListSet          - same operations, thread-safe.
- */
 
 public class SortedAndNavigableSet {
 

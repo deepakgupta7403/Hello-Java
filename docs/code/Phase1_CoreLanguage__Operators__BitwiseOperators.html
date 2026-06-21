@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase1_CoreLanguage/Operators/BitwiseOperators.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 106 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 71 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,42 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>These operate on the individual BITS of integer types (byte, short, int, long, char). Useful
-                        for low-level work: flags, masks, hashing, graphics, networking.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Bitwise and Shift Operators</h2>
+                    <p>These operate on the individual BITS of integer types (byte, short, int, long, char). Useful for
+                        low-level work: flags, masks, hashing, graphics, networking.</p>
+                    <pre class="hj-doc-art">     &amp;       AND
+     |       OR
+     ^       XOR
+     ~       NOT (one&#x27;s complement) - flips every bit
+     &lt;&lt;      left shift  (multiply by 2)
+     &gt;&gt;      signed right shift  (divide by 2, keeps sign bit)
+     &gt;&gt;&gt;     unsigned right shift (fills high bit with 0)</pre>
+                    <h3>Why Use Them?</h3>
+                    <ul>
+                        <li>Compact flag sets (bitmask): permissions = READ | WRITE;
+                        </li>
+                        <li>Power-of-two multiplication: x &lt;&lt; 3 == x * 8
+                        </li>
+                        <li>Quick parity check : (x &amp; 1) == 0
+                        </li>
+                        <li>Toggling bits : flags ^= MASK
+                        </li>
+                    </ul>
+                    <h3>&gt;&gt; vs &gt;&gt;&gt; (Important!)</h3>
+                    <ul>
+                        <li>&gt;&gt; preserves the sign bit (so -8 &gt;&gt; 1 == -4).
+                        </li>
+                        <li>&gt;&gt;&gt; shifts in zeros from the left (so -8 &gt;&gt;&gt; 1 is a huge positive number).
+                        </li>
+                    </ul>
+                    <p>Both Java&#x27;s int and long are signed. There is no unsigned int. The &gt;&gt;&gt; operator is
+                        the workaround when you want to treat the bit pattern as unsigned.</p>
                 </div>
             </div>
 
@@ -1395,40 +1425,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase1_CoreLanguage.Operators;
-
-/**
- * Bitwise and Shift Operators
- * ---------------------------
- * These operate on the individual BITS of integer types (byte, short, int, long,
- * char). Useful for low-level work: flags, masks, hashing, graphics, networking.
- * &lt;p&gt;
- *
- *      &amp;       AND
- *      |       OR
- *      ^       XOR
- *      ~       NOT (one&#x27;s complement) - flips every bit
- *      &lt;&lt;      left shift  (multiply by 2)
- *      &gt;&gt;      signed right shift  (divide by 2, keeps sign bit)
- *      &gt;&gt;&gt;     unsigned right shift (fills high bit with 0)
- * &lt;p&gt;
- *
- * Why Use Them?
- * -------------
- *  - Compact flag sets (bitmask):  permissions = READ | WRITE;
- *  - Power-of-two multiplication:  x &lt;&lt; 3  ==  x * 8
- *  - Quick parity check         :  (x &amp; 1) == 0
- *  - Toggling bits              :  flags ^= MASK
- * &lt;p&gt;
- *
- * &gt;&gt; vs &gt;&gt;&gt;  (Important!)
- * -----------------------
- * - &gt;&gt;  preserves the sign bit (so -8 &gt;&gt; 1 == -4).
- * - &gt;&gt;&gt; shifts in zeros from the left (so -8 &gt;&gt;&gt; 1 is a huge positive number).
- * &lt;p&gt;
- *
- * Both Java&#x27;s int and long are signed. There is no unsigned int. The &gt;&gt;&gt; operator
- * is the workaround when you want to treat the bit pattern as unsigned.
- */
 
 public class BitwiseOperators {
 

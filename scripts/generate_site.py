@@ -38,11 +38,13 @@ class JavaFile:
     phase_key: str           # e.g. "Phase0_SetupAndFirstPrograms"
     section: str             # first dir under phase, or "_root" for files directly in phase
     name: str                # file stem, e.g. "HelloWorld"
-    code: str
+    code: str                # full source (used for summary/search)
     title: str               # human-readable, e.g. "Hello World"
     summary: str             # extracted from top Javadoc, may be empty
     slug: str                # URL-safe path key
-    line_count: int
+    line_count: int          # lines of the displayed code (Javadoc stripped)
+    doc_html: str = ""       # top Javadoc rendered as HTML
+    display_code: str = ""   # source shown in the code panel (top Javadoc removed)
 
 
 @dataclass
@@ -164,6 +166,153 @@ def extract_summary(code: str) -> str:
     return summary
 
 
+TOP_JAVADOC_RE = re.compile(r"/\*\*(.*?)\*+/", re.DOTALL)
+
+
+def _javadoc_body_lines(code: str) -> list[str]:
+    """Return the top Javadoc's lines with the ` * ` prefix removed.
+
+    Indentation *after* the prefix is preserved so ASCII diagrams and aligned
+    listings keep their shape.
+    """
+    m = TOP_JAVADOC_RE.search(code)
+    if not m:
+        return []
+    lines = [re.sub(r"^\s*\*\s?", "", raw).rstrip() for raw in m.group(1).splitlines()]
+    # trim leading/trailing blank or decorative-only lines
+    while lines and lines[-1].strip() in ("", "*"):
+        lines.pop()
+    while lines and lines[0].strip() == "":
+        lines.pop(0)
+    return lines
+
+
+def _is_art(s: str) -> bool:
+    """Heuristic: does this line belong to an ASCII diagram or table?"""
+    t = s.strip()
+    if not t:
+        return False
+    if t[0] in "+|":
+        return True
+    if "+--" in t or "--+" in t:
+        return True
+    return t.count("|") >= 2
+
+
+def javadoc_to_html(code: str) -> str:
+    """Render the first top-of-file Javadoc block as structured HTML.
+
+    Handles: `Heading / ----` headings, paragraphs (blank- or `<p>`-separated),
+    bullet lists (`-`, `*`, `1.`, `a)` with indent-based nesting), and ASCII
+    diagrams/tables (kept verbatim in a monospace block).
+    """
+    lines = _javadoc_body_lines(code)
+    if not lines:
+        return ""
+
+    parts: list[str] = []
+    para: list[str] = []
+    pre_buf: list[str] = []
+    list_stack: list[int] = []
+    heading_count = 0
+
+    def close_para():
+        if para:
+            parts.append(f"<p>{html.escape(' '.join(para))}</p>")
+            para.clear()
+
+    def close_pre():
+        if pre_buf:
+            parts.append(f'<pre class="hj-doc-art">{html.escape(chr(10).join(pre_buf))}</pre>')
+            pre_buf.clear()
+
+    def close_lists():
+        while list_stack:
+            parts.append("</li></ul>")
+            list_stack.pop()
+
+    i, n = 0, len(lines)
+    while i < n:
+        line = lines[i]
+        s = line.strip()
+
+        if not s:
+            close_para(); close_pre()
+            i += 1
+            continue
+
+        if s.lower() in ("<p>", "</p>", "<pre>", "</pre>", "<br>", "<br/>"):
+            close_para(); close_pre()
+            i += 1
+            continue
+
+        # Heading: a text line underlined by a separator on the next line.
+        next_sep = i + 1 < n and re.match(r"^[-=]{3,}$", lines[i + 1].strip())
+        is_sep = re.match(r"^[-=_~]{3,}$", s)
+        if next_sep and not is_sep:
+            close_para(); close_pre(); close_lists()
+            heading_count += 1
+            tag = "h2" if heading_count == 1 else "h3"
+            parts.append(f"<{tag}>{html.escape(s)}</{tag}>")
+            i += 2
+            continue
+
+        # A short, punctuation-free first line acts as a title.
+        if i == 0 and len(s) < 60 and not s.endswith((".", ":")) and not _is_art(s):
+            close_para()
+            heading_count += 1
+            parts.append(f"<h2>{html.escape(s)}</h2>")
+            i += 1
+            continue
+
+        if is_sep:
+            close_para(); close_pre()
+            i += 1
+            continue
+
+        if _is_art(s):
+            close_para(); close_lists()
+            pre_buf.append(line)
+            i += 1
+            continue
+
+        mbul = re.match(r"^(\s*)(?:[-*]|\d+[.\)]|[a-zA-Z]\))\s+(.*)$", line)
+        if mbul:
+            close_para(); close_pre()
+            indent = len(mbul.group(1))
+            content = html.escape(mbul.group(2))
+            if not list_stack or indent > list_stack[-1]:
+                parts.append("<ul>")
+                list_stack.append(indent)
+                parts.append(f"<li>{content}")
+            else:
+                while len(list_stack) > 1 and indent < list_stack[-1]:
+                    parts.append("</li></ul>")
+                    list_stack.pop()
+                parts.append(f"</li><li>{content}")
+            i += 1
+            continue
+
+        # Indented, non-bullet line -> keep alignment (e.g. tool listings).
+        if re.match(r"^\s{4,}\S", line):
+            close_para(); close_lists()
+            pre_buf.append(line)
+            i += 1
+            continue
+
+        close_pre(); close_lists()
+        para.append(s)
+        i += 1
+
+    close_para(); close_pre(); close_lists()
+    return "\n".join(parts)
+
+
+def strip_top_javadoc(code: str) -> str:
+    """Remove the first top-of-file Javadoc block (and trailing blank lines)."""
+    return re.sub(r"/\*\*.*?\*+/\s*", "", code, count=1, flags=re.DOTALL)
+
+
 def slugify(rel_path: Path) -> str:
     return rel_path.as_posix().replace("/", "__").removesuffix(".java")
 
@@ -184,6 +333,7 @@ def discover() -> list[Phase]:
         # for files several levels deep (e.g. Phase1/DecisionMaking/JumpStatement/Foo.java)
         # treat the first dir under the phase as the section.
         code = java.read_text(encoding="utf-8", errors="replace")
+        display_code = strip_top_javadoc(code).strip("\n") + "\n"
         jf = JavaFile(
             abs_path=java,
             rel_path=rel,
@@ -194,7 +344,9 @@ def discover() -> list[Phase]:
             title=split_camel(java.stem),
             summary=extract_summary(code),
             slug=slugify(rel),
-            line_count=code.count("\n") + 1,
+            line_count=display_code.count("\n"),
+            doc_html=javadoc_to_html(code),
+            display_code=display_code,
         )
         files_by_phase.setdefault(phase_key, []).append(jf)
 
@@ -525,12 +677,15 @@ def render_code(jf: JavaFile, phases: list[Phase]) -> str:
     next_f = flat[idx + 1] if idx + 1 < len(flat) else None
 
     summary_html = ""
-    if jf.summary:
+    if jf.doc_html:
         summary_html = f"""
-      <div class="alert hj-summary mb-4" role="note">
-        <div class="d-flex">
-          <span class="material-icons me-2 text-primary">info</span>
-          <div>{html.escape(jf.summary)}</div>
+      <div class="card hj-doc shadow-1 mb-4">
+        <div class="card-header bg-transparent d-flex align-items-center">
+          <span class="material-icons me-2 text-primary">menu_book</span>
+          <span class="fw-bold">Documentation</span>
+        </div>
+        <div class="card-body hj-doc-body">
+          {jf.doc_html}
         </div>
       </div>
 """
@@ -603,7 +758,7 @@ def render_code(jf: JavaFile, phases: list[Phase]) -> str:
           <span class="badge bg-warning text-dark">Java 21</span>
         </div>
         <div class="card-body p-0">
-          <pre class="line-numbers m-0"><code class="language-java">{html.escape(jf.code)}</code></pre>
+          <pre class="line-numbers m-0"><code class="language-java">{html.escape(jf.display_code)}</code></pre>
         </div>
       </div>
       {nav_html}
@@ -874,6 +1029,49 @@ code, pre, .font-monospace {
   color: var(--hj-text);
   border-radius: 6px;
 }
+
+/* --- Rendered Javadoc ("Documentation" card) --- */
+.hj-doc {
+  background: var(--hj-surface);
+  color: var(--hj-text);
+  border: 1px solid var(--hj-border);
+  border-radius: 10px;
+}
+.hj-doc .card-header {
+  border-bottom: 1px solid var(--hj-border);
+  border-radius: 10px 10px 0 0;
+}
+.hj-doc-body { line-height: 1.65; }
+.hj-doc-body > :first-child { margin-top: 0; }
+.hj-doc-body > :last-child { margin-bottom: 0; }
+.hj-doc-body h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--hj-primary);
+  margin: 0 0 1rem;
+}
+.hj-doc-body h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 1.75rem 0 .75rem;
+  padding-left: .6rem;
+  border-left: 4px solid var(--hj-primary);
+}
+.hj-doc-body p { margin-bottom: .9rem; }
+.hj-doc-body ul { margin-bottom: .9rem; padding-left: 1.4rem; }
+.hj-doc-body li { margin-bottom: .25rem; }
+.hj-doc-art {
+  background: #1e1e2e;
+  color: #e6e8eb;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 0 0 1rem;
+  overflow-x: auto;
+  font-size: 12.5px;
+  line-height: 1.45;
+  white-space: pre;
+}
+[data-bs-theme="dark"] .hj-doc-art { background: #0f1420; }
 
 .hj-code-card { border: 0; border-radius: 10px; overflow: hidden; }
 .hj-code-card .card-header { border-bottom: 1px solid #000; padding: 10px 16px; }

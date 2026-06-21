@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase4_ErrorsAndTypeSafety/Annotations/CustomAnnotations.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 132 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 77 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,48 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Declare with `@interface` and decorate with meta-annotations.</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Custom Annotations</h2>
+                    <p>Declare with `@interface` and decorate with meta-annotations.</p>
+                    <pre class="hj-doc-art">     @Retention(RetentionPolicy.RUNTIME)
+     @Target(ElementType.METHOD)
+     public @interface Audited {
+         String label() default &quot;&quot;;
+     }</pre>
+                    <h3>Allowed element types</h3>
+                    <ul>
+                        <li>Primitives, String, Class, an enum type
+                        </li>
+                        <li>Other annotations
+                        </li>
+                        <li>Arrays of any of the above
+                        </li>
+                    </ul>
+                    <h3>Defaults</h3>
+                    <p>Elements without `default` MUST be provided at the use site.</p>
+                    <h3>Single-element shorthand</h3>
+                    <p>If the only element is named `value`, callers can omit the name:</p>
+                    <pre class="hj-doc-art">     @Tag(&quot;urgent&quot;)          // same as @Tag(value = &quot;urgent&quot;)</pre>
+                    <h3>Repeatable annotations (Java 8+)</h3>
+                    <pre class="hj-doc-art">     @Schedule(&quot;MON&quot;) @Schedule(&quot;WED&quot;)
+     void cron() { ... }</pre>
+                    <p>Requires:</p>
+                    <ul>
+                        <li>A &quot;container&quot; annotation whose value is an array of the repeatable.
+                        </li>
+                        <li>The repeatable annotation is marked @Repeatable(Container.class).
+                        </li>
+                    </ul>
+                    <h3>Type-use annotations (Java 8+)</h3>
+                    <pre class="hj-doc-art">     @Target(ElementType.TYPE_USE)
+     public @interface NonNull {}</pre>
+                    <pre class="hj-doc-art">     List&lt;@NonNull String&gt; names;
+     String s = (@NonNull String) o;</pre>
                 </div>
             </div>
 
@@ -1395,60 +1433,6 @@
           <pre class="line-numbers m-0"><code class="language-java">package Phase4_ErrorsAndTypeSafety.Annotations;
 
 import java.lang.annotation.*;
-
-/**
- * Custom Annotations
- * ------------------
- * Declare with `@interface` and decorate with meta-annotations.
- * &lt;p&gt;
- *
- *      @Retention(RetentionPolicy.RUNTIME)
- *      @Target(ElementType.METHOD)
- *      public @interface Audited {
- *          String label() default &quot;&quot;;
- *      }
- * &lt;p&gt;
- *
- * Allowed element types
- * ---------------------
- *   - Primitives, String, Class, an enum type
- *   - Other annotations
- *   - Arrays of any of the above
- * &lt;p&gt;
- *
- * Defaults
- * --------
- * Elements without `default` MUST be provided at the use site.
- * &lt;p&gt;
- *
- * Single-element shorthand
- * ------------------------
- * If the only element is named `value`, callers can omit the name:
- * &lt;p&gt;
- *
- *      @Tag(&quot;urgent&quot;)          // same as @Tag(value = &quot;urgent&quot;)
- * &lt;p&gt;
- *
- * Repeatable annotations (Java 8+)
- * --------------------------------
- *      @Schedule(&quot;MON&quot;) @Schedule(&quot;WED&quot;)
- *      void cron() { ... }
- * &lt;p&gt;
- *
- * Requires:
- *   - A &quot;container&quot; annotation whose value is an array of the repeatable.
- *   - The repeatable annotation is marked @Repeatable(Container.class).
- * &lt;p&gt;
- *
- * Type-use annotations (Java 8+)
- * ------------------------------
- *      @Target(ElementType.TYPE_USE)
- *      public @interface NonNull {}
- * &lt;p&gt;
- *
- *      List&lt;@NonNull String&gt; names;
- *      String s = (@NonNull String) o;
- */
 
 public class CustomAnnotations {
 

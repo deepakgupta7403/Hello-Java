@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase1_CoreLanguage/Operators/TernaryOperator.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 88 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 44 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,42 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>The only TERNARY operator in Java - takes three operands - is the conditional operator. It is a
-                        shorter alternative to a simple if-else when both branches just compute a value.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Ternary (Conditional) Operator</h2>
+                    <p>The only TERNARY operator in Java - takes three operands - is the conditional operator. It is a
+                        shorter alternative to a simple if-else when both branches just compute a value.</p>
+                    <pre class="hj-doc-art">     condition ? valueIfTrue : valueIfFalse</pre>
+                    <h3>Equivalent if-else</h3>
+                    <pre class="hj-doc-art">     int max;
+     if (a &gt; b) max = a;
+     else       max = b;</pre>
+                    <pre class="hj-doc-art">     // is the same as:
+     int max = (a &gt; b) ? a : b;</pre>
+                    <h3>When To Use It</h3>
+                    <ul>
+                        <li>Good for short, expression-style assignments.
+                        </li>
+                        <li>Good for ternary chains that read well.
+                        </li>
+                    </ul>
+                    <h3>When To Avoid It</h3>
+                    <ul>
+                        <li>When either branch has SIDE EFFECTS - use if/else for clarity.
+                        </li>
+                        <li>When the expression spans more than one line - readability suffers.
+                        </li>
+                        <li>When it nests deeply - &quot;ternary tower&quot; is a known anti-pattern.
+                        </li>
+                    </ul>
+                    <h3>Type Rules</h3>
+                    <p>Both branches must produce COMPATIBLE types. The compiler computes a common type:</p>
+                    <pre class="hj-doc-art">     true ? 1 : 2.0     -&gt; double (int widened to double)
+     true ? 1 : &quot;x&quot;     -&gt; compile error - no common type</pre>
                 </div>
             </div>
 
@@ -1395,49 +1425,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase1_CoreLanguage.Operators;
-
-/**
- * Ternary (Conditional) Operator
- * ------------------------------
- * The only TERNARY operator in Java - takes three operands - is the conditional
- * operator. It is a shorter alternative to a simple if-else when both branches
- * just compute a value.
- * &lt;p&gt;
- *
- *      condition ? valueIfTrue : valueIfFalse
- * &lt;p&gt;
- *
- * Equivalent if-else
- * ------------------
- *      int max;
- *      if (a &gt; b) max = a;
- *      else       max = b;
- * &lt;p&gt;
- *
- *      // is the same as:
- *      int max = (a &gt; b) ? a : b;
- * &lt;p&gt;
- *
- * When To Use It
- * --------------
- * - Good for short, expression-style assignments.
- * - Good for ternary chains that read well.
- * &lt;p&gt;
- *
- * When To Avoid It
- * ----------------
- * - When either branch has SIDE EFFECTS - use if/else for clarity.
- * - When the expression spans more than one line - readability suffers.
- * - When it nests deeply - &quot;ternary tower&quot; is a known anti-pattern.
- * &lt;p&gt;
- *
- * Type Rules
- * ----------
- * Both branches must produce COMPATIBLE types. The compiler computes a common
- * type:
- *      true ? 1 : 2.0     -&gt; double (int widened to double)
- *      true ? 1 : &quot;x&quot;     -&gt; compile error - no common type
- */
 
 public class TernaryOperator {
 

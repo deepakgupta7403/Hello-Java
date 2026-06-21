@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase4_ErrorsAndTypeSafety/Annotations/RuntimeAnnotations.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 105 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 75 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,33 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>For runtime-retained annotations, the Reflection API gives you:</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Reading Annotations at Runtime</h2>
+                    <p>For runtime-retained annotations, the Reflection API gives you:</p>
+                    <pre class="hj-doc-art">     class.getAnnotation(MyAnnot.class)
+     class.getAnnotationsByType(MyAnnot.class)   // repeatables
+     class.isAnnotationPresent(MyAnnot.class)
+     class.getAnnotations()                       // declared on class
+     class.getDeclaredAnnotations()               // not inherited</pre>
+                    <pre class="hj-doc-art">     method.getAnnotation(MyAnnot.class)
+     method.getAnnotationsByType(MyAnnot.class)
+     method.getParameterAnnotations()</pre>
+                    <p>This is the API frameworks like Spring, JUnit, Jackson, and Hibernate use to drive their
+                        behaviour.</p>
+                    <h3>Pattern: hand-rolled @Audited interceptor</h3>
+                    <ul>
+                        <li>Walk the class&#x27;s methods.
+                        </li>
+                        <li>If a method has @Audited, wrap its invocation with logging.
+                        </li>
+                        <li>This is the conceptual core of AOP libraries.
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1401,35 +1424,6 @@ import Phase4_ErrorsAndTypeSafety.Annotations.CustomAnnotations.Service;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
-
-/**
- * Reading Annotations at Runtime
- * ------------------------------
- * For runtime-retained annotations, the Reflection API gives you:
- * &lt;p&gt;
- *
- *      class.getAnnotation(MyAnnot.class)
- *      class.getAnnotationsByType(MyAnnot.class)   // repeatables
- *      class.isAnnotationPresent(MyAnnot.class)
- *      class.getAnnotations()                       // declared on class
- *      class.getDeclaredAnnotations()               // not inherited
- * &lt;p&gt;
- *
- *      method.getAnnotation(MyAnnot.class)
- *      method.getAnnotationsByType(MyAnnot.class)
- *      method.getParameterAnnotations()
- * &lt;p&gt;
- *
- * This is the API frameworks like Spring, JUnit, Jackson, and Hibernate
- * use to drive their behaviour.
- * &lt;p&gt;
- *
- * Pattern: hand-rolled @Audited interceptor
- * -----------------------------------------
- *   - Walk the class&#x27;s methods.
- *   - If a method has @Audited, wrap its invocation with logging.
- *   - This is the conceptual core of AOP libraries.
- */
 
 public class RuntimeAnnotations {
 

@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/JavaSynchronization.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 187 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 112 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,85 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>SYNCHRONIZATION is the discipline of letting only ONE thread at a time touch shared state, so
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Java Synchronization</h2>
+                    <p>SYNCHRONIZATION is the discipline of letting only ONE thread at a time touch shared state, so
                         that updates from different threads compose sanely. In Java the canonical primitive is the
-                        `synchronized` keyword — a built...
-                    </div>
+                        `synchronized` keyword — a built-in lock attached to every object (called the MONITOR or
+                        INTRINSIC LOCK).</p>
+                    <h3>Three forms of `synchronized`</h3>
+                    <ul>
+                        <li>Synchronized INSTANCE method - locks `this`.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">          public synchronized void m() { ... }</pre>
+                    <ul>
+                        <li>Synchronized STATIC method - locks the Class object.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">          public static synchronized void m() { ... }   // locks YourClass.class</pre>
+                    <ul>
+                        <li>Synchronized BLOCK - locks any object reference.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">          synchronized (lockObj) { ... }</pre>
+                    <h3>What synchronized guarantees</h3>
+                    <p>MUTUAL EXCLUSION - only one thread at a time inside the same lock. VISIBILITY - on lock acquire,
+                        the thread sees every change</p>
+                    <pre class="hj-doc-art">                      made before the matching release. (JMM
+                      happens-before: release → subsequent acquire.)</pre>
+                    <p>ORDERING - the JIT/CPU cannot reorder reads &amp; writes across</p>
+                    <pre class="hj-doc-art">                      the lock boundaries in observable ways.</pre>
+                    <h3>What synchronized does NOT do</h3>
+                    <ul>
+                        <li>Make individual operations atomic on their own (it&#x27;s the BLOCK
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    that is atomic, not the calls inside).</pre>
+                    <ul>
+                        <li>Prevent deadlock — that&#x27;s on you.
+                        </li>
+                        <li>Time out. Use ReentrantLock.tryLock if you need that.
+                        </li>
+                    </ul>
+                    <h3>Reentrancy</h3>
+                    <p>Java monitors are REENTRANT — the SAME thread can lock the same monitor multiple times without
+                        deadlocking itself. Each acquire needs a matching release.</p>
+                    <h3>Common rules</h3>
+                    <ul>
+                        <li>Always lock the SAME object for accesses to the same state.
+                        </li>
+                        <li>DON&#x27;T synchronize on a String literal, Integer, Boolean — pooled
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    and shared with unrelated code.</pre>
+                    <ul>
+                        <li>DON&#x27;T hold a lock while calling unknown code (callbacks,
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    overrides, lambdas you don&#x27;t own) — invitation to deadlock.</pre>
+                    <ul>
+                        <li>Keep critical sections SHORT.
+                        </li>
+                    </ul>
+                    <h3>Class lock vs object lock</h3>
+                    <ul>
+                        <li>Instance synchronized methods on different instances do NOT
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    contend with each other.</pre>
+                    <ul>
+                        <li>Static synchronized methods on the same class ALWAYS contend.
+                        </li>
+                        <li>An instance synchronized method and a static synchronized method
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    on the SAME class lock DIFFERENT monitors and do NOT contend.</pre>
                 </div>
             </div>
 
@@ -1396,80 +1468,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase7_Concurrency.Multithreading;
-
-/**
- * Java Synchronization
- * --------------------
- * SYNCHRONIZATION is the discipline of letting only ONE thread at a time
- * touch shared state, so that updates from different threads compose
- * sanely. In Java the canonical primitive is the `synchronized` keyword
- * — a built-in lock attached to every object (called the MONITOR or
- * INTRINSIC LOCK).
- * &lt;p&gt;
- *
- * Three forms of `synchronized`
- * -----------------------------
- *   1. Synchronized INSTANCE method  - locks `this`.
- * &lt;p&gt;
- *
- *           public synchronized void m() { ... }
- * &lt;p&gt;
- *
- *   2. Synchronized STATIC method    - locks the Class object.
- * &lt;p&gt;
- *
- *           public static synchronized void m() { ... }   // locks YourClass.class
- * &lt;p&gt;
- *
- *   3. Synchronized BLOCK             - locks any object reference.
- * &lt;p&gt;
- *
- *           synchronized (lockObj) { ... }
- * &lt;p&gt;
- *
- * What synchronized guarantees
- * ----------------------------
- *   MUTUAL EXCLUSION - only one thread at a time inside the same lock.
- *   VISIBILITY       - on lock acquire, the thread sees every change
- *                       made before the matching release. (JMM
- *                       happens-before: release → subsequent acquire.)
- *   ORDERING         - the JIT/CPU cannot reorder reads &amp; writes across
- *                       the lock boundaries in observable ways.
- * &lt;p&gt;
- *
- * What synchronized does NOT do
- * -----------------------------
- *   - Make individual operations atomic on their own (it&#x27;s the BLOCK
- *     that is atomic, not the calls inside).
- *   - Prevent deadlock — that&#x27;s on you.
- *   - Time out. Use ReentrantLock.tryLock if you need that.
- * &lt;p&gt;
- *
- * Reentrancy
- * ----------
- * Java monitors are REENTRANT — the SAME thread can lock the same
- * monitor multiple times without deadlocking itself. Each acquire
- * needs a matching release.
- * &lt;p&gt;
- *
- * Common rules
- * ------------
- *   - Always lock the SAME object for accesses to the same state.
- *   - DON&#x27;T synchronize on a String literal, Integer, Boolean — pooled
- *     and shared with unrelated code.
- *   - DON&#x27;T hold a lock while calling unknown code (callbacks,
- *     overrides, lambdas you don&#x27;t own) — invitation to deadlock.
- *   - Keep critical sections SHORT.
- * &lt;p&gt;
- *
- * Class lock vs object lock
- * -------------------------
- *   - Instance synchronized methods on different instances do NOT
- *     contend with each other.
- *   - Static synchronized methods on the same class ALWAYS contend.
- *   - An instance synchronized method and a static synchronized method
- *     on the SAME class lock DIFFERENT monitors and do NOT contend.
- */
 
 public class JavaSynchronization {
 

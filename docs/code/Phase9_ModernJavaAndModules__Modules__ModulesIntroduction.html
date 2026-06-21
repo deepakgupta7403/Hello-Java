@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase9_ModernJavaAndModules/Modules/ModulesIntroduction.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 133 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 46 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,75 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Introduced in Java 9 (JEP 261). Adds an EXPLICIT, COMPILE-TIME unit called a MODULE: a named
-                        collection of related packages plus a descriptor file `module-info.java`.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Java Platform Module System (JPMS) — Introduction</h2>
+                    <p>Introduced in Java 9 (JEP 261). Adds an EXPLICIT, COMPILE-TIME unit called a MODULE: a named
+                        collection of related packages plus a descriptor file `module-info.java`.</p>
+                    <h3>Why modules?</h3>
+                    <ul>
+                        <li>REPLACE the public/package-private duality with explicit EXPORT.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    A module exports SOME packages; others are private to the module.</pre>
+                    <ul>
+                        <li>STRONG ENCAPSULATION — you can&#x27;t reflect into a module&#x27;s internals
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    unless that module `opens` the package to you.</pre>
+                    <ul>
+                        <li>RELIABLE CONFIGURATION — `requires` declares dependencies that
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    the linker / runtime verifies up front (no more classpath
+    surprises).</pre>
+                    <ul>
+                        <li>SCALABLE JDK — the JDK itself was split into ~100 modules. You
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    can ship a runtime image with `jlink` that includes ONLY the
+    modules your app uses.</pre>
+                    <h3>Anatomy of module-info.java</h3>
+                    <pre class="hj-doc-art">     module com.example.app {
+         requires java.net.http;                    // I depend on this
+         requires transitive java.sql;              // exposed to consumers</pre>
+                    <pre class="hj-doc-art">         exports com.example.app.api;               // public API
+         exports com.example.app.internal to com.example.tests;</pre>
+                    <pre class="hj-doc-art">         opens com.example.app.entity;              // allow reflection
+         opens com.example.app.entity to spring.core;</pre>
+                    <pre class="hj-doc-art">         provides com.example.api.SpiPort
+             with com.example.app.SpiImpl;          // implements a SPI</pre>
+                    <pre class="hj-doc-art">         uses com.example.api.SpiPort;              // consumes one
+     }</pre>
+                    <h3>`requires` modifiers</h3>
+                    <p>requires - usual dependency requires static - compile-time only (optional dependency) requires
+                        transitive - passed through to my consumers</p>
+                    <h3>Open packages — the difference between `exports` and `opens`</h3>
+                    <pre class="hj-doc-art">     exports pkg       - compile-time AND runtime ACCESS for code
+     opens   pkg       - additionally allows REFLECTION (setAccessible)</pre>
+                    <p>Many frameworks (Spring, JPA, Jackson) need `opens` to access private fields via reflection.</p>
+                    <h3>Three kinds of modules</h3>
+                    <ul>
+                        <li>NAMED MODULES — declared in module-info.java.
+                        </li>
+                        <li>AUTOMATIC MODULES — a regular jar on the module path; its name is
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    derived from the jar filename or the Automatic-Module-Name manifest
+    attribute. Exports ALL packages.</pre>
+                    <ul>
+                        <li>UNNAMED MODULE — the classpath. Reads every other module. Reverts
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    to &quot;no modules&quot; behaviour. This is what THIS project uses.</pre>
+                    <h3>Status of this repo</h3>
+                    <p>The HelloJava project is INTENTIONALLY NOT modularised. Modules add ceremony that fights with the
+                        per-folder tutorial layout this repo uses. This section is REFERENCE MATERIAL — read the
+                        comments, study the example module-info syntax, and use jdeps to explore.</p>
                 </div>
             </div>
 
@@ -1395,92 +1458,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase9_ModernJavaAndModules.Modules;
-
-/**
- * Java Platform Module System (JPMS) — Introduction
- * -------------------------------------------------
- * Introduced in Java 9 (JEP 261). Adds an EXPLICIT, COMPILE-TIME unit
- * called a MODULE: a named collection of related packages plus a
- * descriptor file `module-info.java`.
- * &lt;p&gt;
- *
- * Why modules?
- * ------------
- *   - REPLACE the public/package-private duality with explicit EXPORT.
- *     A module exports SOME packages; others are private to the module.
- * &lt;p&gt;
- *
- *   - STRONG ENCAPSULATION — you can&#x27;t reflect into a module&#x27;s internals
- *     unless that module `opens` the package to you.
- * &lt;p&gt;
- *
- *   - RELIABLE CONFIGURATION — `requires` declares dependencies that
- *     the linker / runtime verifies up front (no more classpath
- *     surprises).
- * &lt;p&gt;
- *
- *   - SCALABLE JDK — the JDK itself was split into ~100 modules. You
- *     can ship a runtime image with `jlink` that includes ONLY the
- *     modules your app uses.
- * &lt;p&gt;
- *
- * Anatomy of module-info.java
- * ---------------------------
- *      module com.example.app {
- *          requires java.net.http;                    // I depend on this
- *          requires transitive java.sql;              // exposed to consumers
- * &lt;p&gt;
- *
- *          exports com.example.app.api;               // public API
- *          exports com.example.app.internal to com.example.tests;
- * &lt;p&gt;
- *
- *          opens com.example.app.entity;              // allow reflection
- *          opens com.example.app.entity to spring.core;
- * &lt;p&gt;
- *
- *          provides com.example.api.SpiPort
- *              with com.example.app.SpiImpl;          // implements a SPI
- * &lt;p&gt;
- *
- *          uses com.example.api.SpiPort;              // consumes one
- *      }
- * &lt;p&gt;
- *
- * `requires` modifiers
- * --------------------
- *   requires       - usual dependency
- *   requires static - compile-time only (optional dependency)
- *   requires transitive - passed through to my consumers
- * &lt;p&gt;
- *
- * Open packages — the difference between `exports` and `opens`
- * ------------------------------------------------------------
- *      exports pkg       - compile-time AND runtime ACCESS for code
- *      opens   pkg       - additionally allows REFLECTION (setAccessible)
- * &lt;p&gt;
- *
- * Many frameworks (Spring, JPA, Jackson) need `opens` to access private
- * fields via reflection.
- * &lt;p&gt;
- *
- * Three kinds of modules
- * ----------------------
- *   - NAMED MODULES — declared in module-info.java.
- *   - AUTOMATIC MODULES — a regular jar on the module path; its name is
- *     derived from the jar filename or the Automatic-Module-Name manifest
- *     attribute. Exports ALL packages.
- *   - UNNAMED MODULE — the classpath. Reads every other module. Reverts
- *     to &quot;no modules&quot; behaviour. This is what THIS project uses.
- * &lt;p&gt;
- *
- * Status of this repo
- * -------------------
- * The HelloJava project is INTENTIONALLY NOT modularised. Modules
- * add ceremony that fights with the per-folder tutorial layout this
- * repo uses. This section is REFERENCE MATERIAL — read the comments,
- * study the example module-info syntax, and use jdeps to explore.
- */
 
 public class ModulesIntroduction {
 

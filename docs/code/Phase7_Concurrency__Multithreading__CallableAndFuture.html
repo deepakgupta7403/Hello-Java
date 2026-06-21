@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/CallableAndFuture.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 145 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 87 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,47 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Runnable is great when the work has NO RETURN VALUE and never throws checked exceptions. When
-                        you need a RESULT, use:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Callable&lt;V&gt; and Future&lt;V&gt;</h2>
+                    <p>Runnable is great when the work has NO RETURN VALUE and never throws checked exceptions. When you
+                        need a RESULT, use:</p>
+                    <pre class="hj-doc-art">     @FunctionalInterface
+     public interface Callable&lt;V&gt; {
+         V call() throws Exception;
+     }</pre>
+                    <p>Submit it to an ExecutorService and you get a Future&lt;V&gt;:</p>
+                    <pre class="hj-doc-art">     Future&lt;V&gt; f = executor.submit(callable);
+     V result = f.get();        // blocks until ready</pre>
+                    <h3>Future contract</h3>
+                    <p>get() - block until done; throw if task failed. get(time, unit) - block up to a timeout
+                        (TimeoutException). cancel(boolean mayInterrupt) - request cancellation. If true and the</p>
+                    <pre class="hj-doc-art">                             task is running, interrupt the worker.</pre>
+                    <p>isDone() - finished normally, exceptionally, or cancelled. isCancelled()</p>
+                    <h3>What .get() throws</h3>
+                    <p>InterruptedException - the caller was interrupted while waiting. ExecutionException - the task
+                        threw an exception. The cause is</p>
+                    <pre class="hj-doc-art">                             the original exception.</pre>
+                    <p>CancellationException - the task was cancelled. TimeoutException - (timed version only) deadline
+                        passed.</p>
+                    <h3>FutureTask</h3>
+                    <p>A Runnable + Future. Useful when you want to run a Callable on a raw Thread (without an
+                        ExecutorService) and still grab the result:</p>
+                    <pre class="hj-doc-art">     FutureTask&lt;Integer&gt; task = new FutureTask&lt;&gt;(() -&gt; 42);
+     new Thread(task).start();
+     int x = task.get();</pre>
+                    <h3>Modern alternatives</h3>
+                    <ul>
+                        <li>CompletableFuture — composable async chains, no blocking get().
+                        </li>
+                        <li>StructuredTaskScope (Java 21 preview) — fan-out + result handling
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    as a single unit.</pre>
                 </div>
             </div>
 
@@ -1399,63 +1434,6 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
-
-/**
- * Callable&lt;V&gt; and Future&lt;V&gt;
- * -------------------------
- * Runnable is great when the work has NO RETURN VALUE and never throws
- * checked exceptions. When you need a RESULT, use:
- * &lt;p&gt;
- *
- *      @FunctionalInterface
- *      public interface Callable&lt;V&gt; {
- *          V call() throws Exception;
- *      }
- * &lt;p&gt;
- *
- * Submit it to an ExecutorService and you get a Future&lt;V&gt;:
- * &lt;p&gt;
- *
- *      Future&lt;V&gt; f = executor.submit(callable);
- *      V result = f.get();        // blocks until ready
- * &lt;p&gt;
- *
- * Future contract
- * ---------------
- *   get()                     - block until done; throw if task failed.
- *   get(time, unit)           - block up to a timeout (TimeoutException).
- *   cancel(boolean mayInterrupt) - request cancellation. If true and the
- *                              task is running, interrupt the worker.
- *   isDone()                  - finished normally, exceptionally, or cancelled.
- *   isCancelled()
- * &lt;p&gt;
- *
- * What .get() throws
- * ------------------
- *   InterruptedException    - the caller was interrupted while waiting.
- *   ExecutionException      - the task threw an exception. The cause is
- *                              the original exception.
- *   CancellationException   - the task was cancelled.
- *   TimeoutException        - (timed version only) deadline passed.
- * &lt;p&gt;
- *
- * FutureTask
- * ----------
- * A Runnable + Future. Useful when you want to run a Callable on a raw
- * Thread (without an ExecutorService) and still grab the result:
- * &lt;p&gt;
- *
- *      FutureTask&lt;Integer&gt; task = new FutureTask&lt;&gt;(() -&gt; 42);
- *      new Thread(task).start();
- *      int x = task.get();
- * &lt;p&gt;
- *
- * Modern alternatives
- * -------------------
- *   - CompletableFuture — composable async chains, no blocking get().
- *   - StructuredTaskScope (Java 21 preview) — fan-out + result handling
- *     as a single unit.
- */
 
 public class CallableAndFuture {
 

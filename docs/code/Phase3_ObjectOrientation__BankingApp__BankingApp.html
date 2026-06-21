@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase3_ObjectOrientation/BankingApp/BankingApp.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 104 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 78 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,42 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>This `main` ties together every OOP pillar from the rest of the folder:</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>BankingApp - runnable demo of the Simple Banking Application</h2>
+                    <p>This `main` ties together every OOP pillar from the rest of the folder:</p>
+                    <ul>
+                        <li>ABSTRACTION : `Account` is abstract; callers code against it.
+                        </li>
+                        <li>ENCAPSULATION : balances and transaction histories are private and
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                     manipulated only through validated methods.</pre>
+                    <ul>
+                        <li>INHERITANCE : `SavingsAccount` and `CheckingAccount` share Account&#x27;s
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                     machinery.</pre>
+                    <ul>
+                        <li>POLYMORPHISM : `Bank.applyMonthlyCycle()` calls `applyInterest()` on
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                     every Account; each subclass&#x27;s `calculateInterest()` is
+                     dispatched at runtime.</pre>
+                    <ul>
+                        <li>PACKAGES : every file lives in package OOPSConcepts.BankingApp.
+                        </li>
+                        <li>RECORDS : `Transaction` is an immutable record.
+                        </li>
+                    </ul>
+                    <p>Run from project root:</p>
+                    <pre class="hj-doc-art">     javac src/OOPSConcepts/BankingApp/*.java
+     cd src
+     java OOPSConcepts.BankingApp.BankingApp</pre>
                 </div>
             </div>
 
@@ -1394,31 +1426,6 @@
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase3_ObjectOrientation.BankingApp;
 
-/**
- * BankingApp - runnable demo of the Simple Banking Application
- * ------------------------------------------------------------
- * This `main` ties together every OOP pillar from the rest of the folder:
- * &lt;p&gt;
- *
- *   - ABSTRACTION    : `Account` is abstract; callers code against it.
- *   - ENCAPSULATION  : balances and transaction histories are private and
- *                      manipulated only through validated methods.
- *   - INHERITANCE    : `SavingsAccount` and `CheckingAccount` share Account&#x27;s
- *                      machinery.
- *   - POLYMORPHISM   : `Bank.applyMonthlyCycle()` calls `applyInterest()` on
- *                      every Account; each subclass&#x27;s `calculateInterest()` is
- *                      dispatched at runtime.
- *   - PACKAGES       : every file lives in package OOPSConcepts.BankingApp.
- *   - RECORDS        : `Transaction` is an immutable record.
- * &lt;p&gt;
- *
- * Run from project root:
- * &lt;p&gt;
- *
- *      javac src/OOPSConcepts/BankingApp/*.java
- *      cd src
- *      java OOPSConcepts.BankingApp.BankingApp
- */
 public class BankingApp {
 
     public static void main(String[] args) {

@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase0_SetupAndFirstPrograms/Input/ConsoleInput.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 63 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 34 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,31 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Taking Input - java.io.Console</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Taking Input - java.io.Console</h2>
+                    <p>The Console class (since Java 6) is the third common way of reading input. Its key feature: it
+                        can read passwords WITHOUT echoing them on screen.</p>
+                    <h3>IMPORTANT - Console can be null</h3>
+                    <p>System.console() returns null when:</p>
+                    <ul>
+                        <li>The JVM is launched without an attached terminal (e.g. from inside an IDE
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    like IntelliJ / Eclipse, or when stdin/stdout is redirected).</pre>
+                    <p>To test this class, run it from a real terminal:</p>
+                    <pre class="hj-doc-art">    javac ConsoleInput.java
+    java  ConsoleInput</pre>
+                    <h3>Methods Used Here</h3>
+                    <p>readLine(prompt, args...) - reads a line, prompt supports printf-style format
+                        readPassword(prompt, args...) - reads a line WITHOUT echo, returns char[]</p>
+                    <pre class="hj-doc-art">                                  (returning char[] instead of String makes it
+                                   easier to wipe the password from memory)</pre>
+                    <p>printf(format, args...) - formatted print, returns the Console itself</p>
                 </div>
             </div>
 
@@ -1396,34 +1417,6 @@
 
 import java.io.Console;
 import java.util.Arrays;
-
-/**
- * Taking Input - java.io.Console
- * ------------------------------
- * The Console class (since Java 6) is the third common way of reading input.
- * Its key feature: it can read passwords WITHOUT echoing them on screen.
- * &lt;p&gt;
- *
- * IMPORTANT - Console can be null
- * -------------------------------
- * System.console() returns null when:
- *   - The JVM is launched without an attached terminal (e.g. from inside an IDE
- *     like IntelliJ / Eclipse, or when stdin/stdout is redirected).
- * &lt;p&gt;
- *
- * To test this class, run it from a real terminal:
- *     javac ConsoleInput.java
- *     java  ConsoleInput
- * &lt;p&gt;
- *
- * Methods Used Here
- * -----------------
- *   readLine(prompt, args...)     - reads a line, prompt supports printf-style format
- *   readPassword(prompt, args...) - reads a line WITHOUT echo, returns char[]
- *                                   (returning char[] instead of String makes it
- *                                    easier to wipe the password from memory)
- *   printf(format, args...)       - formatted print, returns the Console itself
- */
 
 public class ConsoleInput {
 

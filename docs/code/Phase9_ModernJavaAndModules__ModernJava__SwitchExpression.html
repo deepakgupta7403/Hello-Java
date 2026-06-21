@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase9_ModernJavaAndModules/ModernJava/SwitchExpression.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 119 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 63 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,57 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Classic switch is a STATEMENT - it does not return a value, and the colon style with `break` is
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Switch Expressions (Java 14+)</h2>
+                    <p>Classic switch is a STATEMENT - it does not return a value, and the colon style with `break` is
                         verbose and easy to get wrong (fall-through bugs). Java 14 promoted switch to also being an
-                        EXPRESSION that produces a va...
-                    </div>
+                        EXPRESSION that produces a value, with a safer arrow form.</p>
+                    <h3>Two New Things</h3>
+                    <ul>
+                        <li>Arrow labels -&gt; - no fall-through, no break needed
+                        </li>
+                        <li>The yield keyword - return a value from a multi-statement case
+                        </li>
+                    </ul>
+                    <h3>Old (Switch Statement)</h3>
+                    <pre class="hj-doc-art">     String name;
+     switch (day) {
+         case 1:  name = &quot;Mon&quot;; break;
+         case 2:  name = &quot;Tue&quot;; break;
+         default: name = &quot;?&quot;;   break;
+     }</pre>
+                    <h3>New (Switch Expression)</h3>
+                    <pre class="hj-doc-art">     String name = switch (day) {
+         case 1 -&gt; &quot;Mon&quot;;
+         case 2 -&gt; &quot;Tue&quot;;
+         default -&gt; &quot;?&quot;;
+     };</pre>
+                    <h3>Key Properties</h3>
+                    <ul>
+                        <li>Each arrow case is a single expression OR a block ending in `yield`.
+                        </li>
+                        <li>NO fall-through with arrow form - one case runs, that is it.
+                        </li>
+                        <li>Multiple labels per arm: case 1, 2, 3 -&gt; &quot;low&quot;;
+                        </li>
+                        <li>The switch expression must be EXHAUSTIVE - either cover every possibility
+                        </li>
+                    </ul>
+                    <p>or include a `default`. Compiler enforces this for enums and sealed types.</p>
+                    <h3>yield - When You Need More Than One Statement</h3>
+                    <pre class="hj-doc-art">     int code = switch (s) {
+         case &quot;OK&quot; -&gt; 0;
+         case &quot;WARN&quot; -&gt; {
+             log(&quot;warn observed&quot;);
+             yield 1;
+         }
+         default -&gt; -1;
+     };</pre>
                 </div>
             </div>
 
@@ -1396,61 +1440,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase9_ModernJavaAndModules.ModernJava;
-
-/**
- * Switch Expressions (Java 14+)
- * -----------------------------
- * Classic switch is a STATEMENT - it does not return a value, and the colon
- * style with `break` is verbose and easy to get wrong (fall-through bugs).
- * Java 14 promoted switch to also being an EXPRESSION that produces a value,
- * with a safer arrow form.
- * &lt;p&gt;
- *
- * Two New Things
- * --------------
- *  1. Arrow labels         -&gt;     -  no fall-through, no break needed
- *  2. The yield keyword           -  return a value from a multi-statement case
- * &lt;p&gt;
- *
- * Old (Switch Statement)
- * ----------------------
- *      String name;
- *      switch (day) {
- *          case 1:  name = &quot;Mon&quot;; break;
- *          case 2:  name = &quot;Tue&quot;; break;
- *          default: name = &quot;?&quot;;   break;
- *      }
- * &lt;p&gt;
- *
- * New (Switch Expression)
- * -----------------------
- *      String name = switch (day) {
- *          case 1 -&gt; &quot;Mon&quot;;
- *          case 2 -&gt; &quot;Tue&quot;;
- *          default -&gt; &quot;?&quot;;
- *      };
- * &lt;p&gt;
- *
- * Key Properties
- * --------------
- *  - Each arrow case is a single expression OR a block ending in `yield`.
- *  - NO fall-through with arrow form - one case runs, that is it.
- *  - Multiple labels per arm:  case 1, 2, 3 -&gt; &quot;low&quot;;
- *  - The switch expression must be EXHAUSTIVE - either cover every possibility
- *    or include a `default`. Compiler enforces this for enums and sealed types.
- * &lt;p&gt;
- *
- * yield - When You Need More Than One Statement
- * ---------------------------------------------
- *      int code = switch (s) {
- *          case &quot;OK&quot; -&gt; 0;
- *          case &quot;WARN&quot; -&gt; {
- *              log(&quot;warn observed&quot;);
- *              yield 1;
- *          }
- *          default -&gt; -1;
- *      };
- */
 
 public class SwitchExpression {
 

@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/SnakeGame/GameLoop.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 76 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 41 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,40 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>GameLoop — the simulation thread.</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>GameLoop — the simulation thread.</p>
+                    <p>Runs on its OWN thread (not the EDT). Sleeps between ticks to control speed, then advances the
+                        game state and asks the Swing renderer to repaint via SwingUtilities.invokeLater. (Swing
+                        components must be touched on the EDT.)</p>
+                    <h2>Why a dedicated thread?</h2>
+                    <ul>
+                        <li>The EDT must stay responsive to input and repaint.
+                        </li>
+                        <li>The simulation should tick at a steady rate independent of how
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    long painting takes.</pre>
+                    <h3>Coordination</h3>
+                    <ul>
+                        <li>state.tick() takes the GameState lock briefly.
+                        </li>
+                        <li>state.snapshot() (called from the EDT) takes the same lock.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    They never overlap painting and ticking. No torn frames.</pre>
+                    <ul>
+                        <li>A volatile `running` flag controls the loop; setRunning(false)
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    stops the loop and the thread exits.</pre>
+                    <h3>Frame-pacing</h3>
+                    <p>For simplicity this uses Thread.sleep(tickMs). A production game would track wall-clock drift and
+                        skip ticks if behind. The pattern is the same; the math is more.</p>
                 </div>
             </div>
 
@@ -1397,40 +1427,6 @@
 import javax.swing.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/**
- * GameLoop — the simulation thread.
- * &lt;p&gt;
- *
- * Runs on its OWN thread (not the EDT). Sleeps between ticks to control
- * speed, then advances the game state and asks the Swing renderer to
- * repaint via SwingUtilities.invokeLater. (Swing components must be
- * touched on the EDT.)
- * &lt;p&gt;
- *
- * Why a dedicated thread?
- * -----------------------
- *   - The EDT must stay responsive to input and repaint.
- *   - The simulation should tick at a steady rate independent of how
- *     long painting takes.
- * &lt;p&gt;
- *
- * Coordination
- * ------------
- *   - state.tick() takes the GameState lock briefly.
- *   - state.snapshot() (called from the EDT) takes the same lock.
- *     They never overlap painting and ticking. No torn frames.
- * &lt;p&gt;
- *
- *   - A volatile `running` flag controls the loop; setRunning(false)
- *     stops the loop and the thread exits.
- * &lt;p&gt;
- *
- * Frame-pacing
- * ------------
- * For simplicity this uses Thread.sleep(tickMs). A production game
- * would track wall-clock drift and skip ticks if behind. The pattern
- * is the same; the math is more.
- */
 public final class GameLoop implements Runnable {
 
     private final GameState state;

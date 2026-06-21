@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase3_ObjectOrientation/Inheritance/TypesOfInheritance/MultiLevelInheritance.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 55 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 46 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,18 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>In Multilevel OOPSConcepts.Inheritance, a derived class will be inheriting a base class and as
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>In Multilevel OOPSConcepts.Inheritance, a derived class will be inheriting a base class and as
                         well as the derived class also act as the base class to other class. In below image, the class A
-                        serves as a base class fo...
-                    </div>
+                        serves as a base class for the derived class B, which in turn serves as a base class for the
+                        derived class C. In Java, a class cannot directly access the grandparent’s members.</p>
+                    <p>Class A(Base Class) -----------------------&gt; Class B(Intermediary Class)
+                        --------------------------&gt; Class C(Derived Class)</p>
                 </div>
             </div>
 
@@ -1396,14 +1401,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase3_ObjectOrientation.Inheritance.TypesOfInheritance;
-
-/**In Multilevel OOPSConcepts.Inheritance, a derived class will be inheriting a base class and as well as the derived class also act as the base class to other class.
- * In below image, the class A serves as a base class for the derived class B, which in turn serves as a base class for the derived class C.
- * In Java, a class cannot directly access the grandparent’s members.
- * &lt;p&gt;
- *
- * Class A(Base Class) -----------------------&gt; Class B(Intermediary Class) --------------------------&gt; Class C(Derived Class) **/
-
 
 // Java program to illustrate the
 // concept of Multilevel inheritance

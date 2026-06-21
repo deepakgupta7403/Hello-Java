@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase3_ObjectOrientation/SealedClasses/SealedClassesDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 163 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 88 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,80 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A SEALED class or interface gives you EXPLICIT CONTROL over which classes can extend or
-                        implement it. Before sealed classes you could only choose between:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Sealed Classes - Java 17 (LTS) onwards</h2>
+                    <p>A SEALED class or interface gives you EXPLICIT CONTROL over which classes can extend or implement
+                        it. Before sealed classes you could only choose between:</p>
+                    <ul>
+                        <li>public - anyone can subclass / implement
+                        </li>
+                        <li>final - nobody can subclass
+                        </li>
+                        <li>package-private- only the same package can subclass
+                        </li>
+                    </ul>
+                    <p>Sealed gives you a middle ground: list the ALLOWED subtypes by name.</p>
+                    <pre class="hj-doc-art">     public sealed interface Shape
+         permits Circle, Square, Triangle { ... }</pre>
+                    <pre class="hj-doc-art">     public final  class Circle   implements Shape { ... }
+     public final  class Square   implements Shape { ... }
+     public non-sealed class Triangle implements Shape { ... }</pre>
+                    <h3>Three Subclass Choices (every permitted child must pick one)</h3>
+                    <ul>
+                        <li>final - cannot be extended further.
+                        </li>
+                        <li>sealed - extendable, but only by another permits list.
+                        </li>
+                        <li>non-sealed - extendable by anyone; ends the sealing chain.
+                        </li>
+                    </ul>
+                    <h3>Where Sealed Classes Are Useful</h3>
+                    <pre class="hj-doc-art">  - Modelling a CLOSED set of variants (Result = Ok | Err, Json = Null |
+    Bool | Number | String | Array | Object, etc.).</pre>
+                    <ul>
+                        <li>Letting the compiler verify EXHAUSTIVENESS in a `switch` expression -
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    no `default` needed when you cover every permitted subtype.</pre>
+                    <ul>
+                        <li>Building algebraic-data-type-like designs without third-party libraries.
+                        </li>
+                    </ul>
+                    <h3>Layout Requirements</h3>
+                    <ul>
+                        <li>All permitted subtypes must be in the SAME MODULE (or the same package
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    if no module).</pre>
+                    <ul>
+                        <li>The permitted subtypes must be NAMED in the `permits` clause - unless
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    they live in the SAME FILE, in which case the `permits` clause may be
+    omitted and the compiler infers it.</pre>
+                    <ul>
+                        <li>Every permitted subtype must DIRECTLY extend or implement the sealed
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    type.</pre>
+                    <h3>Sealed Classes + Pattern Matching (Java 21)</h3>
+                    <p>The big payoff: a `switch` over a sealed type does not need `default` because the compiler knows
+                        all the cases. Add a new permitted subtype and every switch becomes a compile error until you
+                        handle the new case - exactly what you want.</p>
+                    <pre class="hj-doc-art">     String describe(Shape s) {
+         return switch (s) {
+             case Circle c    -&gt; &quot;circle r=&quot; + c.radius();
+             case Square sq   -&gt; &quot;square side=&quot; + sq.side();
+             case Triangle t  -&gt; &quot;triangle&quot;;
+         };
+     }</pre>
+                    <p>This file fits the whole demo into ONE file using nested classes; the `permits` clause is
+                        OPTIONAL when the permitted subtypes are in the same compilation unit.</p>
                 </div>
             </div>
 
@@ -1395,80 +1463,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase3_ObjectOrientation.SealedClasses;
-
-/**
- * Sealed Classes - Java 17 (LTS) onwards
- * --------------------------------------
- * A SEALED class or interface gives you EXPLICIT CONTROL over which classes
- * can extend or implement it. Before sealed classes you could only choose
- * between:
- * &lt;p&gt;
- *
- *   - public         - anyone can subclass / implement
- *   - final          - nobody can subclass
- *   - package-private- only the same package can subclass
- * &lt;p&gt;
- *
- * Sealed gives you a middle ground: list the ALLOWED subtypes by name.
- * &lt;p&gt;
- *
- *      public sealed interface Shape
- *          permits Circle, Square, Triangle { ... }
- * &lt;p&gt;
- *
- *      public final  class Circle   implements Shape { ... }
- *      public final  class Square   implements Shape { ... }
- *      public non-sealed class Triangle implements Shape { ... }
- * &lt;p&gt;
- *
- * Three Subclass Choices (every permitted child must pick one)
- * ------------------------------------------------------------
- *   1. final         - cannot be extended further.
- *   2. sealed        - extendable, but only by another permits list.
- *   3. non-sealed    - extendable by anyone; ends the sealing chain.
- * &lt;p&gt;
- *
- * Where Sealed Classes Are Useful
- * -------------------------------
- *   - Modelling a CLOSED set of variants (Result = Ok | Err, Json = Null |
- *     Bool | Number | String | Array | Object, etc.).
- *   - Letting the compiler verify EXHAUSTIVENESS in a `switch` expression -
- *     no `default` needed when you cover every permitted subtype.
- *   - Building algebraic-data-type-like designs without third-party libraries.
- * &lt;p&gt;
- *
- * Layout Requirements
- * -------------------
- *   - All permitted subtypes must be in the SAME MODULE (or the same package
- *     if no module).
- *   - The permitted subtypes must be NAMED in the `permits` clause - unless
- *     they live in the SAME FILE, in which case the `permits` clause may be
- *     omitted and the compiler infers it.
- *   - Every permitted subtype must DIRECTLY extend or implement the sealed
- *     type.
- * &lt;p&gt;
- *
- * Sealed Classes + Pattern Matching (Java 21)
- * -------------------------------------------
- * The big payoff: a `switch` over a sealed type does not need `default`
- * because the compiler knows all the cases. Add a new permitted subtype and
- * every switch becomes a compile error until you handle the new case -
- * exactly what you want.
- * &lt;p&gt;
- *
- *      String describe(Shape s) {
- *          return switch (s) {
- *              case Circle c    -&gt; &quot;circle r=&quot; + c.radius();
- *              case Square sq   -&gt; &quot;square side=&quot; + sq.side();
- *              case Triangle t  -&gt; &quot;triangle&quot;;
- *          };
- *      }
- * &lt;p&gt;
- *
- * This file fits the whole demo into ONE file using nested classes; the
- * `permits` clause is OPTIONAL when the permitted subtypes are in the same
- * compilation unit.
- */
 
 public class SealedClassesDemo {
 

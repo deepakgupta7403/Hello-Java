@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/ThreadSleepMethod.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 122 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 74 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,57 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Static method on Thread that PAUSES the CURRENT thread for at least the specified amount of
-                        time. Two overloads:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Thread.sleep(...)</h2>
+                    <p>Static method on Thread that PAUSES the CURRENT thread for at least the specified amount of time.
+                        Two overloads:</p>
+                    <pre class="hj-doc-art">     Thread.sleep(long millis)
+     Thread.sleep(long millis, int nanos)
+     Thread.sleep(Duration d)            // Java 19+</pre>
+                    <h3>Key facts</h3>
+                    <ul>
+                        <li>Sleep is for the CURRENT thread only. There is no &quot;sleep that
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     other thread&quot; call. If you need that, signal it and have IT call
+     sleep / wait on something.</pre>
+                    <ul>
+                        <li>Sleep gives up the CPU. The thread enters TIMED_WAITING.
+                        </li>
+                        <li>Sleep does NOT release locks. If you fell asleep inside a
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     synchronized block you still own the monitor — every other thread
+     waiting on it stays blocked.</pre>
+                    <ul>
+                        <li>Sleep is INTERRUPTIBLE. If another thread calls .interrupt() on
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     this thread, sleep throws InterruptedException and clears the
+     interrupt flag. You should usually restore it.</pre>
+                    <ul>
+                        <li>Sleep duration is a LOWER BOUND, not exact. You can sleep longer
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     than requested (OS scheduling, GC, etc.) but not less.</pre>
+                    <h3>What sleep is NOT for</h3>
+                    <ul>
+                        <li>Waiting for a condition: use wait()/notify or LockSupport.park or
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    a CountDownLatch.</pre>
+                    <ul>
+                        <li>Throttling: use a real rate limiter or Semaphore.
+                        </li>
+                        <li>Coordination: use join() / barriers / latches.
+                        </li>
+                    </ul>
+                    <p>Polling with sleep is rarely correct and almost always wasteful.</p>
                 </div>
             </div>
 
@@ -1398,53 +1443,6 @@
 
 import java.time.Duration;
 import java.time.Instant;
-
-/**
- * Thread.sleep(...)
- * -----------------
- * Static method on Thread that PAUSES the CURRENT thread for at least
- * the specified amount of time. Two overloads:
- * &lt;p&gt;
- *
- *      Thread.sleep(long millis)
- *      Thread.sleep(long millis, int nanos)
- *      Thread.sleep(Duration d)            // Java 19+
- * &lt;p&gt;
- *
- * Key facts
- * ---------
- *   1. Sleep is for the CURRENT thread only. There is no &quot;sleep that
- *      other thread&quot; call. If you need that, signal it and have IT call
- *      sleep / wait on something.
- * &lt;p&gt;
- *
- *   2. Sleep gives up the CPU. The thread enters TIMED_WAITING.
- * &lt;p&gt;
- *
- *   3. Sleep does NOT release locks. If you fell asleep inside a
- *      synchronized block you still own the monitor — every other thread
- *      waiting on it stays blocked.
- * &lt;p&gt;
- *
- *   4. Sleep is INTERRUPTIBLE. If another thread calls .interrupt() on
- *      this thread, sleep throws InterruptedException and clears the
- *      interrupt flag. You should usually restore it.
- * &lt;p&gt;
- *
- *   5. Sleep duration is a LOWER BOUND, not exact. You can sleep longer
- *      than requested (OS scheduling, GC, etc.) but not less.
- * &lt;p&gt;
- *
- * What sleep is NOT for
- * ---------------------
- *   - Waiting for a condition: use wait()/notify or LockSupport.park or
- *     a CountDownLatch.
- *   - Throttling: use a real rate limiter or Semaphore.
- *   - Coordination: use join() / barriers / latches.
- * &lt;p&gt;
- *
- * Polling with sleep is rarely correct and almost always wasteful.
- */
 
 public class ThreadSleepMethod {
 

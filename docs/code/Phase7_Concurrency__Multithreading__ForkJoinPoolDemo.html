@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/ForkJoinPoolDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 146 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 93 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,60 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A SPECIALISED thread pool for DIVIDE-AND-CONQUER algorithms. Workers use WORK-STEALING: when a
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>ForkJoinPool &amp; ForkJoinTask</h2>
+                    <p>A SPECIALISED thread pool for DIVIDE-AND-CONQUER algorithms. Workers use WORK-STEALING: when a
                         worker&#x27;s own deque runs dry, it steals tasks from the back of a busier worker&#x27;s deque.
-                        This is what makes recursive task d...
-                    </div>
+                        This is what makes recursive task decomposition fast.</p>
+                    <h3>Two task base classes</h3>
+                    <p>RecursiveAction - no result; subclass and implement compute() RecursiveTask&lt;V&gt; - returns V;
+                        subclass and implement compute() : V</p>
+                    <h3>Inside compute()</h3>
+                    <ul>
+                        <li>BASE CASE — small enough? Compute directly.
+                        </li>
+                        <li>SPLIT — divide into subtasks.
+                        </li>
+                        <li>FORK — submit one subtask asynchronously.
+                        </li>
+                        <li>COMPUTE — run the other subtask on the CURRENT worker.
+                        </li>
+                        <li>JOIN — wait for the forked subtask and combine results.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     Pattern:
+         ForkJoinTask&lt;V&gt; left = leftTask.fork();
+         V rightResult = rightTask.compute();
+         V leftResult = left.join();
+         return combine(leftResult, rightResult);</pre>
+                    <h3>The Common Pool</h3>
+                    <p>ForkJoinPool.commonPool() is shared by:</p>
+                    <ul>
+                        <li>parallel streams (.parallelStream / .parallel())
+                        </li>
+                        <li>CompletableFuture default-executor async stages
+                        </li>
+                        <li>your own fork/join tasks if you don&#x27;t supply a pool
+                        </li>
+                    </ul>
+                    <p>Default parallelism = availableProcessors() - 1. Heavy work in one place starves the others. For
+                        dedicated workloads, create your own ForkJoinPool.</p>
+                    <h3>Don&#x27;t do these</h3>
+                    <ul>
+                        <li>DON&#x27;T BLOCK on I/O inside a fork/join task — you&#x27;ll stall the pool.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    Use ManagedBlocker if you must, or use a different executor.</pre>
+                    <ul>
+                        <li>DON&#x27;T HOLD LOCKS inside compute() — work-stealing pulls tasks
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    across workers; reentrancy assumptions can break.</pre>
                 </div>
             </div>
 
@@ -1401,58 +1448,6 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveAction;
 import java.util.concurrent.RecursiveTask;
-
-/**
- * ForkJoinPool &amp; ForkJoinTask
- * ---------------------------
- * A SPECIALISED thread pool for DIVIDE-AND-CONQUER algorithms. Workers
- * use WORK-STEALING: when a worker&#x27;s own deque runs dry, it steals
- * tasks from the back of a busier worker&#x27;s deque. This is what makes
- * recursive task decomposition fast.
- * &lt;p&gt;
- *
- * Two task base classes
- * ---------------------
- *   RecursiveAction       - no result; subclass and implement compute()
- *   RecursiveTask&lt;V&gt;      - returns V; subclass and implement compute() : V
- * &lt;p&gt;
- *
- * Inside compute()
- * ----------------
- *   1. BASE CASE — small enough? Compute directly.
- *   2. SPLIT     — divide into subtasks.
- *   3. FORK      — submit one subtask asynchronously.
- *   4. COMPUTE   — run the other subtask on the CURRENT worker.
- *   5. JOIN      — wait for the forked subtask and combine results.
- * &lt;p&gt;
- *
- *      Pattern:
- *          ForkJoinTask&lt;V&gt; left = leftTask.fork();
- *          V rightResult = rightTask.compute();
- *          V leftResult = left.join();
- *          return combine(leftResult, rightResult);
- * &lt;p&gt;
- *
- * The Common Pool
- * ---------------
- *   ForkJoinPool.commonPool() is shared by:
- *     - parallel streams (.parallelStream / .parallel())
- *     - CompletableFuture default-executor async stages
- *     - your own fork/join tasks if you don&#x27;t supply a pool
- * &lt;p&gt;
- *
- *   Default parallelism = availableProcessors() - 1. Heavy work in one
- *   place starves the others. For dedicated workloads, create your own
- *   ForkJoinPool.
- * &lt;p&gt;
- *
- * Don&#x27;t do these
- * --------------
- *   - DON&#x27;T BLOCK on I/O inside a fork/join task — you&#x27;ll stall the pool.
- *     Use ManagedBlocker if you must, or use a different executor.
- *   - DON&#x27;T HOLD LOCKS inside compute() — work-stealing pulls tasks
- *     across workers; reentrancy assumptions can break.
- */
 
 public class ForkJoinPoolDemo {
 

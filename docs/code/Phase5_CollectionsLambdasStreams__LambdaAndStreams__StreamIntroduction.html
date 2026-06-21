@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/StreamIntroduction.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 158 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 77 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,67 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A STREAM is a sequence of values from a source that supports a chain of functional-style
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Java Streams - Introduction</h2>
+                    <p>A STREAM is a sequence of values from a source that supports a chain of functional-style
                         operations. Streams are NOT data structures: they compute on data from a source (a Collection,
-                        array, file, generator, ...) and...
-                    </div>
+                        array, file, generator, ...) and emit results.</p>
+                    <pre class="hj-doc-art">     List&amp;lt;Integer&amp;gt; nums = List.of(1, 2, 3, 4, 5);</pre>
+                    <pre class="hj-doc-art">     int sumOfSquaresOfEvens = nums.stream()
+                                  .filter(n -&amp;gt; n % 2 == 0)
+                                  .mapToInt(n -&amp;gt; n * n)
+                                  .sum();</pre>
+                    <p>That one expression DECLARES the result; the JVM figures out HOW to compute it.</p>
+                    <h3>Stream Properties</h3>
+                    <ul>
+                        <li>LAZY Intermediate operations do nothing until a terminal
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                    operation runs. The pipeline is fused and consumed
+                    in one pass.</pre>
+                    <ul>
+                        <li>ONE-SHOT Once a stream&#x27;s terminal operation has run, the
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                    stream is consumed - you cannot iterate it again.</pre>
+                    <ul>
+                        <li>DECLARATIVE &quot;What&quot; not &quot;how&quot; - the JVM gets to optimise.
+                        </li>
+                        <li>POSSIBLY Streams can have an ENCOUNTER ORDER (e.g. List) or be
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    ORDERED         unordered (e.g. HashSet). Order affects parallelism
+                    behaviour and methods like findFirst vs findAny.</pre>
+                    <ul>
+                        <li>INDEPENDENT A Stream does not modify its source. Filtering does
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                    not remove from the underlying List.</pre>
+                    <h3>Streams vs Loops</h3>
+                    <pre class="hj-doc-art">     int total = 0;
+     for (int n : nums) if (n % 2 == 0) total += n * n;     // imperative</pre>
+                    <pre class="hj-doc-art">     int total = nums.stream()
+                     .filter(n -&amp;gt; n % 2 == 0)
+                     .mapToInt(n -&amp;gt; n * n)
+                     .sum();                                 // declarative</pre>
+                    <p>Streams shine for COMPOSITIONS (filter + map + reduce). Plain loops still win for very simple
+                        work or when you need fine-grained control.</p>
+                    <h3>The Big Picture - The Files in This Folder</h3>
+                    <p>LambdaExpressions.java - the function syntax streams rely on MethodReferences.java - `::`
+                        shortcut for &quot;lambda that calls a method&quot; StreamIntroduction.java (this file)
+                        StreamCreation.java - 8+ ways to build a stream StreamPipeline.java - Source / Intermediate /
+                        Terminal IntermediateOperations.java - filter / map / sorted / distinct / ...
+                        TerminalOperations.java - forEach / collect / reduce / count / ... CollectorsClass.java -
+                        Collectors.toList / groupingBy / ... SequentialVsParallel.java - parallel streams, ordering,
+                        pitfalls InfiniteStreams.java - generate / iterate / limit / takeWhile PrimitiveStreams.java -
+                        IntStream / LongStream / DoubleStream StreamVsCollection.java - when to use which
+                        StreamFileIO.java - Files.lines, Files.list, etc. ModernStreams.java - Java 9 -&amp;gt; 21
+                        additions Examples/ - real-world worked projects</p>
                 </div>
             </div>
 
@@ -1402,86 +1456,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
-
-/**
- * Java Streams - Introduction
- * ---------------------------
- * A STREAM is a sequence of values from a source that supports a chain of
- * functional-style operations. Streams are NOT data structures: they
- * compute on data from a source (a Collection, array, file, generator, ...)
- * and emit results.
- * &lt;p&gt;
- *
- *      List&amp;lt;Integer&amp;gt; nums = List.of(1, 2, 3, 4, 5);
- * &lt;p&gt;
- *
- *      int sumOfSquaresOfEvens = nums.stream()
- *                                   .filter(n -&amp;gt; n % 2 == 0)
- *                                   .mapToInt(n -&amp;gt; n * n)
- *                                   .sum();
- * &lt;p&gt;
- *
- * That one expression DECLARES the result; the JVM figures out HOW to
- * compute it.
- * &lt;p&gt;
- *
- * Stream Properties
- * -----------------
- *   - LAZY            Intermediate operations do nothing until a terminal
- *                     operation runs. The pipeline is fused and consumed
- *                     in one pass.
- * &lt;p&gt;
- *
- *   - ONE-SHOT        Once a stream&#x27;s terminal operation has run, the
- *                     stream is consumed - you cannot iterate it again.
- * &lt;p&gt;
- *
- *   - DECLARATIVE     &quot;What&quot; not &quot;how&quot; - the JVM gets to optimise.
- * &lt;p&gt;
- *
- *   - POSSIBLY        Streams can have an ENCOUNTER ORDER (e.g. List) or be
- *     ORDERED         unordered (e.g. HashSet). Order affects parallelism
- *                     behaviour and methods like findFirst vs findAny.
- * &lt;p&gt;
- *
- *   - INDEPENDENT     A Stream does not modify its source. Filtering does
- *                     not remove from the underlying List.
- * &lt;p&gt;
- *
- * Streams vs Loops
- * ----------------
- *      int total = 0;
- *      for (int n : nums) if (n % 2 == 0) total += n * n;     // imperative
- * &lt;p&gt;
- *
- *      int total = nums.stream()
- *                      .filter(n -&amp;gt; n % 2 == 0)
- *                      .mapToInt(n -&amp;gt; n * n)
- *                      .sum();                                 // declarative
- * &lt;p&gt;
- *
- * Streams shine for COMPOSITIONS (filter + map + reduce). Plain loops still
- * win for very simple work or when you need fine-grained control.
- * &lt;p&gt;
- *
- * The Big Picture - The Files in This Folder
- * ------------------------------------------
- *   LambdaExpressions.java       - the function syntax streams rely on
- *   MethodReferences.java        - `::` shortcut for &quot;lambda that calls a method&quot;
- *   StreamIntroduction.java      (this file)
- *   StreamCreation.java          - 8+ ways to build a stream
- *   StreamPipeline.java          - Source / Intermediate / Terminal
- *   IntermediateOperations.java  - filter / map / sorted / distinct / ...
- *   TerminalOperations.java      - forEach / collect / reduce / count / ...
- *   CollectorsClass.java         - Collectors.toList / groupingBy / ...
- *   SequentialVsParallel.java    - parallel streams, ordering, pitfalls
- *   InfiniteStreams.java         - generate / iterate / limit / takeWhile
- *   PrimitiveStreams.java        - IntStream / LongStream / DoubleStream
- *   StreamVsCollection.java      - when to use which
- *   StreamFileIO.java            - Files.lines, Files.list, etc.
- *   ModernStreams.java           - Java 9 -&amp;gt; 21 additions
- *   Examples/                    - real-world worked projects
- */
 
 public class StreamIntroduction {
 

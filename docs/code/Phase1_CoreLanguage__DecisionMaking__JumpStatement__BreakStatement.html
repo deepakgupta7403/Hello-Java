@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase1_CoreLanguage/DecisionMaking/JumpStatement/BreakStatement.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 35 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 25 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,17 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>In Java, break is majorly used for: Terminate a sequence in a switch statement (discussed
-                        above). To exit a loop. Used as a “civilized” form of goto. Using break to exit a Loop
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>In Java, break is majorly used for: Terminate a sequence in a switch statement (discussed above).
+                        To exit a loop. Used as a “civilized” form of goto. Using break to exit a Loop</p>
+                    <p>Using break, we can force immediate termination of a loop, bypassing the conditional expression
+                        and any remaining code in the body of the loop. Note: Break, when used inside a set of nested
+                        loops, will only break out of the innermost loop.</p>
                 </div>
             </div>
 
@@ -1395,15 +1400,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase1_CoreLanguage.DecisionMaking.JumpStatement;
-
-/**In Java, break is majorly used for:
- Terminate a sequence in a switch statement (discussed above).
- To exit a loop.
- Used as a “civilized” form of goto.
- Using break to exit a Loop
-
- Using break, we can force immediate termination of a loop, bypassing the conditional expression and any remaining code in the body of the loop.
- Note: Break, when used inside a set of nested loops, will only break out of the innermost loop.**/
 
 public class BreakStatement {
     public static void main(String args[])

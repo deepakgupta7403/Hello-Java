@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase2_MethodsArraysStrings/Arrays/ArrayIntroduction.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 175 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 101 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,78 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>An ARRAY is a CONTAINER OBJECT that holds a FIXED NUMBER of values of a SINGLE TYPE. The length
-                        is established when the array is created and never changes after that.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Arrays in Java - Introduction</h2>
+                    <p>An ARRAY is a CONTAINER OBJECT that holds a FIXED NUMBER of values of a SINGLE TYPE. The length
+                        is established when the array is created and never changes after that.</p>
+                    <pre class="hj-doc-art">+---+---+---+---+---+
+|10 |20 |30 |40 |50 |     int[] nums = new int[5];
++---+---+---+---+---+</pre>
+                    <p>0 1 2 3 4 indices (always start at 0)</p>
+                    <h3>Key Properties</h3>
+                    <ul>
+                        <li>HOMOGENEOUS - every element has the same declared type.
+                        </li>
+                        <li>FIXED SIZE - once created the length cannot grow or shrink. If you need
+                        </li>
+                    </ul>
+                    <p>a growable container, use ArrayList instead.</p>
+                    <ul>
+                        <li>INDEXED - elements are accessed via an integer index from 0 to
+                        </li>
+                    </ul>
+                    <p>length-1. Out-of-range access throws ArrayIndexOutOfBoundsException.</p>
+                    <ul>
+                        <li>OBJECTS - even an int[] is itself an Object that lives on the heap.
+                        </li>
+                    </ul>
+                    <p>arr.length is a FIELD, not a method (no parentheses).</p>
+                    <ul>
+                        <li>DEFAULTS - new int[3] -&gt; {0, 0, 0}; new String[3] -&gt; {null, null, null}.
+                        </li>
+                    </ul>
+                    <h3>Three Ways to Create an Array</h3>
+                    <ul>
+                        <li>Declare-then-allocate with default values:
+                        </li>
+                    </ul>
+                    <p>int[] nums = new int[5]; // {0, 0, 0, 0, 0}</p>
+                    <ul>
+                        <li>Allocate AND initialise inline using an array literal:
+                        </li>
+                    </ul>
+                    <p>int[] nums = {10, 20, 30}; // shorthand, length inferred</p>
+                    <ul>
+                        <li>Use `new` with an initialiser (needed when not at declaration site):
+                        </li>
+                    </ul>
+                    <p>int[] nums; nums = new int[]{10, 20, 30}; // explicit `new int[]`</p>
+                    <h3>Stack vs Heap</h3>
+                    <p>int[] nums = new int[3]; ^ &#x27;nums&#x27; lives on the STACK as a reference. The actual
+                        3-element array object lives on the HEAP and is garbage-collected when no references remain.</p>
+                    <h3>Iterating Over an Array</h3>
+                    <p>for (int i = 0; i &lt; arr.length; i++) { ... } // index-based for (int x : arr) { ... } //
+                        enhanced for-each Arrays.stream(arr).forEach(...); // Stream API (Java 8+)</p>
+                    <h3>Common Pitfalls</h3>
+                    <ul>
+                        <li>arr.length is the FIELD - no parentheses (unlike String.length()).
+                        </li>
+                        <li>The first index is 0 and the last is arr.length-1.
+                        </li>
+                        <li>Default for object arrays is null - dereferencing an empty slot
+                        </li>
+                    </ul>
+                    <p>causes NullPointerException.</p>
+                    <ul>
+                        <li>Arrays.toString(arr) prints the contents; raw `arr` prints something
+                        </li>
+                    </ul>
+                    <p>cryptic like [I@1540e19d (a JVM-internal identifier).</p>
                 </div>
             </div>
 
@@ -1395,79 +1461,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase2_MethodsArraysStrings.Arrays;
-
-/**
- * Arrays in Java - Introduction
- * -----------------------------
- * An ARRAY is a CONTAINER OBJECT that holds a FIXED NUMBER of values of a
- * SINGLE TYPE. The length is established when the array is created and never
- * changes after that.
- * &lt;p&gt;
- * &lt;p&gt;
- * +---+---+---+---+---+
- * |10 |20 |30 |40 |50 |     int[] nums = new int[5];
- * +---+---+---+---+---+
- * 0   1   2   3   4       indices (always start at 0)
- * &lt;p&gt;
- * &lt;p&gt;
- * Key Properties
- * --------------
- * - HOMOGENEOUS - every element has the same declared type.
- * - FIXED SIZE  - once created the length cannot grow or shrink. If you need
- * a growable container, use ArrayList instead.
- * - INDEXED     - elements are accessed via an integer index from 0 to
- * length-1. Out-of-range access throws ArrayIndexOutOfBoundsException.
- * - OBJECTS     - even an int[] is itself an Object that lives on the heap.
- * arr.length is a FIELD, not a method (no parentheses).
- * - DEFAULTS    - new int[3] -&gt; {0, 0, 0}; new String[3] -&gt; {null, null, null}.
- * &lt;p&gt;
- * &lt;p&gt;
- * Three Ways to Create an Array
- * -----------------------------
- * 1. Declare-then-allocate with default values:
- * &lt;p&gt;
- * &lt;p&gt;
- * int[] nums = new int[5];           // {0, 0, 0, 0, 0}
- * &lt;p&gt;
- * &lt;p&gt;
- * 2. Allocate AND initialise inline using an array literal:
- * &lt;p&gt;
- * &lt;p&gt;
- * int[] nums = {10, 20, 30};         // shorthand, length inferred
- * &lt;p&gt;
- * &lt;p&gt;
- * 3. Use `new` with an initialiser (needed when not at declaration site):
- * &lt;p&gt;
- * &lt;p&gt;
- * int[] nums;
- * nums = new int[]{10, 20, 30};      // explicit `new int[]`
- * &lt;p&gt;
- * &lt;p&gt;
- * Stack vs Heap
- * -------------
- * int[] nums = new int[3];
- * ^
- * &#x27;nums&#x27; lives on the STACK as a reference. The actual 3-element
- * array object lives on the HEAP and is garbage-collected when
- * no references remain.
- * &lt;p&gt;
- * &lt;p&gt;
- * Iterating Over an Array
- * -----------------------
- * for (int i = 0; i &lt; arr.length; i++) { ... }     // index-based
- * for (int x : arr)                  { ... }       // enhanced for-each
- * Arrays.stream(arr).forEach(...);                 // Stream API (Java 8+)
- * &lt;p&gt;
- * &lt;p&gt;
- * Common Pitfalls
- * ---------------
- * - arr.length is the FIELD - no parentheses (unlike String.length()).
- * - The first index is 0 and the last is arr.length-1.
- * - Default for object arrays is null - dereferencing an empty slot
- * causes NullPointerException.
- * - Arrays.toString(arr) prints the contents; raw `arr` prints something
- * cryptic like [I@1540e19d (a JVM-internal identifier).
- */
 
 public class ArrayIntroduction {
 

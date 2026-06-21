@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/SnakeGame/GameState.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 157 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 124 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,47 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>GameState — the shared mutable state, accessed by:</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>GameState — the shared mutable state, accessed by:</p>
+                    <ul>
+                        <li>GAME LOOP THREAD (writes: ticks the snake, updates food, score, gameOver)
+                        </li>
+                        <li>SWING EDT (reads: paints the board)
+                        </li>
+                        <li>SWING EDT (writes via setDirection: keyboard input)
+                        </li>
+                    </ul>
+                    <p>All mutating and reading operations go through a SINGLE ReentrantLock so the EDT never paints a
+                        half-modified state. Critical sections are SHORT — never call back into Swing while holding the
+                        lock.</p>
+                    <h2>Why ReentrantLock instead of synchronized</h2>
+                    <ul>
+                        <li>Multiple condition variables possible if we extend the game
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     (e.g. a paused/unpaused signal).</pre>
+                    <ul>
+                        <li>Easier to reason about lock ordering vs the EDT.
+                        </li>
+                        <li>Demonstration purposes — see ReentrantLockDemo for depth.
+                        </li>
+                    </ul>
+                    <h3>Snake representation</h3>
+                    <ul>
+                        <li>body: Deque&lt;Cell&gt; — head is first(), tail is last().
+                        </li>
+                        <li>bodySet: Set&lt;Cell&gt; — same cells, for O(1) self-collision check.
+                        </li>
+                        <li>direction: current direction; pendingDirection: requested by input.
+                        </li>
+                    </ul>
+                    <p>On each tick the loop adopts pendingDirection (unless it&#x27;s the opposite of `direction`),
+                        moves the head, optionally trims the tail.</p>
                 </div>
             </div>
 
@@ -1397,38 +1434,6 @@
 import java.util.*;
 import java.util.concurrent.locks.ReentrantLock;
 
-/**
- * GameState — the shared mutable state, accessed by:
- * &lt;p&gt;
- *
- *   - GAME LOOP THREAD  (writes: ticks the snake, updates food, score, gameOver)
- *   - SWING EDT          (reads: paints the board)
- *   - SWING EDT          (writes via setDirection: keyboard input)
- * &lt;p&gt;
- *
- * All mutating and reading operations go through a SINGLE ReentrantLock
- * so the EDT never paints a half-modified state. Critical sections are
- * SHORT — never call back into Swing while holding the lock.
- * &lt;p&gt;
- *
- * Why ReentrantLock instead of synchronized
- * -----------------------------------------
- *   1. Multiple condition variables possible if we extend the game
- *      (e.g. a paused/unpaused signal).
- *   2. Easier to reason about lock ordering vs the EDT.
- *   3. Demonstration purposes — see ReentrantLockDemo for depth.
- * &lt;p&gt;
- *
- * Snake representation
- * --------------------
- *   - body: Deque&lt;Cell&gt; — head is first(), tail is last().
- *   - bodySet: Set&lt;Cell&gt; — same cells, for O(1) self-collision check.
- *   - direction: current direction; pendingDirection: requested by input.
- * &lt;p&gt;
- *
- *   On each tick the loop adopts pendingDirection (unless it&#x27;s the
- *   opposite of `direction`), moves the head, optionally trims the tail.
- */
 public final class GameState {
 
     public static final int COLS = 25;

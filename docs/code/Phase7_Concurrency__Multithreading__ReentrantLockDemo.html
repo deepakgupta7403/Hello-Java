@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/ReentrantLockDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 204 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 149 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,49 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A drop-in upgrade from `synchronized` with these extras:</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.concurrent.locks.ReentrantLock</h2>
+                    <p>A drop-in upgrade from `synchronized` with these extras:</p>
+                    <ul>
+                        <li>tryLock() - non-blocking attempt
+                        </li>
+                        <li>tryLock(time, unit) - timed attempt
+                        </li>
+                        <li>lockInterruptibly() - cancel mid-acquire
+                        </li>
+                        <li>constructor(boolean fair) - FIFO acquisition order
+                        </li>
+                        <li>newCondition() x N - multiple condition variables
+                        </li>
+                    </ul>
+                    <p>It is REENTRANT — the same thread can acquire it multiple times, each needing a matching
+                        unlock(). It is NOT held forever if your thread dies: but if your code forgets to unlock(),
+                        nobody else can ever acquire it. ALWAYS use try/finally.</p>
+                    <h3>Fair vs unfair</h3>
+                    <p>Unfair (default): a new thread may &quot;barge&quot; ahead of a queued waiter.</p>
+                    <pre class="hj-doc-art">                     Higher throughput. Possible STARVATION.</pre>
+                    <p>Fair: waiters acquire in FIFO order. Lower throughput.</p>
+                    <pre class="hj-doc-art">                     Predictable.</pre>
+                    <h3>Conditions</h3>
+                    <p>Each ReentrantLock can have ANY NUMBER of Condition objects. Each is its own wait queue. Classic
+                        example: a bounded buffer with notEmpty and notFull conditions instead of a single notifyAll
+                        firing for both.</p>
+                    <pre class="hj-doc-art">     Lock        lock     = new ReentrantLock();
+     Condition   notEmpty = lock.newCondition();
+     Condition   notFull  = lock.newCondition();</pre>
+                    <p>Condition methods:</p>
+                    <pre class="hj-doc-art">     await()                 / signal()
+     await(time, unit)       / signalAll()
+     awaitUntil(deadline)
+     awaitUninterruptibly()</pre>
+                    <h3>Diagnostics</h3>
+                    <p>isLocked() - is anyone holding it? isHeldByCurrentThread() - am I holding it? getHoldCount() -
+                        how many times have I locked it? getQueueLength() - approx waiters</p>
                 </div>
             </div>
 
@@ -1399,60 +1438,6 @@ import java.util.Queue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
-
-/**
- * java.util.concurrent.locks.ReentrantLock
- * ----------------------------------------
- * A drop-in upgrade from `synchronized` with these extras:
- * &lt;p&gt;
- *
- *   - tryLock()                 - non-blocking attempt
- *   - tryLock(time, unit)       - timed attempt
- *   - lockInterruptibly()       - cancel mid-acquire
- *   - constructor(boolean fair) - FIFO acquisition order
- *   - newCondition() x N        - multiple condition variables
- * &lt;p&gt;
- *
- * It is REENTRANT — the same thread can acquire it multiple times, each
- * needing a matching unlock(). It is NOT held forever if your thread
- * dies: but if your code forgets to unlock(), nobody else can ever
- * acquire it. ALWAYS use try/finally.
- * &lt;p&gt;
- *
- * Fair vs unfair
- * --------------
- *   Unfair (default): a new thread may &quot;barge&quot; ahead of a queued waiter.
- *                      Higher throughput. Possible STARVATION.
- *   Fair:             waiters acquire in FIFO order. Lower throughput.
- *                      Predictable.
- * &lt;p&gt;
- *
- * Conditions
- * ----------
- * Each ReentrantLock can have ANY NUMBER of Condition objects. Each is
- * its own wait queue. Classic example: a bounded buffer with notEmpty
- * and notFull conditions instead of a single notifyAll firing for both.
- * &lt;p&gt;
- *
- *      Lock        lock     = new ReentrantLock();
- *      Condition   notEmpty = lock.newCondition();
- *      Condition   notFull  = lock.newCondition();
- * &lt;p&gt;
- *
- * Condition methods:
- *      await()                 / signal()
- *      await(time, unit)       / signalAll()
- *      awaitUntil(deadline)
- *      awaitUninterruptibly()
- * &lt;p&gt;
- *
- * Diagnostics
- * -----------
- *   isLocked()              - is anyone holding it?
- *   isHeldByCurrentThread() - am I holding it?
- *   getHoldCount()          - how many times have I locked it?
- *   getQueueLength()        - approx waiters
- */
 
 public class ReentrantLockDemo {
 

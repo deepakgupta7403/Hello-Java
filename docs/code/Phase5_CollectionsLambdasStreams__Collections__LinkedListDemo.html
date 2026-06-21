@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/LinkedListDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 150 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 100 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,40 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>java.util.LinkedList - Doubly-Linked List Implementation</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.LinkedList - Doubly-Linked List Implementation</h2>
+                    <p>LinkedList implements BOTH List AND Deque. Internally it is a chain of nodes; each node holds the
+                        value plus a previous/next pointer:</p>
+                    <pre class="hj-doc-art">     head -&gt; [ A ] &amp;lt;-&gt; [ B ] &amp;lt;-&gt; [ C ] &amp;lt;- tail</pre>
+                    <h3>Why It Exists</h3>
+                    <p>Constant-time INSERT/REMOVE at either end and at a known cursor (via ListIterator). That makes it
+                        convenient for queue/stack/deque use, and historically for &quot;lots of inserts in the middle&quot;
+                        workloads.</p>
+                    <h3>When To Use It</h3>
+                    <ul>
+                        <li>You need a DEQUE - add/remove at BOTH ends in O(1).
+                        </li>
+                        <li>You build up a list at the FRONT (Linked.addFirst is O(1); ArrayList
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    would shift on each prepend).</pre>
+                    <p>Honest reality check: ArrayList wins MOST benchmarks because of cache friendliness. Reach for
+                        LinkedList only when you specifically need its deque characteristics; otherwise prefer
+                        ArrayDeque or ArrayList.</p>
+                    <h3>Big-O</h3>
+                    <p>addFirst / addLast / removeFirst / removeLast O(1) get(i) / set(i) / add(i, e) / remove(i) O(n)
+                        (walk the chain) contains, indexOf, lastIndexOf O(n)</p>
+                    <h3>The List-and-Deque Dual Personality</h3>
+                    <p>Because LinkedList implements Deque too, the SAME object exposes both:</p>
+                    <p>List API: add, get, set, indexOf, subList ... Deque API: addFirst, peekLast, pollFirst, push, pop
+                        ...</p>
+                    <p>In modern code, prefer ArrayDeque for deque/stack/queue duties - it is smaller, faster and has no
+                        random-access methods at all.</p>
                 </div>
             </div>
 
@@ -1396,55 +1426,6 @@
 
 import java.util.LinkedList;
 import java.util.List;
-
-/**
- * java.util.LinkedList - Doubly-Linked List Implementation
- * --------------------------------------------------------
- * LinkedList implements BOTH List AND Deque. Internally it is a chain of
- * nodes; each node holds the value plus a previous/next pointer:
- * &lt;p&gt;
- *
- *      head -&gt; [ A ] &amp;lt;-&gt; [ B ] &amp;lt;-&gt; [ C ] &amp;lt;- tail
- * &lt;p&gt;
- *
- * Why It Exists
- * -------------
- * Constant-time INSERT/REMOVE at either end and at a known cursor (via
- * ListIterator). That makes it convenient for queue/stack/deque use, and
- * historically for &quot;lots of inserts in the middle&quot; workloads.
- * &lt;p&gt;
- *
- * When To Use It
- * --------------
- *   - You need a DEQUE - add/remove at BOTH ends in O(1).
- *   - You build up a list at the FRONT (Linked.addFirst is O(1); ArrayList
- *     would shift on each prepend).
- * &lt;p&gt;
- *
- * Honest reality check: ArrayList wins MOST benchmarks because of cache
- * friendliness. Reach for LinkedList only when you specifically need its
- * deque characteristics; otherwise prefer ArrayDeque or ArrayList.
- * &lt;p&gt;
- *
- * Big-O
- * -----
- *   addFirst / addLast / removeFirst / removeLast        O(1)
- *   get(i) / set(i) / add(i, e) / remove(i)              O(n)  (walk the chain)
- *   contains, indexOf, lastIndexOf                       O(n)
- * &lt;p&gt;
- *
- * The List-and-Deque Dual Personality
- * -----------------------------------
- * Because LinkedList implements Deque too, the SAME object exposes both:
- * &lt;p&gt;
- *
- *   List API:  add, get, set, indexOf, subList ...
- *   Deque API: addFirst, peekLast, pollFirst, push, pop ...
- * &lt;p&gt;
- *
- * In modern code, prefer ArrayDeque for deque/stack/queue duties - it is
- * smaller, faster and has no random-access methods at all.
- */
 
 public class LinkedListDemo {
 

@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase8_PracticalAPIs/DateAndTime/DateTimeFormatterDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 121 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 75 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,42 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Parse strings into date/time values and format them back. THREAD-SAFE and IMMUTABLE — share
-                        instances freely. Replaces the legacy (and broken) SimpleDateFormat.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>DateTimeFormatter</h2>
+                    <p>Parse strings into date/time values and format them back. THREAD-SAFE and IMMUTABLE — share
+                        instances freely. Replaces the legacy (and broken) SimpleDateFormat.</p>
+                    <h3>Three ways to get a formatter</h3>
+                    <ul>
+                        <li>CONSTANTS — DateTimeFormatter.ISO_LOCAL_DATE etc. for ISO-8601.
+                        </li>
+                        <li>PATTERN — DateTimeFormatter.ofPattern(&quot;dd/MM/yyyy&quot;)
+                        </li>
+                        <li>BUILDER — new DateTimeFormatterBuilder()... for full control.
+                        </li>
+                    </ul>
+                    <h3>Common pattern letters</h3>
+                    <p>y / u year (u allows negative years) M month-of-year (MM=07, MMM=Jul, MMMM=July) d day-of-month E
+                        day-of-week (E=Mon, EEEE=Monday) H / h hour 0-23 / 1-12 m minute s second S / n
+                        fraction-of-second / nano a AM/PM z zone abbreviation V zone id x / X offset (+0530 /
+                        +05:30)</p>
+                    <h3>Locale matters</h3>
+                    <p>Month and day names depend on locale.</p>
+                    <pre class="hj-doc-art">     ofPattern(&quot;MMM d&quot;, Locale.US)        -&gt; Jul 4
+     ofPattern(&quot;MMM d&quot;, Locale.GERMAN)    -&gt; Jul 4</pre>
+                    <h3>Tips</h3>
+                    <ul>
+                        <li>Always pin the Locale for output that crosses borders.
+                        </li>
+                        <li>For text that humans see, prefer FormatStyle (LONG/MEDIUM/SHORT).
+                        </li>
+                        <li>For machine interchange, prefer ISO constants.
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1406,51 +1436,6 @@ import java.time.format.FormatStyle;
 import java.time.format.SignStyle;
 import java.time.temporal.ChronoField;
 import java.util.Locale;
-
-/**
- * DateTimeFormatter
- * -----------------
- * Parse strings into date/time values and format them back. THREAD-SAFE
- * and IMMUTABLE — share instances freely. Replaces the legacy (and
- * broken) SimpleDateFormat.
- * &lt;p&gt;
- *
- * Three ways to get a formatter
- * -----------------------------
- *   1. CONSTANTS — DateTimeFormatter.ISO_LOCAL_DATE etc. for ISO-8601.
- *   2. PATTERN   — DateTimeFormatter.ofPattern(&quot;dd/MM/yyyy&quot;)
- *   3. BUILDER   — new DateTimeFormatterBuilder()... for full control.
- * &lt;p&gt;
- *
- * Common pattern letters
- * ----------------------
- *   y / u   year (u allows negative years)
- *   M       month-of-year   (MM=07, MMM=Jul, MMMM=July)
- *   d       day-of-month
- *   E       day-of-week     (E=Mon, EEEE=Monday)
- *   H / h   hour 0-23 / 1-12
- *   m       minute
- *   s       second
- *   S / n   fraction-of-second / nano
- *   a       AM/PM
- *   z       zone abbreviation
- *   V       zone id
- *   x / X   offset (+0530 / +05:30)
- * &lt;p&gt;
- *
- * Locale matters
- * --------------
- * Month and day names depend on locale.
- *      ofPattern(&quot;MMM d&quot;, Locale.US)        -&gt; Jul 4
- *      ofPattern(&quot;MMM d&quot;, Locale.GERMAN)    -&gt; Jul 4
- * &lt;p&gt;
- *
- * Tips
- * ----
- *   - Always pin the Locale for output that crosses borders.
- *   - For text that humans see, prefer FormatStyle (LONG/MEDIUM/SHORT).
- *   - For machine interchange, prefer ISO constants.
- */
 
 public class DateTimeFormatterDemo {
 

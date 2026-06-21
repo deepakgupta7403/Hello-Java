@@ -1,28 +1,28 @@
 /* HelloJava custom theme (layered on MDB + Prism Tomorrow) */
 
 :root {
-  --hj-primary: #1976d2;
-  --hj-primary-d: #0d47a1;
-  --hj-accent: #ff9800;
-  --hj-bg: #f5f7fa;
-  --hj-surface: #ffffff;
-  --hj-text: #212529;
-  --hj-muted: #6c757d;
-  --hj-border: #e0e4e8;
-  --hj-navbar-h: 64px;
-  --hj-sidebar-w: 300px;
+    --hj-primary: #1976d2;
+    --hj-primary-d: #0d47a1;
+    --hj-accent: #ff9800;
+    --hj-bg: #f5f7fa;
+    --hj-surface: #ffffff;
+    --hj-text: #212529;
+    --hj-muted: #6c757d;
+    --hj-border: #e0e4e8;
+    --hj-navbar-h: 64px;
+    --hj-sidebar-w: 300px;
 }
 
 [data-bs-theme="dark"] {
-  --hj-bg: #121826;
-  --hj-surface: #1c2333;
-  --hj-text: #e6e8eb;
-  --hj-muted: #9aa0a6;
-  --hj-border: #2a3142;
+    --hj-bg: #121826;
+    --hj-surface: #1c2333;
+    --hj-text: #e6e8eb;
+    --hj-muted: #9aa0a6;
+    --hj-border: #2a3142;
 }
 
 html, body {
-  height: 100%;
+    height: 100%;
 }
 body {
   font-family: 'Roboto', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -42,8 +42,8 @@ code, pre, .font-monospace {
 }
 .material-icons.small,
 .material-icons-outlined.small {
-  font-size: 1em;
-  margin-right: 2px;
+    font-size: 1em;
+    margin-right: 2px;
 }
 
 /* --- Navbar --- */
@@ -54,19 +54,19 @@ code, pre, .font-monospace {
 }
 
 .hj-navbar .navbar-brand {
-  color: #fff !important;
-  font-size: 1.25rem;
+    color: #fff !important;
+    font-size: 1.25rem;
 }
 
 .hj-navbar .badge {
-  font-size: 0.7rem;
+    font-size: 0.7rem;
 }
 
 .hj-search {
   position: relative;
   display: flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.15);
   border-radius: 24px;
   padding: 6px 14px;
   min-width: 280px;
@@ -74,11 +74,11 @@ code, pre, .font-monospace {
 }
 
 .hj-search:focus-within {
-  background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.25);
 }
 
 .hj-search .material-icons {
-  color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.8);
 }
 .hj-search input {
   background: transparent;
@@ -91,7 +91,7 @@ code, pre, .font-monospace {
 }
 
 .hj-search input::placeholder {
-  color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 #hj-search-results {
@@ -102,14 +102,14 @@ code, pre, .font-monospace {
   background: var(--hj-surface);
   color: var(--hj-text);
   border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   max-height: 60vh;
   overflow-y: auto;
   display: none;
 }
 
 #hj-search-results.show {
-  display: block;
+    display: block;
 }
 #hj-search-results a {
   display: block;
@@ -120,7 +120,7 @@ code, pre, .font-monospace {
 }
 
 #hj-search-results a:hover {
-  background: var(--hj-bg);
+    background: var(--hj-bg);
 }
 #hj-search-results .hj-result-phase {
   font-size: 0.75rem;
@@ -133,9 +133,9 @@ code, pre, .font-monospace {
   min-height: calc(100vh - var(--hj-navbar-h));
 }
 @media (min-width: 992px) {
-  .hj-main {
-    margin-left: var(--hj-sidebar-w);
-  }
+    .hj-main {
+        margin-left: var(--hj-sidebar-w);
+    }
 }
 
 .hj-sidebar {
@@ -198,11 +198,11 @@ code, pre, .font-monospace {
 }
 
 .hj-hero h1 {
-  line-height: 1.15;
+    line-height: 1.15;
 }
 .hj-hero-code {
-  background: rgba(0, 0, 0, 0.4) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
   padding: 24px;
   font-size: 0.95rem;
@@ -216,39 +216,39 @@ code, pre, .font-monospace {
 }
 
 .hj-page-hero .breadcrumb a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .hj-page-hero .breadcrumb a:hover {
-  color: #fff !important;
+    color: #fff !important;
 }
 
 .hj-page-hero .breadcrumb-item + .breadcrumb-item::before {
-  color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.5);
 }
 .hj-page-icon {
-  width: 56px;
-  height: 56px;
-  background: rgba(255, 255, 255, 0.18);
+    width: 56px;
+    height: 56px;
+    background: rgba(255, 255, 255, 0.18);
   border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hj-page-icon .material-icons {
-  font-size: 32px;
-  color: #fff;
+    font-size: 32px;
+    color: #fff;
 }
 
 .hj-page-icon-sm {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
 }
 
 .hj-page-icon-sm .material-icons {
-  font-size: 24px;
+    font-size: 24px;
 }
 
 /* --- Phase cards (home) --- */
@@ -262,21 +262,21 @@ code, pre, .font-monospace {
 }
 .hj-phase-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12) !important;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12) !important;
 }
 .hj-phase-icon {
-  width: 56px;
-  height: 56px;
+    width: 56px;
+    height: 56px;
   background: linear-gradient(135deg, var(--hj-primary) 0%, var(--hj-primary-d) 100%);
   border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hj-phase-icon .material-icons {
-  font-size: 28px;
-  color: #fff;
+    font-size: 28px;
+    color: #fff;
 }
 
 /* --- File cards (phase page) --- */
@@ -296,12 +296,12 @@ code, pre, .font-monospace {
 .hj-file-card:hover {
   transform: translateY(-2px);
   border-color: var(--hj-primary);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08) !important;
 }
 
 .hj-file-card .hj-file-icon {
-  color: var(--hj-primary);
-  font-size: 22px;
+    color: var(--hj-primary);
+    font-size: 22px;
 }
 .hj-file-card .hj-file-summary {
   display: -webkit-box;
@@ -312,7 +312,7 @@ code, pre, .font-monospace {
 }
 
 .min-w-0 {
-  min-width: 0;
+    min-width: 0;
 }
 
 /* --- Code page --- */
@@ -324,20 +324,89 @@ code, pre, .font-monospace {
   border-radius: 6px;
 }
 
-.hj-code-card {
-  border: 0;
+/* --- Rendered Javadoc ("Documentation" card) --- */
+.hj-doc {
+    background: var(--hj-surface);
+    color: var(--hj-text);
+    border: 1px solid var(--hj-border);
   border-radius: 10px;
-  overflow: hidden;
+}
+
+.hj-doc .card-header {
+    border-bottom: 1px solid var(--hj-border);
+    border-radius: 10px 10px 0 0;
+}
+
+.hj-doc-body {
+    line-height: 1.65;
+}
+
+.hj-doc-body > :first-child {
+    margin-top: 0;
+}
+
+.hj-doc-body > :last-child {
+    margin-bottom: 0;
+}
+
+.hj-doc-body h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--hj-primary);
+    margin: 0 0 1rem;
+}
+
+.hj-doc-body h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 1.75rem 0 .75rem;
+    padding-left: .6rem;
+    border-left: 4px solid var(--hj-primary);
+}
+
+.hj-doc-body p {
+    margin-bottom: .9rem;
+}
+
+.hj-doc-body ul {
+    margin-bottom: .9rem;
+    padding-left: 1.4rem;
+}
+
+.hj-doc-body li {
+    margin-bottom: .25rem;
+}
+
+.hj-doc-art {
+    background: #1e1e2e;
+    color: #e6e8eb;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin: 0 0 1rem;
+    overflow-x: auto;
+    font-size: 12.5px;
+    line-height: 1.45;
+    white-space: pre;
+}
+
+[data-bs-theme="dark"] .hj-doc-art {
+    background: #0f1420;
+}
+
+.hj-code-card {
+    border: 0;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .hj-code-card .card-header {
-  border-bottom: 1px solid #000;
-  padding: 10px 16px;
+    border-bottom: 1px solid #000;
+    padding: 10px 16px;
 }
 .hj-traffic-light {
   display: inline-block;
-  width: 12px;
-  height: 12px;
+    width: 12px;
+    height: 12px;
   border-radius: 50%;
 }
 .hj-code-card pre[class*="language-"] {
@@ -351,7 +420,7 @@ code, pre, .font-monospace {
 
 /* Prism line-numbers tweaks */
 pre.line-numbers > code {
-  padding-left: 0;
+    padding-left: 0;
 }
 .line-numbers .line-numbers-rows {
   border-right-color: #444 !important;
@@ -363,17 +432,17 @@ pre.line-numbers > code {
 
 /* Prism toolbar (copy button) */
 div.code-toolbar > .toolbar {
-  top: 12px;
-  right: 16px;
+    top: 12px;
+    right: 16px;
 }
 div.code-toolbar > .toolbar button {
-  background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1);
   color: #fff;
   border-radius: 4px;
   padding: 4px 10px;
   font-size: 0.75rem;
   font-family: 'Roboto', sans-serif !important;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 div.code-toolbar > .toolbar button:hover {
   background: var(--hj-primary);
@@ -382,42 +451,42 @@ div.code-toolbar > .toolbar button:hover {
 
 /* --- Footer --- */
 .hj-footer {
-  border-top: 1px solid var(--hj-border);
+    border-top: 1px solid var(--hj-border);
 }
 
 /* --- Utility / dark mode harmonization --- */
 [data-bs-theme="dark"] .card {
-  background-color: var(--hj-surface);
-  color: var(--hj-text);
+    background-color: var(--hj-surface);
+    color: var(--hj-text);
 }
 
 [data-bs-theme="dark"] .hj-sidebar {
-  background: var(--hj-surface);
+    background: var(--hj-surface);
 }
 
 [data-bs-theme="dark"] .hj-sidebar-link {
-  color: var(--hj-text);
+    color: var(--hj-text);
 }
 
 [data-bs-theme="dark"] .hj-sidebar-link:hover {
-  background: #232a3b;
+    background: #232a3b;
 }
 
 [data-bs-theme="dark"] .badge.bg-light {
-  background: #2a3142 !important;
-  color: var(--hj-text) !important;
+    background: #2a3142 !important;
+    color: var(--hj-text) !important;
 }
 
 [data-bs-theme="dark"] .text-muted {
-  color: var(--hj-muted) !important;
+    color: var(--hj-muted) !important;
 }
 
 [data-bs-theme="dark"] #hj-search-results a {
-  color: var(--hj-text);
+    color: var(--hj-text);
 }
 
 [data-bs-theme="dark"] #hj-search-results a:hover {
-  background: #232a3b;
+    background: #232a3b;
 }
 [data-bs-theme="dark"] .hj-summary {
   background: rgba(25, 118, 210, 0.18);
@@ -425,21 +494,21 @@ div.code-toolbar > .toolbar button:hover {
 }
 
 [data-bs-theme="dark"] .breadcrumb {
-  --bs-breadcrumb-divider-color: var(--hj-muted);
+    --bs-breadcrumb-divider-color: var(--hj-muted);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .hj-search {
-    display: none;
-  }
+    .hj-search {
+        display: none;
+    }
 
-  .hj-hero h1 {
-    font-size: 2.2rem;
-  }
+    .hj-hero h1 {
+        font-size: 2.2rem;
+    }
 
-  .hj-code-card pre[class*="language-"] {
-    font-size: 12.5px;
-    padding-left: 42px;
-  }
+    .hj-code-card pre[class*="language-"] {
+        font-size: 12.5px;
+        padding-left: 42px;
+    }
 }

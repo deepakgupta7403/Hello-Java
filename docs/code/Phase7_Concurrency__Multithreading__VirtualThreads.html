@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/VirtualThreads.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 141 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 78 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,66 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A virtual thread is a thread implemented by the JVM rather than the OS. It looks and behaves
-                        exactly like a normal Thread, but:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Virtual Threads — Java 21 (JEP 444, finalised)</h2>
+                    <p>A virtual thread is a thread implemented by the JVM rather than the OS. It looks and behaves
+                        exactly like a normal Thread, but:</p>
+                    <ul>
+                        <li>Creating one is CHEAP (microseconds, kilobytes).
+                        </li>
+                        <li>The JVM can multiplex MILLIONS of them on a small pool of
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    CARRIER threads (platform threads, typically equal to your
+    CPU count).</pre>
+                    <ul>
+                        <li>When a virtual thread blocks on an I/O call (or other JDK
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    blocking primitive), the JVM UNMOUNTS it from its carrier so
+    the carrier can run another virtual thread.</pre>
+                    <p>Net effect: you write old-fashioned synchronous, blocking code with Thread.sleep / readLine /
+                        Socket.read, and the JVM gives you the scalability of an event-loop runtime.</p>
+                    <h3>Creating them</h3>
+                    <p>Thread.startVirtualThread(Runnable r) Thread.ofVirtual().name(&quot;vt-1&quot;).start(r)
+                        Thread.ofVirtual().factory() - ThreadFactory Executors.newVirtualThreadPerTaskExecutor() - one
+                        VT per task</p>
+                    <h3>What they&#x27;re great at</h3>
+                    <ul>
+                        <li>I/O-bound fan-out: thousands of concurrent HTTP/DB calls.
+                        </li>
+                        <li>Per-request handling without &quot;reactive&quot; obfuscation.
+                        </li>
+                        <li>Replacing thread pools whose only purpose was to limit thread
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    COUNT (not to limit upstream concurrency).</pre>
+                    <h3>What they don&#x27;t help with</h3>
+                    <ul>
+                        <li>Pure CPU-bound work. The carrier count is your real parallelism.
+                        </li>
+                        <li>Code that PINS the virtual thread to its carrier (see below).
+                        </li>
+                    </ul>
+                    <h3>Pinning</h3>
+                    <p>A virtual thread is pinned to its carrier (can&#x27;t be unmounted) when:</p>
+                    <ul>
+                        <li>It is inside a `synchronized` block (Java 21).
+                        </li>
+                        <li>It calls a native method via JNI.
+                        </li>
+                    </ul>
+                    <p>For high-throughput VT code, replace synchronized critical sections around long-running
+                        operations with ReentrantLock. (Future Java releases plan to lift the synchronized-pinning
+                        restriction.)</p>
+                    <h3>ThreadLocal and virtual threads</h3>
+                    <p>Each VT has its own ThreadLocal map. With millions of VTs, that can be expensive. Prefer Scoped
+                        Values (Java 21 preview) for per-call context.</p>
                 </div>
             </div>
 
@@ -1402,68 +1456,6 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-
-/**
- * Virtual Threads — Java 21 (JEP 444, finalised)
- * ----------------------------------------------
- * A virtual thread is a thread implemented by the JVM rather than the
- * OS. It looks and behaves exactly like a normal Thread, but:
- * &lt;p&gt;
- *
- *   - Creating one is CHEAP (microseconds, kilobytes).
- *   - The JVM can multiplex MILLIONS of them on a small pool of
- *     CARRIER threads (platform threads, typically equal to your
- *     CPU count).
- *   - When a virtual thread blocks on an I/O call (or other JDK
- *     blocking primitive), the JVM UNMOUNTS it from its carrier so
- *     the carrier can run another virtual thread.
- * &lt;p&gt;
- *
- * Net effect: you write old-fashioned synchronous, blocking code with
- * Thread.sleep / readLine / Socket.read, and the JVM gives you the
- * scalability of an event-loop runtime.
- * &lt;p&gt;
- *
- * Creating them
- * -------------
- *   Thread.startVirtualThread(Runnable r)
- *   Thread.ofVirtual().name(&quot;vt-1&quot;).start(r)
- *   Thread.ofVirtual().factory()                  - ThreadFactory
- *   Executors.newVirtualThreadPerTaskExecutor()  - one VT per task
- * &lt;p&gt;
- *
- * What they&#x27;re great at
- * ---------------------
- *   - I/O-bound fan-out: thousands of concurrent HTTP/DB calls.
- *   - Per-request handling without &quot;reactive&quot; obfuscation.
- *   - Replacing thread pools whose only purpose was to limit thread
- *     COUNT (not to limit upstream concurrency).
- * &lt;p&gt;
- *
- * What they don&#x27;t help with
- * -------------------------
- *   - Pure CPU-bound work. The carrier count is your real parallelism.
- *   - Code that PINS the virtual thread to its carrier (see below).
- * &lt;p&gt;
- *
- * Pinning
- * -------
- * A virtual thread is pinned to its carrier (can&#x27;t be unmounted) when:
- *   - It is inside a `synchronized` block (Java 21).
- *   - It calls a native method via JNI.
- * &lt;p&gt;
- *
- * For high-throughput VT code, replace synchronized critical sections
- * around long-running operations with ReentrantLock. (Future Java
- * releases plan to lift the synchronized-pinning restriction.)
- * &lt;p&gt;
- *
- * ThreadLocal and virtual threads
- * -------------------------------
- * Each VT has its own ThreadLocal map. With millions of VTs, that can
- * be expensive. Prefer Scoped Values (Java 21 preview) for per-call
- * context.
- */
 
 public class VirtualThreads {
 

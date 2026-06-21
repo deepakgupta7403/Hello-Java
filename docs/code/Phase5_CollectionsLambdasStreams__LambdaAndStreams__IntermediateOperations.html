@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/IntermediateOperations.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 169 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 111 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,49 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Intermediate operations RETURN A NEW STREAM and do not run until a terminal operation pulls
-                        them. Most are STATELESS - they process each element independently. A few are STATEFUL and must
-                        see multiple elements to decide.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Intermediate Operations - The Lazy Transformations</h2>
+                    <p>Intermediate operations RETURN A NEW STREAM and do not run until a terminal operation pulls them.
+                        Most are STATELESS - they process each element independently. A few are STATEFUL and must see
+                        multiple elements to decide.</p>
+                    <h3>Stateless</h3>
+                    <pre class="hj-doc-art">     filter(Predicate)       keep only elements matching the predicate
+     map(Function)           transform T -&amp;gt; R
+     mapToInt / mapToLong / mapToDouble
+     flatMap(Function)       T -&amp;gt; Stream&amp;lt;R&amp;gt;, flatten one level
+     peek(Consumer)          side effect on each element (debug)</pre>
+                    <h3>Stateful</h3>
+                    <pre class="hj-doc-art">     sorted()                natural order (T must be Comparable)
+     sorted(Comparator)      custom order
+     distinct()              de-dup using equals
+     limit(long n)           keep first n
+     skip(long n)            drop first n
+     takeWhile(Predicate)    take while the predicate holds   (Java 9+)
+     dropWhile(Predicate)    drop while the predicate holds   (Java 9+)</pre>
+                    <h3>mapMulti (Java 16+) - 1 element to MANY without an intermediate Stream</h3>
+                    <pre class="hj-doc-art">     stream.mapMulti((t, downstream) -&amp;gt; {
+         if (cond) downstream.accept(t);
+         downstream.accept(other);
+     });</pre>
+                    <p>It is faster than flatMap when each element produces only a small, computable set of results.</p>
+                    <h3>One element per row - the table</h3>
+                    <pre class="hj-doc-art">     OP            TYPE       STATEFUL?    SHORT-CIRCUIT?
+     filter        T -&amp;gt; T     no           no
+     map           T -&amp;gt; R     no           no
+     flatMap       T -&amp;gt; R*    no           no
+     peek          T -&amp;gt; T     no           no
+     sorted        T -&amp;gt; T     YES          no
+     distinct      T -&amp;gt; T     YES          no
+     limit         T -&amp;gt; T     YES          YES
+     skip          T -&amp;gt; T     YES          no
+     takeWhile     T -&amp;gt; T     YES          YES   (J9+)
+     dropWhile     T -&amp;gt; T     YES          no    (J9+)
+     mapMulti      T -&amp;gt; R*    no           no    (J16+)</pre>
                 </div>
             </div>
 
@@ -1402,63 +1438,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-/**
- * Intermediate Operations - The Lazy Transformations
- * --------------------------------------------------
- * Intermediate operations RETURN A NEW STREAM and do not run until a
- * terminal operation pulls them. Most are STATELESS - they process each
- * element independently. A few are STATEFUL and must see multiple elements
- * to decide.
- * &lt;p&gt;
- *
- * Stateless
- * ---------
- *      filter(Predicate)       keep only elements matching the predicate
- *      map(Function)           transform T -&amp;gt; R
- *      mapToInt / mapToLong / mapToDouble
- *      flatMap(Function)       T -&amp;gt; Stream&amp;lt;R&amp;gt;, flatten one level
- *      peek(Consumer)          side effect on each element (debug)
- * &lt;p&gt;
- *
- * Stateful
- * --------
- *      sorted()                natural order (T must be Comparable)
- *      sorted(Comparator)      custom order
- *      distinct()              de-dup using equals
- *      limit(long n)           keep first n
- *      skip(long n)            drop first n
- *      takeWhile(Predicate)    take while the predicate holds   (Java 9+)
- *      dropWhile(Predicate)    drop while the predicate holds   (Java 9+)
- * &lt;p&gt;
- *
- * mapMulti (Java 16+) - 1 element to MANY without an intermediate Stream
- * ---------------------------------------------------------------------
- *      stream.mapMulti((t, downstream) -&amp;gt; {
- *          if (cond) downstream.accept(t);
- *          downstream.accept(other);
- *      });
- * &lt;p&gt;
- *
- * It is faster than flatMap when each element produces only a small,
- * computable set of results.
- * &lt;p&gt;
- *
- * One element per row - the table
- * -------------------------------
- *      OP            TYPE       STATEFUL?    SHORT-CIRCUIT?
- *      filter        T -&amp;gt; T     no           no
- *      map           T -&amp;gt; R     no           no
- *      flatMap       T -&amp;gt; R*    no           no
- *      peek          T -&amp;gt; T     no           no
- *      sorted        T -&amp;gt; T     YES          no
- *      distinct      T -&amp;gt; T     YES          no
- *      limit         T -&amp;gt; T     YES          YES
- *      skip          T -&amp;gt; T     YES          no
- *      takeWhile     T -&amp;gt; T     YES          YES   (J9+)
- *      dropWhile     T -&amp;gt; T     YES          no    (J9+)
- *      mapMulti      T -&amp;gt; R*    no           no    (J16+)
- */
 
 public class IntermediateOperations {
 

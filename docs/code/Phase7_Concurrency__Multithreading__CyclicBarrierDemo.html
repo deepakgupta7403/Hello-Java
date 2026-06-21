@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/CyclicBarrierDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 133 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 89 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,41 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A RESETTABLE barrier for a FIXED number of &quot;parties.&quot; Each party calls await(), which
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>CyclicBarrier</h2>
+                    <p>A RESETTABLE barrier for a FIXED number of &quot;parties.&quot; Each party calls await(), which
                         blocks. When all N parties have arrived, they are RELEASED at the same time, and the barrier
-                        resets for the next round.
-                    </div>
+                        resets for the next round.</p>
+                    <pre class="hj-doc-art">     CyclicBarrier b = new CyclicBarrier(N);
+     CyclicBarrier b = new CyclicBarrier(N, barrierAction);</pre>
+                    <p>Optionally an action runs ONCE per round, on the last-arriving thread, BEFORE any party returns
+                        from await().</p>
+                    <h3>Use cases</h3>
+                    <ul>
+                        <li>Parallel iterative algorithms (every worker computes a slice; all
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    wait for the round to finish before starting the next).</pre>
+                    <ul>
+                        <li>Game-loop tick synchronisation across worker threads.
+                        </li>
+                        <li>Simulation steps.
+                        </li>
+                    </ul>
+                    <h3>Important methods</h3>
+                    <p>await() - wait at the barrier await(time, unit) - timed wait getParties() - N (fixed)
+                        getNumberWaiting() - how many have already arrived reset() - break and reset the barrier
+                        (waiters throw</p>
+                    <pre class="hj-doc-art">                             BrokenBarrierException)</pre>
+                    <h3>BrokenBarrier semantics</h3>
+                    <p>If ANY party fails the round (timeout, interrupt, exception thrown from barrier action), ALL
+                        waiters get BrokenBarrierException and the barrier needs to be reset() before re-use. This makes
+                        the failure mode explicit instead of silent stalls.</p>
                 </div>
             </div>
 
@@ -1400,49 +1428,6 @@
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.TimeUnit;
-
-/**
- * CyclicBarrier
- * -------------
- * A RESETTABLE barrier for a FIXED number of &quot;parties.&quot; Each party
- * calls await(), which blocks. When all N parties have arrived, they
- * are RELEASED at the same time, and the barrier resets for the next
- * round.
- * &lt;p&gt;
- *
- *      CyclicBarrier b = new CyclicBarrier(N);
- *      CyclicBarrier b = new CyclicBarrier(N, barrierAction);
- * &lt;p&gt;
- *
- * Optionally an action runs ONCE per round, on the last-arriving
- * thread, BEFORE any party returns from await().
- * &lt;p&gt;
- *
- * Use cases
- * ---------
- *   - Parallel iterative algorithms (every worker computes a slice; all
- *     wait for the round to finish before starting the next).
- *   - Game-loop tick synchronisation across worker threads.
- *   - Simulation steps.
- * &lt;p&gt;
- *
- * Important methods
- * -----------------
- *   await()                - wait at the barrier
- *   await(time, unit)      - timed wait
- *   getParties()           - N (fixed)
- *   getNumberWaiting()     - how many have already arrived
- *   reset()                - break and reset the barrier (waiters throw
- *                              BrokenBarrierException)
- * &lt;p&gt;
- *
- * BrokenBarrier semantics
- * -----------------------
- * If ANY party fails the round (timeout, interrupt, exception thrown
- * from barrier action), ALL waiters get BrokenBarrierException and the
- * barrier needs to be reset() before re-use. This makes the failure
- * mode explicit instead of silent stalls.
- */
 
 public class CyclicBarrierDemo {
 

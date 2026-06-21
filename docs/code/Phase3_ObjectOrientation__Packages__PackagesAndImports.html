@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase3_ObjectOrientation/Packages/PackagesAndImports.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 170 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 95 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,65 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A PACKAGE is a Java NAMESPACE - a logical container for a group of related
-                        classes/interfaces/enums/records. Packages do two big things:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Packages and Imports</h2>
+                    <p>A PACKAGE is a Java NAMESPACE - a logical container for a group of related
+                        classes/interfaces/enums/records. Packages do two big things:</p>
+                    <ul>
+                        <li>AVOID NAME CLASHES - your com.acme.user.User does not collide with
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     org.example.user.User.</pre>
+                    <ul>
+                        <li>ACCESS CONTROL - package-private (no modifier) members are visible
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     ONLY inside the same package; this scopes implementation details.</pre>
+                    <h3>Declaring a Package</h3>
+                    <p>The first non-comment line of every .java file is the package declaration:</p>
+                    <pre class="hj-doc-art">     package OOPSConcepts.Packages;</pre>
+                    <p>The package name must match the directory structure under your source root. In this repository,
+                        this file lives at:</p>
+                    <pre class="hj-doc-art">     src/OOPSConcepts/Packages/PackagesAndImports.java</pre>
+                    <h3>Imports</h3>
+                    <p>Single-type: import java.util.ArrayList; Wildcard: import java.util.*; // any class in
+                        java.util</p>
+                    <pre class="hj-doc-art">                  (NO recursion - java.util.* does NOT include java.util.concurrent)</pre>
+                    <p>Static type: import static java.lang.Math.PI; Static wild: import static java.lang.Math.*;</p>
+                    <p>What you do NOT need to import:</p>
+                    <ul>
+                        <li>java.lang.* - always implicitly imported (String, System, Math, ...).
+                        </li>
+                        <li>Classes in the SAME PACKAGE.
+                        </li>
+                    </ul>
+                    <h3>Naming Conventions</h3>
+                    <ul>
+                        <li>All-lowercase, dot-separated, reverse-DNS for libraries you publish:
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">        com.mycompany.product.subsystem</pre>
+                    <ul>
+                        <li>One class per file for any class declared public; the file name
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    must match the public class name.</pre>
+                    <h3>The Unnamed (Default) Package</h3>
+                    <p>A class without a package declaration is in the &quot;unnamed&quot; package. It is legal but
+                        discouraged - you cannot import unnamed-package classes from code that DOES have a package.</p>
+                    <h3>Java 9 Modules (One-Level Above Packages)</h3>
+                    <p>Since Java 9 a `module-info.java` can group packages into a MODULE and declare which packages to
+                        `exports`, what it `requires`, and so on. Modules are optional and orthogonal to packages.</p>
+                    <h3>Running This Example</h3>
+                    <p>From the project root, compile and run with the fully qualified name:</p>
+                    <pre class="hj-doc-art">     javac src/OOPSConcepts/Packages/PackagesAndImports.java
+     cd src
+     java OOPSConcepts.Packages.PackagesAndImports</pre>
                 </div>
             </div>
 
@@ -1413,80 +1466,6 @@ import static java.lang.Math.sqrt;
 
 // Wildcard import - &quot;any class from java.time&quot;
 // Static import - lets you use members without the class qualifier
-
-/**
- * Packages and Imports
- * --------------------
- * A PACKAGE is a Java NAMESPACE - a logical container for a group of related
- * classes/interfaces/enums/records. Packages do two big things:
- * &lt;p&gt;
- *
- *   1. AVOID NAME CLASHES - your com.acme.user.User does not collide with
- *      org.example.user.User.
- *   2. ACCESS CONTROL - package-private (no modifier) members are visible
- *      ONLY inside the same package; this scopes implementation details.
- * &lt;p&gt;
- *
- * Declaring a Package
- * -------------------
- * The first non-comment line of every .java file is the package declaration:
- * &lt;p&gt;
- *
- *      package OOPSConcepts.Packages;
- * &lt;p&gt;
- *
- * The package name must match the directory structure under your source root.
- * In this repository, this file lives at:
- * &lt;p&gt;
- *
- *      src/OOPSConcepts/Packages/PackagesAndImports.java
- * &lt;p&gt;
- *
- * Imports
- * -------
- *   Single-type:    import java.util.ArrayList;
- *   Wildcard:       import java.util.*;             // any class in java.util
- *                   (NO recursion - java.util.* does NOT include java.util.concurrent)
- *   Static type:    import static java.lang.Math.PI;
- *   Static wild:    import static java.lang.Math.*;
- * &lt;p&gt;
- *
- * What you do NOT need to import:
- *   - java.lang.*  - always implicitly imported (String, System, Math, ...).
- *   - Classes in the SAME PACKAGE.
- * &lt;p&gt;
- *
- * Naming Conventions
- * ------------------
- *   - All-lowercase, dot-separated, reverse-DNS for libraries you publish:
- *         com.mycompany.product.subsystem
- *   - One class per file for any class declared public; the file name
- *     must match the public class name.
- * &lt;p&gt;
- *
- * The Unnamed (Default) Package
- * -----------------------------
- * A class without a package declaration is in the &quot;unnamed&quot; package. It is
- * legal but discouraged - you cannot import unnamed-package classes from
- * code that DOES have a package.
- * &lt;p&gt;
- *
- * Java 9 Modules (One-Level Above Packages)
- * -----------------------------------------
- * Since Java 9 a `module-info.java` can group packages into a MODULE and
- * declare which packages to `exports`, what it `requires`, and so on. Modules
- * are optional and orthogonal to packages.
- * &lt;p&gt;
- *
- * Running This Example
- * --------------------
- * From the project root, compile and run with the fully qualified name:
- * &lt;p&gt;
- *
- *      javac src/OOPSConcepts/Packages/PackagesAndImports.java
- *      cd src
- *      java OOPSConcepts.Packages.PackagesAndImports
- */
 
 public class PackagesAndImports {
 

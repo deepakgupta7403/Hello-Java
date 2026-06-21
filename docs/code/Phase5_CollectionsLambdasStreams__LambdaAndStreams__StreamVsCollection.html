@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/StreamVsCollection.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 151 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 103 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,46 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Streams and Collections both have iterator() but they serve different purposes. Knowing which
-                        to reach for is half the job.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Stream vs Collection - Two Different Things</h2>
+                    <p>Streams and Collections both have iterator() but they serve different purposes. Knowing which to
+                        reach for is half the job.</p>
+                    <h3>Side-by-Side</h3>
+                    <pre class="hj-doc-art">  Aspect             | Collection                | Stream
+  -------------------+---------------------------+------------------------------
+  Purpose            | STORE data                | COMPUTE on data
+  Holds elements?    | Yes - lives in memory     | No - pulls from a source
+  Eager or lazy?     | EAGER - elements exist    | LAZY - pipeline runs only
+                     |                           |   when terminal op asks
+  Iterable multiple? | YES                       | NO - one-shot
+  Modifiable?        | YES (most)                | n/a - source not mutated
+  External vs        | External - YOU iterate    | Internal - the stream walks
+  internal iteration |                           |   itself
+  Order              | Defined by impl           | May be ordered or not
+  Parallelism        | Manual (Threads, ES, ...) | One method: .parallel()
+  Size               | size() always known       | usually unknown / unbounded</pre>
+                    <h3>&quot;Compute&quot; vs &quot;Store&quot; - The Big Idea</h3>
+                    <p>A List is a COLLECTION OF EXISTING DATA you can come back to. A Stream is a RECIPE for processing
+                        - you describe filter / map / reduce and the runtime walks the source once. After the terminal
+                        op, the stream is gone.</p>
+                    <h3>Crossing the Boundary</h3>
+                    <p>Collection -&amp;gt; Stream: list.stream() / set.parallelStream() Stream -&amp;gt; Collection:
+                        stream.collect(Collectors.toList()) / toSet()</p>
+                    <pre class="hj-doc-art">                             stream.toList()  (Java 16+, unmodifiable)</pre>
+                    <h3>Common Confusion</h3>
+                    <ul>
+                        <li>&quot;I&#x27;ll keep my Stream and reuse it&quot; - you can&#x27;t. Create a fresh one.
+                        </li>
+                        <li>&quot;I&#x27;ll mutate the underlying List from the stream&quot; - usually a CME.
+                        </li>
+                        <li>&quot;I&#x27;ll call size() on a Stream&quot; - there&#x27;s no such method. Use count().
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1401,53 +1435,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-/**
- * Stream vs Collection - Two Different Things
- * -------------------------------------------
- * Streams and Collections both have iterator() but they serve different
- * purposes. Knowing which to reach for is half the job.
- * &lt;p&gt;
- *
- * Side-by-Side
- * ------------
- * &lt;p&gt;
- *
- *   Aspect             | Collection                | Stream
- *   -------------------+---------------------------+------------------------------
- *   Purpose            | STORE data                | COMPUTE on data
- *   Holds elements?    | Yes - lives in memory     | No - pulls from a source
- *   Eager or lazy?     | EAGER - elements exist    | LAZY - pipeline runs only
- *                      |                           |   when terminal op asks
- *   Iterable multiple? | YES                       | NO - one-shot
- *   Modifiable?        | YES (most)                | n/a - source not mutated
- *   External vs        | External - YOU iterate    | Internal - the stream walks
- *   internal iteration |                           |   itself
- *   Order              | Defined by impl           | May be ordered or not
- *   Parallelism        | Manual (Threads, ES, ...) | One method: .parallel()
- *   Size               | size() always known       | usually unknown / unbounded
- * &lt;p&gt;
- *
- * &quot;Compute&quot; vs &quot;Store&quot; - The Big Idea
- * -----------------------------------
- * A List is a COLLECTION OF EXISTING DATA you can come back to. A Stream
- * is a RECIPE for processing - you describe filter / map / reduce and the
- * runtime walks the source once. After the terminal op, the stream is gone.
- * &lt;p&gt;
- *
- * Crossing the Boundary
- * ---------------------
- *   Collection -&amp;gt; Stream:    list.stream() / set.parallelStream()
- *   Stream     -&amp;gt; Collection: stream.collect(Collectors.toList()) / toSet()
- *                              stream.toList()  (Java 16+, unmodifiable)
- * &lt;p&gt;
- *
- * Common Confusion
- * ----------------
- *   - &quot;I&#x27;ll keep my Stream and reuse it&quot; - you can&#x27;t. Create a fresh one.
- *   - &quot;I&#x27;ll mutate the underlying List from the stream&quot;  - usually a CME.
- *   - &quot;I&#x27;ll call size() on a Stream&quot; - there&#x27;s no such method. Use count().
- */
 
 public class StreamVsCollection {
 

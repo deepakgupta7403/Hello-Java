@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/ThreadPriority.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 130 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 75 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,60 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Every Thread has an integer PRIORITY between 1 and 10 (inclusive):</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Thread Priority</h2>
+                    <p>Every Thread has an integer PRIORITY between 1 and 10 (inclusive):</p>
+                    <pre class="hj-doc-art">     Thread.MIN_PRIORITY   = 1
+     Thread.NORM_PRIORITY  = 5     (the default)
+     Thread.MAX_PRIORITY   = 10</pre>
+                    <p>Priority is a HINT to the OS scheduler that this thread should be preferred over lower-priority
+                        ones. It is NOT a guarantee.</p>
+                    <h3>What actually happens</h3>
+                    <ul>
+                        <li>The JVM maps Java&#x27;s 1..10 to native OS priorities. Each OS has a
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    different range and policy:
+        Linux  - mapping varies, often a small effect or none in CFS.
+        Windows - mapped to thread priority levels (idle..time-critical).
+        macOS  - QoS-influenced; not a strict ordering.</pre>
+                    <ul>
+                        <li>On most modern desktops/servers, priority has very little effect.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    Do NOT rely on it for correctness.</pre>
+                    <h3>Inheritance</h3>
+                    <p>A new Thread inherits its priority from the thread that created it (unless explicitly set before
+                        start()).</p>
+                    <h3>Validity</h3>
+                    <p>setPriority(int) throws IllegalArgumentException if out of [1, 10]. setPriority is also capped by
+                        the parent ThreadGroup&#x27;s max priority.</p>
+                    <h3>When NOT to use priorities</h3>
+                    <ul>
+                        <li>To &quot;make this thread go faster than another.&quot; It rarely does.
+                        </li>
+                        <li>To ensure ordering or fairness — use a queue / synchronizer.
+                        </li>
+                        <li>To prevent starvation — priority-based starvation is a thing.
+                        </li>
+                    </ul>
+                    <h3>When priorities can help</h3>
+                    <ul>
+                        <li>To run a low-priority background task (Thread.MIN_PRIORITY) so it
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    doesn&#x27;t crowd out interactive work.</pre>
+                    <ul>
+                        <li>On dedicated real-time-ish systems where you actually control the
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    OS scheduler. On general-purpose JVMs, treat priorities as polite
+    hints only.</pre>
                 </div>
             </div>
 
@@ -1393,60 +1443,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase7_Concurrency.Multithreading;
-
-/**
- * Thread Priority
- * ---------------
- * Every Thread has an integer PRIORITY between 1 and 10 (inclusive):
- * &lt;p&gt;
- *
- *      Thread.MIN_PRIORITY   = 1
- *      Thread.NORM_PRIORITY  = 5     (the default)
- *      Thread.MAX_PRIORITY   = 10
- * &lt;p&gt;
- *
- * Priority is a HINT to the OS scheduler that this thread should be
- * preferred over lower-priority ones. It is NOT a guarantee.
- * &lt;p&gt;
- *
- * What actually happens
- * ---------------------
- *   - The JVM maps Java&#x27;s 1..10 to native OS priorities. Each OS has a
- *     different range and policy:
- *         Linux  - mapping varies, often a small effect or none in CFS.
- *         Windows - mapped to thread priority levels (idle..time-critical).
- *         macOS  - QoS-influenced; not a strict ordering.
- *   - On most modern desktops/servers, priority has very little effect.
- *     Do NOT rely on it for correctness.
- * &lt;p&gt;
- *
- * Inheritance
- * -----------
- * A new Thread inherits its priority from the thread that created it
- * (unless explicitly set before start()).
- * &lt;p&gt;
- *
- * Validity
- * --------
- *   setPriority(int) throws IllegalArgumentException if out of [1, 10].
- *   setPriority is also capped by the parent ThreadGroup&#x27;s max priority.
- * &lt;p&gt;
- *
- * When NOT to use priorities
- * --------------------------
- *   - To &quot;make this thread go faster than another.&quot; It rarely does.
- *   - To ensure ordering or fairness — use a queue / synchronizer.
- *   - To prevent starvation — priority-based starvation is a thing.
- * &lt;p&gt;
- *
- * When priorities can help
- * ------------------------
- *   - To run a low-priority background task (Thread.MIN_PRIORITY) so it
- *     doesn&#x27;t crowd out interactive work.
- *   - On dedicated real-time-ish systems where you actually control the
- *     OS scheduler. On general-purpose JVMs, treat priorities as polite
- *     hints only.
- */
 
 public class ThreadPriority {
 

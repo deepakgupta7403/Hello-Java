@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase3_ObjectOrientation/Abstraction/AbstractClassVsInterface.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 176 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 104 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,79 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Both achieve ABSTRACTION but they have different trade-offs. Picking the right one is one of
-                        the most common design decisions in Java.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Abstract Class vs Interface</h2>
+                    <p>Both achieve ABSTRACTION but they have different trade-offs. Picking the right one is one of the
+                        most common design decisions in Java.</p>
+                    <h3>Side-by-Side Comparison</h3>
+                    <pre class="hj-doc-art"> Aspect            | Abstract Class                | Interface
+ ------------------+-------------------------------+--------------------------------
+ Keyword           | abstract class                | interface
+ Inheritance       | single inheritance only       | multiple inheritance of TYPE
+                   | (class extends ONE class)     | (class implements MANY)
+ Members allowed   | abstract + concrete methods,  | abstract + default + static +
+                   | instance fields, all          | private methods, ONLY
+                   | access modifiers, constructors| public static final fields,
+                   |                               | no constructors
+ Method default    | package-private               | public
+ visibility        |                               |
+ Default method    | concrete method               | `default` keyword (Java 8+)
+ body              |                               |
+ Private helpers   | yes (private methods)         | yes since Java 9
+ State (fields)    | yes - any kind                | only constants
+ Constructors      | yes (called via super(...))   | no - cannot define one
+ Instantiation     | NO (cannot be `new`-ed)       | NO (cannot be `new`-ed)
+ Used for          | shared CODE + partial state   | shared TYPE / CONTRACT
+ Java keyword      | extends                       | implements</pre>
+                    <h3>When To Use Abstract Class</h3>
+                    <ul>
+                        <li>Subclasses share STATE (instance fields).
+                        </li>
+                        <li>You want a TEMPLATE method that calls hooks subclasses fill in.
+                        </li>
+                        <li>You want to control how subclasses are constructed (non-public ctors).
+                        </li>
+                        <li>Common code is more important than multi-typing.
+                        </li>
+                    </ul>
+                    <h3>When To Use Interface</h3>
+                    <ul>
+                        <li>You want a behavioural CONTRACT without imposing a class hierarchy.
+                        </li>
+                        <li>You need a class to participate in multiple &quot;roles&quot; (e.g. Comparable +
+                        </li>
+                    </ul>
+                    <p>Serializable + AutoCloseable).</p>
+                    <ul>
+                        <li>You want a target type for lambdas (functional interfaces).
+                        </li>
+                        <li>The behaviour is orthogonal to the inheritance chain.
+                        </li>
+                    </ul>
+                    <h3>Hybrid Approach</h3>
+                    <p>It is very common to define an INTERFACE for the contract and provide a SKELETON ABSTRACT CLASS
+                        with common code that implementors can extend. The JDK does this all over the place:</p>
+                    <pre class="hj-doc-art">     List&lt;E&gt;            &lt;- interface (contract)
+     AbstractList&lt;E&gt;    &lt;- abstract class (skeleton)
+     ArrayList&lt;E&gt;       &lt;- concrete class extends AbstractList implements List</pre>
+                    <h3>The Example Below</h3>
+                    <p>We model a &quot;Vehicle&quot; using BOTH abstractions side by side so you can see the
+                        trade-off:</p>
+                    <ul>
+                        <li>Vehicle - an abstract class with state (numWheels) + a template method
+                        </li>
+                        <li>Drivable - an interface (pure contract)
+                        </li>
+                        <li>Car - extends Vehicle AND implements Drivable
+                        </li>
+                        <li>Boat - extends Vehicle but does NOT implement Drivable
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1395,77 +1462,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase3_ObjectOrientation.Abstraction;
-
-/**
- * Abstract Class vs Interface
- * ---------------------------
- * Both achieve ABSTRACTION but they have different trade-offs. Picking the
- * right one is one of the most common design decisions in Java.
- * &lt;p&gt;
- *
- * Side-by-Side Comparison
- * -----------------------
- * &lt;p&gt;
- *
- *  Aspect            | Abstract Class                | Interface
- *  ------------------+-------------------------------+--------------------------------
- *  Keyword           | abstract class                | interface
- *  Inheritance       | single inheritance only       | multiple inheritance of TYPE
- *                    | (class extends ONE class)     | (class implements MANY)
- *  Members allowed   | abstract + concrete methods,  | abstract + default + static +
- *                    | instance fields, all          | private methods, ONLY
- *                    | access modifiers, constructors| public static final fields,
- *                    |                               | no constructors
- *  Method default    | package-private               | public
- *  visibility        |                               |
- *  Default method    | concrete method               | `default` keyword (Java 8+)
- *  body              |                               |
- *  Private helpers   | yes (private methods)         | yes since Java 9
- *  State (fields)    | yes - any kind                | only constants
- *  Constructors      | yes (called via super(...))   | no - cannot define one
- *  Instantiation     | NO (cannot be `new`-ed)       | NO (cannot be `new`-ed)
- *  Used for          | shared CODE + partial state   | shared TYPE / CONTRACT
- *  Java keyword      | extends                       | implements
- * &lt;p&gt;
- *
- * When To Use Abstract Class
- * --------------------------
- *  - Subclasses share STATE (instance fields).
- *  - You want a TEMPLATE method that calls hooks subclasses fill in.
- *  - You want to control how subclasses are constructed (non-public ctors).
- *  - Common code is more important than multi-typing.
- * &lt;p&gt;
- *
- * When To Use Interface
- * ---------------------
- *  - You want a behavioural CONTRACT without imposing a class hierarchy.
- *  - You need a class to participate in multiple &quot;roles&quot; (e.g.  Comparable +
- *    Serializable + AutoCloseable).
- *  - You want a target type for lambdas (functional interfaces).
- *  - The behaviour is orthogonal to the inheritance chain.
- * &lt;p&gt;
- *
- * Hybrid Approach
- * ---------------
- * It is very common to define an INTERFACE for the contract and provide a
- * SKELETON ABSTRACT CLASS with common code that implementors can extend.
- * The JDK does this all over the place:
- * &lt;p&gt;
- *
- *      List&lt;E&gt;            &lt;- interface (contract)
- *      AbstractList&lt;E&gt;    &lt;- abstract class (skeleton)
- *      ArrayList&lt;E&gt;       &lt;- concrete class extends AbstractList implements List
- * &lt;p&gt;
- *
- * The Example Below
- * -----------------
- * We model a &quot;Vehicle&quot; using BOTH abstractions side by side so you can see
- * the trade-off:
- *   - Vehicle           - an abstract class with state (numWheels) + a template method
- *   - Drivable          - an interface (pure contract)
- *   - Car               - extends Vehicle AND implements Drivable
- *   - Boat              - extends Vehicle but does NOT implement Drivable
- */
 
 public class AbstractClassVsInterface {
 

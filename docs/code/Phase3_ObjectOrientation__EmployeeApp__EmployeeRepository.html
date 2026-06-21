@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase3_ObjectOrientation/EmployeeApp/EmployeeRepository.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 96 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 81 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,25 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>EmployeeRepository - the aggregate that owns the in-memory employee table.</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>EmployeeRepository - the aggregate that owns the in-memory employee table.</p>
+                    <p>Programs against the Employee INTERFACE rather than any specific record, which is the whole point
+                        of interface-driven design: the repository works unchanged no matter how many new permitted
+                        variants we add.</p>
+                    <p>Demonstrates:</p>
+                    <ul>
+                        <li>Programming to an interface (Employee).
+                        </li>
+                        <li>Functional interfaces used as method parameters (EmployeeFilter).
+                        </li>
+                        <li>Generic helpers constrained by capability markers (Auditable, Promotable).
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1396,20 +1411,6 @@
 
 import java.util.*;
 
-/**
- * EmployeeRepository - the aggregate that owns the in-memory employee table.
- * &lt;p&gt;
- *
- * Programs against the Employee INTERFACE rather than any specific record,
- * which is the whole point of interface-driven design: the repository works
- * unchanged no matter how many new permitted variants we add.
- * &lt;p&gt;
- *
- * Demonstrates:
- *   - Programming to an interface (Employee).
- *   - Functional interfaces used as method parameters (EmployeeFilter).
- *   - Generic helpers constrained by capability markers (Auditable, Promotable).
- */
 public class EmployeeRepository {
 
     private final List&lt;Employee&gt; employees = new ArrayList&lt;&gt;();

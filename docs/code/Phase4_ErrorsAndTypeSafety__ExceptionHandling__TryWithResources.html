@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase4_ErrorsAndTypeSafety/ExceptionHandling/TryWithResources.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 201 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 131 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,58 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Resources like file handles, database connections, sockets, and locks must be CLOSED whether
-                        the work succeeds or fails. The classic pattern was
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>try-with-resources (Java 7+, enhanced in Java 9)</h2>
+                    <p>Resources like file handles, database connections, sockets, and locks must be CLOSED whether the
+                        work succeeds or fails. The classic pattern was</p>
+                    <pre class="hj-doc-art">     Reader r = null;
+     try {
+         r = new FileReader(&quot;x&quot;);
+         ...
+     } finally {
+         if (r != null) r.close();         // and close() might throw too!
+     }</pre>
+                    <p>try-with-resources reduces all that boilerplate to:</p>
+                    <pre class="hj-doc-art">     try (Reader r = new FileReader(&quot;x&quot;)) {
+         ...
+     }</pre>
+                    <p>The compiler generates the close() call AND handles the exception semantics correctly.</p>
+                    <h3>The Contract</h3>
+                    <ul>
+                        <li>The resource type must implement java.lang.AutoCloseable (or its
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    subinterface java.io.Closeable).</pre>
+                    <ul>
+                        <li>The resource is closed at the END of the try block, BEFORE any catch
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    or finally clauses run.</pre>
+                    <ul>
+                        <li>Resources are closed in REVERSE order of declaration.
+                        </li>
+                        <li>If both the body and close() throw, the BODY&#x27;s exception is &quot;primary&quot;
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    and close()&#x27;s exception is added as a SUPPRESSED exception.</pre>
+                    <h3>Java 9 Enhancement - &quot;effectively final&quot; resources</h3>
+                    <p>Pre-Java-9 you had to declare the variable inside the parentheses:</p>
+                    <pre class="hj-doc-art">     try (Resource r = open()) { ... }</pre>
+                    <p>Since Java 9, you can use a variable that is already EFFECTIVELY FINAL:</p>
+                    <pre class="hj-doc-art">     Resource r = open();
+     try (r) { ... }</pre>
+                    <h3>AutoCloseable vs Closeable</h3>
+                    <p>AutoCloseable.close() throws Exception (anything) Closeable.close() throws IOException (narrower,
+                        for I/O streams)</p>
+                    <p>For your own resources, implement AutoCloseable unless they are truly I/O.</p>
+                    <h3>Suppressed Exceptions</h3>
+                    <p>Demonstrated in main(). The mechanism uses Throwable.addSuppressed and Throwable.getSuppressed -
+                        the same API that ChainedException.java showed.</p>
                 </div>
             </div>
 
@@ -1399,75 +1445,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.StringReader;
-
-/**
- * try-with-resources (Java 7+, enhanced in Java 9)
- * ------------------------------------------------
- * Resources like file handles, database connections, sockets, and locks must
- * be CLOSED whether the work succeeds or fails. The classic pattern was
- * &lt;p&gt;
- *
- *      Reader r = null;
- *      try {
- *          r = new FileReader(&quot;x&quot;);
- *          ...
- *      } finally {
- *          if (r != null) r.close();         // and close() might throw too!
- *      }
- * &lt;p&gt;
- *
- * try-with-resources reduces all that boilerplate to:
- * &lt;p&gt;
- *
- *      try (Reader r = new FileReader(&quot;x&quot;)) {
- *          ...
- *      }
- * &lt;p&gt;
- *
- * The compiler generates the close() call AND handles the exception
- * semantics correctly.
- * &lt;p&gt;
- *
- * The Contract
- * ------------
- *   - The resource type must implement java.lang.AutoCloseable (or its
- *     subinterface java.io.Closeable).
- *   - The resource is closed at the END of the try block, BEFORE any catch
- *     or finally clauses run.
- *   - Resources are closed in REVERSE order of declaration.
- *   - If both the body and close() throw, the BODY&#x27;s exception is &quot;primary&quot;
- *     and close()&#x27;s exception is added as a SUPPRESSED exception.
- * &lt;p&gt;
- *
- * Java 9 Enhancement - &quot;effectively final&quot; resources
- * --------------------------------------------------
- * Pre-Java-9 you had to declare the variable inside the parentheses:
- * &lt;p&gt;
- *
- *      try (Resource r = open()) { ... }
- * &lt;p&gt;
- *
- * Since Java 9, you can use a variable that is already EFFECTIVELY FINAL:
- * &lt;p&gt;
- *
- *      Resource r = open();
- *      try (r) { ... }
- * &lt;p&gt;
- *
- * AutoCloseable vs Closeable
- * --------------------------
- *   AutoCloseable.close()  throws Exception   (anything)
- *   Closeable.close()      throws IOException (narrower, for I/O streams)
- * &lt;p&gt;
- *
- * For your own resources, implement AutoCloseable unless they are truly I/O.
- * &lt;p&gt;
- *
- * Suppressed Exceptions
- * ---------------------
- * Demonstrated in main(). The mechanism uses Throwable.addSuppressed and
- * Throwable.getSuppressed - the same API that ChainedException.java showed.
- */
 
 public class TryWithResources {
 

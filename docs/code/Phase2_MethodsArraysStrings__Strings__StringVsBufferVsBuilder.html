@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase2_MethodsArraysStrings/Strings/StringVsBufferVsBuilder.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 166 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 104 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,65 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Java offers THREE classes for textual data. They look similar but have very different mutation,
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>String vs StringBuffer vs StringBuilder</h2>
+                    <p>Java offers THREE classes for textual data. They look similar but have very different mutation,
                         thread-safety, and performance characteristics. Picking the right one is a recurring interview
-                        question and a real perfor...
-                    </div>
+                        question and a real performance lever.</p>
+                    <h3>Side-by-Side Comparison</h3>
+                    <pre class="hj-doc-art"> Aspect             | String                | StringBuffer        | StringBuilder
+ -------------------+-----------------------+---------------------+---------------------
+ Mutability         | Immutable             | Mutable             | Mutable
+ Thread safety      | Implicit (immutable)  | Synchronized        | NOT synchronized
+ Performance        | Fast for read,        | Slowest (locking)   | Fastest
+                    | slow for build        |                     |
+ Pool / interning   | Yes (string pool)     | No                  | No
+ Hashcode caching   | Yes                   | No                  | No
+ Methods overloaded | toString, valueOf,    | append, insert,     | append, insert,
+                    | format, etc.          | replace, delete,    | replace, delete,
+                    |                       | reverse, ...        | reverse, ...
+ Use as map key     | Excellent             | Avoid (mutable +    | Avoid (mutable +
+                    |                       |  no good equals)    |  no good equals)
+ equals()           | Content equality      | Reference equality  | Reference equality
+                    |                       | (inherits Object!)  | (inherits Object!)
+ Class introduced   | Java 1.0              | Java 1.0            | Java 5
+ Internal storage   | private final byte[]  | char[] / byte[]     | char[] / byte[]</pre>
+                    <h3>Important Detail - equals() on StringBuffer/StringBuilder</h3>
+                    <p>Neither StringBuffer nor StringBuilder override equals(). Two builders with IDENTICAL CONTENT are
+                        NOT equal by .equals(). Convert to String first:</p>
+                    <pre class="hj-doc-art">     sb1.toString().equals(sb2.toString());</pre>
+                    <h3>When To Use Which</h3>
+                    <ul>
+                        <li>STRING: for textual VALUES (storage, parameters, return types, keys).
+                        </li>
+                        <li>STRINGBUILDER: for BUILDING up a String in single-threaded code (the
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                   default for most &quot;compose a string&quot; needs).</pre>
+                    <ul>
+                        <li>STRINGBUFFER: for the rare case of MULTIPLE THREADS appending to the
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                   same buffer concurrently. Otherwise prefer StringBuilder.</pre>
+                    <h3>Performance Benchmark (in main())</h3>
+                    <p>Three loops of N = 100_000 appends:</p>
+                    <ul>
+                        <li>String &quot;+=&quot; inside a loop
+                        </li>
+                        <li>StringBuffer.append
+                        </li>
+                        <li>StringBuilder.append
+                        </li>
+                    </ul>
+                    <p>The numbers vary by JVM but the relative ordering is always:</p>
+                    <pre class="hj-doc-art">     Slowest:  String += loop (O(N^2))
+     Mid    :  StringBuffer (synchronized overhead)
+     Fastest:  StringBuilder</pre>
                 </div>
             </div>
 
@@ -1396,67 +1448,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase2_MethodsArraysStrings.Strings;
-
-/**
- * String vs StringBuffer vs StringBuilder
- * ---------------------------------------
- * Java offers THREE classes for textual data. They look similar but have very
- * different mutation, thread-safety, and performance characteristics. Picking
- * the right one is a recurring interview question and a real performance lever.
- * &lt;p&gt;
- *
- * Side-by-Side Comparison
- * -----------------------
- * &lt;p&gt;
- *
- *  Aspect             | String                | StringBuffer        | StringBuilder
- *  -------------------+-----------------------+---------------------+---------------------
- *  Mutability         | Immutable             | Mutable             | Mutable
- *  Thread safety      | Implicit (immutable)  | Synchronized        | NOT synchronized
- *  Performance        | Fast for read,        | Slowest (locking)   | Fastest
- *                     | slow for build        |                     |
- *  Pool / interning   | Yes (string pool)     | No                  | No
- *  Hashcode caching   | Yes                   | No                  | No
- *  Methods overloaded | toString, valueOf,    | append, insert,     | append, insert,
- *                     | format, etc.          | replace, delete,    | replace, delete,
- *                     |                       | reverse, ...        | reverse, ...
- *  Use as map key     | Excellent             | Avoid (mutable +    | Avoid (mutable +
- *                     |                       |  no good equals)    |  no good equals)
- *  equals()           | Content equality      | Reference equality  | Reference equality
- *                     |                       | (inherits Object!)  | (inherits Object!)
- *  Class introduced   | Java 1.0              | Java 1.0            | Java 5
- *  Internal storage   | private final byte[]  | char[] / byte[]     | char[] / byte[]
- * &lt;p&gt;
- *
- * Important Detail - equals() on StringBuffer/StringBuilder
- * --------------------------------------------------------
- * Neither StringBuffer nor StringBuilder override equals(). Two builders with
- * IDENTICAL CONTENT are NOT equal by .equals(). Convert to String first:
- * &lt;p&gt;
- *
- *      sb1.toString().equals(sb2.toString());
- * &lt;p&gt;
- *
- * When To Use Which
- * -----------------
- *  - STRING:        for textual VALUES (storage, parameters, return types, keys).
- *  - STRINGBUILDER: for BUILDING up a String in single-threaded code (the
- *                    default for most &quot;compose a string&quot; needs).
- *  - STRINGBUFFER:  for the rare case of MULTIPLE THREADS appending to the
- *                    same buffer concurrently. Otherwise prefer StringBuilder.
- * &lt;p&gt;
- *
- * Performance Benchmark (in main())
- * ---------------------------------
- * Three loops of N = 100_000 appends:
- *   1. String   &quot;+=&quot; inside a loop
- *   2. StringBuffer.append
- *   3. StringBuilder.append
- * The numbers vary by JVM but the relative ordering is always:
- *      Slowest:  String += loop (O(N^2))
- *      Mid    :  StringBuffer (synchronized overhead)
- *      Fastest:  StringBuilder
- */
 
 public class StringVsBufferVsBuilder {
 

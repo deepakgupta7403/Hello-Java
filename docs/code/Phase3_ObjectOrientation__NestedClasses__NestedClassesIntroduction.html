@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase3_ObjectOrientation/NestedClasses/NestedClassesIntroduction.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 101 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 61 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,66 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Java has FOUR kinds of nested classes. They differ in:</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Nested Classes — Introduction</h2>
+                    <p>Java has FOUR kinds of nested classes. They differ in:</p>
+                    <ul>
+                        <li>Whether they need an enclosing instance.
+                        </li>
+                        <li>Whether they can capture variables from outside.
+                        </li>
+                        <li>Where they can be declared.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    Kind                  Static?   Needs outer instance?   Can capture locals?
+    -------------------   -------   ----------------------  ---------------------</pre>
+                    <ul>
+                        <li>Static nested class YES NO N/A (no enclosing
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                                                             method scope)</pre>
+                    <ul>
+                        <li>Inner (member) class NO YES fields, not locals
+                        </li>
+                        <li>Local class NO Sometimes YES (effectively
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                                                             final locals)</pre>
+                    <ul>
+                        <li>Anonymous class NO Sometimes YES (effectively
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                                                             final locals)</pre>
+                    <h3>Why nest at all?</h3>
+                    <ul>
+                        <li>Group helpers tightly with the class that uses them.
+                        </li>
+                        <li>Keep visibility tight — a static nested class can be private.
+                        </li>
+                        <li>Cleaner namespaces. Counts as one .class file per nested class.
+                        </li>
+                    </ul>
+                    <h3>Modern relatives</h3>
+                    <ul>
+                        <li>LAMBDAS replaced 95% of anonymous classes (especially when the
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    target was a functional interface).</pre>
+                    <ul>
+                        <li>RECORDS are commonly declared as nested public static — natural
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    home for &quot;DTO inside its owner.&quot;</pre>
+                    <ul>
+                        <li>LOCAL classes / records are sometimes useful for a &quot;tiny helper
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    visible only inside one method.&quot;</pre>
                 </div>
             </div>
 
@@ -1393,45 +1449,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase3_ObjectOrientation.NestedClasses;
-
-/**
- * Nested Classes — Introduction
- * -----------------------------
- * Java has FOUR kinds of nested classes. They differ in:
- * &lt;p&gt;
- *
- *   - Whether they need an enclosing instance.
- *   - Whether they can capture variables from outside.
- *   - Where they can be declared.
- * &lt;p&gt;
- *
- *     Kind                  Static?   Needs outer instance?   Can capture locals?
- *     -------------------   -------   ----------------------  ---------------------
- *  1) Static nested class    YES       NO                      N/A (no enclosing
- *                                                              method scope)
- *  2) Inner (member) class   NO        YES                     fields, not locals
- *  3) Local class            NO        Sometimes               YES (effectively
- *                                                              final locals)
- *  4) Anonymous class        NO        Sometimes               YES (effectively
- *                                                              final locals)
- * &lt;p&gt;
- *
- * Why nest at all?
- * ----------------
- *   - Group helpers tightly with the class that uses them.
- *   - Keep visibility tight — a static nested class can be private.
- *   - Cleaner namespaces. Counts as one .class file per nested class.
- * &lt;p&gt;
- *
- * Modern relatives
- * ----------------
- *   - LAMBDAS replaced 95% of anonymous classes (especially when the
- *     target was a functional interface).
- *   - RECORDS are commonly declared as nested public static — natural
- *     home for &quot;DTO inside its owner.&quot;
- *   - LOCAL classes / records are sometimes useful for a &quot;tiny helper
- *     visible only inside one method.&quot;
- */
 
 public class NestedClassesIntroduction {
 

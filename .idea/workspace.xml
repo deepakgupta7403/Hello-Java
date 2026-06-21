@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9494791-d467-4c71-aec9-feaf22b8afed" name="Default Changelist" comment="Font issue resolved DG commit">
+    <list default="true" id="d9494791-d467-4c71-aec9-feaf22b8afed" name="Default Changelist" comment="UI change DG commit">
       <change beforePath="$PROJECT_DIR$/.claude/settings.local.json" beforeDir="false" afterPath="$PROJECT_DIR$/.claude/settings.local.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/assets/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/assets/site.css" afterDir="false" />
@@ -363,7 +363,7 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="430" />
+    <option name="cachedIndexableFilesCount" value="768" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -416,39 +416,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.BufferedReaderInput.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ConsoleInput.executor&quot;: &quot;Run&quot;,
-    &quot;Application.FormattedOutput.executor&quot;: &quot;Run&quot;,
-    &quot;Application.InitializingObject.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Introduction.executor&quot;: &quot;Run&quot;,
-    &quot;Application.JDKvsJREvsJVM.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ScannerInput.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.BufferedReaderInput.executor": "Run",
+    "Application.ConsoleInput.executor": "Run",
+    "Application.FormattedOutput.executor": "Run",
+    "Application.HelloWorld.executor": "Run",
+    "Application.InitializingObject.executor": "Run",
+    "Application.Introduction.executor": "Run",
+    "Application.JDKvsJREvsJVM.executor": "Run",
+    "Application.ScannerInput.executor": "Run",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Deepak\IdeaProjects\Java Prctice\src\Variables" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.FormattedOutput">
+  <component name="RunManager" selected="Application.HelloWorld">
     <configuration name="BufferedReaderInput" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Phase0_SetupAndFirstPrograms.Input.BufferedReaderInput" />
       <module name="Java Prctice" />
@@ -488,6 +489,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="HelloWorld" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Phase0_SetupAndFirstPrograms.ClassNameMyth.HelloWorld" />
+      <module name="Java Prctice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Phase0_SetupAndFirstPrograms.ClassNameMyth.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ScannerInput" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Phase0_SetupAndFirstPrograms.Input.ScannerInput" />
       <module name="Java Prctice" />
@@ -503,6 +517,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.HelloWorld" />
         <item itemvalue="Application.FormattedOutput" />
         <item itemvalue="Application.ConsoleInput" />
         <item itemvalue="Application.BufferedReaderInput" />
@@ -708,7 +723,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779465828117</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Font issue resolved DG commit">
+      <option name="closed" value="true" />
+      <created>1779467310533</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1779467310533</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -765,7 +788,8 @@
     <MESSAGE value="Documentation Comments Warning rectified DG commit" />
     <MESSAGE value="Webpage added for better learning DG commit" />
     <MESSAGE value="Font issue resolved DG commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Font issue resolved DG commit" />
+    <MESSAGE value="UI change DG commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="UI change DG commit" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

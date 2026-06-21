@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/MethodReferences.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 174 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 103 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,68 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A METHOD REFERENCE is a compact replacement for a lambda whose body just calls an existing
-                        method. The syntax is `Target::method`.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Method References (Java 8+) - in Stream Context</h2>
+                    <p>A METHOD REFERENCE is a compact replacement for a lambda whose body just calls an existing
+                        method. The syntax is `Target::method`.</p>
+                    <pre class="hj-doc-art">     // these two are equivalent
+     list.stream().map(s -&amp;gt; s.toUpperCase());
+     list.stream().map(String::toUpperCase);</pre>
+                    <h3>The Four Forms</h3>
+                    <ul>
+                        <li>STATIC method Class::staticMethod
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">        stream.map(Integer::parseInt);
+        stream.mapToInt(Integer::parseInt);</pre>
+                    <ul>
+                        <li>INSTANCE of a specific OBJECT instance::method
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">        System.out::println              // calls println on System.out</pre>
+                    <pre class="hj-doc-art">        List&amp;lt;String&amp;gt; out = new ArrayList&amp;lt;&amp;gt;();
+        stream.forEach(out::add);        // calls add on this specific List</pre>
+                    <ul>
+                        <li>INSTANCE method of an ARBITRARY object of a type Class::method
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">        stream.map(String::toUpperCase); // first arg is the receiver
+        stream.filter(String::isEmpty);
+        list.sort(String::compareTo);</pre>
+                    <ul>
+                        <li>CONSTRUCTOR Class::new
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">        stream.toArray(String[]::new);
+        Supplier&amp;lt;ArrayList&amp;lt;String&amp;gt;&amp;gt; mk = ArrayList::new;
+        BiFunction&amp;lt;Integer, Integer, int[]&amp;gt; arrays = int[]::new;   // hmm - this is tricky
+        Function&amp;lt;String, StringBuilder&amp;gt; wrap = StringBuilder::new;</pre>
+                    <h3>Why Prefer Method References?</h3>
+                    <ul>
+                        <li>More readable than `s -&amp;gt; s.toUpperCase()`.
+                        </li>
+                        <li>Reads almost like English: &quot;stream of names, sorted by length&quot;.
+                        </li>
+                        <li>The compiler resolves the SAM target the same way as a lambda.
+                        </li>
+                    </ul>
+                    <h3>When To Keep The Lambda</h3>
+                    <ul>
+                        <li>The body does more than one method call.
+                        </li>
+                        <li>The receiver/argument order is unusual.
+                        </li>
+                        <li>The method is overloaded and the inference becomes ambiguous.
+                        </li>
+                    </ul>
+                    <h3>See Also</h3>
+                    <p>Basics/Methods/MethodReferences.java - the general-purpose tour. This file focuses on USING them
+                        in Stream pipelines.</p>
                 </div>
             </div>
 
@@ -1404,76 +1460,6 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
-
-/**
- * Method References (Java 8+) - in Stream Context
- * -----------------------------------------------
- * A METHOD REFERENCE is a compact replacement for a lambda whose body just
- * calls an existing method. The syntax is `Target::method`.
- * &lt;p&gt;
- *
- *      // these two are equivalent
- *      list.stream().map(s -&amp;gt; s.toUpperCase());
- *      list.stream().map(String::toUpperCase);
- * &lt;p&gt;
- *
- * The Four Forms
- * --------------
- * &lt;p&gt;
- *
- *   1. STATIC method                Class::staticMethod
- * &lt;p&gt;
- *
- *         stream.map(Integer::parseInt);
- *         stream.mapToInt(Integer::parseInt);
- * &lt;p&gt;
- *
- *   2. INSTANCE of a specific OBJECT     instance::method
- * &lt;p&gt;
- *
- *         System.out::println              // calls println on System.out
- * &lt;p&gt;
- *
- *         List&amp;lt;String&amp;gt; out = new ArrayList&amp;lt;&amp;gt;();
- *         stream.forEach(out::add);        // calls add on this specific List
- * &lt;p&gt;
- *
- *   3. INSTANCE method of an ARBITRARY object of a type   Class::method
- * &lt;p&gt;
- *
- *         stream.map(String::toUpperCase); // first arg is the receiver
- *         stream.filter(String::isEmpty);
- *         list.sort(String::compareTo);
- * &lt;p&gt;
- *
- *   4. CONSTRUCTOR                  Class::new
- * &lt;p&gt;
- *
- *         stream.toArray(String[]::new);
- *         Supplier&amp;lt;ArrayList&amp;lt;String&amp;gt;&amp;gt; mk = ArrayList::new;
- *         BiFunction&amp;lt;Integer, Integer, int[]&amp;gt; arrays = int[]::new;   // hmm - this is tricky
- *         Function&amp;lt;String, StringBuilder&amp;gt; wrap = StringBuilder::new;
- * &lt;p&gt;
- *
- * Why Prefer Method References?
- * -----------------------------
- *   - More readable than `s -&amp;gt; s.toUpperCase()`.
- *   - Reads almost like English: &quot;stream of names, sorted by length&quot;.
- *   - The compiler resolves the SAM target the same way as a lambda.
- * &lt;p&gt;
- *
- * When To Keep The Lambda
- * -----------------------
- *   - The body does more than one method call.
- *   - The receiver/argument order is unusual.
- *   - The method is overloaded and the inference becomes ambiguous.
- * &lt;p&gt;
- *
- * See Also
- * --------
- *   Basics/Methods/MethodReferences.java   - the general-purpose tour.
- *   This file focuses on USING them in Stream pipelines.
- */
 
 public class MethodReferences {
 

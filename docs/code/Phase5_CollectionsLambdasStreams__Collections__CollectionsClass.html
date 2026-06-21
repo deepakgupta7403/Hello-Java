@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/CollectionsClass.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 166 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 99 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,60 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>java.util.Collections - The Utility Class</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.Collections - The Utility Class</h2>
+                    <p>Easy to confuse with Collection (interface).</p>
+                    <pre class="hj-doc-art">     java.util.Collection&amp;lt;E&amp;gt;   - the INTERFACE every collection implements.
+     java.util.Collections     - a CLASS of static helpers that work on
+                                 those collections.</pre>
+                    <p>It is the rough equivalent of java.util.Arrays but for collections.</p>
+                    <h3>Methods Grouped By Purpose</h3>
+                    <p>Sorting &amp; ordering</p>
+                    <pre class="hj-doc-art">     sort(List)
+     sort(List, Comparator)
+     reverse(List)
+     shuffle(List)
+     shuffle(List, Random)
+     rotate(List, int distance)
+     swap(List, int i, int j)</pre>
+                    <p>Searching</p>
+                    <pre class="hj-doc-art">     binarySearch(List, key)
+     binarySearch(List, key, Comparator)
+     min(Collection)
+     max(Collection)
+     min/max(Collection, Comparator)
+     frequency(Collection, Object)
+     disjoint(Collection, Collection)</pre>
+                    <p>Population / fill</p>
+                    <pre class="hj-doc-art">     fill(List, element)
+     nCopies(int, element)             - immutable list of N copies
+     replaceAll(List, oldVal, newVal)
+     copy(List dest, List src)</pre>
+                    <p>Wrappers (return VIEWS that wrap the original)</p>
+                    <pre class="hj-doc-art">     unmodifiableList / Set / Map / Collection / SortedSet / SortedMap
+     synchronizedList / Set / Map / Collection / SortedSet / SortedMap
+     checkedList / Set / Map ...       - dynamic type-check wrapper
+     emptyList / emptySet / emptyMap   - return shared immutable empties
+     singletonList / singleton / singletonMap</pre>
+                    <p>Conversion / decoration</p>
+                    <pre class="hj-doc-art">     addAll(Collection, T...)
+     list(Enumeration)                 - bridge from legacy Enumeration
+     enumeration(Collection)           - bridge to legacy Enumeration
+     newSetFromMap(Map)                - back a Set with any Map
+     asLifoQueue(Deque)                - stack-style view of a Deque</pre>
+                    <h3>Modern Alternatives (Java 9+)</h3>
+                    <ul>
+                        <li>List.of(...), Set.of(...), Map.of(...) - immutable, no nulls allowed.
+                        </li>
+                        <li>List.copyOf, Set.copyOf, Map.copyOf - immutable snapshots.
+                        </li>
+                    </ul>
+                    <p>These are smaller and clearer than Collections.unmodifiable*.</p>
                 </div>
             </div>
 
@@ -1395,72 +1445,6 @@
           <pre class="line-numbers m-0"><code class="language-java">package Phase5_CollectionsLambdasStreams.Collections;
 
 import java.util.*;
-
-/**
- * java.util.Collections - The Utility Class
- * -----------------------------------------
- * Easy to confuse with Collection (interface).
- *      java.util.Collection&amp;lt;E&amp;gt;   - the INTERFACE every collection implements.
- *      java.util.Collections     - a CLASS of static helpers that work on
- *                                  those collections.
- * &lt;p&gt;
- *
- * It is the rough equivalent of java.util.Arrays but for collections.
- * &lt;p&gt;
- *
- * Methods Grouped By Purpose
- * --------------------------
- * &lt;p&gt;
- *
- *   Sorting &amp; ordering
- *      sort(List)
- *      sort(List, Comparator)
- *      reverse(List)
- *      shuffle(List)
- *      shuffle(List, Random)
- *      rotate(List, int distance)
- *      swap(List, int i, int j)
- * &lt;p&gt;
- *
- *   Searching
- *      binarySearch(List, key)
- *      binarySearch(List, key, Comparator)
- *      min(Collection)
- *      max(Collection)
- *      min/max(Collection, Comparator)
- *      frequency(Collection, Object)
- *      disjoint(Collection, Collection)
- * &lt;p&gt;
- *
- *   Population / fill
- *      fill(List, element)
- *      nCopies(int, element)             - immutable list of N copies
- *      replaceAll(List, oldVal, newVal)
- *      copy(List dest, List src)
- * &lt;p&gt;
- *
- *   Wrappers (return VIEWS that wrap the original)
- *      unmodifiableList / Set / Map / Collection / SortedSet / SortedMap
- *      synchronizedList / Set / Map / Collection / SortedSet / SortedMap
- *      checkedList / Set / Map ...       - dynamic type-check wrapper
- *      emptyList / emptySet / emptyMap   - return shared immutable empties
- *      singletonList / singleton / singletonMap
- * &lt;p&gt;
- *
- *   Conversion / decoration
- *      addAll(Collection, T...)
- *      list(Enumeration)                 - bridge from legacy Enumeration
- *      enumeration(Collection)           - bridge to legacy Enumeration
- *      newSetFromMap(Map)                - back a Set with any Map
- *      asLifoQueue(Deque)                - stack-style view of a Deque
- * &lt;p&gt;
- *
- * Modern Alternatives (Java 9+)
- * -----------------------------
- *   - List.of(...), Set.of(...), Map.of(...) - immutable, no nulls allowed.
- *   - List.copyOf, Set.copyOf, Map.copyOf    - immutable snapshots.
- * These are smaller and clearer than Collections.unmodifiable*.
- */
 
 public class CollectionsClass {
 

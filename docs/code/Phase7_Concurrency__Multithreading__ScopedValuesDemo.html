@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/ScopedValuesDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 138 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 80 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,55 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A modern alternative to ThreadLocal for sharing IMMUTABLE per-call data with deeply nested
-                        code. Unlike ThreadLocal:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Scoped Values — Java 21 PREVIEW (JEP 446)</h2>
+                    <p>A modern alternative to ThreadLocal for sharing IMMUTABLE per-call data with deeply nested code.
+                        Unlike ThreadLocal:</p>
+                    <ul>
+                        <li>Values are SCOPE-BOUND: they exist only inside a bounded scope
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    and are automatically unbound on exit. No leaks across tasks.</pre>
+                    <ul>
+                        <li>Values are IMMUTABLE. There is no .set(value) once inside.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    If you want a different value, open a NESTED scope.</pre>
+                    <ul>
+                        <li>Cheap with millions of virtual threads: scoped values don&#x27;t pay
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    the per-thread map cost.</pre>
+                    <ul>
+                        <li>Inherited by child threads of a StructuredTaskScope automatically.
+                        </li>
+                    </ul>
+                    <h3>The API in comments (preview)</h3>
+                    <pre class="hj-doc-art">     public static final ScopedValue&lt;String&gt; USER = ScopedValue.newInstance();</pre>
+                    <pre class="hj-doc-art">     ScopedValue.where(USER, &quot;alice&quot;).run(() -&gt; {
+         // anywhere in here, USER.get() == &quot;alice&quot;
+         callDeep();
+     });</pre>
+                    <pre class="hj-doc-art">     ScopedValue.where(USER, &quot;alice&quot;).call(() -&gt; doWork());</pre>
+                    <pre class="hj-doc-art">     ScopedValue.where(USER, &quot;alice&quot;)
+                .where(LOCALE, Locale.US)
+                .run(...);                       // bind several at once</pre>
+                    <h3>Inside the body</h3>
+                    <pre class="hj-doc-art">     USER.get()                  - the value (throws if unbound)
+     USER.isBound()              - is there a value in scope?
+     USER.orElse(defaultV)       - safe accessor</pre>
+                    <h3>Why preview, why care</h3>
+                    <p>Scoped Values are designed to be the per-call context of choice in a virtual-thread world. Each
+                        VT inherits the scope, not a private ThreadLocal map. They&#x27;re a great fit for tracing,
+                        security principals, request IDs.</p>
+                    <h3>Implementation note for this repo</h3>
+                    <p>Because preview APIs require --enable-preview, this file shows the SHAPE in comments and provides
+                        a PORTABLE alternative (ThreadLocal + try/finally) that runs unchanged.</p>
                 </div>
             </div>
 
@@ -1399,63 +1442,6 @@
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-
-/**
- * Scoped Values — Java 21 PREVIEW (JEP 446)
- * -----------------------------------------
- * A modern alternative to ThreadLocal for sharing IMMUTABLE per-call
- * data with deeply nested code. Unlike ThreadLocal:
- * &lt;p&gt;
- *
- *   - Values are SCOPE-BOUND: they exist only inside a bounded scope
- *     and are automatically unbound on exit. No leaks across tasks.
- *   - Values are IMMUTABLE. There is no .set(value) once inside.
- *     If you want a different value, open a NESTED scope.
- *   - Cheap with millions of virtual threads: scoped values don&#x27;t pay
- *     the per-thread map cost.
- *   - Inherited by child threads of a StructuredTaskScope automatically.
- * &lt;p&gt;
- *
- * The API in comments (preview)
- * -----------------------------
- *      public static final ScopedValue&lt;String&gt; USER = ScopedValue.newInstance();
- * &lt;p&gt;
- *
- *      ScopedValue.where(USER, &quot;alice&quot;).run(() -&gt; {
- *          // anywhere in here, USER.get() == &quot;alice&quot;
- *          callDeep();
- *      });
- * &lt;p&gt;
- *
- *      ScopedValue.where(USER, &quot;alice&quot;).call(() -&gt; doWork());
- * &lt;p&gt;
- *
- *      ScopedValue.where(USER, &quot;alice&quot;)
- *                 .where(LOCALE, Locale.US)
- *                 .run(...);                       // bind several at once
- * &lt;p&gt;
- *
- * Inside the body
- * ---------------
- *      USER.get()                  - the value (throws if unbound)
- *      USER.isBound()              - is there a value in scope?
- *      USER.orElse(defaultV)       - safe accessor
- * &lt;p&gt;
- *
- * Why preview, why care
- * ---------------------
- * Scoped Values are designed to be the per-call context of choice in a
- * virtual-thread world. Each VT inherits the scope, not a private
- * ThreadLocal map. They&#x27;re a great fit for tracing, security
- * principals, request IDs.
- * &lt;p&gt;
- *
- * Implementation note for this repo
- * ---------------------------------
- * Because preview APIs require --enable-preview, this file shows the
- * SHAPE in comments and provides a PORTABLE alternative (ThreadLocal +
- * try/finally) that runs unchanged.
- */
 
 public class ScopedValuesDemo {
 

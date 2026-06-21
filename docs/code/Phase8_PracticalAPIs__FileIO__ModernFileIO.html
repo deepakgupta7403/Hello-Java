@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase8_PracticalAPIs/FileIO/ModernFileIO.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 120 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 78 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,29 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>The text-handling shortcuts most of your code should reach for first.</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Modern File I/O — Java 11 → 21 conveniences</h2>
+                    <p>The text-handling shortcuts most of your code should reach for first.</p>
+                    <h3>Java 11</h3>
+                    <p>Files.readString(path[, charset]) Files.writeString(path, charSequence[, charset][, options...])
+                        String.lines() / String.repeat() / String.isBlank() / String.strip()</p>
+                    <h3>Java 12+</h3>
+                    <p>String.indent(n) / String.transform(Function&lt;String,R&gt;)</p>
+                    <h3>Java 13+</h3>
+                    <p>String.formatted(args) Text blocks (&quot;&quot;&quot;...&quot;&quot;&quot;)</p>
+                    <h3>Java 16+</h3>
+                    <p>Stream.toList() — convenient over Collectors.toList()</p>
+                    <h3>Java 17+</h3>
+                    <p>Sealed type hierarchies + pattern matching make the surface around reading &quot;different shapes
+                        of records&quot; cleaner.</p>
+                    <h3>Java 21 hot tip</h3>
+                    <p>Combine Files.lines + Stream.gather(...) (preview) for windowed text processing. For now we&#x27;ll
+                        do it with the stable API.</p>
                 </div>
             </div>
 
@@ -1401,47 +1420,6 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
 import java.util.stream.Stream;
-
-/**
- * Modern File I/O — Java 11 → 21 conveniences
- * -------------------------------------------
- * The text-handling shortcuts most of your code should reach for first.
- * &lt;p&gt;
- *
- * Java 11
- * -------
- *   Files.readString(path[, charset])
- *   Files.writeString(path, charSequence[, charset][, options...])
- *   String.lines() / String.repeat() / String.isBlank() / String.strip()
- * &lt;p&gt;
- *
- * Java 12+
- * --------
- *   String.indent(n) / String.transform(Function&lt;String,R&gt;)
- * &lt;p&gt;
- *
- * Java 13+
- * --------
- *   String.formatted(args)
- *   Text blocks (&quot;&quot;&quot;...&quot;&quot;&quot;)
- * &lt;p&gt;
- *
- * Java 16+
- * --------
- *   Stream.toList() — convenient over Collectors.toList()
- * &lt;p&gt;
- *
- * Java 17+
- * --------
- *   Sealed type hierarchies + pattern matching make the surface around
- *   reading &quot;different shapes of records&quot; cleaner.
- * &lt;p&gt;
- *
- * Java 21 hot tip
- * ---------------
- *   Combine Files.lines + Stream.gather(...) (preview) for windowed
- *   text processing. For now we&#x27;ll do it with the stable API.
- */
 
 public class ModernFileIO {
 

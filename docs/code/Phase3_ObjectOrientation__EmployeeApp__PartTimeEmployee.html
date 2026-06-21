@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase3_ObjectOrientation/EmployeeApp/PartTimeEmployee.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 40 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 22 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,27 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>PartTimeEmployee - paid by the hour, capped at a monthly hour budget.</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>PartTimeEmployee - paid by the hour, capped at a monthly hour budget.</p>
+                    <p>Records:</p>
+                    <ul>
+                        <li>id : numeric id
+                        </li>
+                        <li>name : staff name
+                        </li>
+                        <li>hourlyRate : currency per hour
+                        </li>
+                        <li>hoursLogged : hours worked this month
+                        </li>
+                    </ul>
+                    <p>monthlyPay() = hourlyRate * hoursLogged</p>
+                    <p>Implements Auditable but NOT Promotable - part-time staff in this model get raised by changing
+                        hourlyRate, not by a `promote(...)` call.</p>
                 </div>
             </div>
 
@@ -1394,23 +1411,6 @@
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase3_ObjectOrientation.EmployeeApp;
 
-/**
- * PartTimeEmployee - paid by the hour, capped at a monthly hour budget.
- * &lt;p&gt;
- *
- * Records:
- *   - id          : numeric id
- *   - name        : staff name
- *   - hourlyRate  : currency per hour
- *   - hoursLogged : hours worked this month
- * &lt;p&gt;
- *
- * monthlyPay() = hourlyRate * hoursLogged
- * &lt;p&gt;
- *
- * Implements Auditable but NOT Promotable - part-time staff in this model
- * get raised by changing hourlyRate, not by a `promote(...)` call.
- */
 public record PartTimeEmployee(
         int    id,
         String name,

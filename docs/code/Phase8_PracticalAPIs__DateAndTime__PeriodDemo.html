@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase8_PracticalAPIs/DateAndTime/PeriodDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 107 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 57 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,39 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Period represents an interval in YEARS, MONTHS, and DAYS — the units humans use to talk about
-                        ages and trial periods.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Period — a Calendar-Length Difference</h2>
+                    <p>Period represents an interval in YEARS, MONTHS, and DAYS — the units humans use to talk about
+                        ages and trial periods.</p>
+                    <pre class="hj-doc-art">     P1Y2M3D   = 1 year 2 months 3 days
+     P10D      = 10 days</pre>
+                    <p>Unlike Duration, Period is CALENDAR-AWARE: adding 1 month to Jan 31 does NOT give Feb 31. It
+                        clamps to the last valid day.</p>
+                    <h3>Construction</h3>
+                    <p>Period.ofDays / ofWeeks / ofMonths / ofYears Period.of(y, m, d) Period.between(start, end) -
+                        LocalDate to LocalDate Period.parse(&quot;P1Y2M3D&quot;)</p>
+                    <h3>Arithmetic</h3>
+                    <p>plus / minus / multipliedBy / negated normalized() - rolls 13 months into 1Y1M</p>
+                    <h3>Accessors</h3>
+                    <p>getYears() / getMonths() / getDays() isZero() / isNegative()</p>
+                    <h3>Common use cases</h3>
+                    <ul>
+                        <li>&quot;How old is someone?&quot; -&gt; Period.between(birthday, today).getYears()
+                        </li>
+                        <li>Trial / lease periods.
+                        </li>
+                        <li>Recurring schedules expressed in months / years.
+                        </li>
+                    </ul>
+                    <h3>The Jan 31 + 1 month puzzle</h3>
+                    <p>LocalDate.of(2026, 1, 31).plus(Period.ofMonths(1)) -&gt; 2026-02-28 The library &quot;clamps&quot;
+                        overflow to the last valid day. Stable, but non-commutative: adding twice doesn&#x27;t always
+                        equal adding the sum.</p>
                 </div>
             </div>
 
@@ -1399,55 +1426,6 @@
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.temporal.ChronoUnit;
-
-/**
- * Period — a Calendar-Length Difference
- * -------------------------------------
- * Period represents an interval in YEARS, MONTHS, and DAYS — the units
- * humans use to talk about ages and trial periods.
- * &lt;p&gt;
- *
- *      P1Y2M3D   = 1 year 2 months 3 days
- *      P10D      = 10 days
- * &lt;p&gt;
- *
- * Unlike Duration, Period is CALENDAR-AWARE: adding 1 month to Jan 31
- * does NOT give Feb 31. It clamps to the last valid day.
- * &lt;p&gt;
- *
- * Construction
- * ------------
- *   Period.ofDays / ofWeeks / ofMonths / ofYears
- *   Period.of(y, m, d)
- *   Period.between(start, end)          - LocalDate to LocalDate
- *   Period.parse(&quot;P1Y2M3D&quot;)
- * &lt;p&gt;
- *
- * Arithmetic
- * ----------
- *   plus / minus / multipliedBy / negated
- *   normalized()   - rolls 13 months into 1Y1M
- * &lt;p&gt;
- *
- * Accessors
- * ---------
- *   getYears() / getMonths() / getDays()
- *   isZero() / isNegative()
- * &lt;p&gt;
- *
- * Common use cases
- * ----------------
- *   - &quot;How old is someone?&quot;   -&gt; Period.between(birthday, today).getYears()
- *   - Trial / lease periods.
- *   - Recurring schedules expressed in months / years.
- * &lt;p&gt;
- *
- * The Jan 31 + 1 month puzzle
- * ---------------------------
- *   LocalDate.of(2026, 1, 31).plus(Period.ofMonths(1))   -&gt; 2026-02-28
- *   The library &quot;clamps&quot; overflow to the last valid day. Stable, but
- *   non-commutative: adding twice doesn&#x27;t always equal adding the sum.
- */
 
 public class PeriodDemo {
 

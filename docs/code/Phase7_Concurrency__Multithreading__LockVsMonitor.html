@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/LockVsMonitor.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 130 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 85 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,46 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>&quot;Monitor&quot; here means the INTRINSIC LOCK on every Object, accessed via `synchronized`,
-                        with `wait/notify/notifyAll` as the condition variable.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Lock vs Monitor — Concurrency Primitives Compared</h2>
+                    <p>&quot;Monitor&quot; here means the INTRINSIC LOCK on every Object, accessed via `synchronized`,
+                        with `wait/notify/notifyAll` as the condition variable.</p>
+                    <p>&quot;Lock&quot; means the `java.util.concurrent.locks.Lock` family — typically `ReentrantLock`
+                        with `Condition` objects.</p>
+                    <h3>Side-by-side table</h3>
+                    <pre class="hj-doc-art">                             Monitor (synchronized)        Lock (j.u.c.locks)
+                             -----------------------       -------------------</pre>
+                    <p>Acquire synchronized (obj) { ... } lock.lock() Release auto on block exit try/finally +
+                        lock.unlock() Timed acquire no tryLock(time, unit) Interruptible acquire no lockInterruptibly()
+                        Fair acquire no new ReentrantLock(true) Reentrant yes yes (ReentrantLock) Condition variables
+                        wait/notify(All) — one set newCondition() × N Performance great after biased lock removal;
+                        depends on JVM</p>
+                    <pre class="hj-doc-art">                                                           comparable; sometimes faster</pre>
+                    <p>Read/write split? no ReentrantReadWriteLock Optimistic read? no StampedLock</p>
+                    <h3>When to use which</h3>
+                    <ul>
+                        <li>SMALL, OBVIOUS critical section → synchronized. Less to type, less
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    to forget.</pre>
+                    <ul>
+                        <li>Need ANY of: timed acquire, interruptible acquire, fairness,
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    multiple conditions, read/write separation → Lock family.</pre>
+                    <ul>
+                        <li>&quot;Drop-in&quot; parity: ReentrantLock matches synchronized semantics
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    including reentrancy.</pre>
+                    <h3>Don&#x27;t mix them</h3>
+                    <p>Guarding the same field with BOTH synchronized and a Lock is a recipe for confusion and
+                        lock-ordering bugs. Pick one mechanism per field.</p>
                 </div>
             </div>
 
@@ -1400,50 +1434,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-
-/**
- * Lock vs Monitor — Concurrency Primitives Compared
- * -------------------------------------------------
- * &quot;Monitor&quot; here means the INTRINSIC LOCK on every Object, accessed via
- * `synchronized`, with `wait/notify/notifyAll` as the condition variable.
- * &lt;p&gt;
- *
- * &quot;Lock&quot; means the `java.util.concurrent.locks.Lock` family — typically
- * `ReentrantLock` with `Condition` objects.
- * &lt;p&gt;
- *
- * Side-by-side table
- * ------------------
- *                              Monitor (synchronized)        Lock (j.u.c.locks)
- *                              -----------------------       -------------------
- *   Acquire                    synchronized (obj) { ... }    lock.lock()
- *   Release                    auto on block exit            try/finally + lock.unlock()
- *   Timed acquire              no                            tryLock(time, unit)
- *   Interruptible acquire      no                            lockInterruptibly()
- *   Fair acquire               no                            new ReentrantLock(true)
- *   Reentrant                  yes                           yes (ReentrantLock)
- *   Condition variables        wait/notify(All) — one set    newCondition() × N
- *   Performance                great after biased lock removal; depends on JVM
- *                                                            comparable; sometimes faster
- *   Read/write split?          no                            ReentrantReadWriteLock
- *   Optimistic read?           no                            StampedLock
- * &lt;p&gt;
- *
- * When to use which
- * -----------------
- *   - SMALL, OBVIOUS critical section → synchronized. Less to type, less
- *     to forget.
- *   - Need ANY of: timed acquire, interruptible acquire, fairness,
- *     multiple conditions, read/write separation → Lock family.
- *   - &quot;Drop-in&quot; parity: ReentrantLock matches synchronized semantics
- *     including reentrancy.
- * &lt;p&gt;
- *
- * Don&#x27;t mix them
- * --------------
- * Guarding the same field with BOTH synchronized and a Lock is a recipe
- * for confusion and lock-ordering bugs. Pick one mechanism per field.
- */
 
 public class LockVsMonitor {
 

@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/AbstractListClasses.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 229 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 154 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,56 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>The Collections Framework follows a common pattern: every public INTERFACE has a companion
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>AbstractList and AbstractSequentialList - Skeletal Implementations</h2>
+                    <p>The Collections Framework follows a common pattern: every public INTERFACE has a companion
                         ABSTRACT SKELETON CLASS that takes care of the boilerplate so concrete subclasses only need to
-                        implement a handful of primitiv...
-                    </div>
+                        implement a handful of primitive operations.</p>
+                    <pre class="hj-doc-art">     Collection         -&gt; AbstractCollection
+     List               -&gt; AbstractList      -&gt; AbstractSequentialList
+     Set                -&gt; AbstractSet
+     Queue              -&gt; AbstractQueue
+     Map                -&gt; AbstractMap</pre>
+                    <h3>AbstractList&amp;lt;E&amp;gt; - For Random-Access Lists</h3>
+                    <p>To build a List you only need to implement:</p>
+                    <pre class="hj-doc-art">     E get(int index)
+     int size()</pre>
+                    <p>That gives you a READ-ONLY list. To add mutation, override one or more of:</p>
+                    <pre class="hj-doc-art">     E set(int index, E element)         - replace
+     void add(int index, E element)       - insert
+     E remove(int index)                  - delete</pre>
+                    <p>AbstractList provides correct implementations of iterator(), listIterator(), indexOf,
+                        lastIndexOf, equals, hashCode, toString, sublist, and the fail-fast modCount machinery - all on
+                        top of YOUR primitive overrides.</p>
+                    <h3>AbstractSequentialList&amp;lt;E&amp;gt; - For Linked Lists</h3>
+                    <p>If random access (get(int)) is EXPENSIVE for your data structure, extend AbstractSequentialList
+                        instead. You only need to implement:</p>
+                    <pre class="hj-doc-art">     ListIterator&amp;lt;E&amp;gt; listIterator(int index)
+     int size()</pre>
+                    <p>The class then derives get / set / add / remove from ListIterator operations - typically O(n) but
+                        appropriate for chained nodes. java.util.LinkedList uses this skeleton.</p>
+                    <h3>Why You&#x27;d Use Them</h3>
+                    <ul>
+                        <li>Building a CUSTOM list-shaped data structure: a fixed-size view of an
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    int[], a database-backed list, an &quot;ints from a to b&quot; range.</pre>
+                    <ul>
+                        <li>Implementing the List contract correctly without re-deriving all the
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    bookkeeping (iterator state, hashCode order, equals semantics).</pre>
+                    <p>In day-to-day code you reach for ArrayList / LinkedList - but knowing the abstract skeletons
+                        exist is part of understanding how the framework is put together.</p>
+                    <h3>Demo</h3>
+                    <p>Two custom lists below: IntRangeList - extends AbstractList; lazy &quot;0..n-1&quot; view, O(1)
+                        get. SingletonChain - extends AbstractSequentialList; a doubly-linked</p>
+                    <pre class="hj-doc-art">                             list with a hand-written ListIterator.</pre>
                 </div>
             </div>
 
@@ -1398,80 +1441,6 @@
           <pre class="line-numbers m-0"><code class="language-java">package Phase5_CollectionsLambdasStreams.Collections;
 
 import java.util.*;
-
-/**
- * AbstractList and AbstractSequentialList - Skeletal Implementations
- * ------------------------------------------------------------------
- * The Collections Framework follows a common pattern: every public
- * INTERFACE has a companion ABSTRACT SKELETON CLASS that takes care of the
- * boilerplate so concrete subclasses only need to implement a handful of
- * primitive operations.
- * &lt;p&gt;
- *
- *      Collection         -&gt; AbstractCollection
- *      List               -&gt; AbstractList      -&gt; AbstractSequentialList
- *      Set                -&gt; AbstractSet
- *      Queue              -&gt; AbstractQueue
- *      Map                -&gt; AbstractMap
- * &lt;p&gt;
- *
- * AbstractList&amp;lt;E&amp;gt; - For Random-Access Lists
- * -----------------------------------------
- * To build a List you only need to implement:
- * &lt;p&gt;
- *
- *      E get(int index)
- *      int size()
- * &lt;p&gt;
- *
- * That gives you a READ-ONLY list. To add mutation, override one or more of:
- * &lt;p&gt;
- *
- *      E set(int index, E element)         - replace
- *      void add(int index, E element)       - insert
- *      E remove(int index)                  - delete
- * &lt;p&gt;
- *
- * AbstractList provides correct implementations of iterator(), listIterator(),
- * indexOf, lastIndexOf, equals, hashCode, toString, sublist, and the fail-fast
- * modCount machinery - all on top of YOUR primitive overrides.
- * &lt;p&gt;
- *
- * AbstractSequentialList&amp;lt;E&amp;gt; - For Linked Lists
- * --------------------------------------------
- * If random access (get(int)) is EXPENSIVE for your data structure, extend
- * AbstractSequentialList instead. You only need to implement:
- * &lt;p&gt;
- *
- *      ListIterator&amp;lt;E&amp;gt; listIterator(int index)
- *      int size()
- * &lt;p&gt;
- *
- * The class then derives get / set / add / remove from ListIterator
- * operations - typically O(n) but appropriate for chained nodes. java.util.LinkedList
- * uses this skeleton.
- * &lt;p&gt;
- *
- * Why You&#x27;d Use Them
- * ------------------
- *   - Building a CUSTOM list-shaped data structure: a fixed-size view of an
- *     int[], a database-backed list, an &quot;ints from a to b&quot; range.
- *   - Implementing the List contract correctly without re-deriving all the
- *     bookkeeping (iterator state, hashCode order, equals semantics).
- * &lt;p&gt;
- *
- * In day-to-day code you reach for ArrayList / LinkedList - but knowing the
- * abstract skeletons exist is part of understanding how the framework is
- * put together.
- * &lt;p&gt;
- *
- * Demo
- * ----
- * Two custom lists below:
- *   IntRangeList            - extends AbstractList; lazy &quot;0..n-1&quot; view, O(1) get.
- *   SingletonChain          - extends AbstractSequentialList; a doubly-linked
- *                              list with a hand-written ListIterator.
- */
 
 public class AbstractListClasses {
 

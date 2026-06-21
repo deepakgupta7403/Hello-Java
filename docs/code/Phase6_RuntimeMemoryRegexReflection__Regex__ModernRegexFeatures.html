@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase6_RuntimeMemoryRegexReflection/Regex/ModernRegexFeatures.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 143 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 100 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,51 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Pattern / Matcher have collected a few quality-of-life additions over the years that fit the
-                        modern functional / stream style.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Modern Regex Features (Java 8 -&gt; 21)</h2>
+                    <p>Pattern / Matcher have collected a few quality-of-life additions over the years that fit the
+                        modern functional / stream style.</p>
+                    <h3>Java 8</h3>
+                    <p>Pattern.splitAsStream(input) - lazy Stream&lt;String&gt; of split parts Pattern.asPredicate() -
+                        Predicate&lt;String&gt; for &quot;matches anywhere&quot;</p>
+                    <h3>Java 11</h3>
+                    <p>Pattern.asMatchPredicate() - Predicate&lt;String&gt; for &quot;full match&quot;</p>
+                    <h3>Java 9</h3>
+                    <p>Matcher.results() - Stream&lt;MatchResult&gt; of every match Matcher.replaceAll(Function&lt;MatchResult,String&gt;)</p>
+                    <ul>
+                        <li>replace with a function per match
+                        </li>
+                    </ul>
+                    <p>Matcher.replaceFirst(Function&lt;MatchResult,String&gt;)</p>
+                    <ul>
+                        <li>one-shot version of the above
+                        </li>
+                    </ul>
+                    <h3>Java 20+ / 21</h3>
+                    <ul>
+                        <li>Pattern matching for switch (Java 21) - not regex per se, but it makes
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    classifying strings ergonomic when combined with simple `String` checks.</pre>
+                    <ul>
+                        <li>There were no new regex primitives in Java 21, but the existing Stream
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    APIs pair very well with collectors and records added in 16/17/21.</pre>
+                    <h3>Why the Stream Versions Matter</h3>
+                    <ul>
+                        <li>LAZY: parts of a huge input are not all materialised at once.
+                        </li>
+                        <li>COMPOSABLE: map / filter / collect after a regex match becomes natural.
+                        </li>
+                        <li>PARALLELISABLE: you can call .parallel() on the stream.
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1401,48 +1440,6 @@ import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-/**
- * Modern Regex Features (Java 8 -&gt; 21)
- * ------------------------------------
- * Pattern / Matcher have collected a few quality-of-life additions over the
- * years that fit the modern functional / stream style.
- * &lt;p&gt;
- *
- * Java 8
- * ------
- *   Pattern.splitAsStream(input)            - lazy Stream&lt;String&gt; of split parts
- *   Pattern.asPredicate()                   - Predicate&lt;String&gt; for &quot;matches anywhere&quot;
- * &lt;p&gt;
- *
- * Java 11
- * -------
- *   Pattern.asMatchPredicate()              - Predicate&lt;String&gt; for &quot;full match&quot;
- * &lt;p&gt;
- *
- * Java 9
- * ------
- *   Matcher.results()                       - Stream&lt;MatchResult&gt; of every match
- *   Matcher.replaceAll(Function&lt;MatchResult,String&gt;)
- *                                           - replace with a function per match
- *   Matcher.replaceFirst(Function&lt;MatchResult,String&gt;)
- *                                           - one-shot version of the above
- * &lt;p&gt;
- *
- * Java 20+ / 21
- * -------------
- *   - Pattern matching for switch (Java 21) - not regex per se, but it makes
- *     classifying strings ergonomic when combined with simple `String` checks.
- *   - There were no new regex primitives in Java 21, but the existing Stream
- *     APIs pair very well with collectors and records added in 16/17/21.
- * &lt;p&gt;
- *
- * Why the Stream Versions Matter
- * ------------------------------
- *   - LAZY: parts of a huge input are not all materialised at once.
- *   - COMPOSABLE: map / filter / collect after a regex match becomes natural.
- *   - PARALLELISABLE: you can call .parallel() on the stream.
- */
 
 public class ModernRegexFeatures {
 

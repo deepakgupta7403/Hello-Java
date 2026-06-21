@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/StreamPipeline.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 165 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 87 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,68 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A STREAM PIPELINE is the chain that takes data from a source through a series of
-                        transformations to a final result. It always has THREE parts:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Stream Pipeline - Source / Intermediate / Terminal</h2>
+                    <p>A STREAM PIPELINE is the chain that takes data from a source through a series of transformations
+                        to a final result. It always has THREE parts:</p>
+                    <pre class="hj-doc-art">     +---------+    +---------------------------+    +-------------+
+     | SOURCE  | -&amp;gt; | Intermediate Op (lazy)... | -&amp;gt; | Terminal Op |
+     +---------+    +---------------------------+    +-------------+
+     List/Array      filter, map, sorted,            forEach, collect,
+     Stream.of(...)  distinct, skip, limit,          reduce, count,
+     Files.lines     peek, flatMap, ...              anyMatch, findFirst</pre>
+                    <h3>Rules</h3>
+                    <ul>
+                        <li>Exactly ONE source.
+                        </li>
+                        <li>ZERO OR MORE intermediate operations - they are LAZY and return new streams.
+                        </li>
+                        <li>EXACTLY ONE terminal operation - it produces a side effect or a value.
+                        </li>
+                        <li>Once the terminal operation has run, the stream is CLOSED.
+                        </li>
+                    </ul>
+                    <h3>Lazy Evaluation</h3>
+                    <p>Intermediate operations DO NOTHING until a terminal operation pulls. The pipeline is then FUSED:
+                        each element flows through every step before the next one starts (not &quot;filter all then map
+                        all then collect all&quot;).</p>
+                    <pre class="hj-doc-art">     sourceList.stream()
+               .filter(...)
+               .map(...)
+               .collect(...);     // only HERE does anything actually run</pre>
+                    <h3>Short-Circuit Operations</h3>
+                    <p>Some terminal operations can stop early as soon as they have the answer:</p>
+                    <pre class="hj-doc-art">     findFirst, findAny
+     anyMatch, allMatch, noneMatch
+     limit (intermediate but short-circuit)</pre>
+                    <p>This is what makes infinite streams usable.</p>
+                    <h3>Statefulness</h3>
+                    <ul>
+                        <li>STATELESS intermediates - filter, map, peek, flatMap
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    They can run independently per element.</pre>
+                    <ul>
+                        <li>STATEFUL intermediates - sorted, distinct, limit, skip
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    They must see other elements to decide. They cost more, especially in
+    parallel.</pre>
+                    <h3>Reading the Pipeline</h3>
+                    <p>Read top-down like a recipe:</p>
+                    <pre class="hj-doc-art">     &quot;Start with the people list.
+      Keep only the engineers.
+      Get each person&#x27;s salary.
+      Sum them up.&quot;</pre>
+                    <pre class="hj-doc-art">     people.stream()
+           .filter(p -&amp;gt; p.role() == Role.ENGINEER)
+           .mapToDouble(Person::salary)
+           .sum();</pre>
                 </div>
             </div>
 
@@ -1399,83 +1455,6 @@
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-/**
- * Stream Pipeline - Source / Intermediate / Terminal
- * --------------------------------------------------
- * A STREAM PIPELINE is the chain that takes data from a source through a
- * series of transformations to a final result. It always has THREE parts:
- * &lt;p&gt;
- *
- *      +---------+    +---------------------------+    +-------------+
- *      | SOURCE  | -&amp;gt; | Intermediate Op (lazy)... | -&amp;gt; | Terminal Op |
- *      +---------+    +---------------------------+    +-------------+
- *      List/Array      filter, map, sorted,            forEach, collect,
- *      Stream.of(...)  distinct, skip, limit,          reduce, count,
- *      Files.lines     peek, flatMap, ...              anyMatch, findFirst
- * &lt;p&gt;
- *
- * Rules
- * -----
- *   - Exactly ONE source.
- *   - ZERO OR MORE intermediate operations - they are LAZY and return new streams.
- *   - EXACTLY ONE terminal operation - it produces a side effect or a value.
- *   - Once the terminal operation has run, the stream is CLOSED.
- * &lt;p&gt;
- *
- * Lazy Evaluation
- * ---------------
- * Intermediate operations DO NOTHING until a terminal operation pulls. The
- * pipeline is then FUSED: each element flows through every step before the
- * next one starts (not &quot;filter all then map all then collect all&quot;).
- * &lt;p&gt;
- *
- *      sourceList.stream()
- *                .filter(...)
- *                .map(...)
- *                .collect(...);     // only HERE does anything actually run
- * &lt;p&gt;
- *
- * Short-Circuit Operations
- * ------------------------
- * Some terminal operations can stop early as soon as they have the answer:
- * &lt;p&gt;
- *
- *      findFirst, findAny
- *      anyMatch, allMatch, noneMatch
- *      limit (intermediate but short-circuit)
- * &lt;p&gt;
- *
- * This is what makes infinite streams usable.
- * &lt;p&gt;
- *
- * Statefulness
- * ------------
- *   - STATELESS intermediates - filter, map, peek, flatMap
- *     They can run independently per element.
- * &lt;p&gt;
- *
- *   - STATEFUL intermediates - sorted, distinct, limit, skip
- *     They must see other elements to decide. They cost more, especially in
- *     parallel.
- * &lt;p&gt;
- *
- * Reading the Pipeline
- * --------------------
- * Read top-down like a recipe:
- * &lt;p&gt;
- *
- *      &quot;Start with the people list.
- *       Keep only the engineers.
- *       Get each person&#x27;s salary.
- *       Sum them up.&quot;
- * &lt;p&gt;
- *
- *      people.stream()
- *            .filter(p -&amp;gt; p.role() == Role.ENGINEER)
- *            .mapToDouble(Person::salary)
- *            .sum();
- */
 
 public class StreamPipeline {
 

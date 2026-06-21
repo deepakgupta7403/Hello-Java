@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase2_MethodsArraysStrings/Methods/CommandLineArguments.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 122 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 73 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,45 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>When you launch a Java program, anything you type after the class name on the command line is
-                        passed to `main` as a String array:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Command-Line Arguments</h2>
+                    <p>When you launch a Java program, anything you type after the class name on the command line is
+                        passed to `main` as a String array:</p>
+                    <pre class="hj-doc-art">     public static void main(String[] args)</pre>
+                    <p>Each whitespace-separated token becomes one element of `args`. Arguments are ALWAYS Strings - you
+                        must parse them yourself if you need numbers.</p>
+                    <h3>Running This File</h3>
+                    <p>Compile first:</p>
+                    <pre class="hj-doc-art">     javac src/Basics/Methods/CommandLineArguments.java</pre>
+                    <p>Then run (from the src directory) with whatever arguments you want:</p>
+                    <pre class="hj-doc-art">     cd src
+     java Basics.Methods.CommandLineArguments alpha beta 42</pre>
+                    <p>Or, single-file mode (Java 11+):</p>
+                    <pre class="hj-doc-art">     java src/Basics/Methods/CommandLineArguments.java alpha beta 42</pre>
+                    <p>In IntelliJ - right-click -&gt; &quot;Modify Run Configuration...&quot; -&gt; &quot;Program
+                        arguments&quot; field. List tokens separated by spaces. Quote tokens that contain spaces: &quot;Hello
+                        World&quot;.</p>
+                    <h3>Things To Know</h3>
+                    <ul>
+                        <li>args is NEVER null. If no arguments are passed, args.length == 0.
+                        </li>
+                        <li>The PROGRAM NAME (the class) is NOT in args - that is a C/C++ convention.
+                        </li>
+                    </ul>
+                    <p>args[0] is the FIRST user argument.</p>
+                    <ul>
+                        <li>Quote any argument that contains spaces: &quot;Hello World&quot;.
+                        </li>
+                        <li>Standard input is separate: command-line args are not the same as Scanner.
+                        </li>
+                    </ul>
+                    <h3>Demo</h3>
+                    <p>This program echoes each argument, then sums any that parse as integers.</p>
                 </div>
             </div>
 
@@ -1395,54 +1428,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase2_MethodsArraysStrings.Methods;
-
-/**
- * Command-Line Arguments
- * ----------------------
- * When you launch a Java program, anything you type after the class name on the
- * command line is passed to `main` as a String array:
- * &lt;p&gt;
- *
- *      public static void main(String[] args)
- * &lt;p&gt;
- *
- * Each whitespace-separated token becomes one element of `args`. Arguments are
- * ALWAYS Strings - you must parse them yourself if you need numbers.
- * &lt;p&gt;
- *
- * Running This File
- * -----------------
- * Compile first:
- *      javac src/Basics/Methods/CommandLineArguments.java
- * &lt;p&gt;
- *
- * Then run (from the src directory) with whatever arguments you want:
- *      cd src
- *      java Basics.Methods.CommandLineArguments alpha beta 42
- * &lt;p&gt;
- *
- * Or, single-file mode (Java 11+):
- *      java src/Basics/Methods/CommandLineArguments.java alpha beta 42
- * &lt;p&gt;
- *
- * In IntelliJ - right-click -&gt; &quot;Modify Run Configuration...&quot; -&gt; &quot;Program
- * arguments&quot; field. List tokens separated by spaces. Quote tokens that contain
- * spaces: &quot;Hello World&quot;.
- * &lt;p&gt;
- *
- * Things To Know
- * --------------
- *  - args is NEVER null. If no arguments are passed, args.length == 0.
- *  - The PROGRAM NAME (the class) is NOT in args - that is a C/C++ convention.
- *    args[0] is the FIRST user argument.
- *  - Quote any argument that contains spaces:   &quot;Hello World&quot;.
- *  - Standard input is separate: command-line args are not the same as Scanner.
- * &lt;p&gt;
- *
- * Demo
- * ----
- * This program echoes each argument, then sums any that parse as integers.
- */
 
 public class CommandLineArguments {
 

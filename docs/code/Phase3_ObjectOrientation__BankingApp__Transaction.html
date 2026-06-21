@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase3_ObjectOrientation/BankingApp/Transaction.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 45 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 30 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,25 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Transaction - immutable log entry for a single account event.</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>Transaction - immutable log entry for a single account event.</p>
+                    <p>Implemented as a Java RECORD (Java 16+):</p>
+                    <ul>
+                        <li>All fields are final.
+                        </li>
+                        <li>equals / hashCode / toString are generated.
+                        </li>
+                        <li>The compiler also synthesises a canonical constructor and accessor
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    methods type(), amount(), balanceAfter(), timestamp().</pre>
+                    <p>The nested `Type` enum makes the kind of event explicit and lets us use exhaustive `switch`
+                        statements in any caller code.</p>
                 </div>
             </div>
 
@@ -1396,20 +1411,6 @@
 
 import java.time.LocalDateTime;
 
-/**
- * Transaction - immutable log entry for a single account event.
- * &lt;p&gt;
- *
- * Implemented as a Java RECORD (Java 16+):
- *   - All fields are final.
- *   - equals / hashCode / toString are generated.
- *   - The compiler also synthesises a canonical constructor and accessor
- *     methods type(), amount(), balanceAfter(), timestamp().
- * &lt;p&gt;
- *
- * The nested `Type` enum makes the kind of event explicit and lets us
- * use exhaustive `switch` statements in any caller code.
- */
 public record Transaction(
         Transaction.Type type,
         double           amount,

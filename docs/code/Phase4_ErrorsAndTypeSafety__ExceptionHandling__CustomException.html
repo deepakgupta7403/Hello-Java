@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase4_ErrorsAndTypeSafety/ExceptionHandling/CustomException.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 193 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 130 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,51 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Sometimes the standard exceptions are too generic. A domain-specific exception class lets
-                        callers catch your particular failure with a precise `catch` and lets you carry extra data
-                        (account id, retry-after seconds, er...
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Custom Exceptions</h2>
+                    <p>Sometimes the standard exceptions are too generic. A domain-specific exception class lets callers
+                        catch your particular failure with a precise `catch` and lets you carry extra data (account id,
+                        retry-after seconds, error code) along with the message.</p>
+                    <h3>Two Flavours</h3>
+                    <ul>
+                        <li>CHECKED : extend Exception (forced to handle)
+                        </li>
+                        <li>UNCHECKED : extend RuntimeException (NOT forced to handle)
+                        </li>
+                    </ul>
+                    <p>Pick CHECKED for failures the CALLER is expected to recover from (FileNotFoundException - try a
+                        different file). Pick UNCHECKED for programmer errors and invariant violations
+                        (IllegalStateException) - forcing every caller to handle them just clutters the code.</p>
+                    <h3>Recommended Constructors (the four-constructor convention)</h3>
+                    <p>Mirror the standard ones from the parent. The compiler will pick the right overload at the call
+                        site:</p>
+                    <pre class="hj-doc-art">     public MyException()                                 { super(); }
+     public MyException(String message)                   { super(message); }
+     public MyException(String message, Throwable cause)  { super(message, cause); }
+     public MyException(Throwable cause)                  { super(cause); }</pre>
+                    <h3>Naming Convention</h3>
+                    <p>Class names should end with the word &quot;Exception&quot; - `InsufficientFundsException`,
+                        `PaymentDeclinedException`, etc.</p>
+                    <h3>Carrying Extra Data</h3>
+                    <p>You can add fields and constructor parameters to capture context. Common extras: an error code,
+                        the offending value, a &quot;retry after&quot; timestamp.</p>
+                    <pre class="hj-doc-art">     public class RateLimitException extends RuntimeException {
+         private final long retryAfterMs;
+         public RateLimitException(String message, long retryAfterMs) {
+             super(message);
+             this.retryAfterMs = retryAfterMs;
+         }
+         public long getRetryAfterMs() { return retryAfterMs; }
+     }</pre>
+                    <h3>Tip</h3>
+                    <p>Prefer the JDK&#x27;s standard exception types when they fit (NullPointerException,
+                        IllegalArgumentException, IllegalStateException). Reach for a custom class when callers benefit
+                        from a more specific type.</p>
                 </div>
             </div>
 
@@ -1396,68 +1434,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase4_ErrorsAndTypeSafety.ExceptionHandling;
-
-/**
- * Custom Exceptions
- * -----------------
- * Sometimes the standard exceptions are too generic. A domain-specific
- * exception class lets callers catch your particular failure with a precise
- * `catch` and lets you carry extra data (account id, retry-after seconds,
- * error code) along with the message.
- * &lt;p&gt;
- *
- * Two Flavours
- * ------------
- *   - CHECKED   : extend Exception                  (forced to handle)
- *   - UNCHECKED : extend RuntimeException           (NOT forced to handle)
- * &lt;p&gt;
- *
- * Pick CHECKED for failures the CALLER is expected to recover from
- * (FileNotFoundException - try a different file). Pick UNCHECKED for
- * programmer errors and invariant violations (IllegalStateException) -
- * forcing every caller to handle them just clutters the code.
- * &lt;p&gt;
- *
- * Recommended Constructors (the four-constructor convention)
- * ----------------------------------------------------------
- * Mirror the standard ones from the parent. The compiler will pick the
- * right overload at the call site:
- * &lt;p&gt;
- *
- *      public MyException()                                 { super(); }
- *      public MyException(String message)                   { super(message); }
- *      public MyException(String message, Throwable cause)  { super(message, cause); }
- *      public MyException(Throwable cause)                  { super(cause); }
- * &lt;p&gt;
- *
- * Naming Convention
- * -----------------
- * Class names should end with the word &quot;Exception&quot; - `InsufficientFundsException`,
- * `PaymentDeclinedException`, etc.
- * &lt;p&gt;
- *
- * Carrying Extra Data
- * -------------------
- * You can add fields and constructor parameters to capture context. Common
- * extras: an error code, the offending value, a &quot;retry after&quot; timestamp.
- * &lt;p&gt;
- *
- *      public class RateLimitException extends RuntimeException {
- *          private final long retryAfterMs;
- *          public RateLimitException(String message, long retryAfterMs) {
- *              super(message);
- *              this.retryAfterMs = retryAfterMs;
- *          }
- *          public long getRetryAfterMs() { return retryAfterMs; }
- *      }
- * &lt;p&gt;
- *
- * Tip
- * ---
- * Prefer the JDK&#x27;s standard exception types when they fit (NullPointerException,
- * IllegalArgumentException, IllegalStateException). Reach for a custom class
- * when callers benefit from a more specific type.
- */
 
 public class CustomException {
 

@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/CollectorsClass.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 202 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 133 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,56 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>java.util.stream.Collectors - The Collect-Toolbox</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.stream.Collectors - The Collect-Toolbox</h2>
+                    <p>The Collectors class is a giant library of reusable collectors for use with
+                        `stream.collect(...)`. Almost every &quot;build a structured result&quot; task in stream code
+                        uses one.</p>
+                    <h3>The Cheatsheet</h3>
+                    <p>Building collections</p>
+                    <pre class="hj-doc-art">     toList()                          mutable List (Java 8) - prefer Stream.toList() for unmodifiable
+     toSet()
+     toUnmodifiableList / Set / Map    immutable (Java 10+)
+     toCollection(Supplier)            specific collection type</pre>
+                    <p>Maps</p>
+                    <pre class="hj-doc-art">     toMap(keyFn, valueFn)
+     toMap(keyFn, valueFn, mergeFn)              resolve key conflicts
+     toMap(keyFn, valueFn, mergeFn, mapFactory)  pick the Map impl
+     toConcurrentMap(...)</pre>
+                    <p>Grouping</p>
+                    <pre class="hj-doc-art">     groupingBy(classifier)
+     groupingBy(classifier, downstreamCollector)
+     groupingBy(classifier, mapFactory, downstreamCollector)
+     partitioningBy(predicate)                   true/false split
+     partitioningBy(predicate, downstreamCollector)
+     groupingByConcurrent(...)</pre>
+                    <p>Counting + summarising</p>
+                    <pre class="hj-doc-art">     counting()
+     summingInt / summingLong / summingDouble
+     averagingInt / averagingLong / averagingDouble
+     summarizingInt / summarizingLong / summarizingDouble
+     maxBy(Comparator), minBy(Comparator)
+     reducing(...)</pre>
+                    <p>String building</p>
+                    <pre class="hj-doc-art">     joining()
+     joining(separator)
+     joining(separator, prefix, suffix)</pre>
+                    <p>Composing</p>
+                    <pre class="hj-doc-art">     mapping(mapper, downstream)
+     collectingAndThen(downstream, finisher)
+     filtering(predicate, downstream)            (Java 9+)
+     flatMapping(mapper, downstream)             (Java 9+)
+     teeing(c1, c2, combiner)                    (Java 12+, very powerful)</pre>
+                    <h3>The &quot;downstream&quot; Pattern</h3>
+                    <p>Many collectors take a &quot;downstream&quot; collector that processes the values inside each
+                        group. That is how you compose interesting analytics:</p>
+                    <pre class="hj-doc-art">     groupingBy(department, summingDouble(Employee::salary))
+     groupingBy(department, mapping(Employee::name, toList()))</pre>
                 </div>
             </div>
 
@@ -1401,74 +1447,6 @@ import java.util.TreeMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-/**
- * java.util.stream.Collectors - The Collect-Toolbox
- * -------------------------------------------------
- * The Collectors class is a giant library of reusable collectors for use
- * with `stream.collect(...)`. Almost every &quot;build a structured result&quot;
- * task in stream code uses one.
- * &lt;p&gt;
- *
- * The Cheatsheet
- * --------------
- * &lt;p&gt;
- *
- *   Building collections
- *      toList()                          mutable List (Java 8) - prefer Stream.toList() for unmodifiable
- *      toSet()
- *      toUnmodifiableList / Set / Map    immutable (Java 10+)
- *      toCollection(Supplier)            specific collection type
- * &lt;p&gt;
- *
- *   Maps
- *      toMap(keyFn, valueFn)
- *      toMap(keyFn, valueFn, mergeFn)              resolve key conflicts
- *      toMap(keyFn, valueFn, mergeFn, mapFactory)  pick the Map impl
- *      toConcurrentMap(...)
- * &lt;p&gt;
- *
- *   Grouping
- *      groupingBy(classifier)
- *      groupingBy(classifier, downstreamCollector)
- *      groupingBy(classifier, mapFactory, downstreamCollector)
- *      partitioningBy(predicate)                   true/false split
- *      partitioningBy(predicate, downstreamCollector)
- *      groupingByConcurrent(...)
- * &lt;p&gt;
- *
- *   Counting + summarising
- *      counting()
- *      summingInt / summingLong / summingDouble
- *      averagingInt / averagingLong / averagingDouble
- *      summarizingInt / summarizingLong / summarizingDouble
- *      maxBy(Comparator), minBy(Comparator)
- *      reducing(...)
- * &lt;p&gt;
- *
- *   String building
- *      joining()
- *      joining(separator)
- *      joining(separator, prefix, suffix)
- * &lt;p&gt;
- *
- *   Composing
- *      mapping(mapper, downstream)
- *      collectingAndThen(downstream, finisher)
- *      filtering(predicate, downstream)            (Java 9+)
- *      flatMapping(mapper, downstream)             (Java 9+)
- *      teeing(c1, c2, combiner)                    (Java 12+, very powerful)
- * &lt;p&gt;
- *
- * The &quot;downstream&quot; Pattern
- * ------------------------
- * Many collectors take a &quot;downstream&quot; collector that processes the values
- * inside each group. That is how you compose interesting analytics:
- * &lt;p&gt;
- *
- *      groupingBy(department, summingDouble(Employee::salary))
- *      groupingBy(department, mapping(Employee::name, toList()))
- */
 
 public class CollectorsClass {
 

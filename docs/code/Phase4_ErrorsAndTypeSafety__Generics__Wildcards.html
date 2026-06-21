@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase4_ErrorsAndTypeSafety/Generics/Wildcards.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 175 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 105 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,77 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A WILDCARD `?` is an &quot;unknown type&quot; placeholder used in TYPE ARGUMENTS (when
-                        REFERRING to a generic type), never in type PARAMETER lists. It is how Java relaxes the &quot;generics
-                        are not covariant&quot; rule when you need it.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Wildcards (?)</h2>
+                    <p>A WILDCARD `?` is an &quot;unknown type&quot; placeholder used in TYPE ARGUMENTS (when REFERRING
+                        to a generic type), never in type PARAMETER lists. It is how Java relaxes the &quot;generics are
+                        not covariant&quot; rule when you need it.</p>
+                    <h3>Three Flavours</h3>
+                    <p>UNBOUNDED List&amp;lt;?&amp;gt;</p>
+                    <ul>
+                        <li>&quot;a list of SOMETHING - I don&#x27;t know or care what&quot;
+                        </li>
+                        <li>You can read elements only as Object.
+                        </li>
+                        <li>You cannot add anything except null.
+                        </li>
+                        <li>Useful for size, isEmpty, clear, toString, iteration as Object.
+                        </li>
+                    </ul>
+                    <p>UPPER-BOUNDED List&amp;lt;? extends Number&amp;gt;</p>
+                    <ul>
+                        <li>&quot;a list of Number or some subtype&quot; (PRODUCER)
+                        </li>
+                        <li>You can READ elements as Number.
+                        </li>
+                        <li>You CANNOT add anything (except null) - we don&#x27;t know which subtype.
+                        </li>
+                    </ul>
+                    <p>LOWER-BOUNDED List&amp;lt;? super Integer&amp;gt;</p>
+                    <ul>
+                        <li>&quot;a list that can hold Integer (Integer or any supertype)&quot; (CONSUMER)
+                        </li>
+                        <li>You can ADD Integer (and its subtypes).
+                        </li>
+                        <li>Reads come back typed as Object.
+                        </li>
+                    </ul>
+                    <h3>Why Wildcards Exist</h3>
+                    <p>Generics are INVARIANT: List&amp;lt;String&amp;gt; is NOT a List&amp;lt;Object&amp;gt; even
+                        though String is-a Object. This rule prevents you from putting a Date into a List&amp;lt;String&amp;gt;
+                        via an Object-typed reference - a feature, not a bug.</p>
+                    <p>But sometimes you only want to READ from a list of unknown type, or only WRITE Integers into a
+                        list of Numbers. Wildcards bridge the gap safely.</p>
+                    <h3>The PECS Mnemonic</h3>
+                    <pre class="hj-doc-art">     Producer Extends, Consumer Super.</pre>
+                    <ul>
+                        <li>If a parameter PRODUCES T values for you, use `? extends T`.
+                        </li>
+                        <li>If a parameter CONSUMES T values from you, use `? super T`.
+                        </li>
+                    </ul>
+                    <p>See PecsPrinciple.java for worked examples.</p>
+                    <h3>Wildcards vs Type Parameters - When to Use Which</h3>
+                    <ul>
+                        <li>Need to REFER to the type inside the method (return it, store it,
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    pass it to another generic method)?
+       -&gt; use a NAMED type parameter   &amp;lt;T&amp;gt;</pre>
+                    <ul>
+                        <li>Just consuming the collection or producing values from it?
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">       -&gt; a WILDCARD is more flexible.</pre>
+                    <pre class="hj-doc-art">     static &amp;lt;T&amp;gt; T firstOf(List&amp;lt;T&amp;gt; xs)              // need to RETURN a T
+     static void printAll(List&amp;lt;?&amp;gt; xs)                // just iterating
+     static double sumAll(List&amp;lt;? extends Number&amp;gt; xs)
+     static void addAllInts(List&amp;lt;? super Integer&amp;gt; into, int n)</pre>
                 </div>
             </div>
 
@@ -1400,75 +1464,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-/**
- * Wildcards (?)
- * -------------
- * A WILDCARD `?` is an &quot;unknown type&quot; placeholder used in TYPE ARGUMENTS
- * (when REFERRING to a generic type), never in type PARAMETER lists. It is
- * how Java relaxes the &quot;generics are not covariant&quot; rule when you need it.
- * &lt;p&gt;
- *
- * Three Flavours
- * --------------
- * &lt;p&gt;
- *
- *   UNBOUNDED      List&amp;lt;?&amp;gt;
- *      - &quot;a list of SOMETHING - I don&#x27;t know or care what&quot;
- *      - You can read elements only as Object.
- *      - You cannot add anything except null.
- *      - Useful for size, isEmpty, clear, toString, iteration as Object.
- * &lt;p&gt;
- *
- *   UPPER-BOUNDED  List&amp;lt;? extends Number&amp;gt;
- *      - &quot;a list of Number or some subtype&quot; (PRODUCER)
- *      - You can READ elements as Number.
- *      - You CANNOT add anything (except null) - we don&#x27;t know which subtype.
- * &lt;p&gt;
- *
- *   LOWER-BOUNDED  List&amp;lt;? super Integer&amp;gt;
- *      - &quot;a list that can hold Integer (Integer or any supertype)&quot; (CONSUMER)
- *      - You can ADD Integer (and its subtypes).
- *      - Reads come back typed as Object.
- * &lt;p&gt;
- *
- * Why Wildcards Exist
- * -------------------
- * Generics are INVARIANT: List&amp;lt;String&amp;gt; is NOT a List&amp;lt;Object&amp;gt; even though
- * String is-a Object. This rule prevents you from putting a Date into a
- * List&amp;lt;String&amp;gt; via an Object-typed reference - a feature, not a bug.
- * &lt;p&gt;
- *
- * But sometimes you only want to READ from a list of unknown type, or only
- * WRITE Integers into a list of Numbers. Wildcards bridge the gap safely.
- * &lt;p&gt;
- *
- * The PECS Mnemonic
- * -----------------
- *      Producer Extends, Consumer Super.
- * &lt;p&gt;
- *
- * - If a parameter PRODUCES T values for you, use `? extends T`.
- * - If a parameter CONSUMES T values from you, use `? super T`.
- * &lt;p&gt;
- *
- * See PecsPrinciple.java for worked examples.
- * &lt;p&gt;
- *
- * Wildcards vs Type Parameters - When to Use Which
- * ------------------------------------------------
- *   - Need to REFER to the type inside the method (return it, store it,
- *     pass it to another generic method)?
- *        -&gt; use a NAMED type parameter   &amp;lt;T&amp;gt;
- *   - Just consuming the collection or producing values from it?
- *        -&gt; a WILDCARD is more flexible.
- * &lt;p&gt;
- *
- *      static &amp;lt;T&amp;gt; T firstOf(List&amp;lt;T&amp;gt; xs)              // need to RETURN a T
- *      static void printAll(List&amp;lt;?&amp;gt; xs)                // just iterating
- *      static double sumAll(List&amp;lt;? extends Number&amp;gt; xs)
- *      static void addAllInts(List&amp;lt;? super Integer&amp;gt; into, int n)
- */
 
 public class Wildcards {
 

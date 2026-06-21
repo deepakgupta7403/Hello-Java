@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase0_SetupAndFirstPrograms/Output/FormattedOutput.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 97 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 64 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,37 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Beyond plain printf, Java offers two more ways to produce formatted text:</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Advanced Formatted Output</h2>
+                    <p>Beyond plain printf, Java offers two more ways to produce formatted text:</p>
+                    <ul>
+                        <li>String.format(...) -&gt; returns the formatted string (does not print).
+                        </li>
+                        <li>java.util.Formatter -&gt; the lower-level engine behind printf and format.
+                        </li>
+                        <li>Text Blocks (Java 15+) -&gt; multi-line string literals using &quot;&quot;&quot; delimiters.
+                        </li>
+                    </ul>
+                    <h3>Common Format Specifiers (Recap)</h3>
+                    <pre class="hj-doc-art">     %d   - decimal integer
+     %o   - octal integer
+     %x   - hexadecimal integer (use %X for uppercase)
+     %e   - scientific notation
+     %f   - floating point
+     %g   - general floating point (chooses %e or %f)
+     %s   - string (calls toString() for objects)
+     %c   - character
+     %b   - boolean
+     %t   - date/time (followed by a sub-specifier like %tY for year)
+     %n   - platform-specific line separator</pre>
+                    <h3>Argument Index</h3>
+                    <p>You can reference the same argument multiple times using &quot;1$&quot;, &quot;2$&quot;, etc.</p>
+                    <pre class="hj-doc-art">    &quot;%1$s is %1$s years old&quot;  -&gt; reuses argument #1 twice</pre>
                 </div>
             </div>
 
@@ -1393,38 +1420,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase0_SetupAndFirstPrograms.Output;
-
-/**
- * Advanced Formatted Output
- * -------------------------
- * Beyond plain printf, Java offers two more ways to produce formatted text:
- * &lt;p&gt;
- *
- *   1. String.format(...)  -&gt; returns the formatted string (does not print).
- *   2. java.util.Formatter -&gt; the lower-level engine behind printf and format.
- *   3. Text Blocks (Java 15+) -&gt; multi-line string literals using &quot;&quot;&quot; delimiters.
- * &lt;p&gt;
- *
- * Common Format Specifiers (Recap)
- * --------------------------------
- *      %d   - decimal integer
- *      %o   - octal integer
- *      %x   - hexadecimal integer (use %X for uppercase)
- *      %e   - scientific notation
- *      %f   - floating point
- *      %g   - general floating point (chooses %e or %f)
- *      %s   - string (calls toString() for objects)
- *      %c   - character
- *      %b   - boolean
- *      %t   - date/time (followed by a sub-specifier like %tY for year)
- *      %n   - platform-specific line separator
- * &lt;p&gt;
- *
- * Argument Index
- * --------------
- * You can reference the same argument multiple times using &quot;1$&quot;, &quot;2$&quot;, etc.
- *     &quot;%1$s is %1$s years old&quot;  -&gt; reuses argument #1 twice
- */
 
 public class FormattedOutput {
 

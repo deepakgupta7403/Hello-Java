@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/ThreadInterruption.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 157 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 93 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,66 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Java has NO safe way to forcefully stop another thread. Instead it has a COOPERATIVE
-                        cancellation mechanism: the INTERRUPT FLAG.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Thread Interruption</h2>
+                    <p>Java has NO safe way to forcefully stop another thread. Instead it has a COOPERATIVE cancellation
+                        mechanism: the INTERRUPT FLAG.</p>
+                    <h3>The Three Calls</h3>
+                    <p>t.interrupt() - set the interrupt flag on thread t.</p>
+                    <pre class="hj-doc-art">                                  If t is currently in a blocking call
+                                  (sleep, wait, join, park, etc.) it
+                                  throws InterruptedException AND the
+                                  flag is CLEARED.</pre>
+                    <p>t.isInterrupted() - read t&#x27;s flag without changing it.</p>
+                    <p>Thread.interrupted() - STATIC. Read AND CLEAR the current</p>
+                    <pre class="hj-doc-art">                                  thread&#x27;s flag. Use sparingly — you
+                                  often want to keep the flag set.</pre>
+                    <h3>What gets interrupted</h3>
+                    <p>Built-in interruptible operations (throw InterruptedException):</p>
+                    <pre class="hj-doc-art">    Thread.sleep / join / wait
+    Object.wait
+    BlockingQueue.put / take / offer-with-timeout
+    CountDownLatch.await
+    CyclicBarrier.await
+    Semaphore.acquire
+    Lock.lockInterruptibly / Condition.await
+    Future.get
+    LockSupport.park*  (sets the flag; does NOT throw)</pre>
+                    <p>Plain compute loops are NOT interrupted automatically — you must check the flag yourself with
+                        isInterrupted() / Thread.interrupted().</p>
+                    <h3>Best Practices</h3>
+                    <ul>
+                        <li>NEVER swallow InterruptedException silently. Either:
+                            <ul>
+                                <li>Restore the flag: Thread.currentThread().interrupt();
+                                </li>
+                                <li>Wrap and rethrow as a domain exception.
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     A library that hides the interrupt makes its callers&#x27; shutdown
+     logic impossible.</pre>
+                    <ul>
+                        <li>In compute loops, sprinkle:
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">       if (Thread.currentThread().isInterrupted()) break;   // exit cleanly</pre>
+                    <ul>
+                        <li>Prefer interruption over a custom &quot;stop&quot; boolean — it integrates
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     with every JDK blocking primitive for free.</pre>
+                    <ul>
+                        <li>interrupt() is the modern replacement for the deprecated
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     Thread.stop(). Forget Thread.stop ever existed.</pre>
                 </div>
             </div>
 
@@ -1399,69 +1453,6 @@
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.locks.LockSupport;
-
-/**
- * Thread Interruption
- * -------------------
- * Java has NO safe way to forcefully stop another thread. Instead it has
- * a COOPERATIVE cancellation mechanism: the INTERRUPT FLAG.
- * &lt;p&gt;
- *
- * The Three Calls
- * ---------------
- *   t.interrupt()                 - set the interrupt flag on thread t.
- *                                   If t is currently in a blocking call
- *                                   (sleep, wait, join, park, etc.) it
- *                                   throws InterruptedException AND the
- *                                   flag is CLEARED.
- * &lt;p&gt;
- *
- *   t.isInterrupted()             - read t&#x27;s flag without changing it.
- * &lt;p&gt;
- *
- *   Thread.interrupted()          - STATIC. Read AND CLEAR the current
- *                                   thread&#x27;s flag. Use sparingly — you
- *                                   often want to keep the flag set.
- * &lt;p&gt;
- *
- * What gets interrupted
- * ---------------------
- * Built-in interruptible operations (throw InterruptedException):
- *     Thread.sleep / join / wait
- *     Object.wait
- *     BlockingQueue.put / take / offer-with-timeout
- *     CountDownLatch.await
- *     CyclicBarrier.await
- *     Semaphore.acquire
- *     Lock.lockInterruptibly / Condition.await
- *     Future.get
- *     LockSupport.park*  (sets the flag; does NOT throw)
- * &lt;p&gt;
- *
- * Plain compute loops are NOT interrupted automatically — you must
- * check the flag yourself with isInterrupted() / Thread.interrupted().
- * &lt;p&gt;
- *
- * Best Practices
- * --------------
- *   1. NEVER swallow InterruptedException silently. Either:
- *        a) Restore the flag:  Thread.currentThread().interrupt();
- *        b) Wrap and rethrow as a domain exception.
- *      A library that hides the interrupt makes its callers&#x27; shutdown
- *      logic impossible.
- * &lt;p&gt;
- *
- *   2. In compute loops, sprinkle:
- *        if (Thread.currentThread().isInterrupted()) break;   // exit cleanly
- * &lt;p&gt;
- *
- *   3. Prefer interruption over a custom &quot;stop&quot; boolean — it integrates
- *      with every JDK blocking primitive for free.
- * &lt;p&gt;
- *
- *   4. interrupt() is the modern replacement for the deprecated
- *      Thread.stop(). Forget Thread.stop ever existed.
- */
 
 public class ThreadInterruption {
 

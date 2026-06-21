@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase1_CoreLanguage/PrimitiveDataTypes/ByteExample.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 41 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 32 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,19 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Byte :- The byte data type is an 8-bit signed two’s complement integer. The byte data type is
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>Byte :- The byte data type is an 8-bit signed two’s complement integer. The byte data type is
                         useful for saving memory in large arrays. Mainly in place of integers, since a byte is four
-                        times smaller than an integer....
-                    </div>
+                        times smaller than an integer. Minimum value is -128 (-2^7) Maximum value is 127 (inclusive)(2^7
+                        -1) Default value is 0 If The byte value increase more then 127 the it&#x27;s showing error
+                        incompatible type because BYTE hold value between -128 to 127 so after 127 it convert to int. if
+                        i need to use 300 as Byte so i need to cast the 300 into byte like this ... byte be = (byte)
+                        300</p>
                 </div>
             </div>
 
@@ -1396,14 +1402,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase1_CoreLanguage.PrimitiveDataTypes;
-
-/**Byte :- The byte data type is an 8-bit signed two’s complement integer.
- * The byte data type is useful for saving memory in large arrays. Mainly in place of integers, since a byte is four times smaller than an integer.
- * Minimum value is -128 (-2^7)
- * Maximum value is 127 (inclusive)(2^7 -1)
- * Default value is 0
- * If The byte value increase more then 127 the it&#x27;s showing error incompatible type because BYTE hold value between -128 to 127 so after 127 it convert to int.
- * if i need to use 300 as Byte so i need to cast the 300 into byte like this ...   byte be = (byte) 300   **/
 
 public class ByteExample {
 

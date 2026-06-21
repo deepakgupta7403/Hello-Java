@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase3_ObjectOrientation/BankingApp/SavingsAccount.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 33 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 22 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,22 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>SavingsAccount - &quot;is-a&quot; Account with an interest rate.</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>SavingsAccount - &quot;is-a&quot; Account with an interest rate.</p>
+                    <p>Demonstrates:</p>
+                    <ul>
+                        <li>INHERITANCE - extends Account, reuses its encapsulated balance API.
+                        </li>
+                        <li>POLYMORPHISM - overrides calculateInterest() so applyInterest() (a
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                    template method on Account) does the right thing per
+                    subclass at runtime.</pre>
                 </div>
             </div>
 
@@ -1394,16 +1406,6 @@
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase3_ObjectOrientation.BankingApp;
 
-/**
- * SavingsAccount - &quot;is-a&quot; Account with an interest rate.
- * &lt;p&gt;
- *
- * Demonstrates:
- *   - INHERITANCE   - extends Account, reuses its encapsulated balance API.
- *   - POLYMORPHISM  - overrides calculateInterest() so applyInterest() (a
- *                     template method on Account) does the right thing per
- *                     subclass at runtime.
- */
 public class SavingsAccount extends Account {
 
     private final double annualRate;       // e.g. 0.04 for 4% per year

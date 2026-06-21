@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/SequentialVsParallel.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 184 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 114 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,67 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Every Stream is one of:</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Sequential vs Parallel Streams</h2>
+                    <p>Every Stream is one of:</p>
+                    <p>SEQUENTIAL - one thread walks the pipeline element by element.</p>
+                    <pre class="hj-doc-art">               The DEFAULT mode.</pre>
+                    <p>PARALLEL - the source is SPLIT into chunks, each chunk processed on</p>
+                    <pre class="hj-doc-art">               a worker thread, and the results are MERGED at the end.</pre>
+                    <h3>How to Get Each</h3>
+                    <pre class="hj-doc-art">     list.stream()                       // sequential
+     list.parallelStream()               // parallel from the start
+     anyStream.parallel()                 // toggle on
+     anyStream.sequential()               // toggle back</pre>
+                    <h3>What Drives the Parallelism</h3>
+                    <p>Parallel streams run on the SHARED ForkJoinPool.commonPool. By default its size is
+                        `Runtime.getRuntime().availableProcessors() - 1`. That means EVERY parallel stream in your JVM
+                        shares the same workers. Long-running tasks in one parallel pipeline can starve another.</p>
+                    <h3>When Parallel Streams Help</h3>
+                    <ul>
+                        <li>Large data sets (millions of elements).
+                        </li>
+                        <li>CPU-bound, INDEPENDENT per-element work (each element&#x27;s compute is
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    unrelated to its neighbours).</pre>
+                    <ul>
+                        <li>The source SPLITS efficiently. ArrayList, arrays, IntStream.range
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    split well. LinkedList, Stream.iterate(...) do not.</pre>
+                    <ul>
+                        <li>The terminal op is well-defined for parallel: reduce, collect with
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    proper collectors. forEach is OK, forEachOrdered is slow.</pre>
+                    <h3>When Parallel HURTS</h3>
+                    <ul>
+                        <li>The data set is small.
+                        </li>
+                        <li>The per-element work is cheap.
+                        </li>
+                        <li>The source is hard to split (LinkedList, iterators).
+                        </li>
+                        <li>You need ENCOUNTER ORDER (forEachOrdered serialises everything).
+                        </li>
+                        <li>Your lambdas have SIDE EFFECTS or non-thread-safe state.
+                        </li>
+                    </ul>
+                    <h3>Side-Effect Trap</h3>
+                    <p>Parallel streams running side-effecting code is a data-race waiting to happen. Use proper
+                        reductions / collectors instead.</p>
+                    <h3>Order Differences</h3>
+                    <p>findFirst preserves encounter order in parallel (slow) findAny parallel-friendly - may return any
+                        matching forEach in parallel, no order guarantee forEachOrdered preserves encounter order even
+                        in parallel</p>
+                    <h3>Rule of Thumb</h3>
+                    <p>Use sequential unless you have measured a real speed-up with parallel.</p>
                 </div>
             </div>
 
@@ -1400,75 +1457,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
-
-/**
- * Sequential vs Parallel Streams
- * ------------------------------
- * Every Stream is one of:
- * &lt;p&gt;
- *
- *   SEQUENTIAL - one thread walks the pipeline element by element.
- *                The DEFAULT mode.
- * &lt;p&gt;
- *
- *   PARALLEL   - the source is SPLIT into chunks, each chunk processed on
- *                a worker thread, and the results are MERGED at the end.
- * &lt;p&gt;
- *
- * How to Get Each
- * ---------------
- *      list.stream()                       // sequential
- *      list.parallelStream()               // parallel from the start
- *      anyStream.parallel()                 // toggle on
- *      anyStream.sequential()               // toggle back
- * &lt;p&gt;
- *
- * What Drives the Parallelism
- * ---------------------------
- * Parallel streams run on the SHARED ForkJoinPool.commonPool. By default
- * its size is `Runtime.getRuntime().availableProcessors() - 1`. That means
- * EVERY parallel stream in your JVM shares the same workers. Long-running
- * tasks in one parallel pipeline can starve another.
- * &lt;p&gt;
- *
- * When Parallel Streams Help
- * --------------------------
- *   - Large data sets (millions of elements).
- *   - CPU-bound, INDEPENDENT per-element work (each element&#x27;s compute is
- *     unrelated to its neighbours).
- *   - The source SPLITS efficiently. ArrayList, arrays, IntStream.range
- *     split well. LinkedList, Stream.iterate(...) do not.
- *   - The terminal op is well-defined for parallel: reduce, collect with
- *     proper collectors. forEach is OK, forEachOrdered is slow.
- * &lt;p&gt;
- *
- * When Parallel HURTS
- * -------------------
- *   - The data set is small.
- *   - The per-element work is cheap.
- *   - The source is hard to split (LinkedList, iterators).
- *   - You need ENCOUNTER ORDER (forEachOrdered serialises everything).
- *   - Your lambdas have SIDE EFFECTS or non-thread-safe state.
- * &lt;p&gt;
- *
- * Side-Effect Trap
- * ----------------
- * Parallel streams running side-effecting code is a data-race waiting to
- * happen. Use proper reductions / collectors instead.
- * &lt;p&gt;
- *
- * Order Differences
- * -----------------
- *   findFirst                preserves encounter order in parallel (slow)
- *   findAny                  parallel-friendly - may return any matching
- *   forEach                  in parallel, no order guarantee
- *   forEachOrdered           preserves encounter order even in parallel
- * &lt;p&gt;
- *
- * Rule of Thumb
- * -------------
- * Use sequential unless you have measured a real speed-up with parallel.
- */
 
 public class SequentialVsParallel {
 

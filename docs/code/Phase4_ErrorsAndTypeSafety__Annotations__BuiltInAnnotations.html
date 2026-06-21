@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase4_ErrorsAndTypeSafety/Annotations/BuiltInAnnotations.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 111 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 63 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,39 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>The standard ones every Java developer should recognise.</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Built-In Annotations</h2>
+                    <p>The standard ones every Java developer should recognise.</p>
+                    <h3>Compiler / language family</h3>
+                    <p>@Override - &quot;I&#x27;m overriding a superclass method.&quot; The</p>
+                    <pre class="hj-doc-art">                           compiler errors if the signature doesn&#x27;t
+                           actually override anything.</pre>
+                    <p>@Deprecated - &quot;This is going away. Don&#x27;t add new uses.&quot;</p>
+                    <pre class="hj-doc-art">                           Java 9+ adds elements: since, forRemoval.</pre>
+                    <p>@SuppressWarnings(&quot;unchecked&quot;, &quot;rawtypes&quot;, ...)</p>
+                    <ul>
+                        <li>Tell the compiler to ignore named warnings
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                           in the smallest scope you can manage.</pre>
+                    <p>@SafeVarargs - &quot;This varargs method is safe even though it</p>
+                    <pre class="hj-doc-art">                           uses a generic type.&quot; See Generics section.</pre>
+                    <p>@FunctionalInterface - On an interface: error if it has more than</p>
+                    <pre class="hj-doc-art">                           one abstract method. Catches typos in
+                           single-method contracts.</pre>
+                    <h3>Meta-annotation family (used on YOUR annotations)</h3>
+                    <p>@Retention - SOURCE / CLASS / RUNTIME @Target - what code element it can attach to @Inherited -
+                        sub-classes inherit it from a class @Repeatable - declares an annotation as repeatable
+                        @Documented - include in javadoc</p>
+                    <h3>Reflection / serialization family</h3>
+                    <p>@Native - hint for native bytecode tools (rarely used). @Serial (Java 14+) - &quot;this is a
+                        serialization-related member.&quot; @SuppressWarnings(&quot;serial&quot;) - skip the
+                        missing-serialVersionUID warning.</p>
                 </div>
             </div>
 
@@ -1396,53 +1425,6 @@
 
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- * Built-In Annotations
- * --------------------
- * The standard ones every Java developer should recognise.
- * &lt;p&gt;
- *
- * Compiler / language family
- * --------------------------
- *   @Override              - &quot;I&#x27;m overriding a superclass method.&quot; The
- *                            compiler errors if the signature doesn&#x27;t
- *                            actually override anything.
- * &lt;p&gt;
- *
- *   @Deprecated            - &quot;This is going away. Don&#x27;t add new uses.&quot;
- *                            Java 9+ adds elements: since, forRemoval.
- * &lt;p&gt;
- *
- *   @SuppressWarnings(&quot;unchecked&quot;, &quot;rawtypes&quot;, ...)
- *                          - Tell the compiler to ignore named warnings
- *                            in the smallest scope you can manage.
- * &lt;p&gt;
- *
- *   @SafeVarargs           - &quot;This varargs method is safe even though it
- *                            uses a generic type.&quot; See Generics section.
- * &lt;p&gt;
- *
- *   @FunctionalInterface   - On an interface: error if it has more than
- *                            one abstract method. Catches typos in
- *                            single-method contracts.
- * &lt;p&gt;
- *
- * Meta-annotation family (used on YOUR annotations)
- * -------------------------------------------------
- *   @Retention             - SOURCE / CLASS / RUNTIME
- *   @Target                - what code element it can attach to
- *   @Inherited             - sub-classes inherit it from a class
- *   @Repeatable            - declares an annotation as repeatable
- *   @Documented            - include in javadoc
- * &lt;p&gt;
- *
- * Reflection / serialization family
- * ---------------------------------
- *   @Native                - hint for native bytecode tools (rarely used).
- *   @Serial (Java 14+)     - &quot;this is a serialization-related member.&quot;
- *   @SuppressWarnings(&quot;serial&quot;) - skip the missing-serialVersionUID warning.
- */
 
 @SuppressWarnings(&quot;unused&quot;)   // class-level scope, suppresses unused-warnings inside
 public class BuiltInAnnotations {

@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/SetInterface.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 127 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 77 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,42 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>java.util.Set&amp;lt;E&amp;gt; - No Duplicates Allowed</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.Set&amp;lt;E&amp;gt; - No Duplicates Allowed</h2>
+                    <p>Set extends Collection but ADDS NO NEW METHODS. The contract is:</p>
+                    <pre class="hj-doc-art">     &quot;this collection contains NO duplicate elements&quot;</pre>
+                    <p>What &quot;duplicate&quot; means is defined by .equals(...) - two elements are considered
+                        duplicates if a.equals(b). This means YOUR custom classes need a correct equals/hashCode for
+                        HashSet to work right.</p>
+                    <h3>The Set Family</h3>
+                    <p>HashSet - hash-table backed. ORDER NOT GUARANTEED. O(1) ops. LinkedHashSet - hash table + linked
+                        list. INSERTION ORDER. O(1) ops. TreeSet - red-black tree. SORTED ORDER. O(log n) ops.</p>
+                    <p>Set.of(...) - immutable, no nulls (Java 9+). EnumSet - super-fast Set for enum keys; bit-vector
+                        internally. CopyOnWriteArraySet - concurrent; backed by COW array.</p>
+                    <h3>SortedSet + NavigableSet (extra interfaces)</h3>
+                    <p>SortedSet methods: first(), last(), headSet, tailSet, subSet NavigableSet adds: floor(e),
+                        ceiling(e), lower(e), higher(e),</p>
+                    <pre class="hj-doc-art">                        pollFirst(), pollLast(), descendingSet()</pre>
+                    <h3>When To Use Which</h3>
+                    <ul>
+                        <li>No order needed, just uniqueness -&gt; HashSet (default).
+                        </li>
+                        <li>Need to iterate in insertion order -&gt; LinkedHashSet.
+                        </li>
+                        <li>Need elements always sorted -&gt; TreeSet.
+                        </li>
+                        <li>All elements are from one enum -&gt; EnumSet (fastest).
+                        </li>
+                    </ul>
+                    <h3>Important Contract - equals/hashCode</h3>
+                    <p>If you put your own classes in a HashSet, you MUST override hashCode and equals consistently. If
+                        two equal objects have different hash codes, they end up in different buckets and the set will
+                        hold both - the &quot;duplicates&quot; the Set promised to prevent.</p>
                 </div>
             </div>
 
@@ -1395,55 +1427,6 @@
           <pre class="line-numbers m-0"><code class="language-java">package Phase5_CollectionsLambdasStreams.Collections;
 
 import java.util.*;
-
-/**
- * java.util.Set&amp;lt;E&amp;gt; - No Duplicates Allowed
- * ----------------------------------------
- * Set extends Collection but ADDS NO NEW METHODS. The contract is:
- * &lt;p&gt;
- *
- *      &quot;this collection contains NO duplicate elements&quot;
- * &lt;p&gt;
- *
- * What &quot;duplicate&quot; means is defined by .equals(...) - two elements are
- * considered duplicates if a.equals(b). This means YOUR custom classes
- * need a correct equals/hashCode for HashSet to work right.
- * &lt;p&gt;
- *
- * The Set Family
- * --------------
- *   HashSet         - hash-table backed.  ORDER NOT GUARANTEED.  O(1) ops.
- *   LinkedHashSet   - hash table + linked list. INSERTION ORDER.  O(1) ops.
- *   TreeSet         - red-black tree. SORTED ORDER.  O(log n) ops.
- * &lt;p&gt;
- *
- *   Set.of(...)     - immutable, no nulls (Java 9+).
- *   EnumSet         - super-fast Set for enum keys; bit-vector internally.
- *   CopyOnWriteArraySet - concurrent; backed by COW array.
- * &lt;p&gt;
- *
- * SortedSet + NavigableSet (extra interfaces)
- * -------------------------------------------
- *   SortedSet methods:    first(), last(), headSet, tailSet, subSet
- *   NavigableSet adds:    floor(e), ceiling(e), lower(e), higher(e),
- *                         pollFirst(), pollLast(), descendingSet()
- * &lt;p&gt;
- *
- * When To Use Which
- * -----------------
- *   - No order needed, just uniqueness            -&gt; HashSet (default).
- *   - Need to iterate in insertion order          -&gt; LinkedHashSet.
- *   - Need elements always sorted                 -&gt; TreeSet.
- *   - All elements are from one enum              -&gt; EnumSet (fastest).
- * &lt;p&gt;
- *
- * Important Contract - equals/hashCode
- * ------------------------------------
- * If you put your own classes in a HashSet, you MUST override hashCode and
- * equals consistently. If two equal objects have different hash codes, they
- * end up in different buckets and the set will hold both - the &quot;duplicates&quot;
- * the Set promised to prevent.
- */
 
 public class SetInterface {
 

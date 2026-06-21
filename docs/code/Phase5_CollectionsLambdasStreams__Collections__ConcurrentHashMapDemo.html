@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/ConcurrentHashMapDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 160 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 104 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,61 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>The thread-safe, high-throughput replacement for both Hashtable and
-                        Collections.synchronizedMap. Internally it uses LOCK STRIPING + CAS - so many threads can read
-                        and write concurrently without one big mutex.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.concurrent.ConcurrentHashMap&amp;lt;K, V&amp;gt;</h2>
+                    <p>The thread-safe, high-throughput replacement for both Hashtable and Collections.synchronizedMap.
+                        Internally it uses LOCK STRIPING + CAS - so many threads can read and write concurrently without
+                        one big mutex.</p>
+                    <h3>Why It Exists</h3>
+                    <ul>
+                        <li>Hashtable is synchronized on every method, killing throughput.
+                        </li>
+                        <li>HashMap is not thread-safe at all.
+                        </li>
+                        <li>Collections.synchronizedMap wraps a HashMap with one global lock,
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    which serialises all access.</pre>
+                    <p>ConcurrentHashMap aims for the throughput of HashMap with the safety of Hashtable.</p>
+                    <h3>Key Properties</h3>
+                    <ul>
+                        <li>Thread-safe for ALL operations.
+                        </li>
+                        <li>Iterators are WEAKLY CONSISTENT - they reflect the state at some
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    point and never throw ConcurrentModificationException, but may or
+    may not see concurrent updates.</pre>
+                    <ul>
+                        <li>Does NOT allow null keys or null values (a deliberate safety
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    decision - &quot;no value&quot; can be reported with getOrDefault).</pre>
+                    <ul>
+                        <li>Aggregate operations (mappingCount, forEach, search, reduce) take
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    a &quot;parallelism threshold&quot; - 1 means use the common ForkJoinPool.</pre>
+                    <h3>Atomic Idioms You&#x27;ll Use Constantly</h3>
+                    <p>map.putIfAbsent(k, v) - thread-safe &quot;insert if missing&quot; map.computeIfAbsent(k, fn) -
+                        lazy init (single-flight) map.compute(k, fn) - atomic transform of one entry map.merge(k, value,
+                        mergeFn) - the canonical counter pattern map.replace(k, oldV, newV) - CAS-style update</p>
+                    <h3>Big-O (Expected)</h3>
+                    <p>get / put / remove O(1) average contains / containsKey / size O(1) (size is approximate at</p>
+                    <pre class="hj-doc-art">                                                      any given instant)</pre>
+                    <p>mappingCount() long-typed exact count</p>
+                    <h3>When NOT To Use It</h3>
+                    <ul>
+                        <li>Single-threaded code -&gt; HashMap is faster and accepts null.
+                        </li>
+                        <li>You need a sorted concurrent map -&gt; ConcurrentSkipListMap.
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1401,61 +1449,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.LongAdder;
-
-/**
- * java.util.concurrent.ConcurrentHashMap&amp;lt;K, V&amp;gt;
- * --------------------------------------------
- * The thread-safe, high-throughput replacement for both Hashtable and
- * Collections.synchronizedMap. Internally it uses LOCK STRIPING + CAS - so
- * many threads can read and write concurrently without one big mutex.
- * &lt;p&gt;
- *
- * Why It Exists
- * -------------
- *   - Hashtable is synchronized on every method, killing throughput.
- *   - HashMap is not thread-safe at all.
- *   - Collections.synchronizedMap wraps a HashMap with one global lock,
- *     which serialises all access.
- * &lt;p&gt;
- *
- * ConcurrentHashMap aims for the throughput of HashMap with the safety
- * of Hashtable.
- * &lt;p&gt;
- *
- * Key Properties
- * --------------
- *   - Thread-safe for ALL operations.
- *   - Iterators are WEAKLY CONSISTENT - they reflect the state at some
- *     point and never throw ConcurrentModificationException, but may or
- *     may not see concurrent updates.
- *   - Does NOT allow null keys or null values (a deliberate safety
- *     decision - &quot;no value&quot; can be reported with getOrDefault).
- *   - Aggregate operations (mappingCount, forEach, search, reduce) take
- *     a &quot;parallelism threshold&quot; - 1 means use the common ForkJoinPool.
- * &lt;p&gt;
- *
- * Atomic Idioms You&#x27;ll Use Constantly
- * -----------------------------------
- *   map.putIfAbsent(k, v)              - thread-safe &quot;insert if missing&quot;
- *   map.computeIfAbsent(k, fn)         - lazy init (single-flight)
- *   map.compute(k, fn)                 - atomic transform of one entry
- *   map.merge(k, value, mergeFn)       - the canonical counter pattern
- *   map.replace(k, oldV, newV)         - CAS-style update
- * &lt;p&gt;
- *
- * Big-O (Expected)
- * ----------------
- *   get / put / remove                          O(1) average
- *   contains / containsKey / size               O(1) (size is approximate at
- *                                                       any given instant)
- *   mappingCount()                              long-typed exact count
- * &lt;p&gt;
- *
- * When NOT To Use It
- * ------------------
- *   - Single-threaded code -&gt; HashMap is faster and accepts null.
- *   - You need a sorted concurrent map -&gt; ConcurrentSkipListMap.
- */
 
 public class ConcurrentHashMapDemo {
 

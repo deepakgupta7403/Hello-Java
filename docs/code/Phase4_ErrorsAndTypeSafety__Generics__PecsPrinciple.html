@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase4_ErrorsAndTypeSafety/Generics/PecsPrinciple.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 176 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 130 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,34 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>The most famous rule of generic API design, coined by Joshua Bloch in &quot;Effective Java&quot;.
-                        It tells you which wildcard to use:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>PECS - Producer Extends, Consumer Super</h2>
+                    <p>The most famous rule of generic API design, coined by Joshua Bloch in &quot;Effective Java&quot;.
+                        It tells you which wildcard to use:</p>
+                    <pre class="hj-doc-art">     PRODUCER produces T values for me  -&gt;  Collection&amp;lt;? extends T&amp;gt;
+     CONSUMER consumes T values from me -&gt;  Collection&amp;lt;? super T&amp;gt;
+     Neither (does both)                 -&gt;  plain Collection&amp;lt;T&amp;gt; (no wildcard)</pre>
+                    <h3>Why It Matters</h3>
+                    <p>Picking the wrong bound makes a generic method LESS USEFUL than it could be. A method that &quot;reads
+                        Numbers from a list&quot; should accept `List&amp;lt;? extends Number&amp;gt;`, not just `List&amp;lt;Number&amp;gt;`
+                        - otherwise callers with a `List&amp;lt;Integer&amp;gt;` get a compile error.</p>
+                    <h3>Worked Example: Collections.copy / addAll / sort</h3>
+                    <p>The JDK applies PECS systematically:</p>
+                    <pre class="hj-doc-art">     // copy(dest, src) - src PRODUCES, dest CONSUMES
+     public static &amp;lt;T&amp;gt; void copy(List&amp;lt;? super T&amp;gt; dest, List&amp;lt;? extends T&amp;gt; src)</pre>
+                    <pre class="hj-doc-art">     // addAll(c, elements) - c CONSUMES the varargs PRODUCER
+     public static &amp;lt;T&amp;gt; boolean addAll(Collection&amp;lt;? super T&amp;gt; c, T... elements)</pre>
+                    <pre class="hj-doc-art">     // sort with a comparator that COMPARES (consumes) T or any supertype
+     public static &amp;lt;T&amp;gt; void sort(List&amp;lt;T&amp;gt; list, Comparator&amp;lt;? super T&amp;gt; c)</pre>
+                    <h3>The Quick Test</h3>
+                    <p>For every method parameter ask: &quot;Will I PULL items out of this and use them as T?&quot; -&gt;
+                        `? extends T` (producer) &quot;Will I PUSH items into this typed as T?&quot; -&gt; `? super T`
+                        (consumer) &quot;Both?&quot; -&gt; `T` (no wildcard)</p>
                 </div>
             </div>
 
@@ -1400,51 +1422,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-
-/**
- * PECS - Producer Extends, Consumer Super
- * ---------------------------------------
- * The most famous rule of generic API design, coined by Joshua Bloch in
- * &quot;Effective Java&quot;. It tells you which wildcard to use:
- * &lt;p&gt;
- *
- *      PRODUCER produces T values for me  -&gt;  Collection&amp;lt;? extends T&amp;gt;
- *      CONSUMER consumes T values from me -&gt;  Collection&amp;lt;? super T&amp;gt;
- *      Neither (does both)                 -&gt;  plain Collection&amp;lt;T&amp;gt; (no wildcard)
- * &lt;p&gt;
- *
- * Why It Matters
- * --------------
- * Picking the wrong bound makes a generic method LESS USEFUL than it could
- * be. A method that &quot;reads Numbers from a list&quot; should accept
- * `List&amp;lt;? extends Number&amp;gt;`, not just `List&amp;lt;Number&amp;gt;` - otherwise callers
- * with a `List&amp;lt;Integer&amp;gt;` get a compile error.
- * &lt;p&gt;
- *
- * Worked Example: Collections.copy / addAll / sort
- * ------------------------------------------------
- * The JDK applies PECS systematically:
- * &lt;p&gt;
- *
- *      // copy(dest, src) - src PRODUCES, dest CONSUMES
- *      public static &amp;lt;T&amp;gt; void copy(List&amp;lt;? super T&amp;gt; dest, List&amp;lt;? extends T&amp;gt; src)
- * &lt;p&gt;
- *
- *      // addAll(c, elements) - c CONSUMES the varargs PRODUCER
- *      public static &amp;lt;T&amp;gt; boolean addAll(Collection&amp;lt;? super T&amp;gt; c, T... elements)
- * &lt;p&gt;
- *
- *      // sort with a comparator that COMPARES (consumes) T or any supertype
- *      public static &amp;lt;T&amp;gt; void sort(List&amp;lt;T&amp;gt; list, Comparator&amp;lt;? super T&amp;gt; c)
- * &lt;p&gt;
- *
- * The Quick Test
- * --------------
- * For every method parameter ask:
- *   &quot;Will I PULL items out of this and use them as T?&quot; -&gt; `? extends T` (producer)
- *   &quot;Will I PUSH items into this typed as T?&quot;          -&gt; `? super T`   (consumer)
- *   &quot;Both?&quot;                                            -&gt; `T`           (no wildcard)
- */
 
 public class PecsPrinciple {
 

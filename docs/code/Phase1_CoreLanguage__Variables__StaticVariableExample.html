@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase1_CoreLanguage/Variables/StaticVariableExample.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 33 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 20 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,24 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Static variables are also known as Class variables. These variables are declared similarly as
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>Static variables are also known as Class variables. These variables are declared similarly as
                         instance variables, the difference is that static variables are declared using the static
-                        keyword within a class outside an...
-                    </div>
+                        keyword within a class outside any method constructor or block. Unlike instance variables, we
+                        can only have one copy of a static variable per class irrespective of how many objects we
+                        create. Static variables are created at the start of program execution and destroyed
+                        automatically when execution ends. Initialisation of Static Variable is not Mandatory. Its
+                        default value is 0. If we access the static variable like Instance variable (through an object),
+                        the compiler will show the warning message and it won’t halt the program. The compiler will
+                        replace the object name to class name automatically. If we access the static variable without
+                        the class name, Compiler will automatically append the class name.</p>
+                    <p>To access static variables, we need not create an object of that class, we can simply access the
+                        variable as class_name.variable_name;</p>
                 </div>
             </div>
 
@@ -1397,18 +1408,6 @@
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase1_CoreLanguage.Variables;
 
-/**Static variables are also known as Class variables.
- * These variables are declared similarly as instance variables, the difference is that static variables are declared using the static keyword within a class outside any method constructor or block.
- * Unlike instance variables, we can only have one copy of a static variable per class irrespective of how many objects we create.
- * Static variables are created at the start of program execution and destroyed automatically when execution ends.
- * Initialisation of Static Variable is not Mandatory. Its default value is 0.
- * If we access the static variable like Instance variable (through an object), the compiler will show the warning message and it won’t halt the program. The compiler will replace the object name to class name automatically.
- * If we access the static variable without the class name, Compiler will automatically append the class name.
- * &lt;p&gt;
- *
- * To access static variables, we need not create an object of that class, we can simply access the variable as
- * class_name.variable_name;
- * **/
 public class StaticVariableExample {
     // static variable salary
     public static double salary;

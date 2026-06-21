@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase8_PracticalAPIs/FileIO/FileChannelDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 129 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 79 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,68 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>FileChannel is the NIO answer to RandomAccessFile and a bunch of OS-level features:</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>FileChannel — Random Access, Memory Mapping, Locks</h2>
+                    <p>FileChannel is the NIO answer to RandomAccessFile and a bunch of OS-level features:</p>
+                    <ul>
+                        <li>Random access (seek with position()).
+                        </li>
+                        <li>Bulk reads/writes via ByteBuffer.
+                        </li>
+                        <li>Direct memory transfers between channels (transferTo / transferFrom).
+                        </li>
+                        <li>MEMORY MAPPING — map a region of a file into memory; treat it
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    like a giant array.</pre>
+                    <ul>
+                        <li>File LOCKS — advisory, OS-level locking for shared / exclusive
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    access.</pre>
+                    <h3>How to obtain one</h3>
+                    <pre class="hj-doc-art">     FileChannel.open(path, options...)             // preferred
+     new RandomAccessFile(file, &quot;rw&quot;).getChannel()  // legacy</pre>
+                    <h3>The mental model</h3>
+                    <ul>
+                        <li>A channel has a POSITION (where the next read/write happens).
+                        </li>
+                        <li>You move bytes between the channel and a ByteBuffer.
+                        </li>
+                        <li>ByteBuffer has its own position / limit / capacity. Don&#x27;t forget
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    to call buf.flip() between writing-into-the-buffer and reading-
+    out-of-it.</pre>
+                    <h3>Memory-mapped files</h3>
+                    <p>For very large files, mapping a region into memory lets the OS handle paging. Lightning fast
+                        reads, but:</p>
+                    <ul>
+                        <li>The mapping isn&#x27;t released until GC; explicit clean-up is JVM-
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    specific (sun.misc.Unsafe, etc.) — avoid mapping huge files in a
+    loop.</pre>
+                    <ul>
+                        <li>On Windows, the file may stay locked until the JVM exits.
+                        </li>
+                    </ul>
+                    <h3>When to use FileChannel</h3>
+                    <ul>
+                        <li>Random-access updates of a large file.
+                        </li>
+                        <li>High-throughput copy with transferTo (zero-copy on many OSes).
+                        </li>
+                        <li>Memory mapping for binary search / index access.
+                        </li>
+                        <li>Cross-process file locking.
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1403,55 +1461,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
-
-/**
- * FileChannel — Random Access, Memory Mapping, Locks
- * --------------------------------------------------
- * FileChannel is the NIO answer to RandomAccessFile and a bunch of OS-level
- * features:
- * &lt;p&gt;
- *
- *   - Random access (seek with position()).
- *   - Bulk reads/writes via ByteBuffer.
- *   - Direct memory transfers between channels (transferTo / transferFrom).
- *   - MEMORY MAPPING — map a region of a file into memory; treat it
- *     like a giant array.
- *   - File LOCKS — advisory, OS-level locking for shared / exclusive
- *     access.
- * &lt;p&gt;
- *
- * How to obtain one
- * -----------------
- *      FileChannel.open(path, options...)             // preferred
- *      new RandomAccessFile(file, &quot;rw&quot;).getChannel()  // legacy
- * &lt;p&gt;
- *
- * The mental model
- * ----------------
- *   - A channel has a POSITION (where the next read/write happens).
- *   - You move bytes between the channel and a ByteBuffer.
- *   - ByteBuffer has its own position / limit / capacity. Don&#x27;t forget
- *     to call buf.flip() between writing-into-the-buffer and reading-
- *     out-of-it.
- * &lt;p&gt;
- *
- * Memory-mapped files
- * -------------------
- * For very large files, mapping a region into memory lets the OS handle
- * paging. Lightning fast reads, but:
- *   - The mapping isn&#x27;t released until GC; explicit clean-up is JVM-
- *     specific (sun.misc.Unsafe, etc.) — avoid mapping huge files in a
- *     loop.
- *   - On Windows, the file may stay locked until the JVM exits.
- * &lt;p&gt;
- *
- * When to use FileChannel
- * -----------------------
- *   - Random-access updates of a large file.
- *   - High-throughput copy with transferTo (zero-copy on many OSes).
- *   - Memory mapping for binary search / index access.
- *   - Cross-process file locking.
- */
 
 public class FileChannelDemo {
 

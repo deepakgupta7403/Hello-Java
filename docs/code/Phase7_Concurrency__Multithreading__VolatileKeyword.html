@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/VolatileKeyword.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 143 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 85 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,69 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>`volatile` is a FIELD modifier that gives you two memory-model guarantees — but NOT mutual
-                        exclusion.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>The `volatile` Keyword</h2>
+                    <p>`volatile` is a FIELD modifier that gives you two memory-model guarantees — but NOT mutual
+                        exclusion.</p>
+                    <pre class="hj-doc-art">     private volatile boolean stop;
+     private volatile State state;</pre>
+                    <h3>What volatile guarantees</h3>
+                    <ul>
+                        <li>VISIBILITY — a write to a volatile field is IMMEDIATELY visible
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     to subsequent reads of the SAME field, on any thread.</pre>
+                    <ul>
+                        <li>ORDERING — actions BEFORE a volatile write happen-before any
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     subsequent read of that volatile (the &quot;release/acquire&quot; pair).</pre>
+                    <ul>
+                        <li>ATOMIC FOR LONG/DOUBLE — reads and writes of volatile longs and
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     doubles are atomic even on 32-bit JVMs.</pre>
+                    <h3>What volatile DOES NOT do</h3>
+                    <ul>
+                        <li>It does NOT provide mutual exclusion. `count++` on a volatile int
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    is still racy because the increment is a read-modify-write.</pre>
+                    <ul>
+                        <li>It does NOT make compound operations atomic. Use an Atomic*, a
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    lock, or synchronized for that.</pre>
+                    <h3>The classic safe-publication pattern: DOUBLE-CHECKED LOCKING</h3>
+                    <pre class="hj-doc-art">     class Cfg {
+         private static volatile Cfg INSTANCE;     // &lt;-- must be volatile
+         static Cfg get() {
+             Cfg c = INSTANCE;
+             if (c == null) {
+                 synchronized (Cfg.class) {
+                     c = INSTANCE;
+                     if (c == null) INSTANCE = c = new Cfg();
+                 }
+             }
+             return c;
+         }
+     }</pre>
+                    <p>Without `volatile`, another thread could see a non-null INSTANCE whose fields are still default
+                        values (broken initialisation).</p>
+                    <h3>Idiomatic uses of `volatile`</h3>
+                    <ul>
+                        <li>A SINGLE-WRITER stop / cancel flag.
+                        </li>
+                        <li>Publishing an IMMUTABLE reference once and snapshotting it.
+                        </li>
+                        <li>State machine &quot;current state&quot; where every transition is a write.
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1395,63 +1452,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase7_Concurrency.Multithreading;
-
-/**
- * The `volatile` Keyword
- * ----------------------
- * `volatile` is a FIELD modifier that gives you two memory-model
- * guarantees — but NOT mutual exclusion.
- * &lt;p&gt;
- *
- *      private volatile boolean stop;
- *      private volatile State state;
- * &lt;p&gt;
- *
- * What volatile guarantees
- * ------------------------
- *   1. VISIBILITY — a write to a volatile field is IMMEDIATELY visible
- *      to subsequent reads of the SAME field, on any thread.
- *   2. ORDERING  — actions BEFORE a volatile write happen-before any
- *      subsequent read of that volatile (the &quot;release/acquire&quot; pair).
- *   3. ATOMIC FOR LONG/DOUBLE — reads and writes of volatile longs and
- *      doubles are atomic even on 32-bit JVMs.
- * &lt;p&gt;
- *
- * What volatile DOES NOT do
- * -------------------------
- *   - It does NOT provide mutual exclusion. `count++` on a volatile int
- *     is still racy because the increment is a read-modify-write.
- *   - It does NOT make compound operations atomic. Use an Atomic*, a
- *     lock, or synchronized for that.
- * &lt;p&gt;
- *
- * The classic safe-publication pattern: DOUBLE-CHECKED LOCKING
- * ------------------------------------------------------------
- *      class Cfg {
- *          private static volatile Cfg INSTANCE;     // &lt;-- must be volatile
- *          static Cfg get() {
- *              Cfg c = INSTANCE;
- *              if (c == null) {
- *                  synchronized (Cfg.class) {
- *                      c = INSTANCE;
- *                      if (c == null) INSTANCE = c = new Cfg();
- *                  }
- *              }
- *              return c;
- *          }
- *      }
- * &lt;p&gt;
- *
- * Without `volatile`, another thread could see a non-null INSTANCE
- * whose fields are still default values (broken initialisation).
- * &lt;p&gt;
- *
- * Idiomatic uses of `volatile`
- * ----------------------------
- *   - A SINGLE-WRITER stop / cancel flag.
- *   - Publishing an IMMUTABLE reference once and snapshotting it.
- *   - State machine &quot;current state&quot; where every transition is a write.
- */
 
 public class VolatileKeyword {
 

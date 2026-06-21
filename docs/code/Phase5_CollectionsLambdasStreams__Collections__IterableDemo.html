@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/IterableDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 164 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 112 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,48 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>java.lang.Iterable&amp;lt;T&amp;gt; - The &quot;for-each&quot; Contract</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.lang.Iterable&amp;lt;T&amp;gt; - The &quot;for-each&quot; Contract</h2>
+                    <p>Any class that implements Iterable can be used in Java&#x27;s enhanced for-each loop:</p>
+                    <pre class="hj-doc-art">     for (Item i : container) { ... }</pre>
+                    <p>The compiler rewrites that loop to call iterator() on `container` and then drive it. Implementing
+                        Iterable is therefore the simplest way to make your own class loopable.</p>
+                    <h3>The Iterable Contract (Java 8+)</h3>
+                    <pre class="hj-doc-art">     Iterator&amp;lt;T&amp;gt; iterator()                    [required]
+     default void forEach(Consumer&amp;lt;? super T&amp;gt;) [added in Java 8]
+     default Spliterator&amp;lt;T&amp;gt; spliterator()      [added in Java 8]</pre>
+                    <p>The two defaults give every Iterable a forEach(...) and stream() (indirectly through spliterator)
+                        for free.</p>
+                    <h3>Relationship to Other Types</h3>
+                    <pre class="hj-doc-art">     Iterable&lt;T&gt;                              &lt;-- root
+        |
+        v
+     Collection&lt;T&gt;     - List, Set, Queue, Deque
+     Path, FileChannel.LinesStream, ...       - various other types</pre>
+                    <h3>Why Implement Iterable?</h3>
+                    <ul>
+                        <li>Domain objects with collection-like behaviour (&quot;matrix rows&quot;,
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    &quot;events in a session&quot;) become loopable.</pre>
+                    <ul>
+                        <li>Stream support follows automatically with
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    StreamSupport.stream(it.spliterator(), false).</pre>
+                    <ul>
+                        <li>Any user of your type can stop caring whether you store data in an
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    ArrayList, a database cursor, or a generator.</pre>
+                    <h3>Two Custom Iterables Below</h3>
+                    <p>IntRange - generates 0..n-1 lazily; no backing storage. LinkedChain - tiny linked list, with its
+                        own Iterator implementation.</p>
                 </div>
             </div>
 
@@ -1398,57 +1436,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Spliterator;
-
-/**
- * java.lang.Iterable&amp;lt;T&amp;gt; - The &quot;for-each&quot; Contract
- * -----------------------------------------------
- * Any class that implements Iterable can be used in Java&#x27;s enhanced
- * for-each loop:
- * &lt;p&gt;
- *
- *      for (Item i : container) { ... }
- * &lt;p&gt;
- *
- * The compiler rewrites that loop to call iterator() on `container` and
- * then drive it. Implementing Iterable is therefore the simplest way to
- * make your own class loopable.
- * &lt;p&gt;
- *
- * The Iterable Contract (Java 8+)
- * -------------------------------
- *      Iterator&amp;lt;T&amp;gt; iterator()                    [required]
- *      default void forEach(Consumer&amp;lt;? super T&amp;gt;) [added in Java 8]
- *      default Spliterator&amp;lt;T&amp;gt; spliterator()      [added in Java 8]
- * &lt;p&gt;
- *
- * The two defaults give every Iterable a forEach(...) and stream()
- * (indirectly through spliterator) for free.
- * &lt;p&gt;
- *
- * Relationship to Other Types
- * ---------------------------
- *      Iterable&lt;T&gt;                              &lt;-- root
- *         |
- *         v
- *      Collection&lt;T&gt;     - List, Set, Queue, Deque
- *      Path, FileChannel.LinesStream, ...       - various other types
- * &lt;p&gt;
- *
- * Why Implement Iterable?
- * -----------------------
- *   - Domain objects with collection-like behaviour (&quot;matrix rows&quot;,
- *     &quot;events in a session&quot;) become loopable.
- *   - Stream support follows automatically with
- *     StreamSupport.stream(it.spliterator(), false).
- *   - Any user of your type can stop caring whether you store data in an
- *     ArrayList, a database cursor, or a generator.
- * &lt;p&gt;
- *
- * Two Custom Iterables Below
- * --------------------------
- *   IntRange       - generates 0..n-1 lazily; no backing storage.
- *   LinkedChain    - tiny linked list, with its own Iterator implementation.
- */
 
 public class IterableDemo {
 

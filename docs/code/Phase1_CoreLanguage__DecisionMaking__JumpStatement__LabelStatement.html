@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase1_CoreLanguage/DecisionMaking/JumpStatement/LabelStatement.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 59 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 39 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,18 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Java does not have a goto statement because it provides a way to branch in an arbitrary and
-                        unstructured manner. Java uses label. A Label is use to identifies a block of code. Syntax:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>Java does not have a goto statement because it provides a way to branch in an arbitrary and
+                        unstructured manner. Java uses label. A Label is use to identifies a block of code. Syntax:</p>
+                    <p>label: { statement1; statement2; statement3; . . }</p>
+                    <p>Now, break statement can be use to jump out of target block. Note: You cannot break to any label
+                        which is not defined for an enclosing block. Syntax:</p>
+                    <p>break label;</p>
                 </div>
             </div>
 
@@ -1395,25 +1401,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase1_CoreLanguage.DecisionMaking.JumpStatement;
-
-/**Java does not have a goto statement because it provides a way to branch in an arbitrary and unstructured manner.
- * Java uses label. A Label is use to identifies a block of code.
- Syntax:
-
- label:
- {
- statement1;
- statement2;
- statement3;
- .
- .
- }
-
- Now, break statement can be use to jump out of target block.
- Note: You cannot break to any label which is not defined for an enclosing block.
- Syntax:
-
- break label;**/
 
 public class LabelStatement {
 

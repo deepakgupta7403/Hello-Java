@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/ThreadJoinMethod.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 125 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 79 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,53 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Wait for another thread to finish.</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Thread.join(...)</h2>
+                    <p>Wait for another thread to finish.</p>
+                    <pre class="hj-doc-art">     otherThread.join();             // wait forever
+     otherThread.join(ms);           // wait up to ms milliseconds
+     otherThread.join(ms, nanos);    // ditto, plus nanos
+     otherThread.join(Duration d);   // Java 19+</pre>
+                    <p>The CURRENT thread is parked until either: (a) `otherThread` reaches TERMINATED, or (b) the
+                        optional timeout elapses, or (c) the current thread is interrupted (InterruptedException).</p>
+                    <h3>Why join?</h3>
+                    <ul>
+                        <li>Coordinate &quot;wait for this background task to finish&quot; without busy
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    waiting.</pre>
+                    <ul>
+                        <li>Compute fan-out + fan-in patterns.
+                        </li>
+                        <li>Make sure a worker has done its job before reading the result it
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    produced (the JMM guarantees a happens-before edge from the joined
+    thread&#x27;s last action to the joiner&#x27;s wake-up).</pre>
+                    <h3>Memory model promise</h3>
+                    <p>Everything `otherThread` did BEFORE finishing is visible to the caller of `otherThread.join()`
+                        AFTER the join returns. This is one of the cleanest happens-before relationships you get for
+                        free.</p>
+                    <h3>Pitfalls</h3>
+                    <ul>
+                        <li>Joining the current thread (Thread.currentThread().join()) hangs.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    Don&#x27;t.</pre>
+                    <ul>
+                        <li>join(0) means &quot;wait indefinitely&quot;, NOT &quot;don&#x27;t wait.&quot;
+                        </li>
+                        <li>Like other waits, join is interruptible — handle the exception.
+                        </li>
+                        <li>For many tasks, use an ExecutorService + Future.get() instead of
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    juggling Threads and joins.</pre>
                 </div>
             </div>
 
@@ -1395,51 +1438,6 @@
           <pre class="line-numbers m-0"><code class="language-java">package Phase7_Concurrency.Multithreading;
 
 import java.time.Duration;
-
-/**
- * Thread.join(...)
- * ----------------
- * Wait for another thread to finish.
- * &lt;p&gt;
- *
- *      otherThread.join();             // wait forever
- *      otherThread.join(ms);           // wait up to ms milliseconds
- *      otherThread.join(ms, nanos);    // ditto, plus nanos
- *      otherThread.join(Duration d);   // Java 19+
- * &lt;p&gt;
- *
- * The CURRENT thread is parked until either:
- *   (a) `otherThread` reaches TERMINATED, or
- *   (b) the optional timeout elapses, or
- *   (c) the current thread is interrupted (InterruptedException).
- * &lt;p&gt;
- *
- * Why join?
- * ---------
- *   - Coordinate &quot;wait for this background task to finish&quot; without busy
- *     waiting.
- *   - Compute fan-out + fan-in patterns.
- *   - Make sure a worker has done its job before reading the result it
- *     produced (the JMM guarantees a happens-before edge from the joined
- *     thread&#x27;s last action to the joiner&#x27;s wake-up).
- * &lt;p&gt;
- *
- * Memory model promise
- * --------------------
- * Everything `otherThread` did BEFORE finishing is visible to the caller
- * of `otherThread.join()` AFTER the join returns. This is one of the
- * cleanest happens-before relationships you get for free.
- * &lt;p&gt;
- *
- * Pitfalls
- * --------
- *   - Joining the current thread (Thread.currentThread().join()) hangs.
- *     Don&#x27;t.
- *   - join(0) means &quot;wait indefinitely&quot;, NOT &quot;don&#x27;t wait.&quot;
- *   - Like other waits, join is interruptible — handle the exception.
- *   - For many tasks, use an ExecutorService + Future.get() instead of
- *     juggling Threads and joins.
- */
 
 public class ThreadJoinMethod {
 

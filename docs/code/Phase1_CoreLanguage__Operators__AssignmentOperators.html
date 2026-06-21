@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase1_CoreLanguage/Operators/AssignmentOperators.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 93 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 48 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,38 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>The basic assignment operator is = and the COMPOUND assignment operators combine an arithmetic
-                        / bitwise operator with assignment:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Assignment Operators</h2>
+                    <p>The basic assignment operator is = and the COMPOUND assignment operators combine an arithmetic /
+                        bitwise operator with assignment:</p>
+                    <pre class="hj-doc-art">     =      simple assignment
+     +=     a += b   -&gt; a = a + b
+     -=     a -= b   -&gt; a = a - b
+     *=     a *= b   -&gt; a = a * b
+     /=     a /= b   -&gt; a = a / b
+     %=     a %= b   -&gt; a = a % b
+     &amp;=     a &amp;= b   -&gt; a = a &amp; b
+     |=     a |= b   -&gt; a = a | b
+     ^=     a ^= b   -&gt; a = a ^ b
+     &lt;&lt;=    a &lt;&lt;= b  -&gt; a = a &lt;&lt; b
+     &gt;&gt;=    a &gt;&gt;= b  -&gt; a = a &gt;&gt; b
+     &gt;&gt;&gt;=   a &gt;&gt;&gt;= b -&gt; a = a &gt;&gt;&gt; b</pre>
+                    <h3>The Hidden Cast in Compound Assignments</h3>
+                    <p>Compound assignment operators perform an IMPLICIT cast back to the variable&#x27;s type. The
+                        plain &#x27;=&#x27; does not.</p>
+                    <pre class="hj-doc-art">     short s = 10;
+     s = s + 1;       // ERROR - s + 1 is int, can&#x27;t assign int to short
+     s += 1;          // OK    - += quietly casts back to short</pre>
+                    <p>This is convenient but can MASK BUGS - the cast can lose data without warning.</p>
+                    <h3>Right-to-Left Associativity / Chained Assignment</h3>
+                    <pre class="hj-doc-art">     int x, y, z;
+     x = y = z = 5;     // assigns 5 to z, then y, then x</pre>
+                    <p>Avoid in real code - too easy to misread.</p>
                 </div>
             </div>
 
@@ -1395,50 +1421,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase1_CoreLanguage.Operators;
-
-/**
- * Assignment Operators
- * --------------------
- * The basic assignment operator is = and the COMPOUND assignment operators
- * combine an arithmetic / bitwise operator with assignment:
- * &lt;p&gt;
- *
- *      =      simple assignment
- *      +=     a += b   -&gt; a = a + b
- *      -=     a -= b   -&gt; a = a - b
- *      *=     a *= b   -&gt; a = a * b
- *      /=     a /= b   -&gt; a = a / b
- *      %=     a %= b   -&gt; a = a % b
- *      &amp;=     a &amp;= b   -&gt; a = a &amp; b
- *      |=     a |= b   -&gt; a = a | b
- *      ^=     a ^= b   -&gt; a = a ^ b
- *      &lt;&lt;=    a &lt;&lt;= b  -&gt; a = a &lt;&lt; b
- *      &gt;&gt;=    a &gt;&gt;= b  -&gt; a = a &gt;&gt; b
- *      &gt;&gt;&gt;=   a &gt;&gt;&gt;= b -&gt; a = a &gt;&gt;&gt; b
- * &lt;p&gt;
- *
- * The Hidden Cast in Compound Assignments
- * ---------------------------------------
- * Compound assignment operators perform an IMPLICIT cast back to the variable&#x27;s
- * type. The plain &#x27;=&#x27; does not.
- * &lt;p&gt;
- *
- *      short s = 10;
- *      s = s + 1;       // ERROR - s + 1 is int, can&#x27;t assign int to short
- *      s += 1;          // OK    - += quietly casts back to short
- * &lt;p&gt;
- *
- * This is convenient but can MASK BUGS - the cast can lose data without warning.
- * &lt;p&gt;
- *
- * Right-to-Left Associativity / Chained Assignment
- * ------------------------------------------------
- *      int x, y, z;
- *      x = y = z = 5;     // assigns 5 to z, then y, then x
- * &lt;p&gt;
- *
- * Avoid in real code - too easy to misread.
- */
 
 public class AssignmentOperators {
 

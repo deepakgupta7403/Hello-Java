@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase8_PracticalAPIs/HttpClient/SyncAndAsyncRequests.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 140 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 104 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,38 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>SYNC - simple scripts, single call, blocking thread is fine. ASYNC - many parallel requests;
-                        compose with thenCompose / thenApply.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Synchronous and Asynchronous HTTP Requests</h2>
+                    <p>client.send(req, handler) - synchronous; blocks the caller. client.sendAsync(req, handler) -
+                        asynchronous; returns</p>
+                    <pre class="hj-doc-art">                                      CompletableFuture&lt;HttpResponse&lt;T&gt;&gt;.</pre>
+                    <h3>Sync vs async — when to pick which</h3>
+                    <p>SYNC - simple scripts, single call, blocking thread is fine. ASYNC - many parallel requests;
+                        compose with thenCompose / thenApply.</p>
+                    <p>With Java 21 virtual threads, you can call send() from many VTs and the cost of blocking is
+                        trivial — async is no longer the only path to concurrency.</p>
+                    <h3>Examples in this file</h3>
+                    <ul>
+                        <li>Simple sync GET.
+                        </li>
+                        <li>POST with a JSON body.
+                        </li>
+                        <li>Save the body straight to a file.
+                        </li>
+                        <li>Async with thenApply.
+                        </li>
+                        <li>Fan-out: 3 parallel requests, combine results.
+                        </li>
+                        <li>Error handling with .exceptionally / .handle.
+                        </li>
+                    </ul>
+                    <p>Hit URLs are example endpoints (httpbin.org). If you&#x27;re offline the code still compiles
+                        cleanly; the calls will throw IOException at run.</p>
                 </div>
             </div>
 
@@ -1407,41 +1433,6 @@ import java.nio.file.Path;
 import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-
-/**
- * Synchronous and Asynchronous HTTP Requests
- * ------------------------------------------
- * &lt;p&gt;
- *
- *   client.send(req, handler)         - synchronous; blocks the caller.
- *   client.sendAsync(req, handler)    - asynchronous; returns
- *                                       CompletableFuture&lt;HttpResponse&lt;T&gt;&gt;.
- * &lt;p&gt;
- *
- * Sync vs async — when to pick which
- * ----------------------------------
- *   SYNC  - simple scripts, single call, blocking thread is fine.
- *   ASYNC - many parallel requests; compose with thenCompose / thenApply.
- * &lt;p&gt;
- *
- * With Java 21 virtual threads, you can call send() from many VTs and
- * the cost of blocking is trivial — async is no longer the only path to
- * concurrency.
- * &lt;p&gt;
- *
- * Examples in this file
- * ---------------------
- *   1. Simple sync GET.
- *   2. POST with a JSON body.
- *   3. Save the body straight to a file.
- *   4. Async with thenApply.
- *   5. Fan-out: 3 parallel requests, combine results.
- *   6. Error handling with .exceptionally / .handle.
- * &lt;p&gt;
- *
- * Hit URLs are example endpoints (httpbin.org). If you&#x27;re offline the
- * code still compiles cleanly; the calls will throw IOException at run.
- */
 
 public class SyncAndAsyncRequests {
 

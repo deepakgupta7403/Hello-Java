@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase2_MethodsArraysStrings/Methods/Varargs.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 130 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 74 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,53 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A VARARGS parameter lets a method accept ANY NUMBER of arguments of a given type, including
-                        zero. Syntax:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Variable Arguments (Varargs) - Java 5+</h2>
+                    <p>A VARARGS parameter lets a method accept ANY NUMBER of arguments of a given type, including zero.
+                        Syntax:</p>
+                    <pre class="hj-doc-art">     returnType methodName(Type... name) { ... }</pre>
+                    <p>Inside the method, `name` is a regular array (Type[]). At the CALL SITE the caller can pass a
+                        comma-separated list of values - the compiler bundles them into an array automatically.</p>
+                    <h3>Familiar Example</h3>
+                    <pre class="hj-doc-art">     System.out.printf(&quot;%s is %d years old%n&quot;, name, age);
+                                           ^^^ varargs
+     String.format(&quot;%d + %d = %d&quot;, 1, 2, 3);
+     List.of(1, 2, 3, 4, 5);
+     Arrays.asList(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;);</pre>
+                    <h3>The Four Rules</h3>
+                    <ul>
+                        <li>ONLY ONE varargs parameter per method.
+                        </li>
+                        <li>It must be the LAST parameter.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">        void f(int x, String... names)   // OK
+        void f(String... names, int x)   // ERROR</pre>
+                    <ul>
+                        <li>The caller can pass:
+                            <ul>
+                                <li>zero or more values -&gt; f(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;);
+                                </li>
+                                <li>an explicit array -&gt; f(new String[] {&quot;a&quot;,&quot;b&quot;,&quot;c&quot;});
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Inside the method, the varargs parameter is just an array.
+                        </li>
+                    </ul>
+                    <h3>Overloading and Ambiguity</h3>
+                    <p>Overload resolution prefers EXACT matches and fixed-arity methods before varargs. Mixing varargs
+                        with overloads can create surprises - keep it simple.</p>
+                    <h3>Generics + Varargs Warning</h3>
+                    <p>&quot;unchecked / unsafe operations&quot; warnings can appear when the vararg type is a generic
+                        (e.g. `List&lt;String&gt;...`). Java permits this but the runtime cannot actually create a
+                        generic array, so the JVM uses an Object[] under the hood. Annotate with @SafeVarargs (on
+                        static/final/private methods) once you have convinced yourself the usage is safe.</p>
                 </div>
             </div>
 
@@ -1398,61 +1439,6 @@
 
 import java.util.Arrays;
 import java.util.List;
-
-/**
- * Variable Arguments (Varargs) - Java 5+
- * --------------------------------------
- * A VARARGS parameter lets a method accept ANY NUMBER of arguments of a given
- * type, including zero. Syntax:
- * &lt;p&gt;
- *
- *      returnType methodName(Type... name) { ... }
- * &lt;p&gt;
- *
- * Inside the method, `name` is a regular array (Type[]). At the CALL SITE the
- * caller can pass a comma-separated list of values - the compiler bundles them
- * into an array automatically.
- * &lt;p&gt;
- *
- * Familiar Example
- * ----------------
- *      System.out.printf(&quot;%s is %d years old%n&quot;, name, age);
- *                                            ^^^ varargs
- *      String.format(&quot;%d + %d = %d&quot;, 1, 2, 3);
- *      List.of(1, 2, 3, 4, 5);
- *      Arrays.asList(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;);
- * &lt;p&gt;
- *
- * The Four Rules
- * --------------
- *  1. ONLY ONE varargs parameter per method.
- *  2. It must be the LAST parameter.
- * &lt;p&gt;
- *
- *         void f(int x, String... names)   // OK
- *         void f(String... names, int x)   // ERROR
- * &lt;p&gt;
- *
- *  3. The caller can pass:
- *       a) zero or more values    -&gt;   f(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;);
- *       b) an explicit array      -&gt;   f(new String[] {&quot;a&quot;,&quot;b&quot;,&quot;c&quot;});
- *  4. Inside the method, the varargs parameter is just an array.
- * &lt;p&gt;
- *
- * Overloading and Ambiguity
- * -------------------------
- * Overload resolution prefers EXACT matches and fixed-arity methods before
- * varargs. Mixing varargs with overloads can create surprises - keep it simple.
- * &lt;p&gt;
- *
- * Generics + Varargs Warning
- * --------------------------
- * &quot;unchecked / unsafe operations&quot; warnings can appear when the vararg type is
- * a generic (e.g. `List&lt;String&gt;...`). Java permits this but the runtime cannot
- * actually create a generic array, so the JVM uses an Object[] under the hood.
- * Annotate with @SafeVarargs (on static/final/private methods) once you have
- * convinced yourself the usage is safe.
- */
 
 public class Varargs {
 

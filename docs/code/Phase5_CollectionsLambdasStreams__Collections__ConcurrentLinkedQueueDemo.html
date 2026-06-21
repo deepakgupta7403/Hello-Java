@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/ConcurrentLinkedQueueDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 154 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 91 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,51 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A LOCK-FREE, UNBOUNDED FIFO queue suitable for many producers and many consumers. Internally it
-                        uses a singly-linked list with atomic CAS (compare-and-swap) operations - no locks, no blocking.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.concurrent.ConcurrentLinkedQueue&amp;lt;E&amp;gt;</h2>
+                    <p>A LOCK-FREE, UNBOUNDED FIFO queue suitable for many producers and many consumers. Internally it
+                        uses a singly-linked list with atomic CAS (compare-and-swap) operations - no locks, no
+                        blocking.</p>
+                    <pre class="hj-doc-art">     head -&gt; [A] -&gt; [B] -&gt; [C] -&gt; tail</pre>
+                    <h3>Why It Exists</h3>
+                    <ul>
+                        <li>LinkedList / ArrayDeque are NOT thread-safe.
+                        </li>
+                        <li>Collections.synchronizedQueue / Vector lock the entire collection.
+                        </li>
+                        <li>BlockingQueue blocks; sometimes you do not want to block.
+                        </li>
+                    </ul>
+                    <p>ConcurrentLinkedQueue is the right pick when:</p>
+                    <ul>
+                        <li>Many threads call offer() and poll() concurrently.
+                        </li>
+                        <li>You do not need backpressure (no max capacity).
+                        </li>
+                        <li>You do not want callers to wait when the queue is empty (poll
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    returns null - no blocking).</pre>
+                    <h3>Differences From BlockingQueue</h3>
+                    <p>ConcurrentLinkedQueue BlockingQueue --------------------- ---------------- Lock-free CAS Usually
+                        locks (BlockingQueue impls) Never blocks put / take block by design Unbounded Often bounded for
+                        backpressure poll() returns null take() blocks until an element exists No &quot;fair&quot;
+                        option Some have a fairness mode</p>
+                    <h3>Methods That Matter</h3>
+                    <p>offer(e) - always succeeds (unbounded) add(e) - same as offer, here poll() - remove head, or null
+                        if empty peek() - look at head, or null size() - O(n)! Walks the list, not a counter. isEmpty()
+                        - O(1) iterator() - weakly consistent, never throws CME</p>
+                    <h3>Why size() Is O(n)</h3>
+                    <p>The lock-free design lets many threads insert and remove without coordinating. There is no
+                        maintained counter because keeping one in sync would require its own CAS loop. If you need to
+                        check whether the queue is empty, use isEmpty() - that one is O(1).</p>
+                    <h3>Big-O</h3>
+                    <p>offer / poll / peek / isEmpty O(1) amortised size O(n) contains / remove(Object) O(n)</p>
                 </div>
             </div>
 
@@ -1398,68 +1437,6 @@
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
-
-/**
- * java.util.concurrent.ConcurrentLinkedQueue&amp;lt;E&amp;gt;
- * ---------------------------------------------
- * A LOCK-FREE, UNBOUNDED FIFO queue suitable for many producers and many
- * consumers. Internally it uses a singly-linked list with atomic CAS
- * (compare-and-swap) operations - no locks, no blocking.
- * &lt;p&gt;
- *
- *      head -&gt; [A] -&gt; [B] -&gt; [C] -&gt; tail
- * &lt;p&gt;
- *
- * Why It Exists
- * -------------
- *   - LinkedList / ArrayDeque are NOT thread-safe.
- *   - Collections.synchronizedQueue / Vector lock the entire collection.
- *   - BlockingQueue blocks; sometimes you do not want to block.
- * &lt;p&gt;
- *
- * ConcurrentLinkedQueue is the right pick when:
- *   - Many threads call offer() and poll() concurrently.
- *   - You do not need backpressure (no max capacity).
- *   - You do not want callers to wait when the queue is empty (poll
- *     returns null - no blocking).
- * &lt;p&gt;
- *
- * Differences From BlockingQueue
- * ------------------------------
- *   ConcurrentLinkedQueue        BlockingQueue
- *   ---------------------        ----------------
- *   Lock-free CAS                Usually locks (BlockingQueue impls)
- *   Never blocks                 put / take block by design
- *   Unbounded                    Often bounded for backpressure
- *   poll() returns null          take() blocks until an element exists
- *   No &quot;fair&quot; option              Some have a fairness mode
- * &lt;p&gt;
- *
- * Methods That Matter
- * -------------------
- *   offer(e)             - always succeeds (unbounded)
- *   add(e)               - same as offer, here
- *   poll()               - remove head, or null if empty
- *   peek()               - look at head, or null
- *   size()               - O(n)! Walks the list, not a counter.
- *   isEmpty()            - O(1)
- *   iterator()           - weakly consistent, never throws CME
- * &lt;p&gt;
- *
- * Why size() Is O(n)
- * ------------------
- * The lock-free design lets many threads insert and remove without
- * coordinating. There is no maintained counter because keeping one in sync
- * would require its own CAS loop. If you need to check whether the queue
- * is empty, use isEmpty() - that one is O(1).
- * &lt;p&gt;
- *
- * Big-O
- * -----
- *   offer / poll / peek / isEmpty       O(1) amortised
- *   size                                O(n)
- *   contains / remove(Object)           O(n)
- */
 
 public class ConcurrentLinkedQueueDemo {
 

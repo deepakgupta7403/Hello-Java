@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/ConcurrentSkipListSetDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 157 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 98 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,63 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>The thread-safe twin of TreeSet. It is BUILT on a skip list - a probabilistic data structure
-                        that supports O(log n) sorted operations with cheap LOCK-FREE concurrent access (it uses CAS,
-                        not locks).
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.concurrent.ConcurrentSkipListSet&amp;lt;E&amp;gt;</h2>
+                    <p>The thread-safe twin of TreeSet. It is BUILT on a skip list - a probabilistic data structure that
+                        supports O(log n) sorted operations with cheap LOCK-FREE concurrent access (it uses CAS, not
+                        locks).</p>
+                    <pre class="hj-doc-art">     Backed by:   ConcurrentSkipListMap (similar relationship to
+                  TreeSet -&gt; TreeMap)
+     Implements:  NavigableSet&amp;lt;E&amp;gt;, SortedSet&amp;lt;E&amp;gt;, Set&amp;lt;E&amp;gt;
+     Concurrency: lock-free reads, weakly-consistent iterators</pre>
+                    <h3>Why It Exists</h3>
+                    <ul>
+                        <li>TreeSet is FAST but NOT thread-safe.
+                        </li>
+                        <li>Collections.synchronizedSortedSet wraps a TreeSet with one big lock;
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    contention crushes throughput under load.</pre>
+                    <ul>
+                        <li>ConcurrentSkipListSet allows many threads to read and write
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    concurrently with no global lock.</pre>
+                    <h3>When To Use It</h3>
+                    <ul>
+                        <li>You need a SORTED set shared by multiple threads.
+                        </li>
+                        <li>You want NavigableSet-style queries (floor / ceiling / range / etc.)
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    in concurrent code.</pre>
+                    <ul>
+                        <li>Read-heavy or moderately write-heavy scenarios.
+                        </li>
+                    </ul>
+                    <h3>When NOT To Use It</h3>
+                    <ul>
+                        <li>Single-threaded code -&gt; TreeSet is faster, simpler.
+                        </li>
+                        <li>You need contains/add to be the absolute fastest in a multi-threaded
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    context AND you do not need ordering -&gt; a ConcurrentHashMap&#x27;s
+    KeySet view is faster, but unordered.</pre>
+                    <h3>Big-O</h3>
+                    <p>add / remove / contains / size O(log n) expected first / last / floor / ceiling / lower / higher
+                        O(log n) expected iteration O(n)</p>
+                    <h3>Weakly Consistent Iterators</h3>
+                    <p>Iterators do NOT throw ConcurrentModificationException. They reflect the state of the set AT SOME
+                        POINT after the iterator was created, and may or may not see concurrent updates. They never
+                        break, just blur.</p>
+                    <h3>Null is NOT Allowed</h3>
+                    <p>Skip-list comparison must order all elements; null has no place in that.</p>
                 </div>
             </div>
 
@@ -1398,64 +1448,6 @@
           <pre class="line-numbers m-0"><code class="language-java">package Phase5_CollectionsLambdasStreams.Collections;
 
 import java.util.concurrent.ConcurrentSkipListSet;
-
-/**
- * java.util.concurrent.ConcurrentSkipListSet&amp;lt;E&amp;gt;
- * ---------------------------------------------
- * The thread-safe twin of TreeSet. It is BUILT on a skip list - a
- * probabilistic data structure that supports O(log n) sorted operations
- * with cheap LOCK-FREE concurrent access (it uses CAS, not locks).
- * &lt;p&gt;
- *
- *      Backed by:   ConcurrentSkipListMap (similar relationship to
- *                   TreeSet -&gt; TreeMap)
- *      Implements:  NavigableSet&amp;lt;E&amp;gt;, SortedSet&amp;lt;E&amp;gt;, Set&amp;lt;E&amp;gt;
- *      Concurrency: lock-free reads, weakly-consistent iterators
- * &lt;p&gt;
- *
- * Why It Exists
- * -------------
- *   - TreeSet is FAST but NOT thread-safe.
- *   - Collections.synchronizedSortedSet wraps a TreeSet with one big lock;
- *     contention crushes throughput under load.
- *   - ConcurrentSkipListSet allows many threads to read and write
- *     concurrently with no global lock.
- * &lt;p&gt;
- *
- * When To Use It
- * --------------
- *   - You need a SORTED set shared by multiple threads.
- *   - You want NavigableSet-style queries (floor / ceiling / range / etc.)
- *     in concurrent code.
- *   - Read-heavy or moderately write-heavy scenarios.
- * &lt;p&gt;
- *
- * When NOT To Use It
- * ------------------
- *   - Single-threaded code -&gt; TreeSet is faster, simpler.
- *   - You need contains/add to be the absolute fastest in a multi-threaded
- *     context AND you do not need ordering -&gt; a ConcurrentHashMap&#x27;s
- *     KeySet view is faster, but unordered.
- * &lt;p&gt;
- *
- * Big-O
- * -----
- *   add / remove / contains / size                 O(log n) expected
- *   first / last / floor / ceiling / lower / higher  O(log n) expected
- *   iteration                                      O(n)
- * &lt;p&gt;
- *
- * Weakly Consistent Iterators
- * ---------------------------
- * Iterators do NOT throw ConcurrentModificationException. They reflect the
- * state of the set AT SOME POINT after the iterator was created, and may
- * or may not see concurrent updates. They never break, just blur.
- * &lt;p&gt;
- *
- * Null is NOT Allowed
- * -------------------
- * Skip-list comparison must order all elements; null has no place in that.
- */
 
 public class ConcurrentSkipListSetDemo {
 

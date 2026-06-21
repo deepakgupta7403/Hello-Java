@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/FaceDetectionApp/Face.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 52 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 29 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,28 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Face - the single domain record used throughout the Face Detection app.</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>Face - the single domain record used throughout the Face Detection app.</p>
+                    <p>Implemented as a Java RECORD (Java 16+). This gives us:</p>
+                    <ul>
+                        <li>immutable value semantics suitable for use as a Map key,
+                        </li>
+                        <li>equals/hashCode generated from all components,
+                        </li>
+                        <li>a Comparable natural order (by confidence) we define ourselves below.
+                        </li>
+                    </ul>
+                    <h2>Fields</h2>
+                    <p>id - unique identifier of the detection event personName - matched person, or &quot;unknown&quot;
+                        confidence - 0.0..1.0 confidence of the match timestampMs - when the face was detected (epoch
+                        ms) x, y, w, h - bounding box in the source image</p>
+                    <p>Natural ordering = descending confidence (so a sorted collection surfaces the most-confident
+                        match first).</p>
                 </div>
             </div>
 
@@ -1394,28 +1412,6 @@
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase5_CollectionsLambdasStreams.Collections.FaceDetectionApp;
 
-/**
- * Face - the single domain record used throughout the Face Detection app.
- * &lt;p&gt;
- *
- * Implemented as a Java RECORD (Java 16+). This gives us:
- *   - immutable value semantics suitable for use as a Map key,
- *   - equals/hashCode generated from all components,
- *   - a Comparable natural order (by confidence) we define ourselves below.
- * &lt;p&gt;
- *
- * Fields
- * ------
- *   id          - unique identifier of the detection event
- *   personName  - matched person, or &quot;unknown&quot;
- *   confidence  - 0.0..1.0 confidence of the match
- *   timestampMs - when the face was detected (epoch ms)
- *   x, y, w, h  - bounding box in the source image
- * &lt;p&gt;
- *
- * Natural ordering = descending confidence (so a sorted collection
- * surfaces the most-confident match first).
- */
 public record Face(
         int    id,
         String personName,

@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase1_CoreLanguage/DecisionMaking/IfStatement.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 46 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 19 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,23 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>if statement is the most simple decision making statement. It is used to decide whether a
-                        certain statement or block of statements will be executed or not i.e if a certain condition is
-                        true then a block of statement i...
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>if statement is the most simple decision making statement. It is used to decide whether a certain
+                        statement or block of statements will be executed or not i.e if a certain condition is true then
+                        a block of statement is executed otherwise not.</p>
+                    <p>Syntax: if(condition) { // Statements to execute if // condition is true }</p>
+                    <p>Here, condition after evaluation will be either true or false. if statement accepts boolean
+                        values – if the value is true then it will execute the block of statements under it. If we do
+                        not provide the curly braces ‘{‘ and ‘}’ after if( condition ) then by default if statement will
+                        consider the immediate one statement to be inside its block. For example,</p>
+                    <p>if(condition) statement1; statement2;</p>
+                    <p>// Here if the condition is true, if block // will consider only statement1 to be inside // its
+                        block.</p>
                 </div>
             </div>
 
@@ -1396,32 +1406,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase1_CoreLanguage.DecisionMaking;
-
-/**if statement is the most simple decision making statement.
- * It is used to decide whether a certain statement or block of statements will be executed or not
- * i.e if a certain condition is true then a block of statement is executed otherwise not.
- * &lt;p&gt;
- *
- * Syntax:
- * if(condition)
- * {
- *    // Statements to execute if
- *    // condition is true
- * }
- * &lt;p&gt;
- *
- * Here, condition after evaluation will be either true or false. if statement accepts boolean values – if the value is true then it will execute the block of statements under it.
- * If we do not provide the curly braces ‘{‘ and ‘}’ after if( condition ) then by default if statement will consider the immediate one statement to be inside its block. For example,
- * &lt;p&gt;
- *
- * if(condition)
- *    statement1;
- *    statement2;
- * &lt;p&gt;
- *
- * // Here if the condition is true, if block
- * // will consider only statement1 to be inside
- * // its block.**/
 
 public class IfStatement {
     public static void main(String args[])

@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/ListInterface.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 146 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 81 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,53 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>java.util.List&amp;lt;E&amp;gt; - Ordered, Indexable, Duplicates Allowed</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.List&amp;lt;E&amp;gt; - Ordered, Indexable, Duplicates Allowed</h2>
+                    <p>List extends Collection with POSITIONAL access - every element has an INTEGER INDEX from 0 to
+                        size()-1.</p>
+                    <pre class="hj-doc-art">     +---+---+---+---+
+     | A | B | C | D |     List of 4 elements
+     +---+---+---+---+
+       0   1   2   3</pre>
+                    <h3>What List Adds Over Collection</h3>
+                    <p>Positional access</p>
+                    <pre class="hj-doc-art">     get(int index)
+     set(int index, E e)              - replace; returns the old value
+     add(int index, E e)              - INSERT at index, shifting right
+     remove(int index)                - REMOVE at index, shifting left</pre>
+                    <p>Position-based search</p>
+                    <pre class="hj-doc-art">     indexOf(Object o)                - first index, or -1
+     lastIndexOf(Object o)            - last index, or -1</pre>
+                    <p>Sub-list views</p>
+                    <pre class="hj-doc-art">     subList(int from, int to)        - LIVE view, mutations propagate</pre>
+                    <p>Iteration</p>
+                    <pre class="hj-doc-art">     listIterator()                   - bidirectional iterator
+     listIterator(int index)</pre>
+                    <p>Bulk</p>
+                    <pre class="hj-doc-art">     addAll(int index, Collection)    - insert another collection at a position
+     replaceAll(UnaryOperator)        - Java 8+
+     sort(Comparator)                 - Java 8+ (replaces Collections.sort)</pre>
+                    <h3>Implementations</h3>
+                    <p>ArrayList - resizing array. DEFAULT choice. LinkedList - doubly-linked list; also implements
+                        Deque. Vector / Stack - LEGACY synchronized lists - avoid in new code. CopyOnWriteArrayList -
+                        concurrent, copy on every write. Reads cheap. List.of(...) - immutable, no nulls (Java 9+).</p>
+                    <h3>When to Pick Which</h3>
+                    <ul>
+                        <li>Mostly add-at-the-end + random access -&gt; ArrayList
+                        </li>
+                        <li>Frequent add/remove in the MIDDLE -&gt; LinkedList (rare)
+                        </li>
+                        <li>&quot;Mostly read, occasional write, many readers&quot; -&gt; CopyOnWriteArrayList
+                        </li>
+                        <li>Constant data set at startup -&gt; List.of(...)
+                        </li>
+                    </ul>
+                    <p>In practice, ArrayList wins almost every benchmark - it is the default.</p>
                 </div>
             </div>
 
@@ -1395,70 +1438,6 @@
           <pre class="line-numbers m-0"><code class="language-java">package Phase5_CollectionsLambdasStreams.Collections;
 
 import java.util.*;
-
-/**
- * java.util.List&amp;lt;E&amp;gt; - Ordered, Indexable, Duplicates Allowed
- * ----------------------------------------------------------
- * List extends Collection with POSITIONAL access - every element has an
- * INTEGER INDEX from 0 to size()-1.
- * &lt;p&gt;
- *
- *      +---+---+---+---+
- *      | A | B | C | D |     List of 4 elements
- *      +---+---+---+---+
- *        0   1   2   3
- * &lt;p&gt;
- *
- * What List Adds Over Collection
- * ------------------------------
- * &lt;p&gt;
- *
- *   Positional access
- *      get(int index)
- *      set(int index, E e)              - replace; returns the old value
- *      add(int index, E e)              - INSERT at index, shifting right
- *      remove(int index)                - REMOVE at index, shifting left
- * &lt;p&gt;
- *
- *   Position-based search
- *      indexOf(Object o)                - first index, or -1
- *      lastIndexOf(Object o)            - last index, or -1
- * &lt;p&gt;
- *
- *   Sub-list views
- *      subList(int from, int to)        - LIVE view, mutations propagate
- * &lt;p&gt;
- *
- *   Iteration
- *      listIterator()                   - bidirectional iterator
- *      listIterator(int index)
- * &lt;p&gt;
- *
- *   Bulk
- *      addAll(int index, Collection)    - insert another collection at a position
- *      replaceAll(UnaryOperator)        - Java 8+
- *      sort(Comparator)                 - Java 8+ (replaces Collections.sort)
- * &lt;p&gt;
- *
- * Implementations
- * ---------------
- *   ArrayList            - resizing array. DEFAULT choice.
- *   LinkedList           - doubly-linked list; also implements Deque.
- *   Vector / Stack       - LEGACY synchronized lists - avoid in new code.
- *   CopyOnWriteArrayList - concurrent, copy on every write. Reads cheap.
- *   List.of(...)         - immutable, no nulls (Java 9+).
- * &lt;p&gt;
- *
- * When to Pick Which
- * ------------------
- *   - Mostly add-at-the-end + random access      -&gt;  ArrayList
- *   - Frequent add/remove in the MIDDLE          -&gt;  LinkedList (rare)
- *   - &quot;Mostly read, occasional write, many readers&quot; -&gt; CopyOnWriteArrayList
- *   - Constant data set at startup                -&gt;  List.of(...)
- * &lt;p&gt;
- *
- * In practice, ArrayList wins almost every benchmark - it is the default.
- */
 
 public class ListInterface {
 

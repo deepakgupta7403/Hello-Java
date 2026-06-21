@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/MultithreadingCompleteTutorial.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 168 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 136 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,58 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>One file, end-to-end, touching every major topic in the section. Pair this with the dedicated
-                        files for depth.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Multithreading Complete Tutorial</h2>
+                    <p>One file, end-to-end, touching every major topic in the section. Pair this with the dedicated
+                        files for depth.</p>
+                    <h3>Table of contents</h3>
+                    <ul>
+                        <li>Spawning a thread (Threads, Runnable)
+                        </li>
+                        <li>Lifecycle states (ThreadLifecycle)
+                        </li>
+                        <li>start vs run (StartVsRun)
+                        </li>
+                        <li>Join / sleep / interrupt (ThreadJoinMethod, ThreadSleepMethod, ThreadInterruption)
+                        </li>
+                        <li>Priority / daemon (ThreadPriority, DaemonThread)
+                        </li>
+                        <li>Synchronized + thread safety (JavaSynchronization, ThreadSafety)
+                        </li>
+                        <li>volatile + JMM (VolatileKeyword, JavaMemoryModel)
+                        </li>
+                        <li>wait/notify + producer/consumer (WaitNotifyNotifyAll, ProducerConsumer)
+                        </li>
+                        <li>ThreadLocal (ThreadLocalDemo)
+                        </li>
+                        <li>Atomics (AtomicVariables)
+                        </li>
+                        <li>Locks + Conditions (LocksInJava, ReentrantLockDemo)
+                        </li>
+                        <li>Read/Write + Stamped (ReadWriteLockDemo, StampedLockDemo)
+                        </li>
+                        <li>Deadlock + livelock (DeadlockDemo, RaceConditionStarvationLivelock)
+                        </li>
+                        <li>Thread pools / Executor (ThreadPools, ExecutorFramework)
+                        </li>
+                        <li>Scheduled / ForkJoin (ScheduledExecutorDemo, ForkJoinPoolDemo)
+                        </li>
+                        <li>CompletableFuture (CompletableFutureDemo)
+                        </li>
+                        <li>Synchronizers (CountDownLatch, CyclicBarrier, Semaphore, Phaser)
+                        </li>
+                        <li>Java 21: Virtual threads (VirtualThreads)
+                        </li>
+                        <li>Java 21: Structured concurrency / Scoped values
+                        </li>
+                        <li>Putting it together: tiny pipeline
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1400,37 +1446,6 @@ import java.util.List;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
-
-/**
- * Multithreading Complete Tutorial
- * --------------------------------
- * One file, end-to-end, touching every major topic in the section.
- * Pair this with the dedicated files for depth.
- * &lt;p&gt;
- *
- * Table of contents
- * -----------------
- *   1.  Spawning a thread          (Threads, Runnable)
- *   2.  Lifecycle states           (ThreadLifecycle)
- *   3.  start vs run               (StartVsRun)
- *   4.  Join / sleep / interrupt   (ThreadJoinMethod, ThreadSleepMethod, ThreadInterruption)
- *   5.  Priority / daemon          (ThreadPriority, DaemonThread)
- *   6.  Synchronized + thread safety (JavaSynchronization, ThreadSafety)
- *   7.  volatile + JMM             (VolatileKeyword, JavaMemoryModel)
- *   8.  wait/notify + producer/consumer (WaitNotifyNotifyAll, ProducerConsumer)
- *   9.  ThreadLocal                (ThreadLocalDemo)
- *  10.  Atomics                    (AtomicVariables)
- *  11.  Locks + Conditions         (LocksInJava, ReentrantLockDemo)
- *  12.  Read/Write + Stamped       (ReadWriteLockDemo, StampedLockDemo)
- *  13.  Deadlock + livelock        (DeadlockDemo, RaceConditionStarvationLivelock)
- *  14.  Thread pools / Executor    (ThreadPools, ExecutorFramework)
- *  15.  Scheduled / ForkJoin       (ScheduledExecutorDemo, ForkJoinPoolDemo)
- *  16.  CompletableFuture          (CompletableFutureDemo)
- *  17.  Synchronizers              (CountDownLatch, CyclicBarrier, Semaphore, Phaser)
- *  18.  Java 21: Virtual threads   (VirtualThreads)
- *  19.  Java 21: Structured concurrency / Scoped values
- *  20.  Putting it together: tiny pipeline
- */
 
 public class MultithreadingCompleteTutorial {
 

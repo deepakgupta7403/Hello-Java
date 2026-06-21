@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase2_MethodsArraysStrings/Strings/StringConcatenation.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 157 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 103 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,50 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>&quot;Concatenation&quot; means joining two or more Strings end-to-end. Java offers several
-                        mechanisms:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>String Concatenation</h2>
+                    <p>&quot;Concatenation&quot; means joining two or more Strings end-to-end. Java offers several
+                        mechanisms:</p>
+                    <ul>
+                        <li>The &#x27;+&#x27; operator &quot;Hello, &quot; + name
+                        </li>
+                        <li>String.concat(other) &quot;Hello, &quot;.concat(name)
+                        </li>
+                        <li>StringBuilder / StringBuffer use when looping
+                        </li>
+                        <li>String.join(delim, parts...) Java 8+
+                        </li>
+                        <li>java.util.StringJoiner Java 8+, with prefix/suffix
+                        </li>
+                        <li>Stream.collect(Collectors.joining(...)) Java 8+
+                        </li>
+                        <li>String.format / String.formatted printf-style composition
+                        </li>
+                        <li>Text blocks Java 15+, multi-line literals
+                        </li>
+                    </ul>
+                    <h3>Behind the scenes</h3>
+                    <p>Each `+` between String operands is compiled (since Java 9) into a `makeConcatWithConstants`
+                        invoke-dynamic call that the JVM optimises at runtime. For most simple expressions like `&quot;x=&quot;
+                        + x` you do NOT need to reach for StringBuilder yourself - the compiler does the right
+                        thing.</p>
+                    <p>The big EXCEPTION is concatenation INSIDE A LOOP:</p>
+                    <pre class="hj-doc-art">     String s = &quot;&quot;;
+     for (int i = 0; i &lt; N; i++) s += part(i);     // O(N^2) - BAD</pre>
+                    <pre class="hj-doc-art">     StringBuilder sb = new StringBuilder();
+     for (int i = 0; i &lt; N; i++) sb.append(part(i)); // O(N) - GOOD
+     String s = sb.toString();</pre>
+                    <p>Each `+=` allocates and copies the whole prefix again because Strings are immutable.</p>
+                    <h3>Type Coercion - the &#x27;+&#x27; Trap</h3>
+                    <pre class="hj-doc-art">     &quot;Sum = &quot; + 1 + 2      ==  &quot;Sum = 12&quot;      (left-to-right concatenation)
+     &quot;Sum = &quot; + (1 + 2)    ==  &quot;Sum = 3&quot;       (parens force int addition)</pre>
+                    <h3>Performance Demo</h3>
+                    <p>main() benchmarks loop-concat vs StringBuilder so you can see the difference in milliseconds.</p>
                 </div>
             </div>
 
@@ -1399,59 +1437,6 @@
 import java.util.List;
 import java.util.StringJoiner;
 import java.util.stream.Collectors;
-
-/**
- * String Concatenation
- * --------------------
- * &quot;Concatenation&quot; means joining two or more Strings end-to-end. Java offers
- * several mechanisms:
- * &lt;p&gt;
- *
- *      1. The &#x27;+&#x27; operator                  &quot;Hello, &quot; + name
- *      2. String.concat(other)              &quot;Hello, &quot;.concat(name)
- *      3. StringBuilder / StringBuffer      use when looping
- *      4. String.join(delim, parts...)      Java 8+
- *      5. java.util.StringJoiner            Java 8+, with prefix/suffix
- *      6. Stream.collect(Collectors.joining(...))   Java 8+
- *      7. String.format / String.formatted  printf-style composition
- *      8. Text blocks                       Java 15+, multi-line literals
- * &lt;p&gt;
- *
- * Behind the scenes
- * -----------------
- * Each `+` between String operands is compiled (since Java 9) into a
- * `makeConcatWithConstants` invoke-dynamic call that the JVM optimises at
- * runtime. For most simple expressions like `&quot;x=&quot; + x` you do NOT need to
- * reach for StringBuilder yourself - the compiler does the right thing.
- * &lt;p&gt;
- *
- * The big EXCEPTION is concatenation INSIDE A LOOP:
- * &lt;p&gt;
- *
- *      String s = &quot;&quot;;
- *      for (int i = 0; i &lt; N; i++) s += part(i);     // O(N^2) - BAD
- * &lt;p&gt;
- *
- *      StringBuilder sb = new StringBuilder();
- *      for (int i = 0; i &lt; N; i++) sb.append(part(i)); // O(N) - GOOD
- *      String s = sb.toString();
- * &lt;p&gt;
- *
- * Each `+=` allocates and copies the whole prefix again because Strings are
- * immutable.
- * &lt;p&gt;
- *
- * Type Coercion - the &#x27;+&#x27; Trap
- * ----------------------------
- *      &quot;Sum = &quot; + 1 + 2      ==  &quot;Sum = 12&quot;      (left-to-right concatenation)
- *      &quot;Sum = &quot; + (1 + 2)    ==  &quot;Sum = 3&quot;       (parens force int addition)
- * &lt;p&gt;
- *
- * Performance Demo
- * ----------------
- * main() benchmarks loop-concat vs StringBuilder so you can see the
- * difference in milliseconds.
- */
 
 public class StringConcatenation {
 

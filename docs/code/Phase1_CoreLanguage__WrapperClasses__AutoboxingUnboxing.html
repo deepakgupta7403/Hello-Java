@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase1_CoreLanguage/WrapperClasses/AutoboxingUnboxing.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 123 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 84 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,45 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Since Java 5 the compiler converts between primitives and their wrappers automatically:</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Autoboxing and Auto-Unboxing</h2>
+                    <p>Since Java 5 the compiler converts between primitives and their wrappers automatically:</p>
+                    <pre class="hj-doc-art">     Integer boxed = 42;       // autoboxing  -&gt; Integer.valueOf(42)
+     int prim       = boxed;   // auto-unbox  -&gt; boxed.intValue()</pre>
+                    <p>Conceptually this is just syntactic sugar - the compiler inserts the calls to Integer.valueOf /
+                        intValue() for you.</p>
+                    <h3>Where Autoboxing Helps</h3>
+                    <ul>
+                        <li>Putting primitives into collections: list.add(5) -&gt; list.add(Integer.valueOf(5))
+                        </li>
+                        <li>Arithmetic on wrappers: Integer sum = a + b
+                        </li>
+                        <li>Methods that accept Object: sysout(int) -&gt; sysout(Integer.valueOf(int))
+                        </li>
+                    </ul>
+                    <h3>Three Common Pitfalls</h3>
+                    <ul>
+                        <li>NullPointerException when unboxing null - the most common bug.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    Integer i = null;     int x = i;     //  NullPointerException</pre>
+                    <ul>
+                        <li>Using == on boxed values - reference comparison, not value comparison.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    Integer a = 200, b = 200;  a == b -&gt; false (outside the -128..127 cache)
+    Always use .equals().</pre>
+                    <ul>
+                        <li>Performance cost in tight loops - boxing/unboxing allocates new objects.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    Prefer the primitive specialisations (IntStream over Stream&lt;Integer&gt;) when
+    hot.</pre>
                 </div>
             </div>
 
@@ -1396,44 +1431,6 @@
 
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- * Autoboxing and Auto-Unboxing
- * ----------------------------
- * Since Java 5 the compiler converts between primitives and their wrappers
- * automatically:
- * &lt;p&gt;
- *
- *      Integer boxed = 42;       // autoboxing  -&gt; Integer.valueOf(42)
- *      int prim       = boxed;   // auto-unbox  -&gt; boxed.intValue()
- * &lt;p&gt;
- *
- * Conceptually this is just syntactic sugar - the compiler inserts the calls
- * to Integer.valueOf / intValue() for you.
- * &lt;p&gt;
- *
- * Where Autoboxing Helps
- * ----------------------
- *  - Putting primitives into collections:        list.add(5)        -&gt; list.add(Integer.valueOf(5))
- *  - Arithmetic on wrappers:                     Integer sum = a + b
- *  - Methods that accept Object:                 sysout(int)        -&gt; sysout(Integer.valueOf(int))
- * &lt;p&gt;
- *
- * Three Common Pitfalls
- * ---------------------
- *  1. NullPointerException when unboxing null - the most common bug.
- *     Integer i = null;     int x = i;     //  NullPointerException
- * &lt;p&gt;
- *
- *  2. Using == on boxed values - reference comparison, not value comparison.
- *     Integer a = 200, b = 200;  a == b -&gt; false (outside the -128..127 cache)
- *     Always use .equals().
- * &lt;p&gt;
- *
- *  3. Performance cost in tight loops - boxing/unboxing allocates new objects.
- *     Prefer the primitive specialisations (IntStream over Stream&lt;Integer&gt;) when
- *     hot.
- */
 
 public class AutoboxingUnboxing {
 

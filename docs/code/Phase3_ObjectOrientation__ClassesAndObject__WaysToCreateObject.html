@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase3_ObjectOrientation/ClassesAndObject/WaysToCreateObject.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 81 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 68 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,26 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>There are four ways to create objects in java. Strictly speaking there is only one way(by using
-                        new keyword),and the rest internally use new keyword.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>There are four ways to create objects in java. Strictly speaking there is only one way(by using
+                        new keyword),and the rest internally use new keyword.</p>
+                    <ul>
+                        <li>Using new keyword.
+                        </li>
+                        <li>Using Class.forName(String className) method
+                        </li>
+                        <li>Using clone() method
+                        </li>
+                        <li>Deserialization
+                        </li>
+                        <li>Using newInstance() method of Constructor class
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1395,18 +1409,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase3_ObjectOrientation.ClassesAndObject;
-
-/**
- * There are four ways to create objects in java.
- * Strictly speaking there is only one way(by using new keyword),and the rest internally use new keyword.
- * &lt;p&gt;
- *
- * 1) Using new keyword.
- * 2) Using Class.forName(String className) method
- * 3) Using clone() method
- * 4) Deserialization
- * 5) Using newInstance() method of Constructor class
- **/
 
 public class WaysToCreateObject {
 

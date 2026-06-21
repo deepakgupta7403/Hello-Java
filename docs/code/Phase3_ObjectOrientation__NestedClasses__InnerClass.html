@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase3_ObjectOrientation/NestedClasses/InnerClass.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 115 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 71 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,41 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>An inner class is a NON-STATIC nested class. Every instance carries a HIDDEN REFERENCE to an
-                        instance of the enclosing outer class. That lets it access outer fields and methods directly.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Inner (non-static member) Classes</h2>
+                    <p>An inner class is a NON-STATIC nested class. Every instance carries a HIDDEN REFERENCE to an
+                        instance of the enclosing outer class. That lets it access outer fields and methods
+                        directly.</p>
+                    <pre class="hj-doc-art">     public class Outer {
+         private int n;
+         public class Inner {
+             int twice() { return n * 2; }  // &#x27;n&#x27; belongs to the outer
+         }
+     }</pre>
+                    <pre class="hj-doc-art">     Outer o = new Outer();
+     Inner i = o.new Inner();                 // note the prefix</pre>
+                    <h3>The hidden reference</h3>
+                    <p>The inner instance keeps the outer instance ALIVE for GC purposes. That&#x27;s why event
+                        listeners declared as inner classes can leak the Activity / Fragment / Frame they live in.
+                        PREFER static nested for helpers that don&#x27;t need outer state.</p>
+                    <h3>`Outer.this`</h3>
+                    <p>Inside the inner class, `this` refers to the inner instance and `Outer.this` refers to the
+                        enclosing instance. Useful when names shadow each other.</p>
+                    <h3>Use cases (legitimate)</h3>
+                    <ul>
+                        <li>Iterator implementations that need access to the collection.
+                        </li>
+                        <li>Adapter classes tied to an instance.
+                        </li>
+                        <li>The Observer pattern where the listener really IS part of the
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    observed object&#x27;s identity.</pre>
                 </div>
             </div>
 
@@ -1400,49 +1429,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
-
-/**
- * Inner (non-static member) Classes
- * ---------------------------------
- * An inner class is a NON-STATIC nested class. Every instance carries a
- * HIDDEN REFERENCE to an instance of the enclosing outer class. That
- * lets it access outer fields and methods directly.
- * &lt;p&gt;
- *
- *      public class Outer {
- *          private int n;
- *          public class Inner {
- *              int twice() { return n * 2; }  // &#x27;n&#x27; belongs to the outer
- *          }
- *      }
- * &lt;p&gt;
- *
- *      Outer o = new Outer();
- *      Inner i = o.new Inner();                 // note the prefix
- * &lt;p&gt;
- *
- * The hidden reference
- * --------------------
- * The inner instance keeps the outer instance ALIVE for GC purposes.
- * That&#x27;s why event listeners declared as inner classes can leak the
- * Activity / Fragment / Frame they live in. PREFER static nested for
- * helpers that don&#x27;t need outer state.
- * &lt;p&gt;
- *
- * `Outer.this`
- * ------------
- * Inside the inner class, `this` refers to the inner instance and
- * `Outer.this` refers to the enclosing instance. Useful when names
- * shadow each other.
- * &lt;p&gt;
- *
- * Use cases (legitimate)
- * ----------------------
- *   - Iterator implementations that need access to the collection.
- *   - Adapter classes tied to an instance.
- *   - The Observer pattern where the listener really IS part of the
- *     observed object&#x27;s identity.
- */
 
 public class InnerClass {
 

@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/HashMapDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 167 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 104 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,55 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>java.util.HashMap&amp;lt;K, V&amp;gt; - The Default Map Implementation</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.HashMap&amp;lt;K, V&amp;gt; - The Default Map Implementation</h2>
+                    <p>HashMap stores entries in an ARRAY OF BUCKETS, indexed by the key&#x27;s hashCode. Each bucket is
+                        either empty, a single entry, a small linked list, or - once a bucket gets too long - a balanced
+                        TREE (since Java 8, for keys that implement Comparable). This last detail is why the worst case
+                        is now O(log n) instead of O(n).</p>
+                    <h3>Why It Exists</h3>
+                    <p>You frequently need &quot;given a key, give me its value&quot; with O(1) lookup. HashMap is the
+                        simplest, fastest general-purpose answer.</p>
+                    <h3>When To Use It</h3>
+                    <ul>
+                        <li>Default for any key -&gt; value lookup, no ordering needed.
+                        </li>
+                        <li>Caches.
+                        </li>
+                        <li>Indexes / groupings (group records by some field).
+                        </li>
+                        <li>Counters / frequency tables.
+                        </li>
+                    </ul>
+                    <h3>Big-O (with a good hash distribution)</h3>
+                    <p>get / put / remove / containsKey O(1) average iteration O(capacity + size) worst case (all keys
+                        collide) O(log n) since Java 8</p>
+                    <pre class="hj-doc-art">                                                   (tree-bucket fallback)</pre>
+                    <h3>The equals/hashCode Contract (Critical)</h3>
+                    <p>For any KEY in a HashMap you MUST override hashCode and equals consistently. The Map can&#x27;t
+                        find an entry whose key has a different hash than it had when inserted. Records (Java 16+)
+                        generate correct equals/hashCode for you.</p>
+                    <h3>Allows Null</h3>
+                    <p>HashMap allows ONE null KEY and ANY number of null VALUES. Hashtable, ConcurrentHashMap, and
+                        Map.of(...) forbid nulls.</p>
+                    <h3>Capacity / Load Factor</h3>
+                    <ul>
+                        <li>initialCapacity (default 16)
+                        </li>
+                        <li>loadFactor (default 0.75)
+                        </li>
+                    </ul>
+                    <p>When size / capacity &gt; loadFactor the table doubles. Pre-size to the expected count to avoid
+                        rehashing in a hot loop.</p>
+                    <h3>Constructors</h3>
+                    <p>new HashMap&amp;lt;&amp;gt;() new HashMap&amp;lt;&amp;gt;(int initialCapacity) new HashMap&amp;lt;&amp;gt;(int
+                        initialCapacity, float loadFactor) new HashMap&amp;lt;&amp;gt;(Map&amp;lt;? extends K, ? extends
+                        V&amp;gt; m)</p>
                 </div>
             </div>
 
@@ -1397,68 +1442,6 @@
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-
-/**
- * java.util.HashMap&amp;lt;K, V&amp;gt; - The Default Map Implementation
- * --------------------------------------------------------
- * HashMap stores entries in an ARRAY OF BUCKETS, indexed by the key&#x27;s
- * hashCode. Each bucket is either empty, a single entry, a small linked
- * list, or - once a bucket gets too long - a balanced TREE (since Java 8,
- * for keys that implement Comparable). This last detail is why the worst
- * case is now O(log n) instead of O(n).
- * &lt;p&gt;
- *
- * Why It Exists
- * -------------
- * You frequently need &quot;given a key, give me its value&quot; with O(1)
- * lookup. HashMap is the simplest, fastest general-purpose answer.
- * &lt;p&gt;
- *
- * When To Use It
- * --------------
- *   - Default for any key -&gt; value lookup, no ordering needed.
- *   - Caches.
- *   - Indexes / groupings (group records by some field).
- *   - Counters / frequency tables.
- * &lt;p&gt;
- *
- * Big-O (with a good hash distribution)
- * -------------------------------------
- *   get / put / remove / containsKey                O(1) average
- *   iteration                                       O(capacity + size)
- *   worst case (all keys collide)                    O(log n) since Java 8
- *                                                    (tree-bucket fallback)
- * &lt;p&gt;
- *
- * The equals/hashCode Contract (Critical)
- * ---------------------------------------
- * For any KEY in a HashMap you MUST override hashCode and equals
- * consistently. The Map can&#x27;t find an entry whose key has a different hash
- * than it had when inserted. Records (Java 16+) generate correct
- * equals/hashCode for you.
- * &lt;p&gt;
- *
- * Allows Null
- * -----------
- * HashMap allows ONE null KEY and ANY number of null VALUES. Hashtable,
- * ConcurrentHashMap, and Map.of(...) forbid nulls.
- * &lt;p&gt;
- *
- * Capacity / Load Factor
- * ----------------------
- *   - initialCapacity (default 16)
- *   - loadFactor       (default 0.75)
- * When size / capacity &gt; loadFactor the table doubles. Pre-size to the
- * expected count to avoid rehashing in a hot loop.
- * &lt;p&gt;
- *
- * Constructors
- * ------------
- *   new HashMap&amp;lt;&amp;gt;()
- *   new HashMap&amp;lt;&amp;gt;(int initialCapacity)
- *   new HashMap&amp;lt;&amp;gt;(int initialCapacity, float loadFactor)
- *   new HashMap&amp;lt;&amp;gt;(Map&amp;lt;? extends K, ? extends V&amp;gt; m)
- */
 
 public class HashMapDemo {
 

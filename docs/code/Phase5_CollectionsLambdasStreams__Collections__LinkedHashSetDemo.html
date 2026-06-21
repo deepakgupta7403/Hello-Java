@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/LinkedHashSetDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 121 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 67 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,11 +1374,43 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>java.util.LinkedHashSet&amp;lt;E&amp;gt; - &quot;HashSet that Remembers Insertion Order&quot;
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.LinkedHashSet&amp;lt;E&amp;gt; - &quot;HashSet that Remembers Insertion
+                        Order&quot;</h2>
+                    <p>LinkedHashSet extends HashSet. Internally it keeps a doubly-linked list threading through its
+                        entries in the order they were inserted. The hash-table operations are still O(1); the linked
+                        list just costs you a few extra pointers per element.</p>
+                    <h3>Why It Exists</h3>
+                    <p>Two problems with plain HashSet:</p>
+                    <ul>
+                        <li>Iteration order is unpredictable.
+                        </li>
+                        <li>Two runs of the same program may iterate in different orders.
+                        </li>
+                    </ul>
+                    <p>LinkedHashSet gives you the FAST membership of HashSet AND a STABLE, insertion-based iteration
+                        order - good for logging, UI lists, and deduplicating a stream while preserving the first-seen
+                        order.</p>
+                    <h3>Big-O</h3>
+                    <p>add / remove / contains / size O(1) (same as HashSet) iteration O(size)</p>
+                    <p>(HashSet&#x27;s iteration is O(capacity + size); LinkedHashSet&#x27;s iteration cost is
+                        proportional to the number of elements, not the bucket array size - a tiny win in sparse
+                        sets.)</p>
+                    <h3>Constructors</h3>
+                    <p>new LinkedHashSet&amp;lt;&amp;gt;() new LinkedHashSet&amp;lt;&amp;gt;(int initialCapacity) new
+                        LinkedHashSet&amp;lt;&amp;gt;(int initialCapacity, float loadFactor) new LinkedHashSet&amp;lt;&amp;gt;(Collection&amp;lt;?
+                        extends E&amp;gt;)</p>
+                    <h3>No New Methods</h3>
+                    <p>The API surface is the same as HashSet. The difference is purely the iteration order it
+                        guarantees.</p>
+                    <h3>Java 21 - SequencedSet</h3>
+                    <p>Since Java 21, LinkedHashSet implements the new SequencedSet interface with first/last access
+                        methods. See SequencedCollections.java in Basics/ModernJava for the full demo.</p>
                 </div>
             </div>
 
@@ -1398,59 +1430,6 @@
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
-
-/**
- * java.util.LinkedHashSet&amp;lt;E&amp;gt; - &quot;HashSet that Remembers Insertion Order&quot;
- * --------------------------------------------------------------------
- * LinkedHashSet extends HashSet. Internally it keeps a doubly-linked list
- * threading through its entries in the order they were inserted. The
- * hash-table operations are still O(1); the linked list just costs you a
- * few extra pointers per element.
- * &lt;p&gt;
- *
- * Why It Exists
- * -------------
- * Two problems with plain HashSet:
- *   - Iteration order is unpredictable.
- *   - Two runs of the same program may iterate in different orders.
- * &lt;p&gt;
- *
- * LinkedHashSet gives you the FAST membership of HashSet AND a STABLE,
- * insertion-based iteration order - good for logging, UI lists, and
- * deduplicating a stream while preserving the first-seen order.
- * &lt;p&gt;
- *
- * Big-O
- * -----
- *   add / remove / contains / size              O(1)  (same as HashSet)
- *   iteration                                   O(size)
- * &lt;p&gt;
- *
- * (HashSet&#x27;s iteration is O(capacity + size); LinkedHashSet&#x27;s iteration
- * cost is proportional to the number of elements, not the bucket array
- * size - a tiny win in sparse sets.)
- * &lt;p&gt;
- *
- * Constructors
- * ------------
- *   new LinkedHashSet&amp;lt;&amp;gt;()
- *   new LinkedHashSet&amp;lt;&amp;gt;(int initialCapacity)
- *   new LinkedHashSet&amp;lt;&amp;gt;(int initialCapacity, float loadFactor)
- *   new LinkedHashSet&amp;lt;&amp;gt;(Collection&amp;lt;? extends E&amp;gt;)
- * &lt;p&gt;
- *
- * No New Methods
- * --------------
- * The API surface is the same as HashSet. The difference is purely the
- * iteration order it guarantees.
- * &lt;p&gt;
- *
- * Java 21 - SequencedSet
- * ----------------------
- * Since Java 21, LinkedHashSet implements the new SequencedSet interface
- * with first/last access methods. See SequencedCollections.java in
- * Basics/ModernJava for the full demo.
- */
 
 public class LinkedHashSetDemo {
 

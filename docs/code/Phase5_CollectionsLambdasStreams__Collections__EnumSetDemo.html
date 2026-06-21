@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/EnumSetDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 153 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 105 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,11 +1374,52 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>java.util.EnumSet&amp;lt;E extends Enum&amp;lt;E&amp;gt;&amp;gt; - Fastest Set for Enum Keys
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.EnumSet&amp;lt;E extends Enum&amp;lt;E&amp;gt;&amp;gt; - Fastest Set for Enum
+                        Keys</h2>
+                    <p>EnumSet is a SPECIALISED Set implementation for enum types. Internally it stores membership as a
+                        single BIT VECTOR (a long for ≤64 constants, a long[] otherwise). add/remove/contains are
+                        TRIVIAL bitwise operations.</p>
+                    <h3>Why It Exists</h3>
+                    <ul>
+                        <li>SPEED. Bit operations are dramatically faster than hashing.
+                        </li>
+                        <li>MEMORY. One bit per constant, period.
+                        </li>
+                        <li>SAFETY. The enum&#x27;s compile-time type system rules out invalid members.
+                        </li>
+                    </ul>
+                    <h3>When To Use It</h3>
+                    <ul>
+                        <li>Any time the elements come from an enum type and you need a Set.
+                        </li>
+                        <li>Flags / option sets: EnumSet of Permission, Day, MimeType ...
+                        </li>
+                        <li>Pre-computed lookups: EnumSet.range(Day.MON, Day.FRI) for weekdays.
+                        </li>
+                    </ul>
+                    <h3>Construction (no public constructors - use the static factories)</h3>
+                    <p>EnumSet.noneOf(Day.class) - empty EnumSet.allOf(Day.class) - every constant EnumSet.of(Day.MON) -
+                        one or more constants EnumSet.of(Day.MON, Day.TUE, Day.WED, ...) EnumSet.range(Day.MON, Day.FRI)
+                        - inclusive on both ends EnumSet.copyOf(otherEnumSet) EnumSet.copyOf(anyCollectionOfEnum)
+                        EnumSet.complementOf(otherEnumSet) - &quot;everything NOT in the other&quot;</p>
+                    <h3>Restrictions</h3>
+                    <ul>
+                        <li>All elements MUST be of the SAME enum type (the generic E is bounded).
+                        </li>
+                        <li>NULLS are not allowed.
+                        </li>
+                        <li>Not thread-safe. Use Collections.synchronizedSet(...) if needed.
+                        </li>
+                    </ul>
+                    <h3>Big-O</h3>
+                    <p>add / remove / contains / size O(1) union / intersection / difference (via addAll/removeAll) O(1)
+                        or O(words)</p>
                 </div>
             </div>
 
@@ -1397,53 +1438,6 @@
 
 import java.util.EnumSet;
 import java.util.Set;
-
-/**
- * java.util.EnumSet&amp;lt;E extends Enum&amp;lt;E&amp;gt;&amp;gt; - Fastest Set for Enum Keys
- * --------------------------------------------------------------
- * EnumSet is a SPECIALISED Set implementation for enum types. Internally it
- * stores membership as a single BIT VECTOR (a long for ≤64 constants, a
- * long[] otherwise). add/remove/contains are TRIVIAL bitwise operations.
- * &lt;p&gt;
- *
- * Why It Exists
- * -------------
- *   - SPEED. Bit operations are dramatically faster than hashing.
- *   - MEMORY. One bit per constant, period.
- *   - SAFETY. The enum&#x27;s compile-time type system rules out invalid members.
- * &lt;p&gt;
- *
- * When To Use It
- * --------------
- *   - Any time the elements come from an enum type and you need a Set.
- *   - Flags / option sets: EnumSet of Permission, Day, MimeType ...
- *   - Pre-computed lookups: EnumSet.range(Day.MON, Day.FRI) for weekdays.
- * &lt;p&gt;
- *
- * Construction (no public constructors - use the static factories)
- * ----------------------------------------------------------------
- *   EnumSet.noneOf(Day.class)                  - empty
- *   EnumSet.allOf(Day.class)                   - every constant
- *   EnumSet.of(Day.MON)                        - one or more constants
- *   EnumSet.of(Day.MON, Day.TUE, Day.WED, ...)
- *   EnumSet.range(Day.MON, Day.FRI)            - inclusive on both ends
- *   EnumSet.copyOf(otherEnumSet)
- *   EnumSet.copyOf(anyCollectionOfEnum)
- *   EnumSet.complementOf(otherEnumSet)          - &quot;everything NOT in the other&quot;
- * &lt;p&gt;
- *
- * Restrictions
- * ------------
- *   - All elements MUST be of the SAME enum type (the generic E is bounded).
- *   - NULLS are not allowed.
- *   - Not thread-safe. Use Collections.synchronizedSet(...) if needed.
- * &lt;p&gt;
- *
- * Big-O
- * -----
- *   add / remove / contains / size                            O(1)
- *   union / intersection / difference (via addAll/removeAll)   O(1) or O(words)
- */
 
 public class EnumSetDemo {
 

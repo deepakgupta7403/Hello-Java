@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase4_ErrorsAndTypeSafety/Generics/RecursiveTypeBounds.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 190 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 128 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,38 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A type parameter can have a bound that REFERENCES ITSELF. The canonical example is:</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Recursive Type Bounds</h2>
+                    <p>A type parameter can have a bound that REFERENCES ITSELF. The canonical example is:</p>
+                    <pre class="hj-doc-art">     &amp;lt;T extends Comparable&amp;lt;T&amp;gt;&amp;gt;</pre>
+                    <p>Read as &quot;T is comparable to ITS OWN TYPE&quot;. This is exactly the constraint the JDK&#x27;s
+                        Collections.max / Collections.min / Collections.sort etc. need.</p>
+                    <h3>Why You Need It</h3>
+                    <p>Without the recursive bound you could pass nonsensical types:</p>
+                    <pre class="hj-doc-art">     static &amp;lt;T extends Comparable&amp;gt; T max(List&amp;lt;T&amp;gt; xs)  // BAD</pre>
+                    <pre class="hj-doc-art">     A class `Foo implements Comparable&amp;lt;String&amp;gt;` satisfies that signature
+     but compareTo on a Foo expects a String - we&#x27;d mis-compare.</pre>
+                    <p>The recursive bound forbids that.</p>
+                    <h3>The Builder Pattern&#x27;s Cousin</h3>
+                    <p>Another classic recursive-bound use:</p>
+                    <pre class="hj-doc-art">     class Builder&amp;lt;B extends Builder&amp;lt;B&amp;gt;&amp;gt; {
+         B self() { return (B) this; }
+         B name(String n) { ...; return self(); }
+     }</pre>
+                    <p>Subclasses inherit the fluent return type as their OWN type, not the parent&#x27;s. That lets you
+                        keep chaining subclass methods.</p>
+                    <h3>Enum&amp;lt;E extends Enum&amp;lt;E&amp;gt;&amp;gt; - the JDK&#x27;s most famous example</h3>
+                    <p>java.lang.Enum is declared:</p>
+                    <pre class="hj-doc-art">     public abstract class Enum&amp;lt;E extends Enum&amp;lt;E&amp;gt;&amp;gt;
+         implements Comparable&amp;lt;E&amp;gt;, Serializable { ... }</pre>
+                    <p>That is why Day.MONDAY.compareTo(Day.FRIDAY) returns an int but Day.MONDAY.compareTo(Color.RED)
+                        is a COMPILE ERROR - the bound nails E down to &quot;your own enum type, please&quot;.</p>
+                    <p>Two demos below: a typed min/max method and a &quot;fluent self-typed builder&quot;.</p>
                 </div>
             </div>
 
@@ -1398,67 +1426,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-
-/**
- * Recursive Type Bounds
- * ---------------------
- * A type parameter can have a bound that REFERENCES ITSELF. The canonical
- * example is:
- * &lt;p&gt;
- *
- *      &amp;lt;T extends Comparable&amp;lt;T&amp;gt;&amp;gt;
- * &lt;p&gt;
- *
- * Read as &quot;T is comparable to ITS OWN TYPE&quot;. This is exactly the constraint
- * the JDK&#x27;s Collections.max / Collections.min / Collections.sort etc. need.
- * &lt;p&gt;
- *
- * Why You Need It
- * ---------------
- * Without the recursive bound you could pass nonsensical types:
- * &lt;p&gt;
- *
- *      static &amp;lt;T extends Comparable&amp;gt; T max(List&amp;lt;T&amp;gt; xs)  // BAD
- * &lt;p&gt;
- *
- *      A class `Foo implements Comparable&amp;lt;String&amp;gt;` satisfies that signature
- *      but compareTo on a Foo expects a String - we&#x27;d mis-compare.
- * &lt;p&gt;
- *
- * The recursive bound forbids that.
- * &lt;p&gt;
- *
- * The Builder Pattern&#x27;s Cousin
- * ----------------------------
- * Another classic recursive-bound use:
- * &lt;p&gt;
- *
- *      class Builder&amp;lt;B extends Builder&amp;lt;B&amp;gt;&amp;gt; {
- *          B self() { return (B) this; }
- *          B name(String n) { ...; return self(); }
- *      }
- * &lt;p&gt;
- *
- * Subclasses inherit the fluent return type as their OWN type, not the
- * parent&#x27;s. That lets you keep chaining subclass methods.
- * &lt;p&gt;
- *
- * Enum&amp;lt;E extends Enum&amp;lt;E&amp;gt;&amp;gt; - the JDK&#x27;s most famous example
- * ------------------------------------------------------
- * java.lang.Enum is declared:
- * &lt;p&gt;
- *
- *      public abstract class Enum&amp;lt;E extends Enum&amp;lt;E&amp;gt;&amp;gt;
- *          implements Comparable&amp;lt;E&amp;gt;, Serializable { ... }
- * &lt;p&gt;
- *
- * That is why Day.MONDAY.compareTo(Day.FRIDAY) returns an int but
- * Day.MONDAY.compareTo(Color.RED) is a COMPILE ERROR - the bound nails
- * E down to &quot;your own enum type, please&quot;.
- * &lt;p&gt;
- *
- * Two demos below: a typed min/max method and a &quot;fluent self-typed builder&quot;.
- */
 
 public class RecursiveTypeBounds {
 

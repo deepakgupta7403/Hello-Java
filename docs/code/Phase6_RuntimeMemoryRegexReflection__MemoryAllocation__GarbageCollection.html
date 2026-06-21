@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase6_RuntimeMemoryRegexReflection/MemoryAllocation/GarbageCollection.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 183 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 113 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,68 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Java&#x27;s garbage collector reclaims memory occupied by objects that are no longer &quot;reachable&quot;
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Garbage Collection (GC)</h2>
+                    <p>Java&#x27;s garbage collector reclaims memory occupied by objects that are no longer &quot;reachable&quot;
                         from the program. You never `free` or `delete` yourself - the JVM does it for you, on a schedule
-                        it controls.
-                    </div>
+                        it controls.</p>
+                    <h3>Reachability - The Core Rule</h3>
+                    <p>An object is REACHABLE if some chain of references can be traced to it from a GC ROOT. GC roots
+                        include:</p>
+                    <ul>
+                        <li>Local variables in active stack frames (stack roots).
+                        </li>
+                        <li>Static fields of loaded classes.
+                        </li>
+                        <li>Active JNI references from native code.
+                        </li>
+                        <li>Currently executing threads.
+                        </li>
+                    </ul>
+                    <p>Anything else - no path back to a root - is UNREACHABLE and may be collected at any time.</p>
+                    <h3>The Classic Mark-and-Sweep</h3>
+                    <ul>
+                        <li>MARK - traverse the object graph from every root and mark every
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">              reachable object.</pre>
+                    <ul>
+                        <li>SWEEP - walk the heap and reclaim space occupied by anything not
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">              marked. (Modern collectors also COMPACT to keep the heap
+              un-fragmented.)</pre>
+                    <h3>The Generational Hypothesis</h3>
+                    <ul>
+                        <li>Most objects DIE YOUNG.
+                        </li>
+                        <li>Long-lived objects rarely reference young ones.
+                        </li>
+                    </ul>
+                    <p>Modern collectors exploit this by splitting the heap into a YOUNG generation (cheap, frequent
+                        &quot;minor&quot; GCs) and an OLD generation (expensive &quot;major&quot; GCs, but rarely
+                        needed).</p>
+                    <h3>Three Kinds of References (java.lang.ref)</h3>
+                    <p>STRONG - the normal kind. As long as one strong reference exists,</p>
+                    <pre class="hj-doc-art">                 the GC cannot reclaim the object.</pre>
+                    <p>SOFT - may be cleared at the GC&#x27;s discretion when memory is</p>
+                    <pre class="hj-doc-art">                 tight. Good for memory-sensitive caches.</pre>
+                    <p>WEAK - cleared on the next GC. The classic example is</p>
+                    <pre class="hj-doc-art">                 WeakHashMap, where map ENTRIES disappear when no other
+                 code holds the KEY.</pre>
+                    <p>PHANTOM - never returns the referent; useful for resource cleanup</p>
+                    <pre class="hj-doc-art">                 via java.lang.ref.Cleaner.</pre>
+                    <h3>Cleaner (Java 9+) - the Modern Replacement for finalize()</h3>
+                    <p>`Object.finalize()` is unreliable, deprecated, and slow. Use Cleaner for deterministic,
+                        predictable cleanup of off-heap or native resources.</p>
+                    <h3>What System.gc() Does</h3>
+                    <p>It is only a HINT. The JVM is free to ignore it. Useful in micro-benchmarks; almost never useful
+                        in real applications.</p>
                 </div>
             </div>
 
@@ -1404,75 +1459,6 @@ import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.WeakHashMap;
-
-/**
- * Garbage Collection (GC)
- * -----------------------
- * Java&#x27;s garbage collector reclaims memory occupied by objects that are no
- * longer &quot;reachable&quot; from the program. You never `free` or `delete`
- * yourself - the JVM does it for you, on a schedule it controls.
- * &lt;p&gt;
- *
- * Reachability - The Core Rule
- * ----------------------------
- * An object is REACHABLE if some chain of references can be traced to it
- * from a GC ROOT. GC roots include:
- * &lt;p&gt;
- *
- *   - Local variables in active stack frames (stack roots).
- *   - Static fields of loaded classes.
- *   - Active JNI references from native code.
- *   - Currently executing threads.
- * &lt;p&gt;
- *
- * Anything else - no path back to a root - is UNREACHABLE and may be
- * collected at any time.
- * &lt;p&gt;
- *
- * The Classic Mark-and-Sweep
- * --------------------------
- *   1. MARK   - traverse the object graph from every root and mark every
- *               reachable object.
- *   2. SWEEP  - walk the heap and reclaim space occupied by anything not
- *               marked. (Modern collectors also COMPACT to keep the heap
- *               un-fragmented.)
- * &lt;p&gt;
- *
- * The Generational Hypothesis
- * ---------------------------
- *   - Most objects DIE YOUNG.
- *   - Long-lived objects rarely reference young ones.
- * &lt;p&gt;
- *
- * Modern collectors exploit this by splitting the heap into a YOUNG
- * generation (cheap, frequent &quot;minor&quot; GCs) and an OLD generation
- * (expensive &quot;major&quot; GCs, but rarely needed).
- * &lt;p&gt;
- *
- * Three Kinds of References (java.lang.ref)
- * -----------------------------------------
- *   STRONG       - the normal kind. As long as one strong reference exists,
- *                  the GC cannot reclaim the object.
- *   SOFT         - may be cleared at the GC&#x27;s discretion when memory is
- *                  tight. Good for memory-sensitive caches.
- *   WEAK         - cleared on the next GC. The classic example is
- *                  WeakHashMap, where map ENTRIES disappear when no other
- *                  code holds the KEY.
- *   PHANTOM      - never returns the referent; useful for resource cleanup
- *                  via java.lang.ref.Cleaner.
- * &lt;p&gt;
- *
- * Cleaner (Java 9+) - the Modern Replacement for finalize()
- * ----------------------------------------------------------
- * `Object.finalize()` is unreliable, deprecated, and slow. Use Cleaner for
- * deterministic, predictable cleanup of off-heap or native resources.
- * &lt;p&gt;
- *
- * What System.gc() Does
- * ---------------------
- * It is only a HINT. The JVM is free to ignore it. Useful in
- * micro-benchmarks; almost never useful in real applications.
- */
 
 public class GarbageCollection {
 

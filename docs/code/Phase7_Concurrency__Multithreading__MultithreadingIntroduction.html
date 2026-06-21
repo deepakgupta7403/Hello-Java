@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/MultithreadingIntroduction.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 138 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 66 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,79 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A PROCESS is an instance of a running program. The JVM itself runs as one OS process. Inside
-                        that process, work is performed by THREADS — lightweight, independent paths of execution that
-                        share the process&#x27;s heap and c...
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Multithreading Introduction</h2>
+                    <p>A PROCESS is an instance of a running program. The JVM itself runs as one OS process. Inside that
+                        process, work is performed by THREADS — lightweight, independent paths of execution that share
+                        the process&#x27;s heap and code segment but have their own STACK and PROGRAM COUNTER.</p>
+                    <p>MULTITHREADING is the ability of a CPU (or several CPUs) to provide multiple threads of execution
+                        concurrently. A single Java program can spawn many threads to do work in parallel, react to
+                        events, or keep a UI responsive.</p>
+                    <h3>Concurrency vs Parallelism</h3>
+                    <p>CONCURRENCY - dealing with many things at once (structure).</p>
+                    <pre class="hj-doc-art">                 Threads take turns on a single core, time-sliced by
+                 the OS scheduler.</pre>
+                    <p>PARALLELISM - doing many things at once (execution).</p>
+                    <pre class="hj-doc-art">                 Multiple cores run multiple threads simultaneously.</pre>
+                    <p>Java&#x27;s concurrency primitives let you express both.</p>
+                    <h3>Why Multithreading?</h3>
+                    <ul>
+                        <li>UTILISE THE CPU - keep all cores busy while one thread waits
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                           for I/O.</pre>
+                    <ul>
+                        <li>RESPONSIVENESS - keep the UI / event loop alive while
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                           background work happens.</pre>
+                    <ul>
+                        <li>THROUGHPUT - process many requests at the same time
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                           (servers, schedulers, pipelines).</pre>
+                    <ul>
+                        <li>MODEL THE PROBLEM - some problems are naturally concurrent
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                           (producer/consumer, game loops, sensors).</pre>
+                    <h3>Threads vs Processes</h3>
+                    <pre class="hj-doc-art">                      Process                    Thread
+                      -------                    ------</pre>
+                    <p>Memory Own address space Shared with siblings Creation cost Heavy Light Communication IPC (pipes,
+                        sockets...) Shared variables Crash blast Isolated Whole process dies</p>
+                    <h3>What Java Gives You</h3>
+                    <ul>
+                        <li>java.lang.Thread - the low-level building block.
+                        </li>
+                        <li>java.lang.Runnable - a unit of work to give a Thread.
+                        </li>
+                        <li>java.util.concurrent.* - executors, futures, queues, locks,
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                                  atomics, synchronizers (Java 5+).</pre>
+                    <ul>
+                        <li>java.util.concurrent.locks - Lock, ReadWriteLock, StampedLock.
+                        </li>
+                        <li>Virtual Threads (Java 21) - millions of cheap user-mode threads.
+                        </li>
+                        <li>Structured Concurrency - JEP 453 preview, treats a group of
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                                  tasks as a single unit of work.</pre>
+                    <ul>
+                        <li>Scoped Values - JEP 446 preview, immutable
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                                  alternative to ThreadLocal.</pre>
+                    <h3>Hello, threads!</h3>
+                    <p>The smallest possible multithreaded program runs two threads — the MAIN thread you started in,
+                        and one you create yourself.</p>
                 </div>
             </div>
 
@@ -1396,77 +1462,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase7_Concurrency.Multithreading;
-
-/**
- * Multithreading Introduction
- * ---------------------------
- * A PROCESS is an instance of a running program. The JVM itself runs as
- * one OS process. Inside that process, work is performed by THREADS —
- * lightweight, independent paths of execution that share the process&#x27;s
- * heap and code segment but have their own STACK and PROGRAM COUNTER.
- * &lt;p&gt;
- *
- * MULTITHREADING is the ability of a CPU (or several CPUs) to provide
- * multiple threads of execution concurrently. A single Java program can
- * spawn many threads to do work in parallel, react to events, or keep a
- * UI responsive.
- * &lt;p&gt;
- *
- * Concurrency vs Parallelism
- * --------------------------
- *   CONCURRENCY  - dealing with many things at once (structure).
- *                  Threads take turns on a single core, time-sliced by
- *                  the OS scheduler.
- * &lt;p&gt;
- *
- *   PARALLELISM  - doing many things at once (execution).
- *                  Multiple cores run multiple threads simultaneously.
- * &lt;p&gt;
- *
- * Java&#x27;s concurrency primitives let you express both.
- * &lt;p&gt;
- *
- * Why Multithreading?
- * -------------------
- *   - UTILISE THE CPU      - keep all cores busy while one thread waits
- *                            for I/O.
- *   - RESPONSIVENESS       - keep the UI / event loop alive while
- *                            background work happens.
- *   - THROUGHPUT           - process many requests at the same time
- *                            (servers, schedulers, pipelines).
- *   - MODEL THE PROBLEM    - some problems are naturally concurrent
- *                            (producer/consumer, game loops, sensors).
- * &lt;p&gt;
- *
- * Threads vs Processes
- * --------------------
- *                       Process                    Thread
- *                       -------                    ------
- *   Memory             Own address space          Shared with siblings
- *   Creation cost      Heavy                       Light
- *   Communication      IPC (pipes, sockets...)    Shared variables
- *   Crash blast        Isolated                    Whole process dies
- * &lt;p&gt;
- *
- * What Java Gives You
- * -------------------
- *   1. java.lang.Thread           - the low-level building block.
- *   2. java.lang.Runnable         - a unit of work to give a Thread.
- *   3. java.util.concurrent.*     - executors, futures, queues, locks,
- *                                   atomics, synchronizers (Java 5+).
- *   4. java.util.concurrent.locks - Lock, ReadWriteLock, StampedLock.
- *   5. Virtual Threads (Java 21)  - millions of cheap user-mode threads.
- *   6. Structured Concurrency     - JEP 453 preview, treats a group of
- *                                   tasks as a single unit of work.
- *   7. Scoped Values              - JEP 446 preview, immutable
- *                                   alternative to ThreadLocal.
- * &lt;p&gt;
- *
- * Hello, threads!
- * ---------------
- * The smallest possible multithreaded program runs two threads — the
- * MAIN thread you started in, and one you create yourself.
- */
 
 public class MultithreadingIntroduction {
 

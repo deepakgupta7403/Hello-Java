@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase0_SetupAndFirstPrograms/Output/PrintMethods.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 103 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 69 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,35 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Java exposes the standard output stream as the static field System.out, which is an instance of
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Printing Output to the Console</h2>
+                    <p>Java exposes the standard output stream as the static field System.out, which is an instance of
                         java.io.PrintStream. PrintStream offers three families of methods for writing text to the
-                        console:
-                    </div>
+                        console:</p>
+                    <pre class="hj-doc-art">     System.out.print(...)    -&gt; writes the argument, does NOT add a newline
+     System.out.println(...)  -&gt; writes the argument and then a newline
+     System.out.printf(...)   -&gt; C-style formatted output (no trailing newline)
+     System.out.format(...)   -&gt; same as printf - alias</pre>
+                    <p>There is also System.err - a separate PrintStream used for error messages. Conceptually identical
+                        to System.out but typically rendered in red in IDEs and goes to a different OS file descriptor
+                        (stderr).</p>
+                    <h3>Performance Note</h3>
+                    <p>System.out is &quot;auto-flush&quot; so each call performs an I/O operation. For tight loops
+                        printing millions of lines, wrap it in a BufferedWriter for ~10x speedup:</p>
+                    <pre class="hj-doc-art">    PrintWriter pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));</pre>
+                    <h3>String Concatenation vs printf</h3>
+                    <ul>
+                        <li>println(&quot;x = &quot; + x) is simple and fast for a few values.
+                        </li>
+                        <li>printf(&quot;x = %d%n&quot;, x) is preferred when formatting numbers (width, precision,
+                        </li>
+                    </ul>
+                    <p>padding, locale-aware decimals, etc.).</p>
                 </div>
             </div>
 
@@ -1396,39 +1418,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase0_SetupAndFirstPrograms.Output;
-
-/**
- * Printing Output to the Console
- * ------------------------------
- * Java exposes the standard output stream as the static field System.out, which
- * is an instance of java.io.PrintStream. PrintStream offers three families of
- * methods for writing text to the console:
- * &lt;p&gt;
- *
- *      System.out.print(...)    -&gt; writes the argument, does NOT add a newline
- *      System.out.println(...)  -&gt; writes the argument and then a newline
- *      System.out.printf(...)   -&gt; C-style formatted output (no trailing newline)
- *      System.out.format(...)   -&gt; same as printf - alias
- * &lt;p&gt;
- *
- * There is also System.err - a separate PrintStream used for error messages.
- * Conceptually identical to System.out but typically rendered in red in IDEs and
- * goes to a different OS file descriptor (stderr).
- * &lt;p&gt;
- *
- * Performance Note
- * ----------------
- * System.out is &quot;auto-flush&quot; so each call performs an I/O operation. For tight
- * loops printing millions of lines, wrap it in a BufferedWriter for ~10x speedup:
- *     PrintWriter pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
- * &lt;p&gt;
- *
- * String Concatenation vs printf
- * ------------------------------
- * - println(&quot;x = &quot; + x) is simple and fast for a few values.
- * - printf(&quot;x = %d%n&quot;, x) is preferred when formatting numbers (width, precision,
- *   padding, locale-aware decimals, etc.).
- */
 
 public class PrintMethods {
 

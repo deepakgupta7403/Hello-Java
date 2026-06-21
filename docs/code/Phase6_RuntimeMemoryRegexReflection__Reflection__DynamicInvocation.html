@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase6_RuntimeMemoryRegexReflection/Reflection/DynamicInvocation.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 129 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 89 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,53 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Two faster / safer alternatives to Method.invoke:</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Dynamic Invocation</h2>
+                    <p>Two faster / safer alternatives to Method.invoke:</p>
+                    <ul>
+                        <li>MethodHandles — typed, closer to direct call speed.
+                        </li>
+                        <li>Dynamic Proxies — create a class at runtime that implements
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                       a set of interfaces by routing every call
+                       through an InvocationHandler.</pre>
+                    <h3>MethodHandle vs Method</h3>
+                    <pre class="hj-doc-art">     Method                              MethodHandle
+     ----------------------------        ----------------------------
+     Reflective; older API                Indy-style invocation
+     ~10x slower than direct              Approaches direct-call speed
+     Wraps user exceptions                Throws user exceptions directly
+     Auto-boxes primitives                Strongly typed
+     Generic via getClass / String        Explicit MethodType</pre>
+                    <h3>Dynamic Proxy — when to use</h3>
+                    <ul>
+                        <li>Build a Mock object that records calls.
+                        </li>
+                        <li>Add cross-cutting concerns (logging, timing, transactions) around
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    a set of interfaces.</pre>
+                    <ul>
+                        <li>This is the trick Spring AOP uses for JDK-proxy beans.
+                        </li>
+                    </ul>
+                    <h3>Limitations</h3>
+                    <ul>
+                        <li>JDK Proxy supports INTERFACES only. For proxying classes, use
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    CGLIB or ByteBuddy or the JDK&#x27;s Hidden Classes via ASM.</pre>
+                    <ul>
+                        <li>JDK 21 still bans creating proxies for sealed interfaces unless
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    all permitted subclasses are proxied.</pre>
                 </div>
             </div>
 
@@ -1400,45 +1443,6 @@ import java.lang.invoke.MethodType;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-
-/**
- * Dynamic Invocation
- * ------------------
- * Two faster / safer alternatives to Method.invoke:
- * &lt;p&gt;
- *
- *   1. MethodHandles — typed, closer to direct call speed.
- *   2. Dynamic Proxies — create a class at runtime that implements
- *                        a set of interfaces by routing every call
- *                        through an InvocationHandler.
- * &lt;p&gt;
- *
- * MethodHandle vs Method
- * ----------------------
- *      Method                              MethodHandle
- *      ----------------------------        ----------------------------
- *      Reflective; older API                Indy-style invocation
- *      ~10x slower than direct              Approaches direct-call speed
- *      Wraps user exceptions                Throws user exceptions directly
- *      Auto-boxes primitives                Strongly typed
- *      Generic via getClass / String        Explicit MethodType
- * &lt;p&gt;
- *
- * Dynamic Proxy — when to use
- * ---------------------------
- *   - Build a Mock object that records calls.
- *   - Add cross-cutting concerns (logging, timing, transactions) around
- *     a set of interfaces.
- *   - This is the trick Spring AOP uses for JDK-proxy beans.
- * &lt;p&gt;
- *
- * Limitations
- * -----------
- *   - JDK Proxy supports INTERFACES only. For proxying classes, use
- *     CGLIB or ByteBuddy or the JDK&#x27;s Hidden Classes via ASM.
- *   - JDK 21 still bans creating proxies for sealed interfaces unless
- *     all permitted subclasses are proxied.
- */
 
 public class DynamicInvocation {
 

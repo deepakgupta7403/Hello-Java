@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase8_PracticalAPIs/FileIO/WatchServiceDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 104 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 57 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,49 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>The OS knows when files change; the JVM exposes that through a WatchService. You REGISTER
-                        directories with the service for events of interest, then POLL for changes.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>WatchService — observe file-system changes</h2>
+                    <p>The OS knows when files change; the JVM exposes that through a WatchService. You REGISTER
+                        directories with the service for events of interest, then POLL for changes.</p>
+                    <h3>Event kinds</h3>
+                    <p>ENTRY_CREATE - a file/dir was created ENTRY_MODIFY - contents changed ENTRY_DELETE - deleted
+                        OVERFLOW - events were lost (buffer ran out)</p>
+                    <h3>Lifecycle</h3>
+                    <pre class="hj-doc-art">     WatchService ws = FileSystems.getDefault().newWatchService();
+     WatchKey key = dir.register(ws,
+             StandardWatchEventKinds.ENTRY_CREATE,
+             StandardWatchEventKinds.ENTRY_MODIFY);</pre>
+                    <pre class="hj-doc-art">     while (true) {
+         WatchKey k = ws.take();           // or poll(timeout, unit)
+         for (WatchEvent&lt;?&gt; ev : k.pollEvents()) { ... }
+         if (!k.reset()) break;            // key invalid -&gt; dir gone
+     }</pre>
+                    <h3>Caveats</h3>
+                    <ul>
+                        <li>Watch service watches DIRECTORIES, not individual files (events
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    are reported with file names relative to the directory).</pre>
+                    <ul>
+                        <li>It is NOT recursive — you must register each subdirectory.
+                        </li>
+                        <li>Implementation varies by OS. On macOS it&#x27;s polling-based and may
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    report MODIFY twice in quick succession.</pre>
+                    <ul>
+                        <li>One ENTRY_MODIFY may correspond to several writes (debounce).
+                        </li>
+                        <li>It DOES NOT block the JVM from exiting.
+                        </li>
+                    </ul>
+                    <p>This demo writes a few files in a separate thread and polls for the events for a couple of
+                        seconds.</p>
                 </div>
             </div>
 
@@ -1400,52 +1437,6 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.util.concurrent.TimeUnit;
-
-/**
- * WatchService — observe file-system changes
- * ------------------------------------------
- * The OS knows when files change; the JVM exposes that through a
- * WatchService. You REGISTER directories with the service for events
- * of interest, then POLL for changes.
- * &lt;p&gt;
- *
- * Event kinds
- * -----------
- *   ENTRY_CREATE   - a file/dir was created
- *   ENTRY_MODIFY   - contents changed
- *   ENTRY_DELETE   - deleted
- *   OVERFLOW       - events were lost (buffer ran out)
- * &lt;p&gt;
- *
- * Lifecycle
- * ---------
- *      WatchService ws = FileSystems.getDefault().newWatchService();
- *      WatchKey key = dir.register(ws,
- *              StandardWatchEventKinds.ENTRY_CREATE,
- *              StandardWatchEventKinds.ENTRY_MODIFY);
- * &lt;p&gt;
- *
- *      while (true) {
- *          WatchKey k = ws.take();           // or poll(timeout, unit)
- *          for (WatchEvent&lt;?&gt; ev : k.pollEvents()) { ... }
- *          if (!k.reset()) break;            // key invalid -&gt; dir gone
- *      }
- * &lt;p&gt;
- *
- * Caveats
- * -------
- *   - Watch service watches DIRECTORIES, not individual files (events
- *     are reported with file names relative to the directory).
- *   - It is NOT recursive — you must register each subdirectory.
- *   - Implementation varies by OS. On macOS it&#x27;s polling-based and may
- *     report MODIFY twice in quick succession.
- *   - One ENTRY_MODIFY may correspond to several writes (debounce).
- *   - It DOES NOT block the JVM from exiting.
- * &lt;p&gt;
- *
- * This demo writes a few files in a separate thread and polls for the
- * events for a couple of seconds.
- */
 
 public class WatchServiceDemo {
 

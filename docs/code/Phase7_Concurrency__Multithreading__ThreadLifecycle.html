@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/ThreadLifecycle.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 142 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 77 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,65 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A Thread moves through a small set of states defined by Thread.State:</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Thread Lifecycle</h2>
+                    <p>A Thread moves through a small set of states defined by Thread.State:</p>
+                    <p>NEW - constructed but start() has NOT been called yet. RUNNABLE - eligible to run on a CPU. May
+                        be currently</p>
+                    <pre class="hj-doc-art">                     running, may be ready and waiting for a core.</pre>
+                    <p>BLOCKED - waiting to acquire an INTRINSIC monitor lock</p>
+                    <pre class="hj-doc-art">                     (entering a synchronized block / method whose
+                     lock another thread holds).</pre>
+                    <p>WAITING - waiting indefinitely for another thread:</p>
+                    <pre class="hj-doc-art">                         wait()         (no timeout)
+                         join()         (no timeout)
+                         LockSupport.park()</pre>
+                    <p>TIMED_WAITING - waiting with a timeout:</p>
+                    <pre class="hj-doc-art">                         sleep(ms)
+                         wait(ms)
+                         join(ms)
+                         LockSupport.parkNanos / parkUntil</pre>
+                    <p>TERMINATED - run() has returned (normally or via uncaught</p>
+                    <pre class="hj-doc-art">                     exception). Cannot be restarted.</pre>
+                    <h3>Diagram</h3>
+                    <pre class="hj-doc-art">         start()                schedule</pre>
+                    <p>NEW ----------&gt; RUNNABLE &lt;--------------&gt; running on CPU</p>
+                    <pre class="hj-doc-art">                     |  ^         (the JVM/OS does this)
+     synchronized --&gt;|  |
+                     v  |
+                  BLOCKED                 (waiting for a monitor)</pre>
+                    <pre class="hj-doc-art">     wait/join/park --&gt;|
+                       v
+                    WAITING / TIMED_WAITING
+                       |
+                 notify/timeout
+                       v
+                    RUNNABLE</pre>
+                    <pre class="hj-doc-art">                  run() returns
+                       v
+                  TERMINATED</pre>
+                    <h3>Important Notes</h3>
+                    <ul>
+                        <li>RUNNABLE includes &quot;ready but waiting for CPU&quot; too. There is NO
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     separate READY state in Java&#x27;s enum.</pre>
+                    <ul>
+                        <li>BLOCKED only refers to INTRINSIC LOCK contention. Threads waiting
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     on a Lock from java.util.concurrent.locks are WAITING /
+     TIMED_WAITING, not BLOCKED — because Lock uses LockSupport.park.</pre>
+                    <ul>
+                        <li>TERMINATED is final. You cannot restart a terminated thread.
+                        </li>
+                    </ul>
+                    <p>This file walks through each state and prints what getState() returns.</p>
                 </div>
             </div>
 
@@ -1395,70 +1450,6 @@
           <pre class="line-numbers m-0"><code class="language-java">package Phase7_Concurrency.Multithreading;
 
 import java.util.concurrent.locks.LockSupport;
-
-/**
- * Thread Lifecycle
- * ----------------
- * A Thread moves through a small set of states defined by Thread.State:
- * &lt;p&gt;
- *
- *   NEW              - constructed but start() has NOT been called yet.
- *   RUNNABLE         - eligible to run on a CPU. May be currently
- *                      running, may be ready and waiting for a core.
- *   BLOCKED          - waiting to acquire an INTRINSIC monitor lock
- *                      (entering a synchronized block / method whose
- *                      lock another thread holds).
- *   WAITING          - waiting indefinitely for another thread:
- *                          wait()         (no timeout)
- *                          join()         (no timeout)
- *                          LockSupport.park()
- *   TIMED_WAITING    - waiting with a timeout:
- *                          sleep(ms)
- *                          wait(ms)
- *                          join(ms)
- *                          LockSupport.parkNanos / parkUntil
- *   TERMINATED       - run() has returned (normally or via uncaught
- *                      exception). Cannot be restarted.
- * &lt;p&gt;
- *
- * Diagram
- * -------
- * &lt;p&gt;
- *
- *          start()                schedule
- *   NEW ----------&gt; RUNNABLE &lt;--------------&gt; running on CPU
- *                      |  ^         (the JVM/OS does this)
- *      synchronized --&gt;|  |
- *                      v  |
- *                   BLOCKED                 (waiting for a monitor)
- * &lt;p&gt;
- *
- *      wait/join/park --&gt;|
- *                        v
- *                     WAITING / TIMED_WAITING
- *                        |
- *                  notify/timeout
- *                        v
- *                     RUNNABLE
- * &lt;p&gt;
- *
- *                   run() returns
- *                        v
- *                   TERMINATED
- * &lt;p&gt;
- *
- * Important Notes
- * ---------------
- *   1. RUNNABLE includes &quot;ready but waiting for CPU&quot; too. There is NO
- *      separate READY state in Java&#x27;s enum.
- *   2. BLOCKED only refers to INTRINSIC LOCK contention. Threads waiting
- *      on a Lock from java.util.concurrent.locks are WAITING /
- *      TIMED_WAITING, not BLOCKED — because Lock uses LockSupport.park.
- *   3. TERMINATED is final. You cannot restart a terminated thread.
- * &lt;p&gt;
- *
- * This file walks through each state and prints what getState() returns.
- */
 
 public class ThreadLifecycle {
 

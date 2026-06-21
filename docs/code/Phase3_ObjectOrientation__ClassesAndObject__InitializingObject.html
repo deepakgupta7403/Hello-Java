@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase3_ObjectOrientation/ClassesAndObject/InitializingObject.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 75 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 63 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,20 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>The new operator instantiates a class by allocating memory for a new object and returning a
-                        reference to that memory. The new operator also invokes the class constructor.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>The new operator instantiates a class by allocating memory for a new object and returning a
+                        reference to that memory. The new operator also invokes the class constructor.</p>
+                    <p>This class contains a single constructor. We can recognize a constructor because its declaration
+                        uses the same name as the class and it has no return type. The Java compiler differentiates the
+                        constructors based on the number and the type of the arguments. The constructor in the Dog class
+                        takes four arguments. The following statement provides “tuffy”,”papillon”,5,”white” as values
+                        for those arguments:</p>
+                    <p>Dog tuffy = new Dog(&quot;tuffy&quot;,&quot;papillon&quot;,5, &quot;white&quot;);</p>
                 </div>
             </div>
 
@@ -1395,17 +1403,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase3_ObjectOrientation.ClassesAndObject;
-
-/**The new operator instantiates a class by allocating memory for a new object and returning a reference to that memory.
- * The new operator also invokes the class constructor.
- * &lt;p&gt;
- *
- * This class contains a single constructor. We can recognize a constructor because its declaration uses the same name as the class and it has no return type.
- * The Java compiler differentiates the constructors based on the number and the type of the arguments. The constructor in the Dog class takes four arguments.
- * The following statement provides “tuffy”,”papillon”,5,”white” as values for those arguments:
- * &lt;p&gt;
- *
- * Dog tuffy = new Dog(&quot;tuffy&quot;,&quot;papillon&quot;,5, &quot;white&quot;);**/
 
 public class InitializingObject {
     // Instance Basics.Variables

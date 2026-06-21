@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase1_CoreLanguage/Loops/ForLoop.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 54 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 29 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,28 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>For loop provides a concise way of writing the loop structure. Unlike a while loop, a for
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>For loop provides a concise way of writing the loop structure. Unlike a while loop, a for
                         statement consumes the initialization, condition and increment/decrement in one line thereby
-                        providing a shorter, easy to debug...
-                    </div>
+                        providing a shorter, easy to debug structure of looping.</p>
+                    <p>Syntax: for (initialization condition; testing condition; increment/decrement) {</p>
+                    <pre class="hj-doc-art">    statement(s)</pre>
+                    <p>}</p>
+                    <p>FlowChart</p>
+                    <p>Start----&gt;Initialization----&gt;Condition Checking----&gt;if true----&gt;Loop body----&gt;Increment/Decrement----&gt;false----&gt;Exit
+                        from the Loop Initialization condition: Here, we initialize the variable in use. It marks the
+                        start of a for loop. An already declared variable can be used or a variable can be declared,
+                        local to loop only. Testing Condition: It is used for testing the exit condition for a loop. It
+                        must return a boolean value. It is also an Entry Control Loop as the condition is checked prior
+                        to the execution of the loop statements. Statement execution: Once the condition is evaluated to
+                        true, the statements in the loop body are executed. Increment/ Decrement: It is used for
+                        updating the variable for next iteration. Loop termination:When the condition becomes false, the
+                        loop terminates marking the end of its life cycle.</p>
                 </div>
             </div>
 
@@ -1396,30 +1411,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase1_CoreLanguage.Loops;
-
-/**
- * For loop provides a concise way of writing the loop structure.
- * Unlike a while loop, a for statement consumes the initialization,
- * condition and increment/decrement in one line thereby providing a shorter, easy to debug structure of looping.
- * &lt;p&gt;
- *
- * Syntax:
- * for (initialization condition; testing condition; increment/decrement)
- * {
- *     statement(s)
- * }
- * &lt;p&gt;
- *
- * FlowChart
- * &lt;p&gt;
- *
- * Start----&gt;Initialization----&gt;Condition Checking----&gt;if true----&gt;Loop body----&gt;Increment/Decrement----&gt;false----&gt;Exit from the Loop
- * Initialization condition: Here, we initialize the variable in use. It marks the start of a for loop. An already declared variable can be used or a variable can be declared, local to loop only.
- * Testing Condition: It is used for testing the exit condition for a loop. It must return a boolean value. It is also an Entry Control Loop as the condition is checked prior to the execution of the loop statements.
- * Statement execution: Once the condition is evaluated to true, the statements in the loop body are executed.
- * Increment/ Decrement: It is used for updating the variable for next iteration.
- * Loop termination:When the condition becomes false, the loop terminates marking the end of its life cycle.
- ***/
 
 public class ForLoop {
     public static void main(String args[])

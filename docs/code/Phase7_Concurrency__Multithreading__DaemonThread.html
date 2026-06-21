@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/DaemonThread.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 115 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 69 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,56 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A thread can be a USER thread (default) or a DAEMON thread. The difference is only one thing —
-                        and it&#x27;s about JVM SHUTDOWN:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Daemon Threads</h2>
+                    <p>A thread can be a USER thread (default) or a DAEMON thread. The difference is only one thing —
+                        and it&#x27;s about JVM SHUTDOWN:</p>
+                    <pre class="hj-doc-art">     The JVM EXITS when all USER threads have finished.
+     Any remaining DAEMON threads are killed abruptly.</pre>
+                    <h3>Use cases</h3>
+                    <ul>
+                        <li>Background maintenance: GC helpers, log flushing, metrics
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    sampling, cache eviction.</pre>
+                    <ul>
+                        <li>Anything that shouldn&#x27;t keep the JVM alive on its own.
+                        </li>
+                    </ul>
+                    <h3>Rules</h3>
+                    <ul>
+                        <li>setDaemon(true) MUST be called BEFORE start().
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     Calling it later throws IllegalThreadStateException.</pre>
+                    <ul>
+                        <li>A new thread INHERITS the daemon flag of its creator.
+                        </li>
+                        <li>Daemons get NO orderly shutdown when the JVM dies — finally
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    blocks may not run, resources may not be closed. So:
+       DO NOT use daemons for tasks that MUST clean up
+       (DB writers, file appenders, network flushes).</pre>
+                    <h3>Daemons in the JDK</h3>
+                    <p>Many JVM internals are daemons by default:</p>
+                    <ul>
+                        <li>GC threads, JIT compiler, Reference Handler, Finalizer
+                        </li>
+                        <li>Common-ForkJoin pool&#x27;s workers (when not user-set)
+                        </li>
+                        <li>Timer threads (if you opt in)
+                        </li>
+                    </ul>
+                    <h3>Daemons and ExecutorService</h3>
+                    <p>By default, threads from Executors.newXxxThreadPool are USER threads. That&#x27;s why a forgotten
+                        ExecutorService that isn&#x27;t shutdown() can keep your JVM running. Use a ThreadFactory that
+                        returns daemons if you want shutdown-on-exit semantics.</p>
                 </div>
             </div>
 
@@ -1395,51 +1439,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase7_Concurrency.Multithreading;
-
-/**
- * Daemon Threads
- * --------------
- * A thread can be a USER thread (default) or a DAEMON thread. The
- * difference is only one thing — and it&#x27;s about JVM SHUTDOWN:
- * &lt;p&gt;
- *
- *      The JVM EXITS when all USER threads have finished.
- *      Any remaining DAEMON threads are killed abruptly.
- * &lt;p&gt;
- *
- * Use cases
- * ---------
- *   - Background maintenance: GC helpers, log flushing, metrics
- *     sampling, cache eviction.
- *   - Anything that shouldn&#x27;t keep the JVM alive on its own.
- * &lt;p&gt;
- *
- * Rules
- * -----
- *   1. setDaemon(true) MUST be called BEFORE start().
- *      Calling it later throws IllegalThreadStateException.
- *   2. A new thread INHERITS the daemon flag of its creator.
- *   3. Daemons get NO orderly shutdown when the JVM dies — finally
- *     blocks may not run, resources may not be closed. So:
- *        DO NOT use daemons for tasks that MUST clean up
- *        (DB writers, file appenders, network flushes).
- * &lt;p&gt;
- *
- * Daemons in the JDK
- * ------------------
- * Many JVM internals are daemons by default:
- *   - GC threads, JIT compiler, Reference Handler, Finalizer
- *   - Common-ForkJoin pool&#x27;s workers (when not user-set)
- *   - Timer threads (if you opt in)
- * &lt;p&gt;
- *
- * Daemons and ExecutorService
- * ---------------------------
- * By default, threads from Executors.newXxxThreadPool are USER threads.
- * That&#x27;s why a forgotten ExecutorService that isn&#x27;t shutdown() can keep
- * your JVM running. Use a ThreadFactory that returns daemons if you want
- * shutdown-on-exit semantics.
- */
 
 public class DaemonThread {
 

@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase2_MethodsArraysStrings/Methods/MethodReferences.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 138 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 79 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,61 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A method reference is a compact, expressive ALTERNATIVE TO A LAMBDA when the lambda just calls
-                        an existing method. Syntax:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Method References (Java 8+)</h2>
+                    <p>A method reference is a compact, expressive ALTERNATIVE TO A LAMBDA when the lambda just calls an
+                        existing method. Syntax:</p>
+                    <pre class="hj-doc-art">     Target::methodName</pre>
+                    <h3>Four Forms of Method References</h3>
+                    <ul>
+                        <li>STATIC method Class::staticMethod
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">        Function&lt;String, Integer&gt; p = Integer::parseInt;
+        // equivalent lambda:  s -&gt; Integer.parseInt(s)</pre>
+                    <ul>
+                        <li>INSTANCE method of a PARTICULAR object instance::method
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">        StringBuilder sb = new StringBuilder();
+        Consumer&lt;String&gt; append = sb::append;
+        // equivalent lambda:  s -&gt; sb.append(s)</pre>
+                    <ul>
+                        <li>INSTANCE method of an ARBITRARY object of a type Class::method
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">        Function&lt;String, Integer&gt; len = String::length;
+        // equivalent lambda:  s -&gt; s.length()</pre>
+                    <ul>
+                        <li>CONSTRUCTOR reference Class::new
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">        Supplier&lt;ArrayList&lt;String&gt;&gt; mk = ArrayList::new;
+        Function&lt;String, StringBuilder&gt; wrap = StringBuilder::new;</pre>
+                    <h3>Why Use Them?</h3>
+                    <ul>
+                        <li>Less noise than the equivalent lambda.
+                        </li>
+                        <li>Reads almost like English: &quot;stream of names, sort by String::length&quot;.
+                        </li>
+                        <li>Encourages thinking in terms of WHAT to apply rather than HOW.
+                        </li>
+                    </ul>
+                    <h3>When To Stick With a Lambda</h3>
+                    <ul>
+                        <li>When the lambda needs additional logic beyond a single method call.
+                        </li>
+                        <li>When the type inference for `::` gets confused.
+                        </li>
+                        <li>When readability suffers (overloaded methods + method references can be
+                        </li>
+                    </ul>
+                    <p>hard to read).</p>
                 </div>
             </div>
 
@@ -1402,64 +1451,6 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
-
-/**
- * Method References (Java 8+)
- * ---------------------------
- * A method reference is a compact, expressive ALTERNATIVE TO A LAMBDA when the
- * lambda just calls an existing method. Syntax:
- * &lt;p&gt;
- *
- *      Target::methodName
- * &lt;p&gt;
- *
- * Four Forms of Method References
- * -------------------------------
- * &lt;p&gt;
- *
- *  1. STATIC method                    Class::staticMethod
- * &lt;p&gt;
- *
- *         Function&lt;String, Integer&gt; p = Integer::parseInt;
- *         // equivalent lambda:  s -&gt; Integer.parseInt(s)
- * &lt;p&gt;
- *
- *  2. INSTANCE method of a PARTICULAR object    instance::method
- * &lt;p&gt;
- *
- *         StringBuilder sb = new StringBuilder();
- *         Consumer&lt;String&gt; append = sb::append;
- *         // equivalent lambda:  s -&gt; sb.append(s)
- * &lt;p&gt;
- *
- *  3. INSTANCE method of an ARBITRARY object of a type    Class::method
- * &lt;p&gt;
- *
- *         Function&lt;String, Integer&gt; len = String::length;
- *         // equivalent lambda:  s -&gt; s.length()
- * &lt;p&gt;
- *
- *  4. CONSTRUCTOR reference            Class::new
- * &lt;p&gt;
- *
- *         Supplier&lt;ArrayList&lt;String&gt;&gt; mk = ArrayList::new;
- *         Function&lt;String, StringBuilder&gt; wrap = StringBuilder::new;
- * &lt;p&gt;
- *
- * Why Use Them?
- * -------------
- *  - Less noise than the equivalent lambda.
- *  - Reads almost like English: &quot;stream of names, sort by String::length&quot;.
- *  - Encourages thinking in terms of WHAT to apply rather than HOW.
- * &lt;p&gt;
- *
- * When To Stick With a Lambda
- * ---------------------------
- *  - When the lambda needs additional logic beyond a single method call.
- *  - When the type inference for `::` gets confused.
- *  - When readability suffers (overloaded methods + method references can be
- *    hard to read).
- */
 
 public class MethodReferences {
 

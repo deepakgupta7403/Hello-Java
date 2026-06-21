@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase9_ModernJavaAndModules/ModernJava/VarLocalTypeInference.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 122 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 76 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,63 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Since Java 10 you can declare a LOCAL variable with the keyword &#x27;var&#x27; instead of
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>var - Local Variable Type Inference (Java 10+)</h2>
+                    <p>Since Java 10 you can declare a LOCAL variable with the keyword &#x27;var&#x27; instead of
                         writing the full type. The compiler INFERS the type from the right-hand side - this is purely a
-                        compile-time feature, the bytecode is id...
-                    </div>
+                        compile-time feature, the bytecode is identical.</p>
+                    <pre class="hj-doc-art">     var x = 42;                  // inferred as int
+     var s = &quot;Hello&quot;;             // inferred as String
+     var list = new ArrayList&lt;String&gt;();  // ArrayList&lt;String&gt;</pre>
+                    <h3>Where &#x27;var&#x27; Works</h3>
+                    <ul>
+                        <li>Local variables inside methods, constructors, initializer blocks.
+                        </li>
+                        <li>The loop variable in for / for-each loops.
+                        </li>
+                        <li>Try-with-resources variable.
+                        </li>
+                    </ul>
+                    <h3>Where &#x27;var&#x27; Does NOT Work</h3>
+                    <ul>
+                        <li>Class fields var name = &quot;Deepak&quot;; // ERROR (field)
+                        </li>
+                        <li>Method parameters void m(var x) { ... } // ERROR
+                        </li>
+                        <li>Return types var foo() { ... } // ERROR
+                        </li>
+                        <li>Without an initializer var x; // ERROR
+                        </li>
+                        <li>With null literal var x = null; // ERROR
+                        </li>
+                        <li>With a lambda var f = () -&gt; 1; // ERROR (no target type)
+                        </li>
+                        <li>With an array initializer var a = {1, 2, 3}; // ERROR
+                        </li>
+                    </ul>
+                    <p>Note - &#x27;var&#x27; is a RESTRICTED IDENTIFIER, not a reserved keyword. You can still declare
+                        a variable named &#x27;var&#x27; (legacy code) - but please do not.</p>
+                    <h3>When To Use It (Style Guide)</h3>
+                    <ul>
+                        <li>When the inferred type is obvious from the RHS:
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">       var list = new ArrayList&lt;Customer&gt;();   // GOOD - reduces duplication</pre>
+                    <ul>
+                        <li>When the inferred type is opaque or surprising, prefer the explicit type:
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">       var result = service.process();         // BAD - what&#x27;s the type?
+       OrderResult result = service.process(); // GOOD</pre>
+                    <ul>
+                        <li>var does NOT make code dynamically typed - the type is fixed once inferred.
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1400,51 +1450,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-/**
- * var - Local Variable Type Inference (Java 10+)
- * ----------------------------------------------
- * Since Java 10 you can declare a LOCAL variable with the keyword &#x27;var&#x27; instead
- * of writing the full type. The compiler INFERS the type from the right-hand
- * side - this is purely a compile-time feature, the bytecode is identical.
- * &lt;p&gt;
- *
- *      var x = 42;                  // inferred as int
- *      var s = &quot;Hello&quot;;             // inferred as String
- *      var list = new ArrayList&lt;String&gt;();  // ArrayList&lt;String&gt;
- * &lt;p&gt;
- *
- * Where &#x27;var&#x27; Works
- * -----------------
- *  - Local variables inside methods, constructors, initializer blocks.
- *  - The loop variable in for / for-each loops.
- *  - Try-with-resources variable.
- * &lt;p&gt;
- *
- * Where &#x27;var&#x27; Does NOT Work
- * -------------------------
- *  - Class fields                      var name = &quot;Deepak&quot;;   // ERROR (field)
- *  - Method parameters                 void m(var x) { ... }  // ERROR
- *  - Return types                      var foo() { ... }      // ERROR
- *  - Without an initializer            var x;                 // ERROR
- *  - With null literal                 var x = null;          // ERROR
- *  - With a lambda                     var f = () -&gt; 1;       // ERROR (no target type)
- *  - With an array initializer         var a = {1, 2, 3};     // ERROR
- * &lt;p&gt;
- *
- * Note - &#x27;var&#x27; is a RESTRICTED IDENTIFIER, not a reserved keyword. You can
- * still declare a variable named &#x27;var&#x27; (legacy code) - but please do not.
- * &lt;p&gt;
- *
- * When To Use It (Style Guide)
- * ----------------------------
- *  - When the inferred type is obvious from the RHS:
- *        var list = new ArrayList&lt;Customer&gt;();   // GOOD - reduces duplication
- *  - When the inferred type is opaque or surprising, prefer the explicit type:
- *        var result = service.process();         // BAD - what&#x27;s the type?
- *        OrderResult result = service.process(); // GOOD
- *  - var does NOT make code dynamically typed - the type is fixed once inferred.
- */
 
 public class VarLocalTypeInference {
 

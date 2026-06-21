@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase8_PracticalAPIs/HttpClient/HttpClientIntroduction.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 125 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 57 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,46 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Java HTTP Client (java.net.http) — Introduction</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Java HTTP Client (java.net.http) — Introduction</h2>
+                    <p>Built into Java 11+. Modern API for HTTP/1.1, HTTP/2, and WebSocket. Replaces the awkward
+                        HttpURLConnection.</p>
+                    <h3>The three actors</h3>
+                    <p>HttpClient - long-lived, thread-safe; build once, reuse. HttpRequest - immutable, built via a
+                        Builder. HttpResponse&lt;T&gt; - immutable; T is the body-handler&#x27;s payload type.</p>
+                    <h3>Hello, world</h3>
+                    <pre class="hj-doc-art">     HttpClient client = HttpClient.newHttpClient();
+     HttpRequest req = HttpRequest.newBuilder(URI.create(&quot;https://example.com&quot;))
+                                   .GET()
+                                   .build();
+     HttpResponse&lt;String&gt; res = client.send(req, BodyHandlers.ofString());
+     System.out.println(res.statusCode() + &quot; &quot; + res.body());</pre>
+                    <h3>Body handlers (built-in)</h3>
+                    <p>ofString() - response as String (UTF-8 by default) ofByteArray() - response as byte[]
+                        ofInputStream() - stream the response ofFile(path) - dump straight to a file ofLines() - Stream&lt;String&gt;
+                        of response lines discarding() - throw away the body</p>
+                    <h3>Body publishers (for sending bodies)</h3>
+                    <p>noBody() - GET / DELETE without a body ofString(&quot;...&quot;) ofByteArray(byte[]) ofFile(path)
+                        ofInputStream(supplier)</p>
+                    <h3>Sync vs async</h3>
+                    <p>client.send(req, handler) - blocks client.sendAsync(req, handler) - returns CompletableFuture&lt;HttpResponse&gt;</p>
+                    <h3>Configuration</h3>
+                    <p>HttpClient.newBuilder()</p>
+                    <pre class="hj-doc-art">      .version(HttpClient.Version.HTTP_2)
+      .connectTimeout(Duration.ofSeconds(5))
+      .followRedirects(HttpClient.Redirect.NORMAL)
+      .proxy(ProxySelector.getDefault())
+      .authenticator(Authenticator.requestPasswordAuthentication...)
+      .executor(myExecutor)               // for async callbacks
+      .build();</pre>
+                    <h3>Network requirement</h3>
+                    <p>Examples here use httpbin.org. If you&#x27;re offline they&#x27;ll fail with IOException — the
+                        SHAPE of the code is still informative.</p>
                 </div>
             </div>
 
@@ -1399,73 +1435,6 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
-
-/**
- * Java HTTP Client (java.net.http) — Introduction
- * -----------------------------------------------
- * Built into Java 11+. Modern API for HTTP/1.1, HTTP/2, and WebSocket.
- * Replaces the awkward HttpURLConnection.
- * &lt;p&gt;
- *
- * The three actors
- * ----------------
- *   HttpClient        - long-lived, thread-safe; build once, reuse.
- *   HttpRequest       - immutable, built via a Builder.
- *   HttpResponse&lt;T&gt;   - immutable; T is the body-handler&#x27;s payload type.
- * &lt;p&gt;
- *
- * Hello, world
- * ------------
- *      HttpClient client = HttpClient.newHttpClient();
- *      HttpRequest req = HttpRequest.newBuilder(URI.create(&quot;https://example.com&quot;))
- *                                    .GET()
- *                                    .build();
- *      HttpResponse&lt;String&gt; res = client.send(req, BodyHandlers.ofString());
- *      System.out.println(res.statusCode() + &quot; &quot; + res.body());
- * &lt;p&gt;
- *
- * Body handlers (built-in)
- * ------------------------
- *   ofString()              - response as String (UTF-8 by default)
- *   ofByteArray()           - response as byte[]
- *   ofInputStream()         - stream the response
- *   ofFile(path)            - dump straight to a file
- *   ofLines()               - Stream&lt;String&gt; of response lines
- *   discarding()            - throw away the body
- * &lt;p&gt;
- *
- * Body publishers (for sending bodies)
- * ------------------------------------
- *   noBody()                - GET / DELETE without a body
- *   ofString(&quot;...&quot;)
- *   ofByteArray(byte[])
- *   ofFile(path)
- *   ofInputStream(supplier)
- * &lt;p&gt;
- *
- * Sync vs async
- * -------------
- *   client.send(req, handler)              - blocks
- *   client.sendAsync(req, handler)         - returns CompletableFuture&lt;HttpResponse&gt;
- * &lt;p&gt;
- *
- * Configuration
- * -------------
- *   HttpClient.newBuilder()
- *       .version(HttpClient.Version.HTTP_2)
- *       .connectTimeout(Duration.ofSeconds(5))
- *       .followRedirects(HttpClient.Redirect.NORMAL)
- *       .proxy(ProxySelector.getDefault())
- *       .authenticator(Authenticator.requestPasswordAuthentication...)
- *       .executor(myExecutor)               // for async callbacks
- *       .build();
- * &lt;p&gt;
- *
- * Network requirement
- * -------------------
- * Examples here use httpbin.org. If you&#x27;re offline they&#x27;ll fail with
- * IOException — the SHAPE of the code is still informative.
- */
 
 public class HttpClientIntroduction {
 

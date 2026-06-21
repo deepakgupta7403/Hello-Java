@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase2_MethodsArraysStrings/Methods/AccessModifiers.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 153 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 102 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,48 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Access modifiers control the VISIBILITY of classes, methods, fields, and constructors. Java has
-                        FOUR access levels:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Access Modifiers in Java</h2>
+                    <p>Access modifiers control the VISIBILITY of classes, methods, fields, and constructors. Java has
+                        FOUR access levels:</p>
+                    <pre class="hj-doc-art">     Modifier      | Same class | Same pkg | Subclass | World
+     --------------+------------+----------+----------+-------
+     public        |   YES      |   YES    |   YES    |  YES
+     protected     |   YES      |   YES    |   YES    |  no
+     (no modifier) |   YES      |   YES    |   no     |  no
+     (package-     |            |          |          |
+      private)     |            |          |          |
+     private       |   YES      |   no     |   no     |  no</pre>
+                    <h3>Quick Rule Of Thumb</h3>
+                    <ul>
+                        <li>Default to `private` for fields and helper methods.
+                        </li>
+                        <li>Expose `public` only for the API you intend callers to use.
+                        </li>
+                        <li>Use `protected` when you specifically want subclasses to override or call.
+                        </li>
+                        <li>Package-private (no modifier) is great for &quot;internal to this package&quot;
+                        </li>
+                    </ul>
+                    <p>helpers - not visible outside the package but more open than private.</p>
+                    <h3>Where Each Modifier May Appear</h3>
+                    <p>CLASSES (top-level): only `public` or package-private. (Inner classes may</p>
+                    <pre class="hj-doc-art">                         also be private/protected.)</pre>
+                    <p>METHODS : all four levels. FIELDS : all four levels. CONSTRUCT-: all four levels. A `private`
+                        constructor disables direct ORS instantiation (useful for utility classes and singletons).
+                        INTERFACE : interface methods are implicitly `public`. Java 9+ also allows MEMBERS `private`
+                        interface methods (helper code) - see InterfaceMethods.</p>
+                    <h3>Subtle Point - `protected` Across Packages</h3>
+                    <p>A `protected` member is visible to a subclass in a different package, but ONLY through a
+                        reference of the subclass type (or its subtypes). Direct access via a parent-typed reference
+                        outside the package is not allowed.</p>
+                    <p>This file demonstrates all four modifiers on a single Box class plus the common patterns (private
+                        fields + public getters/setters, private constructor for a singleton).</p>
                 </div>
             </div>
 
@@ -1395,56 +1431,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase2_MethodsArraysStrings.Methods;
-
-/**
- * Access Modifiers in Java
- * ------------------------
- * Access modifiers control the VISIBILITY of classes, methods, fields, and
- * constructors. Java has FOUR access levels:
- * &lt;p&gt;
- *
- *      Modifier      | Same class | Same pkg | Subclass | World
- *      --------------+------------+----------+----------+-------
- *      public        |   YES      |   YES    |   YES    |  YES
- *      protected     |   YES      |   YES    |   YES    |  no
- *      (no modifier) |   YES      |   YES    |   no     |  no
- *      (package-     |            |          |          |
- *       private)     |            |          |          |
- *      private       |   YES      |   no     |   no     |  no
- * &lt;p&gt;
- *
- * Quick Rule Of Thumb
- * -------------------
- *  - Default to `private` for fields and helper methods.
- *  - Expose `public` only for the API you intend callers to use.
- *  - Use `protected` when you specifically want subclasses to override or call.
- *  - Package-private (no modifier) is great for &quot;internal to this package&quot;
- *    helpers - not visible outside the package but more open than private.
- * &lt;p&gt;
- *
- * Where Each Modifier May Appear
- * ------------------------------
- *  CLASSES   (top-level): only `public` or package-private. (Inner classes may
- *                          also be private/protected.)
- *  METHODS   : all four levels.
- *  FIELDS    : all four levels.
- *  CONSTRUCT-: all four levels. A `private` constructor disables direct
- *  ORS         instantiation (useful for utility classes and singletons).
- *  INTERFACE : interface methods are implicitly `public`. Java 9+ also allows
- *  MEMBERS     `private` interface methods (helper code) - see InterfaceMethods.
- * &lt;p&gt;
- *
- * Subtle Point - `protected` Across Packages
- * ------------------------------------------
- * A `protected` member is visible to a subclass in a different package, but
- * ONLY through a reference of the subclass type (or its subtypes). Direct
- * access via a parent-typed reference outside the package is not allowed.
- * &lt;p&gt;
- *
- * This file demonstrates all four modifiers on a single Box class plus the
- * common patterns (private fields + public getters/setters, private constructor
- * for a singleton).
- */
 
 public class AccessModifiers {
 

@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/SnakeGame/SnakeGame.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 71 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 44 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,43 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>SnakeGame — main runner.</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>SnakeGame — main runner.</p>
+                    <p>Demonstrates the canonical &quot;GUI + simulation&quot; thread split:</p>
+                    <ul>
+                        <li>Swing&#x27;s EVENT-DISPATCH THREAD (EDT) builds the JFrame, owns the
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    SnakeBoard, dispatches input, paints frames.</pre>
+                    <ul>
+                        <li>A SEPARATE GAME-LOOP THREAD ticks the simulation at a steady rate
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    and asks the EDT to repaint via SwingUtilities.invokeLater.</pre>
+                    <ul>
+                        <li>The shared GameState is guarded by a ReentrantLock so the two
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    threads never tear each other&#x27;s view of the world.</pre>
+                    <h2>Lifecycle</h2>
+                    <ul>
+                        <li>main() invokeAndWait&#x27;s onto the EDT to build the UI.
+                        </li>
+                        <li>Once the JFrame is visible, main starts the GameLoop thread.
+                        </li>
+                        <li>On window close, main stops the loop and joins the thread.
+                        </li>
+                    </ul>
+                    <h3>Tweakables</h3>
+                    <ul>
+                        <li>TICK_MS is the simulation period (lower = harder).
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1396,32 +1429,6 @@
 
 import javax.swing.*;
 
-/**
- * SnakeGame — main runner.
- * &lt;p&gt;
- *
- * Demonstrates the canonical &quot;GUI + simulation&quot; thread split:
- * &lt;p&gt;
- *
- *   - Swing&#x27;s EVENT-DISPATCH THREAD (EDT) builds the JFrame, owns the
- *     SnakeBoard, dispatches input, paints frames.
- *   - A SEPARATE GAME-LOOP THREAD ticks the simulation at a steady rate
- *     and asks the EDT to repaint via SwingUtilities.invokeLater.
- *   - The shared GameState is guarded by a ReentrantLock so the two
- *     threads never tear each other&#x27;s view of the world.
- * &lt;p&gt;
- *
- * Lifecycle
- * ---------
- *   1. main() invokeAndWait&#x27;s onto the EDT to build the UI.
- *   2. Once the JFrame is visible, main starts the GameLoop thread.
- *   3. On window close, main stops the loop and joins the thread.
- * &lt;p&gt;
- *
- * Tweakables
- * ----------
- *   - TICK_MS is the simulation period (lower = harder).
- */
 public final class SnakeGame {
 
     private static final long TICK_MS = 110;

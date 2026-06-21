@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase2_MethodsArraysStrings/Strings/StringIntroduction.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 150 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 79 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,63 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A String is a sequence of characters. In Java it is NOT a primitive - it is an OBJECT of the
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Strings in Java - Introduction</h2>
+                    <p>A String is a sequence of characters. In Java it is NOT a primitive - it is an OBJECT of the
                         class java.lang.String. Internally a String stores its characters in a private final array,
-                        which is one reason Strings are...
-                    </div>
+                        which is one reason Strings are immutable (see StringImmutability.java for the deep dive).</p>
+                    <h3>Two Ways to Create a String</h3>
+                    <ul>
+                        <li>STRING LITERAL &quot;hello&quot;
+                            <ul>
+                                <li>The compiler interns the literal into the JVM&#x27;s STRING POOL.
+                                </li>
+                                <li>Every literal with the same content shares ONE object.
+                                </li>
+                            </ul>
+                        </li>
+                        <li>EXPLICIT CONSTRUCTOR new String(&quot;hello&quot;)
+                            <ul>
+                                <li>Always allocates a NEW object on the heap, NOT in the pool.
+                                </li>
+                                <li>Verbose and almost always unnecessary - use literals.
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h3>String Pool (a.k.a. String Constant Pool)</h3>
+                    <p>A region inside the JVM heap (since Java 7) that caches String literals. The point: identical
+                        literals share memory, which saves space and lets the compiler treat constant expressions as
+                        compile-time constants.</p>
+                    <pre class="hj-doc-art">     String a = &quot;java&quot;;
+     String b = &quot;java&quot;;
+     String c = new String(&quot;java&quot;);
+     String d = c.intern();         // returns the pooled instance</pre>
+                    <pre class="hj-doc-art">     a == b      -&gt; true   (same pool object)
+     a == c      -&gt; false  (c was forced into the heap)
+     a == d      -&gt; true   (intern returned the pool object)
+     a.equals(c) -&gt; true   (always compare content with .equals)</pre>
+                    <h3>String Backing Store</h3>
+                    <p>Internally a String holds:</p>
+                    <pre class="hj-doc-art">     private final byte[] value;
+     private final byte    coder;     // LATIN1 (1 byte) or UTF16 (2 bytes)
+     private int           hash;      // cached on first call to hashCode</pre>
+                    <p>Since Java 9 - &quot;Compact Strings&quot; - if a string is ASCII / Latin-1, the JVM stores 1
+                        byte per character to save memory. UTF-16 is used only when needed.</p>
+                    <h3>Bridges Between char[] and String</h3>
+                    <pre class="hj-doc-art">     new String(char[] chars)          -&gt; char[] to String
+     str.toCharArray()                 -&gt; String to char[]
+     String.valueOf(anyType)           -&gt; primitive/Object to String
+     Integer.parseInt(str)             -&gt; String to int (and similar)</pre>
+                    <h3>String vs char</h3>
+                    <pre class="hj-doc-art">     &#x27;a&#x27;        - a single CHAR (primitive, 16 bits, in single quotes)
+     &quot;a&quot;        - a STRING of length 1 (Object, double quotes)</pre>
+                    <p>Mixing them with `+` works because String overloads `+` for any operand.</p>
                 </div>
             </div>
 
@@ -1396,76 +1446,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase2_MethodsArraysStrings.Strings;
-
-/**
- * Strings in Java - Introduction
- * ------------------------------
- * A String is a sequence of characters. In Java it is NOT a primitive - it is
- * an OBJECT of the class java.lang.String. Internally a String stores its
- * characters in a private final array, which is one reason Strings are
- * immutable (see StringImmutability.java for the deep dive).
- * &lt;p&gt;
- *
- * Two Ways to Create a String
- * ---------------------------
- *  1. STRING LITERAL              &quot;hello&quot;
- *     - The compiler interns the literal into the JVM&#x27;s STRING POOL.
- *     - Every literal with the same content shares ONE object.
- * &lt;p&gt;
- *
- *  2. EXPLICIT CONSTRUCTOR        new String(&quot;hello&quot;)
- *     - Always allocates a NEW object on the heap, NOT in the pool.
- *     - Verbose and almost always unnecessary - use literals.
- * &lt;p&gt;
- *
- * String Pool (a.k.a. String Constant Pool)
- * -----------------------------------------
- * A region inside the JVM heap (since Java 7) that caches String literals.
- * The point: identical literals share memory, which saves space and lets the
- * compiler treat constant expressions as compile-time constants.
- * &lt;p&gt;
- *
- *      String a = &quot;java&quot;;
- *      String b = &quot;java&quot;;
- *      String c = new String(&quot;java&quot;);
- *      String d = c.intern();         // returns the pooled instance
- * &lt;p&gt;
- *
- *      a == b      -&gt; true   (same pool object)
- *      a == c      -&gt; false  (c was forced into the heap)
- *      a == d      -&gt; true   (intern returned the pool object)
- *      a.equals(c) -&gt; true   (always compare content with .equals)
- * &lt;p&gt;
- *
- * String Backing Store
- * --------------------
- * Internally a String holds:
- *      private final byte[] value;
- *      private final byte    coder;     // LATIN1 (1 byte) or UTF16 (2 bytes)
- *      private int           hash;      // cached on first call to hashCode
- * &lt;p&gt;
- *
- * Since Java 9 - &quot;Compact Strings&quot; - if a string is ASCII / Latin-1, the JVM
- * stores 1 byte per character to save memory. UTF-16 is used only when
- * needed.
- * &lt;p&gt;
- *
- * Bridges Between char[] and String
- * ---------------------------------
- *      new String(char[] chars)          -&gt; char[] to String
- *      str.toCharArray()                 -&gt; String to char[]
- *      String.valueOf(anyType)           -&gt; primitive/Object to String
- *      Integer.parseInt(str)             -&gt; String to int (and similar)
- * &lt;p&gt;
- *
- * String vs char
- * --------------
- *      &#x27;a&#x27;        - a single CHAR (primitive, 16 bits, in single quotes)
- *      &quot;a&quot;        - a STRING of length 1 (Object, double quotes)
- * &lt;p&gt;
- *
- * Mixing them with `+` works because String overloads `+` for any operand.
- */
 
 public class StringIntroduction {
 

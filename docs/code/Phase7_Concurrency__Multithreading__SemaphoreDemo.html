@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/SemaphoreDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 141 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 85 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,52 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A counter that hands out PERMITS. acquire() blocks until a permit is available; release()
-                        returns one. With N permits you can let UP TO N threads through a section at once — classic
-                        resource-limiting tool.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Semaphore</h2>
+                    <p>A counter that hands out PERMITS. acquire() blocks until a permit is available; release() returns
+                        one. With N permits you can let UP TO N threads through a section at once — classic
+                        resource-limiting tool.</p>
+                    <pre class="hj-doc-art">     Semaphore s = new Semaphore(N);          // N permits
+     s.acquire();
+     try { ...use the resource... }
+     finally { s.release(); }</pre>
+                    <h3>What semaphores model</h3>
+                    <ul>
+                        <li>A POOL of N identical resources (DB connections, HTTP threads,
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    printers, GPU slots).</pre>
+                    <ul>
+                        <li>A CAP on concurrency — at most N requests in flight.
+                        </li>
+                        <li>A signalling mechanism — release() can be called more times than
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    acquire() (creating MORE permits than you started with).</pre>
+                    <h3>Methods</h3>
+                    <p>acquire() - take one permit, blocking acquireUninterruptibly() - ignore interrupts while waiting
+                        tryAcquire() - non-blocking attempt tryAcquire(time, unit) - timed attempt release() - return
+                        one permit acquire(n) / release(n) - permits in bulk availablePermits() - approx free count
+                        drainPermits() - take all available, return how many</p>
+                    <h3>Fair vs unfair</h3>
+                    <p>new Semaphore(N) - unfair, faster; possible starvation new Semaphore(N, true) - FIFO order;
+                        slower</p>
+                    <h3>&quot;Binary semaphore&quot; trick</h3>
+                    <p>new Semaphore(1) acts like a lock, but UNLIKE a ReentrantLock the thread that releases need NOT
+                        be the one that acquired. Useful for handing off control between threads (e.g., one thread
+                        acquires, another releases).</p>
+                    <h3>Pitfalls</h3>
+                    <ul>
+                        <li>Forgetting release() — try/finally always.
+                        </li>
+                        <li>Releasing MORE than you acquired — silent permit inflation.
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1400,61 +1439,6 @@
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
-
-/**
- * Semaphore
- * ---------
- * A counter that hands out PERMITS. acquire() blocks until a permit is
- * available; release() returns one. With N permits you can let UP TO N
- * threads through a section at once — classic resource-limiting tool.
- * &lt;p&gt;
- *
- *      Semaphore s = new Semaphore(N);          // N permits
- *      s.acquire();
- *      try { ...use the resource... }
- *      finally { s.release(); }
- * &lt;p&gt;
- *
- * What semaphores model
- * ---------------------
- *   - A POOL of N identical resources (DB connections, HTTP threads,
- *     printers, GPU slots).
- *   - A CAP on concurrency — at most N requests in flight.
- *   - A signalling mechanism — release() can be called more times than
- *     acquire() (creating MORE permits than you started with).
- * &lt;p&gt;
- *
- * Methods
- * -------
- *   acquire()                - take one permit, blocking
- *   acquireUninterruptibly() - ignore interrupts while waiting
- *   tryAcquire()             - non-blocking attempt
- *   tryAcquire(time, unit)   - timed attempt
- *   release()                - return one permit
- *   acquire(n) / release(n)  - permits in bulk
- *   availablePermits()       - approx free count
- *   drainPermits()           - take all available, return how many
- * &lt;p&gt;
- *
- * Fair vs unfair
- * --------------
- *   new Semaphore(N)         - unfair, faster; possible starvation
- *   new Semaphore(N, true)   - FIFO order; slower
- * &lt;p&gt;
- *
- * &quot;Binary semaphore&quot; trick
- * ------------------------
- *   new Semaphore(1) acts like a lock, but UNLIKE a ReentrantLock the
- *   thread that releases need NOT be the one that acquired. Useful for
- *   handing off control between threads (e.g., one thread acquires,
- *   another releases).
- * &lt;p&gt;
- *
- * Pitfalls
- * --------
- *   - Forgetting release() — try/finally always.
- *   - Releasing MORE than you acquired — silent permit inflation.
- */
 
 public class SemaphoreDemo {
 

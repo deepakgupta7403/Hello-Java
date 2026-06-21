@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/WaitNotifyNotifyAll.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 177 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 113 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,59 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Object.wait / notify / notifyAll</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Object.wait / notify / notifyAll</h2>
+                    <p>The original Java inter-thread signalling primitives. They are INSTANCE methods on `Object` —
+                        every object&#x27;s intrinsic monitor lock doubles as a condition variable.</p>
+                    <h3>Rules</h3>
+                    <ul>
+                        <li>You MUST own the monitor lock when calling these methods. Always
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     inside a `synchronized` block on the same object you&#x27;re waiting on.</pre>
+                    <ul>
+                        <li>wait() RELEASES the monitor while suspended; notify() wakes one
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     waiter, notifyAll() wakes all of them. The woken thread then has
+     to re-acquire the monitor before returning from wait().</pre>
+                    <ul>
+                        <li>Always loop the predicate:
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">          while (!ready) lock.wait();</pre>
+                    <pre class="hj-doc-art">     Spurious wakeups exist; predicates can also change between
+     notify and the wait return.</pre>
+                    <h3>The three methods</h3>
+                    <p>wait() - wait indefinitely wait(long ms) - wait up to ms milliseconds wait(long ms, int
+                        nanos)</p>
+                    <p>notify() - wake ONE waiter (which one is undefined) notifyAll() - wake ALL waiters</p>
+                    <h3>notify vs notifyAll</h3>
+                    <ul>
+                        <li>Use notifyAll when waiters may be waiting on DIFFERENT predicates
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    of the same object — only the threads whose predicate is now true
+    will exit; the others go back to waiting.</pre>
+                    <ul>
+                        <li>notify is a micro-optimisation for one-predicate cases. It is
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    easy to introduce missed-signal bugs if you reach for it without
+    thinking through every waiter.</pre>
+                    <h3>Modern alternative: Lock + Condition</h3>
+                    <p>Lock lock = new ReentrantLock(); Condition cond = lock.newCondition();</p>
+                    <p>lock.lock(); try {</p>
+                    <pre class="hj-doc-art">      while (!ready) cond.await();
+      ...</pre>
+                    <p>} finally { lock.unlock(); }</p>
+                    <p>Conditions let you have MULTIPLE wait-sets per lock (e.g. notFull / notEmpty in a bounded
+                        buffer).</p>
                 </div>
             </div>
 
@@ -1393,69 +1442,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase7_Concurrency.Multithreading;
-
-/**
- * Object.wait / notify / notifyAll
- * --------------------------------
- * The original Java inter-thread signalling primitives. They are
- * INSTANCE methods on `Object` — every object&#x27;s intrinsic monitor lock
- * doubles as a condition variable.
- * &lt;p&gt;
- *
- * Rules
- * -----
- *   1. You MUST own the monitor lock when calling these methods. Always
- *      inside a `synchronized` block on the same object you&#x27;re waiting on.
- *   2. wait() RELEASES the monitor while suspended; notify() wakes one
- *      waiter, notifyAll() wakes all of them. The woken thread then has
- *      to re-acquire the monitor before returning from wait().
- *   3. Always loop the predicate:
- * &lt;p&gt;
- *
- *           while (!ready) lock.wait();
- * &lt;p&gt;
- *
- *      Spurious wakeups exist; predicates can also change between
- *      notify and the wait return.
- * &lt;p&gt;
- *
- * The three methods
- * -----------------
- *   wait()                  - wait indefinitely
- *   wait(long ms)           - wait up to ms milliseconds
- *   wait(long ms, int nanos)
- * &lt;p&gt;
- *
- *   notify()                - wake ONE waiter (which one is undefined)
- *   notifyAll()             - wake ALL waiters
- * &lt;p&gt;
- *
- * notify vs notifyAll
- * -------------------
- *   - Use notifyAll when waiters may be waiting on DIFFERENT predicates
- *     of the same object — only the threads whose predicate is now true
- *     will exit; the others go back to waiting.
- *   - notify is a micro-optimisation for one-predicate cases. It is
- *     easy to introduce missed-signal bugs if you reach for it without
- *     thinking through every waiter.
- * &lt;p&gt;
- *
- * Modern alternative: Lock + Condition
- * ------------------------------------
- *   Lock lock = new ReentrantLock();
- *   Condition cond = lock.newCondition();
- * &lt;p&gt;
- *
- *   lock.lock();
- *   try {
- *       while (!ready) cond.await();
- *       ...
- *   } finally { lock.unlock(); }
- * &lt;p&gt;
- *
- * Conditions let you have MULTIPLE wait-sets per lock (e.g. notFull /
- * notEmpty in a bounded buffer).
- */
 
 public class WaitNotifyNotifyAll {
 

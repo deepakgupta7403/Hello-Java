@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase2_MethodsArraysStrings/Strings/ModernStringFeatures.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 146 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 100 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,43 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Java keeps adding small but useful String methods. This file is a quick tour of everything
-                        Basics-level that landed in 11, 12, 15, and beyond - all available on Java 21.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Modern String Features (Java 11 -&gt; 21)</h2>
+                    <p>Java keeps adding small but useful String methods. This file is a quick tour of everything
+                        Basics-level that landed in 11, 12, 15, and beyond - all available on Java 21.</p>
+                    <h3>Java 11</h3>
+                    <pre class="hj-doc-art">     isBlank()                       - true if empty OR only whitespace
+     lines()                         - Stream&lt;String&gt; of lines (no separators)
+     strip() / stripLeading() /      - Unicode-aware trim (smarter than trim())
+         stripTrailing()
+     repeat(int count)               - concat the string with itself N times
+     chars() / codePoints()          - IntStream over the characters</pre>
+                    <h3>Java 12</h3>
+                    <pre class="hj-doc-art">     indent(int n)                   - add (or remove) leading spaces per line
+     transform(Function&lt;String, R&gt;)  - apply any function, fluently</pre>
+                    <h3>Java 15</h3>
+                    <pre class="hj-doc-art">     Text Blocks  &quot;&quot;&quot; ... &quot;&quot;&quot;        - multi-line string literals
+     formatted(args)                 - instance form of String.format</pre>
+                    <h3>Java 21</h3>
+                    <pre class="hj-doc-art">     Pattern matching for switch     - match on `String` values with `when` guards
+     String templates (preview only) - NOT covered here, the feature was
+                                       retracted from later releases.</pre>
+                    <h3>Why These Matter</h3>
+                    <ul>
+                        <li>`strip()` handles Unicode whitespace - `trim()` only strips ASCII &lt; 0x20.
+                        </li>
+                        <li>`repeat()` is much faster than a loop with `+=`.
+                        </li>
+                        <li>Text blocks make JSON, SQL, HTML in code dramatically easier to read.
+                        </li>
+                        <li>`transform()` and `lines()` enable a fluent, functional style.
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1395,51 +1426,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase2_MethodsArraysStrings.Strings;
-
-/**
- * Modern String Features (Java 11 -&gt; 21)
- * --------------------------------------
- * Java keeps adding small but useful String methods. This file is a quick
- * tour of everything Basics-level that landed in 11, 12, 15, and beyond -
- * all available on Java 21.
- * &lt;p&gt;
- *
- * Java 11
- * -------
- *      isBlank()                       - true if empty OR only whitespace
- *      lines()                         - Stream&lt;String&gt; of lines (no separators)
- *      strip() / stripLeading() /      - Unicode-aware trim (smarter than trim())
- *          stripTrailing()
- *      repeat(int count)               - concat the string with itself N times
- *      chars() / codePoints()          - IntStream over the characters
- * &lt;p&gt;
- *
- * Java 12
- * -------
- *      indent(int n)                   - add (or remove) leading spaces per line
- *      transform(Function&lt;String, R&gt;)  - apply any function, fluently
- * &lt;p&gt;
- *
- * Java 15
- * -------
- *      Text Blocks  &quot;&quot;&quot; ... &quot;&quot;&quot;        - multi-line string literals
- *      formatted(args)                 - instance form of String.format
- * &lt;p&gt;
- *
- * Java 21
- * -------
- *      Pattern matching for switch     - match on `String` values with `when` guards
- *      String templates (preview only) - NOT covered here, the feature was
- *                                        retracted from later releases.
- * &lt;p&gt;
- *
- * Why These Matter
- * ----------------
- *  - `strip()` handles Unicode whitespace - `trim()` only strips ASCII &lt; 0x20.
- *  - `repeat()` is much faster than a loop with `+=`.
- *  - Text blocks make JSON, SQL, HTML in code dramatically easier to read.
- *  - `transform()` and `lines()` enable a fluent, functional style.
- */
 
 public class ModernStringFeatures {
 

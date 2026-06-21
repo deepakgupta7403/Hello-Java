@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase6_RuntimeMemoryRegexReflection/MemoryAllocation/MemoryLeaks.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 210 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 153 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,69 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Java is garbage-collected, but the GC cannot help you if your code is STILL holding a reference
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Memory Leaks in Java</h2>
+                    <p>Java is garbage-collected, but the GC cannot help you if your code is STILL holding a reference
                         to data you no longer need. The garbage collector reclaims only UNREACHABLE objects - so any
-                        &quot;live&quot; path back to the heap...
-                    </div>
+                        &quot;live&quot; path back to the heap (a static field, a long-lived collection, a registered
+                        listener, ...) is a leak waiting to happen.</p>
+                    <h3>The Five Most Common Java Leak Patterns</h3>
+                    <ul>
+                        <li>STATIC COLLECTIONS that grow forever
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     A `static Map&lt;String, Customer&gt; CACHE = new HashMap&lt;&gt;();` with no
+     eviction policy will hold every customer it ever sees. Use a
+     bounded cache (Guava `Cache`, `Caffeine`, or your own LRU).</pre>
+                    <ul>
+                        <li>KEYS WITHOUT proper equals/hashCode
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     Entries put into a HashMap can become &quot;lost&quot; - present in memory
+     but unfindable - if you mutate the key after insertion.</pre>
+                    <ul>
+                        <li>INNER CLASSES holding the enclosing instance
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     A non-static inner class keeps an implicit reference to its outer
+     instance. Same with lambdas that capture `this`. If the inner
+     object outlives the outer (e.g. registered with a long-lived
+     executor), the outer cannot be reclaimed.</pre>
+                    <ul>
+                        <li>LISTENERS / CALLBACKS that you never unregister
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     Every observer is a strong reference held by the subject. When you
+     stop using the observer but forget to call `removeListener`, the
+     subject keeps it alive forever.</pre>
+                    <ul>
+                        <li>UNCLOSED RESOURCES (streams, JDBC connections, native handles)
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     Even Java-managed wrappers hold on to OS-level resources until
+     `close()` runs. Use try-with-resources for everything that
+     implements AutoCloseable.</pre>
+                    <h3>Detecting Leaks</h3>
+                    <ul>
+                        <li>Watch heap usage over time - a healthy app oscillates; a leaking one
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    trends upward after every GC.</pre>
+                    <ul>
+                        <li>Take a heap dump (-XX:+HeapDumpOnOutOfMemoryError or `jmap -dump`)
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    and inspect with Eclipse MAT, VisualVM, or JProfiler.</pre>
+                    <ul>
+                        <li>Use `jcmd &lt;pid&gt; GC.class_histogram` for a quick instance count.
+                        </li>
+                    </ul>
+                    <p>This file demonstrates the FIRST three leak patterns and their fixes.</p>
                 </div>
             </div>
 
@@ -1402,62 +1458,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-
-/**
- * Memory Leaks in Java
- * --------------------
- * Java is garbage-collected, but the GC cannot help you if your code is
- * STILL holding a reference to data you no longer need. The garbage
- * collector reclaims only UNREACHABLE objects - so any &quot;live&quot; path back to
- * the heap (a static field, a long-lived collection, a registered
- * listener, ...) is a leak waiting to happen.
- * &lt;p&gt;
- *
- * The Five Most Common Java Leak Patterns
- * ---------------------------------------
- * &lt;p&gt;
- *
- *   1. STATIC COLLECTIONS that grow forever
- *      A `static Map&lt;String, Customer&gt; CACHE = new HashMap&lt;&gt;();` with no
- *      eviction policy will hold every customer it ever sees. Use a
- *      bounded cache (Guava `Cache`, `Caffeine`, or your own LRU).
- * &lt;p&gt;
- *
- *   2. KEYS WITHOUT proper equals/hashCode
- *      Entries put into a HashMap can become &quot;lost&quot; - present in memory
- *      but unfindable - if you mutate the key after insertion.
- * &lt;p&gt;
- *
- *   3. INNER CLASSES holding the enclosing instance
- *      A non-static inner class keeps an implicit reference to its outer
- *      instance. Same with lambdas that capture `this`. If the inner
- *      object outlives the outer (e.g. registered with a long-lived
- *      executor), the outer cannot be reclaimed.
- * &lt;p&gt;
- *
- *   4. LISTENERS / CALLBACKS that you never unregister
- *      Every observer is a strong reference held by the subject. When you
- *      stop using the observer but forget to call `removeListener`, the
- *      subject keeps it alive forever.
- * &lt;p&gt;
- *
- *   5. UNCLOSED RESOURCES (streams, JDBC connections, native handles)
- *      Even Java-managed wrappers hold on to OS-level resources until
- *      `close()` runs. Use try-with-resources for everything that
- *      implements AutoCloseable.
- * &lt;p&gt;
- *
- * Detecting Leaks
- * ---------------
- *   - Watch heap usage over time - a healthy app oscillates; a leaking one
- *     trends upward after every GC.
- *   - Take a heap dump (-XX:+HeapDumpOnOutOfMemoryError or `jmap -dump`)
- *     and inspect with Eclipse MAT, VisualVM, or JProfiler.
- *   - Use `jcmd &lt;pid&gt; GC.class_histogram` for a quick instance count.
- * &lt;p&gt;
- *
- * This file demonstrates the FIRST three leak patterns and their fixes.
- */
 
 public class MemoryLeaks {
 

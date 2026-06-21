@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase6_RuntimeMemoryRegexReflection/Regex/MetacharactersAndAnchors.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 158 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 86 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,52 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A METACHARACTER is a character that has special meaning inside a regex rather than matching
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Metacharacters and Anchors</h2>
+                    <p>A METACHARACTER is a character that has special meaning inside a regex rather than matching
                         itself. An ANCHOR is a zero-width metacharacter that matches a POSITION in the input, not an
-                        actual character.
-                    </div>
+                        actual character.</p>
+                    <h3>The 12 Metacharacters You Must Know</h3>
+                    <pre class="hj-doc-art">     .   ?   *   +   {   }   |   ^   $   (   )   [   ]   \</pre>
+                    <p>To match one of them LITERALLY, prefix it with a backslash:</p>
+                    <pre class="hj-doc-art">     \.    matches a literal dot
+     \(    matches a literal opening paren</pre>
+                    <p>In a Java string literal, that becomes &quot;\\.&quot; and &quot;\\(&quot; respectively.</p>
+                    <h3>Anchors (Zero-Width)</h3>
+                    <pre class="hj-doc-art">     ^         start of the input (or start of line with MULTILINE flag)
+     $         end   of the input (or end   of line with MULTILINE flag)
+     \b        word boundary
+     \B        NOT a word boundary
+     \A        absolute start of the input (ignores MULTILINE)
+     \z        absolute end   of the input (ignores MULTILINE)
+     \Z        absolute end except final newline
+     \G        end of the previous match (useful in scan loops)</pre>
+                    <p>&quot;Zero-width&quot; means they match a POSITION between characters and consume nothing.</p>
+                    <h3>Alternation</h3>
+                    <pre class="hj-doc-art">     X | Y      matches X or Y (lowest precedence; group it with (...))</pre>
+                    <pre class="hj-doc-art">     gray|grey            -&gt; matches &quot;gray&quot; or &quot;grey&quot;
+     gr(a|e)y             -&gt; same, with the alternation grouped</pre>
+                    <h3>Word Boundaries</h3>
+                    <p>`\b` matches the POSITION between a word character (\w) and a non-word character. Use it to match
+                        WHOLE words:</p>
+                    <pre class="hj-doc-art">     regex \bcat\b
+     &quot;cat&quot;      -&gt; match
+     &quot;catnap&quot;   -&gt; no match
+     &quot;scat&quot;     -&gt; no match
+     &quot;the cat sat&quot;  -&gt; match on &quot;cat&quot;</pre>
+                    <h3>Escaping User Input</h3>
+                    <p>To match arbitrary user-supplied text literally, use Pattern.quote(str)</p>
+                    <ul>
+                        <li>it produces a regex that matches `str` exactly, escaping every meta.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     String userInput = &quot;Hello? (yes)&quot;;
+     Pattern p = Pattern.compile(Pattern.quote(userInput));</pre>
                 </div>
             </div>
 
@@ -1399,77 +1438,6 @@
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-/**
- * Metacharacters and Anchors
- * --------------------------
- * A METACHARACTER is a character that has special meaning inside a regex
- * rather than matching itself. An ANCHOR is a zero-width metacharacter that
- * matches a POSITION in the input, not an actual character.
- * &lt;p&gt;
- *
- * The 12 Metacharacters You Must Know
- * -----------------------------------
- *      .   ?   *   +   {   }   |   ^   $   (   )   [   ]   \
- * &lt;p&gt;
- *
- * To match one of them LITERALLY, prefix it with a backslash:
- * &lt;p&gt;
- *
- *      \.    matches a literal dot
- *      \(    matches a literal opening paren
- * &lt;p&gt;
- *
- * In a Java string literal, that becomes &quot;\\.&quot; and &quot;\\(&quot; respectively.
- * &lt;p&gt;
- *
- * Anchors (Zero-Width)
- * --------------------
- *      ^         start of the input (or start of line with MULTILINE flag)
- *      $         end   of the input (or end   of line with MULTILINE flag)
- *      \b        word boundary
- *      \B        NOT a word boundary
- *      \A        absolute start of the input (ignores MULTILINE)
- *      \z        absolute end   of the input (ignores MULTILINE)
- *      \Z        absolute end except final newline
- *      \G        end of the previous match (useful in scan loops)
- * &lt;p&gt;
- *
- * &quot;Zero-width&quot; means they match a POSITION between characters and consume
- * nothing.
- * &lt;p&gt;
- *
- * Alternation
- * -----------
- *      X | Y      matches X or Y (lowest precedence; group it with (...))
- * &lt;p&gt;
- *
- *      gray|grey            -&gt; matches &quot;gray&quot; or &quot;grey&quot;
- *      gr(a|e)y             -&gt; same, with the alternation grouped
- * &lt;p&gt;
- *
- * Word Boundaries
- * ---------------
- * `\b` matches the POSITION between a word character (\w) and a non-word
- * character. Use it to match WHOLE words:
- * &lt;p&gt;
- *
- *      regex \bcat\b
- *      &quot;cat&quot;      -&gt; match
- *      &quot;catnap&quot;   -&gt; no match
- *      &quot;scat&quot;     -&gt; no match
- *      &quot;the cat sat&quot;  -&gt; match on &quot;cat&quot;
- * &lt;p&gt;
- *
- * Escaping User Input
- * -------------------
- * To match arbitrary user-supplied text literally, use Pattern.quote(str)
- * - it produces a regex that matches `str` exactly, escaping every meta.
- * &lt;p&gt;
- *
- *      String userInput = &quot;Hello? (yes)&quot;;
- *      Pattern p = Pattern.compile(Pattern.quote(userInput));
- */
 
 public class MetacharactersAndAnchors {
 

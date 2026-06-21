@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase9_ModernJavaAndModules/ModernJava/SequencedCollections.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 97 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 57 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,38 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Before Java 21, getting the FIRST or LAST element of a List, LinkedHashSet, or LinkedHashMap
-                        was awkward: list.get(0), list.get(list.size()-1), iterator().next(), etc.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Sequenced Collections (Java 21)</h2>
+                    <p>Before Java 21, getting the FIRST or LAST element of a List, LinkedHashSet, or LinkedHashMap was
+                        awkward: list.get(0), list.get(list.size()-1), iterator().next(), etc.</p>
+                    <p>Java 21 introduces three new interfaces under java.util:</p>
+                    <pre class="hj-doc-art">     SequencedCollection&lt;E&gt;      (parent of List, Deque, LinkedHashSet)
+     SequencedSet&lt;E&gt;             (extends SequencedCollection)
+     SequencedMap&lt;K, V&gt;          (LinkedHashMap, TreeMap)</pre>
+                    <p>They provide a UNIFORM API for ordered collections:</p>
+                    <pre class="hj-doc-art">     addFirst(e)        addLast(e)
+     getFirst()         getLast()
+     removeFirst()      removeLast()
+     reversed()                              // a view in reverse order</pre>
+                    <p>SequencedMap adds:</p>
+                    <pre class="hj-doc-art">     firstEntry()       lastEntry()
+     putFirst(k, v)     putLast(k, v)
+     pollFirstEntry()   pollLastEntry()
+     sequencedKeySet()  sequencedValues()  sequencedEntrySet()</pre>
+                    <h3>Why It Matters</h3>
+                    <ul>
+                        <li>One mental model across List / Deque / LinkedHashSet / LinkedHashMap.
+                        </li>
+                        <li>No more list.get(list.size() - 1) and the off-by-one bugs around it.
+                        </li>
+                        <li>reversed() returns a VIEW - cheap, no copy.
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1397,45 +1423,6 @@
           <pre class="line-numbers m-0"><code class="language-java">package Phase9_ModernJavaAndModules.ModernJava;
 
 import java.util.*;
-
-/**
- * Sequenced Collections (Java 21)
- * -------------------------------
- * Before Java 21, getting the FIRST or LAST element of a List, LinkedHashSet,
- * or LinkedHashMap was awkward: list.get(0), list.get(list.size()-1),
- * iterator().next(), etc.
- * &lt;p&gt;
- *
- * Java 21 introduces three new interfaces under java.util:
- * &lt;p&gt;
- *
- *      SequencedCollection&lt;E&gt;      (parent of List, Deque, LinkedHashSet)
- *      SequencedSet&lt;E&gt;             (extends SequencedCollection)
- *      SequencedMap&lt;K, V&gt;          (LinkedHashMap, TreeMap)
- * &lt;p&gt;
- *
- * They provide a UNIFORM API for ordered collections:
- * &lt;p&gt;
- *
- *      addFirst(e)        addLast(e)
- *      getFirst()         getLast()
- *      removeFirst()      removeLast()
- *      reversed()                              // a view in reverse order
- * &lt;p&gt;
- *
- * SequencedMap adds:
- *      firstEntry()       lastEntry()
- *      putFirst(k, v)     putLast(k, v)
- *      pollFirstEntry()   pollLastEntry()
- *      sequencedKeySet()  sequencedValues()  sequencedEntrySet()
- * &lt;p&gt;
- *
- * Why It Matters
- * --------------
- *  - One mental model across List / Deque / LinkedHashSet / LinkedHashMap.
- *  - No more list.get(list.size() - 1) and the off-by-one bugs around it.
- *  - reversed() returns a VIEW - cheap, no copy.
- */
 
 public class SequencedCollections {
 

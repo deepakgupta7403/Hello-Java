@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/FaceDetectionApp/FaceDetectionApp.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 120 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 92 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,27 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>FaceDetectionApp - runnable demo that ties everything together.</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>FaceDetectionApp - runnable demo that ties everything together.</p>
+                    <p>The program SIMULATES 20 video frames from a Detector. Each frame is fed into a FaceRepository
+                        which exercises every collection type. Then we print a series of reports that exercise the
+                        queries those data structures make cheap.</p>
+                    <p>Run:</p>
+                    <pre class="hj-doc-art">     cd src
+     javac Basics/Collections/FaceDetectionApp/*.java
+     java  Basics.Collections.FaceDetectionApp.FaceDetectionApp</pre>
+                    <h2>Collection cheat-sheet for this demo</h2>
+                    <p>ArrayList&amp;lt;Face&amp;gt; all detections in order ArrayDeque&amp;lt;List&amp;lt;Face&amp;gt;&amp;gt;
+                        sliding window of recent frames LinkedHashSet&amp;lt;String&amp;gt; distinct people, insertion
+                        order HashSet&amp;lt;Integer&amp;gt; face IDs the user dismissed (O(1) check) HashMap&amp;lt;String,List&amp;gt;
+                        faces grouped by person HashMap&amp;lt;String,Long&amp;gt; per-person counter via Map.merge
+                        TreeMap&amp;lt;Long,Face&amp;gt; timeline for range queries PriorityQueue&amp;lt;Face&amp;gt;
+                        alerts queue, max-confidence first</p>
                 </div>
             </div>
 
@@ -1397,33 +1414,6 @@
 import java.util.List;
 import java.util.Map;
 
-/**
- * FaceDetectionApp - runnable demo that ties everything together.
- * &lt;p&gt;
- *
- * The program SIMULATES 20 video frames from a Detector. Each frame is fed
- * into a FaceRepository which exercises every collection type. Then we
- * print a series of reports that exercise the queries those data structures
- * make cheap.
- * &lt;p&gt;
- *
- * Run:
- *      cd src
- *      javac Basics/Collections/FaceDetectionApp/*.java
- *      java  Basics.Collections.FaceDetectionApp.FaceDetectionApp
- * &lt;p&gt;
- *
- * Collection cheat-sheet for this demo
- * ------------------------------------
- *   ArrayList&amp;lt;Face&amp;gt;         all detections in order
- *   ArrayDeque&amp;lt;List&amp;lt;Face&amp;gt;&amp;gt; sliding window of recent frames
- *   LinkedHashSet&amp;lt;String&amp;gt;   distinct people, insertion order
- *   HashSet&amp;lt;Integer&amp;gt;        face IDs the user dismissed (O(1) check)
- *   HashMap&amp;lt;String,List&amp;gt;    faces grouped by person
- *   HashMap&amp;lt;String,Long&amp;gt;    per-person counter via Map.merge
- *   TreeMap&amp;lt;Long,Face&amp;gt;      timeline for range queries
- *   PriorityQueue&amp;lt;Face&amp;gt;     alerts queue, max-confidence first
- */
 public class FaceDetectionApp {
 
     public static void main(String[] args) {

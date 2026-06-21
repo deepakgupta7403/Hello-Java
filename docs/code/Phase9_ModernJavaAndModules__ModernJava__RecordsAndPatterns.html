@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase9_ModernJavaAndModules/ModernJava/RecordsAndPatterns.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 134 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 78 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,54 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A RECORD is a special kind of class introduced in Java 16 for IMMUTABLE data carriers. The
-                        compiler generates the boilerplate for you:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Records (Java 16+) and Record Patterns (Java 21)</h2>
+                    <p>A RECORD is a special kind of class introduced in Java 16 for IMMUTABLE data carriers. The
+                        compiler generates the boilerplate for you:</p>
+                    <pre class="hj-doc-art">     public record Point(int x, int y) {}</pre>
+                    <ul>
+                        <li>Final class, cannot be subclassed.
+                        </li>
+                        <li>Final fields x and y - immutable after construction.
+                        </li>
+                        <li>Canonical constructor (int x, int y).
+                        </li>
+                        <li>Accessor methods: x() and y(). (NOT getX() / getY())
+                        </li>
+                        <li>equals(), hashCode(), toString() generated based on the components.
+                        </li>
+                    </ul>
+                    <h3>Why Records?</h3>
+                    <p>Before records, a simple data class needed 30+ lines of boilerplate. With records:</p>
+                    <pre class="hj-doc-art">     record Point(int x, int y) {}     // that&#x27;s it.</pre>
+                    <h3>Record Patterns (Java 21)</h3>
+                    <p>Java 21 lets you DECONSTRUCT a record value inside an `instanceof` or a switch case, binding the
+                        components to local variables:</p>
+                    <pre class="hj-doc-art">     if (obj instanceof Point(int x, int y)) {
+         // x and y are usable directly here
+     }</pre>
+                    <p>Record patterns can NEST - deconstruct records inside records:</p>
+                    <pre class="hj-doc-art">     if (shape instanceof Rect(Point(int x1, int y1), Point(int x2, int y2))) {
+         ...
+     }</pre>
+                    <h3>Customising a Record</h3>
+                    <p>You can add:</p>
+                    <ul>
+                        <li>Static fields and methods.
+                        </li>
+                        <li>Instance methods (regular or default).
+                        </li>
+                        <li>A &quot;compact constructor&quot; for validation (see below).
+                        </li>
+                        <li>Static factory methods.
+                        </li>
+                    </ul>
+                    <p>You CANNOT add instance fields beyond the components.</p>
                 </div>
             </div>
 
@@ -1395,61 +1437,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase9_ModernJavaAndModules.ModernJava;
-
-/**
- * Records (Java 16+) and Record Patterns (Java 21)
- * ------------------------------------------------
- * A RECORD is a special kind of class introduced in Java 16 for IMMUTABLE
- * data carriers. The compiler generates the boilerplate for you:
- * &lt;p&gt;
- *
- *      public record Point(int x, int y) {}
- * &lt;p&gt;
- *
- *  - Final class, cannot be subclassed.
- *  - Final fields x and y - immutable after construction.
- *  - Canonical constructor (int x, int y).
- *  - Accessor methods: x() and y().            (NOT getX() / getY())
- *  - equals(), hashCode(), toString() generated based on the components.
- * &lt;p&gt;
- *
- * Why Records?
- * ------------
- * Before records, a simple data class needed 30+ lines of boilerplate. With
- * records:
- * &lt;p&gt;
- *
- *      record Point(int x, int y) {}     // that&#x27;s it.
- * &lt;p&gt;
- *
- * Record Patterns (Java 21)
- * -------------------------
- * Java 21 lets you DECONSTRUCT a record value inside an `instanceof` or a
- * switch case, binding the components to local variables:
- * &lt;p&gt;
- *
- *      if (obj instanceof Point(int x, int y)) {
- *          // x and y are usable directly here
- *      }
- * &lt;p&gt;
- *
- * Record patterns can NEST - deconstruct records inside records:
- * &lt;p&gt;
- *
- *      if (shape instanceof Rect(Point(int x1, int y1), Point(int x2, int y2))) {
- *          ...
- *      }
- * &lt;p&gt;
- *
- * Customising a Record
- * --------------------
- * You can add:
- *  - Static fields and methods.
- *  - Instance methods (regular or default).
- *  - A &quot;compact constructor&quot; for validation (see below).
- *  - Static factory methods.
- * You CANNOT add instance fields beyond the components.
- */
 
 public class RecordsAndPatterns {
 

@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/LockFrameworkVsSync.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 156 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 114 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,48 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Same goal — guard shared state. Different tradeoffs.</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Lock Framework vs Thread Synchronization (`synchronized`)</h2>
+                    <p>Same goal — guard shared state. Different tradeoffs.</p>
+                    <p>This file builds a tiny BANK ACCOUNT three ways:</p>
+                    <ul>
+                        <li>UnsafeAccount - no synchronization at all (race condition).
+                        </li>
+                        <li>SyncAccount - `synchronized` methods.
+                        </li>
+                        <li>LockAccount - explicit ReentrantLock with tryLock.
+                        </li>
+                    </ul>
+                    <p>Then it measures and compares the three.</p>
+                    <h3>Decision Cheatsheet</h3>
+                    <pre class="hj-doc-art">                                         synchronized    Lock framework
+                                         ------------    --------------</pre>
+                    <p>I need timed acquire yes I need to give up if interrupted yes I need fair queueing yes I need
+                        multiple condition variables yes I want the simplest code possible yes It&#x27;s a short
+                        critical section yes I want auto-release on exit yes</p>
+                    <h3>Modern Practical Rule of Thumb</h3>
+                    <ul>
+                        <li>Default to `synchronized` when you only need plain mutual
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    exclusion.</pre>
+                    <ul>
+                        <li>Reach for ReentrantLock the moment you say &quot;I need tryLock with a
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    timeout&quot; or &quot;I have two different conditions on the same lock.&quot;</pre>
+                    <ul>
+                        <li>For pure counters use Atomic* / LongAdder.
+                        </li>
+                        <li>For &quot;many readers, occasional writer&quot; use ReentrantReadWriteLock or
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    StampedLock.</pre>
                 </div>
             </div>
 
@@ -1397,47 +1435,6 @@
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.ReentrantLock;
-
-/**
- * Lock Framework vs Thread Synchronization (`synchronized`)
- * ---------------------------------------------------------
- * Same goal — guard shared state. Different tradeoffs.
- * &lt;p&gt;
- *
- * This file builds a tiny BANK ACCOUNT three ways:
- * &lt;p&gt;
- *
- *   1. UnsafeAccount        - no synchronization at all (race condition).
- *   2. SyncAccount          - `synchronized` methods.
- *   3. LockAccount          - explicit ReentrantLock with tryLock.
- * &lt;p&gt;
- *
- * Then it measures and compares the three.
- * &lt;p&gt;
- *
- * Decision Cheatsheet
- * -------------------
- *                                          synchronized    Lock framework
- *                                          ------------    --------------
- *   I need timed acquire                                    yes
- *   I need to give up if interrupted                        yes
- *   I need fair queueing                                    yes
- *   I need multiple condition variables                     yes
- *   I want the simplest code possible       yes
- *   It&#x27;s a short critical section            yes
- *   I want auto-release on exit              yes
- * &lt;p&gt;
- *
- * Modern Practical Rule of Thumb
- * ------------------------------
- *   - Default to `synchronized` when you only need plain mutual
- *     exclusion.
- *   - Reach for ReentrantLock the moment you say &quot;I need tryLock with a
- *     timeout&quot; or &quot;I have two different conditions on the same lock.&quot;
- *   - For pure counters use Atomic* / LongAdder.
- *   - For &quot;many readers, occasional writer&quot; use ReentrantReadWriteLock or
- *     StampedLock.
- */
 
 public class LockFrameworkVsSync {
 

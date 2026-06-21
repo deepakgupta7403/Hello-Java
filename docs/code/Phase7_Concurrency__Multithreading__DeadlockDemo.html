@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/DeadlockDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 165 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 116 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,62 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Two or more threads each holding a lock the other needs. None ever progresses.</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Deadlock in Multithreading</h2>
+                    <p>Two or more threads each holding a lock the other needs. None ever progresses.</p>
+                    <pre class="hj-doc-art">     Thread 1: holds A, waiting for B
+     Thread 2: holds B, waiting for A</pre>
+                    <h3>The Four Conditions (Coffman, 1971)</h3>
+                    <ul>
+                        <li>MUTUAL EXCLUSION - resources are non-shareable.
+                        </li>
+                        <li>HOLD-AND-WAIT - a thread holding one resource asks for another.
+                        </li>
+                        <li>NO PREEMPTION - resources can only be released voluntarily.
+                        </li>
+                        <li>CIRCULAR WAIT - a cycle of threads each waiting on the next.
+                        </li>
+                    </ul>
+                    <p>Breaking ANY of the four eliminates deadlock.</p>
+                    <h3>How to prevent deadlock</h3>
+                    <ul>
+                        <li>LOCK ORDERING. Define a global order on locks; always acquire in
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     that order. (E.g. order by System.identityHashCode.)</pre>
+                    <ul>
+                        <li>TRY-LOCK WITH TIMEOUT. ReentrantLock.tryLock(time, unit) — bail
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     out and retry if you couldn&#x27;t get all locks.</pre>
+                    <ul>
+                        <li>ONE BIG LOCK. Simpler if performance allows.
+                        </li>
+                        <li>LOCK-FREE DATA STRUCTURES. ConcurrentHashMap, Atomic*.
+                        </li>
+                        <li>STRUCTURED TASK SCOPES (Java 21 preview) — make hierarchical
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     cancellation explicit.</pre>
+                    <h3>Detecting deadlock at runtime</h3>
+                    <p>ThreadMXBean.findDeadlockedThreads() — JMX-level API that returns the thread ids stuck in a
+                        deadlock. Useful in monitoring / liveness probes.</p>
+                    <p>This file demonstrates:</p>
+                    <ul>
+                        <li>A textbook deadlock.
+                        </li>
+                        <li>ThreadMXBean detection.
+                        </li>
+                        <li>Fix via global lock ordering.
+                        </li>
+                        <li>Fix via tryLock with backoff.
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1399,54 +1451,6 @@ import java.lang.management.ThreadInfo;
 import java.lang.management.ThreadMXBean;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
-
-/**
- * Deadlock in Multithreading
- * --------------------------
- * Two or more threads each holding a lock the other needs. None ever
- * progresses.
- * &lt;p&gt;
- *
- *      Thread 1: holds A, waiting for B
- *      Thread 2: holds B, waiting for A
- * &lt;p&gt;
- *
- * The Four Conditions (Coffman, 1971)
- * -----------------------------------
- *   1. MUTUAL EXCLUSION  - resources are non-shareable.
- *   2. HOLD-AND-WAIT     - a thread holding one resource asks for another.
- *   3. NO PREEMPTION     - resources can only be released voluntarily.
- *   4. CIRCULAR WAIT     - a cycle of threads each waiting on the next.
- * &lt;p&gt;
- *
- * Breaking ANY of the four eliminates deadlock.
- * &lt;p&gt;
- *
- * How to prevent deadlock
- * -----------------------
- *   1. LOCK ORDERING. Define a global order on locks; always acquire in
- *      that order. (E.g. order by System.identityHashCode.)
- *   2. TRY-LOCK WITH TIMEOUT. ReentrantLock.tryLock(time, unit) — bail
- *      out and retry if you couldn&#x27;t get all locks.
- *   3. ONE BIG LOCK. Simpler if performance allows.
- *   4. LOCK-FREE DATA STRUCTURES. ConcurrentHashMap, Atomic*.
- *   5. STRUCTURED TASK SCOPES (Java 21 preview) — make hierarchical
- *      cancellation explicit.
- * &lt;p&gt;
- *
- * Detecting deadlock at runtime
- * -----------------------------
- *   ThreadMXBean.findDeadlockedThreads() — JMX-level API that returns
- *   the thread ids stuck in a deadlock. Useful in monitoring / liveness
- *   probes.
- * &lt;p&gt;
- *
- * This file demonstrates:
- *   1. A textbook deadlock.
- *   2. ThreadMXBean detection.
- *   3. Fix via global lock ordering.
- *   4. Fix via tryLock with backoff.
- */
 
 public class DeadlockDemo {
 

@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase1_CoreLanguage/Conversion/WideningPrimitive.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 44 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 37 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,16 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>When we use double quotes, the text is treated as a string and “YO” is printed, but when we use
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>When we use double quotes, the text is treated as a string and “YO” is printed, but when we use
                         single quotes, the characters ‘L’ and ‘O’ are converted to int. This is called widening
-                        primitive conversion. After conve...
-                    </div>
+                        primitive conversion. After conversion to integer, the numbers are added ( ‘L’ is 76 and ‘O’ is
+                        79) and 155 is printed.</p>
                 </div>
             </div>
 
@@ -1396,12 +1399,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase1_CoreLanguage.Conversion;
-
-/**
- * When we use double quotes, the text is treated as a string and “YO” is printed, but when we use single quotes, the characters ‘L’ and ‘O’ are converted to int.
- * This is called widening primitive conversion.
- * After conversion to integer, the numbers are added ( ‘L’ is 76 and ‘O’ is 79) and 155 is printed.
- **/
 
 public class WideningPrimitive {
     public static void main(String[] args) {

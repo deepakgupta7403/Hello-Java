@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase1_CoreLanguage/Variables/ScopeOfVariable.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 157 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 127 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,22 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>These variables must be declared inside class (outside any function). They can be directly
-                        accessed anywhere in class. Let’s take a look at an example:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>These variables must be declared inside class (outside any function). They can be directly
+                        accessed anywhere in class. Let’s take a look at an example:</p>
+                    <p>We can declare class variables anywhere in class, but outside methods. Access specified of member
+                        variables doesn’t effect scope of them within a class. Member variables can be accessed outside
+                        a class with following rules</p>
+                    <p>Modifier Package Subclass World</p>
+                    <p>public Yes Yes Yes</p>
+                    <p>protected Yes Yes No</p>
+                    <p>Default (no modifier) Yes No No</p>
+                    <p>private No No No</p>
                 </div>
             </div>
 
@@ -1396,32 +1406,6 @@
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase1_CoreLanguage.Variables;
 
-/**These variables must be declared inside class (outside any function).
- * They can be directly accessed anywhere in class. Let’s take a look at an example:
- * &lt;p&gt;
- *
- * We can declare class variables anywhere in class, but outside methods.
- * Access specified of member variables doesn’t effect scope of them within a class.
- * Member variables can be accessed outside a class with following rules
- * &lt;p&gt;
- *
- * Modifier      Package  Subclass  World
- * &lt;p&gt;
- *
- * public          Yes      Yes     Yes
- * &lt;p&gt;
- *
- * protected       Yes      Yes     No
- * &lt;p&gt;
- *
- * Default (no
- * modifier)       Yes       No     No
- * &lt;p&gt;
- *
- * private         No        No     No
- * &lt;p&gt;
- *
- * **/
 class GlobalVarible{
     // All variables defined directly inside a class
     // are member variables
@@ -1547,9 +1531,6 @@ class LoopVariable {
         //1 error
     }
 }
-
-
-
 </code></pre>
                 </div>
             </div>

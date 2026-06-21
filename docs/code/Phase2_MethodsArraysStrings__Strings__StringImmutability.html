@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase2_MethodsArraysStrings/Strings/StringImmutability.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 162 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 88 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,106 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>In Java a String object cannot be CHANGED after creation. Methods like `toUpperCase()`,
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Why Strings Are Immutable</h2>
+                    <p>In Java a String object cannot be CHANGED after creation. Methods like `toUpperCase()`,
                         `substring(...)`, `concat(...)` always RETURN A NEW STRING instead of mutating the receiver. The
-                        original object is untouched.
-                    </div>
+                        original object is untouched.</p>
+                    <pre class="hj-doc-art">     String s = &quot;java&quot;;
+     s.toUpperCase();              // returns &quot;JAVA&quot; but ignored
+     System.out.println(s);        // still prints &quot;java&quot;</pre>
+                    <pre class="hj-doc-art">     s = s.toUpperCase();          // now s points to the NEW &quot;JAVA&quot;</pre>
+                    <h3>Reasons Java&#x27;s Designers Chose Immutability</h3>
+                    <ul>
+                        <li>STRING POOL / Memory Sharing
+                            <ul>
+                                <li>If a literal could change, two variables pointing to the same pool
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">      object would surprise each other. Immutability lets the JVM safely
+      cache and share literals.</pre>
+                    <ul>
+                        <li>THREAD SAFETY
+                            <ul>
+                                <li>Immutable objects are inherently thread-safe; they need no locks.
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">      Strings can be passed between threads with no risk of mutation.</pre>
+                    <ul>
+                        <li>SECURITY
+                            <ul>
+                                <li>Many security-critical APIs accept Strings: class names, file paths,
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">      URLs, network endpoints, SQL fragments, login credentials. If they
+      were mutable, attackers could change the value AFTER the security
+      check but BEFORE the use (&quot;time-of-check vs time-of-use&quot; attacks).</pre>
+                    <ul>
+                        <li>HASHCODE CACHING
+                            <ul>
+                                <li>String hashCode is computed once and stored. HashMap / HashSet lookups
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">      stay fast and correct because the hash never changes.</pre>
+                    <ul>
+                        <li>CLASS LOADING
+                            <ul>
+                                <li>Class names in Java are Strings. Immutability is the simplest way to
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">      guarantee they never change between load and use.</pre>
+                    <ul>
+                        <li>SAFE TO PASS AROUND
+                            <ul>
+                                <li>No defensive copies needed when accepting or returning a String. The
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">      receiver cannot break the sender&#x27;s invariants.</pre>
+                    <h3>What &quot;Immutable&quot; Actually Means</h3>
+                    <ul>
+                        <li>The byte[] backing field is `private final`.
+                        </li>
+                        <li>All &quot;mutator&quot; methods return a NEW String; none modify in place.
+                        </li>
+                        <li>You CAN reassign a String variable - that just rebinds the name to
+                        </li>
+                    </ul>
+                    <p>another (possibly new) String.</p>
+                    <ul>
+                        <li>Reflection could technically reach in and overwrite the final array,
+                        </li>
+                    </ul>
+                    <p>but doing so violates the JVM specification and breaks the language guarantees - don&#x27;t do
+                        it.</p>
+                    <h3>Demonstration</h3>
+                    <p>The main() below shows:</p>
+                    <ul>
+                        <li>mutator methods do NOT change the original
+                        </li>
+                        <li>pool sharing is safe because of immutability
+                        </li>
+                        <li>hash code stays consistent for a given content
+                        </li>
+                        <li>passing a String to a method cannot mutate the caller&#x27;s value
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1396,79 +1489,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase2_MethodsArraysStrings.Strings;
-
-/**
- * Why Strings Are Immutable
- * -------------------------
- * In Java a String object cannot be CHANGED after creation. Methods like
- * `toUpperCase()`, `substring(...)`, `concat(...)` always RETURN A NEW STRING
- * instead of mutating the receiver. The original object is untouched.
- * &lt;p&gt;
- *
- *      String s = &quot;java&quot;;
- *      s.toUpperCase();              // returns &quot;JAVA&quot; but ignored
- *      System.out.println(s);        // still prints &quot;java&quot;
- * &lt;p&gt;
- *
- *      s = s.toUpperCase();          // now s points to the NEW &quot;JAVA&quot;
- * &lt;p&gt;
- *
- * Reasons Java&#x27;s Designers Chose Immutability
- * -------------------------------------------
- * &lt;p&gt;
- *
- *  1. STRING POOL / Memory Sharing
- *     - If a literal could change, two variables pointing to the same pool
- *       object would surprise each other. Immutability lets the JVM safely
- *       cache and share literals.
- * &lt;p&gt;
- *
- *  2. THREAD SAFETY
- *     - Immutable objects are inherently thread-safe; they need no locks.
- *       Strings can be passed between threads with no risk of mutation.
- * &lt;p&gt;
- *
- *  3. SECURITY
- *     - Many security-critical APIs accept Strings: class names, file paths,
- *       URLs, network endpoints, SQL fragments, login credentials. If they
- *       were mutable, attackers could change the value AFTER the security
- *       check but BEFORE the use (&quot;time-of-check vs time-of-use&quot; attacks).
- * &lt;p&gt;
- *
- *  4. HASHCODE CACHING
- *     - String hashCode is computed once and stored. HashMap / HashSet lookups
- *       stay fast and correct because the hash never changes.
- * &lt;p&gt;
- *
- *  5. CLASS LOADING
- *     - Class names in Java are Strings. Immutability is the simplest way to
- *       guarantee they never change between load and use.
- * &lt;p&gt;
- *
- *  6. SAFE TO PASS AROUND
- *     - No defensive copies needed when accepting or returning a String. The
- *       receiver cannot break the sender&#x27;s invariants.
- * &lt;p&gt;
- *
- * What &quot;Immutable&quot; Actually Means
- * -------------------------------
- *  - The byte[] backing field is `private final`.
- *  - All &quot;mutator&quot; methods return a NEW String; none modify in place.
- *  - You CAN reassign a String variable - that just rebinds the name to
- *    another (possibly new) String.
- *  - Reflection could technically reach in and overwrite the final array,
- *    but doing so violates the JVM specification and breaks the language
- *    guarantees - don&#x27;t do it.
- * &lt;p&gt;
- *
- * Demonstration
- * -------------
- * The main() below shows:
- *  - mutator methods do NOT change the original
- *  - pool sharing is safe because of immutability
- *  - hash code stays consistent for a given content
- *  - passing a String to a method cannot mutate the caller&#x27;s value
- */
 
 public class StringImmutability {
 

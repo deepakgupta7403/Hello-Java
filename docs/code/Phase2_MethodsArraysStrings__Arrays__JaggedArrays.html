@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase2_MethodsArraysStrings/Arrays/JaggedArrays.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 183 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 115 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,61 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A JAGGED ARRAY is a multi-dimensional array where each ROW can have a different length. Because
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Jagged Arrays</h2>
+                    <p>A JAGGED ARRAY is a multi-dimensional array where each ROW can have a different length. Because
                         Java implements multi-dim arrays as &quot;arrays of arrays&quot;, every row is an independent
-                        object - so different rows naturally...
-                    </div>
+                        object - so different rows naturally support different lengths.</p>
+                    <pre class="hj-doc-art">     jagged -&gt; [ ref0 ][ ref1 ][ ref2 ]
+                 |       |       |
+                 v       v       v
+                [1]    [1,2,3]  [1,2,3,4,5]              &lt;- different lengths</pre>
+                    <h3>Why &quot;Jagged&quot;?</h3>
+                    <p>The visual silhouette of rows of different lengths looks like a jagged (uneven) edge:</p>
+                    <pre class="hj-doc-art">     X
+     X X X
+     X X X X X</pre>
+                    <h3>How to Build One</h3>
+                    <ul>
+                        <li>Allocate the OUTER array with a known number of rows.
+                        </li>
+                        <li>Allocate EACH row separately with its own length.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">        int[][] jagged = new int[3][];                // 3 rows, no row arrays yet
+        jagged[0] = new int[1];                       // length 1
+        jagged[1] = new int[3];                       // length 3
+        jagged[2] = new int[5];                       // length 5</pre>
+                    <p>Or with a literal:</p>
+                    <pre class="hj-doc-art">        int[][] jagged = {
+            {1},
+            {1, 2, 3},
+            {1, 2, 3, 4, 5}
+        };</pre>
+                    <h3>Iteration</h3>
+                    <p>Always use `row.length` (NOT a constant) when indexing each row:</p>
+                    <pre class="hj-doc-art">        for (int r = 0; r &lt; jagged.length; r++)
+            for (int c = 0; c &lt; jagged[r].length; c++)   // PER-ROW length!
+                ...</pre>
+                    <h3>Where Jagged Arrays Are Useful</h3>
+                    <ul>
+                        <li>Triangle / Pascal&#x27;s triangle (each row is one longer than the previous).
+                        </li>
+                        <li>Adjacency lists of a graph (each node may have a different number of
+                        </li>
+                    </ul>
+                    <p>neighbours).</p>
+                    <ul>
+                        <li>Bucketed data where each bucket has a different population.
+                        </li>
+                        <li>Pre-3D engines: per-row tile maps.
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1398,73 +1446,6 @@
           <pre class="line-numbers m-0"><code class="language-java">package Phase2_MethodsArraysStrings.Arrays;
 
 import java.util.Arrays;
-
-/**
- * Jagged Arrays
- * -------------
- * A JAGGED ARRAY is a multi-dimensional array where each ROW can have a
- * different length. Because Java implements multi-dim arrays as
- * &quot;arrays of arrays&quot;, every row is an independent object - so different rows
- * naturally support different lengths.
- * &lt;p&gt;
- *
- *      jagged -&gt; [ ref0 ][ ref1 ][ ref2 ]
- *                  |       |       |
- *                  v       v       v
- *                 [1]    [1,2,3]  [1,2,3,4,5]              &lt;- different lengths
- * &lt;p&gt;
- *
- * Why &quot;Jagged&quot;?
- * -------------
- * The visual silhouette of rows of different lengths looks like a jagged
- * (uneven) edge:
- * &lt;p&gt;
- *
- *      X
- *      X X X
- *      X X X X X
- * &lt;p&gt;
- *
- * How to Build One
- * ----------------
- *  1. Allocate the OUTER array with a known number of rows.
- *  2. Allocate EACH row separately with its own length.
- * &lt;p&gt;
- *
- *         int[][] jagged = new int[3][];                // 3 rows, no row arrays yet
- *         jagged[0] = new int[1];                       // length 1
- *         jagged[1] = new int[3];                       // length 3
- *         jagged[2] = new int[5];                       // length 5
- * &lt;p&gt;
- *
- *  Or with a literal:
- * &lt;p&gt;
- *
- *         int[][] jagged = {
- *             {1},
- *             {1, 2, 3},
- *             {1, 2, 3, 4, 5}
- *         };
- * &lt;p&gt;
- *
- * Iteration
- * ---------
- * Always use `row.length` (NOT a constant) when indexing each row:
- * &lt;p&gt;
- *
- *         for (int r = 0; r &lt; jagged.length; r++)
- *             for (int c = 0; c &lt; jagged[r].length; c++)   // PER-ROW length!
- *                 ...
- * &lt;p&gt;
- *
- * Where Jagged Arrays Are Useful
- * ------------------------------
- *  - Triangle / Pascal&#x27;s triangle (each row is one longer than the previous).
- *  - Adjacency lists of a graph (each node may have a different number of
- *    neighbours).
- *  - Bucketed data where each bucket has a different population.
- *  - Pre-3D engines: per-row tile maps.
- */
 
 public class JaggedArrays {
 

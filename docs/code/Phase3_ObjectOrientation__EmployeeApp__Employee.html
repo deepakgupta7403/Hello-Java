@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase3_ObjectOrientation/EmployeeApp/Employee.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 73 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 44 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,45 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Employee - the core CONTRACT every staff member must satisfy.</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>Employee - the core CONTRACT every staff member must satisfy.</p>
+                    <p>Implemented as a SEALED INTERFACE (Java 17+) so the company knows exactly which kinds of
+                        employees exist. Adding a new permitted record below will cause every exhaustive `switch
+                        (employee) { ... }` elsewhere to fail to compile until the new case is handled - a strong
+                        build-time safety net.</p>
+                    <h2>Why an interface for the root type?</h2>
+                    <ul>
+                        <li>Employees vary widely (full-time, contractor, intern, ...) - we want a
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    POLYMORPHIC type without forcing a deep class hierarchy.</pre>
+                    <ul>
+                        <li>Records make great variants: immutable, compact, equality for free.
+                        </li>
+                        <li>The interface carries shared DEFAULT behaviour (annualSalary,
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    formattedId) that every implementor inherits.</pre>
+                    <h3>Interface members used here</h3>
+                    <ul>
+                        <li>abstract methods : id, name, monthlyPay
+                        </li>
+                        <li>default methods : annualSalary, formattedId, summary
+                        </li>
+                        <li>static methods : nextId - centralised id generator
+                        </li>
+                        <li>private methods : pad - helper used by formattedId
+                        </li>
+                        <li>constants : MAX_PAY - inherited public static final
+                        </li>
+                        <li>permits clause : restricts implementors to known types
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1394,34 +1429,6 @@
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase3_ObjectOrientation.EmployeeApp;
 
-/**
- * Employee - the core CONTRACT every staff member must satisfy.
- * &lt;p&gt;
- *
- * Implemented as a SEALED INTERFACE (Java 17+) so the company knows exactly
- * which kinds of employees exist. Adding a new permitted record below will
- * cause every exhaustive `switch (employee) { ... }` elsewhere to fail to
- * compile until the new case is handled - a strong build-time safety net.
- * &lt;p&gt;
- *
- * Why an interface for the root type?
- * -----------------------------------
- *   - Employees vary widely (full-time, contractor, intern, ...) - we want a
- *     POLYMORPHIC type without forcing a deep class hierarchy.
- *   - Records make great variants: immutable, compact, equality for free.
- *   - The interface carries shared DEFAULT behaviour (annualSalary,
- *     formattedId) that every implementor inherits.
- * &lt;p&gt;
- *
- * Interface members used here
- * ---------------------------
- *   - abstract methods   : id, name, monthlyPay
- *   - default methods    : annualSalary, formattedId, summary
- *   - static methods     : nextId   - centralised id generator
- *   - private methods    : pad      - helper used by formattedId
- *   - constants          : MAX_PAY  - inherited public static final
- *   - permits clause     : restricts implementors to known types
- */
 public sealed interface Employee permits FullTimeEmployee, PartTimeEmployee, Contractor, Intern {
 
     // ----- abstract contract every implementor must provide -----

@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase9_ModernJavaAndModules/ModernJava/PatternMatchingSwitch.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 104 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 51 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,53 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Java 21 finalises a powerful upgrade to switch: you can now match on the TYPE of the value (and
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Pattern Matching for switch (Java 21)</h2>
+                    <p>Java 21 finalises a powerful upgrade to switch: you can now match on the TYPE of the value (and
                         combine with guards) inside switch labels - no more long chains of `if (x instanceof T) ... else
-                        if (...)`.
-                    </div>
+                        if (...)`.</p>
+                    <h3>Three Building Blocks</h3>
+                    <ul>
+                        <li>Type Pattern in a case label:
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">       case Integer i -&gt; ...</pre>
+                    <ul>
+                        <li>Guarded Pattern with `when`:
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">       case Integer i when i &gt; 0 -&gt; &quot;positive int&quot;</pre>
+                    <ul>
+                        <li>null Handling - traditionally switch threw NullPointerException on null.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    With pattern matching you can match null with an explicit case:
+       case null -&gt; &quot;missing&quot;</pre>
+                    <h3>Exhaustiveness</h3>
+                    <p>The compiler tracks the set of possible types and either you cover all of them or you add a
+                        `default`. For SEALED types it can verify exhaustiveness without any default at all.</p>
+                    <h3>Old vs New</h3>
+                    <pre class="hj-doc-art">     // Old: if/else with instanceof
+     String describe(Object o) {
+         if (o instanceof Integer i)        return &quot;int &quot; + i;
+         else if (o instanceof String s)    return &quot;str of length &quot; + s.length();
+         else if (o == null)                return &quot;null&quot;;
+         else                                return &quot;other&quot;;
+     }</pre>
+                    <pre class="hj-doc-art">     // New: pattern matching switch
+     String describe(Object o) {
+         return switch (o) {
+             case Integer i       -&gt; &quot;int &quot; + i;
+             case String  s       -&gt; &quot;str of length &quot; + s.length();
+             case null            -&gt; &quot;null&quot;;
+             default              -&gt; &quot;other&quot;;
+         };
+     }</pre>
                 </div>
             </div>
 
@@ -1396,58 +1436,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase9_ModernJavaAndModules.ModernJava;
-
-/**
- * Pattern Matching for switch (Java 21)
- * -------------------------------------
- * Java 21 finalises a powerful upgrade to switch: you can now match on the
- * TYPE of the value (and combine with guards) inside switch labels - no more
- * long chains of `if (x instanceof T) ... else if (...)`.
- * &lt;p&gt;
- *
- * Three Building Blocks
- * ---------------------
- *  1. Type Pattern in a case label:
- *        case Integer i -&gt; ...
- * &lt;p&gt;
- *
- *  2. Guarded Pattern with `when`:
- *        case Integer i when i &gt; 0 -&gt; &quot;positive int&quot;
- * &lt;p&gt;
- *
- *  3. null Handling - traditionally switch threw NullPointerException on null.
- *     With pattern matching you can match null with an explicit case:
- *        case null -&gt; &quot;missing&quot;
- * &lt;p&gt;
- *
- * Exhaustiveness
- * --------------
- * The compiler tracks the set of possible types and either you cover all of
- * them or you add a `default`. For SEALED types it can verify exhaustiveness
- * without any default at all.
- * &lt;p&gt;
- *
- * Old vs New
- * ----------
- *      // Old: if/else with instanceof
- *      String describe(Object o) {
- *          if (o instanceof Integer i)        return &quot;int &quot; + i;
- *          else if (o instanceof String s)    return &quot;str of length &quot; + s.length();
- *          else if (o == null)                return &quot;null&quot;;
- *          else                                return &quot;other&quot;;
- *      }
- * &lt;p&gt;
- *
- *      // New: pattern matching switch
- *      String describe(Object o) {
- *          return switch (o) {
- *              case Integer i       -&gt; &quot;int &quot; + i;
- *              case String  s       -&gt; &quot;str of length &quot; + s.length();
- *              case null            -&gt; &quot;null&quot;;
- *              default              -&gt; &quot;other&quot;;
- *          };
- *      }
- */
 
 public class PatternMatchingSwitch {
 

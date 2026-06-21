@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/IteratorDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 173 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 103 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,53 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>An ITERATOR is a cursor that walks through a collection one element at a time. Java has three
-                        flavours, each more powerful than the previous:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Iterator and Friends</h2>
+                    <p>An ITERATOR is a cursor that walks through a collection one element at a time. Java has three
+                        flavours, each more powerful than the previous:</p>
+                    <pre class="hj-doc-art">     Iterator&amp;lt;E&amp;gt;          - one-way, basic
+     ListIterator&amp;lt;E&amp;gt;      - bidirectional, position-aware, mutating
+     Spliterator&amp;lt;E&amp;gt;       - splittable, used by Stream parallelism</pre>
+                    <h3>Iterator&amp;lt;E&amp;gt; - The Original</h3>
+                    <p>Methods:</p>
+                    <pre class="hj-doc-art">     hasNext()              - is there another element?
+     next()                 - return the next element (throws NoSuchElement if none)
+     remove()               - delete the element just returned by next()
+                               (optional - some implementations refuse)
+     forEachRemaining(c)    - apply a Consumer to every remaining element (Java 8+)</pre>
+                    <p>The enhanced for loop is sugar over Iterator. These two are the same:</p>
+                    <pre class="hj-doc-art">     for (E e : list) { ... }</pre>
+                    <pre class="hj-doc-art">     Iterator&amp;lt;E&amp;gt; it = list.iterator();
+     while (it.hasNext()) {
+         E e = it.next();
+         ...
+     }</pre>
+                    <h3>ListIterator&amp;lt;E&amp;gt; - Bidirectional, Position-Aware</h3>
+                    <pre class="hj-doc-art">     hasPrevious() / previous() / nextIndex() / previousIndex()
+     add(e)                 - insert AT the cursor
+     set(e)                 - replace the last element returned</pre>
+                    <p>Available only on List implementations.</p>
+                    <h3>Spliterator&amp;lt;E&amp;gt; (Java 8+)</h3>
+                    <p>Iterates AND can SPLIT itself in half - that is what enables `Collection.parallelStream()`. You
+                        almost never need to write one yourself; you use it via streams.</p>
+                    <h3>fail-fast vs fail-safe</h3>
+                    <p>Most JDK iterators are FAIL-FAST - if the underlying collection is modified outside of the
+                        iterator while iterating, they throw ConcurrentModificationException. CopyOnWrite* and
+                        Concurrent* collections are FAIL-SAFE - they iterate over a snapshot taken at the moment
+                        iterator() was called, so they never throw, but they may see stale data.</p>
+                    <h3>Removing While Iterating - the Two Right Ways</h3>
+                    <ul>
+                        <li>Iterator.remove() inside an explicit while loop.
+                        </li>
+                        <li>Collection.removeIf(Predicate) - Java 8+, preferred when applicable.
+                        </li>
+                    </ul>
+                    <p>NEVER call list.remove(x) from inside a for-each loop - that throws CME.</p>
                 </div>
             </div>
 
@@ -1397,75 +1438,6 @@
           <pre class="line-numbers m-0"><code class="language-java">package Phase5_CollectionsLambdasStreams.Collections;
 
 import java.util.*;
-
-/**
- * Iterator and Friends
- * --------------------
- * An ITERATOR is a cursor that walks through a collection one element at a
- * time. Java has three flavours, each more powerful than the previous:
- * &lt;p&gt;
- *
- *      Iterator&amp;lt;E&amp;gt;          - one-way, basic
- *      ListIterator&amp;lt;E&amp;gt;      - bidirectional, position-aware, mutating
- *      Spliterator&amp;lt;E&amp;gt;       - splittable, used by Stream parallelism
- * &lt;p&gt;
- *
- * Iterator&amp;lt;E&amp;gt; - The Original
- * --------------------------
- * Methods:
- *      hasNext()              - is there another element?
- *      next()                 - return the next element (throws NoSuchElement if none)
- *      remove()               - delete the element just returned by next()
- *                                (optional - some implementations refuse)
- *      forEachRemaining(c)    - apply a Consumer to every remaining element (Java 8+)
- * &lt;p&gt;
- *
- * The enhanced for loop is sugar over Iterator. These two are the same:
- * &lt;p&gt;
- *
- *      for (E e : list) { ... }
- * &lt;p&gt;
- *
- *      Iterator&amp;lt;E&amp;gt; it = list.iterator();
- *      while (it.hasNext()) {
- *          E e = it.next();
- *          ...
- *      }
- * &lt;p&gt;
- *
- * ListIterator&amp;lt;E&amp;gt; - Bidirectional, Position-Aware
- * -----------------------------------------------
- *      hasPrevious() / previous() / nextIndex() / previousIndex()
- *      add(e)                 - insert AT the cursor
- *      set(e)                 - replace the last element returned
- * Available only on List implementations.
- * &lt;p&gt;
- *
- * Spliterator&amp;lt;E&amp;gt; (Java 8+)
- * ------------------------
- * Iterates AND can SPLIT itself in half - that is what enables
- * `Collection.parallelStream()`. You almost never need to write one
- * yourself; you use it via streams.
- * &lt;p&gt;
- *
- * fail-fast vs fail-safe
- * ----------------------
- * Most JDK iterators are FAIL-FAST - if the underlying collection is
- * modified outside of the iterator while iterating, they throw
- * ConcurrentModificationException. CopyOnWrite* and Concurrent*
- * collections are FAIL-SAFE - they iterate over a snapshot taken at the
- * moment iterator() was called, so they never throw, but they may see
- * stale data.
- * &lt;p&gt;
- *
- * Removing While Iterating - the Two Right Ways
- * ---------------------------------------------
- *   - Iterator.remove() inside an explicit while loop.
- *   - Collection.removeIf(Predicate)  - Java 8+, preferred when applicable.
- * &lt;p&gt;
- *
- * NEVER call list.remove(x) from inside a for-each loop - that throws CME.
- */
 
 public class IteratorDemo {
 

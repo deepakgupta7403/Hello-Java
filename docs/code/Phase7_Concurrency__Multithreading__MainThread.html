@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/MainThread.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 92 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 49 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,58 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>When you launch a Java program, the JVM creates a thread named &quot;main&quot; and calls your
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>The Main Thread</h2>
+                    <p>When you launch a Java program, the JVM creates a thread named &quot;main&quot; and calls your
                         public static void main(String[]) on it. Everything runs on that thread until you spawn another
-                        one.
-                    </div>
+                        one.</p>
+                    <h3>Properties of the main thread</h3>
+                    <ul>
+                        <li>Name : &quot;main&quot;
+                        </li>
+                        <li>Group : &quot;main&quot; (ThreadGroup)
+                        </li>
+                        <li>Daemon : false (it KEEPS the JVM alive)
+                        </li>
+                        <li>Default priority : 5 (Thread.NORM_PRIORITY)
+                        </li>
+                        <li>Uncaught handler : ThreadGroup default, which prints to System.err
+                        </li>
+                    </ul>
+                    <h3>Special role</h3>
+                    <ul>
+                        <li>The JVM CONTINUES TO RUN as long as ANY non-daemon thread is alive.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    If you never spawn a non-daemon thread, the JVM exits when main()
+    returns. If you do spawn non-daemons, the JVM waits for them too.</pre>
+                    <ul>
+                        <li>main() returning does NOT immediately terminate other threads —
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    they keep running until they finish or call System.exit.</pre>
+                    <h3>Background JVM threads</h3>
+                    <p>Even a &quot;trivial&quot; Hello World runs alongside the JVM&#x27;s own threads:</p>
+                    <ul>
+                        <li>Reference Handler - drives Reference / Cleaner
+                        </li>
+                        <li>Finalizer - runs finalize() (deprecated)
+                        </li>
+                        <li>Signal Dispatcher - delivers OS signals
+                        </li>
+                        <li>Common-Cleaner - java.lang.ref.Cleaner workers
+                        </li>
+                        <li>Notification Thread - JMX
+                        </li>
+                        <li>GC threads - depends on collector (G1, ZGC, ...)
+                        </li>
+                    </ul>
+                    <p>They are DAEMON threads so the JVM exits once your user threads do.</p>
                 </div>
             </div>
 
@@ -1396,48 +1441,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase7_Concurrency.Multithreading;
-
-/**
- * The Main Thread
- * ---------------
- * When you launch a Java program, the JVM creates a thread named &quot;main&quot;
- * and calls your public static void main(String[]) on it. Everything
- * runs on that thread until you spawn another one.
- * &lt;p&gt;
- *
- * Properties of the main thread
- * -----------------------------
- *   - Name              : &quot;main&quot;
- *   - Group             : &quot;main&quot; (ThreadGroup)
- *   - Daemon            : false (it KEEPS the JVM alive)
- *   - Default priority  : 5 (Thread.NORM_PRIORITY)
- *   - Uncaught handler  : ThreadGroup default, which prints to System.err
- * &lt;p&gt;
- *
- * Special role
- * ------------
- *   - The JVM CONTINUES TO RUN as long as ANY non-daemon thread is alive.
- *     If you never spawn a non-daemon thread, the JVM exits when main()
- *     returns. If you do spawn non-daemons, the JVM waits for them too.
- * &lt;p&gt;
- *
- *   - main() returning does NOT immediately terminate other threads —
- *     they keep running until they finish or call System.exit.
- * &lt;p&gt;
- *
- * Background JVM threads
- * ----------------------
- * Even a &quot;trivial&quot; Hello World runs alongside the JVM&#x27;s own threads:
- *   - Reference Handler  - drives Reference / Cleaner
- *   - Finalizer          - runs finalize() (deprecated)
- *   - Signal Dispatcher  - delivers OS signals
- *   - Common-Cleaner     - java.lang.ref.Cleaner workers
- *   - Notification Thread - JMX
- *   - GC threads         - depends on collector (G1, ZGC, ...)
- * &lt;p&gt;
- *
- * They are DAEMON threads so the JVM exits once your user threads do.
- */
 
 public class MainThread {
 

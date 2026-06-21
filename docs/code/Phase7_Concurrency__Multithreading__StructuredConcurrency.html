@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/StructuredConcurrency.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 134 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 75 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,49 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Java 21 ships StructuredTaskScope as a PREVIEW API (JEP 453, evolved further in 22/23). It
-                        treats a GROUP of concurrent subtasks as a SINGLE UNIT OF WORK with a SCOPED LIFETIME:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Structured Concurrency</h2>
+                    <p>Java 21 ships StructuredTaskScope as a PREVIEW API (JEP 453, evolved further in 22/23). It treats
+                        a GROUP of concurrent subtasks as a SINGLE UNIT OF WORK with a SCOPED LIFETIME:</p>
+                    <pre class="hj-doc-art">     try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
+         Subtask&lt;String&gt; user  = scope.fork(() -&gt; loadUser(id));
+         Subtask&lt;Cart&gt;   cart  = scope.fork(() -&gt; loadCart(id));
+         scope.join();             // wait for both / either failure
+         scope.throwIfFailed();    // rethrow first error if any
+         return new Bundle(user.get(), cart.get());
+     }</pre>
+                    <p>The scope GUARANTEES that all forked tasks finish (succeed, fail, or are cancelled) before the
+                        try-with-resources exits. Errors propagate naturally; cancellation propagates to every
+                        child.</p>
+                    <h3>Why it matters</h3>
+                    <ul>
+                        <li>Replaces the LIFETIME-LEAKING world of bare ExecutorService and
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    dangling CompletableFuture chains.</pre>
+                    <ul>
+                        <li>Treats &quot;fan out N concurrent tasks, get all/any of their results&quot;
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    as a structured statement — just like try-with-resources made
+    resource handling structured.</pre>
+                    <h3>Two built-in policies (Java 21)</h3>
+                    <p>ShutdownOnFailure - cancel all on first failure (the most common). ShutdownOnSuccess - cancel all
+                        on first success (parallel race).</p>
+                    <p>You can subclass StructuredTaskScope for custom policies.</p>
+                    <h3>Preview API</h3>
+                    <p>StructuredTaskScope is in `java.util.concurrent` but PREVIEW. To compile/run this file:</p>
+                    <pre class="hj-doc-art">     javac --release 21 --enable-preview StructuredConcurrency.java
+     java  --enable-preview  Basics.Multithreading.StructuredConcurrency</pre>
+                    <h3>Implementation note for this repo</h3>
+                    <p>To avoid making the project depend on preview flags, this file shows the SHAPE of the API in
+                        comments AND demonstrates a portable equivalent using virtual threads + CompletableFuture so it
+                        compiles cleanly without --enable-preview.</p>
                 </div>
             </div>
 
@@ -1400,64 +1437,6 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-/**
- * Structured Concurrency
- * ----------------------
- * Java 21 ships StructuredTaskScope as a PREVIEW API (JEP 453, evolved
- * further in 22/23). It treats a GROUP of concurrent subtasks as a
- * SINGLE UNIT OF WORK with a SCOPED LIFETIME:
- * &lt;p&gt;
- *
- *      try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
- *          Subtask&lt;String&gt; user  = scope.fork(() -&gt; loadUser(id));
- *          Subtask&lt;Cart&gt;   cart  = scope.fork(() -&gt; loadCart(id));
- *          scope.join();             // wait for both / either failure
- *          scope.throwIfFailed();    // rethrow first error if any
- *          return new Bundle(user.get(), cart.get());
- *      }
- * &lt;p&gt;
- *
- * The scope GUARANTEES that all forked tasks finish (succeed, fail, or
- * are cancelled) before the try-with-resources exits. Errors propagate
- * naturally; cancellation propagates to every child.
- * &lt;p&gt;
- *
- * Why it matters
- * --------------
- *   - Replaces the LIFETIME-LEAKING world of bare ExecutorService and
- *     dangling CompletableFuture chains.
- *   - Treats &quot;fan out N concurrent tasks, get all/any of their results&quot;
- *     as a structured statement — just like try-with-resources made
- *     resource handling structured.
- * &lt;p&gt;
- *
- * Two built-in policies (Java 21)
- * -------------------------------
- *   ShutdownOnFailure  - cancel all on first failure (the most common).
- *   ShutdownOnSuccess  - cancel all on first success (parallel race).
- * &lt;p&gt;
- *
- * You can subclass StructuredTaskScope for custom policies.
- * &lt;p&gt;
- *
- * Preview API
- * -----------
- * StructuredTaskScope is in `java.util.concurrent` but PREVIEW. To
- * compile/run this file:
- * &lt;p&gt;
- *
- *      javac --release 21 --enable-preview StructuredConcurrency.java
- *      java  --enable-preview  Basics.Multithreading.StructuredConcurrency
- * &lt;p&gt;
- *
- * Implementation note for this repo
- * ---------------------------------
- * To avoid making the project depend on preview flags, this file shows
- * the SHAPE of the API in comments AND demonstrates a portable
- * equivalent using virtual threads + CompletableFuture so it compiles
- * cleanly without --enable-preview.
- */
 
 public class StructuredConcurrency {
 

@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase9_ModernJavaAndModules/Modules/ModuleExamples.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 135 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 18 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,78 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Module Examples — sample `module-info.java` shapes</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Module Examples — sample `module-info.java` shapes</h2>
+                    <p>This file is a CATALOGUE of realistic module declarations. The project itself is unnamed (no
+                        module-info.java), so the snippets are inside comments — copy them into a modularised project to
+                        use.</p>
+                    <h3>1) Tiny library module</h3>
+                    <pre class="hj-doc-art">     module com.example.utils {
+         exports com.example.utils;
+     }</pre>
+                    <h3>2) Library + internal helpers</h3>
+                    <pre class="hj-doc-art">     module com.example.app {
+         requires java.net.http;
+         requires java.logging;</pre>
+                    <pre class="hj-doc-art">         exports com.example.app.api;             // public
+         // com.example.app.internal NOT exported - module-private
+     }</pre>
+                    <h3>3) Web app using Spring (needs reflection access)</h3>
+                    <pre class="hj-doc-art">     module com.example.webapp {
+         requires spring.boot.autoconfigure;
+         requires spring.web;
+         requires spring.context;
+         requires java.sql;</pre>
+                    <pre class="hj-doc-art">         exports com.example.webapp.controller;</pre>
+                    <pre class="hj-doc-art">         // Spring needs reflection access to inject and proxy:
+         opens com.example.webapp.controller   to spring.core;
+         opens com.example.webapp.service      to spring.core;
+         opens com.example.webapp.config       to spring.core;
+     }</pre>
+                    <h3>4) Compile-time-only dependency</h3>
+                    <pre class="hj-doc-art">     module com.example.tooling {
+         // We use Lombok annotations at compile time only.
+         requires static lombok;
+         exports com.example.tooling;
+     }</pre>
+                    <h3>5) Transitive dependency</h3>
+                    <pre class="hj-doc-art">     module com.example.core {
+         requires transitive org.slf4j;          // consumers see slf4j too
+         exports com.example.core;
+     }</pre>
+                    <h3>6) Service provider</h3>
+                    <pre class="hj-doc-art">     module com.example.payments.stripe {
+         requires com.example.payments.api;</pre>
+                    <pre class="hj-doc-art">         provides com.example.payments.api.Gateway
+             with com.example.payments.stripe.StripeGateway;
+     }</pre>
+                    <pre class="hj-doc-art">     module com.example.payments.api {
+         exports com.example.payments.api;
+         uses    com.example.payments.api.Gateway;
+     }</pre>
+                    <h3>7) Open module (rarely a great idea)</h3>
+                    <pre class="hj-doc-art">     open module com.legacy.app {
+         requires java.sql;
+         exports com.legacy.app.api;
+         // Every package is implicitly `opens` — full reflection.
+     }</pre>
+                    <h3>8) Compatibility — automatic + unnamed</h3>
+                    <p>A plain jar with no module-info.java becomes an AUTOMATIC module if placed on the --module-path.
+                        Recommended: add to your jar&#x27;s MANIFEST.MF:</p>
+                    <pre class="hj-doc-art">     Automatic-Module-Name: com.example.legacy</pre>
+                    <p>so its module name is stable even before you write a real module-info.</p>
+                    <h3>9) Multi-release module (Java 9+)</h3>
+                    <p>Jars can ship per-version classes under META-INF/versions/N/. Each version uses the same
+                        module-info.java (or a per-version variant).</p>
+                    <h3>10) `jdeps --generate-module-info`</h3>
+                    <pre class="hj-doc-art">     jdeps --generate-module-info ./mods build/libs/mylib.jar</pre>
+                    <p>Reads a jar&#x27;s bytecode and produces a stub module-info.java listing its real
+                        dependencies.</p>
                 </div>
             </div>
 
@@ -1393,122 +1461,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase9_ModernJavaAndModules.Modules;
-
-/**
- * Module Examples — sample `module-info.java` shapes
- * --------------------------------------------------
- * This file is a CATALOGUE of realistic module declarations. The
- * project itself is unnamed (no module-info.java), so the snippets are
- * inside comments — copy them into a modularised project to use.
- * &lt;p&gt;
- *
- * 1) Tiny library module
- * ----------------------
- *      module com.example.utils {
- *          exports com.example.utils;
- *      }
- * &lt;p&gt;
- *
- * 2) Library + internal helpers
- * -----------------------------
- *      module com.example.app {
- *          requires java.net.http;
- *          requires java.logging;
- * &lt;p&gt;
- *
- *          exports com.example.app.api;             // public
- *          // com.example.app.internal NOT exported - module-private
- *      }
- * &lt;p&gt;
- *
- * 3) Web app using Spring (needs reflection access)
- * -------------------------------------------------
- *      module com.example.webapp {
- *          requires spring.boot.autoconfigure;
- *          requires spring.web;
- *          requires spring.context;
- *          requires java.sql;
- * &lt;p&gt;
- *
- *          exports com.example.webapp.controller;
- * &lt;p&gt;
- *
- *          // Spring needs reflection access to inject and proxy:
- *          opens com.example.webapp.controller   to spring.core;
- *          opens com.example.webapp.service      to spring.core;
- *          opens com.example.webapp.config       to spring.core;
- *      }
- * &lt;p&gt;
- *
- * 4) Compile-time-only dependency
- * -------------------------------
- *      module com.example.tooling {
- *          // We use Lombok annotations at compile time only.
- *          requires static lombok;
- *          exports com.example.tooling;
- *      }
- * &lt;p&gt;
- *
- * 5) Transitive dependency
- * ------------------------
- *      module com.example.core {
- *          requires transitive org.slf4j;          // consumers see slf4j too
- *          exports com.example.core;
- *      }
- * &lt;p&gt;
- *
- * 6) Service provider
- * -------------------
- *      module com.example.payments.stripe {
- *          requires com.example.payments.api;
- * &lt;p&gt;
- *
- *          provides com.example.payments.api.Gateway
- *              with com.example.payments.stripe.StripeGateway;
- *      }
- * &lt;p&gt;
- *
- *      module com.example.payments.api {
- *          exports com.example.payments.api;
- *          uses    com.example.payments.api.Gateway;
- *      }
- * &lt;p&gt;
- *
- * 7) Open module (rarely a great idea)
- * ------------------------------------
- *      open module com.legacy.app {
- *          requires java.sql;
- *          exports com.legacy.app.api;
- *          // Every package is implicitly `opens` — full reflection.
- *      }
- * &lt;p&gt;
- *
- * 8) Compatibility — automatic + unnamed
- * --------------------------------------
- * A plain jar with no module-info.java becomes an AUTOMATIC module if
- * placed on the --module-path. Recommended: add to your jar&#x27;s MANIFEST.MF:
- * &lt;p&gt;
- *
- *      Automatic-Module-Name: com.example.legacy
- * &lt;p&gt;
- *
- * so its module name is stable even before you write a real module-info.
- * &lt;p&gt;
- *
- * 9) Multi-release module (Java 9+)
- * ---------------------------------
- * Jars can ship per-version classes under META-INF/versions/N/. Each
- * version uses the same module-info.java (or a per-version variant).
- * &lt;p&gt;
- *
- * 10) `jdeps --generate-module-info`
- * ----------------------------------
- *      jdeps --generate-module-info ./mods build/libs/mylib.jar
- * &lt;p&gt;
- *
- * Reads a jar&#x27;s bytecode and produces a stub module-info.java listing
- * its real dependencies.
- */
 
 public class ModuleExamples {
 

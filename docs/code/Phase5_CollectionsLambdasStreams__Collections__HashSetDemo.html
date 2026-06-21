@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/HashSetDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 164 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 102 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,45 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>java.util.HashSet&amp;lt;E&amp;gt; - Hash-Table-Backed Set</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.HashSet&amp;lt;E&amp;gt; - Hash-Table-Backed Set</h2>
+                    <p>HashSet is the default Set implementation. Internally it is a wrapper around a HashMap whose keys
+                        are your elements and whose values are a single shared dummy object.</p>
+                    <pre class="hj-doc-art">     hashSet.add(x)  ===  hashMap.put(x, PRESENT)
+     hashSet.contains(x) === hashMap.containsKey(x)</pre>
+                    <h3>Why It Exists</h3>
+                    <p>You frequently need &quot;do I already have this thing?&quot; with O(1) lookup, and you do not
+                        care about order. Lists scan linearly - O(n) per lookup; HashSet collapses that to constant time
+                        on average.</p>
+                    <h3>When To Use It</h3>
+                    <ul>
+                        <li>Deduplicate a collection.
+                        </li>
+                        <li>Track &quot;seen&quot; items (visited URLs, sent IDs, ...).
+                        </li>
+                        <li>Fast membership tests in a stream-style pipeline.
+                        </li>
+                    </ul>
+                    <h3>The equals/hashCode Contract (Critical)</h3>
+                    <p>If you store your own classes in a HashSet you MUST override BOTH equals and hashCode. The
+                        contract says:</p>
+                    <pre class="hj-doc-art">     if a.equals(b)  then  a.hashCode() == b.hashCode()</pre>
+                    <p>Violating it does not throw - it silently produces a &quot;broken&quot; set with duplicates and
+                        missing lookups.</p>
+                    <p>Records (Java 16+) generate correct equals/hashCode for you.</p>
+                    <h3>Big-O (Expected, Assuming a Good Hash)</h3>
+                    <p>add / remove / contains / size O(1) iteration O(capacity + size)</p>
+                    <p>Worst case (every element hashes to the same bucket) is O(n) per operation, but modern
+                        HashSet/HashMap balance with a tree once a bucket gets too long.</p>
+                    <h3>Constructors</h3>
+                    <p>new HashSet&amp;lt;&amp;gt;() new HashSet&amp;lt;&amp;gt;(int initialCapacity) new HashSet&amp;lt;&amp;gt;(int
+                        initialCapacity, float loadFactor) new HashSet&amp;lt;&amp;gt;(Collection&amp;lt;? extends E&amp;gt;
+                        c)</p>
                 </div>
             </div>
 
@@ -1397,67 +1432,6 @@
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-
-/**
- * java.util.HashSet&amp;lt;E&amp;gt; - Hash-Table-Backed Set
- * --------------------------------------------
- * HashSet is the default Set implementation. Internally it is a wrapper
- * around a HashMap whose keys are your elements and whose values are a
- * single shared dummy object.
- * &lt;p&gt;
- *
- *      hashSet.add(x)  ===  hashMap.put(x, PRESENT)
- *      hashSet.contains(x) === hashMap.containsKey(x)
- * &lt;p&gt;
- *
- * Why It Exists
- * -------------
- * You frequently need &quot;do I already have this thing?&quot; with O(1) lookup,
- * and you do not care about order. Lists scan linearly - O(n) per lookup;
- * HashSet collapses that to constant time on average.
- * &lt;p&gt;
- *
- * When To Use It
- * --------------
- *   - Deduplicate a collection.
- *   - Track &quot;seen&quot; items (visited URLs, sent IDs, ...).
- *   - Fast membership tests in a stream-style pipeline.
- * &lt;p&gt;
- *
- * The equals/hashCode Contract (Critical)
- * ---------------------------------------
- * If you store your own classes in a HashSet you MUST override BOTH
- * equals and hashCode. The contract says:
- * &lt;p&gt;
- *
- *      if a.equals(b)  then  a.hashCode() == b.hashCode()
- * &lt;p&gt;
- *
- * Violating it does not throw - it silently produces a &quot;broken&quot; set with
- * duplicates and missing lookups.
- * &lt;p&gt;
- *
- * Records (Java 16+) generate correct equals/hashCode for you.
- * &lt;p&gt;
- *
- * Big-O (Expected, Assuming a Good Hash)
- * --------------------------------------
- *   add / remove / contains / size       O(1)
- *   iteration                            O(capacity + size)
- * &lt;p&gt;
- *
- * Worst case (every element hashes to the same bucket) is O(n) per
- * operation, but modern HashSet/HashMap balance with a tree once a bucket
- * gets too long.
- * &lt;p&gt;
- *
- * Constructors
- * ------------
- *   new HashSet&amp;lt;&amp;gt;()
- *   new HashSet&amp;lt;&amp;gt;(int initialCapacity)
- *   new HashSet&amp;lt;&amp;gt;(int initialCapacity, float loadFactor)
- *   new HashSet&amp;lt;&amp;gt;(Collection&amp;lt;? extends E&amp;gt; c)
- */
 
 public class HashSetDemo {
 

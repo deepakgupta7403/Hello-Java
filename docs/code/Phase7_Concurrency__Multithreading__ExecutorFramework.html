@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/ExecutorFramework.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 146 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 96 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,48 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Introduced in Java 5, the framework decouples WORK from the THREAD that runs it. The
-                        hierarchy:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>The Executor Framework</h2>
+                    <p>Introduced in Java 5, the framework decouples WORK from the THREAD that runs it. The
+                        hierarchy:</p>
+                    <pre class="hj-doc-art">     Executor                 - execute(Runnable)
+        |
+     ExecutorService          - submit, invokeAll, invokeAny, shutdown
+        |
+     ScheduledExecutorService - schedule(...), scheduleAtFixedRate, ...</pre>
+                    <h3>Why use it</h3>
+                    <ul>
+                        <li>Reuse threads (no spin-up cost per task).
+                        </li>
+                        <li>Bounded resources (no thread bombs).
+                        </li>
+                        <li>Structured result handling (Future/Callable).
+                        </li>
+                        <li>Built-in shutdown semantics.
+                        </li>
+                    </ul>
+                    <h3>Common factories (Executors.*)</h3>
+                    <p>newFixedThreadPool(n) - n workers, unbounded queue. newCachedThreadPool() - 0..∞ workers,
+                        SynchronousQueue, 60s reap. newSingleThreadExecutor() - guaranteed serial execution.
+                        newScheduledThreadPool(n) - delayed and periodic tasks. newVirtualThreadPerTaskExecutor() - Java
+                        21, one VT per task. newWorkStealingPool(parallelism) - ForkJoinPool wrapper.</p>
+                    <h3>Java 19+ goodies</h3>
+                    <ul>
+                        <li>ExecutorService now implements AutoCloseable — use try-with-resources.
+                        </li>
+                        <li>newVirtualThreadPerTaskExecutor — perfect for I/O-bound fan-out.
+                        </li>
+                    </ul>
+                    <h3>Key methods</h3>
+                    <p>execute(Runnable) submit(Runnable) -&gt; Future&lt;?&gt; submit(Callable&lt;V&gt;) -&gt; Future&lt;V&gt;
+                        submit(Runnable, V) -&gt; Future&lt;V&gt; invokeAll(Collection) -&gt; wait for all, return list
+                        of Futures invokeAny(Collection) -&gt; wait for the first SUCCESS, cancel rest shutdown /
+                        shutdownNow / awaitTermination / isShutdown / isTerminated</p>
                 </div>
             </div>
 
@@ -1399,55 +1435,6 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
-
-/**
- * The Executor Framework
- * ----------------------
- * Introduced in Java 5, the framework decouples WORK from the THREAD
- * that runs it. The hierarchy:
- * &lt;p&gt;
- *
- *      Executor                 - execute(Runnable)
- *         |
- *      ExecutorService          - submit, invokeAll, invokeAny, shutdown
- *         |
- *      ScheduledExecutorService - schedule(...), scheduleAtFixedRate, ...
- * &lt;p&gt;
- *
- * Why use it
- * ----------
- *   - Reuse threads (no spin-up cost per task).
- *   - Bounded resources (no thread bombs).
- *   - Structured result handling (Future/Callable).
- *   - Built-in shutdown semantics.
- * &lt;p&gt;
- *
- * Common factories (Executors.*)
- * ------------------------------
- *   newFixedThreadPool(n)       - n workers, unbounded queue.
- *   newCachedThreadPool()       - 0..∞ workers, SynchronousQueue, 60s reap.
- *   newSingleThreadExecutor()   - guaranteed serial execution.
- *   newScheduledThreadPool(n)   - delayed and periodic tasks.
- *   newVirtualThreadPerTaskExecutor()       - Java 21, one VT per task.
- *   newWorkStealingPool(parallelism)        - ForkJoinPool wrapper.
- * &lt;p&gt;
- *
- * Java 19+ goodies
- * ----------------
- *   - ExecutorService now implements AutoCloseable — use try-with-resources.
- *   - newVirtualThreadPerTaskExecutor — perfect for I/O-bound fan-out.
- * &lt;p&gt;
- *
- * Key methods
- * -----------
- *   execute(Runnable)
- *   submit(Runnable)        -&gt; Future&lt;?&gt;
- *   submit(Callable&lt;V&gt;)     -&gt; Future&lt;V&gt;
- *   submit(Runnable, V)     -&gt; Future&lt;V&gt;
- *   invokeAll(Collection)   -&gt; wait for all, return list of Futures
- *   invokeAny(Collection)   -&gt; wait for the first SUCCESS, cancel rest
- *   shutdown / shutdownNow / awaitTermination / isShutdown / isTerminated
- */
 
 public class ExecutorFramework {
 

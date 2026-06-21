@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/CollectionsIntroduction.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 157 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 53 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,99 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>The COLLECTIONS FRAMEWORK is the standard library for storing and manipulating groups of
-                        objects. It is one of the most important pieces of the JDK; almost every non-trivial Java
-                        program uses it.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Java Collections Framework - Introduction</h2>
+                    <p>The COLLECTIONS FRAMEWORK is the standard library for storing and manipulating groups of objects.
+                        It is one of the most important pieces of the JDK; almost every non-trivial Java program uses
+                        it.</p>
+                    <h3>Why a Framework, Not Just Arrays?</h3>
+                    <p>Arrays are simple but limited:</p>
+                    <ul>
+                        <li>FIXED SIZE.
+                        </li>
+                        <li>One ELEMENT TYPE only.
+                        </li>
+                        <li>Few BUILT-IN OPERATIONS (no search, sort, remove-by-value).
+                        </li>
+                        <li>No POLYMORPHISM across &quot;list-like things&quot;.
+                        </li>
+                    </ul>
+                    <p>The Collections Framework gives you:</p>
+                    <ul>
+                        <li>GROWABLE containers that resize automatically.
+                        </li>
+                        <li>Many SHAPES (List, Set, Queue, Map, Deque) for different access patterns.
+                        </li>
+                        <li>A RICH METHOD SET (add, remove, contains, sort, filter, ...).
+                        </li>
+                        <li>INTERFACES so you can swap implementations without changing callers.
+                        </li>
+                        <li>INTEROPERABILITY with streams, lambdas, parallel processing, and the
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    rest of java.util.</pre>
+                    <h3>The Hierarchy in One Picture</h3>
+                    <pre class="hj-doc-art">     Iterable&lt;E&gt;
+         |
+         v
+     Collection&lt;E&gt; ---------------------------------+
+         |                                          |
+         +---- List&lt;E&gt;                              +---- Map&lt;K,V&gt;      (NOT a Collection - separate root)
+         |       |-- ArrayList                              |
+         |       |-- LinkedList                             |-- HashMap
+         |       |-- Vector  (legacy)                       |-- LinkedHashMap
+         |       |-- CopyOnWriteArrayList                   |-- TreeMap
+         |                                                  |-- ConcurrentHashMap
+         +---- Set&lt;E&gt;                                       |-- Hashtable  (legacy)
+         |       |-- HashSet
+         |       |     `-- LinkedHashSet
+         |       |-- TreeSet     (also SortedSet, NavigableSet)
+         |       |-- EnumSet
+         |       |-- CopyOnWriteArraySet
+         |
+         +---- Queue&lt;E&gt;
+         |       |-- PriorityQueue
+         |       |-- ArrayBlockingQueue, LinkedBlockingQueue (concurrent)
+         |       `-- Deque&lt;E&gt;
+         |             |-- ArrayDeque
+         |             |-- LinkedList (yes, also a List!)
+         |             `-- BlockingDeque (concurrent)</pre>
+                    <p>NOTE: Map is NOT a sub-type of Collection. A Map is a separate root because its operations work
+                        on KEY/VALUE PAIRS, not on single elements.</p>
+                    <h3>Three &quot;Buckets&quot; of Implementations</h3>
+                    <ul>
+                        <li>ORDER-PRESERVING (List, Queue, Deque) - keep insertion order or a
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     meaningful &quot;first / last&quot;.</pre>
+                    <ul>
+                        <li>UNIQUENESS (Set) - no duplicates, no positional access by default.
+                        </li>
+                        <li>KEY -&gt; VALUE (Map) - look up a value by a key.
+                        </li>
+                    </ul>
+                    <h3>Picking The Right Implementation (90% Of Real-World Use)</h3>
+                    <p>List of stuff, mostly read -&gt; ArrayList Frequent insert/remove in the middle -&gt; LinkedList
+                        (rare in practice) Need uniqueness -&gt; HashSet Uniqueness + sorted order -&gt; TreeSet
+                        Uniqueness + insertion order -&gt; LinkedHashSet Key/value lookup -&gt; HashMap Key/value +
+                        insertion order -&gt; LinkedHashMap Key/value + sorted by key -&gt; TreeMap FIFO queue -&gt;
+                        ArrayDeque Priority queue -&gt; PriorityQueue Stack -&gt; ArrayDeque (push / pop / peek)</p>
+                    <h3>What This Folder Covers</h3>
+                    <p>CollectionsIntroduction.java (this file) CollectionInterface.java - methods on the root
+                        Collection&lt;E&gt; CollectionsClass.java - java.util.Collections static helpers
+                        ListInterface.java + ArrayListDemo / LinkedListDemo SetInterface.java + HashSet / LinkedHashSet
+                        / TreeSet QueueInterface.java + PriorityQueueDemo DequeInterface.java MapInterface.java +
+                        HashMap / LinkedHashMap / TreeMap IteratorDemo.java ComparatorComparable.java
+                        ModernCollections.java - Java 8-21 (factory methods,</p>
+                    <pre class="hj-doc-art">                                         Stream collectors, Sequenced
+                                         collections)</pre>
+                    <p>FaceDetectionApp/ - end-to-end project using many</p>
+                    <pre class="hj-doc-art">                                         collection types together.</pre>
                 </div>
             </div>
 
@@ -1396,109 +1482,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase5_CollectionsLambdasStreams.Collections;
-
-/**
- * Java Collections Framework - Introduction
- * -----------------------------------------
- * The COLLECTIONS FRAMEWORK is the standard library for storing and
- * manipulating groups of objects. It is one of the most important pieces of
- * the JDK; almost every non-trivial Java program uses it.
- * &lt;p&gt;
- *
- * Why a Framework, Not Just Arrays?
- * ---------------------------------
- * Arrays are simple but limited:
- *   - FIXED SIZE.
- *   - One ELEMENT TYPE only.
- *   - Few BUILT-IN OPERATIONS (no search, sort, remove-by-value).
- *   - No POLYMORPHISM across &quot;list-like things&quot;.
- * &lt;p&gt;
- *
- * The Collections Framework gives you:
- *   - GROWABLE containers that resize automatically.
- *   - Many SHAPES (List, Set, Queue, Map, Deque) for different access patterns.
- *   - A RICH METHOD SET (add, remove, contains, sort, filter, ...).
- *   - INTERFACES so you can swap implementations without changing callers.
- *   - INTEROPERABILITY with streams, lambdas, parallel processing, and the
- *     rest of java.util.
- * &lt;p&gt;
- *
- * The Hierarchy in One Picture
- * ----------------------------
- * &lt;p&gt;
- *
- *      Iterable&lt;E&gt;
- *          |
- *          v
- *      Collection&lt;E&gt; ---------------------------------+
- *          |                                          |
- *          +---- List&lt;E&gt;                              +---- Map&lt;K,V&gt;      (NOT a Collection - separate root)
- *          |       |-- ArrayList                              |
- *          |       |-- LinkedList                             |-- HashMap
- *          |       |-- Vector  (legacy)                       |-- LinkedHashMap
- *          |       |-- CopyOnWriteArrayList                   |-- TreeMap
- *          |                                                  |-- ConcurrentHashMap
- *          +---- Set&lt;E&gt;                                       |-- Hashtable  (legacy)
- *          |       |-- HashSet
- *          |       |     `-- LinkedHashSet
- *          |       |-- TreeSet     (also SortedSet, NavigableSet)
- *          |       |-- EnumSet
- *          |       |-- CopyOnWriteArraySet
- *          |
- *          +---- Queue&lt;E&gt;
- *          |       |-- PriorityQueue
- *          |       |-- ArrayBlockingQueue, LinkedBlockingQueue (concurrent)
- *          |       `-- Deque&lt;E&gt;
- *          |             |-- ArrayDeque
- *          |             |-- LinkedList (yes, also a List!)
- *          |             `-- BlockingDeque (concurrent)
- * &lt;p&gt;
- *
- * NOTE: Map is NOT a sub-type of Collection. A Map is a separate root
- * because its operations work on KEY/VALUE PAIRS, not on single elements.
- * &lt;p&gt;
- *
- * Three &quot;Buckets&quot; of Implementations
- * ----------------------------------
- *   1. ORDER-PRESERVING (List, Queue, Deque) - keep insertion order or a
- *      meaningful &quot;first / last&quot;.
- *   2. UNIQUENESS (Set) - no duplicates, no positional access by default.
- *   3. KEY -&gt; VALUE (Map) - look up a value by a key.
- * &lt;p&gt;
- *
- * Picking The Right Implementation (90% Of Real-World Use)
- * --------------------------------------------------------
- *   List of stuff, mostly read           -&gt; ArrayList
- *   Frequent insert/remove in the middle -&gt; LinkedList   (rare in practice)
- *   Need uniqueness                      -&gt; HashSet
- *   Uniqueness + sorted order            -&gt; TreeSet
- *   Uniqueness + insertion order         -&gt; LinkedHashSet
- *   Key/value lookup                     -&gt; HashMap
- *   Key/value + insertion order          -&gt; LinkedHashMap
- *   Key/value + sorted by key            -&gt; TreeMap
- *   FIFO queue                           -&gt; ArrayDeque
- *   Priority queue                       -&gt; PriorityQueue
- *   Stack                                -&gt; ArrayDeque (push / pop / peek)
- * &lt;p&gt;
- *
- * What This Folder Covers
- * -----------------------
- *   CollectionsIntroduction.java         (this file)
- *   CollectionInterface.java             - methods on the root Collection&lt;E&gt;
- *   CollectionsClass.java                - java.util.Collections static helpers
- *   ListInterface.java + ArrayListDemo / LinkedListDemo
- *   SetInterface.java  + HashSet / LinkedHashSet / TreeSet
- *   QueueInterface.java + PriorityQueueDemo
- *   DequeInterface.java
- *   MapInterface.java  + HashMap / LinkedHashMap / TreeMap
- *   IteratorDemo.java
- *   ComparatorComparable.java
- *   ModernCollections.java               - Java 8-21 (factory methods,
- *                                          Stream collectors, Sequenced
- *                                          collections)
- *   FaceDetectionApp/                    - end-to-end project using many
- *                                          collection types together.
- */
 
 public class CollectionsIntroduction {
 

@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/StampedLockDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 162 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 92 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,59 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Optimistic reads are CHEAP — basically a volatile read — but you must COPY the fields you read
-                        to LOCAL VARIABLES before validating. If you dereference a stale reference during the optimistic
-                        window you can get incons...
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.concurrent.locks.StampedLock (Java 8+)</h2>
+                    <p>Three modes:</p>
+                    <p>WRITE LOCK - exclusive (like a write lock). READ LOCK - shared (like a read lock). OPTIMISTIC
+                        READ- NO lock acquired. Returns a &quot;stamp&quot;; the reader</p>
+                    <pre class="hj-doc-art">                   validates the stamp after reading. If a writer
+                   completed in the meantime, the validation fails
+                   and you fall back to a real read lock.</pre>
+                    <p>Optimistic reads are CHEAP — basically a volatile read — but you must COPY the fields you read to
+                        LOCAL VARIABLES before validating. If you dereference a stale reference during the optimistic
+                        window you can get inconsistent or even unsafe values.</p>
+                    <h3>Key API</h3>
+                    <p>long writeLock() -&gt; stamp unlockWrite(stamp) long readLock() -&gt; stamp unlockRead(stamp)
+                        long tryOptimisticRead() -&gt; stamp (0 means a writer is active) boolean validate(stamp) -&gt;
+                        true if no writer since the stamp long tryConvertToWriteLock(stamp)-&gt; upgrade (returns 0 on
+                        failure) long tryConvertToReadLock(stamp) -&gt; downgrade boolean isWriteLocked()</p>
+                    <h3>Important differences from ReadWriteLock</h3>
+                    <ul>
+                        <li>NOT REENTRANT. The same thread acquiring twice deadlocks.
+                        </li>
+                        <li>No Conditions.
+                        </li>
+                        <li>Often faster under read-heavy contention.
+                        </li>
+                        <li>Slightly more code to use correctly.
+                        </li>
+                    </ul>
+                    <h3>Pattern: read-mostly Point class</h3>
+                    <pre class="hj-doc-art">     class Point {
+         private double x, y;
+         private final StampedLock sl = new StampedLock();</pre>
+                    <pre class="hj-doc-art">         double distanceFromOrigin() {
+             long stamp = sl.tryOptimisticRead();
+             double localX = x, localY = y;            // COPY locally
+             if (!sl.validate(stamp)) {                // fall back to real read
+                 stamp = sl.readLock();
+                 try {
+                     localX = x; localY = y;
+                 } finally { sl.unlockRead(stamp); }
+             }
+             return Math.hypot(localX, localY);
+         }</pre>
+                    <pre class="hj-doc-art">         void move(double dx, double dy) {
+             long stamp = sl.writeLock();
+             try { x += dx; y += dy; }
+             finally { sl.unlockWrite(stamp); }
+         }
+     }</pre>
                 </div>
             </div>
 
@@ -1398,75 +1444,6 @@
           <pre class="line-numbers m-0"><code class="language-java">package Phase7_Concurrency.Multithreading;
 
 import java.util.concurrent.locks.StampedLock;
-
-/**
- * java.util.concurrent.locks.StampedLock  (Java 8+)
- * -------------------------------------------------
- * Three modes:
- * &lt;p&gt;
- *
- *   WRITE LOCK     - exclusive (like a write lock).
- *   READ LOCK      - shared (like a read lock).
- *   OPTIMISTIC READ- NO lock acquired. Returns a &quot;stamp&quot;; the reader
- *                    validates the stamp after reading. If a writer
- *                    completed in the meantime, the validation fails
- *                    and you fall back to a real read lock.
- * &lt;p&gt;
- *
- * Optimistic reads are CHEAP — basically a volatile read — but you must
- * COPY the fields you read to LOCAL VARIABLES before validating. If you
- * dereference a stale reference during the optimistic window you can
- * get inconsistent or even unsafe values.
- * &lt;p&gt;
- *
- * Key API
- * -------
- *   long writeLock()                 -&gt; stamp
- *   unlockWrite(stamp)
- *   long readLock()                  -&gt; stamp
- *   unlockRead(stamp)
- *   long tryOptimisticRead()         -&gt; stamp (0 means a writer is active)
- *   boolean validate(stamp)          -&gt; true if no writer since the stamp
- *   long tryConvertToWriteLock(stamp)-&gt; upgrade (returns 0 on failure)
- *   long tryConvertToReadLock(stamp) -&gt; downgrade
- *   boolean isWriteLocked()
- * &lt;p&gt;
- *
- * Important differences from ReadWriteLock
- * ----------------------------------------
- *   - NOT REENTRANT. The same thread acquiring twice deadlocks.
- *   - No Conditions.
- *   - Often faster under read-heavy contention.
- *   - Slightly more code to use correctly.
- * &lt;p&gt;
- *
- * Pattern: read-mostly Point class
- * --------------------------------
- *      class Point {
- *          private double x, y;
- *          private final StampedLock sl = new StampedLock();
- * &lt;p&gt;
- *
- *          double distanceFromOrigin() {
- *              long stamp = sl.tryOptimisticRead();
- *              double localX = x, localY = y;            // COPY locally
- *              if (!sl.validate(stamp)) {                // fall back to real read
- *                  stamp = sl.readLock();
- *                  try {
- *                      localX = x; localY = y;
- *                  } finally { sl.unlockRead(stamp); }
- *              }
- *              return Math.hypot(localX, localY);
- *          }
- * &lt;p&gt;
- *
- *          void move(double dx, double dy) {
- *              long stamp = sl.writeLock();
- *              try { x += dx; y += dy; }
- *              finally { sl.unlockWrite(stamp); }
- *          }
- *      }
- */
 
 public class StampedLockDemo {
 

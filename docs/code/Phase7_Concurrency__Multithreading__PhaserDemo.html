@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/PhaserDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 118 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 81 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,47 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>The flexible cousin of CyclicBarrier and CountDownLatch. A Phaser:</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Phaser (Java 7+)</h2>
+                    <p>The flexible cousin of CyclicBarrier and CountDownLatch. A Phaser:</p>
+                    <ul>
+                        <li>Has a varying number of REGISTERED parties (register / arriveAndDeregister).
+                        </li>
+                        <li>Has a PHASE counter that increases each round.
+                        </li>
+                        <li>Lets parties signal arrival with several methods:
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">          arriveAndAwaitAdvance()    - &quot;I&#x27;m here; wait for the rest&quot;
+          arrive()                    - &quot;I&#x27;m here; don&#x27;t wait&quot; (returns the phase)
+          arriveAndDeregister()       - &quot;I&#x27;m here; drop me from the pool&quot;
+          awaitAdvance(phase)         - block until we move past `phase`</pre>
+                    <ul>
+                        <li>Supports a HOOK: override onAdvance(phase, registered) to control
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    when termination occurs and run per-phase actions.</pre>
+                    <h3>When to pick Phaser over CyclicBarrier</h3>
+                    <ul>
+                        <li>Party count CHANGES across phases.
+                        </li>
+                        <li>You want a hook that decides when to terminate (e.g. when all
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    parties have deregistered, or after K phases).</pre>
+                    <ul>
+                        <li>You want non-blocking arrivals (arrive() returns immediately).
+                        </li>
+                    </ul>
+                    <h3>Termination</h3>
+                    <p>A Phaser terminates when onAdvance returns true. By default it terminates when all parties
+                        deregister. Once terminated, every arrive/await returns immediately (no more
+                        synchronisation).</p>
                 </div>
             </div>
 
@@ -1395,42 +1432,6 @@
           <pre class="line-numbers m-0"><code class="language-java">package Phase7_Concurrency.Multithreading;
 
 import java.util.concurrent.Phaser;
-
-/**
- * Phaser (Java 7+)
- * ----------------
- * The flexible cousin of CyclicBarrier and CountDownLatch. A Phaser:
- * &lt;p&gt;
- *
- *   - Has a varying number of REGISTERED parties (register / arriveAndDeregister).
- *   - Has a PHASE counter that increases each round.
- *   - Lets parties signal arrival with several methods:
- * &lt;p&gt;
- *
- *           arriveAndAwaitAdvance()    - &quot;I&#x27;m here; wait for the rest&quot;
- *           arrive()                    - &quot;I&#x27;m here; don&#x27;t wait&quot; (returns the phase)
- *           arriveAndDeregister()       - &quot;I&#x27;m here; drop me from the pool&quot;
- *           awaitAdvance(phase)         - block until we move past `phase`
- * &lt;p&gt;
- *
- *   - Supports a HOOK: override onAdvance(phase, registered) to control
- *     when termination occurs and run per-phase actions.
- * &lt;p&gt;
- *
- * When to pick Phaser over CyclicBarrier
- * --------------------------------------
- *   - Party count CHANGES across phases.
- *   - You want a hook that decides when to terminate (e.g. when all
- *     parties have deregistered, or after K phases).
- *   - You want non-blocking arrivals (arrive() returns immediately).
- * &lt;p&gt;
- *
- * Termination
- * -----------
- * A Phaser terminates when onAdvance returns true. By default it
- * terminates when all parties deregister. Once terminated, every
- * arrive/await returns immediately (no more synchronisation).
- */
 
 public class PhaserDemo {
 

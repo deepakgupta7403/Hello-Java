@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase8_PracticalAPIs/FileIO/ByteStreams.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 125 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 72 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,52 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>The grandparents of Java I/O. They read and write RAW BYTES, one or many at a time. Used for
-                        non-textual files (images, audio, archives) or as the lower layer beneath character streams.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Byte Streams — InputStream / OutputStream</h2>
+                    <p>The grandparents of Java I/O. They read and write RAW BYTES, one or many at a time. Used for
+                        non-textual files (images, audio, archives) or as the lower layer beneath character streams.</p>
+                    <h3>InputStream — read bytes</h3>
+                    <pre class="hj-doc-art">     int read()                  -&gt; next byte 0..255, or -1 at EOF
+     int read(byte[] b)          -&gt; fill the array; return how many were read
+     int read(byte[] b, off,len) -&gt; fill part of the array
+     long skip(long n)
+     void close()
+     byte[] readAllBytes()       (Java 9+)
+     long transferTo(OutputStream)</pre>
+                    <h3>OutputStream — write bytes</h3>
+                    <pre class="hj-doc-art">     void write(int b)           -&gt; writes the low 8 bits
+     void write(byte[] b)
+     void write(byte[] b, off, len)
+     void flush()
+     void close()</pre>
+                    <h3>Concrete file-flavoured impls</h3>
+                    <pre class="hj-doc-art">     FileInputStream   - read bytes from a file.
+     FileOutputStream  - write bytes (optional append mode).
+     ByteArrayInputStream / ByteArrayOutputStream - memory streams.</pre>
+                    <h3>Best practices</h3>
+                    <ul>
+                        <li>Always try-with-resources.
+                        </li>
+                        <li>Use read(byte[]) with a buffer of ~8 KiB — read() one byte at a
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    time is dramatically slower.</pre>
+                    <ul>
+                        <li>Better still, wrap with a BufferedInputStream (see BufferedStreams.java).
+                        </li>
+                        <li>For text, use Reader/Writer, NOT InputStream/OutputStream + new String(...).
+                        </li>
+                    </ul>
+                    <h3>Java 9+ shortcuts</h3>
+                    <pre class="hj-doc-art">     Files.readAllBytes(path)
+     Files.write(path, byte[] data)
+     InputStream.readAllBytes()
+     InputStream.transferTo(OutputStream)</pre>
                 </div>
             </div>
 
@@ -1399,58 +1439,6 @@
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-
-/**
- * Byte Streams — InputStream / OutputStream
- * -----------------------------------------
- * The grandparents of Java I/O. They read and write RAW BYTES, one or
- * many at a time. Used for non-textual files (images, audio, archives)
- * or as the lower layer beneath character streams.
- * &lt;p&gt;
- *
- * InputStream — read bytes
- * ------------------------
- *      int read()                  -&gt; next byte 0..255, or -1 at EOF
- *      int read(byte[] b)          -&gt; fill the array; return how many were read
- *      int read(byte[] b, off,len) -&gt; fill part of the array
- *      long skip(long n)
- *      void close()
- *      byte[] readAllBytes()       (Java 9+)
- *      long transferTo(OutputStream)
- * &lt;p&gt;
- *
- * OutputStream — write bytes
- * --------------------------
- *      void write(int b)           -&gt; writes the low 8 bits
- *      void write(byte[] b)
- *      void write(byte[] b, off, len)
- *      void flush()
- *      void close()
- * &lt;p&gt;
- *
- * Concrete file-flavoured impls
- * -----------------------------
- *      FileInputStream   - read bytes from a file.
- *      FileOutputStream  - write bytes (optional append mode).
- *      ByteArrayInputStream / ByteArrayOutputStream - memory streams.
- * &lt;p&gt;
- *
- * Best practices
- * --------------
- *   - Always try-with-resources.
- *   - Use read(byte[]) with a buffer of ~8 KiB — read() one byte at a
- *     time is dramatically slower.
- *   - Better still, wrap with a BufferedInputStream (see BufferedStreams.java).
- *   - For text, use Reader/Writer, NOT InputStream/OutputStream + new String(...).
- * &lt;p&gt;
- *
- * Java 9+ shortcuts
- * -----------------
- *      Files.readAllBytes(path)
- *      Files.write(path, byte[] data)
- *      InputStream.readAllBytes()
- *      InputStream.transferTo(OutputStream)
- */
 
 public class ByteStreams {
 

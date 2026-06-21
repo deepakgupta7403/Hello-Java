@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase4_ErrorsAndTypeSafety/Generics/GenericClasses.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 189 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 115 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,48 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A class is GENERIC when it declares one or more TYPE PARAMETERS in angle brackets after its
-                        name:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Generic Classes</h2>
+                    <p>A class is GENERIC when it declares one or more TYPE PARAMETERS in angle brackets after its
+                        name:</p>
+                    <pre class="hj-doc-art">     public class Box&amp;lt;T&amp;gt; { ... }
+     public class Pair&amp;lt;K, V&amp;gt; { ... }
+     public class Triple&amp;lt;A, B, C&amp;gt; { ... }</pre>
+                    <p>Inside the class body the type parameter behaves like a real type: fields, method parameters,
+                        return types - all can reference T.</p>
+                    <h3>Instantiation - The Diamond Operator (Java 7+)</h3>
+                    <pre class="hj-doc-art">     Box&amp;lt;String&amp;gt; b = new Box&amp;lt;&amp;gt;(&quot;hi&quot;);        // compiler infers &lt;String&gt;
+     var          c = new Box&amp;lt;&amp;gt;(&quot;hi&quot;);        // works (Java 10+)
+     Box          d = new Box&amp;lt;&amp;gt;(&quot;hi&quot;);        // raw type left side: warning</pre>
+                    <p>Pre-Java-7 you had to repeat the type on both sides:</p>
+                    <pre class="hj-doc-art">     Box&amp;lt;String&amp;gt; b = new Box&amp;lt;String&amp;gt;(&quot;hi&quot;);</pre>
+                    <h3>Multiple Type Parameters</h3>
+                    <pre class="hj-doc-art">     public class Pair&amp;lt;K, V&amp;gt; {
+         private final K key;
+         private final V value;
+         ...
+     }</pre>
+                    <p>No limit, but in practice 1-3 type parameters is the readable maximum.</p>
+                    <h3>Type Parameters Are NOT Static</h3>
+                    <p>Each INSTANCE of a generic class binds the type parameter independently:</p>
+                    <pre class="hj-doc-art">     Box&amp;lt;String&amp;gt;  s = new Box&amp;lt;&amp;gt;(&quot;hello&quot;);
+     Box&amp;lt;Integer&amp;gt; i = new Box&amp;lt;&amp;gt;(42);</pre>
+                    <p>The type parameter T cannot be referenced from a `static` member - statics are shared across all
+                        parameterisations. (See GenericRestrictions.java.)</p>
+                    <h3>Generic Class Hierarchies</h3>
+                    <p>One generic class may extend another. You either fix the parameter or pass it through:</p>
+                    <pre class="hj-doc-art">     class Stack&amp;lt;E&amp;gt; extends ArrayList&amp;lt;E&amp;gt; { ... }          // pass through
+     class IntStack    extends Stack&amp;lt;Integer&amp;gt;     { ... }   // fix to Integer</pre>
+                    <p>IMPORTANT: Generic types are NOT covariant.</p>
+                    <pre class="hj-doc-art">     List&amp;lt;String&amp;gt; ls = ...;
+     List&amp;lt;Object&amp;gt; lo = ls;                                  // COMPILE ERROR</pre>
+                    <p>Even though String is-a Object, List&amp;lt;String&amp;gt; is NOT a List&amp;lt;Object&amp;gt;.
+                        To relax this, use wildcards (Wildcards.java).</p>
                 </div>
             </div>
 
@@ -1399,79 +1435,6 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-/**
- * Generic Classes
- * ---------------
- * A class is GENERIC when it declares one or more TYPE PARAMETERS in
- * angle brackets after its name:
- * &lt;p&gt;
- *
- *      public class Box&amp;lt;T&amp;gt; { ... }
- *      public class Pair&amp;lt;K, V&amp;gt; { ... }
- *      public class Triple&amp;lt;A, B, C&amp;gt; { ... }
- * &lt;p&gt;
- *
- * Inside the class body the type parameter behaves like a real type:
- * fields, method parameters, return types - all can reference T.
- * &lt;p&gt;
- *
- * Instantiation - The Diamond Operator (Java 7+)
- * ----------------------------------------------
- *      Box&amp;lt;String&amp;gt; b = new Box&amp;lt;&amp;gt;(&quot;hi&quot;);        // compiler infers &lt;String&gt;
- *      var          c = new Box&amp;lt;&amp;gt;(&quot;hi&quot;);        // works (Java 10+)
- *      Box          d = new Box&amp;lt;&amp;gt;(&quot;hi&quot;);        // raw type left side: warning
- * &lt;p&gt;
- *
- * Pre-Java-7 you had to repeat the type on both sides:
- *      Box&amp;lt;String&amp;gt; b = new Box&amp;lt;String&amp;gt;(&quot;hi&quot;);
- * &lt;p&gt;
- *
- * Multiple Type Parameters
- * ------------------------
- *      public class Pair&amp;lt;K, V&amp;gt; {
- *          private final K key;
- *          private final V value;
- *          ...
- *      }
- * &lt;p&gt;
- *
- * No limit, but in practice 1-3 type parameters is the readable maximum.
- * &lt;p&gt;
- *
- * Type Parameters Are NOT Static
- * ------------------------------
- * Each INSTANCE of a generic class binds the type parameter independently:
- * &lt;p&gt;
- *
- *      Box&amp;lt;String&amp;gt;  s = new Box&amp;lt;&amp;gt;(&quot;hello&quot;);
- *      Box&amp;lt;Integer&amp;gt; i = new Box&amp;lt;&amp;gt;(42);
- * &lt;p&gt;
- *
- * The type parameter T cannot be referenced from a `static` member - statics
- * are shared across all parameterisations. (See GenericRestrictions.java.)
- * &lt;p&gt;
- *
- * Generic Class Hierarchies
- * -------------------------
- * One generic class may extend another. You either fix the parameter or
- * pass it through:
- * &lt;p&gt;
- *
- *      class Stack&amp;lt;E&amp;gt; extends ArrayList&amp;lt;E&amp;gt; { ... }          // pass through
- *      class IntStack    extends Stack&amp;lt;Integer&amp;gt;     { ... }   // fix to Integer
- * &lt;p&gt;
- *
- * IMPORTANT: Generic types are NOT covariant.
- * &lt;p&gt;
- *
- *      List&amp;lt;String&amp;gt; ls = ...;
- *      List&amp;lt;Object&amp;gt; lo = ls;                                  // COMPILE ERROR
- * &lt;p&gt;
- *
- * Even though String is-a Object, List&amp;lt;String&amp;gt; is NOT a List&amp;lt;Object&amp;gt;. To
- * relax this, use wildcards (Wildcards.java).
- */
 
 public class GenericClasses {
 

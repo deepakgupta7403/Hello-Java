@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase6_RuntimeMemoryRegexReflection/MemoryAllocation/JvmMemoryAreas.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 168 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 89 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,115 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>The Java Virtual Machine specification divides runtime memory into five conceptual areas:</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Types of Memory Areas Allocated by the JVM</h2>
+                    <p>The Java Virtual Machine specification divides runtime memory into five conceptual areas:</p>
+                    <ul>
+                        <li>METHOD AREA (a.k.a. Metaspace since Java 8)
+                            <ul>
+                                <li>SHARED across all threads.
+                                </li>
+                                <li>Holds CLASS METADATA: bytecode of methods, runtime constant pool,
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">       static fields, the Class&lt;?&gt; object itself, JIT-compiled code.</pre>
+                    <ul>
+                        <li>Pre-Java 8 it was a fixed &quot;PermGen&quot; inside the heap; from Java 8
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">       it lives in NATIVE memory (Metaspace) and grows by default.</pre>
+                    <ul>
+                        <li>Tuning: -XX:MaxMetaspaceSize.
+                        </li>
+                        <li>HEAP
+                        </li>
+                        <li>SHARED across all threads.
+                        </li>
+                        <li>The ONLY place ordinary objects and arrays are allocated.
+                        </li>
+                        <li>Subdivided by every modern GC into GENERATIONS:
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">         Young    -&gt; Eden + Survivor0 + Survivor1
+         Old (Tenured)</pre>
+                    <ul>
+                        <li>Tuning: -Xms (initial), -Xmx (max), -XX:NewSize, etc.
+                        </li>
+                        <li>JVM STACK (also called &quot;Java Stack&quot;)
+                        </li>
+                        <li>PER-THREAD.
+                        </li>
+                        <li>One STACK FRAME per active method call:
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">           local variables, operand stack, return address.</pre>
+                    <ul>
+                        <li>When the frame&#x27;s method returns, the frame is popped - locals
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">       disappear.</pre>
+                    <ul>
+                        <li>StackOverflowError = the stack grew too deep (usually unbounded
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">       recursion). OutOfMemoryError(&quot;unable to create new native thread&quot;)
+       = OS refused another thread.</pre>
+                    <ul>
+                        <li>Tuning: -Xss (per-thread stack size).
+                        </li>
+                        <li>PC REGISTER
+                        </li>
+                        <li>PER-THREAD.
+                        </li>
+                        <li>Holds the ADDRESS of the bytecode instruction currently being
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">       executed by that thread. For native methods it is undefined.</pre>
+                    <ul>
+                        <li>You never touch this directly; the JVM uses it internally.
+                        </li>
+                        <li>NATIVE METHOD STACK
+                        </li>
+                        <li>PER-THREAD.
+                        </li>
+                        <li>Used by NATIVE (C/C++) code reached via JNI. Has nothing to do
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">       with your Java stack frames.</pre>
+                    <h3>Heap Generations (HotSpot / G1 / ZGC view)</h3>
+                    <pre class="hj-doc-art">     Young Gen                        Old Gen
+     +--------+---------+---------+   +------------------+
+     |  Eden  | Surv 0  | Surv 1  |   |  Tenured         |
+     +--------+---------+---------+   +------------------+
+     new objects start here --&gt;       long-lived stuff here</pre>
+                    <ul>
+                        <li>Objects are born in EDEN.
+                        </li>
+                        <li>Minor GC promotes survivors to S0 / S1 alternately.
+                        </li>
+                        <li>Survive enough minor GCs and the object is promoted to OLD.
+                        </li>
+                        <li>The &quot;generational hypothesis&quot;: most objects die young.
+                        </li>
+                    </ul>
+                    <h3>Beyond the Spec</h3>
+                    <p>In addition to the five JVM-spec areas, the running process also has:</p>
+                    <ul>
+                        <li>CODE CACHE - JIT-compiled native code lives here.
+                        </li>
+                        <li>DIRECT BUFFERS - off-heap NIO byte buffers (ByteBuffer.allocateDirect).
+                        </li>
+                        <li>THREAD STACKS - native stacks owned by the OS.
+                        </li>
+                    </ul>
+                    <p>This main() prints what the running JVM reports for each of these.</p>
                 </div>
             </div>
 
@@ -1398,84 +1503,6 @@ import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryMXBean;
 import java.lang.management.MemoryPoolMXBean;
 import java.lang.management.MemoryUsage;
-
-/**
- * Types of Memory Areas Allocated by the JVM
- * ------------------------------------------
- * The Java Virtual Machine specification divides runtime memory into five
- * conceptual areas:
- * &lt;p&gt;
- *
- *   1. METHOD AREA  (a.k.a. Metaspace since Java 8)
- *      - SHARED across all threads.
- *      - Holds CLASS METADATA: bytecode of methods, runtime constant pool,
- *        static fields, the Class&lt;?&gt; object itself, JIT-compiled code.
- *      - Pre-Java 8 it was a fixed &quot;PermGen&quot; inside the heap; from Java 8
- *        it lives in NATIVE memory (Metaspace) and grows by default.
- *      - Tuning: -XX:MaxMetaspaceSize.
- * &lt;p&gt;
- *
- *   2. HEAP
- *      - SHARED across all threads.
- *      - The ONLY place ordinary objects and arrays are allocated.
- *      - Subdivided by every modern GC into GENERATIONS:
- *          Young    -&gt; Eden + Survivor0 + Survivor1
- *          Old (Tenured)
- *      - Tuning: -Xms (initial), -Xmx (max), -XX:NewSize, etc.
- * &lt;p&gt;
- *
- *   3. JVM STACK         (also called &quot;Java Stack&quot;)
- *      - PER-THREAD.
- *      - One STACK FRAME per active method call:
- *            local variables, operand stack, return address.
- *      - When the frame&#x27;s method returns, the frame is popped - locals
- *        disappear.
- *      - StackOverflowError = the stack grew too deep (usually unbounded
- *        recursion). OutOfMemoryError(&quot;unable to create new native thread&quot;)
- *        = OS refused another thread.
- *      - Tuning: -Xss (per-thread stack size).
- * &lt;p&gt;
- *
- *   4. PC REGISTER
- *      - PER-THREAD.
- *      - Holds the ADDRESS of the bytecode instruction currently being
- *        executed by that thread. For native methods it is undefined.
- *      - You never touch this directly; the JVM uses it internally.
- * &lt;p&gt;
- *
- *   5. NATIVE METHOD STACK
- *      - PER-THREAD.
- *      - Used by NATIVE (C/C++) code reached via JNI. Has nothing to do
- *        with your Java stack frames.
- * &lt;p&gt;
- *
- * Heap Generations (HotSpot / G1 / ZGC view)
- * ------------------------------------------
- * &lt;p&gt;
- *
- *      Young Gen                        Old Gen
- *      +--------+---------+---------+   +------------------+
- *      |  Eden  | Surv 0  | Surv 1  |   |  Tenured         |
- *      +--------+---------+---------+   +------------------+
- *      new objects start here --&gt;       long-lived stuff here
- * &lt;p&gt;
- *
- *   - Objects are born in EDEN.
- *   - Minor GC promotes survivors to S0 / S1 alternately.
- *   - Survive enough minor GCs and the object is promoted to OLD.
- *   - The &quot;generational hypothesis&quot;: most objects die young.
- * &lt;p&gt;
- *
- * Beyond the Spec
- * ---------------
- * In addition to the five JVM-spec areas, the running process also has:
- *   - CODE CACHE        - JIT-compiled native code lives here.
- *   - DIRECT BUFFERS    - off-heap NIO byte buffers (ByteBuffer.allocateDirect).
- *   - THREAD STACKS     - native stacks owned by the OS.
- * &lt;p&gt;
- *
- * This main() prints what the running JVM reports for each of these.
- */
 
 public class JvmMemoryAreas {
 

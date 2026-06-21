@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase3_ObjectOrientation/Constructors/Constructors.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 211 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 166 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,75 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A CONSTRUCTOR is a special method that runs automatically when a new object is created with
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Constructors in Java</h2>
+                    <p>A CONSTRUCTOR is a special method that runs automatically when a new object is created with
                         `new`. Its job is to put the object into a valid initial state: assign fields, allocate
-                        resources, register the object somewh...
-                    </div>
+                        resources, register the object somewhere.</p>
+                    <h3>Constructor Rules</h3>
+                    <ul>
+                        <li>Same NAME as the class.
+                        </li>
+                        <li>NO return type (not even void).
+                        </li>
+                        <li>May have any access modifier (public/protected/package/private).
+                        </li>
+                        <li>Called via `new ClassName(...)`.
+                        </li>
+                        <li>If you define NO constructor, the compiler synthesises a public no-arg
+                        </li>
+                    </ul>
+                    <p>&quot;default constructor&quot; that just calls super().</p>
+                    <ul>
+                        <li>If you define ANY constructor, the default constructor is NOT generated.
+                        </li>
+                        <li>The very first statement in a constructor body is implicitly
+                        </li>
+                    </ul>
+                    <p>`super();` unless you wrote `this(...)` or `super(...)` explicitly.</p>
+                    <ul>
+                        <li>Constructors are NOT inherited (subclasses must define their own and
+                        </li>
+                    </ul>
+                    <p>call super(...) if needed).</p>
+                    <h3>Types Demonstrated Here</h3>
+                    <ul>
+                        <li>DEFAULT constructor - no parameters
+                        </li>
+                        <li>PARAMETERIZED constructor - takes initial field values
+                        </li>
+                        <li>CONSTRUCTOR OVERLOADING - several constructors with different sigs
+                        </li>
+                        <li>CONSTRUCTOR CHAINING - this(...) and super(...)
+                        </li>
+                        <li>COPY constructor - &quot;deep&quot; or &quot;shallow&quot; copy of another object
+                        </li>
+                        <li>PRIVATE constructor - blocks `new` from outside (singletons,
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                                   utility classes, builders)</pre>
+                    <h3>Common Errors / Pitfalls</h3>
+                    <ul>
+                        <li>Recursive `this(...)` chain -&gt; compile error &quot;recursive constructor call&quot;.
+                        </li>
+                        <li>Throwing from a super-class constructor is fine; partially constructed
+                        </li>
+                    </ul>
+                    <p>instances are unsafe to publish.</p>
+                    <ul>
+                        <li>Calling overridable methods inside a constructor is risky: subclasses
+                        </li>
+                    </ul>
+                    <p>may see un-initialised state.</p>
+                    <ul>
+                        <li>Constructors do NOT have `return` types - even `void` is an error.
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1396,50 +1458,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase3_ObjectOrientation.Constructors;
-
-/**
- * Constructors in Java
- * --------------------
- * A CONSTRUCTOR is a special method that runs automatically when a new object
- * is created with `new`. Its job is to put the object into a valid initial
- * state: assign fields, allocate resources, register the object somewhere.
- * &lt;p&gt;
- *
- * Constructor Rules
- * -----------------
- *  - Same NAME as the class.
- *  - NO return type (not even void).
- *  - May have any access modifier (public/protected/package/private).
- *  - Called via `new ClassName(...)`.
- *  - If you define NO constructor, the compiler synthesises a public no-arg
- *    &quot;default constructor&quot; that just calls super().
- *  - If you define ANY constructor, the default constructor is NOT generated.
- *  - The very first statement in a constructor body is implicitly
- *    `super();` unless you wrote `this(...)` or `super(...)` explicitly.
- *  - Constructors are NOT inherited (subclasses must define their own and
- *    call super(...) if needed).
- * &lt;p&gt;
- *
- * Types Demonstrated Here
- * -----------------------
- *  1. DEFAULT constructor          - no parameters
- *  2. PARAMETERIZED constructor    - takes initial field values
- *  3. CONSTRUCTOR OVERLOADING      - several constructors with different sigs
- *  4. CONSTRUCTOR CHAINING         - this(...) and super(...)
- *  5. COPY constructor             - &quot;deep&quot; or &quot;shallow&quot; copy of another object
- *  6. PRIVATE constructor          - blocks `new` from outside (singletons,
- *                                    utility classes, builders)
- * &lt;p&gt;
- *
- * Common Errors / Pitfalls
- * ------------------------
- *  - Recursive `this(...)` chain -&gt; compile error &quot;recursive constructor call&quot;.
- *  - Throwing from a super-class constructor is fine; partially constructed
- *    instances are unsafe to publish.
- *  - Calling overridable methods inside a constructor is risky: subclasses
- *    may see un-initialised state.
- *  - Constructors do NOT have `return` types - even `void` is an error.
- */
 
 public class Constructors {
 

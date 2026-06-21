@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/MapInterface.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 181 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 102 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,71 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>java.util.Map&amp;lt;K, V&amp;gt; - Key-Value Lookup</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.Map&amp;lt;K, V&amp;gt; - Key-Value Lookup</h2>
+                    <p>A Map stores ENTRIES of KEY -&gt; VALUE pairs. Keys are UNIQUE; values may repeat. Maps are NOT
+                        part of the Collection hierarchy - they have their own root because their operations work on
+                        PAIRS, not single elements.</p>
+                    <pre class="hj-doc-art">     +-----------+        +----------+
+     |  &quot;alice&quot;  |  -&gt;    |   30     |
+     |  &quot;bob&quot;    |  -&gt;    |   25     |
+     |  &quot;carol&quot;  |  -&gt;    |   28     |
+     +-----------+        +----------+
+          keys              values</pre>
+                    <h3>The Method Catalogue (Java 8+ included)</h3>
+                    <p>Basic CRUD</p>
+                    <pre class="hj-doc-art">     put(K, V)              - returns the previous value, or null
+     get(Object key)        - returns value or null
+     remove(Object key)     - returns value or null
+     containsKey(Object)
+     containsValue(Object)
+     size(), isEmpty(), clear()</pre>
+                    <p>Bulk</p>
+                    <pre class="hj-doc-art">     putAll(Map)</pre>
+                    <p>Views</p>
+                    <pre class="hj-doc-art">     keySet()       - Set&amp;lt;K&amp;gt;
+     values()       - Collection&amp;lt;V&amp;gt;
+     entrySet()     - Set&amp;lt;Map.Entry&amp;lt;K,V&amp;gt;&amp;gt;</pre>
+                    <p>Defaults (Java 8+)</p>
+                    <pre class="hj-doc-art">     getOrDefault(key, default)
+     putIfAbsent(key, value)
+     computeIfAbsent(key, mappingFn)        - LAZY init of values
+     computeIfPresent(key, fn)              - update if present
+     compute(key, fn)                       - either create or update
+     merge(key, value, mergeFn)             - combine new value with old
+     forEach(BiConsumer)                    - iterate pairs
+     replace(key, value) / replace(key, old, new)
+     replaceAll(BiFunction)</pre>
+                    <p>Static factories (Java 9+)</p>
+                    <pre class="hj-doc-art">     Map.of(k1, v1, ..., k10, v10)          - immutable, no nulls
+     Map.ofEntries(Map.entry(k, v), ...)
+     Map.entry(k, v)
+     Map.copyOf(otherMap)</pre>
+                    <h3>Implementations</h3>
+                    <p>HashMap - hash table. O(1). NO order guarantee. LinkedHashMap - hash table + linked list.
+                        INSERTION (or access) order. TreeMap - red-black tree. SORTED by key. O(log n).
+                        ConcurrentHashMap - lock-striped, thread-safe. EnumMap - super-fast, enum keys only. Hashtable -
+                        LEGACY synchronized hash table - avoid.</p>
+                    <h3>Picking The Right Map</h3>
+                    <ul>
+                        <li>You just need key -&gt; value -&gt; HashMap (the default).
+                        </li>
+                        <li>Iteration in INSERTION order -&gt; LinkedHashMap.
+                        </li>
+                        <li>Iteration in KEY-SORTED order -&gt; TreeMap.
+                        </li>
+                        <li>Concurrent access -&gt; ConcurrentHashMap.
+                        </li>
+                        <li>Enum keys -&gt; EnumMap.
+                        </li>
+                        <li>Compile-time constant content -&gt; Map.of(...).
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1398,84 +1459,6 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
-
-/**
- * java.util.Map&amp;lt;K, V&amp;gt; - Key-Value Lookup
- * --------------------------------------
- * A Map stores ENTRIES of KEY -&gt; VALUE pairs. Keys are UNIQUE; values may
- * repeat. Maps are NOT part of the Collection hierarchy - they have their
- * own root because their operations work on PAIRS, not single elements.
- * &lt;p&gt;
- *
- *      +-----------+        +----------+
- *      |  &quot;alice&quot;  |  -&gt;    |   30     |
- *      |  &quot;bob&quot;    |  -&gt;    |   25     |
- *      |  &quot;carol&quot;  |  -&gt;    |   28     |
- *      +-----------+        +----------+
- *           keys              values
- * &lt;p&gt;
- *
- * The Method Catalogue (Java 8+ included)
- * ---------------------------------------
- * &lt;p&gt;
- *
- *   Basic CRUD
- *      put(K, V)              - returns the previous value, or null
- *      get(Object key)        - returns value or null
- *      remove(Object key)     - returns value or null
- *      containsKey(Object)
- *      containsValue(Object)
- *      size(), isEmpty(), clear()
- * &lt;p&gt;
- *
- *   Bulk
- *      putAll(Map)
- * &lt;p&gt;
- *
- *   Views
- *      keySet()       - Set&amp;lt;K&amp;gt;
- *      values()       - Collection&amp;lt;V&amp;gt;
- *      entrySet()     - Set&amp;lt;Map.Entry&amp;lt;K,V&amp;gt;&amp;gt;
- * &lt;p&gt;
- *
- *   Defaults (Java 8+)
- *      getOrDefault(key, default)
- *      putIfAbsent(key, value)
- *      computeIfAbsent(key, mappingFn)        - LAZY init of values
- *      computeIfPresent(key, fn)              - update if present
- *      compute(key, fn)                       - either create or update
- *      merge(key, value, mergeFn)             - combine new value with old
- *      forEach(BiConsumer)                    - iterate pairs
- *      replace(key, value) / replace(key, old, new)
- *      replaceAll(BiFunction)
- * &lt;p&gt;
- *
- *   Static factories (Java 9+)
- *      Map.of(k1, v1, ..., k10, v10)          - immutable, no nulls
- *      Map.ofEntries(Map.entry(k, v), ...)
- *      Map.entry(k, v)
- *      Map.copyOf(otherMap)
- * &lt;p&gt;
- *
- * Implementations
- * ---------------
- *   HashMap         - hash table.   O(1).  NO order guarantee.
- *   LinkedHashMap   - hash table + linked list. INSERTION (or access) order.
- *   TreeMap         - red-black tree. SORTED by key.  O(log n).
- *   ConcurrentHashMap - lock-striped, thread-safe.
- *   EnumMap         - super-fast, enum keys only.
- *   Hashtable       - LEGACY synchronized hash table - avoid.
- * &lt;p&gt;
- *
- * Picking The Right Map
- * ---------------------
- *   - You just need key -&gt; value     -&gt;  HashMap (the default).
- *   - Iteration in INSERTION order   -&gt;  LinkedHashMap.
- *   - Iteration in KEY-SORTED order  -&gt;  TreeMap.
- *   - Concurrent access              -&gt;  ConcurrentHashMap.
- *   - Enum keys                       -&gt;  EnumMap.
- *   - Compile-time constant content  -&gt;  Map.of(...).
- */
 
 public class MapInterface {
 

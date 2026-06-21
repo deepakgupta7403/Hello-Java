@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/StreamCreation.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 160 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 117 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,55 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>There is no single &quot;Stream constructor&quot;. You build a Stream from a source - and Java
-                        offers many sources to choose from.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Creation of Streams - 10+ Ways</h2>
+                    <p>There is no single &quot;Stream constructor&quot;. You build a Stream from a source - and Java
+                        offers many sources to choose from.</p>
+                    <h3>The Common Routes</h3>
+                    <ul>
+                        <li>From a Collection list.stream() / set.parallelStream()
+                        </li>
+                        <li>From an Array Arrays.stream(arr)
+                        </li>
+                        <li>Fixed values Stream.of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
+                        </li>
+                        <li>Empty stream Stream.empty()
+                        </li>
+                        <li>Builder Stream.&amp;lt;String&amp;gt;builder().add(...).build()
+                        </li>
+                        <li>Iterate Stream.iterate(seed, n -&amp;gt; n + 1).limit(...)
+                        </li>
+                        <li>Generate Stream.generate(Math::random)
+                        </li>
+                        <li>Iterate with predicate Stream.iterate(seed, hasNext, next) (Java 9+)
+                        </li>
+                        <li>Concat two streams Stream.concat(s1, s2)
+                        </li>
+                        <li>From a String split Pattern.compile(&quot;,&quot;).splitAsStream(&quot;a,b,c&quot;)
+                        </li>
+                        <li>From an Iterable / Iterator StreamSupport.stream(itble.spliterator(), false)
+                        </li>
+                        <li>From a single nullable value Stream.ofNullable(x) (Java 9+)
+                        </li>
+                        <li>From a file Files.lines(path) (see StreamFileIO)
+                        </li>
+                        <li>Primitive ranges IntStream.range / rangeClosed / iterate
+                        </li>
+                    </ul>
+                    <h3>Stream.iterate - Two Forms</h3>
+                    <pre class="hj-doc-art">     Stream.iterate(seed, UnaryOperator)            // INFINITE - needs .limit
+     Stream.iterate(seed, Predicate, UnaryOperator) // FINITE   (Java 9+)</pre>
+                    <h3>Sequential or Parallel?</h3>
+                    <pre class="hj-doc-art">     list.stream()               // sequential
+     list.parallelStream()       // parallel
+     anyStream.parallel()        // toggle to parallel
+     anyStream.sequential()      // toggle back</pre>
+                    <p>See SequentialVsParallel.java for the deep dive.</p>
                 </div>
             </div>
 
@@ -1402,48 +1445,6 @@ import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
-
-/**
- * Creation of Streams - 10+ Ways
- * ------------------------------
- * There is no single &quot;Stream constructor&quot;. You build a Stream from a
- * source - and Java offers many sources to choose from.
- * &lt;p&gt;
- *
- * The Common Routes
- * -----------------
- *   1. From a Collection             list.stream() / set.parallelStream()
- *   2. From an Array                 Arrays.stream(arr)
- *   3. Fixed values                  Stream.of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
- *   4. Empty stream                  Stream.empty()
- *   5. Builder                       Stream.&amp;lt;String&amp;gt;builder().add(...).build()
- *   6. Iterate                       Stream.iterate(seed, n -&amp;gt; n + 1).limit(...)
- *   7. Generate                      Stream.generate(Math::random)
- *   8. Iterate with predicate        Stream.iterate(seed, hasNext, next)   (Java 9+)
- *   9. Concat two streams            Stream.concat(s1, s2)
- *  10. From a String split           Pattern.compile(&quot;,&quot;).splitAsStream(&quot;a,b,c&quot;)
- *  11. From an Iterable / Iterator   StreamSupport.stream(itble.spliterator(), false)
- *  12. From a single nullable value  Stream.ofNullable(x)                   (Java 9+)
- *  13. From a file                   Files.lines(path)                      (see StreamFileIO)
- *  14. Primitive ranges              IntStream.range / rangeClosed / iterate
- * &lt;p&gt;
- *
- * Stream.iterate - Two Forms
- * --------------------------
- *      Stream.iterate(seed, UnaryOperator)            // INFINITE - needs .limit
- *      Stream.iterate(seed, Predicate, UnaryOperator) // FINITE   (Java 9+)
- * &lt;p&gt;
- *
- * Sequential or Parallel?
- * -----------------------
- *      list.stream()               // sequential
- *      list.parallelStream()       // parallel
- *      anyStream.parallel()        // toggle to parallel
- *      anyStream.sequential()      // toggle back
- * &lt;p&gt;
- *
- * See SequentialVsParallel.java for the deep dive.
- */
 
 public class StreamCreation {
 

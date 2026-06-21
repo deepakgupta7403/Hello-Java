@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/WeakHashMapDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 138 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 85 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,54 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>java.util.WeakHashMap&amp;lt;K, V&amp;gt; - Map With Weakly-Referenced Keys</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.WeakHashMap&amp;lt;K, V&amp;gt; - Map With Weakly-Referenced Keys</h2>
+                    <p>WeakHashMap stores its KEYS using WeakReference. When the JVM&#x27;s garbage collector decides
+                        that no other strong reference points to a key, the entry vanishes from the map
+                        automatically.</p>
+                    <pre class="hj-doc-art">     Map&lt;MyObj, ResourceState&gt; states = new WeakHashMap&lt;&gt;();
+     ...
+     // when MyObj goes out of scope and the GC runs, the corresponding
+     // (key, value) entry disappears.</pre>
+                    <h3>Why It Exists</h3>
+                    <ul>
+                        <li>To attach metadata to an object WITHOUT preventing it from being
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    garbage-collected.</pre>
+                    <ul>
+                        <li>To build caches keyed by an external object&#x27;s lifetime.
+                        </li>
+                    </ul>
+                    <h3>Classic Use Case - &quot;Attach data to a foreign object&quot;</h3>
+                    <p>You have a third-party class you cannot modify but you want to remember something per instance.
+                        Put it in a WeakHashMap keyed by the instance. When the instance is collected, your associated
+                        entry disappears too - no leak.</p>
+                    <h3>Important Pitfall - VALUES Are Held STRONGLY</h3>
+                    <p>If your VALUE references back to the key (directly or transitively), the key can never be
+                        collected and the entry never disappears. Break the cycle with a WeakReference value or by
+                        storing only &quot;key-free&quot; data.</p>
+                    <h3>Other Notes</h3>
+                    <ul>
+                        <li>Entries can disappear AT ANY TIME between two calls. Treat the
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    map as having a stochastic size.</pre>
+                    <ul>
+                        <li>Iteration is fail-fast and BUSY: it must filter out cleared entries.
+                        </li>
+                        <li>Not thread-safe. Wrap with Collections.synchronizedMap if needed.
+                        </li>
+                    </ul>
+                    <h3>Comparison To Other &quot;Special&quot; Maps</h3>
+                    <p>WeakHashMap keys collected when no strong refs elsewhere IdentityHashMap keys compared with ==
+                        (not equals) ConcurrentHashMap thread-safe, no weak references LinkedHashMap ordered, optional
+                        LRU eviction</p>
                 </div>
             </div>
 
@@ -1396,58 +1440,6 @@
 
 import java.util.Map;
 import java.util.WeakHashMap;
-
-/**
- * java.util.WeakHashMap&amp;lt;K, V&amp;gt; - Map With Weakly-Referenced Keys
- * -------------------------------------------------------------
- * WeakHashMap stores its KEYS using WeakReference. When the JVM&#x27;s garbage
- * collector decides that no other strong reference points to a key, the
- * entry vanishes from the map automatically.
- * &lt;p&gt;
- *
- *      Map&lt;MyObj, ResourceState&gt; states = new WeakHashMap&lt;&gt;();
- *      ...
- *      // when MyObj goes out of scope and the GC runs, the corresponding
- *      // (key, value) entry disappears.
- * &lt;p&gt;
- *
- * Why It Exists
- * -------------
- *   - To attach metadata to an object WITHOUT preventing it from being
- *     garbage-collected.
- *   - To build caches keyed by an external object&#x27;s lifetime.
- * &lt;p&gt;
- *
- * Classic Use Case - &quot;Attach data to a foreign object&quot;
- * ----------------------------------------------------
- * You have a third-party class you cannot modify but you want to remember
- * something per instance. Put it in a WeakHashMap keyed by the instance.
- * When the instance is collected, your associated entry disappears too -
- * no leak.
- * &lt;p&gt;
- *
- * Important Pitfall - VALUES Are Held STRONGLY
- * --------------------------------------------
- * If your VALUE references back to the key (directly or transitively),
- * the key can never be collected and the entry never disappears. Break
- * the cycle with a WeakReference value or by storing only &quot;key-free&quot; data.
- * &lt;p&gt;
- *
- * Other Notes
- * -----------
- *   - Entries can disappear AT ANY TIME between two calls. Treat the
- *     map as having a stochastic size.
- *   - Iteration is fail-fast and BUSY: it must filter out cleared entries.
- *   - Not thread-safe. Wrap with Collections.synchronizedMap if needed.
- * &lt;p&gt;
- *
- * Comparison To Other &quot;Special&quot; Maps
- * ----------------------------------
- *   WeakHashMap        keys collected when no strong refs elsewhere
- *   IdentityHashMap    keys compared with == (not equals)
- *   ConcurrentHashMap  thread-safe, no weak references
- *   LinkedHashMap      ordered, optional LRU eviction
- */
 
 public class WeakHashMapDemo {
 

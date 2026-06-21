@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase6_RuntimeMemoryRegexReflection/Regex/CharacterClass.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 146 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 72 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,47 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A CHARACTER CLASS is a regex construct that matches ONE CHARACTER drawn from a defined set.
-                        Three kinds:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Character Classes</h2>
+                    <p>A CHARACTER CLASS is a regex construct that matches ONE CHARACTER drawn from a defined set. Three
+                        kinds:</p>
+                    <ul>
+                        <li>CUSTOM SETS [abc], [a-z], [a-zA-Z0-9_], [^abc]
+                        </li>
+                        <li>PREDEFINED CLASSES \d \D \w \W \s \S .
+                        </li>
+                        <li>POSIX / UNICODE CLASSES \p{Alpha}, \p{Digit}, \p{IsAlphabetic}
+                        </li>
+                    </ul>
+                    <h3>1) Custom Character Sets</h3>
+                    <p>[abc] a, b, OR c [^abc] any char EXCEPT a, b, c [a-z] any lowercase letter (range) [a-zA-Z] union
+                        of ranges [a-z&amp;&amp;[^aeiou]] intersection - &quot;lowercase consonant&quot;</p>
+                    <p>Inside [ ] most metacharacters lose their special meaning. The exceptions are: ] \ ^ (at the
+                        start) - (in the middle)</p>
+                    <h3>2) Predefined Classes (shortcuts)</h3>
+                    <p>. any character EXCEPT a newline (unless DOTALL flag) \d a digit == [0-9] \D NOT a digit ==
+                        [^0-9] \w &quot;word&quot; char == [a-zA-Z0-9_] \W NOT a word char \s whitespace == [
+                        \t\n\x0B\f\r] \S NOT whitespace \h \H horizontal whitespace / not (Java 8+) \v \V vertical
+                        whitespace / not (Java 8+)</p>
+                    <h3>3) POSIX &amp; Unicode Classes</h3>
+                    <p>\p{Lower} [a-z] \p{Upper} [A-Z] \p{Alpha} letters \p{Digit} digits \p{Alnum} letters or digits
+                        \p{Space} whitespace \p{Punct} punctuation \p{ASCII} ASCII range 0..127</p>
+                    <p>Unicode aware (require the UNICODE_CHARACTER_CLASS flag, or use \p{IsX}): \p{IsAlphabetic}
+                        letters from any script \p{IsLatin} Latin script \p{IsGreek} Greek script \p{InCyrillic} Unicode
+                        &quot;block&quot; (where the code point lives) \p{N} Number (general category)</p>
+                    <h3>Negation</h3>
+                    <p>\P{Alpha} opposite of \p{Alpha} [^abc] negated custom set</p>
+                    <h3>Why care?</h3>
+                    <p>Character classes are the WORKHORSE of regex. Almost every real-world pattern is some quantified
+                        character class:</p>
+                    <pre class="hj-doc-art">     \d{3}-\d{4}                 phone number
+     [a-zA-Z0-9._%+-]+@...        email local-part
+     [^,]+                       any field in a CSV line</pre>
                 </div>
             </div>
 
@@ -1398,79 +1433,6 @@
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-/**
- * Character Classes
- * -----------------
- * A CHARACTER CLASS is a regex construct that matches ONE CHARACTER drawn
- * from a defined set. Three kinds:
- * &lt;p&gt;
- *
- *   1. CUSTOM SETS                 [abc], [a-z], [a-zA-Z0-9_], [^abc]
- *   2. PREDEFINED CLASSES          \d  \D  \w  \W  \s  \S  .
- *   3. POSIX / UNICODE CLASSES     \p{Alpha}, \p{Digit}, \p{IsAlphabetic}
- * &lt;p&gt;
- *
- * 1) Custom Character Sets
- * ------------------------
- *   [abc]      a, b, OR c
- *   [^abc]     any char EXCEPT a, b, c
- *   [a-z]      any lowercase letter (range)
- *   [a-zA-Z]   union of ranges
- *   [a-z&amp;&amp;[^aeiou]]  intersection - &quot;lowercase consonant&quot;
- * &lt;p&gt;
- *
- * Inside [ ] most metacharacters lose their special meaning. The exceptions
- * are:  ]  \  ^ (at the start)  - (in the middle)
- * &lt;p&gt;
- *
- * 2) Predefined Classes (shortcuts)
- * ---------------------------------
- *   .       any character EXCEPT a newline   (unless DOTALL flag)
- *   \d      a digit            == [0-9]
- *   \D      NOT a digit        == [^0-9]
- *   \w      &quot;word&quot; char        == [a-zA-Z0-9_]
- *   \W      NOT a word char
- *   \s      whitespace         == [ \t\n\x0B\f\r]
- *   \S      NOT whitespace
- *   \h \H   horizontal whitespace / not (Java 8+)
- *   \v \V   vertical whitespace / not   (Java 8+)
- * &lt;p&gt;
- *
- * 3) POSIX &amp; Unicode Classes
- * --------------------------
- *   \p{Lower}     [a-z]
- *   \p{Upper}     [A-Z]
- *   \p{Alpha}     letters
- *   \p{Digit}     digits
- *   \p{Alnum}     letters or digits
- *   \p{Space}     whitespace
- *   \p{Punct}     punctuation
- *   \p{ASCII}     ASCII range 0..127
- * &lt;p&gt;
- *
- *   Unicode aware (require the UNICODE_CHARACTER_CLASS flag, or use \p{IsX}):
- *   \p{IsAlphabetic}      letters from any script
- *   \p{IsLatin}           Latin script
- *   \p{IsGreek}           Greek script
- *   \p{InCyrillic}        Unicode &quot;block&quot; (where the code point lives)
- *   \p{N}                 Number (general category)
- * &lt;p&gt;
- *
- * Negation
- * --------
- *   \P{Alpha}     opposite of \p{Alpha}
- *   [^abc]        negated custom set
- * &lt;p&gt;
- *
- * Why care?
- * ---------
- * Character classes are the WORKHORSE of regex. Almost every real-world
- * pattern is some quantified character class:
- *      \d{3}-\d{4}                 phone number
- *      [a-zA-Z0-9._%+-]+@...        email local-part
- *      [^,]+                       any field in a CSV line
- */
 
 public class CharacterClass {
 

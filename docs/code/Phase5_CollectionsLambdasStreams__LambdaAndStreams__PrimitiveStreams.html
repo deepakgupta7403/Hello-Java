@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/PrimitiveStreams.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 129 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 82 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,42 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Java has specialised streams for the three &quot;numeric&quot; primitives so you can crunch
-                        numbers WITHOUT boxing every element into Integer/Long/Double. That saves both memory and time.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Primitive Streams - IntStream, LongStream, DoubleStream</h2>
+                    <p>Java has specialised streams for the three &quot;numeric&quot; primitives so you can crunch
+                        numbers WITHOUT boxing every element into Integer/Long/Double. That saves both memory and
+                        time.</p>
+                    <h3>Why They Exist</h3>
+                    <ul>
+                        <li>Stream&amp;lt;Integer&amp;gt; boxes each int into an Integer (heap allocation).
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    A million-element stream allocates a million Integer objects.</pre>
+                    <ul>
+                        <li>IntStream stores the primitives directly. No boxing.
+                        </li>
+                    </ul>
+                    <h3>Specialised Methods</h3>
+                    <p>sum() int / long / double average() / min() / max() return OptionalInt / OptionalLong /
+                        OptionalDouble summaryStatistics() IntSummaryStatistics (count + min + max + sum + avg)
+                        forEach(IntConsumer) primitive-friendly callback mapToInt / mapToLong / mapToDouble from a
+                        Stream&amp;lt;T&amp;gt; to a primitive stream mapToObj primitive stream -&amp;gt; Stream&amp;lt;T&amp;gt;
+                        boxed() IntStream -&amp;gt; Stream&amp;lt;Integer&amp;gt; range(start, endExclusive) [start,
+                        end) rangeClosed(start, end) [start, end]</p>
+                    <h3>Conversions in a Picture</h3>
+                    <pre class="hj-doc-art">     Stream&amp;lt;Integer&amp;gt;  ==  mapToInt   ==&amp;gt;  IntStream
+     IntStream         ==  boxed       ==&amp;gt;  Stream&amp;lt;Integer&amp;gt;
+     IntStream         ==  mapToObj    ==&amp;gt;  Stream&amp;lt;R&amp;gt;
+     IntStream         ==  asLongStream ==&amp;gt;  LongStream
+     IntStream         ==  asDoubleStream ==&amp;gt;  DoubleStream</pre>
+                    <h3>Tip</h3>
+                    <p>Always use mapToInt/Long/Double when you intend to call sum/average/etc. Stream.&amp;lt;Integer&amp;gt;reduce(Integer::sum)
+                        works but allocates Integer objects every step.</p>
                 </div>
             </div>
 
@@ -1400,52 +1430,6 @@ import java.util.Arrays;
 import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.stream.*;
-
-/**
- * Primitive Streams - IntStream, LongStream, DoubleStream
- * -------------------------------------------------------
- * Java has specialised streams for the three &quot;numeric&quot; primitives so you
- * can crunch numbers WITHOUT boxing every element into Integer/Long/Double.
- * That saves both memory and time.
- * &lt;p&gt;
- *
- * Why They Exist
- * --------------
- *   - Stream&amp;lt;Integer&amp;gt; boxes each int into an Integer (heap allocation).
- *     A million-element stream allocates a million Integer objects.
- *   - IntStream stores the primitives directly. No boxing.
- * &lt;p&gt;
- *
- * Specialised Methods
- * -------------------
- *   sum()                                int / long / double
- *   average() / min() / max()            return OptionalInt / OptionalLong / OptionalDouble
- *   summaryStatistics()                  IntSummaryStatistics (count + min + max + sum + avg)
- *   forEach(IntConsumer)                 primitive-friendly callback
- *   mapToInt / mapToLong / mapToDouble   from a Stream&amp;lt;T&amp;gt; to a primitive stream
- *   mapToObj                             primitive stream -&amp;gt; Stream&amp;lt;T&amp;gt;
- *   boxed()                              IntStream -&amp;gt; Stream&amp;lt;Integer&amp;gt;
- *   range(start, endExclusive)           [start, end)
- *   rangeClosed(start, end)              [start, end]
- * &lt;p&gt;
- *
- * Conversions in a Picture
- * ------------------------
- * &lt;p&gt;
- *
- *      Stream&amp;lt;Integer&amp;gt;  ==  mapToInt   ==&amp;gt;  IntStream
- *      IntStream         ==  boxed       ==&amp;gt;  Stream&amp;lt;Integer&amp;gt;
- *      IntStream         ==  mapToObj    ==&amp;gt;  Stream&amp;lt;R&amp;gt;
- *      IntStream         ==  asLongStream ==&amp;gt;  LongStream
- *      IntStream         ==  asDoubleStream ==&amp;gt;  DoubleStream
- * &lt;p&gt;
- *
- * Tip
- * ---
- * Always use mapToInt/Long/Double when you intend to call sum/average/etc.
- * Stream.&amp;lt;Integer&amp;gt;reduce(Integer::sum) works but allocates Integer objects
- * every step.
- */
 
 public class PrimitiveStreams {
 

@@ -28,7 +28,10 @@
       "Bash(curl -s -o /dev/null -w \"js: %{http_code}\\\\n\" http://localhost:8765/assets/site.js)",
       "Bash(node -e \"new Function\\(require\\('fs'\\).readFileSync\\('assets/site.js','utf8'\\)\\)\")",
       "Bash(kill %1)",
-      "Bash(curl -s http://localhost:8765/index.html)"
+      "Bash(curl -s http://localhost:8765/index.html)",
+      "PowerShell(python scripts/generate_site.py)",
+      "Bash(grep -c '/\\\\*\\\\*' docs/code/Phase0_SetupAndFirstPrograms__JDKvsJREvsJVM__JDKvsJREvsJVM.html)",
+      "PowerShell(Start-Process \"C:\\\\Users\\\\deepa\\\\IdeaProjects\\\\HelloJava\\\\docs\\\\code\\\\Phase0_SetupAndFirstPrograms__ClassNameMyth__Hello.html\")"
     ]
   }
 }

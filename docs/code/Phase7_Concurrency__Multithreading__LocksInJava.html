@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/LocksInJava.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 162 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 103 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,49 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Java offers TWO families of locking primitives:</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Locks in Java</h2>
+                    <p>Java offers TWO families of locking primitives:</p>
+                    <ul>
+                        <li>INTRINSIC LOCKS (a.k.a. monitor locks) — every Object has one.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     Used via `synchronized` blocks / methods and Object.wait/notify.
+     Simple, baked into the language.</pre>
+                    <ul>
+                        <li>EXPLICIT LOCKS — interfaces and classes in
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     java.util.concurrent.locks. More features, more responsibilities.</pre>
+                    <h3>The Lock Interface</h3>
+                    <pre class="hj-doc-art">     lock()                      - acquire, blocking
+     lockInterruptibly()         - acquire, interruptible
+     tryLock()                   - return immediately; true if acquired
+     tryLock(time, unit)         - try up to a timeout
+     unlock()                    - release
+     newCondition()              - associated condition variable</pre>
+                    <p>MUST be used with try/finally:</p>
+                    <pre class="hj-doc-art">     lock.lock();
+     try { ... }
+     finally { lock.unlock(); }</pre>
+                    <h3>Implementations in this file</h3>
+                    <p>ReentrantLock - the workhorse; reentrant; optional fairness;</p>
+                    <pre class="hj-doc-art">                          multiple Conditions; timed acquire.</pre>
+                    <p>ReentrantReadWriteLock - separate read/write locks; many readers OR</p>
+                    <pre class="hj-doc-art">                           one writer.</pre>
+                    <p>StampedLock - optimistic reads + write/read modes; not reentrant.</p>
+                    <p>For dedicated files, see ReentrantLockDemo, ReadWriteLockDemo, StampedLockDemo.</p>
+                    <h3>Lock vs synchronized — quick comparison</h3>
+                    <pre class="hj-doc-art">                         synchronized            Lock
+                         ---------------         ----------------</pre>
+                    <p>Acquire timeout? No tryLock(time,unit) Interruptible acquire? No lockInterruptibly Fairness? No
+                        Optional in ReentrantLock Multiple conditions? No (one per object) Yes (newCondition)
+                        Auto-release on exit? Yes No — try/finally Hard to forget? Yes Easy to forget unlock</p>
                 </div>
             </div>
 
@@ -1396,64 +1435,6 @@
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.*;
-
-/**
- * Locks in Java
- * -------------
- * Java offers TWO families of locking primitives:
- * &lt;p&gt;
- *
- *   1. INTRINSIC LOCKS (a.k.a. monitor locks) — every Object has one.
- *      Used via `synchronized` blocks / methods and Object.wait/notify.
- *      Simple, baked into the language.
- * &lt;p&gt;
- *
- *   2. EXPLICIT LOCKS — interfaces and classes in
- *      java.util.concurrent.locks. More features, more responsibilities.
- * &lt;p&gt;
- *
- * The Lock Interface
- * ------------------
- *      lock()                      - acquire, blocking
- *      lockInterruptibly()         - acquire, interruptible
- *      tryLock()                   - return immediately; true if acquired
- *      tryLock(time, unit)         - try up to a timeout
- *      unlock()                    - release
- *      newCondition()              - associated condition variable
- * &lt;p&gt;
- *
- * MUST be used with try/finally:
- * &lt;p&gt;
- *
- *      lock.lock();
- *      try { ... }
- *      finally { lock.unlock(); }
- * &lt;p&gt;
- *
- * Implementations in this file
- * ----------------------------
- *   ReentrantLock        - the workhorse; reentrant; optional fairness;
- *                           multiple Conditions; timed acquire.
- *   ReentrantReadWriteLock - separate read/write locks; many readers OR
- *                            one writer.
- *   StampedLock          - optimistic reads + write/read modes; not reentrant.
- * &lt;p&gt;
- *
- * For dedicated files, see ReentrantLockDemo, ReadWriteLockDemo,
- * StampedLockDemo.
- * &lt;p&gt;
- *
- * Lock vs synchronized — quick comparison
- * ---------------------------------------
- *                          synchronized            Lock
- *                          ---------------         ----------------
- *   Acquire timeout?       No                       tryLock(time,unit)
- *   Interruptible acquire? No                       lockInterruptibly
- *   Fairness?              No                       Optional in ReentrantLock
- *   Multiple conditions?   No (one per object)     Yes (newCondition)
- *   Auto-release on exit?  Yes                      No — try/finally
- *   Hard to forget?        Yes                      Easy to forget unlock
- */
 
 public class LocksInJava {
 

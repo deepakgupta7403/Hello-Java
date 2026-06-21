@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/LinkedHashMapDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 126 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 77 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,50 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>java.util.LinkedHashMap&amp;lt;K, V&amp;gt; - HashMap with Predictable Order</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.LinkedHashMap&amp;lt;K, V&amp;gt; - HashMap with Predictable Order</h2>
+                    <p>LinkedHashMap extends HashMap. Internally it weaves a doubly-linked list through its entries so
+                        iteration follows a predictable order. The hash- table operations remain O(1); the linked list
+                        just adds a few pointers.</p>
+                    <h3>Two Order Modes</h3>
+                    <ul>
+                        <li>INSERTION ORDER (default)
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     Entries iterated in the order put() first added them.</pre>
+                    <ul>
+                        <li>ACCESS ORDER new LinkedHashMap&amp;lt;&amp;gt;(16, 0.75f, true)
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     Every get() / put() moves that entry to the END. Perfect for LRU.</pre>
+                    <h3>Why It Exists</h3>
+                    <ul>
+                        <li>You want O(1) lookup AND a deterministic iteration order
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    (insertion or access).</pre>
+                    <ul>
+                        <li>You want to build a simple LRU CACHE by overriding removeEldestEntry.
+                        </li>
+                        <li>You want JSON / config dumps to iterate in the order keys were added.
+                        </li>
+                    </ul>
+                    <h3>Big-O</h3>
+                    <p>put / get / remove / containsKey O(1) (same as HashMap) iteration O(size)</p>
+                    <h3>Constructors</h3>
+                    <p>new LinkedHashMap&amp;lt;&amp;gt;() new LinkedHashMap&amp;lt;&amp;gt;(int initialCapacity) new
+                        LinkedHashMap&amp;lt;&amp;gt;(int initialCapacity, float loadFactor) new LinkedHashMap&amp;lt;&amp;gt;(int
+                        initialCapacity, float loadFactor, boolean accessOrder) new LinkedHashMap&amp;lt;&amp;gt;(Map&amp;lt;?
+                        extends K, ? extends V&amp;gt; m)</p>
+                    <h3>Java 21 - SequencedMap</h3>
+                    <p>LinkedHashMap implements the new SequencedMap interface (Java 21): firstEntry, lastEntry,
+                        putFirst, putLast, pollFirstEntry, pollLastEntry, reversed(). See
+                        Basics/ModernJava/SequencedCollections.java.</p>
                 </div>
             </div>
 
@@ -1396,54 +1436,6 @@
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-
-/**
- * java.util.LinkedHashMap&amp;lt;K, V&amp;gt; - HashMap with Predictable Order
- * --------------------------------------------------------------
- * LinkedHashMap extends HashMap. Internally it weaves a doubly-linked list
- * through its entries so iteration follows a predictable order. The hash-
- * table operations remain O(1); the linked list just adds a few pointers.
- * &lt;p&gt;
- *
- * Two Order Modes
- * ---------------
- *   1. INSERTION ORDER (default)
- *      Entries iterated in the order put() first added them.
- * &lt;p&gt;
- *
- *   2. ACCESS ORDER       new LinkedHashMap&amp;lt;&amp;gt;(16, 0.75f, true)
- *      Every get() / put() moves that entry to the END. Perfect for LRU.
- * &lt;p&gt;
- *
- * Why It Exists
- * -------------
- *   - You want O(1) lookup AND a deterministic iteration order
- *     (insertion or access).
- *   - You want to build a simple LRU CACHE by overriding removeEldestEntry.
- *   - You want JSON / config dumps to iterate in the order keys were added.
- * &lt;p&gt;
- *
- * Big-O
- * -----
- *   put / get / remove / containsKey       O(1)  (same as HashMap)
- *   iteration                              O(size)
- * &lt;p&gt;
- *
- * Constructors
- * ------------
- *   new LinkedHashMap&amp;lt;&amp;gt;()
- *   new LinkedHashMap&amp;lt;&amp;gt;(int initialCapacity)
- *   new LinkedHashMap&amp;lt;&amp;gt;(int initialCapacity, float loadFactor)
- *   new LinkedHashMap&amp;lt;&amp;gt;(int initialCapacity, float loadFactor, boolean accessOrder)
- *   new LinkedHashMap&amp;lt;&amp;gt;(Map&amp;lt;? extends K, ? extends V&amp;gt; m)
- * &lt;p&gt;
- *
- * Java 21 - SequencedMap
- * ----------------------
- * LinkedHashMap implements the new SequencedMap interface (Java 21):
- * firstEntry, lastEntry, putFirst, putLast, pollFirstEntry, pollLastEntry,
- * reversed(). See Basics/ModernJava/SequencedCollections.java.
- */
 
 public class LinkedHashMapDemo {
 

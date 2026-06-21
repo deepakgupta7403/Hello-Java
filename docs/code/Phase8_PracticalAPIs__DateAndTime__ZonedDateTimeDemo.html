@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase8_PracticalAPIs/DateAndTime/ZonedDateTimeDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 117 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 67 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,40 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>ZoneId knows about DAYLIGHT SAVING rules and historical changes — &quot;America/New_York&quot;
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>ZonedDateTime and OffsetDateTime</h2>
+                    <p>ZonedDateTime - LocalDateTime + ZoneId (named zone like &quot;Asia/Kolkata&quot;) OffsetDateTime
+                        - LocalDateTime + ZoneOffset (fixed offset like +05:30)</p>
+                    <p>ZoneId knows about DAYLIGHT SAVING rules and historical changes — &quot;America/New_York&quot;
                         can be -05:00 or -04:00 depending on the date. ZoneOffset is a static number of hours/minutes
-                        from UTC.
-                    </div>
+                        from UTC.</p>
+                    <h3>When to use which</h3>
+                    <p>ZonedDateTime - meeting times, recurring schedules, anything that</p>
+                    <pre class="hj-doc-art">                     humans understand as &quot;in city X.&quot;</pre>
+                    <p>OffsetDateTime - DATABASE columns where you want a constant offset.</p>
+                    <pre class="hj-doc-art">                     ISO-8601 string with offset (no DST surprises).</pre>
+                    <p>Instant - the global moment behind both of the above.</p>
+                    <h3>The DST gotcha</h3>
+                    <p>In a DST transition (say, US spring-forward), local time JUMPS from 02:00 to 03:00 — 02:30 simply
+                        doesn&#x27;t exist. ZonedDateTime resolves that intelligently. LocalDateTime doesn&#x27;t even
+                        know there&#x27;s a problem.</p>
+                    <h3>Useful methods</h3>
+                    <pre class="hj-doc-art">     ZonedDateTime.now()
+     ZonedDateTime.now(zone)
+     LocalDateTime.atZone(zone)
+     ZonedDateTime.of(localDate, localTime, zone)</pre>
+                    <pre class="hj-doc-art">     z.toLocalDate(), z.toLocalTime(), z.toLocalDateTime()
+     z.toInstant(), z.toOffsetDateTime()
+     z.withZoneSameInstant(otherZone)   - same point in time, new zone
+     z.withZoneSameLocal(otherZone)     - same wall-clock fields, new zone</pre>
+                    <pre class="hj-doc-art">     ZoneId.systemDefault()
+     ZoneId.of(&quot;Asia/Kolkata&quot;)
+     ZoneId.getAvailableZoneIds()</pre>
                 </div>
             </div>
 
@@ -1400,55 +1427,6 @@
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Set;
-
-/**
- * ZonedDateTime and OffsetDateTime
- * --------------------------------
- * &lt;p&gt;
- *
- *   ZonedDateTime    - LocalDateTime + ZoneId  (named zone like &quot;Asia/Kolkata&quot;)
- *   OffsetDateTime   - LocalDateTime + ZoneOffset  (fixed offset like +05:30)
- * &lt;p&gt;
- *
- * ZoneId knows about DAYLIGHT SAVING rules and historical changes —
- * &quot;America/New_York&quot; can be -05:00 or -04:00 depending on the date.
- * ZoneOffset is a static number of hours/minutes from UTC.
- * &lt;p&gt;
- *
- * When to use which
- * -----------------
- *   ZonedDateTime    - meeting times, recurring schedules, anything that
- *                      humans understand as &quot;in city X.&quot;
- *   OffsetDateTime   - DATABASE columns where you want a constant offset.
- *                      ISO-8601 string with offset (no DST surprises).
- *   Instant          - the global moment behind both of the above.
- * &lt;p&gt;
- *
- * The DST gotcha
- * --------------
- * In a DST transition (say, US spring-forward), local time JUMPS from
- * 02:00 to 03:00 — 02:30 simply doesn&#x27;t exist. ZonedDateTime resolves
- * that intelligently. LocalDateTime doesn&#x27;t even know there&#x27;s a problem.
- * &lt;p&gt;
- *
- * Useful methods
- * --------------
- *      ZonedDateTime.now()
- *      ZonedDateTime.now(zone)
- *      LocalDateTime.atZone(zone)
- *      ZonedDateTime.of(localDate, localTime, zone)
- * &lt;p&gt;
- *
- *      z.toLocalDate(), z.toLocalTime(), z.toLocalDateTime()
- *      z.toInstant(), z.toOffsetDateTime()
- *      z.withZoneSameInstant(otherZone)   - same point in time, new zone
- *      z.withZoneSameLocal(otherZone)     - same wall-clock fields, new zone
- * &lt;p&gt;
- *
- *      ZoneId.systemDefault()
- *      ZoneId.of(&quot;Asia/Kolkata&quot;)
- *      ZoneId.getAvailableZoneIds()
- */
 
 public class ZonedDateTimeDemo {
 

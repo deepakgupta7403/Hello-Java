@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase6_RuntimeMemoryRegexReflection/Regex/GroupsAndBackreferences.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 185 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 121 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,11 +1374,57 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A GROUP is a section of a regex enclosed in parentheses ( ... ). Groups serve TWO purposes:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Groups and Backreferences</h2>
+                    <p>A GROUP is a section of a regex enclosed in parentheses ( ... ). Groups serve TWO purposes:</p>
+                    <ul>
+                        <li>STRUCTURE - they constrain alternation and quantifiers:
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                         (gray|grey)        groups the alternatives
+                         (ab)+              repeats &quot;ab&quot;, not just &quot;b&quot;</pre>
+                    <ul>
+                        <li>CAPTURE - the matched substring is saved and can be read
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                      back later via Matcher.group(...) or as a
+                      BACKREFERENCE inside the regex itself.</pre>
+                    <h3>Numbering</h3>
+                    <p>group(0) - the WHOLE match group(1) - the substring captured by the FIRST opening paren group(2)
+                        - second, and so on (counted by opening parens, left to right)</p>
+                    <h3>Variants of (... )</h3>
+                    <p>(X) capturing group (?:X) NON-capturing group - same grouping, no save (?&lt;name&gt;X) NAMED
+                        capturing group - reference by name later (?&gt;X) ATOMIC group - no backtracking inside X (?=X)
+                        positive lookahead (see LookaroundAssertions.java) (?!X) negative lookahead (?&lt;=X) positive
+                        lookbehind (?&lt;!X) negative lookbehind (?idmsuxU-idmsuxU:X) inline flags applied to X only</p>
+                    <h3>Backreferences</h3>
+                    <p>Inside the SAME regex:</p>
+                    <pre class="hj-doc-art">     \1 \2 \3 ...        refer to capturing groups by number
+     \k&lt;name&gt;            refer to a named group</pre>
+                    <p>Inside the REPLACEMENT string (used by replaceAll / replaceFirst):</p>
+                    <pre class="hj-doc-art">     $1 $2 $3 ...        substitute group n
+     ${name}             substitute a named group
+     \$                  literal dollar
+     \\                  literal backslash</pre>
+                    <h3>Why Non-Capturing Groups?</h3>
+                    <ul>
+                        <li>Performance: the engine doesn&#x27;t save the substring.
+                        </li>
+                        <li>Cleaner numbering: only the groups you actually need have indices.
+                        </li>
+                    </ul>
+                    <h3>Why Named Groups?</h3>
+                    <ul>
+                        <li>Readable: m.group(&quot;year&quot;) beats m.group(3).
+                        </li>
+                        <li>Stable: adding a new group later does not renumber the others.
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1397,69 +1443,6 @@
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-/**
- * Groups and Backreferences
- * -------------------------
- * A GROUP is a section of a regex enclosed in parentheses ( ... ). Groups
- * serve TWO purposes:
- * &lt;p&gt;
- *
- *   1. STRUCTURE      - they constrain alternation and quantifiers:
- *                          (gray|grey)        groups the alternatives
- *                          (ab)+              repeats &quot;ab&quot;, not just &quot;b&quot;
- * &lt;p&gt;
- *
- *   2. CAPTURE        - the matched substring is saved and can be read
- *                       back later via Matcher.group(...) or as a
- *                       BACKREFERENCE inside the regex itself.
- * &lt;p&gt;
- *
- * Numbering
- * ---------
- *   group(0)   - the WHOLE match
- *   group(1)   - the substring captured by the FIRST opening paren
- *   group(2)   - second, and so on (counted by opening parens, left to right)
- * &lt;p&gt;
- *
- * Variants of (... )
- * ------------------
- *   (X)               capturing group
- *   (?:X)             NON-capturing group   - same grouping, no save
- *   (?&lt;name&gt;X)        NAMED capturing group - reference by name later
- *   (?&gt;X)             ATOMIC group - no backtracking inside X
- *   (?=X)             positive lookahead    (see LookaroundAssertions.java)
- *   (?!X)             negative lookahead
- *   (?&lt;=X)            positive lookbehind
- *   (?&lt;!X)            negative lookbehind
- *   (?idmsuxU-idmsuxU:X)  inline flags applied to X only
- * &lt;p&gt;
- *
- * Backreferences
- * --------------
- * Inside the SAME regex:
- *      \1 \2 \3 ...        refer to capturing groups by number
- *      \k&lt;name&gt;            refer to a named group
- * &lt;p&gt;
- *
- * Inside the REPLACEMENT string (used by replaceAll / replaceFirst):
- *      $1 $2 $3 ...        substitute group n
- *      ${name}             substitute a named group
- *      \$                  literal dollar
- *      \\                  literal backslash
- * &lt;p&gt;
- *
- * Why Non-Capturing Groups?
- * -------------------------
- *   - Performance: the engine doesn&#x27;t save the substring.
- *   - Cleaner numbering: only the groups you actually need have indices.
- * &lt;p&gt;
- *
- * Why Named Groups?
- * -----------------
- *   - Readable: m.group(&quot;year&quot;) beats m.group(3).
- *   - Stable: adding a new group later does not renumber the others.
- */
 
 public class GroupsAndBackreferences {
 

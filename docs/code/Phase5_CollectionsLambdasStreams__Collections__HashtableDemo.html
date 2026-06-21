@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/HashtableDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 134 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 86 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,40 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>java.util.Hashtable&amp;lt;K, V&amp;gt; - The Original Java 1.0 Map</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.Hashtable&amp;lt;K, V&amp;gt; - The Original Java 1.0 Map</h2>
+                    <p>Hashtable is a LEGACY synchronized hash table that predates the Collections Framework. It was
+                        retrofitted to implement Map when the framework arrived in Java 1.2.</p>
+                    <h3>History</h3>
+                    <p>Java 1.0 : Hashtable shipped, every method synchronized. Java 1.2 : Map / HashMap added;
+                        Hashtable made to implement Map. Java 1.5 : ConcurrentHashMap arrived - far better concurrent
+                        map.</p>
+                    <p>Modern guidance: don&#x27;t use Hashtable in NEW code. Choose:</p>
+                    <ul>
+                        <li>HashMap - single-threaded.
+                        </li>
+                        <li>ConcurrentHashMap - concurrent, much faster than Hashtable.
+                        </li>
+                        <li>Collections.synchronizedMap(new HashMap&amp;lt;&amp;gt;()) - if you really need
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                                a coarse one-lock map (rare).</pre>
+                    <h3>Differences vs HashMap</h3>
+                    <p>Hashtable HashMap --------- ------- ALL methods synchronized Not synchronized FORBIDS null keys
+                        and values Allows ONE null key, many null values Enumeration API (.elements, Iterator API</p>
+                    <pre class="hj-doc-art">     .keys) plus Iterator</pre>
+                    <p>Internal &quot;rehash&quot; tunable Internal &quot;resize&quot; with similar load factor</p>
+                    <h3>Why It Still Exists</h3>
+                    <p>Backwards compatibility with very old code and frameworks (Servlet sessions, AWT key bindings,
+                        JNDI). Direct use in new code is discouraged.</p>
+                    <h3>This File</h3>
+                    <p>Shows the Hashtable API, demonstrates its quirks, then points to the modern replacements you
+                        should reach for instead.</p>
                 </div>
             </div>
 
@@ -1399,53 +1429,6 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-
-/**
- * java.util.Hashtable&amp;lt;K, V&amp;gt; - The Original Java 1.0 Map
- * -----------------------------------------------------
- * Hashtable is a LEGACY synchronized hash table that predates the
- * Collections Framework. It was retrofitted to implement Map when the
- * framework arrived in Java 1.2.
- * &lt;p&gt;
- *
- * History
- * -------
- *   Java 1.0   : Hashtable shipped, every method synchronized.
- *   Java 1.2   : Map / HashMap added; Hashtable made to implement Map.
- *   Java 1.5   : ConcurrentHashMap arrived - far better concurrent map.
- * &lt;p&gt;
- *
- * Modern guidance: don&#x27;t use Hashtable in NEW code. Choose:
- *   - HashMap                  - single-threaded.
- *   - ConcurrentHashMap        - concurrent, much faster than Hashtable.
- *   - Collections.synchronizedMap(new HashMap&amp;lt;&amp;gt;()) - if you really need
- *                                 a coarse one-lock map (rare).
- * &lt;p&gt;
- *
- * Differences vs HashMap
- * ----------------------
- * &lt;p&gt;
- *
- *   Hashtable                       HashMap
- *   ---------                       -------
- *   ALL methods synchronized        Not synchronized
- *   FORBIDS null keys and values    Allows ONE null key, many null values
- *   Enumeration API (.elements,     Iterator API
- *      .keys) plus Iterator
- *   Internal &quot;rehash&quot; tunable       Internal &quot;resize&quot; with similar load factor
- * &lt;p&gt;
- *
- * Why It Still Exists
- * -------------------
- * Backwards compatibility with very old code and frameworks (Servlet
- * sessions, AWT key bindings, JNDI). Direct use in new code is discouraged.
- * &lt;p&gt;
- *
- * This File
- * ---------
- * Shows the Hashtable API, demonstrates its quirks, then points to the
- * modern replacements you should reach for instead.
- */
 
 public class HashtableDemo {
 

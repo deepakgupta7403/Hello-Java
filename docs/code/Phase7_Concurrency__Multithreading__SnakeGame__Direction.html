@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/SnakeGame/Direction.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 31 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 22 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,15 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Four-direction movement enum for the snake.</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>Four-direction movement enum for the snake.</p>
+                    <p>Each direction carries its (dx, dy) cell delta and knows which direction is its OPPOSITE — we use
+                        that to reject illegal 180° turns (the snake cannot turn back on itself).</p>
                 </div>
             </div>
 
@@ -1394,14 +1399,6 @@
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase7_Concurrency.Multithreading.SnakeGame;
 
-/**
- * Four-direction movement enum for the snake.
- * &lt;p&gt;
- *
- * Each direction carries its (dx, dy) cell delta and knows which
- * direction is its OPPOSITE — we use that to reject illegal 180° turns
- * (the snake cannot turn back on itself).
- */
 public enum Direction {
     UP(0, -1),
     DOWN(0, 1),

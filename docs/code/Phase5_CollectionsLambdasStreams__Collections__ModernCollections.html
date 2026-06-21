@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/ModernCollections.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 194 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 140 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,39 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>The collections framework has had many additions over the years - factory methods, stream
-                        collectors, sequenced types. This file is a focused tour.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Modern Collection Features (Java 8 -&gt; 21)</h2>
+                    <p>The collections framework has had many additions over the years - factory methods, stream
+                        collectors, sequenced types. This file is a focused tour.</p>
+                    <h3>Java 8 - Streams + functional Map APIs</h3>
+                    <p>Collection.stream() / parallelStream() / forEach / removeIf Map.getOrDefault / putIfAbsent /
+                        computeIfAbsent / computeIfPresent</p>
+                    <pre class="hj-doc-art">     / compute / merge / forEach / replaceAll</pre>
+                    <p>Collectors.toList / toSet / toMap / groupingBy / partitioningBy</p>
+                    <h3>Java 9 - Immutable factory methods</h3>
+                    <p>List.of(...), Set.of(...), Map.of(...), Map.ofEntries(Map.entry(k, v)) List.copyOf / Set.copyOf /
+                        Map.copyOf</p>
+                    <h3>Java 10 - Collectors.toUnmodifiable*</h3>
+                    <p>Collectors.toUnmodifiableList / toUnmodifiableSet / toUnmodifiableMap List.copyOf / Set.copyOf /
+                        Map.copyOf (also Java 10)</p>
+                    <h3>Java 11 - Collection.toArray(IntFunction)</h3>
+                    <p>String[] arr = list.toArray(String[]::new);</p>
+                    <h3>Java 16 - Stream.toList()</h3>
+                    <p>stream.toList() (returns an unmodifiable list)</p>
+                    <h3>Java 21 - Sequenced Collections</h3>
+                    <p>SequencedCollection&amp;lt;E&amp;gt; implemented by List, Deque,</p>
+                    <pre class="hj-doc-art">                                      LinkedHashSet</pre>
+                    <p>SequencedSet&amp;lt;E&amp;gt; implemented by LinkedHashSet SequencedMap&amp;lt;K, V&amp;gt;
+                        implemented by LinkedHashMap, TreeMap</p>
+                    <p>New methods: getFirst, getLast, addFirst, addLast, reversed,</p>
+                    <pre class="hj-doc-art">                putFirst, putLast, firstEntry, lastEntry, pollFirstEntry,
+                pollLastEntry.</pre>
+                    <p>See Basics/ModernJava/SequencedCollections.java for the deep dive.</p>
                 </div>
             </div>
 
@@ -1399,59 +1426,6 @@
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-/**
- * Modern Collection Features (Java 8 -&gt; 21)
- * -----------------------------------------
- * The collections framework has had many additions over the years - factory
- * methods, stream collectors, sequenced types. This file is a focused tour.
- * &lt;p&gt;
- *
- * Java 8 - Streams + functional Map APIs
- * --------------------------------------
- *   Collection.stream() / parallelStream() / forEach / removeIf
- *   Map.getOrDefault / putIfAbsent / computeIfAbsent / computeIfPresent
- *      / compute / merge / forEach / replaceAll
- *   Collectors.toList / toSet / toMap / groupingBy / partitioningBy
- * &lt;p&gt;
- *
- * Java 9 - Immutable factory methods
- * ----------------------------------
- *   List.of(...), Set.of(...), Map.of(...), Map.ofEntries(Map.entry(k, v))
- *   List.copyOf / Set.copyOf / Map.copyOf
- * &lt;p&gt;
- *
- * Java 10 - Collectors.toUnmodifiable*
- * ------------------------------------
- *   Collectors.toUnmodifiableList / toUnmodifiableSet / toUnmodifiableMap
- *   List.copyOf / Set.copyOf / Map.copyOf  (also Java 10)
- * &lt;p&gt;
- *
- * Java 11 - Collection.toArray(IntFunction)
- * -----------------------------------------
- *   String[] arr = list.toArray(String[]::new);
- * &lt;p&gt;
- *
- * Java 16 - Stream.toList()
- * -------------------------
- *   stream.toList()                            (returns an unmodifiable list)
- * &lt;p&gt;
- *
- * Java 21 - Sequenced Collections
- * -------------------------------
- *   SequencedCollection&amp;lt;E&amp;gt;            implemented by List, Deque,
- *                                       LinkedHashSet
- *   SequencedSet&amp;lt;E&amp;gt;                   implemented by LinkedHashSet
- *   SequencedMap&amp;lt;K, V&amp;gt;                implemented by LinkedHashMap, TreeMap
- * &lt;p&gt;
- *
- *   New methods: getFirst, getLast, addFirst, addLast, reversed,
- *                 putFirst, putLast, firstEntry, lastEntry, pollFirstEntry,
- *                 pollLastEntry.
- * &lt;p&gt;
- *
- *   See Basics/ModernJava/SequencedCollections.java for the deep dive.
- */
 
 public class ModernCollections {
 

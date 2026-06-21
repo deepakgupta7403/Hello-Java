@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase4_ErrorsAndTypeSafety/Generics/TypeErasure.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 245 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 144 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,83 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Generics are a COMPILE-TIME feature. The compiler uses type parameters to check your code and
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Type Erasure</h2>
+                    <p>Generics are a COMPILE-TIME feature. The compiler uses type parameters to check your code and
                         insert the necessary casts. After that, all the generic information is THROWN AWAY (&quot;erased&quot;):
-                        a List&amp;lt;String&amp;gt; and a L...
-                    </div>
+                        a List&amp;lt;String&amp;gt; and a List&amp;lt;Integer&amp;gt; have the SAME runtime class.</p>
+                    <pre class="hj-doc-art">     ----------- source code -----------
+     List&amp;lt;String&amp;gt; names = new ArrayList&amp;lt;&amp;gt;();
+     names.add(&quot;Alice&quot;);
+     String s = names.get(0);</pre>
+                    <pre class="hj-doc-art">     ----- after compilation (roughly) -----
+     List names = new ArrayList();
+     names.add(&quot;Alice&quot;);
+     String s = (String) names.get(0);</pre>
+                    <h3>Why Erase?</h3>
+                    <p>Java introduced generics in 1.5 with BACKWARDS COMPATIBILITY as the highest priority. Old class
+                        files and old code without generics had to keep working with new generic code. Erasure was the
+                        chosen path: existing `.class` files don&#x27;t change, the JVM doesn&#x27;t need to learn new
+                        tricks.</p>
+                    <p>The cost: many things that &quot;feel obvious&quot; are actually IMPOSSIBLE - see
+                        GenericRestrictions.java for the full list.</p>
+                    <h3>How Erasure Looks At Runtime</h3>
+                    <ul>
+                        <li>Type parameters become their UPPER BOUND (Object by default):
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">        class Box&amp;lt;T&amp;gt; { T value; }</pre>
+                    <pre class="hj-doc-art">     becomes:</pre>
+                    <pre class="hj-doc-art">        class Box { Object value; }</pre>
+                    <ul>
+                        <li>CASTS are inserted by the compiler wherever the generic value is
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     read out:</pre>
+                    <pre class="hj-doc-art">        String s = box.get();             // (String) box.get()</pre>
+                    <ul>
+                        <li>BRIDGE METHODS are generated to keep polymorphism consistent. See
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     the demo below.</pre>
+                    <h3>Bounded Type Parameters Erase To Their Bound</h3>
+                    <pre class="hj-doc-art">     class Repo&amp;lt;T extends Number&amp;gt; { T value; }
+     // erases to:
+     class Repo                    { Number value; }</pre>
+                    <h3>Consequences of Erasure</h3>
+                    <ul>
+                        <li>You CANNOT do `new T()` (no T-specific constructor at runtime).
+                        </li>
+                        <li>You CANNOT create `new T[5]` (no T-specific element type).
+                        </li>
+                        <li>You CANNOT `if (x instanceof T)` (T does not exist at runtime).
+                        </li>
+                        <li>You CANNOT have static fields of type T (statics are shared across
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    parameterisations, but each parameterisation might want a different T).</pre>
+                    <ul>
+                        <li>Overloading with same erasure is FORBIDDEN:
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">        void doX(List&amp;lt;String&amp;gt;) { }
+        void doX(List&amp;lt;Integer&amp;gt;){ }    // ERROR - same erased signature</pre>
+                    <h3>Bridge Methods - The Compiler&#x27;s Polymorphism Glue</h3>
+                    <p>When a generic method overrides a method whose signature changed under erasure, the compiler
+                        emits a &quot;bridge method&quot; so virtual dispatch still works. main() prints them via
+                        reflection.</p>
+                    <h3>Reflection Can Still See Some Generic Info</h3>
+                    <p>Generic signatures DO appear in fields, method declarations, and class declarations - they are
+                        kept in the `.class` file&#x27;s Signature attribute. Use ParameterizedType to inspect,
+                        e.g.,</p>
+                    <pre class="hj-doc-art">     Field f = MyClass.class.getDeclaredField(&quot;data&quot;);
+     ParameterizedType pt = (ParameterizedType) f.getGenericType();
+     pt.getActualTypeArguments();      // -&gt; [class java.lang.String]</pre>
                 </div>
             </div>
 
@@ -1402,106 +1472,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-/**
- * Type Erasure
- * ------------
- * Generics are a COMPILE-TIME feature. The compiler uses type parameters to
- * check your code and insert the necessary casts. After that, all the
- * generic information is THROWN AWAY (&quot;erased&quot;): a List&amp;lt;String&amp;gt; and a
- * List&amp;lt;Integer&amp;gt; have the SAME runtime class.
- * &lt;p&gt;
- *
- *      ----------- source code -----------
- *      List&amp;lt;String&amp;gt; names = new ArrayList&amp;lt;&amp;gt;();
- *      names.add(&quot;Alice&quot;);
- *      String s = names.get(0);
- * &lt;p&gt;
- *
- *      ----- after compilation (roughly) -----
- *      List names = new ArrayList();
- *      names.add(&quot;Alice&quot;);
- *      String s = (String) names.get(0);
- * &lt;p&gt;
- *
- * Why Erase?
- * ----------
- * Java introduced generics in 1.5 with BACKWARDS COMPATIBILITY as the
- * highest priority. Old class files and old code without generics had to
- * keep working with new generic code. Erasure was the chosen path: existing
- * `.class` files don&#x27;t change, the JVM doesn&#x27;t need to learn new tricks.
- * &lt;p&gt;
- *
- * The cost: many things that &quot;feel obvious&quot; are actually IMPOSSIBLE - see
- * GenericRestrictions.java for the full list.
- * &lt;p&gt;
- *
- * How Erasure Looks At Runtime
- * ----------------------------
- * &lt;p&gt;
- *
- *   1. Type parameters become their UPPER BOUND (Object by default):
- * &lt;p&gt;
- *
- *         class Box&amp;lt;T&amp;gt; { T value; }
- * &lt;p&gt;
- *
- *      becomes:
- * &lt;p&gt;
- *
- *         class Box { Object value; }
- * &lt;p&gt;
- *
- *   2. CASTS are inserted by the compiler wherever the generic value is
- *      read out:
- * &lt;p&gt;
- *
- *         String s = box.get();             // (String) box.get()
- * &lt;p&gt;
- *
- *   3. BRIDGE METHODS are generated to keep polymorphism consistent. See
- *      the demo below.
- * &lt;p&gt;
- *
- * Bounded Type Parameters Erase To Their Bound
- * --------------------------------------------
- *      class Repo&amp;lt;T extends Number&amp;gt; { T value; }
- *      // erases to:
- *      class Repo                    { Number value; }
- * &lt;p&gt;
- *
- * Consequences of Erasure
- * -----------------------
- *   - You CANNOT do `new T()`           (no T-specific constructor at runtime).
- *   - You CANNOT create `new T[5]`      (no T-specific element type).
- *   - You CANNOT `if (x instanceof T)`  (T does not exist at runtime).
- *   - You CANNOT have static fields of type T (statics are shared across
- *     parameterisations, but each parameterisation might want a different T).
- *   - Overloading with same erasure is FORBIDDEN:
- * &lt;p&gt;
- *
- *         void doX(List&amp;lt;String&amp;gt;) { }
- *         void doX(List&amp;lt;Integer&amp;gt;){ }    // ERROR - same erased signature
- * &lt;p&gt;
- *
- * Bridge Methods - The Compiler&#x27;s Polymorphism Glue
- * -------------------------------------------------
- * When a generic method overrides a method whose signature changed under
- * erasure, the compiler emits a &quot;bridge method&quot; so virtual dispatch still
- * works. main() prints them via reflection.
- * &lt;p&gt;
- *
- * Reflection Can Still See Some Generic Info
- * ------------------------------------------
- * Generic signatures DO appear in fields, method declarations, and class
- * declarations - they are kept in the `.class` file&#x27;s Signature attribute.
- * Use ParameterizedType to inspect, e.g.,
- * &lt;p&gt;
- *
- *      Field f = MyClass.class.getDeclaredField(&quot;data&quot;);
- *      ParameterizedType pt = (ParameterizedType) f.getGenericType();
- *      pt.getActualTypeArguments();      // -&gt; [class java.lang.String]
- */
 
 public class TypeErasure {
 

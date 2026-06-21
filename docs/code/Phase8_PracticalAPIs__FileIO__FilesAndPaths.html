@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase8_PracticalAPIs/FileIO/FilesAndPaths.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 141 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 86 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,60 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>java.nio.file — Path and Files</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.nio.file — Path and Files</h2>
+                    <p>The modern Java file API (since 7). Two main types:</p>
+                    <pre class="hj-doc-art">     Path       - an immutable file-system path. Replaces File.
+                  Made via Path.of(...) or Paths.get(...).</pre>
+                    <pre class="hj-doc-art">     Files      - a class of STATIC utility methods that DO the work:
+                  read, write, copy, move, delete, walk, attributes,
+                  streams, etc. ~90% of file code lives in here.</pre>
+                    <h3>Why prefer this over java.io.File?</h3>
+                    <ul>
+                        <li>Better error messages (NoSuchFileException, NotDirectoryException,
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    AccessDeniedException ... vs vague IOException).</pre>
+                    <ul>
+                        <li>Symbolic links handled explicitly.
+                        </li>
+                        <li>Attributes / permissions / ACLs are first-class.
+                        </li>
+                        <li>Atomic copy / move / delete.
+                        </li>
+                        <li>Streams (Files.lines, Files.list, Files.walk).
+                        </li>
+                        <li>File-system events (WatchService).
+                        </li>
+                        <li>Pluggable file systems (ZIP file as a virtual FS).
+                        </li>
+                    </ul>
+                    <h3>Common Path operations</h3>
+                    <pre class="hj-doc-art">     Path.of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)        - construct from segments
+     p.getFileName()               - just the leaf name
+     p.getParent()                 - directory
+     p.getRoot()                   - root (drive on Windows)
+     p.resolve(&quot;file.txt&quot;)         - append a child path
+     p.relativize(other)           - compute the path from p to other
+     p.normalize()                 - collapse &quot;.&quot; and &quot;..&quot; segments
+     p.toAbsolutePath()            - relative -&gt; absolute
+     p.toRealPath()                - resolves symlinks too
+     p.startsWith / endsWith       - structural matching</pre>
+                    <h3>Common Files operations</h3>
+                    <pre class="hj-doc-art">     Files.createFile / createDirectory(/ies) / createTempFile / Directory
+     Files.exists / isRegularFile / isDirectory / isReadable / isWritable
+     Files.size                    - bytes
+     Files.readAllBytes / readString / readAllLines
+     Files.write / writeString
+     Files.copy / move / delete
+     Files.readAttributes / setLastModifiedTime / setPosixFilePermissions
+     Files.list / walk / lines     - return Streams!
+     Files.newBufferedReader / newBufferedWriter</pre>
                 </div>
             </div>
 
@@ -1400,60 +1450,6 @@ import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
 import java.util.List;
-
-/**
- * java.nio.file — Path and Files
- * ------------------------------
- * The modern Java file API (since 7). Two main types:
- * &lt;p&gt;
- *
- *      Path       - an immutable file-system path. Replaces File.
- *                   Made via Path.of(...) or Paths.get(...).
- * &lt;p&gt;
- *
- *      Files      - a class of STATIC utility methods that DO the work:
- *                   read, write, copy, move, delete, walk, attributes,
- *                   streams, etc. ~90% of file code lives in here.
- * &lt;p&gt;
- *
- * Why prefer this over java.io.File?
- * ----------------------------------
- *   - Better error messages (NoSuchFileException, NotDirectoryException,
- *     AccessDeniedException ... vs vague IOException).
- *   - Symbolic links handled explicitly.
- *   - Attributes / permissions / ACLs are first-class.
- *   - Atomic copy / move / delete.
- *   - Streams (Files.lines, Files.list, Files.walk).
- *   - File-system events (WatchService).
- *   - Pluggable file systems (ZIP file as a virtual FS).
- * &lt;p&gt;
- *
- * Common Path operations
- * ----------------------
- *      Path.of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)        - construct from segments
- *      p.getFileName()               - just the leaf name
- *      p.getParent()                 - directory
- *      p.getRoot()                   - root (drive on Windows)
- *      p.resolve(&quot;file.txt&quot;)         - append a child path
- *      p.relativize(other)           - compute the path from p to other
- *      p.normalize()                 - collapse &quot;.&quot; and &quot;..&quot; segments
- *      p.toAbsolutePath()            - relative -&gt; absolute
- *      p.toRealPath()                - resolves symlinks too
- *      p.startsWith / endsWith       - structural matching
- * &lt;p&gt;
- *
- * Common Files operations
- * -----------------------
- *      Files.createFile / createDirectory(/ies) / createTempFile / Directory
- *      Files.exists / isRegularFile / isDirectory / isReadable / isWritable
- *      Files.size                    - bytes
- *      Files.readAllBytes / readString / readAllLines
- *      Files.write / writeString
- *      Files.copy / move / delete
- *      Files.readAttributes / setLastModifiedTime / setPosixFilePermissions
- *      Files.list / walk / lines     - return Streams!
- *      Files.newBufferedReader / newBufferedWriter
- */
 
 public class FilesAndPaths {
 

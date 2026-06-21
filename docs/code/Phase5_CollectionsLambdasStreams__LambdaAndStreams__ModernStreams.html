@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/ModernStreams.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 170 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 119 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,33 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A short tour of the upgrades the Stream API has received over the years.</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Modern Stream Features (Java 9 -&amp;gt; 21)</h2>
+                    <p>A short tour of the upgrades the Stream API has received over the years.</p>
+                    <h3>Java 9</h3>
+                    <p>takeWhile(Predicate) keep until predicate fails dropWhile(Predicate) skip while predicate holds
+                        Stream.iterate(seed, hasNext, next) FINITE iterate Stream.ofNullable(T) zero-or-one stream
+                        Optional.stream() Optional -&amp;gt; Stream of 0 or 1</p>
+                    <h3>Java 10</h3>
+                    <p>Collectors.toUnmodifiableList / Set / Map immutable results</p>
+                    <h3>Java 11</h3>
+                    <p>String.lines() Stream&amp;lt;String&amp;gt; of lines Files.readString / Files.writeString (file
+                        I/O - see StreamFileIO) Collection.toArray(IntFunction) typed array conversion</p>
+                    <h3>Java 12</h3>
+                    <p>Collectors.teeing(c1, c2, combiner) split into TWO collectors, combine</p>
+                    <h3>Java 16</h3>
+                    <p>Stream.toList() unmodifiable List - the new default Stream.mapMulti flatMap alternative for tiny
+                        expansions</p>
+                    <h3>Java 21</h3>
+                    <p>Sequenced Collections - getFirst/getLast/reversed on List/Deque/LinkedHashSet Pattern matching in
+                        switch for stream classification (Gatherers - preview in Java 22; not yet final in 21)</p>
+                    <h3>Examples Below</h3>
+                    <p>Each section uses the new feature in a small, focused snippet.</p>
                 </div>
             </div>
 
@@ -1399,56 +1422,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-/**
- * Modern Stream Features (Java 9 -&amp;gt; 21)
- * ------------------------------------
- * A short tour of the upgrades the Stream API has received over the years.
- * &lt;p&gt;
- *
- * Java 9
- * ------
- *   takeWhile(Predicate)                         keep until predicate fails
- *   dropWhile(Predicate)                         skip while predicate holds
- *   Stream.iterate(seed, hasNext, next)          FINITE iterate
- *   Stream.ofNullable(T)                         zero-or-one stream
- *   Optional.stream()                            Optional -&amp;gt; Stream of 0 or 1
- * &lt;p&gt;
- *
- * Java 10
- * -------
- *   Collectors.toUnmodifiableList / Set / Map    immutable results
- * &lt;p&gt;
- *
- * Java 11
- * -------
- *   String.lines()                                  Stream&amp;lt;String&amp;gt; of lines
- *   Files.readString / Files.writeString            (file I/O - see StreamFileIO)
- *   Collection.toArray(IntFunction)                 typed array conversion
- * &lt;p&gt;
- *
- * Java 12
- * -------
- *   Collectors.teeing(c1, c2, combiner)             split into TWO collectors, combine
- * &lt;p&gt;
- *
- * Java 16
- * -------
- *   Stream.toList()                                  unmodifiable List - the new default
- *   Stream.mapMulti                                  flatMap alternative for tiny expansions
- * &lt;p&gt;
- *
- * Java 21
- * -------
- *   Sequenced Collections - getFirst/getLast/reversed on List/Deque/LinkedHashSet
- *   Pattern matching in switch for stream classification
- *   (Gatherers - preview in Java 22; not yet final in 21)
- * &lt;p&gt;
- *
- * Examples Below
- * --------------
- * Each section uses the new feature in a small, focused snippet.
- */
 
 public class ModernStreams {
 

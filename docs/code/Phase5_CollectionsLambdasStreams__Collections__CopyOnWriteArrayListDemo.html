@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/CopyOnWriteArrayListDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 150 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 88 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,52 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A thread-safe List variant where EVERY MUTATION COPIES the underlying array. Iteration walks
-                        the SNAPSHOT taken when the Iterator was created - it never sees subsequent writes and never
-                        throws ConcurrentModificationEx...
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.concurrent.CopyOnWriteArrayList&amp;lt;E&amp;gt;</h2>
+                    <p>A thread-safe List variant where EVERY MUTATION COPIES the underlying array. Iteration walks the
+                        SNAPSHOT taken when the Iterator was created - it never sees subsequent writes and never throws
+                        ConcurrentModificationException.</p>
+                    <h3>Cost / Benefit</h3>
+                    <p>Reads (get, iterator, contains): very FAST. No synchronization</p>
+                    <pre class="hj-doc-art">                                      because the snapshot never changes.</pre>
+                    <p>Writes (add, set, remove): EXPENSIVE. Each one allocates a</p>
+                    <pre class="hj-doc-art">                                      new internal array.</pre>
+                    <h3>When To Use It</h3>
+                    <ul>
+                        <li>READ-MOSTLY shared lists: event listeners, observer registrations,
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    configuration snapshots, plugins.</pre>
+                    <ul>
+                        <li>When you want simple iteration with no locks and few writers.
+                        </li>
+                    </ul>
+                    <h3>When NOT To Use It</h3>
+                    <ul>
+                        <li>Write-heavy or large collections - the copy cost dominates.
+                        </li>
+                        <li>Single-threaded code - ArrayList is much cheaper.
+                        </li>
+                    </ul>
+                    <h3>Snapshot Iteration Semantics</h3>
+                    <pre class="hj-doc-art">     List = [A, B, C]
+     it = list.iterator();          // captures snapshot [A, B, C]
+     list.add(D);                    // current state becomes [A, B, C, D]
+     it.next()                       // sees A
+     it.next()                       // sees B
+     it.next()                       // sees C
+     it.hasNext()                    // false - the iterator&#x27;s snapshot ended</pre>
+                    <p>Iterator also DOES NOT SUPPORT remove()/set()/add() - the snapshot is immutable.</p>
+                    <h3>Specific Methods</h3>
+                    <p>addIfAbsent(e) - add only if not already present addAllAbsent(c) - bulk addIfAbsent These two are
+                        useful for &quot;set-like&quot; registrations.</p>
+                    <h3>Cousin Class</h3>
+                    <p>CopyOnWriteArraySet - the Set version</p>
                 </div>
             </div>
 
@@ -1400,67 +1439,6 @@
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
-
-/**
- * java.util.concurrent.CopyOnWriteArrayList&amp;lt;E&amp;gt;
- * --------------------------------------------
- * A thread-safe List variant where EVERY MUTATION COPIES the underlying
- * array. Iteration walks the SNAPSHOT taken when the Iterator was created -
- * it never sees subsequent writes and never throws
- * ConcurrentModificationException.
- * &lt;p&gt;
- *
- * Cost / Benefit
- * --------------
- * &lt;p&gt;
- *
- *   Reads (get, iterator, contains):    very FAST. No synchronization
- *                                       because the snapshot never changes.
- * &lt;p&gt;
- *
- *   Writes (add, set, remove):          EXPENSIVE. Each one allocates a
- *                                       new internal array.
- * &lt;p&gt;
- *
- * When To Use It
- * --------------
- *   - READ-MOSTLY shared lists: event listeners, observer registrations,
- *     configuration snapshots, plugins.
- *   - When you want simple iteration with no locks and few writers.
- * &lt;p&gt;
- *
- * When NOT To Use It
- * ------------------
- *   - Write-heavy or large collections - the copy cost dominates.
- *   - Single-threaded code - ArrayList is much cheaper.
- * &lt;p&gt;
- *
- * Snapshot Iteration Semantics
- * ----------------------------
- *      List = [A, B, C]
- *      it = list.iterator();          // captures snapshot [A, B, C]
- *      list.add(D);                    // current state becomes [A, B, C, D]
- *      it.next()                       // sees A
- *      it.next()                       // sees B
- *      it.next()                       // sees C
- *      it.hasNext()                    // false - the iterator&#x27;s snapshot ended
- * &lt;p&gt;
- *
- * Iterator also DOES NOT SUPPORT remove()/set()/add() - the snapshot is
- * immutable.
- * &lt;p&gt;
- *
- * Specific Methods
- * ----------------
- *   addIfAbsent(e)                          - add only if not already present
- *   addAllAbsent(c)                         - bulk addIfAbsent
- *   These two are useful for &quot;set-like&quot; registrations.
- * &lt;p&gt;
- *
- * Cousin Class
- * ------------
- *   CopyOnWriteArraySet                     - the Set version
- */
 
 public class CopyOnWriteArrayListDemo {
 

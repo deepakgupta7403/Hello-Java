@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase3_ObjectOrientation/Interfaces/InterfaceIntro.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 236 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 134 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,111 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>An INTERFACE is a CONTRACT - a list of methods (and optional default code) that any
-                        implementing class promises to provide. Interfaces give Java its primary form of ABSTRACTION and
-                        let one class fulfil MULTIPLE TYPES,...
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Interfaces in Java - Introduction</h2>
+                    <p>An INTERFACE is a CONTRACT - a list of methods (and optional default code) that any implementing
+                        class promises to provide. Interfaces give Java its primary form of ABSTRACTION and let one
+                        class fulfil MULTIPLE TYPES, which is Java&#x27;s controlled answer to multiple inheritance.</p>
+                    <pre class="hj-doc-art">     interface Comparable&lt;T&gt; {
+         int compareTo(T other);
+     }</pre>
+                    <pre class="hj-doc-art">     class Customer implements Comparable&lt;Customer&gt; {
+         public int compareTo(Customer other) { ... }
+     }</pre>
+                    <h3>Why Use Interfaces?</h3>
+                    <ul>
+                        <li>ABSTRACTION - separate the &quot;what&quot; from the &quot;how&quot;.
+                        </li>
+                        <li>DECOUPLING - code against interfaces, not classes; swap implementations.
+                        </li>
+                        <li>POLYMORPHISM - one type, many concrete behaviours.
+                        </li>
+                        <li>MULTI-TYPING - a class can implement many interfaces simultaneously
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                   (Comparable + Serializable + AutoCloseable, etc.).</pre>
+                    <ul>
+                        <li>TESTABILITY - pass a stub/mock in tests by implementing the interface.
+                        </li>
+                    </ul>
+                    <h3>Members an Interface May Contain</h3>
+                    <ul>
+                        <li>ABSTRACT methods implicit `public abstract`, no body.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     void doWork();</pre>
+                    <ul>
+                        <li>DEFAULT methods (Java 8) have a body; inherited unless overridden.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     default void run() { ... }</pre>
+                    <ul>
+                        <li>STATIC methods (Java 8) belong to the interface itself.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     static MyInterface create() { ... }</pre>
+                    <ul>
+                        <li>PRIVATE methods (Java 9) helpers for default/static methods.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     private boolean valid(...) { ... }</pre>
+                    <ul>
+                        <li>CONSTANTS implicit `public static final`.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     int MAX = 100;</pre>
+                    <ul>
+                        <li>NESTED TYPES static by default - any class/interface/enum/record
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     interface Builder { ... }</pre>
+                    <p>Interfaces canNOT contain:</p>
+                    <ul>
+                        <li>instance fields (no per-object state)
+                        </li>
+                        <li>constructors
+                        </li>
+                        <li>protected / package-private methods (default-method modifier is implicit public)
+                        </li>
+                    </ul>
+                    <h3>Implementing an Interface</h3>
+                    <pre class="hj-doc-art">     class Customer implements Comparable&lt;Customer&gt;, Serializable { ... }</pre>
+                    <p>The class must provide ALL abstract methods of every interface it implements, or it must itself
+                        be declared `abstract`.</p>
+                    <h3>Interfaces in the Type Hierarchy</h3>
+                    <ul>
+                        <li>A class can extend at most ONE class but implement MANY interfaces.
+                        </li>
+                        <li>An interface can extend MANY other interfaces (&quot;interface inheritance&quot;).
+                        </li>
+                        <li>You can declare variables of interface type to hold any implementor:
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">        Comparable&lt;Integer&gt; c = 5;        // Integer implements Comparable&lt;Integer&gt;</pre>
+                    <h3>Java Version Timeline</h3>
+                    <p>Java 1.0 - interfaces with abstract methods only. Java 5 - generic interfaces. Java 8 - default +
+                        static methods, functional interfaces, lambdas. Java 9 - private methods inside interfaces. Java
+                        17 - sealed interfaces (permits-clause). Java 21 - sealed interfaces + pattern matching switch
+                        make exhaustive</p>
+                    <pre class="hj-doc-art">              dispatch ergonomic.</pre>
+                    <p>This file is a guided tour. For more depth see:</p>
+                    <ul>
+                        <li>FunctionalInterfaceDemo.java - SAM types + lambdas + java.util.function
+                        </li>
+                        <li>NestedInterface.java - interfaces nested in classes/interfaces
+                        </li>
+                        <li>MarkerInterface.java - empty &quot;tag&quot; interfaces
+                        </li>
+                        <li>ClassVsInterface.java - when to pick which
+                        </li>
+                        <li>SealedInterfaceDemo.java - permits and exhaustive switch (Java 17+)
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1396,107 +1494,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase3_ObjectOrientation.Interfaces;
-
-/**
- * Interfaces in Java - Introduction
- * ---------------------------------
- * An INTERFACE is a CONTRACT - a list of methods (and optional default code)
- * that any implementing class promises to provide. Interfaces give Java its
- * primary form of ABSTRACTION and let one class fulfil MULTIPLE TYPES, which
- * is Java&#x27;s controlled answer to multiple inheritance.
- * &lt;p&gt;
- *
- *      interface Comparable&lt;T&gt; {
- *          int compareTo(T other);
- *      }
- * &lt;p&gt;
- *
- *      class Customer implements Comparable&lt;Customer&gt; {
- *          public int compareTo(Customer other) { ... }
- *      }
- * &lt;p&gt;
- *
- * Why Use Interfaces?
- * -------------------
- *   - ABSTRACTION  - separate the &quot;what&quot; from the &quot;how&quot;.
- *   - DECOUPLING   - code against interfaces, not classes; swap implementations.
- *   - POLYMORPHISM - one type, many concrete behaviours.
- *   - MULTI-TYPING - a class can implement many interfaces simultaneously
- *                    (Comparable + Serializable + AutoCloseable, etc.).
- *   - TESTABILITY  - pass a stub/mock in tests by implementing the interface.
- * &lt;p&gt;
- *
- * Members an Interface May Contain
- * --------------------------------
- * &lt;p&gt;
- *
- *   1. ABSTRACT methods         implicit `public abstract`, no body.
- *      void doWork();
- * &lt;p&gt;
- *
- *   2. DEFAULT methods (Java 8) have a body; inherited unless overridden.
- *      default void run() { ... }
- * &lt;p&gt;
- *
- *   3. STATIC methods  (Java 8) belong to the interface itself.
- *      static MyInterface create() { ... }
- * &lt;p&gt;
- *
- *   4. PRIVATE methods (Java 9) helpers for default/static methods.
- *      private boolean valid(...) { ... }
- * &lt;p&gt;
- *
- *   5. CONSTANTS                 implicit `public static final`.
- *      int MAX = 100;
- * &lt;p&gt;
- *
- *   6. NESTED TYPES              static by default - any class/interface/enum/record
- *      interface Builder { ... }
- * &lt;p&gt;
- *
- *   Interfaces canNOT contain:
- *      - instance fields (no per-object state)
- *      - constructors
- *      - protected / package-private methods (default-method modifier is implicit public)
- * &lt;p&gt;
- *
- * Implementing an Interface
- * -------------------------
- *      class Customer implements Comparable&lt;Customer&gt;, Serializable { ... }
- * &lt;p&gt;
- *
- * The class must provide ALL abstract methods of every interface it implements,
- * or it must itself be declared `abstract`.
- * &lt;p&gt;
- *
- * Interfaces in the Type Hierarchy
- * --------------------------------
- *   - A class can extend at most ONE class but implement MANY interfaces.
- *   - An interface can extend MANY other interfaces (&quot;interface inheritance&quot;).
- *   - You can declare variables of interface type to hold any implementor:
- * &lt;p&gt;
- *
- *         Comparable&lt;Integer&gt; c = 5;        // Integer implements Comparable&lt;Integer&gt;
- * &lt;p&gt;
- *
- * Java Version Timeline
- * ---------------------
- *   Java 1.0  - interfaces with abstract methods only.
- *   Java 5    - generic interfaces.
- *   Java 8    - default + static methods, functional interfaces, lambdas.
- *   Java 9    - private methods inside interfaces.
- *   Java 17   - sealed interfaces (permits-clause).
- *   Java 21   - sealed interfaces + pattern matching switch make exhaustive
- *               dispatch ergonomic.
- * &lt;p&gt;
- *
- * This file is a guided tour. For more depth see:
- *   - FunctionalInterfaceDemo.java  - SAM types + lambdas + java.util.function
- *   - NestedInterface.java          - interfaces nested in classes/interfaces
- *   - MarkerInterface.java          - empty &quot;tag&quot; interfaces
- *   - ClassVsInterface.java         - when to pick which
- *   - SealedInterfaceDemo.java      - permits and exhaustive switch (Java 17+)
- */
 
 public class InterfaceIntro {
 

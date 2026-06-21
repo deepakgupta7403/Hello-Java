@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/QueueInterface.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 134 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 83 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,41 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>java.util.Queue&amp;lt;E&amp;gt; - FIFO Linear Collection</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.Queue&amp;lt;E&amp;gt; - FIFO Linear Collection</h2>
+                    <p>A Queue holds elements waiting to be processed. The classic model is FIRST-IN-FIRST-OUT - the
+                        element you add first comes out first.</p>
+                    <pre class="hj-doc-art">     enqueue -&gt;  [A][B][C][D]  -&gt; dequeue</pre>
+                    <h3>The Queue API - Two Method Families</h3>
+                    <p>Throws on failure Returns a special value -------------------------- ------------------------
+                        add(e) - capacity full -&gt; exception | offer(e) -&gt; returns false remove() - empty queue -&gt;
+                        exception | poll() -&gt; returns null element() - empty queue -&gt; exception | peek() -&gt;
+                        returns null</p>
+                    <p>Pick ONE style consistently in a code base. `offer` / `poll` / `peek` are the safer default -
+                        exceptions tend to be unwanted control flow.</p>
+                    <h3>Common Implementations</h3>
+                    <p>LinkedList - doubly-linked list, unbounded, allows nulls ArrayDeque - resizing array, unbounded,
+                        NO nulls (preferred) PriorityQueue - heap, ORDER BY PRIORITY (not insertion order)
+                        ArrayBlockingQueue - bounded, thread-safe (java.util.concurrent) LinkedBlockingQueue- optionally
+                        bounded, thread-safe SynchronousQueue - hand-off queue with zero capacity ConcurrentLinkedQueue
+                        - lock-free unbounded queue</p>
+                    <h3>When To Use Which</h3>
+                    <ul>
+                        <li>Single-threaded FIFO -&gt; ArrayDeque (fastest plain Queue).
+                        </li>
+                        <li>Priority-ordered processing -&gt; PriorityQueue.
+                        </li>
+                        <li>Multi-producer / multi-consumer -&gt; the concurrent queues.
+                        </li>
+                    </ul>
+                    <h3>Deque vs Queue</h3>
+                    <p>Deque (double-ended queue) extends Queue. It adds operations at BOTH ends - addFirst/addLast,
+                        peekFirst/peekLast - and is the recommended tool for stacks too. See DequeInterface.java.</p>
                 </div>
             </div>
 
@@ -1398,56 +1429,6 @@ import java.util.ArrayDeque;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
-
-/**
- * java.util.Queue&amp;lt;E&amp;gt; - FIFO Linear Collection
- * -------------------------------------------
- * A Queue holds elements waiting to be processed. The classic model is
- * FIRST-IN-FIRST-OUT - the element you add first comes out first.
- * &lt;p&gt;
- *
- *      enqueue -&gt;  [A][B][C][D]  -&gt; dequeue
- * &lt;p&gt;
- *
- * The Queue API - Two Method Families
- * -----------------------------------
- * &lt;p&gt;
- *
- *   Throws on failure                Returns a special value
- *   --------------------------       ------------------------
- *   add(e)        - capacity full -&gt; exception   |  offer(e)  -&gt; returns false
- *   remove()      - empty queue   -&gt; exception   |  poll()    -&gt; returns null
- *   element()     - empty queue   -&gt; exception   |  peek()    -&gt; returns null
- * &lt;p&gt;
- *
- * Pick ONE style consistently in a code base. `offer` / `poll` / `peek` are
- * the safer default - exceptions tend to be unwanted control flow.
- * &lt;p&gt;
- *
- * Common Implementations
- * ----------------------
- *   LinkedList         - doubly-linked list, unbounded, allows nulls
- *   ArrayDeque         - resizing array, unbounded, NO nulls (preferred)
- *   PriorityQueue      - heap, ORDER BY PRIORITY (not insertion order)
- *   ArrayBlockingQueue - bounded, thread-safe (java.util.concurrent)
- *   LinkedBlockingQueue- optionally bounded, thread-safe
- *   SynchronousQueue   - hand-off queue with zero capacity
- *   ConcurrentLinkedQueue - lock-free unbounded queue
- * &lt;p&gt;
- *
- * When To Use Which
- * -----------------
- *   - Single-threaded FIFO              -&gt;  ArrayDeque (fastest plain Queue).
- *   - Priority-ordered processing       -&gt;  PriorityQueue.
- *   - Multi-producer / multi-consumer   -&gt;  the concurrent queues.
- * &lt;p&gt;
- *
- * Deque vs Queue
- * --------------
- * Deque (double-ended queue) extends Queue. It adds operations at BOTH
- * ends - addFirst/addLast, peekFirst/peekLast - and is the recommended
- * tool for stacks too. See DequeInterface.java.
- */
 
 public class QueueInterface {
 

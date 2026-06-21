@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase0_SetupAndFirstPrograms/JDKvsJREvsJVM/JDKvsJREvsJVM.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 145 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 29 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,143 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>These three are the most commonly confused acronyms in the Java world. They are nested - the
-                        JDK contains the JRE, and the JRE contains the JVM:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>JDK vs JRE vs JVM</h2>
+                    <p>These three are the most commonly confused acronyms in the Java world. They are nested - the JDK
+                        contains the JRE, and the JRE contains the JVM:</p>
+                    <pre class="hj-doc-art">     +----------------------------------------------+
+     |                    JDK                       |
+     |  (compiler javac, javadoc, jar, jshell, ...) |
+     |   +----------------------------------+       |
+     |   |              JRE                 |       |
+     |   |  (Java class libraries, rt.jar)  |       |
+     |   |   +--------------------------+   |       |
+     |   |   |          JVM             |   |       |
+     |   |   | (ClassLoader, Bytecode   |   |       |
+     |   |   |  Verifier, Interpreter,  |   |       |
+     |   |   |  JIT compiler, GC)       |   |       |
+     |   |   +--------------------------+   |       |
+     |   +----------------------------------+       |
+     +----------------------------------------------+</pre>
+                    <h3>1) JVM - Java Virtual Machine</h3>
+                    <ul>
+                        <li>An abstract specification of a virtual computer that runs Java bytecode.
+                        </li>
+                        <li>Provides platform independence: the same .class file runs on Windows, macOS,
+                        </li>
+                    </ul>
+                    <p>and Linux because each OS has its own JVM implementation.</p>
+                    <ul>
+                        <li>JVM is platform-dependent itself, but the bytecode it executes is not.
+                        </li>
+                        <li>Responsibilities:
+                            <ul>
+                                <li>Loading classes (ClassLoader subsystem)
+                                </li>
+                                <li>Verifying bytecode (Bytecode Verifier)
+                                </li>
+                                <li>Executing bytecode (Interpreter + Just-In-Time compiler)
+                                </li>
+                                <li>Allocating memory and reclaiming it (Garbage Collector)
+                                </li>
+                                <li>Managing native method calls (JNI)
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h3>2) JRE - Java Runtime Environment</h3>
+                    <ul>
+                        <li>JVM + Java standard class libraries (java.lang, java.util, java.io, java.net...).
+                        </li>
+                        <li>Enough to RUN a compiled Java program but NOT to compile one.
+                        </li>
+                        <li>Was distributed separately until Java 8. Since Java 9, the JRE is part of the
+                        </li>
+                    </ul>
+                    <p>JDK and Oracle no longer ships a standalone JRE.</p>
+                    <h3>3) JDK - Java Development Kit</h3>
+                    <ul>
+                        <li>The full development kit: JRE + development tools.
+                        </li>
+                        <li>Required to COMPILE Java code.
+                        </li>
+                        <li>Tools shipped with the JDK:
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    javac    - compiler
+    java     - launcher for class files
+    javadoc  - generates HTML documentation from Javadoc-style comments
+    jar      - packages classes into .jar archives
+    jshell   - interactive REPL (Java 9+)
+    jdb      - Java debugger
+    jlink    - creates a custom runtime image (Java 9+)</pre>
+                    <h3>Side-by-Side Comparison</h3>
+                    <pre class="hj-doc-art">+-----------+---------------------------+---------------------+----------------------+
+|           | JDK                       | JRE                 | JVM                  |
++-----------+---------------------------+---------------------+----------------------+
+| Purpose   | Develop + run Java apps   | Run Java apps       | Execute bytecode     |
+| Contains  | JRE + dev tools           | JVM + libraries     | Spec implementation  |
+| Platform  | Platform dependent        | Platform dependent  | Platform dependent   |
+|           |                           |                     | (bytecode independent)|
+| Need it?  | Required to compile       | Required to run     | Embedded in JRE/JDK  |
++-----------+---------------------------+---------------------+----------------------+</pre>
+                    <h3>JVM Internal Architecture (Deep Dive)</h3>
+                    <ul>
+                        <li>Class Loader Subsystem
+                            <ul>
+                                <li>Bootstrap ClassLoader -&gt; loads core Java classes (java.lang.*)
+                                </li>
+                                <li>Extension ClassLoader -&gt; loads classes from JAVA_HOME/lib/ext
+                                </li>
+                                <li>Application ClassLoader-&gt; loads classes from the application classpath
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>Class loading happens in three phases:</p>
+                    <ul>
+                        <li>Loading - locates and reads the .class file
+                        </li>
+                        <li>Linking - verification + preparation (default values) + resolution
+                        </li>
+                        <li>Initialization - executes static blocks and assigns static fields
+                        </li>
+                        <li>Runtime Data Areas (Memory)
+                        </li>
+                        <li>Method Area (per JVM) - class metadata, static variables, constant pool
+                        </li>
+                        <li>Heap (per JVM) - all objects and instance variables; GC works here
+                        </li>
+                        <li>Stack (per thread) - frames per method call, local variables, partial results
+                        </li>
+                        <li>PC Register (per thread) - address of the current bytecode instruction
+                        </li>
+                        <li>Native Method Stack (per thread) - for native (C/C++) code
+                        </li>
+                        <li>Execution Engine
+                        </li>
+                        <li>Interpreter - reads bytecode line by line (slow but starts fast)
+                        </li>
+                        <li>JIT Compiler - converts hot bytecode into native machine code at runtime
+                        </li>
+                        <li>Garbage Collector - reclaims unreachable objects from the heap
+                        </li>
+                        <li>Native Method Interface (JNI)
+                        </li>
+                        <li>Bridge between Java code and native code (libraries written in C/C++)
+                        </li>
+                    </ul>
+                    <h3>Common Question - &quot;Is JVM platform independent?&quot;</h3>
+                    <p>NO. The JVM is platform DEPENDENT (different binaries for Windows / Mac / Linux). The BYTECODE
+                        that the JVM consumes is platform INDEPENDENT.</p>
+                    <p>That is what enables WORA - Write Once, Run Anywhere.</p>
+                    <p>This file is documentation only. Running main() simply confirms which JVM implementation is
+                        executing this code.</p>
                 </div>
             </div>
 
@@ -1395,121 +1526,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase0_SetupAndFirstPrograms.JDKvsJREvsJVM;
-
-/**
- * JDK vs JRE vs JVM
- * -----------------
- * These three are the most commonly confused acronyms in the Java world. They
- * are nested - the JDK contains the JRE, and the JRE contains the JVM:
- * &lt;p&gt;
- *
- *      +----------------------------------------------+
- *      |                    JDK                       |
- *      |  (compiler javac, javadoc, jar, jshell, ...) |
- *      |   +----------------------------------+       |
- *      |   |              JRE                 |       |
- *      |   |  (Java class libraries, rt.jar)  |       |
- *      |   |   +--------------------------+   |       |
- *      |   |   |          JVM             |   |       |
- *      |   |   | (ClassLoader, Bytecode   |   |       |
- *      |   |   |  Verifier, Interpreter,  |   |       |
- *      |   |   |  JIT compiler, GC)       |   |       |
- *      |   |   +--------------------------+   |       |
- *      |   +----------------------------------+       |
- *      +----------------------------------------------+
- * &lt;p&gt;
- *
- * 1) JVM - Java Virtual Machine
- * -----------------------------
- * - An abstract specification of a virtual computer that runs Java bytecode.
- * - Provides platform independence: the same .class file runs on Windows, macOS,
- *   and Linux because each OS has its own JVM implementation.
- * - JVM is platform-dependent itself, but the bytecode it executes is not.
- * - Responsibilities:
- *     * Loading classes (ClassLoader subsystem)
- *     * Verifying bytecode (Bytecode Verifier)
- *     * Executing bytecode (Interpreter + Just-In-Time compiler)
- *     * Allocating memory and reclaiming it (Garbage Collector)
- *     * Managing native method calls (JNI)
- * &lt;p&gt;
- *
- * 2) JRE - Java Runtime Environment
- * ---------------------------------
- * - JVM + Java standard class libraries (java.lang, java.util, java.io, java.net...).
- * - Enough to RUN a compiled Java program but NOT to compile one.
- * - Was distributed separately until Java 8. Since Java 9, the JRE is part of the
- *   JDK and Oracle no longer ships a standalone JRE.
- * &lt;p&gt;
- *
- * 3) JDK - Java Development Kit
- * -----------------------------
- * - The full development kit: JRE + development tools.
- * - Required to COMPILE Java code.
- * - Tools shipped with the JDK:
- *     javac    - compiler
- *     java     - launcher for class files
- *     javadoc  - generates HTML documentation from Javadoc-style comments
- *     jar      - packages classes into .jar archives
- *     jshell   - interactive REPL (Java 9+)
- *     jdb      - Java debugger
- *     jlink    - creates a custom runtime image (Java 9+)
- * &lt;p&gt;
- *
- * Side-by-Side Comparison
- * -----------------------
- * +-----------+---------------------------+---------------------+----------------------+
- * |           | JDK                       | JRE                 | JVM                  |
- * +-----------+---------------------------+---------------------+----------------------+
- * | Purpose   | Develop + run Java apps   | Run Java apps       | Execute bytecode     |
- * | Contains  | JRE + dev tools           | JVM + libraries     | Spec implementation  |
- * | Platform  | Platform dependent        | Platform dependent  | Platform dependent   |
- * |           |                           |                     | (bytecode independent)|
- * | Need it?  | Required to compile       | Required to run     | Embedded in JRE/JDK  |
- * +-----------+---------------------------+---------------------+----------------------+
- * &lt;p&gt;
- *
- * JVM Internal Architecture (Deep Dive)
- * -------------------------------------
- * 1. Class Loader Subsystem
- *    - Bootstrap ClassLoader  -&gt; loads core Java classes (java.lang.*)
- *    - Extension ClassLoader  -&gt; loads classes from JAVA_HOME/lib/ext
- *    - Application ClassLoader-&gt; loads classes from the application classpath
- *    Class loading happens in three phases:
- *      a) Loading      - locates and reads the .class file
- *      b) Linking      - verification + preparation (default values) + resolution
- *      c) Initialization - executes static blocks and assigns static fields
- * &lt;p&gt;
- *
- * 2. Runtime Data Areas (Memory)
- *    - Method Area (per JVM)  - class metadata, static variables, constant pool
- *    - Heap         (per JVM) - all objects and instance variables; GC works here
- *    - Stack    (per thread)  - frames per method call, local variables, partial results
- *    - PC Register (per thread) - address of the current bytecode instruction
- *    - Native Method Stack (per thread) - for native (C/C++) code
- * &lt;p&gt;
- *
- * 3. Execution Engine
- *    - Interpreter        - reads bytecode line by line (slow but starts fast)
- *    - JIT Compiler       - converts hot bytecode into native machine code at runtime
- *    - Garbage Collector  - reclaims unreachable objects from the heap
- * &lt;p&gt;
- *
- * 4. Native Method Interface (JNI)
- *    - Bridge between Java code and native code (libraries written in C/C++)
- * &lt;p&gt;
- *
- * Common Question - &quot;Is JVM platform independent?&quot;
- * ------------------------------------------------
- * NO. The JVM is platform DEPENDENT (different binaries for Windows / Mac / Linux).
- * The BYTECODE that the JVM consumes is platform INDEPENDENT.
- * &lt;p&gt;
- *
- * That is what enables WORA - Write Once, Run Anywhere.
- * &lt;p&gt;
- *
- * This file is documentation only. Running main() simply confirms which JVM
- * implementation is executing this code.
- */
 
 public class JDKvsJREvsJVM {
 

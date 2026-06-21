@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase3_ObjectOrientation/Interfaces/ClassVsInterface.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 154 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 98 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,57 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Both classes and interfaces describe a TYPE in Java. The difference is in what each can carry
-                        and how Java&#x27;s inheritance model treats them.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Class vs Interface - Practical Comparison</h2>
+                    <p>Both classes and interfaces describe a TYPE in Java. The difference is in what each can carry and
+                        how Java&#x27;s inheritance model treats them.</p>
+                    <h3>Side-by-Side</h3>
+                    <pre class="hj-doc-art"> Aspect              | class                         | interface
+ --------------------+-------------------------------+-------------------------------
+ Keyword             | class                         | interface
+ Instantiable?       | YES (unless abstract)         | NO  (cannot be `new`-ed)
+ Single vs Multiple  | single inheritance:           | multiple type inheritance:
+ inheritance         |   class A extends B           |   class A implements X, Y, Z
+ Methods             | concrete + abstract           | abstract + default + static
+                     |                               |   + private (Java 9+)
+ Default method      | concrete method               | `default` keyword
+ visibility          | package-private               | implicitly public
+ Instance fields     | any                           | NONE (no per-object state)
+ Constants           | any                           | implicitly public static final
+ Constructors        | yes                           | NO
+ Access modifiers    | public / protected / pkg /    | members may be public (default)
+ on members          |   private                     |   or private (Java 9+)
+ Used to express     | &quot;what an object IS&quot;           | &quot;what an object CAN DO&quot;</pre>
+                    <h3>Picking Between Them</h3>
+                    <ul>
+                        <li>Need SHARED STATE across implementations? -&gt; abstract CLASS.
+                        </li>
+                        <li>Want a CONTRACT a class can adopt alongside its existing parent? -&gt; INTERFACE.
+                        </li>
+                        <li>Need to target LAMBDAS? -&gt; functional INTERFACE (single abstract method).
+                        </li>
+                        <li>Want a CLOSED set of subtypes you control? -&gt; sealed CLASS or sealed INTERFACE.
+                        </li>
+                    </ul>
+                    <h3>Real-World JDK Examples</h3>
+                    <p>List&lt;E&gt; - INTERFACE (the contract) AbstractList&lt;E&gt; - CLASS (a skeleton implementation
+                        - shared code) ArrayList&lt;E&gt; - CLASS extends AbstractList implements List</p>
+                    <p>The JDK consistently pairs interfaces (contract) with abstract classes (shared code) - a pattern
+                        worth copying in your own designs.</p>
+                    <h3>See Also</h3>
+                    <ul>
+                        <li>OOPSConcepts/Abstraction/AbstractClassVsInterface.java - longer discussion
+                        </li>
+                        <li>InterfaceIntro.java - interface members tour
+                        </li>
+                        <li>FunctionalInterfaceDemo.java - SAM + lambdas
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1395,61 +1440,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase3_ObjectOrientation.Interfaces;
-
-/**
- * Class vs Interface - Practical Comparison
- * -----------------------------------------
- * Both classes and interfaces describe a TYPE in Java. The difference is in
- * what each can carry and how Java&#x27;s inheritance model treats them.
- * &lt;p&gt;
- *
- * Side-by-Side
- * ------------
- * &lt;p&gt;
- *
- *  Aspect              | class                         | interface
- *  --------------------+-------------------------------+-------------------------------
- *  Keyword             | class                         | interface
- *  Instantiable?       | YES (unless abstract)         | NO  (cannot be `new`-ed)
- *  Single vs Multiple  | single inheritance:           | multiple type inheritance:
- *  inheritance         |   class A extends B           |   class A implements X, Y, Z
- *  Methods             | concrete + abstract           | abstract + default + static
- *                      |                               |   + private (Java 9+)
- *  Default method      | concrete method               | `default` keyword
- *  visibility          | package-private               | implicitly public
- *  Instance fields     | any                           | NONE (no per-object state)
- *  Constants           | any                           | implicitly public static final
- *  Constructors        | yes                           | NO
- *  Access modifiers    | public / protected / pkg /    | members may be public (default)
- *  on members          |   private                     |   or private (Java 9+)
- *  Used to express     | &quot;what an object IS&quot;           | &quot;what an object CAN DO&quot;
- * &lt;p&gt;
- *
- * Picking Between Them
- * --------------------
- *   - Need SHARED STATE across implementations? -&gt; abstract CLASS.
- *   - Want a CONTRACT a class can adopt alongside its existing parent? -&gt; INTERFACE.
- *   - Need to target LAMBDAS? -&gt; functional INTERFACE (single abstract method).
- *   - Want a CLOSED set of subtypes you control? -&gt; sealed CLASS or sealed INTERFACE.
- * &lt;p&gt;
- *
- * Real-World JDK Examples
- * -----------------------
- *   List&lt;E&gt;            - INTERFACE  (the contract)
- *   AbstractList&lt;E&gt;    - CLASS      (a skeleton implementation - shared code)
- *   ArrayList&lt;E&gt;       - CLASS extends AbstractList implements List
- * &lt;p&gt;
- *
- *   The JDK consistently pairs interfaces (contract) with abstract classes
- *   (shared code) - a pattern worth copying in your own designs.
- * &lt;p&gt;
- *
- * See Also
- * --------
- *   - OOPSConcepts/Abstraction/AbstractClassVsInterface.java  - longer discussion
- *   - InterfaceIntro.java                                     - interface members tour
- *   - FunctionalInterfaceDemo.java                            - SAM + lambdas
- */
 
 public class ClassVsInterface {
 

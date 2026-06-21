@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/TreeMapDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 144 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 89 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,62 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>java.util.TreeMap&amp;lt;K, V&amp;gt; - Sorted Map (Red-Black Tree)</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.TreeMap&amp;lt;K, V&amp;gt; - Sorted Map (Red-Black Tree)</h2>
+                    <p>TreeMap keeps its entries in SORTED order by key. It uses either the key&#x27;s natural ordering
+                        (key must implement Comparable) or a Comparator you supply at construction.</p>
+                    <h3>Why It Exists</h3>
+                    <ul>
+                        <li>Iteration is always in key order, no extra sort needed.
+                        </li>
+                        <li>&quot;Range queries&quot; - all entries between two keys - are O(log n).
+                        </li>
+                        <li>&quot;Neighbour queries&quot; - floorKey, ceilingKey, etc. - are O(log n) and
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    unique to TreeMap.</pre>
+                    <h3>When To Use It</h3>
+                    <ul>
+                        <li>You need entries sorted by key on every iteration.
+                        </li>
+                        <li>You answer questions like &quot;biggest key &amp;lt;= X&quot; or &quot;all entries between
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    A and B&quot;.</pre>
+                    <ul>
+                        <li>You want a stable iteration order without writing a Comparator at
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    each iteration site.</pre>
+                    <h3>Big-O</h3>
+                    <p>put / get / remove / containsKey O(log n) iteration (in order) O(n) first / last / floor /
+                        ceiling / lower / higher O(log n) subMap / headMap / tailMap (range views) O(log n) to
+                        create</p>
+                    <p>Implements: NavigableMap, SortedMap, Map</p>
+                    <h3>Key Methods Beyond the Map Contract</h3>
+                    <ul>
+                        <li>SortedMap:
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">       firstKey() / lastKey()
+       headMap(toKey)            - strictly less
+       tailMap(fromKey)          - fromKey inclusive
+       subMap(fromKey, toKey)    - fromKey inclusive, toKey exclusive
+       comparator()</pre>
+                    <ul>
+                        <li>NavigableMap:
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">       firstEntry / lastEntry / pollFirstEntry / pollLastEntry
+       floorKey(k) / ceilingKey(k) / lowerKey(k) / higherKey(k)
+       floorEntry / ceilingEntry / lowerEntry / higherEntry
+       descendingMap / descendingKeySet
+       navigableHeadMap / Tail / SubMap (with inclusive flags)</pre>
                 </div>
             </div>
 
@@ -1398,60 +1450,6 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.NavigableMap;
 import java.util.TreeMap;
-
-/**
- * java.util.TreeMap&amp;lt;K, V&amp;gt; - Sorted Map (Red-Black Tree)
- * -----------------------------------------------------
- * TreeMap keeps its entries in SORTED order by key. It uses either the
- * key&#x27;s natural ordering (key must implement Comparable) or a Comparator
- * you supply at construction.
- * &lt;p&gt;
- *
- * Why It Exists
- * -------------
- *   - Iteration is always in key order, no extra sort needed.
- *   - &quot;Range queries&quot; - all entries between two keys - are O(log n).
- *   - &quot;Neighbour queries&quot; - floorKey, ceilingKey, etc. - are O(log n) and
- *     unique to TreeMap.
- * &lt;p&gt;
- *
- * When To Use It
- * --------------
- *   - You need entries sorted by key on every iteration.
- *   - You answer questions like &quot;biggest key &amp;lt;= X&quot; or &quot;all entries between
- *     A and B&quot;.
- *   - You want a stable iteration order without writing a Comparator at
- *     each iteration site.
- * &lt;p&gt;
- *
- * Big-O
- * -----
- *   put / get / remove / containsKey                          O(log n)
- *   iteration (in order)                                      O(n)
- *   first / last / floor / ceiling / lower / higher           O(log n)
- *   subMap / headMap / tailMap (range views)                  O(log n) to create
- * &lt;p&gt;
- *
- * Implements: NavigableMap, SortedMap, Map
- * &lt;p&gt;
- *
- * Key Methods Beyond the Map Contract
- * -----------------------------------
- *   - SortedMap:
- *        firstKey() / lastKey()
- *        headMap(toKey)            - strictly less
- *        tailMap(fromKey)          - fromKey inclusive
- *        subMap(fromKey, toKey)    - fromKey inclusive, toKey exclusive
- *        comparator()
- * &lt;p&gt;
- *
- *   - NavigableMap:
- *        firstEntry / lastEntry / pollFirstEntry / pollLastEntry
- *        floorKey(k) / ceilingKey(k) / lowerKey(k) / higherKey(k)
- *        floorEntry / ceilingEntry / lowerEntry / higherEntry
- *        descendingMap / descendingKeySet
- *        navigableHeadMap / Tail / SubMap (with inclusive flags)
- */
 
 public class TreeMapDemo {
 

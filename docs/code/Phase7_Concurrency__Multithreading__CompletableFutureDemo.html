@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/CompletableFutureDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 176 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 112 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,50 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Future is great for &quot;submit and get later&quot; — but every .get() BLOCKS.
-                        CompletableFuture is composable: chain transformations, combine multiple futures, handle errors
-                        inline, run async stages on the executor of your ch...
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>CompletableFuture — Composable Async (Java 8+)</h2>
+                    <p>Future is great for &quot;submit and get later&quot; — but every .get() BLOCKS. CompletableFuture
+                        is composable: chain transformations, combine multiple futures, handle errors inline, run async
+                        stages on the executor of your choice.</p>
+                    <h3>Creating</h3>
+                    <p>CompletableFuture.completedFuture(v) CompletableFuture.failedFuture(throwable) (Java 9+)
+                        CompletableFuture.supplyAsync(Supplier&lt;V&gt;) (uses commonPool)
+                        CompletableFuture.supplyAsync(Supplier&lt;V&gt;, Executor) CompletableFuture.runAsync(Runnable[,
+                        Executor])</p>
+                    <h3>Transformations</h3>
+                    <p>thenApply(Function) - synchronous map on the completing thread thenApplyAsync(Function) - same,
+                        but on the default async executor thenAccept(Consumer) - side-effect on the value
+                        thenRun(Runnable) - side-effect, ignores the value thenCompose(F -&gt; CF&lt;V&gt;) - flatMap;
+                        chain another async stage</p>
+                    <h3>Combinators</h3>
+                    <p>thenCombine(otherCF, BiFn) - wait for both, combine thenAcceptBoth / runAfterBoth - side-effects
+                        applyToEither / acceptEither - whichever completes first allOf(cf...) - wait for all (returns CF&lt;Void&gt;)
+                        anyOf(cf...) - first to finish (returns CF&lt;Object&gt;)</p>
+                    <h3>Error handling</h3>
+                    <p>exceptionally(Function&lt;Throwable, V&gt;) - fallback value handle(BiFunction&lt;V, Throwable, V&gt;)
+                        - see both result and error whenComplete(BiConsumer&lt;V, Throwable&gt;) - side-effect on
+                        either</p>
+                    <h3>Timeouts (Java 9+)</h3>
+                    <p>orTimeout(time, unit) - fail with TimeoutException completeOnTimeout(value, time, unit) - fall
+                        back to value</p>
+                    <h3>delayedExecutor (Java 9+)</h3>
+                    <p>CompletableFuture.delayedExecutor(d, unit) - returns an Executor that</p>
+                    <pre class="hj-doc-art">                                                  schedules `delay` later.</pre>
+                    <h3>Threading note</h3>
+                    <ul>
+                        <li>The *Async variants run on the supplied executor (or commonPool).
+                        </li>
+                        <li>The non-Async variants run on whichever thread completed the parent.
+                        </li>
+                        <li>For CPU work you can use the commonPool. For I/O, USE YOUR OWN
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    EXECUTOR (or virtual threads) — don&#x27;t starve the common pool.</pre>
                 </div>
             </div>
 
@@ -1402,69 +1439,6 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-
-/**
- * CompletableFuture — Composable Async (Java 8+)
- * ----------------------------------------------
- * Future is great for &quot;submit and get later&quot; — but every .get() BLOCKS.
- * CompletableFuture is composable: chain transformations, combine
- * multiple futures, handle errors inline, run async stages on the
- * executor of your choice.
- * &lt;p&gt;
- *
- * Creating
- * --------
- *   CompletableFuture.completedFuture(v)
- *   CompletableFuture.failedFuture(throwable)               (Java 9+)
- *   CompletableFuture.supplyAsync(Supplier&lt;V&gt;)              (uses commonPool)
- *   CompletableFuture.supplyAsync(Supplier&lt;V&gt;, Executor)
- *   CompletableFuture.runAsync(Runnable[, Executor])
- * &lt;p&gt;
- *
- * Transformations
- * ---------------
- *   thenApply(Function)        - synchronous map on the completing thread
- *   thenApplyAsync(Function)   - same, but on the default async executor
- *   thenAccept(Consumer)       - side-effect on the value
- *   thenRun(Runnable)          - side-effect, ignores the value
- *   thenCompose(F -&gt; CF&lt;V&gt;)    - flatMap; chain another async stage
- * &lt;p&gt;
- *
- * Combinators
- * -----------
- *   thenCombine(otherCF, BiFn)        - wait for both, combine
- *   thenAcceptBoth / runAfterBoth     - side-effects
- *   applyToEither / acceptEither      - whichever completes first
- *   allOf(cf...)                       - wait for all (returns CF&lt;Void&gt;)
- *   anyOf(cf...)                       - first to finish (returns CF&lt;Object&gt;)
- * &lt;p&gt;
- *
- * Error handling
- * --------------
- *   exceptionally(Function&lt;Throwable, V&gt;)        - fallback value
- *   handle(BiFunction&lt;V, Throwable, V&gt;)           - see both result and error
- *   whenComplete(BiConsumer&lt;V, Throwable&gt;)        - side-effect on either
- * &lt;p&gt;
- *
- * Timeouts (Java 9+)
- * ------------------
- *   orTimeout(time, unit)                         - fail with TimeoutException
- *   completeOnTimeout(value, time, unit)          - fall back to value
- * &lt;p&gt;
- *
- * delayedExecutor (Java 9+)
- * -------------------------
- *   CompletableFuture.delayedExecutor(d, unit)   - returns an Executor that
- *                                                   schedules `delay` later.
- * &lt;p&gt;
- *
- * Threading note
- * --------------
- *   - The *Async variants run on the supplied executor (or commonPool).
- *   - The non-Async variants run on whichever thread completed the parent.
- *   - For CPU work you can use the commonPool. For I/O, USE YOUR OWN
- *     EXECUTOR (or virtual threads) — don&#x27;t starve the common pool.
- */
 
 public class CompletableFutureDemo {
 

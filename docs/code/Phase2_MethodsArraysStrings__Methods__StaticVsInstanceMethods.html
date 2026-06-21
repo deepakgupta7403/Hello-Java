@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase2_MethodsArraysStrings/Methods/StaticVsInstanceMethods.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 145 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 82 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,62 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A method in Java is one of two flavours:</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Static Methods vs Instance Methods</h2>
+                    <p>A method in Java is one of two flavours:</p>
+                    <pre class="hj-doc-art">     STATIC METHOD                  | INSTANCE METHOD
+     -------------------------------+-----------------------------------------
+     Declared with the `static`     | No `static` keyword.
+     keyword.                       |
+     Belongs to the CLASS itself.   | Belongs to each OBJECT (instance).
+     Called on the class:           | Called on an object:
+         Math.max(1, 2);            |     obj.toString();
+     Has NO `this` reference.       | Has access to `this`.
+     Cannot directly access         | Can access static AND instance members.
+     instance fields/methods of     |
+     the same class (you must use   |
+     an explicit object).           |
+     One copy per CLASS.            | One copy of state per OBJECT.
+     Can be called BEFORE any       | Requires an object to exist.
+     object is created.             |</pre>
+                    <h3>When To Use a Static Method</h3>
+                    <ul>
+                        <li>Pure utility/helper functions that depend ONLY on their arguments
+                        </li>
+                    </ul>
+                    <p>(Math.sqrt, Collections.sort, Integer.parseInt).</p>
+                    <ul>
+                        <li>Factory methods that build instances (Optional.of, List.of).
+                        </li>
+                        <li>The application entry point - `public static void main(String[] args)`.
+                        </li>
+                    </ul>
+                    <h3>When To Use an Instance Method</h3>
+                    <ul>
+                        <li>Behaviour that depends on or modifies the OBJECT&#x27;S state.
+                        </li>
+                        <li>When you want polymorphism (instance methods can be OVERRIDDEN in
+                        </li>
+                    </ul>
+                    <p>subclasses; static methods cannot - they can only be HIDDEN).</p>
+                    <h3>Static Methods Are NOT Polymorphic</h3>
+                    <p>If a subclass declares a static method with the same signature as the superclass, it HIDES the
+                        parent&#x27;s method (resolved at compile time by the declared type of the reference). Instance
+                        methods, in contrast, are dispatched at runtime based on the actual object type.</p>
+                    <h3>Common Beginner Mistake</h3>
+                    <p>Calling a non-static field/method directly from main():</p>
+                    <pre class="hj-doc-art">     class Demo {
+         int x = 10;
+         public static void main(String[] args) {
+             System.out.println(x);     // ERROR - x is instance, main is static
+         }
+     }</pre>
+                    <p>Fix: create an object first -&gt; new Demo().x;</p>
                 </div>
             </div>
 
@@ -1393,68 +1445,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase2_MethodsArraysStrings.Methods;
-
-/**
- * Static Methods vs Instance Methods
- * ----------------------------------
- * A method in Java is one of two flavours:
- * &lt;p&gt;
- *
- *      STATIC METHOD                  | INSTANCE METHOD
- *      -------------------------------+-----------------------------------------
- *      Declared with the `static`     | No `static` keyword.
- *      keyword.                       |
- *      Belongs to the CLASS itself.   | Belongs to each OBJECT (instance).
- *      Called on the class:           | Called on an object:
- *          Math.max(1, 2);            |     obj.toString();
- *      Has NO `this` reference.       | Has access to `this`.
- *      Cannot directly access         | Can access static AND instance members.
- *      instance fields/methods of     |
- *      the same class (you must use   |
- *      an explicit object).           |
- *      One copy per CLASS.            | One copy of state per OBJECT.
- *      Can be called BEFORE any       | Requires an object to exist.
- *      object is created.             |
- * &lt;p&gt;
- *
- * When To Use a Static Method
- * ---------------------------
- *  - Pure utility/helper functions that depend ONLY on their arguments
- *    (Math.sqrt, Collections.sort, Integer.parseInt).
- *  - Factory methods that build instances (Optional.of, List.of).
- *  - The application entry point - `public static void main(String[] args)`.
- * &lt;p&gt;
- *
- * When To Use an Instance Method
- * ------------------------------
- *  - Behaviour that depends on or modifies the OBJECT&#x27;S state.
- *  - When you want polymorphism (instance methods can be OVERRIDDEN in
- *    subclasses; static methods cannot - they can only be HIDDEN).
- * &lt;p&gt;
- *
- * Static Methods Are NOT Polymorphic
- * ----------------------------------
- * If a subclass declares a static method with the same signature as the
- * superclass, it HIDES the parent&#x27;s method (resolved at compile time by the
- * declared type of the reference). Instance methods, in contrast, are
- * dispatched at runtime based on the actual object type.
- * &lt;p&gt;
- *
- * Common Beginner Mistake
- * -----------------------
- * Calling a non-static field/method directly from main():
- * &lt;p&gt;
- *
- *      class Demo {
- *          int x = 10;
- *          public static void main(String[] args) {
- *              System.out.println(x);     // ERROR - x is instance, main is static
- *          }
- *      }
- * &lt;p&gt;
- *
- * Fix: create an object first  -&gt;  new Demo().x;
- */
 
 public class StaticVsInstanceMethods {
 

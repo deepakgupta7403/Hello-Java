@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase3_ObjectOrientation/NestedClasses/StaticNestedClass.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 114 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 81 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,43 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A nested class declared `static`. It is just a top-level class that happens to live INSIDE
-                        another for namespace reasons. It has NO implicit reference to an instance of the outer class.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Static Nested Classes</h2>
+                    <p>A nested class declared `static`. It is just a top-level class that happens to live INSIDE
+                        another for namespace reasons. It has NO implicit reference to an instance of the outer
+                        class.</p>
+                    <pre class="hj-doc-art">     public class Owner {
+         public static class Helper { ... }
+     }</pre>
+                    <pre class="hj-doc-art">     Owner.Helper h = new Owner.Helper();    // no Owner instance required</pre>
+                    <h3>Use cases</h3>
+                    <ul>
+                        <li>Builders (Builder lives inside Pizza)
+                        </li>
+                        <li>DTOs / value records (public static record Position(...))
+                        </li>
+                        <li>Enums (every enum IS a static nested class implicitly)
+                        </li>
+                        <li>Iterators (private static class Itr ...)
+                        </li>
+                        <li>Strategy / Comparator helpers tightly bound to the owner.
+                        </li>
+                    </ul>
+                    <h3>Visibility tricks</h3>
+                    <ul>
+                        <li>A private static nested class is INVISIBLE outside the file —
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    great for implementation detail.</pre>
+                    <ul>
+                        <li>It can ACCESS the outer class&#x27;s private static members.
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1397,38 +1428,6 @@
           <pre class="line-numbers m-0"><code class="language-java">package Phase3_ObjectOrientation.NestedClasses;
 
 import java.util.Objects;
-
-/**
- * Static Nested Classes
- * ---------------------
- * A nested class declared `static`. It is just a top-level class that
- * happens to live INSIDE another for namespace reasons. It has NO
- * implicit reference to an instance of the outer class.
- * &lt;p&gt;
- *
- *      public class Owner {
- *          public static class Helper { ... }
- *      }
- * &lt;p&gt;
- *
- *      Owner.Helper h = new Owner.Helper();    // no Owner instance required
- * &lt;p&gt;
- *
- * Use cases
- * ---------
- *   - Builders                 (Builder lives inside Pizza)
- *   - DTOs / value records     (public static record Position(...))
- *   - Enums (every enum IS a static nested class implicitly)
- *   - Iterators                (private static class Itr ...)
- *   - Strategy / Comparator helpers tightly bound to the owner.
- * &lt;p&gt;
- *
- * Visibility tricks
- * -----------------
- *   - A private static nested class is INVISIBLE outside the file —
- *     great for implementation detail.
- *   - It can ACCESS the outer class&#x27;s private static members.
- */
 
 public class StaticNestedClass {
 

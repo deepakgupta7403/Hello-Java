@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase1_CoreLanguage/Extra/FunctionCurrying.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 106 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 92 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,20 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Function Currying is a concept of breaking a function with many arguments into many functions
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>Function Currying is a concept of breaking a function with many arguments into many functions
                         with single argument in such a way, that the output is same. In other words, its a technique of
-                        simplifying a multi-valued...
-                    </div>
+                        simplifying a multi-valued argument function into single-valued argument multi-functions.
+                        example:- addThreeNumberFun(a,b,c){(return a+b+c)} -----After applying Function Currying
+                        addNumberOne(a){return addnumberTwo(b) return addNumberThree(c){return (a+b+c)}}}</p>
+                    <p>Currying breaks down higher order functions into a series of smaller cascaded functions which
+                        take in one argument and return a function except for the last cascaded function which returns
+                        the desired value.</p>
                 </div>
             </div>
 
@@ -1398,19 +1405,6 @@
           <pre class="line-numbers m-0"><code class="language-java">package Phase1_CoreLanguage.Extra;
 
 import java.util.function.Function;
-
-/**
- * Function Currying is a concept of breaking a function with many arguments into many functions with single argument in such a way, that the output is same.
- * In other words, its a technique of simplifying a multi-valued argument function into single-valued argument multi-functions.
- * example:-
- * addThreeNumberFun(a,b,c){(return a+b+c)} -----After applying Function Currying addNumberOne(a){return addnumberTwo(b) return addNumberThree(c){return (a+b+c)}}}
- * &lt;p&gt;
- *
- * Currying breaks down higher order functions into a series of smaller cascaded functions which take in one argument and return a function except for the last cascaded function which returns the desired value.
- * &lt;p&gt;
- *
- * **/
-
 
 public class FunctionCurrying {
 

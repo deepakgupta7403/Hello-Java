@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase6_RuntimeMemoryRegexReflection/MemoryAllocation/MemoryManagementIntro.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 154 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 70 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,89 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>&quot;Memory management&quot; is everything the JVM does between you writing `new Customer()`
-                        and the OS getting the bytes back: where the object lives, when it can be reclaimed, and which
-                        subsystem of the JVM owns the space.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Java Memory Management - Introduction</h2>
+                    <p>&quot;Memory management&quot; is everything the JVM does between you writing `new Customer()` and
+                        the OS getting the bytes back: where the object lives, when it can be reclaimed, and which
+                        subsystem of the JVM owns the space.</p>
+                    <h3>Why You Care (even though Java is &quot;garbage-collected&quot;)</h3>
+                    <ul>
+                        <li>YOU still pick the data structures - they decide allocation rate.
+                        </li>
+                        <li>YOU configure heap size and the garbage collector.
+                        </li>
+                        <li>YOU can introduce LEAKS that the GC cannot fix (see MemoryLeaks.java).
+                        </li>
+                        <li>Understanding the layout helps you tune for latency or throughput.
+                        </li>
+                    </ul>
+                    <h3>The Big Picture</h3>
+                    <pre class="hj-doc-art">     +-----------------------------------------------+
+     |                  JVM Process                  |
+     |                                               |
+     |  +-----------------------+                    |
+     |  |     Method Area       |  class data,       |
+     |  | (Metaspace since 8)   |  static fields,    |
+     |  +-----------------------+  constant pool     |
+     |                                               |
+     |  +-----------------------+                    |
+     |  |       Heap            |  ALL objects,      |
+     |  |                       |  arrays            |
+     |  +-----------------------+                    |
+     |                                               |
+     |  +-----------+ +-----------+   per-thread     |
+     |  | Thread A  | | Thread B  |   stack frames,  |
+     |  | Stack     | | Stack     |   local vars     |
+     |  +-----------+ +-----------+                  |
+     |                                               |
+     |  +-----------+ +-----------+                  |
+     |  | PC reg A  | | PC reg B  |   current        |
+     |  +-----------+ +-----------+   bytecode addr  |
+     |                                               |
+     |  +-----------+ +-----------+                  |
+     |  | Native    | | Native    |   C/C++ stacks   |
+     |  | Stack A   | | Stack B   |   for JNI calls  |
+     |  +-----------+ +-----------+                  |
+     +-----------------------------------------------+</pre>
+                    <ul>
+                        <li>Method Area &amp; Heap are SHARED by all threads.
+                        </li>
+                        <li>Stack, PC, Native stack are PER-THREAD.
+                        </li>
+                    </ul>
+                    <h3>Lifecycle of a Java Object</h3>
+                    <ul>
+                        <li>CREATION - `new` allocates space on the heap (the &quot;young generation&quot;).
+                        </li>
+                        <li>USE - method calls move references between stack frames.
+                        </li>
+                        <li>UNREACHABILITY - no live reference points to the object anymore.
+                        </li>
+                        <li>RECLAMATION - the garbage collector eventually reclaims the space
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                   and may compact / move the surviving objects.</pre>
+                    <h3>Things the Programmer Does NOT Control</h3>
+                    <ul>
+                        <li>WHEN the GC runs. `System.gc()` is just a HINT.
+                        </li>
+                        <li>The exact ADDRESS of an object - it can move between GC cycles.
+                        </li>
+                        <li>Stack frame layout. The JVM manages it.
+                        </li>
+                    </ul>
+                    <h3>What This Folder Covers</h3>
+                    <p>MemoryManagementIntro.java (this file) ObjectsInMemory.java - the in-memory layout of an object
+                        JvmMemoryAreas.java - Method Area / Heap / Stack / PC / Native StackVsHeap.java - the most-asked
+                        interview question GarbageCollection.java - reachability, mark-and-sweep, generations
+                        GarbageCollectors.java - Serial / Parallel / G1 / ZGC / Shenandoah MemoryLeaks.java - patterns
+                        that fool the GC and fixes ModernMemoryFeatures.java - Java 9..21 (Cleaner, Compact Strings,</p>
+                    <pre class="hj-doc-art">                                 Generational ZGC, virtual-thread memory)</pre>
                 </div>
             </div>
 
@@ -1396,89 +1472,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase6_RuntimeMemoryRegexReflection.MemoryAllocation;
-
-/**
- * Java Memory Management - Introduction
- * -------------------------------------
- * &quot;Memory management&quot; is everything the JVM does between you writing
- * `new Customer()` and the OS getting the bytes back: where the object
- * lives, when it can be reclaimed, and which subsystem of the JVM owns
- * the space.
- * &lt;p&gt;
- *
- * Why You Care (even though Java is &quot;garbage-collected&quot;)
- * ------------------------------------------------------
- *   - YOU still pick the data structures - they decide allocation rate.
- *   - YOU configure heap size and the garbage collector.
- *   - YOU can introduce LEAKS that the GC cannot fix (see MemoryLeaks.java).
- *   - Understanding the layout helps you tune for latency or throughput.
- * &lt;p&gt;
- *
- * The Big Picture
- * ---------------
- * &lt;p&gt;
- *
- *      +-----------------------------------------------+
- *      |                  JVM Process                  |
- *      |                                               |
- *      |  +-----------------------+                    |
- *      |  |     Method Area       |  class data,       |
- *      |  | (Metaspace since 8)   |  static fields,    |
- *      |  +-----------------------+  constant pool     |
- *      |                                               |
- *      |  +-----------------------+                    |
- *      |  |       Heap            |  ALL objects,      |
- *      |  |                       |  arrays            |
- *      |  +-----------------------+                    |
- *      |                                               |
- *      |  +-----------+ +-----------+   per-thread     |
- *      |  | Thread A  | | Thread B  |   stack frames,  |
- *      |  | Stack     | | Stack     |   local vars     |
- *      |  +-----------+ +-----------+                  |
- *      |                                               |
- *      |  +-----------+ +-----------+                  |
- *      |  | PC reg A  | | PC reg B  |   current        |
- *      |  +-----------+ +-----------+   bytecode addr  |
- *      |                                               |
- *      |  +-----------+ +-----------+                  |
- *      |  | Native    | | Native    |   C/C++ stacks   |
- *      |  | Stack A   | | Stack B   |   for JNI calls  |
- *      |  +-----------+ +-----------+                  |
- *      +-----------------------------------------------+
- * &lt;p&gt;
- *
- *   - Method Area &amp; Heap are SHARED by all threads.
- *   - Stack, PC, Native stack are PER-THREAD.
- * &lt;p&gt;
- *
- * Lifecycle of a Java Object
- * --------------------------
- *   1. CREATION   - `new` allocates space on the heap (the &quot;young generation&quot;).
- *   2. USE        - method calls move references between stack frames.
- *   3. UNREACHABILITY - no live reference points to the object anymore.
- *   4. RECLAMATION - the garbage collector eventually reclaims the space
- *                    and may compact / move the surviving objects.
- * &lt;p&gt;
- *
- * Things the Programmer Does NOT Control
- * --------------------------------------
- *   - WHEN the GC runs. `System.gc()` is just a HINT.
- *   - The exact ADDRESS of an object - it can move between GC cycles.
- *   - Stack frame layout. The JVM manages it.
- * &lt;p&gt;
- *
- * What This Folder Covers
- * -----------------------
- *   MemoryManagementIntro.java   (this file)
- *   ObjectsInMemory.java         - the in-memory layout of an object
- *   JvmMemoryAreas.java          - Method Area / Heap / Stack / PC / Native
- *   StackVsHeap.java             - the most-asked interview question
- *   GarbageCollection.java       - reachability, mark-and-sweep, generations
- *   GarbageCollectors.java       - Serial / Parallel / G1 / ZGC / Shenandoah
- *   MemoryLeaks.java             - patterns that fool the GC and fixes
- *   ModernMemoryFeatures.java    - Java 9..21 (Cleaner, Compact Strings,
- *                                  Generational ZGC, virtual-thread memory)
- */
 
 public class MemoryManagementIntro {
 

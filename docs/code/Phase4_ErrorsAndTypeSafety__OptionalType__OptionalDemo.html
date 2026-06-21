@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase4_ErrorsAndTypeSafety/OptionalType/OptionalDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 130 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 78 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,50 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A container that holds EITHER a value or no value. Used to make &quot;this method may not
-                        return anything&quot; explicit in the type system — removes the trap of forgetting to
-                        null-check.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Optional&amp;lt;T&amp;gt;</h2>
+                    <p>A container that holds EITHER a value or no value. Used to make &quot;this method may not return
+                        anything&quot; explicit in the type system — removes the trap of forgetting to null-check.</p>
+                    <pre class="hj-doc-art">     Optional&lt;User&gt; u = repo.find(id);
+     u.ifPresent(this::greet);</pre>
+                    <h3>What Optional is FOR</h3>
+                    <ul>
+                        <li>Return values when &quot;nothing&quot; is a legitimate result.
+                        </li>
+                        <li>Stream pipelines that may not find a match (findFirst, findAny,
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    max, min, reduce).</pre>
+                    <h3>What Optional is NOT for</h3>
+                    <ul>
+                        <li>Fields. Use a real default value or a clearly-nullable field.
+                        </li>
+                        <li>Method parameters. Just take a regular value and validate. Use
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    overloads if &quot;absent&quot; is meaningful.</pre>
+                    <ul>
+                        <li>Collections. Use an empty collection instead.
+                        </li>
+                        <li>Map values. Use Map.getOrDefault or .computeIfAbsent.
+                        </li>
+                    </ul>
+                    <p>Optional is HEAP-ALLOCATED and not free; using it everywhere is a code smell. Use it where it
+                        earns its keep — return types.</p>
+                    <h3>Primitive specialisations</h3>
+                    <pre class="hj-doc-art">     OptionalInt / OptionalLong / OptionalDouble</pre>
+                    <p>Avoid boxing overhead and pair with IntStream / LongStream / DoubleStream.</p>
+                    <h3>Key API</h3>
+                    <p>of(t) / ofNullable(t) / empty() - construction isPresent() / isEmpty() - probe get() - extract
+                        (throws if empty) orElse(default) / orElseGet(supplier) - safe extract orElseThrow() /
+                        orElseThrow(supplier) - explicit error ifPresent(consumer) / ifPresentOrElse(...) - side-effect
+                        map(fn) / flatMap(fn) / filter(predicate) - transform stream() - Java 9+, 0-or-1 element Stream
+                        or(supplier) - Java 9+, fallback Optional</p>
                 </div>
             </div>
 
@@ -1399,57 +1436,6 @@
 
 import java.util.*;
 import java.util.stream.Stream;
-
-/**
- * Optional&amp;lt;T&amp;gt;
- * -----------
- * A container that holds EITHER a value or no value. Used to make
- * &quot;this method may not return anything&quot; explicit in the type system —
- * removes the trap of forgetting to null-check.
- * &lt;p&gt;
- *
- *      Optional&lt;User&gt; u = repo.find(id);
- *      u.ifPresent(this::greet);
- * &lt;p&gt;
- *
- * What Optional is FOR
- * --------------------
- *   - Return values when &quot;nothing&quot; is a legitimate result.
- *   - Stream pipelines that may not find a match (findFirst, findAny,
- *     max, min, reduce).
- * &lt;p&gt;
- *
- * What Optional is NOT for
- * ------------------------
- *   - Fields. Use a real default value or a clearly-nullable field.
- *   - Method parameters. Just take a regular value and validate. Use
- *     overloads if &quot;absent&quot; is meaningful.
- *   - Collections. Use an empty collection instead.
- *   - Map values. Use Map.getOrDefault or .computeIfAbsent.
- * &lt;p&gt;
- *
- * Optional is HEAP-ALLOCATED and not free; using it everywhere is a
- * code smell. Use it where it earns its keep — return types.
- * &lt;p&gt;
- *
- * Primitive specialisations
- * -------------------------
- *      OptionalInt / OptionalLong / OptionalDouble
- * Avoid boxing overhead and pair with IntStream / LongStream / DoubleStream.
- * &lt;p&gt;
- *
- * Key API
- * -------
- *   of(t) / ofNullable(t) / empty()           - construction
- *   isPresent() / isEmpty()                    - probe
- *   get()                                       - extract (throws if empty)
- *   orElse(default) / orElseGet(supplier)      - safe extract
- *   orElseThrow() / orElseThrow(supplier)      - explicit error
- *   ifPresent(consumer) / ifPresentOrElse(...) - side-effect
- *   map(fn) / flatMap(fn) / filter(predicate)  - transform
- *   stream()                                    - Java 9+, 0-or-1 element Stream
- *   or(supplier)                                - Java 9+, fallback Optional
- */
 
 public class OptionalDemo {
 

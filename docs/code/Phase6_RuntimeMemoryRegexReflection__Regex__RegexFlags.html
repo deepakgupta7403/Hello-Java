@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase6_RuntimeMemoryRegexReflection/Regex/RegexFlags.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 150 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 83 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,51 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Flags change HOW the engine matches a pattern. You can pass them to Pattern.compile as the
-                        second argument, or set them inline inside the pattern via `(?flags)` so the regex itself is
-                        self-describing.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Regex Flags</h2>
+                    <p>Flags change HOW the engine matches a pattern. You can pass them to Pattern.compile as the second
+                        argument, or set them inline inside the pattern via `(?flags)` so the regex itself is
+                        self-describing.</p>
+                    <pre class="hj-doc-art">     Pattern.compile(&quot;hello&quot;, Pattern.CASE_INSENSITIVE);
+     Pattern.compile(&quot;(?i)hello&quot;);                            // inline
+     Pattern.compile(&quot;(?i:HEL)lo&quot;);                            // scoped inline</pre>
+                    <h3>The Flags You Will Actually Use</h3>
+                    <p>Pattern.CASE_INSENSITIVE (?i) - &quot;hello&quot; matches &quot;HELLO&quot; too Pattern.MULTILINE
+                        (?m) - ^ and $ match per-line, not just at the</p>
+                    <pre class="hj-doc-art">                                      very start/end of the input</pre>
+                    <p>Pattern.DOTALL (?s) - &quot;.&quot; matches newlines too Pattern.COMMENTS (?x) - whitespace and #
+                        comments inside the</p>
+                    <pre class="hj-doc-art">                                      pattern are ignored, letting you space
+                                      out a complex pattern</pre>
+                    <p>Pattern.UNICODE_CASE (?u) - case-insensitive matching also covers</p>
+                    <pre class="hj-doc-art">                                      non-ASCII letters</pre>
+                    <p>Pattern.UNICODE_CHARACTER_CLASS (?U)</p>
+                    <ul>
+                        <li>\w, \d, \s use Unicode-aware definitions
+                        </li>
+                    </ul>
+                    <p>Pattern.UNIX_LINES (?d) - &quot;.&quot; treats only `\n` as a line terminator Pattern.LITERAL (no
+                        inline form) - treats the pattern as a</p>
+                    <pre class="hj-doc-art">                                      literal string (no metacharacters)</pre>
+                    <p>Pattern.CANON_EQ (no inline form) - canonical equivalence of</p>
+                    <pre class="hj-doc-art">                                      Unicode sequences (rarely needed)</pre>
+                    <h3>Combining Flags</h3>
+                    <p>Bitwise OR them:</p>
+                    <pre class="hj-doc-art">     Pattern.compile(regex, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);</pre>
+                    <p>Or chain inline:</p>
+                    <pre class="hj-doc-art">     Pattern.compile(&quot;(?im)^hello&quot;);           // case-insensitive + multiline</pre>
+                    <h3>Scoped Inline Flags - (?flags:X)</h3>
+                    <p>Apply flags ONLY to a sub-expression:</p>
+                    <pre class="hj-doc-art">     Pattern.compile(&quot;(?i:hel)lo&quot;);</pre>
+                    <p>Matches &quot;Hello&quot;, &quot;HELlo&quot;, &quot;HELLo&quot; but NOT &quot;Hellol&quot; or
+                        &quot;Hellol&quot;. (Outside the (?i:...) the matching is case-sensitive again.)</p>
+                    <h3>Flag Quick Demos Below</h3>
+                    <p>Each section toggles ONE flag so you can see the difference.</p>
                 </div>
             </div>
 
@@ -1399,72 +1437,6 @@
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-/**
- * Regex Flags
- * -----------
- * Flags change HOW the engine matches a pattern. You can pass them to
- * Pattern.compile as the second argument, or set them inline inside the
- * pattern via `(?flags)` so the regex itself is self-describing.
- * &lt;p&gt;
- *
- *      Pattern.compile(&quot;hello&quot;, Pattern.CASE_INSENSITIVE);
- *      Pattern.compile(&quot;(?i)hello&quot;);                            // inline
- *      Pattern.compile(&quot;(?i:HEL)lo&quot;);                            // scoped inline
- * &lt;p&gt;
- *
- * The Flags You Will Actually Use
- * -------------------------------
- * &lt;p&gt;
- *
- *   Pattern.CASE_INSENSITIVE   (?i)   - &quot;hello&quot; matches &quot;HELLO&quot; too
- *   Pattern.MULTILINE          (?m)   - ^ and $ match per-line, not just at the
- *                                       very start/end of the input
- *   Pattern.DOTALL             (?s)   - &quot;.&quot; matches newlines too
- *   Pattern.COMMENTS           (?x)   - whitespace and # comments inside the
- *                                       pattern are ignored, letting you space
- *                                       out a complex pattern
- *   Pattern.UNICODE_CASE       (?u)   - case-insensitive matching also covers
- *                                       non-ASCII letters
- *   Pattern.UNICODE_CHARACTER_CLASS  (?U)
- *                                     - \w, \d, \s use Unicode-aware definitions
- *   Pattern.UNIX_LINES         (?d)   - &quot;.&quot; treats only `\n` as a line terminator
- *   Pattern.LITERAL            (no inline form) - treats the pattern as a
- *                                       literal string (no metacharacters)
- *   Pattern.CANON_EQ           (no inline form) - canonical equivalence of
- *                                       Unicode sequences (rarely needed)
- * &lt;p&gt;
- *
- * Combining Flags
- * ---------------
- * Bitwise OR them:
- * &lt;p&gt;
- *
- *      Pattern.compile(regex, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
- * &lt;p&gt;
- *
- * Or chain inline:
- * &lt;p&gt;
- *
- *      Pattern.compile(&quot;(?im)^hello&quot;);           // case-insensitive + multiline
- * &lt;p&gt;
- *
- * Scoped Inline Flags - (?flags:X)
- * --------------------------------
- * Apply flags ONLY to a sub-expression:
- * &lt;p&gt;
- *
- *      Pattern.compile(&quot;(?i:hel)lo&quot;);
- * &lt;p&gt;
- *
- * Matches &quot;Hello&quot;, &quot;HELlo&quot;, &quot;HELLo&quot; but NOT &quot;Hellol&quot; or &quot;Hellol&quot;.
- * (Outside the (?i:...) the matching is case-sensitive again.)
- * &lt;p&gt;
- *
- * Flag Quick Demos Below
- * ----------------------
- * Each section toggles ONE flag so you can see the difference.
- */
 
 public class RegexFlags {
 

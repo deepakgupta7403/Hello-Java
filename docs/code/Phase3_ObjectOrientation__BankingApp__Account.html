@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase3_ObjectOrientation/BankingApp/Account.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 110 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 85 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,47 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Demonstrates several OOP pillars in one place:</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Account - Abstract Base Class for the Banking Project</h2>
+                    <p>Demonstrates several OOP pillars in one place:</p>
+                    <ul>
+                        <li>ABSTRACTION - declares the SHAPE of an account but leaves the
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                    interest calculation to each subclass (abstract method).</pre>
+                    <ul>
+                        <li>ENCAPSULATION - balance is `private`, mutated only through deposit /
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                    withdraw / transfer; each method validates input.</pre>
+                    <ul>
+                        <li>INHERITANCE - SavingsAccount and CheckingAccount extend this class
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                    and reuse the shared behaviour.</pre>
+                    <ul>
+                        <li>POLYMORPHISM - the Bank deals with an Account reference and the JVM
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                    dispatches to the subclass&#x27;s overridden method at runtime.</pre>
+                    <h3>Design Notes</h3>
+                    <ul>
+                        <li>We track each transaction in an internal history list. The getter
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    returns an UNMODIFIABLE view to keep the encapsulation tight.</pre>
+                    <ul>
+                        <li>The account number is FINAL - set in the constructor and never changes.
+                        </li>
+                        <li>All money is represented as `double` for simplicity. In real banking
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    code you would use BigDecimal to avoid floating-point rounding errors.</pre>
                 </div>
             </div>
 
@@ -1398,30 +1435,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Account - Abstract Base Class for the Banking Project
- * -----------------------------------------------------
- * Demonstrates several OOP pillars in one place:
- * &lt;p&gt;
- *
- *   - ABSTRACTION   - declares the SHAPE of an account but leaves the
- *                     interest calculation to each subclass (abstract method).
- *   - ENCAPSULATION - balance is `private`, mutated only through deposit /
- *                     withdraw / transfer; each method validates input.
- *   - INHERITANCE   - SavingsAccount and CheckingAccount extend this class
- *                     and reuse the shared behaviour.
- *   - POLYMORPHISM  - the Bank deals with an Account reference and the JVM
- *                     dispatches to the subclass&#x27;s overridden method at runtime.
- * &lt;p&gt;
- *
- * Design Notes
- * ------------
- *   - We track each transaction in an internal history list. The getter
- *     returns an UNMODIFIABLE view to keep the encapsulation tight.
- *   - The account number is FINAL - set in the constructor and never changes.
- *   - All money is represented as `double` for simplicity. In real banking
- *     code you would use BigDecimal to avoid floating-point rounding errors.
- */
 public abstract class Account {
 
     private static int nextAccountNumber = 1000;     // package-private factory counter

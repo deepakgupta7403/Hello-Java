@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/ProducerConsumer.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 160 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 126 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,43 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Producers and consumers communicate via a SHARED, BOUNDED queue.</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>The Producer-Consumer Pattern</h2>
+                    <p>Producers and consumers communicate via a SHARED, BOUNDED queue.</p>
+                    <pre class="hj-doc-art">    producer -&gt; [ . . . . ] -&gt; consumer</pre>
+                    <p>Bounding lets the system push back: if consumers fall behind, the queue fills, and producers
+                        block until there&#x27;s space. The pattern shows up everywhere — task pipelines, log
+                        aggregators, web crawlers, media players.</p>
+                    <h3>Three implementations in this file</h3>
+                    <ul>
+                        <li>wait/notifyAll on a hand-rolled buffer (old-school).
+                        </li>
+                        <li>ReentrantLock with two Conditions (notEmpty, notFull).
+                        </li>
+                        <li>BlockingQueue from java.util.concurrent (idiomatic modern).
+                        </li>
+                    </ul>
+                    <h3>Key correctness rules</h3>
+                    <ul>
+                        <li>Take/put under the same lock as the size check.
+                        </li>
+                        <li>Loop the predicate (spurious wakeups, racing waiters).
+                        </li>
+                        <li>Signal the correct side: producers signal &quot;not empty&quot;, consumers
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    signal &quot;not full&quot;. Using two Conditions lets you wake the exact
+    side that&#x27;s waiting; wait/notifyAll wakes everyone.</pre>
+                    <ul>
+                        <li>Don&#x27;t hold the lock while doing the heavy producer / consumer
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    work — only the buffer access.</pre>
                 </div>
             </div>
 
@@ -1401,39 +1434,6 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-
-/**
- * The Producer-Consumer Pattern
- * -----------------------------
- * Producers and consumers communicate via a SHARED, BOUNDED queue.
- * &lt;p&gt;
- *
- *     producer -&gt; [ . . . . ] -&gt; consumer
- * &lt;p&gt;
- *
- * Bounding lets the system push back: if consumers fall behind, the
- * queue fills, and producers block until there&#x27;s space. The pattern
- * shows up everywhere — task pipelines, log aggregators, web crawlers,
- * media players.
- * &lt;p&gt;
- *
- * Three implementations in this file
- * ----------------------------------
- *   1. wait/notifyAll on a hand-rolled buffer (old-school).
- *   2. ReentrantLock with two Conditions (notEmpty, notFull).
- *   3. BlockingQueue from java.util.concurrent (idiomatic modern).
- * &lt;p&gt;
- *
- * Key correctness rules
- * ---------------------
- *   - Take/put under the same lock as the size check.
- *   - Loop the predicate (spurious wakeups, racing waiters).
- *   - Signal the correct side: producers signal &quot;not empty&quot;, consumers
- *     signal &quot;not full&quot;. Using two Conditions lets you wake the exact
- *     side that&#x27;s waiting; wait/notifyAll wakes everyone.
- *   - Don&#x27;t hold the lock while doing the heavy producer / consumer
- *     work — only the buffer access.
- */
 
 public class ProducerConsumer {
 

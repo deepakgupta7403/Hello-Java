@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/TerminalOperations.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 180 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 109 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,48 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A TERMINAL operation kicks off the pipeline and produces a side effect or a value. After a
-                        terminal op runs, the stream is CLOSED.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Terminal Operations - The Pipeline&#x27;s Final Step</h2>
+                    <p>A TERMINAL operation kicks off the pipeline and produces a side effect or a value. After a
+                        terminal op runs, the stream is CLOSED.</p>
+                    <h3>Common Terminal Operations</h3>
+                    <p>Side-effecting forEach(Consumer) forEachOrdered(Consumer) - preserves encounter order, even in
+                        parallel</p>
+                    <p>Reduction / aggregation reduce(identity, BinaryOperator) reduce(BinaryOperator) -&amp;gt;
+                        Optional&amp;lt;T&amp;gt; reduce(identity, accumulator, combiner) collect(Collector) count()
+                        min(Comparator) / max(Comparator) -&amp;gt; Optional sum / average / IntStream.sum /
+                        .summaryStatistics (primitive streams)</p>
+                    <p>Existence / search (SHORT-CIRCUIT) anyMatch(Predicate) - true if any element matches
+                        allMatch(Predicate) - true if every element matches noneMatch(Predicate) - true if no element
+                        matches findFirst() - Optional of first element findAny() - Optional of any element
+                        (parallel-friendly)</p>
+                    <p>Conversion toArray() / toArray(IntFunction) toList() - Java 16+, returns unmodifiable List
+                        iterator() - bridge back to Iterator</p>
+                    <h3>Reduce - Three Forms Explained</h3>
+                    <ul>
+                        <li>T reduce(T identity, BinaryOperator&amp;lt;T&amp;gt; op)
+                        </li>
+                    </ul>
+                    <p>int sum = stream.reduce(0, Integer::sum);</p>
+                    <ul>
+                        <li>Optional&amp;lt;T&amp;gt; reduce(BinaryOperator&amp;lt;T&amp;gt; op)
+                        </li>
+                    </ul>
+                    <p>Optional&amp;lt;Integer&amp;gt; max = stream.reduce(Integer::max);</p>
+                    <ul>
+                        <li>&amp;lt;U&amp;gt; U reduce(U identity, BiFunction&amp;lt;U, T, U&amp;gt; accumulator,
+                        </li>
+                    </ul>
+                    <p>BinaryOperator&amp;lt;U&amp;gt; combiner)</p>
+                    <p>The &quot;U is a different type&quot; form, useful for parallel streams.</p>
+                    <h3>Match Operations Short-Circuit</h3>
+                    <p>anyMatch / allMatch / noneMatch return as soon as the answer is decided. On infinite streams this
+                        is the difference between a few steps and a runaway loop.</p>
                 </div>
             </div>
 
@@ -1400,76 +1436,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
-
-/**
- * Terminal Operations - The Pipeline&#x27;s Final Step
- * -----------------------------------------------
- * A TERMINAL operation kicks off the pipeline and produces a side effect
- * or a value. After a terminal op runs, the stream is CLOSED.
- * &lt;p&gt;
- *
- * Common Terminal Operations
- * --------------------------
- * &lt;p&gt;
- *
- * Side-effecting
- * forEach(Consumer)
- * forEachOrdered(Consumer)             - preserves encounter order, even in parallel
- * &lt;p&gt;
- *
- * Reduction / aggregation
- * reduce(identity, BinaryOperator)
- * reduce(BinaryOperator) -&amp;gt; Optional&amp;lt;T&amp;gt;
- * reduce(identity, accumulator, combiner)
- * collect(Collector)
- * count()
- * min(Comparator) / max(Comparator) -&amp;gt; Optional
- * sum / average / IntStream.sum / .summaryStatistics  (primitive streams)
- * &lt;p&gt;
- *
- * Existence / search (SHORT-CIRCUIT)
- * anyMatch(Predicate)                  - true if any element matches
- * allMatch(Predicate)                  - true if every element matches
- * noneMatch(Predicate)                 - true if no element matches
- * findFirst()                          - Optional of first element
- * findAny()                            - Optional of any element (parallel-friendly)
- * &lt;p&gt;
- *
- * Conversion
- * toArray() / toArray(IntFunction)
- * toList()                             - Java 16+, returns unmodifiable List
- * iterator()                            - bridge back to Iterator
- * &lt;p&gt;
- *
- * Reduce - Three Forms Explained
- * ------------------------------
- * &lt;p&gt;
- *
- * 1. T reduce(T identity, BinaryOperator&amp;lt;T&amp;gt; op)
- * &lt;p&gt;
- *
- * int sum = stream.reduce(0, Integer::sum);
- * &lt;p&gt;
- *
- * 2. Optional&amp;lt;T&amp;gt; reduce(BinaryOperator&amp;lt;T&amp;gt; op)
- * &lt;p&gt;
- *
- * Optional&amp;lt;Integer&amp;gt; max = stream.reduce(Integer::max);
- * &lt;p&gt;
- *
- * 3. &amp;lt;U&amp;gt; U reduce(U identity, BiFunction&amp;lt;U, T, U&amp;gt; accumulator,
- * BinaryOperator&amp;lt;U&amp;gt; combiner)
- * &lt;p&gt;
- *
- * The &quot;U is a different type&quot; form, useful for parallel streams.
- * &lt;p&gt;
- *
- * Match Operations Short-Circuit
- * ------------------------------
- * anyMatch / allMatch / noneMatch return as soon as the answer is decided.
- * On infinite streams this is the difference between a few steps and a
- * runaway loop.
- */
 
 public class TerminalOperations {
 

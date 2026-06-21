@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase8_PracticalAPIs/FileIO/CharacterStreams.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 126 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 72 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,42 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Java 1.1 added Reader / Writer to address the fundamental mismatch between bytes and characters
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Character Streams — Reader / Writer</h2>
+                    <p>Java 1.1 added Reader / Writer to address the fundamental mismatch between bytes and characters
                         in modern encodings (UTF-8, UTF-16, GB-18030, ...). A single character can be 1-4 bytes, so
-                        reading &quot;text&quot; through an Inp...
-                    </div>
+                        reading &quot;text&quot; through an InputStream is wrong.</p>
+                    <h3>Reader — read characters</h3>
+                    <pre class="hj-doc-art">     int read()                  -&gt; next char 0..65535, -1 at EOF
+     int read(char[] cbuf)
+     int read(char[] cbuf, off, len)
+     void close()</pre>
+                    <h3>Writer — write characters</h3>
+                    <pre class="hj-doc-art">     void write(int c)
+     void write(char[] cbuf)
+     void write(String s)
+     void write(String s, off, len)
+     void append(char c)         -&gt; chainable
+     void flush()</pre>
+                    <h3>The bridge classes</h3>
+                    <pre class="hj-doc-art">     InputStreamReader(InputStream, Charset)   - bytes -&gt; chars
+     OutputStreamWriter(OutputStream, Charset) - chars -&gt; bytes</pre>
+                    <p>Use these to wrap a byte stream when you need text from a non-File source (a Socket, stdin, an
+                        HTTP response).</p>
+                    <h3>Concrete impls</h3>
+                    <pre class="hj-doc-art">     FileReader / FileWriter      - file-flavoured (use the charset-aware
+                                    constructors, NOT the default ones).
+     StringReader / StringWriter - in-memory.
+     CharArrayReader/Writer       - in-memory, char[].
+     PrintWriter                  - convenience formatting layer.</pre>
+                    <h3>Charset trap</h3>
+                    <p>`new FileReader(file)` uses the platform default charset. That&#x27;s a portability landmine.
+                        Prefer the Java 11+ charset-aware constructors or use Files.newBufferedReader(path, UTF_8).</p>
                 </div>
             </div>
 
@@ -1401,59 +1430,6 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-
-/**
- * Character Streams — Reader / Writer
- * -----------------------------------
- * Java 1.1 added Reader / Writer to address the fundamental mismatch
- * between bytes and characters in modern encodings (UTF-8, UTF-16,
- * GB-18030, ...). A single character can be 1-4 bytes, so reading
- * &quot;text&quot; through an InputStream is wrong.
- * &lt;p&gt;
- *
- * Reader — read characters
- * ------------------------
- *      int read()                  -&gt; next char 0..65535, -1 at EOF
- *      int read(char[] cbuf)
- *      int read(char[] cbuf, off, len)
- *      void close()
- * &lt;p&gt;
- *
- * Writer — write characters
- * -------------------------
- *      void write(int c)
- *      void write(char[] cbuf)
- *      void write(String s)
- *      void write(String s, off, len)
- *      void append(char c)         -&gt; chainable
- *      void flush()
- * &lt;p&gt;
- *
- * The bridge classes
- * ------------------
- *      InputStreamReader(InputStream, Charset)   - bytes -&gt; chars
- *      OutputStreamWriter(OutputStream, Charset) - chars -&gt; bytes
- * &lt;p&gt;
- *
- * Use these to wrap a byte stream when you need text from a non-File
- * source (a Socket, stdin, an HTTP response).
- * &lt;p&gt;
- *
- * Concrete impls
- * --------------
- *      FileReader / FileWriter      - file-flavoured (use the charset-aware
- *                                     constructors, NOT the default ones).
- *      StringReader / StringWriter - in-memory.
- *      CharArrayReader/Writer       - in-memory, char[].
- *      PrintWriter                  - convenience formatting layer.
- * &lt;p&gt;
- *
- * Charset trap
- * ------------
- * `new FileReader(file)` uses the platform default charset. That&#x27;s a
- * portability landmine. Prefer the Java 11+ charset-aware constructors
- * or use Files.newBufferedReader(path, UTF_8).
- */
 
 public class CharacterStreams {
 

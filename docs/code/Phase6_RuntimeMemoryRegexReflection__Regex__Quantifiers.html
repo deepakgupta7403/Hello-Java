@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase6_RuntimeMemoryRegexReflection/Regex/Quantifiers.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 160 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 91 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,48 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A QUANTIFIER controls how many times the immediately preceding element may repeat. Java
-                        supports three FLAVOURS for every quantifier - greedy, reluctant (a.k.a. lazy), and possessive.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Regex Quantifiers</h2>
+                    <p>A QUANTIFIER controls how many times the immediately preceding element may repeat. Java supports
+                        three FLAVOURS for every quantifier - greedy, reluctant (a.k.a. lazy), and possessive.</p>
+                    <h3>Counts</h3>
+                    <p>X? zero or one (optional) X* zero or more X+ one or more X{n} exactly n times X{n,} n or more
+                        X{n,m} between n and m (inclusive)</p>
+                    <h3>Three Flavours</h3>
+                    <p>GREEDY Default. Matches as MUCH as possible, then backtracks if the</p>
+                    <pre class="hj-doc-art">              rest of the pattern fails.        X*  X+  X?  X{n,m}</pre>
+                    <p>RELUCTANT Add `?` after. Matches as LITTLE as possible, then expands</p>
+                    <pre class="hj-doc-art">              only when the rest of the pattern needs more characters.
+                                                 X*?  X+?  X??  X{n,m}?</pre>
+                    <p>POSSESSIVE Add `+` after. Like greedy but NEVER gives back what it</p>
+                    <pre class="hj-doc-art">              matched - no backtracking. Useful for performance and to
+              prevent catastrophic backtracking.
+                                                 X*+  X++  X?+  X{n,m}+</pre>
+                    <h3>The Classic Example (greedy vs reluctant)</h3>
+                    <pre class="hj-doc-art">     regex  : &lt;.+&gt;
+     input  : &quot;&lt;a&gt;&lt;b&gt;&lt;c&gt;&quot;</pre>
+                    <pre class="hj-doc-art">     greedy    .+   matches everything between the FIRST &#x27;&lt;&#x27; and the LAST &#x27;&gt;&#x27;
+                    -&gt; single match  &quot;&lt;a&gt;&lt;b&gt;&lt;c&gt;&quot;
+     reluctant .+?  matches the minimum
+                    -&gt; three matches &quot;&lt;a&gt;&quot;, &quot;&lt;b&gt;&quot;, &quot;&lt;c&gt;&quot;</pre>
+                    <h3>Catastrophic Backtracking (use possessive or atomic groups)</h3>
+                    <pre class="hj-doc-art">     regex  : (a+)+b
+     input  : &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaac&quot;</pre>
+                    <pre class="hj-doc-art">     Greedy regexes can take EXPONENTIAL time on inputs that almost match.
+     Possessive quantifiers prevent the backtracking that causes the
+     blow-up:
+         (a++)+b           // possessive inner - linear time</pre>
+                    <h3>Common Patterns</h3>
+                    <pre class="hj-doc-art">     \d{3}          three digits
+     \d{4,}         four or more digits
+     \d{2,4}        between two and four digits
+     \s*            optional surrounding whitespace
+     [^,]+          a CSV field</pre>
                 </div>
             </div>
 
@@ -1398,74 +1434,6 @@
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-/**
- * Regex Quantifiers
- * -----------------
- * A QUANTIFIER controls how many times the immediately preceding element
- * may repeat. Java supports three FLAVOURS for every quantifier - greedy,
- * reluctant (a.k.a. lazy), and possessive.
- * &lt;p&gt;
- *
- * Counts
- * ------
- *   X?         zero or one     (optional)
- *   X*         zero or more
- *   X+         one  or more
- *   X{n}       exactly n times
- *   X{n,}      n or more
- *   X{n,m}     between n and m (inclusive)
- * &lt;p&gt;
- *
- * Three Flavours
- * --------------
- *   GREEDY      Default. Matches as MUCH as possible, then backtracks if the
- *               rest of the pattern fails.        X*  X+  X?  X{n,m}
- * &lt;p&gt;
- *
- *   RELUCTANT   Add `?` after. Matches as LITTLE as possible, then expands
- *               only when the rest of the pattern needs more characters.
- *                                                  X*?  X+?  X??  X{n,m}?
- * &lt;p&gt;
- *
- *   POSSESSIVE  Add `+` after. Like greedy but NEVER gives back what it
- *               matched - no backtracking. Useful for performance and to
- *               prevent catastrophic backtracking.
- *                                                  X*+  X++  X?+  X{n,m}+
- * &lt;p&gt;
- *
- * The Classic Example (greedy vs reluctant)
- * -----------------------------------------
- *      regex  : &lt;.+&gt;
- *      input  : &quot;&lt;a&gt;&lt;b&gt;&lt;c&gt;&quot;
- * &lt;p&gt;
- *
- *      greedy    .+   matches everything between the FIRST &#x27;&lt;&#x27; and the LAST &#x27;&gt;&#x27;
- *                     -&gt; single match  &quot;&lt;a&gt;&lt;b&gt;&lt;c&gt;&quot;
- *      reluctant .+?  matches the minimum
- *                     -&gt; three matches &quot;&lt;a&gt;&quot;, &quot;&lt;b&gt;&quot;, &quot;&lt;c&gt;&quot;
- * &lt;p&gt;
- *
- * Catastrophic Backtracking (use possessive or atomic groups)
- * -----------------------------------------------------------
- *      regex  : (a+)+b
- *      input  : &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaac&quot;
- * &lt;p&gt;
- *
- *      Greedy regexes can take EXPONENTIAL time on inputs that almost match.
- *      Possessive quantifiers prevent the backtracking that causes the
- *      blow-up:
- *          (a++)+b           // possessive inner - linear time
- * &lt;p&gt;
- *
- * Common Patterns
- * ---------------
- *      \d{3}          three digits
- *      \d{4,}         four or more digits
- *      \d{2,4}        between two and four digits
- *      \s*            optional surrounding whitespace
- *      [^,]+          a CSV field
- */
 
 public class Quantifiers {
 

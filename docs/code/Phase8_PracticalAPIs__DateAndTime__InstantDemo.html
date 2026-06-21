@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase8_PracticalAPIs/DateAndTime/InstantDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 111 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 63 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,50 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>An Instant is a single, unambiguous point in time, measured in NANOSECONDS since
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Instant — a Moment on the Global Timeline</h2>
+                    <p>An Instant is a single, unambiguous point in time, measured in NANOSECONDS since
                         1970-01-01T00:00Z (the &quot;epoch&quot;). It has NO zone — it&#x27;s &quot;the same instant&quot;
-                        everywhere on Earth.
-                    </div>
+                        everywhere on Earth.</p>
+                    <h3>When to use Instant</h3>
+                    <ul>
+                        <li>LOGGING and EVENT TIMESTAMPS — what time something happened,
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    globally, regardless of who&#x27;s reading.</pre>
+                    <ul>
+                        <li>DATABASE timestamp columns (TIMESTAMPTZ in Postgres, etc.).
+                        </li>
+                        <li>DURATIONS and DEADLINES — Instant + Duration is the canonical
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    &quot;deadline&quot; pattern.</pre>
+                    <h3>When NOT to use it</h3>
+                    <ul>
+                        <li>For HUMAN-FACING dates/times — display in a zone first
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    (see ZonedDateTime).</pre>
+                    <h3>Construction</h3>
+                    <pre class="hj-doc-art">     Instant.now()                       - via system clock
+     Instant.now(Clock)                  - via injected clock (testable!)
+     Instant.ofEpochSecond(s [, nanos])
+     Instant.ofEpochMilli(ms)
+     Instant.parse(&quot;2026-05-20T09:00:00Z&quot;)  - ISO-8601, always Z</pre>
+                    <h3>Conversions</h3>
+                    <pre class="hj-doc-art">     instant.atZone(zone)                -&gt; ZonedDateTime
+     instant.atOffset(offset)            -&gt; OffsetDateTime
+     ZonedDateTime.toInstant()           -&gt; Instant
+     Date.from(instant) / instant.toEpochMilli()</pre>
+                    <h3>Comparing two instants</h3>
+                    <pre class="hj-doc-art">     Duration.between(a, b)             - clock-length difference
+     ChronoUnit.SECONDS.between(a, b)
+     a.isBefore(b) / isAfter / equals</pre>
                 </div>
             </div>
 
@@ -1399,53 +1436,6 @@
 
 import java.time.*;
 import java.time.temporal.ChronoUnit;
-
-/**
- * Instant — a Moment on the Global Timeline
- * -----------------------------------------
- * An Instant is a single, unambiguous point in time, measured in
- * NANOSECONDS since 1970-01-01T00:00Z (the &quot;epoch&quot;). It has NO zone —
- * it&#x27;s &quot;the same instant&quot; everywhere on Earth.
- * &lt;p&gt;
- *
- * When to use Instant
- * -------------------
- *   - LOGGING and EVENT TIMESTAMPS — what time something happened,
- *     globally, regardless of who&#x27;s reading.
- *   - DATABASE timestamp columns (TIMESTAMPTZ in Postgres, etc.).
- *   - DURATIONS and DEADLINES — Instant + Duration is the canonical
- *     &quot;deadline&quot; pattern.
- * &lt;p&gt;
- *
- * When NOT to use it
- * ------------------
- *   - For HUMAN-FACING dates/times — display in a zone first
- *     (see ZonedDateTime).
- * &lt;p&gt;
- *
- * Construction
- * ------------
- *      Instant.now()                       - via system clock
- *      Instant.now(Clock)                  - via injected clock (testable!)
- *      Instant.ofEpochSecond(s [, nanos])
- *      Instant.ofEpochMilli(ms)
- *      Instant.parse(&quot;2026-05-20T09:00:00Z&quot;)  - ISO-8601, always Z
- * &lt;p&gt;
- *
- * Conversions
- * -----------
- *      instant.atZone(zone)                -&gt; ZonedDateTime
- *      instant.atOffset(offset)            -&gt; OffsetDateTime
- *      ZonedDateTime.toInstant()           -&gt; Instant
- *      Date.from(instant) / instant.toEpochMilli()
- * &lt;p&gt;
- *
- * Comparing two instants
- * ----------------------
- *      Duration.between(a, b)             - clock-length difference
- *      ChronoUnit.SECONDS.between(a, b)
- *      a.isBefore(b) / isAfter / equals
- */
 
 public class InstantDemo {
 

@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase1_CoreLanguage/Extra/IsJavaSupportGoto.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 67 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 59 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,17 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Java does not support goto, it is reserved as a keyword just in case they wanted to add it to a
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>Java does not support goto, it is reserved as a keyword just in case they wanted to add it to a
                         later version. Unlike C/C++, Java does not have goto statement, but java supports label. The
-                        only place where a label is...
-                    </div>
+                        only place where a label is useful in Java is right before nested loop statements. We can
+                        specify label name with break to break out a specific outer loop. Similarly, label name can be
+                        specified with continue.</p>
                 </div>
             </div>
 
@@ -1396,13 +1400,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase1_CoreLanguage.Extra;
-
-/**
- * Java does not support goto, it is reserved as a keyword just in case they wanted to add it to a later version.
- *  Unlike C/C++, Java does not have goto statement, but java supports label.
- *  The only place where a label is useful in Java is right before nested loop statements.
- *  We can specify label name with break to break out a specific outer loop.
- *  Similarly, label name can be specified with continue.**/
 
 public class IsJavaSupportGoto {
 

@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/ReadWriteLockDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 147 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 100 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,59 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Two locks for the price of one:</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.concurrent.locks.ReadWriteLock</h2>
+                    <p>Two locks for the price of one:</p>
+                    <p>READ LOCK - many threads may hold it simultaneously. WRITE LOCK - exclusive; no readers or
+                        writers can be active.</p>
+                    <p>Use when reads VASTLY OUTNUMBER writes — a configuration cache, lookup table, in-memory
+                        index.</p>
+                    <h3>The canonical implementation</h3>
+                    <pre class="hj-doc-art">     ReadWriteLock rw = new ReentrantReadWriteLock();
+     Lock r = rw.readLock();
+     Lock w = rw.writeLock();</pre>
+                    <pre class="hj-doc-art">     r.lock();  try { ...read...  } finally { r.unlock(); }
+     w.lock();  try { ...write... } finally { w.unlock(); }</pre>
+                    <h3>Important properties</h3>
+                    <ul>
+                        <li>REENTRANT — a thread holding the write lock can also acquire the
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    read lock and vice versa for downgrading.</pre>
+                    <ul>
+                        <li>LOCK DOWNGRADING is allowed (write → read).
+                        </li>
+                        <li>LOCK UPGRADING is NOT (read → write would deadlock if multiple
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    readers tried). Release the read lock first.</pre>
+                    <ul>
+                        <li>FAIR option behaves like ReentrantLock&#x27;s.
+                        </li>
+                        <li>Both locks share a single CONDITION namespace — only the WRITE
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    lock can produce Conditions.</pre>
+                    <h3>Pitfalls</h3>
+                    <ul>
+                        <li>Write starvation. Under heavy read load, writers may wait
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     forever. Use a FAIR ReentrantReadWriteLock if that&#x27;s a risk.</pre>
+                    <ul>
+                        <li>Overhead. The bookkeeping is more expensive than a single lock.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     For tiny critical sections you can lose throughput.</pre>
+                    <ul>
+                        <li>Consider StampedLock or ConcurrentHashMap as alternatives.
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1399,52 +1448,6 @@ import java.util.Map;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
-
-/**
- * java.util.concurrent.locks.ReadWriteLock
- * ----------------------------------------
- * Two locks for the price of one:
- * &lt;p&gt;
- *
- *   READ LOCK   - many threads may hold it simultaneously.
- *   WRITE LOCK  - exclusive; no readers or writers can be active.
- * &lt;p&gt;
- *
- * Use when reads VASTLY OUTNUMBER writes — a configuration cache,
- * lookup table, in-memory index.
- * &lt;p&gt;
- *
- * The canonical implementation
- * ----------------------------
- *      ReadWriteLock rw = new ReentrantReadWriteLock();
- *      Lock r = rw.readLock();
- *      Lock w = rw.writeLock();
- * &lt;p&gt;
- *
- *      r.lock();  try { ...read...  } finally { r.unlock(); }
- *      w.lock();  try { ...write... } finally { w.unlock(); }
- * &lt;p&gt;
- *
- * Important properties
- * --------------------
- *   - REENTRANT — a thread holding the write lock can also acquire the
- *     read lock and vice versa for downgrading.
- *   - LOCK DOWNGRADING is allowed (write → read).
- *   - LOCK UPGRADING is NOT (read → write would deadlock if multiple
- *     readers tried). Release the read lock first.
- *   - FAIR option behaves like ReentrantLock&#x27;s.
- *   - Both locks share a single CONDITION namespace — only the WRITE
- *     lock can produce Conditions.
- * &lt;p&gt;
- *
- * Pitfalls
- * --------
- *   1. Write starvation. Under heavy read load, writers may wait
- *      forever. Use a FAIR ReentrantReadWriteLock if that&#x27;s a risk.
- *   2. Overhead. The bookkeeping is more expensive than a single lock.
- *      For tiny critical sections you can lose throughput.
- *   3. Consider StampedLock or ConcurrentHashMap as alternatives.
- */
 
 public class ReadWriteLockDemo {
 

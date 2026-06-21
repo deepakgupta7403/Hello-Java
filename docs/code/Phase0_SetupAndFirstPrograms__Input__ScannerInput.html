@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase0_SetupAndFirstPrograms/Input/ScannerInput.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 77 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 39 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,31 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Taking Input - java.util.Scanner</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Taking Input - java.util.Scanner</h2>
+                    <p>Scanner (since Java 5) is the easiest way to read input from the user. It wraps an InputStream
+                        (System.in for the console, but it can also read from files, strings, etc.) and provides typed
+                        convenience methods like nextInt(), nextDouble(), nextLine().</p>
+                    <h3>Typical Methods</h3>
+                    <p>nextByte() - reads next token as byte nextShort() - reads next token as short nextInt() - reads
+                        next token as int nextLong() - reads next token as long nextFloat() - reads next token as float
+                        nextDouble() - reads next token as double nextBoolean() - reads next token as boolean next() -
+                        reads next WORD (whitespace-delimited) nextLine() - reads the rest of the CURRENT LINE
+                        (including spaces)</p>
+                    <h3>The classic &quot;Scanner Pitfall&quot;</h3>
+                    <p>After calling nextInt() / nextDouble() etc., a newline character (&#x27;\n&#x27;) is left in the
+                        buffer. A subsequent nextLine() will read that empty line instead of waiting for new input. The
+                        fix is to call an extra sc.nextLine() to consume the leftover newline. The example below
+                        demonstrates both the bug and the fix.</p>
+                    <h3>Closing the Scanner</h3>
+                    <p>Scanner implements Closeable. Closing the Scanner that wraps System.in also closes System.in for
+                        the rest of the JVM - so be careful. For console apps it is fine, but if multiple parts of your
+                        program read input, leave it open.</p>
                 </div>
             </div>
 
@@ -1395,43 +1416,6 @@
           <pre class="line-numbers m-0"><code class="language-java">package Phase0_SetupAndFirstPrograms.Input;
 
 import java.util.Scanner;
-
-/**
- * Taking Input - java.util.Scanner
- * --------------------------------
- * Scanner (since Java 5) is the easiest way to read input from the user.
- * It wraps an InputStream (System.in for the console, but it can also read from
- * files, strings, etc.) and provides typed convenience methods like nextInt(),
- * nextDouble(), nextLine().
- * &lt;p&gt;
- *
- * Typical Methods
- * ---------------
- *   nextByte()    - reads next token as byte
- *   nextShort()   - reads next token as short
- *   nextInt()     - reads next token as int
- *   nextLong()    - reads next token as long
- *   nextFloat()   - reads next token as float
- *   nextDouble()  - reads next token as double
- *   nextBoolean() - reads next token as boolean
- *   next()        - reads next WORD (whitespace-delimited)
- *   nextLine()    - reads the rest of the CURRENT LINE (including spaces)
- * &lt;p&gt;
- *
- * The classic &quot;Scanner Pitfall&quot;
- * -----------------------------
- * After calling nextInt() / nextDouble() etc., a newline character (&#x27;\n&#x27;) is
- * left in the buffer. A subsequent nextLine() will read that empty line instead
- * of waiting for new input. The fix is to call an extra sc.nextLine() to consume
- * the leftover newline. The example below demonstrates both the bug and the fix.
- * &lt;p&gt;
- *
- * Closing the Scanner
- * -------------------
- * Scanner implements Closeable. Closing the Scanner that wraps System.in also
- * closes System.in for the rest of the JVM - so be careful. For console apps it
- * is fine, but if multiple parts of your program read input, leave it open.
- */
 
 public class ScannerInput {
 

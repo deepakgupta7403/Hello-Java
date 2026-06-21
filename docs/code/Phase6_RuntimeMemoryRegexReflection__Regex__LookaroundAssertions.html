@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase6_RuntimeMemoryRegexReflection/Regex/LookaroundAssertions.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 136 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 84 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,50 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>LOOKAROUND ASSERTIONS check WHAT IS AROUND a position WITHOUT consuming any characters. They
-                        are zero-width assertions, like anchors.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Lookahead and Lookbehind (&quot;Lookaround&quot;)</h2>
+                    <p>LOOKAROUND ASSERTIONS check WHAT IS AROUND a position WITHOUT consuming any characters. They are
+                        zero-width assertions, like anchors.</p>
+                    <pre class="hj-doc-art">     (?=X)        positive lookahead   - assert &quot;X follows here&quot;
+     (?!X)        negative lookahead   - assert &quot;X does NOT follow here&quot;
+     (?&lt;=X)       positive lookbehind  - assert &quot;X precedes here&quot;
+     (?&lt;!X)       negative lookbehind  - assert &quot;X does NOT precede here&quot;</pre>
+                    <h3>Why &quot;Zero-Width&quot; Matters</h3>
+                    <p>The check happens at a POSITION; the regex cursor does not advance. That lets you compose
+                        constraints without consuming input:</p>
+                    <pre class="hj-doc-art">     \d+(?=USD)             a number FOLLOWED BY &quot;USD&quot; (USD is not part of the match)
+     (?&lt;=\$)\d+             a number PRECEDED BY &quot;$&quot;   ($ is not part of the match)
+     \b(?!the\b)\w+         any word that is NOT &quot;the&quot;
+     (?&lt;![A-Z])[A-Z]\w+     a capitalised word NOT preceded by another upper-case letter</pre>
+                    <h3>Lookbehind Limits (in Java)</h3>
+                    <p>Historically Java required lookbehind to be FIXED LENGTH. Since Java 9+ variable-length
+                        lookbehind is supported, but inside the lookbehind the pattern still must have a finite maximum
+                        length. Truly unbounded lookbehind (e.g. `(?&lt;=a*)`) will be rejected by the compiler.</p>
+                    <h3>Common Real-World Uses</h3>
+                    <ul>
+                        <li>Extract a value adjacent to a marker (with the marker not in the match).
+                        </li>
+                        <li>&quot;Match only when SOMETHING ELSE is/isn&#x27;t true here&quot; - useful for
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    password rules (&quot;must contain at least one digit&quot;, etc.).</pre>
+                    <ul>
+                        <li>Insert text BETWEEN two specific characters.
+                        </li>
+                        <li>Split without consuming the delimiter.
+                        </li>
+                    </ul>
+                    <h3>Password rule example (compact)</h3>
+                    <pre class="hj-doc-art">     ^(?=.*[a-z])         must contain a lowercase
+      (?=.*[A-Z])         must contain an uppercase
+      (?=.*\d)            must contain a digit
+      (?=.*[@$!%*?&amp;])     must contain a special char
+      [A-Za-z\d@$!%*?&amp;]{8,}$</pre>
                 </div>
             </div>
 
@@ -1398,57 +1436,6 @@
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-/**
- * Lookahead and Lookbehind (&quot;Lookaround&quot;)
- * ---------------------------------------
- * LOOKAROUND ASSERTIONS check WHAT IS AROUND a position WITHOUT consuming
- * any characters. They are zero-width assertions, like anchors.
- * &lt;p&gt;
- *
- *      (?=X)        positive lookahead   - assert &quot;X follows here&quot;
- *      (?!X)        negative lookahead   - assert &quot;X does NOT follow here&quot;
- *      (?&lt;=X)       positive lookbehind  - assert &quot;X precedes here&quot;
- *      (?&lt;!X)       negative lookbehind  - assert &quot;X does NOT precede here&quot;
- * &lt;p&gt;
- *
- * Why &quot;Zero-Width&quot; Matters
- * ------------------------
- * The check happens at a POSITION; the regex cursor does not advance.
- * That lets you compose constraints without consuming input:
- * &lt;p&gt;
- *
- *      \d+(?=USD)             a number FOLLOWED BY &quot;USD&quot; (USD is not part of the match)
- *      (?&lt;=\$)\d+             a number PRECEDED BY &quot;$&quot;   ($ is not part of the match)
- *      \b(?!the\b)\w+         any word that is NOT &quot;the&quot;
- *      (?&lt;![A-Z])[A-Z]\w+     a capitalised word NOT preceded by another upper-case letter
- * &lt;p&gt;
- *
- * Lookbehind Limits (in Java)
- * ---------------------------
- * Historically Java required lookbehind to be FIXED LENGTH. Since Java 9+
- * variable-length lookbehind is supported, but inside the lookbehind the
- * pattern still must have a finite maximum length. Truly unbounded
- * lookbehind (e.g. `(?&lt;=a*)`) will be rejected by the compiler.
- * &lt;p&gt;
- *
- * Common Real-World Uses
- * ----------------------
- *   - Extract a value adjacent to a marker (with the marker not in the match).
- *   - &quot;Match only when SOMETHING ELSE is/isn&#x27;t true here&quot; - useful for
- *     password rules (&quot;must contain at least one digit&quot;, etc.).
- *   - Insert text BETWEEN two specific characters.
- *   - Split without consuming the delimiter.
- * &lt;p&gt;
- *
- * Password rule example (compact)
- * -------------------------------
- *      ^(?=.*[a-z])         must contain a lowercase
- *       (?=.*[A-Z])         must contain an uppercase
- *       (?=.*\d)            must contain a digit
- *       (?=.*[@$!%*?&amp;])     must contain a special char
- *       [A-Za-z\d@$!%*?&amp;]{8,}$
- */
 
 public class LookaroundAssertions {
 

@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase6_RuntimeMemoryRegexReflection/Regex/RegexIntroduction.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 200 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 96 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,91 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A REGULAR EXPRESSION (regex) is a small language for describing patterns of text. Java exposes
-                        it through the package java.util.regex, which contains two main classes:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Regex in Java - Introduction</h2>
+                    <p>A REGULAR EXPRESSION (regex) is a small language for describing patterns of text. Java exposes it
+                        through the package java.util.regex, which contains two main classes:</p>
+                    <pre class="hj-doc-art">     Pattern      - the compiled representation of a regex.
+     Matcher      - the engine that runs a Pattern against an input.</pre>
+                    <pre class="hj-doc-art">     Pattern p = Pattern.compile(&quot;\\d+&quot;);
+     Matcher m = p.matcher(&quot;abc 123 xyz 45&quot;);
+     m.find();              // true; matched &quot;123&quot;
+     m.group();             // &quot;123&quot;</pre>
+                    <h3>What Can A Regex Do?</h3>
+                    <ul>
+                        <li>VALIDATE a string fits a shape (e.g. an email address).
+                        </li>
+                        <li>SEARCH for occurrences inside a longer text.
+                        </li>
+                        <li>EXTRACT pieces of a string into named groups.
+                        </li>
+                        <li>REPLACE one substring (or set of substrings) with another.
+                        </li>
+                        <li>SPLIT a string at every occurrence of a delimiter.
+                        </li>
+                    </ul>
+                    <h3>The 3 Ways to Use Regex in Java</h3>
+                    <ul>
+                        <li>Convenience methods on java.lang.String:
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">        &quot;abc 123&quot;.matches(&quot;\\w+ \\d+&quot;);
+        &quot;a,b,,c&quot;.split(&quot;,&quot;);
+        &quot;x1y2z3&quot;.replaceAll(&quot;\\d&quot;, &quot;*&quot;);
+        &quot;x1y2z3&quot;.replaceFirst(&quot;\\d&quot;, &quot;*&quot;);</pre>
+                    <pre class="hj-doc-art">     These compile the regex EACH call. Fine for one-shots, wasteful
+     inside loops.</pre>
+                    <ul>
+                        <li>Pattern + Matcher - precompile once, reuse many times:
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">        Pattern p = Pattern.compile(&quot;\\d+&quot;);
+        for (String s : huge) {
+            Matcher m = p.matcher(s);
+            ...
+        }</pre>
+                    <ul>
+                        <li>The newer Stream/functional API (Java 8+):
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">        p.matcher(text).results().map(MatchResult::group).forEach(...);
+        p.splitAsStream(text);</pre>
+                    <h3>Important: matches() vs find()</h3>
+                    <pre class="hj-doc-art">     m.matches()  - returns TRUE only if the ENTIRE input matches.
+     m.find()     - returns TRUE if a SUBSTRING anywhere matches.
+     m.lookingAt()- returns TRUE if the input matches starting AT THE BEGINNING
+                    (does not need to consume the whole input).</pre>
+                    <p>`String.matches(regex)` calls `matches()` - so it requires a full match. That is the #1 source of
+                        &quot;my regex doesn&#x27;t match&quot; surprise.</p>
+                    <h3>Escaping In Java Strings</h3>
+                    <p>Regex uses `\` for many meta-characters (\d, \s, \w, \., \(, ...). Java strings ALSO use `\` for
+                        escapes. That means a regex `\d` is written `&quot;\\d&quot;` in a Java string literal. A
+                        literal backslash in regex is `\\`, which is `&quot;\\\\&quot;` in a string literal.</p>
+                    <pre class="hj-doc-art">     Java 15+ TEXT BLOCKS spare you one level of escaping:</pre>
+                    <pre class="hj-doc-art">         String r = &quot;&quot;&quot;
+                    \d+\s+\w+
+                    &quot;&quot;&quot;.strip();</pre>
+                    <h3>Folder Map</h3>
+                    <p>RegexIntroduction.java (this file) MatcherClass.java - everything Matcher can do
+                        CharacterClass.java - [...], \d, \w, \s, POSIX, Unicode Quantifiers.java - *, +, ?, {n,m} and
+                        greedy/reluctant/possessive MetacharactersAndAnchors.java</p>
+                    <ul>
+                        <li>^, $, \b, \B, ., escapes
+                        </li>
+                    </ul>
+                    <p>GroupsAndBackreferences.java</p>
+                    <ul>
+                        <li>(...), (?:...), (?&lt;name&gt;...), \1
+                        </li>
+                    </ul>
+                    <p>LookaroundAssertions.java - (?=...), (?!...), (?&lt;=...), (?&lt;!...) RegexFlags.java -
+                        CASE_INSENSITIVE / MULTILINE / DOTALL / ... ModernRegexFeatures.java - Stream-based regex (Java
+                        8+) RegexExamples.java - email / phone / url / password / etc.</p>
                 </div>
             </div>
 
@@ -1398,109 +1477,6 @@
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-/**
- * Regex in Java - Introduction
- * ----------------------------
- * A REGULAR EXPRESSION (regex) is a small language for describing
- * patterns of text. Java exposes it through the package java.util.regex,
- * which contains two main classes:
- * &lt;p&gt;
- *
- *      Pattern      - the compiled representation of a regex.
- *      Matcher      - the engine that runs a Pattern against an input.
- * &lt;p&gt;
- *
- *      Pattern p = Pattern.compile(&quot;\\d+&quot;);
- *      Matcher m = p.matcher(&quot;abc 123 xyz 45&quot;);
- *      m.find();              // true; matched &quot;123&quot;
- *      m.group();             // &quot;123&quot;
- * &lt;p&gt;
- *
- * What Can A Regex Do?
- * --------------------
- *   - VALIDATE a string fits a shape (e.g. an email address).
- *   - SEARCH for occurrences inside a longer text.
- *   - EXTRACT pieces of a string into named groups.
- *   - REPLACE one substring (or set of substrings) with another.
- *   - SPLIT a string at every occurrence of a delimiter.
- * &lt;p&gt;
- *
- * The 3 Ways to Use Regex in Java
- * -------------------------------
- *   1. Convenience methods on java.lang.String:
- * &lt;p&gt;
- *
- *         &quot;abc 123&quot;.matches(&quot;\\w+ \\d+&quot;);
- *         &quot;a,b,,c&quot;.split(&quot;,&quot;);
- *         &quot;x1y2z3&quot;.replaceAll(&quot;\\d&quot;, &quot;*&quot;);
- *         &quot;x1y2z3&quot;.replaceFirst(&quot;\\d&quot;, &quot;*&quot;);
- * &lt;p&gt;
- *
- *      These compile the regex EACH call. Fine for one-shots, wasteful
- *      inside loops.
- * &lt;p&gt;
- *
- *   2. Pattern + Matcher - precompile once, reuse many times:
- * &lt;p&gt;
- *
- *         Pattern p = Pattern.compile(&quot;\\d+&quot;);
- *         for (String s : huge) {
- *             Matcher m = p.matcher(s);
- *             ...
- *         }
- * &lt;p&gt;
- *
- *   3. The newer Stream/functional API (Java 8+):
- * &lt;p&gt;
- *
- *         p.matcher(text).results().map(MatchResult::group).forEach(...);
- *         p.splitAsStream(text);
- * &lt;p&gt;
- *
- * Important: matches() vs find()
- * ------------------------------
- *      m.matches()  - returns TRUE only if the ENTIRE input matches.
- *      m.find()     - returns TRUE if a SUBSTRING anywhere matches.
- *      m.lookingAt()- returns TRUE if the input matches starting AT THE BEGINNING
- *                     (does not need to consume the whole input).
- * &lt;p&gt;
- *
- * `String.matches(regex)` calls `matches()` - so it requires a full match.
- * That is the #1 source of &quot;my regex doesn&#x27;t match&quot; surprise.
- * &lt;p&gt;
- *
- * Escaping In Java Strings
- * ------------------------
- * Regex uses `\` for many meta-characters (\d, \s, \w, \., \(, ...). Java
- * strings ALSO use `\` for escapes. That means a regex `\d` is written
- * `&quot;\\d&quot;` in a Java string literal. A literal backslash in regex is `\\`,
- * which is `&quot;\\\\&quot;` in a string literal.
- * &lt;p&gt;
- *
- *      Java 15+ TEXT BLOCKS spare you one level of escaping:
- * &lt;p&gt;
- *
- *          String r = &quot;&quot;&quot;
- *                     \d+\s+\w+
- *                     &quot;&quot;&quot;.strip();
- * &lt;p&gt;
- *
- * Folder Map
- * ----------
- *   RegexIntroduction.java     (this file)
- *   MatcherClass.java          - everything Matcher can do
- *   CharacterClass.java        - [...], \d, \w, \s, POSIX, Unicode
- *   Quantifiers.java           - *, +, ?, {n,m} and greedy/reluctant/possessive
- *   MetacharactersAndAnchors.java
- *                              - ^, $, \b, \B, ., escapes
- *   GroupsAndBackreferences.java
- *                              - (...), (?:...), (?&lt;name&gt;...), \1
- *   LookaroundAssertions.java  - (?=...), (?!...), (?&lt;=...), (?&lt;!...)
- *   RegexFlags.java            - CASE_INSENSITIVE / MULTILINE / DOTALL / ...
- *   ModernRegexFeatures.java   - Stream-based regex (Java 8+)
- *   RegexExamples.java         - email / phone / url / password / etc.
- */
 
 public class RegexIntroduction {
 

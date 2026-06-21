@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase8_PracticalAPIs/FileIO/BufferedStreams.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 126 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 74 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,42 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Reading or writing one byte (or char) at a time hits the OS for EVERY call. A buffer slurps a
-                        big chunk at once, then serves it from memory. Cheap, easy, ~10-50x faster for byte-by-byte
-                        loops.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Buffered Streams</h2>
+                    <p>Reading or writing one byte (or char) at a time hits the OS for EVERY call. A buffer slurps a big
+                        chunk at once, then serves it from memory. Cheap, easy, ~10-50x faster for byte-by-byte
+                        loops.</p>
+                    <h3>The four classes</h3>
+                    <p>BufferedInputStream wraps InputStream BufferedOutputStream wraps OutputStream BufferedReader
+                        wraps Reader BufferedWriter wraps Writer</p>
+                    <h3>Pattern</h3>
+                    <pre class="hj-doc-art">     try (var in = new BufferedInputStream(new FileInputStream(file))) {
+         // ...byte-by-byte reads are now cheap
+     }</pre>
+                    <p>For text the modern shortcut is:</p>
+                    <pre class="hj-doc-art">     try (BufferedReader r = Files.newBufferedReader(path, UTF_8)) {
+         ...
+     }</pre>
+                    <h3>Useful extras</h3>
+                    <p>BufferedReader.readLine() - read up to the next \n / \r\n BufferedReader.lines() - Stream&lt;String&gt;
+                        of lines (Java 8+) BufferedWriter.newLine() - platform-correct line separator</p>
+                    <h3>When NOT to bother</h3>
+                    <ul>
+                        <li>You&#x27;re already reading in big chunks (e.g. read(buf) with 8KB+).
+                        </li>
+                        <li>You&#x27;re using Files.readAllBytes / readString — they buffer internally.
+                        </li>
+                        <li>Performance isn&#x27;t a concern (small files).
+                        </li>
+                    </ul>
+                    <h3>flush vs close</h3>
+                    <p>close() flushes for you. Calling flush() before close is needed only if downstream consumers
+                        should see partial output (logs, sockets).</p>
                 </div>
             </div>
 
@@ -1402,57 +1431,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.stream.Collectors;
-
-/**
- * Buffered Streams
- * ----------------
- * Reading or writing one byte (or char) at a time hits the OS for EVERY
- * call. A buffer slurps a big chunk at once, then serves it from
- * memory. Cheap, easy, ~10-50x faster for byte-by-byte loops.
- * &lt;p&gt;
- *
- * The four classes
- * ----------------
- *   BufferedInputStream  wraps  InputStream
- *   BufferedOutputStream wraps  OutputStream
- *   BufferedReader       wraps  Reader
- *   BufferedWriter       wraps  Writer
- * &lt;p&gt;
- *
- * Pattern
- * -------
- *      try (var in = new BufferedInputStream(new FileInputStream(file))) {
- *          // ...byte-by-byte reads are now cheap
- *      }
- * &lt;p&gt;
- *
- * For text the modern shortcut is:
- * &lt;p&gt;
- *
- *      try (BufferedReader r = Files.newBufferedReader(path, UTF_8)) {
- *          ...
- *      }
- * &lt;p&gt;
- *
- * Useful extras
- * -------------
- *   BufferedReader.readLine()       - read up to the next \n / \r\n
- *   BufferedReader.lines()          - Stream&lt;String&gt; of lines (Java 8+)
- *   BufferedWriter.newLine()        - platform-correct line separator
- * &lt;p&gt;
- *
- * When NOT to bother
- * ------------------
- *   - You&#x27;re already reading in big chunks (e.g. read(buf) with 8KB+).
- *   - You&#x27;re using Files.readAllBytes / readString — they buffer internally.
- *   - Performance isn&#x27;t a concern (small files).
- * &lt;p&gt;
- *
- * flush vs close
- * --------------
- * close() flushes for you. Calling flush() before close is needed only
- * if downstream consumers should see partial output (logs, sockets).
- */
 
 public class BufferedStreams {
 

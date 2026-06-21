@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/BlockingQueueDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 165 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 102 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,11 +1374,51 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>BlockingQueue is a Queue that BLOCKS the caller when an operation cannot proceed immediately:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.concurrent.BlockingQueue&amp;lt;E&amp;gt;</h2>
+                    <p>BlockingQueue is a Queue that BLOCKS the caller when an operation cannot proceed immediately:</p>
+                    <pre class="hj-doc-art">     put(e)   - blocks the producer if the queue is FULL
+     take()   - blocks the consumer if the queue is EMPTY</pre>
+                    <p>That makes BlockingQueue the FUNDAMENTAL BUILDING BLOCK for the producer/consumer pattern in
+                        concurrent code.</p>
+                    <h3>Four Operation Modes Per Operation</h3>
+                    <pre class="hj-doc-art">               Throws            Returns special   Blocks            Times out
+               ----------------- ----------------- ----------------- -----------------------------
+  insert     | add(e)           | offer(e)        | put(e)          | offer(e, time, TimeUnit)
+  remove     | remove()         | poll()          | take()          | poll(time, TimeUnit)
+  peek       | element()        | peek()          | —               | —</pre>
+                    <h3>Implementations</h3>
+                    <p>ArrayBlockingQueue - bounded, array-backed, fair option, FIFO LinkedBlockingQueue - optionally
+                        bounded, linked nodes, FIFO,</p>
+                    <pre class="hj-doc-art">                         separate locks for head and tail (good
+                         throughput on producer/consumer)</pre>
+                    <p>SynchronousQueue - capacity ZERO! every put hands directly to a take PriorityBlockingQueue-
+                        unbounded, heap-ordered, blocking DelayQueue - elements have a delay; take blocks until expiry
+                        LinkedTransferQueue - extended transfer semantics (Java 7+)</p>
+                    <h3>Why It Exists</h3>
+                    <p>Without BlockingQueue you would write loops like:</p>
+                    <pre class="hj-doc-art">     while (queue.isEmpty()) Thread.sleep(1);   // CPU-burning poll</pre>
+                    <p>BlockingQueue offloads that wait into the OS scheduler - the thread sleeps until there is
+                        something to do, no CPU spent waiting.</p>
+                    <h3>When To Use Which</h3>
+                    <ul>
+                        <li>Bounded capacity (backpressure) -&gt; ArrayBlockingQueue
+                        </li>
+                        <li>High-throughput producer/consumer -&gt; LinkedBlockingQueue
+                        </li>
+                        <li>Direct hand-off, no buffering -&gt; SynchronousQueue
+                        </li>
+                        <li>Priority order -&gt; PriorityBlockingQueue
+                        </li>
+                        <li>Delayed-action scheduling -&gt; DelayQueue
+                        </li>
+                    </ul>
+                    <p>Demo: A small producer / consumer with two threads.</p>
                 </div>
             </div>
 
@@ -1396,68 +1436,6 @@
           <pre class="line-numbers m-0"><code class="language-java">package Phase5_CollectionsLambdasStreams.Collections;
 
 import java.util.concurrent.*;
-
-/**
- * java.util.concurrent.BlockingQueue&amp;lt;E&amp;gt;
- * -------------------------------------
- * BlockingQueue is a Queue that BLOCKS the caller when an operation cannot
- * proceed immediately:
- * &lt;p&gt;
- *
- *      put(e)   - blocks the producer if the queue is FULL
- *      take()   - blocks the consumer if the queue is EMPTY
- * &lt;p&gt;
- *
- * That makes BlockingQueue the FUNDAMENTAL BUILDING BLOCK for the
- * producer/consumer pattern in concurrent code.
- * &lt;p&gt;
- *
- * Four Operation Modes Per Operation
- * ----------------------------------
- * &lt;p&gt;
- *
- *                Throws            Returns special   Blocks            Times out
- *                ----------------- ----------------- ----------------- -----------------------------
- *   insert     | add(e)           | offer(e)        | put(e)          | offer(e, time, TimeUnit)
- *   remove     | remove()         | poll()          | take()          | poll(time, TimeUnit)
- *   peek       | element()        | peek()          | —               | —
- * &lt;p&gt;
- *
- * Implementations
- * ---------------
- *   ArrayBlockingQueue   - bounded, array-backed, fair option, FIFO
- *   LinkedBlockingQueue  - optionally bounded, linked nodes, FIFO,
- *                          separate locks for head and tail (good
- *                          throughput on producer/consumer)
- *   SynchronousQueue     - capacity ZERO! every put hands directly to a take
- *   PriorityBlockingQueue- unbounded, heap-ordered, blocking
- *   DelayQueue           - elements have a delay; take blocks until expiry
- *   LinkedTransferQueue  - extended transfer semantics (Java 7+)
- * &lt;p&gt;
- *
- * Why It Exists
- * -------------
- * Without BlockingQueue you would write loops like:
- * &lt;p&gt;
- *
- *      while (queue.isEmpty()) Thread.sleep(1);   // CPU-burning poll
- * &lt;p&gt;
- *
- * BlockingQueue offloads that wait into the OS scheduler - the thread
- * sleeps until there is something to do, no CPU spent waiting.
- * &lt;p&gt;
- *
- * When To Use Which
- * -----------------
- *   - Bounded capacity (backpressure)     -&gt;  ArrayBlockingQueue
- *   - High-throughput producer/consumer   -&gt;  LinkedBlockingQueue
- *   - Direct hand-off, no buffering       -&gt;  SynchronousQueue
- *   - Priority order                       -&gt;  PriorityBlockingQueue
- *   - Delayed-action scheduling            -&gt;  DelayQueue
- * &lt;p&gt;
- *
- * Demo: A small producer / consumer with two threads.
- */
 
 public class BlockingQueueDemo {
 

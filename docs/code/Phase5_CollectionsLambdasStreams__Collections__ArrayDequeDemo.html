@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/ArrayDequeDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 180 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 112 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,56 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>java.util.ArrayDeque - The Modern Stack-and-Queue Champion</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.ArrayDeque - The Modern Stack-and-Queue Champion</h2>
+                    <p>ArrayDeque is a RESIZABLE CIRCULAR ARRAY implementation of Deque. It can be used as either a
+                        QUEUE, a STACK, or a true DEQUE. In most cases it is the right answer:</p>
+                    <pre class="hj-doc-art">     Stack       prefer ArrayDeque over java.util.Stack
+     Queue       prefer ArrayDeque over LinkedList
+     Deque       prefer ArrayDeque over LinkedList</pre>
+                    <h3>Why It Exists</h3>
+                    <ul>
+                        <li>java.util.Stack extends Vector, which is synchronized and slow.
+                        </li>
+                        <li>LinkedList works but is heavy: each node is a separate object, two
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    pointers, and worse cache locality.</pre>
+                    <ul>
+                        <li>ArrayDeque packs elements in one contiguous array - smaller memory,
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    better cache behaviour, no synchronisation tax.</pre>
+                    <h3>Constructors</h3>
+                    <p>new ArrayDeque&amp;lt;&amp;gt;() capacity 16 new ArrayDeque&amp;lt;&amp;gt;(int numElements)
+                        initial capacity new ArrayDeque&amp;lt;&amp;gt;(Collection) copy of another collection</p>
+                    <h3>Methods - Three Faces of the Same Object</h3>
+                    <p>FIFO (Queue) LIFO (Stack) Deque (both ends) ---------------------- --------------------
+                        -------------------- offer/offerLast (e) push (e) addFirst/addLast (e) poll/pollFirst () pop ()
+                        pollFirst/pollLast () peek/peekFirst () peek () peekFirst/peekLast ()</p>
+                    <p>Throw-on-failure variants: add(e)/addLast(e)/addFirst(e) remove() / removeFirst() / removeLast()
+                        element() / getFirst() / getLast()</p>
+                    <h3>Restrictions</h3>
+                    <ul>
+                        <li>NULL elements are NOT allowed (intentional - null is reserved as the
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    &quot;queue is empty&quot; sentinel for poll/peek). Use LinkedList if you need
+    to store nulls (rare).</pre>
+                    <ul>
+                        <li>NOT thread-safe. For concurrent access use a ConcurrentLinkedDeque or
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    a BlockingDeque.</pre>
+                    <h3>Big-O</h3>
+                    <p>add / remove / peek at either end O(1) amortised contains / remove(Object) O(n)</p>
+                    <h3>Iteration</h3>
+                    <p>iterator() first-to-last descendingIterator() last-to-first</p>
                 </div>
             </div>
 
@@ -1396,73 +1442,6 @@
 
 import java.util.ArrayDeque;
 import java.util.List;
-
-/**
- * java.util.ArrayDeque - The Modern Stack-and-Queue Champion
- * ----------------------------------------------------------
- * ArrayDeque is a RESIZABLE CIRCULAR ARRAY implementation of Deque. It can
- * be used as either a QUEUE, a STACK, or a true DEQUE. In most cases it is
- * the right answer:
- * &lt;p&gt;
- *
- *      Stack       prefer ArrayDeque over java.util.Stack
- *      Queue       prefer ArrayDeque over LinkedList
- *      Deque       prefer ArrayDeque over LinkedList
- * &lt;p&gt;
- *
- * Why It Exists
- * -------------
- *   - java.util.Stack extends Vector, which is synchronized and slow.
- *   - LinkedList works but is heavy: each node is a separate object, two
- *     pointers, and worse cache locality.
- *   - ArrayDeque packs elements in one contiguous array - smaller memory,
- *     better cache behaviour, no synchronisation tax.
- * &lt;p&gt;
- *
- * Constructors
- * ------------
- *   new ArrayDeque&amp;lt;&amp;gt;()                 capacity 16
- *   new ArrayDeque&amp;lt;&amp;gt;(int numElements)  initial capacity
- *   new ArrayDeque&amp;lt;&amp;gt;(Collection)        copy of another collection
- * &lt;p&gt;
- *
- * Methods - Three Faces of the Same Object
- * ----------------------------------------
- * &lt;p&gt;
- *
- *   FIFO (Queue)              LIFO (Stack)           Deque (both ends)
- *   ----------------------    --------------------   --------------------
- *   offer/offerLast (e)       push (e)                addFirst/addLast (e)
- *   poll/pollFirst ()          pop ()                  pollFirst/pollLast ()
- *   peek/peekFirst ()          peek ()                 peekFirst/peekLast ()
- * &lt;p&gt;
- *
- * Throw-on-failure variants:
- *   add(e)/addLast(e)/addFirst(e)
- *   remove() / removeFirst() / removeLast()
- *   element() / getFirst() / getLast()
- * &lt;p&gt;
- *
- * Restrictions
- * ------------
- *   - NULL elements are NOT allowed (intentional - null is reserved as the
- *     &quot;queue is empty&quot; sentinel for poll/peek). Use LinkedList if you need
- *     to store nulls (rare).
- *   - NOT thread-safe. For concurrent access use a ConcurrentLinkedDeque or
- *     a BlockingDeque.
- * &lt;p&gt;
- *
- * Big-O
- * -----
- *   add / remove / peek at either end                O(1) amortised
- *   contains / remove(Object)                        O(n)
- * &lt;p&gt;
- *
- * Iteration
- * ---------
- *   iterator()              first-to-last
- *   descendingIterator()    last-to-first
- */
 
 public class ArrayDequeDemo {
 

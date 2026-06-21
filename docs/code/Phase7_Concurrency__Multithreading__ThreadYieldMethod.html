@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/ThreadYieldMethod.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 114 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 67 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,61 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A HINT to the scheduler that the current thread is willing to give up its current time slice.
-                        It is a STATIC method.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Thread.yield()</h2>
+                    <p>A HINT to the scheduler that the current thread is willing to give up its current time slice. It
+                        is a STATIC method.</p>
+                    <pre class="hj-doc-art">     Thread.yield();</pre>
+                    <h3>What it really does</h3>
+                    <ul>
+                        <li>The thread stays RUNNABLE — it does not enter WAITING.
+                        </li>
+                        <li>The scheduler MAY pick another runnable thread, of the same or
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    higher priority, to run next. Or it MAY ignore the hint entirely.</pre>
+                    <ul>
+                        <li>There is NO guaranteed effect. The JVM spec gives no promise of
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    ordering or fairness.</pre>
+                    <ul>
+                        <li>It does NOT release locks. It does NOT block.
+                        </li>
+                    </ul>
+                    <h3>When to use yield</h3>
+                    <p>Honestly, almost never in modern code:</p>
+                    <ul>
+                        <li>Most production code uses synchronizers, queues, latches, or
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    park()/unpark() — which actually coordinate.</pre>
+                    <ul>
+                        <li>yield is a &quot;be polite&quot; hint, not a synchronization primitive.
+                        </li>
+                    </ul>
+                    <p>Two niche real uses:</p>
+                    <ul>
+                        <li>Long-running CPU loops in single-threaded benchmarks where you
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     want to encourage the OS to schedule other work.</pre>
+                    <ul>
+                        <li>Implementing a custom spin-wait alongside Thread.onSpinWait()
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     (Java 9+) — yield is the bigger hammer, onSpinWait is the lighter
+     CPU-pipeline hint.</pre>
+                    <h3>yield vs sleep vs wait</h3>
+                    <pre class="hj-doc-art">                  yield()       sleep(ms)        wait()
+                  ---------     ---------        ----------</pre>
+                    <p>State after RUNNABLE TIMED_WAITING WAITING Releases locks? No No YES (the monitor) Timed? — Yes
+                        Optional Wakes by scheduler timeout/interrupt notify/interrupt</p>
                 </div>
             </div>
 
@@ -1395,52 +1444,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase7_Concurrency.Multithreading;
-
-/**
- * Thread.yield()
- * --------------
- * A HINT to the scheduler that the current thread is willing to give up
- * its current time slice. It is a STATIC method.
- * &lt;p&gt;
- *
- *      Thread.yield();
- * &lt;p&gt;
- *
- * What it really does
- * -------------------
- *   - The thread stays RUNNABLE — it does not enter WAITING.
- *   - The scheduler MAY pick another runnable thread, of the same or
- *     higher priority, to run next. Or it MAY ignore the hint entirely.
- *   - There is NO guaranteed effect. The JVM spec gives no promise of
- *     ordering or fairness.
- *   - It does NOT release locks. It does NOT block.
- * &lt;p&gt;
- *
- * When to use yield
- * -----------------
- * Honestly, almost never in modern code:
- *   - Most production code uses synchronizers, queues, latches, or
- *     park()/unpark() — which actually coordinate.
- *   - yield is a &quot;be polite&quot; hint, not a synchronization primitive.
- * &lt;p&gt;
- *
- * Two niche real uses:
- *   1. Long-running CPU loops in single-threaded benchmarks where you
- *      want to encourage the OS to schedule other work.
- *   2. Implementing a custom spin-wait alongside Thread.onSpinWait()
- *      (Java 9+) — yield is the bigger hammer, onSpinWait is the lighter
- *      CPU-pipeline hint.
- * &lt;p&gt;
- *
- * yield vs sleep vs wait
- * ----------------------
- *                   yield()       sleep(ms)        wait()
- *                   ---------     ---------        ----------
- *   State after     RUNNABLE      TIMED_WAITING    WAITING
- *   Releases locks? No            No               YES (the monitor)
- *   Timed?          —             Yes              Optional
- *   Wakes by        scheduler     timeout/interrupt  notify/interrupt
- */
 
 public class ThreadYieldMethod {
 

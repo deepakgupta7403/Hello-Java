@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/InfiniteStreams.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 150 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 82 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,46 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A stream is INFINITE when its source can produce values forever. The stream itself is fine; the
-                        program crashes only if you forget to bound it with a short-circuit operation.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Infinite Streams</h2>
+                    <p>A stream is INFINITE when its source can produce values forever. The stream itself is fine; the
+                        program crashes only if you forget to bound it with a short-circuit operation.</p>
+                    <h3>Two Ways To Build One</h3>
+                    <p>Stream.iterate(seed, UnaryOperator)</p>
+                    <pre class="hj-doc-art">     Produces: seed, op(seed), op(op(seed)), ...
+     Example : Stream.iterate(1, n -&amp;gt; n * 2)</pre>
+                    <p>Stream.generate(Supplier)</p>
+                    <pre class="hj-doc-art">     Produces: supplier.get(), supplier.get(), ...
+     Example : Stream.generate(Math::random)</pre>
+                    <h3>Bounding an Infinite Stream</h3>
+                    <p>The short-circuit intermediate / terminal operations are:</p>
+                    <pre class="hj-doc-art">     limit(n)                    keep the first n
+     takeWhile(predicate)        keep until the predicate fails    (Java 9+)
+     anyMatch / allMatch /       short-circuit terminals
+       noneMatch
+     findFirst / findAny</pre>
+                    <p>Forget all of these and the JVM will run until you ctrl-C it.</p>
+                    <h3>Finite Version of iterate (Java 9+)</h3>
+                    <pre class="hj-doc-art">     Stream.iterate(seed, hasNext, next)</pre>
+                    <pre class="hj-doc-art">     Example: Stream.iterate(1, n -&amp;gt; n &amp;lt; 100, n -&amp;gt; n * 2)
+              -&amp;gt; 1, 2, 4, 8, ..., 64</pre>
+                    <p>The middle argument is a PREDICATE applied to each element. When it returns false the stream ends
+                        - no `.limit` needed.</p>
+                    <h3>Order Matters</h3>
+                    <p>Stream.iterate(0, n -&amp;gt; n + 1)</p>
+                    <pre class="hj-doc-art">        .filter(n -&amp;gt; n % 7 == 0)
+        .limit(5)                  // OK - limit short-circuits filter</pre>
+                    <p>Stream.iterate(0, n -&amp;gt; n + 1)</p>
+                    <pre class="hj-doc-art">        .limit(100)                // OK - finite stream
+        .filter(n -&amp;gt; n % 7 == 0)   // also fine</pre>
+                    <p>Stream.iterate(0, n -&amp;gt; n + 1)</p>
+                    <pre class="hj-doc-art">        .filter(n -&amp;gt; false)
+        .findFirst();              // BAD - never finds anything, never stops</pre>
                 </div>
             </div>
 
@@ -1401,73 +1435,6 @@ import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
-
-/**
- * Infinite Streams
- * ----------------
- * A stream is INFINITE when its source can produce values forever. The
- * stream itself is fine; the program crashes only if you forget to bound
- * it with a short-circuit operation.
- * &lt;p&gt;
- *
- * Two Ways To Build One
- * ---------------------
- * &lt;p&gt;
- *
- *   Stream.iterate(seed, UnaryOperator)
- *      Produces: seed, op(seed), op(op(seed)), ...
- *      Example : Stream.iterate(1, n -&amp;gt; n * 2)
- * &lt;p&gt;
- *
- *   Stream.generate(Supplier)
- *      Produces: supplier.get(), supplier.get(), ...
- *      Example : Stream.generate(Math::random)
- * &lt;p&gt;
- *
- * Bounding an Infinite Stream
- * ---------------------------
- * The short-circuit intermediate / terminal operations are:
- * &lt;p&gt;
- *
- *      limit(n)                    keep the first n
- *      takeWhile(predicate)        keep until the predicate fails    (Java 9+)
- *      anyMatch / allMatch /       short-circuit terminals
- *        noneMatch
- *      findFirst / findAny
- * &lt;p&gt;
- *
- * Forget all of these and the JVM will run until you ctrl-C it.
- * &lt;p&gt;
- *
- * Finite Version of iterate (Java 9+)
- * -----------------------------------
- *      Stream.iterate(seed, hasNext, next)
- * &lt;p&gt;
- *
- *      Example: Stream.iterate(1, n -&amp;gt; n &amp;lt; 100, n -&amp;gt; n * 2)
- *               -&amp;gt; 1, 2, 4, 8, ..., 64
- * &lt;p&gt;
- *
- * The middle argument is a PREDICATE applied to each element. When it
- * returns false the stream ends - no `.limit` needed.
- * &lt;p&gt;
- *
- * Order Matters
- * -------------
- *   Stream.iterate(0, n -&amp;gt; n + 1)
- *         .filter(n -&amp;gt; n % 7 == 0)
- *         .limit(5)                  // OK - limit short-circuits filter
- * &lt;p&gt;
- *
- *   Stream.iterate(0, n -&amp;gt; n + 1)
- *         .limit(100)                // OK - finite stream
- *         .filter(n -&amp;gt; n % 7 == 0)   // also fine
- * &lt;p&gt;
- *
- *   Stream.iterate(0, n -&amp;gt; n + 1)
- *         .filter(n -&amp;gt; false)
- *         .findFirst();              // BAD - never finds anything, never stops
- */
 
 public class InfiniteStreams {
 

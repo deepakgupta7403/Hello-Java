@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase8_PracticalAPIs/FileIO/DataStreams.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 111 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 65 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,48 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>DECORATORS on top of byte streams that read and write Java&#x27;s PRIMITIVE TYPES in a
-                        portable, fixed-width binary format:
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Data Streams — DataInputStream / DataOutputStream</h2>
+                    <p>DECORATORS on top of byte streams that read and write Java&#x27;s PRIMITIVE TYPES in a portable,
+                        fixed-width binary format:</p>
+                    <pre class="hj-doc-art">     int (4 bytes), long (8), short (2), byte (1),
+     float (4), double (8), boolean (1), char (2),
+     &quot;modified UTF-8&quot; strings via writeUTF / readUTF.</pre>
+                    <p>Byte order is BIG-ENDIAN, regardless of platform.</p>
+                    <h3>Why this exists</h3>
+                    <p>Without DataStreams you&#x27;d have to encode/decode each primitive by hand (shifts, masks, byte
+                        arrays). DataStreams give you the same format any other Java program will agree on.</p>
+                    <h3>Pattern</h3>
+                    <pre class="hj-doc-art">     try (var out = new DataOutputStream(new FileOutputStream(f))) {
+         out.writeInt(42);
+         out.writeUTF(&quot;hello&quot;);
+     }
+     try (var in = new DataInputStream(new FileInputStream(f))) {
+         int n = in.readInt();
+         String s = in.readUTF();
+     }</pre>
+                    <h3>Caveats</h3>
+                    <ul>
+                        <li>readUTF / writeUTF use Java&#x27;s MODIFIED UTF-8 (not standard UTF-8).
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     For interop with other languages, use a Reader with UTF_8 or a
+     proper protocol library.</pre>
+                    <ul>
+                        <li>The format is positional. There&#x27;s no schema, no field names,
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     and no versioning. For real data, prefer JSON / Protobuf /
+     Avro / Java serialization.</pre>
+                    <ul>
+                        <li>End-of-stream — methods like readInt throw EOFException (not -1).
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1399,51 +1435,6 @@
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-
-/**
- * Data Streams — DataInputStream / DataOutputStream
- * --------------------------------------------------
- * DECORATORS on top of byte streams that read and write Java&#x27;s PRIMITIVE
- * TYPES in a portable, fixed-width binary format:
- * &lt;p&gt;
- *
- *      int (4 bytes), long (8), short (2), byte (1),
- *      float (4), double (8), boolean (1), char (2),
- *      &quot;modified UTF-8&quot; strings via writeUTF / readUTF.
- * &lt;p&gt;
- *
- * Byte order is BIG-ENDIAN, regardless of platform.
- * &lt;p&gt;
- *
- * Why this exists
- * ---------------
- * Without DataStreams you&#x27;d have to encode/decode each primitive by
- * hand (shifts, masks, byte arrays). DataStreams give you the same
- * format any other Java program will agree on.
- * &lt;p&gt;
- *
- * Pattern
- * -------
- *      try (var out = new DataOutputStream(new FileOutputStream(f))) {
- *          out.writeInt(42);
- *          out.writeUTF(&quot;hello&quot;);
- *      }
- *      try (var in = new DataInputStream(new FileInputStream(f))) {
- *          int n = in.readInt();
- *          String s = in.readUTF();
- *      }
- * &lt;p&gt;
- *
- * Caveats
- * -------
- *   1. readUTF / writeUTF use Java&#x27;s MODIFIED UTF-8 (not standard UTF-8).
- *      For interop with other languages, use a Reader with UTF_8 or a
- *      proper protocol library.
- *   2. The format is positional. There&#x27;s no schema, no field names,
- *      and no versioning. For real data, prefer JSON / Protobuf /
- *      Avro / Java serialization.
- *   3. End-of-stream — methods like readInt throw EOFException (not -1).
- */
 
 public class DataStreams {
 

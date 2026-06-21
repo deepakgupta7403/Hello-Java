@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase8_PracticalAPIs/DateAndTime/DurationDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 113 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 67 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,39 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Duration measures EXACT, MACHINE-LEVEL TIME — seconds and nanos. &quot;2 hours 30 minutes 15
-                        seconds.&quot; Used with Instant, LocalTime, and any precision below a day.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Duration — a Clock-Length Difference</h2>
+                    <p>Duration measures EXACT, MACHINE-LEVEL TIME — seconds and nanos. &quot;2 hours 30 minutes 15
+                        seconds.&quot; Used with Instant, LocalTime, and any precision below a day.</p>
+                    <p>Contrast with Period (P1Y2M3D) which is CALENDAR-LENGTH — variable because months / years
+                        differ.</p>
+                    <h3>Construction</h3>
+                    <p>Duration.ofNanos / ofMillis / ofSeconds / ofMinutes / ofHours / ofDays Duration.of(amount,
+                        ChronoUnit) Duration.between(a, b) - signed difference Duration.parse(&quot;PT2H30M15S&quot;) -
+                        ISO-8601 duration text</p>
+                    <h3>Arithmetic</h3>
+                    <p>plus / minus / multipliedBy / dividedBy / negated / abs</p>
+                    <h3>Accessors</h3>
+                    <p>toDays / toHours / toMinutes / toSeconds / toMillis / toNanos toDaysPart / toHoursPart /
+                        toMinutesPart / toSecondsPart / toNanosPart (Java 9+) isNegative / isZero</p>
+                    <h3>Common use cases</h3>
+                    <ul>
+                        <li>Timeouts: thread.join(Duration.ofSeconds(5)) (Java 19+)
+                        </li>
+                        <li>HTTP timeouts: HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(5))
+                        </li>
+                        <li>Cache TTLs.
+                        </li>
+                        <li>Retry backoff schedules.
+                        </li>
+                    </ul>
+                    <p>Pitfall: Duration.ofDays uses 24 hours, NOT a calendar day. Over a DST boundary &quot;1 day&quot;
+                        can be 23 or 25 hours of clock time — Period understands that; Duration doesn&#x27;t.</p>
                 </div>
             </div>
 
@@ -1399,51 +1426,6 @@
 import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-
-/**
- * Duration — a Clock-Length Difference
- * ------------------------------------
- * Duration measures EXACT, MACHINE-LEVEL TIME — seconds and nanos.
- * &quot;2 hours 30 minutes 15 seconds.&quot; Used with Instant, LocalTime, and
- * any precision below a day.
- * &lt;p&gt;
- *
- * Contrast with Period (P1Y2M3D) which is CALENDAR-LENGTH — variable
- * because months / years differ.
- * &lt;p&gt;
- *
- * Construction
- * ------------
- *   Duration.ofNanos / ofMillis / ofSeconds / ofMinutes / ofHours / ofDays
- *   Duration.of(amount, ChronoUnit)
- *   Duration.between(a, b)              - signed difference
- *   Duration.parse(&quot;PT2H30M15S&quot;)        - ISO-8601 duration text
- * &lt;p&gt;
- *
- * Arithmetic
- * ----------
- *   plus / minus / multipliedBy / dividedBy / negated / abs
- * &lt;p&gt;
- *
- * Accessors
- * ---------
- *   toDays / toHours / toMinutes / toSeconds / toMillis / toNanos
- *   toDaysPart / toHoursPart / toMinutesPart / toSecondsPart / toNanosPart  (Java 9+)
- *   isNegative / isZero
- * &lt;p&gt;
- *
- * Common use cases
- * ----------------
- *   - Timeouts: thread.join(Duration.ofSeconds(5))                  (Java 19+)
- *   - HTTP timeouts: HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(5))
- *   - Cache TTLs.
- *   - Retry backoff schedules.
- * &lt;p&gt;
- *
- * Pitfall: Duration.ofDays uses 24 hours, NOT a calendar day. Over a
- * DST boundary &quot;1 day&quot; can be 23 or 25 hours of clock time — Period
- * understands that; Duration doesn&#x27;t.
- */
 
 public class DurationDemo {
 

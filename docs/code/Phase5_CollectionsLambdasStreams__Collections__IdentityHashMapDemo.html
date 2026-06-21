@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/IdentityHashMapDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 143 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 86 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,69 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>java.util.IdentityHashMap&amp;lt;K, V&amp;gt; - Map That Compares With `==`</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.IdentityHashMap&amp;lt;K, V&amp;gt; - Map That Compares With `==`</h2>
+                    <p>IdentityHashMap is just like HashMap except that it uses REFERENCE EQUALITY for keys (the `==`
+                        operator) and System.identityHashCode for hashing instead of equals/hashCode.</p>
+                    <pre class="hj-doc-art">     HashMap            : `a.equals(b)` means same key
+     IdentityHashMap    : `a == b`      means same key</pre>
+                    <h3>Why It Exists</h3>
+                    <p>The standard Map contract says &quot;use equals&quot;, but sometimes you really want OBJECT
+                        IDENTITY. Two main use cases:</p>
+                    <ul>
+                        <li>Graph traversal where each NODE OBJECT must be visited exactly
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     once, even if two nodes happen to be equals().
+     e.g. detecting cycles when serialising an object graph.</pre>
+                    <ul>
+                        <li>Storing PER-OBJECT metadata where you specifically care that two
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">     different instances have separate entries even if they have the
+     same contents.</pre>
+                    <h3>When To Use It</h3>
+                    <ul>
+                        <li>Implementing equals on a recursive data structure - track visited
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    nodes by IDENTITY to avoid infinite loops on equal-but-distinct
+    objects.</pre>
+                    <ul>
+                        <li>Building serialisers that must remember which instances they have
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    already written, regardless of contents.</pre>
+                    <ul>
+                        <li>Caches keyed by the precise instance you were given.
+                        </li>
+                    </ul>
+                    <h3>Why You Should Normally Avoid It</h3>
+                    <p>The vast majority of map use cases want VALUE equality. Using IdentityHashMap when you really
+                        wanted HashMap silently produces wrong lookups - two strings with the same content but different
+                        identities will be treated as different keys.</p>
+                    <h3>Other Notes</h3>
+                    <ul>
+                        <li>Initial capacity refers to MAX EXPECTED ENTRIES, not buckets.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    IdentityHashMap uses linear probing in a flat array.</pre>
+                    <ul>
+                        <li>Iteration order is NOT defined.
+                        </li>
+                        <li>Implements Map but DELIBERATELY violates the Map general contract
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    for equals/hashCode - the Javadoc says so up front.</pre>
+                    <ul>
+                        <li>Not thread-safe.
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1397,62 +1456,6 @@
 import java.util.HashMap;
 import java.util.IdentityHashMap;
 import java.util.Map;
-
-/**
- * java.util.IdentityHashMap&amp;lt;K, V&amp;gt; - Map That Compares With `==`
- * -------------------------------------------------------------
- * IdentityHashMap is just like HashMap except that it uses REFERENCE
- * EQUALITY for keys (the `==` operator) and System.identityHashCode for
- * hashing instead of equals/hashCode.
- * &lt;p&gt;
- *
- *      HashMap            : `a.equals(b)` means same key
- *      IdentityHashMap    : `a == b`      means same key
- * &lt;p&gt;
- *
- * Why It Exists
- * -------------
- * The standard Map contract says &quot;use equals&quot;, but sometimes you really
- * want OBJECT IDENTITY. Two main use cases:
- * &lt;p&gt;
- *
- *   1. Graph traversal where each NODE OBJECT must be visited exactly
- *      once, even if two nodes happen to be equals().
- *      e.g. detecting cycles when serialising an object graph.
- * &lt;p&gt;
- *
- *   2. Storing PER-OBJECT metadata where you specifically care that two
- *      different instances have separate entries even if they have the
- *      same contents.
- * &lt;p&gt;
- *
- * When To Use It
- * --------------
- *   - Implementing equals on a recursive data structure - track visited
- *     nodes by IDENTITY to avoid infinite loops on equal-but-distinct
- *     objects.
- *   - Building serialisers that must remember which instances they have
- *     already written, regardless of contents.
- *   - Caches keyed by the precise instance you were given.
- * &lt;p&gt;
- *
- * Why You Should Normally Avoid It
- * --------------------------------
- * The vast majority of map use cases want VALUE equality. Using
- * IdentityHashMap when you really wanted HashMap silently produces wrong
- * lookups - two strings with the same content but different identities
- * will be treated as different keys.
- * &lt;p&gt;
- *
- * Other Notes
- * -----------
- *   - Initial capacity refers to MAX EXPECTED ENTRIES, not buckets.
- *     IdentityHashMap uses linear probing in a flat array.
- *   - Iteration order is NOT defined.
- *   - Implements Map but DELIBERATELY violates the Map general contract
- *     for equals/hashCode - the Javadoc says so up front.
- *   - Not thread-safe.
- */
 
 public class IdentityHashMapDemo {
 

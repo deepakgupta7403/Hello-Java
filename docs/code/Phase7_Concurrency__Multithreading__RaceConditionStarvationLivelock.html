@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/RaceConditionStarvationLivelock.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 136 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 96 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,42 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>The four classic concurrency hazards.</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Race Condition, Starvation, Livelock, Deadlock</h2>
+                    <p>The four classic concurrency hazards.</p>
+                    <ul>
+                        <li>RACE CONDITION
+                        </li>
+                    </ul>
+                    <p>Two threads access shared state, at least one writes, with no synchronization. The final result
+                        depends on interleaving — often silently wrong.</p>
+                    <pre class="hj-doc-art">     Example: counter++  (read, +1, write — three steps, not atomic).</pre>
+                    <ul>
+                        <li>DEADLOCK
+                        </li>
+                    </ul>
+                    <p>Two or more threads each hold a lock the others need. None ever progresses. See DeadlockDemo.java
+                        for a full treatment.</p>
+                    <ul>
+                        <li>LIVELOCK
+                        </li>
+                    </ul>
+                    <p>Threads ARE doing work — but the work is &quot;polite reaction&quot; to each other and nothing
+                        real progresses. Imagine two people in a hallway each stepping aside the same direction.</p>
+                    <ul>
+                        <li>STARVATION
+                        </li>
+                    </ul>
+                    <p>A thread is technically eligible to run but is repeatedly passed over because higher-priority /
+                        busier threads keep grabbing the resource it needs. Fairness is the cure.</p>
+                    <p>Cousin: PRIORITY INVERSION A low-priority thread holds a lock a high-priority thread needs, but a
+                        medium-priority thread keeps preempting the low one, so the high one is &quot;indirectly
+                        starved.&quot; Less common in JVM-land but still possible.</p>
                 </div>
             </div>
 
@@ -1396,45 +1428,6 @@
 
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
-
-/**
- * Race Condition, Starvation, Livelock, Deadlock
- * ----------------------------------------------
- * The four classic concurrency hazards.
- * &lt;p&gt;
- *
- * 1) RACE CONDITION
- *    Two threads access shared state, at least one writes, with no
- *    synchronization. The final result depends on interleaving — often
- *    silently wrong.
- * &lt;p&gt;
- *
- *      Example: counter++  (read, +1, write — three steps, not atomic).
- * &lt;p&gt;
- *
- * 2) DEADLOCK
- *    Two or more threads each hold a lock the others need. None ever
- *    progresses. See DeadlockDemo.java for a full treatment.
- * &lt;p&gt;
- *
- * 3) LIVELOCK
- *    Threads ARE doing work — but the work is &quot;polite reaction&quot; to each
- *    other and nothing real progresses. Imagine two people in a hallway
- *    each stepping aside the same direction.
- * &lt;p&gt;
- *
- * 4) STARVATION
- *    A thread is technically eligible to run but is repeatedly passed
- *    over because higher-priority / busier threads keep grabbing the
- *    resource it needs. Fairness is the cure.
- * &lt;p&gt;
- *
- * Cousin: PRIORITY INVERSION
- *    A low-priority thread holds a lock a high-priority thread needs,
- *    but a medium-priority thread keeps preempting the low one, so the
- *    high one is &quot;indirectly starved.&quot; Less common in JVM-land but still
- *    possible.
- */
 
 public class RaceConditionStarvationLivelock {
 

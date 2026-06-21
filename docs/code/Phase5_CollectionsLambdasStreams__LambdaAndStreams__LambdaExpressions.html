@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/LambdaExpressions.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 194 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 103 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,69 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>A LAMBDA EXPRESSION is a short, anonymous function you can pass around like a value. Lambdas
-                        let you write functional-style code WITHOUT writing a class.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Lambda Expressions (Java 8+)</h2>
+                    <p>A LAMBDA EXPRESSION is a short, anonymous function you can pass around like a value. Lambdas let
+                        you write functional-style code WITHOUT writing a class.</p>
+                    <pre class="hj-doc-art">     Runnable r = () -&amp;gt; System.out.println(&quot;hello&quot;);      // no params, one statement
+     Comparator&amp;lt;String&amp;gt; c = (a, b) -&amp;gt; a.length() - b.length();
+     Function&amp;lt;Integer, Integer&amp;gt; sq = n -&amp;gt; n * n;</pre>
+                    <h3>Syntax Forms</h3>
+                    <pre class="hj-doc-art">     ()           -&amp;gt; expr           // no parameters
+     x            -&amp;gt; expr           // single param, no parens, no type
+     (x)          -&amp;gt; expr           // single param with parens
+     (x, y)       -&amp;gt; expr           // multiple params
+     (int x, int y) -&amp;gt; expr         // explicit parameter types
+     x            -&amp;gt; { ...; return v; }   // block body</pre>
+                    <h3>Target Typing</h3>
+                    <p>A lambda has no intrinsic type. The compiler infers its type from the CONTEXT (the assignment,
+                        parameter, or return position):</p>
+                    <pre class="hj-doc-art">     Runnable      r = () -&amp;gt; ...     // SAM = run
+     Callable&amp;lt;Integer&amp;gt; c = () -&amp;gt; 42  // SAM = call returning Integer</pre>
+                    <p>The compiler picks the FUNCTIONAL INTERFACE (single abstract method) that matches.</p>
+                    <h3>Variable Capture - &quot;Effectively Final&quot;</h3>
+                    <p>A lambda can READ local variables from its enclosing scope but ONLY if those variables are
+                        EFFECTIVELY FINAL - i.e. never reassigned after the initial assignment.</p>
+                    <pre class="hj-doc-art">     int n = 5;
+     Runnable r = () -&amp;gt; System.out.println(n);   // OK
+     // n = 10;                                   // would make `n` non-final
+                                                  // and break the lambda</pre>
+                    <p>Lambdas freely READ and MUTATE fields of the enclosing object.</p>
+                    <h3>`this` Inside a Lambda</h3>
+                    <p>Unlike an anonymous class, `this` inside a lambda refers to the ENCLOSING instance - NOT the
+                        lambda. This was a deliberate change to make lambdas behave like inline code.</p>
+                    <h3>Lambda vs Anonymous Inner Class</h3>
+                    <ul>
+                        <li>Lambda is more concise.
+                        </li>
+                        <li>Lambda has no state, no `this` of its own.
+                        </li>
+                        <li>Lambda only works for FUNCTIONAL interfaces (one abstract method).
+                        </li>
+                        <li>Anonymous classes can implement multiple methods, hold fields, etc.
+                        </li>
+                    </ul>
+                    <h3>The Built-In Functional Interfaces (java.util.function)</h3>
+                    <pre class="hj-doc-art">     Function&amp;lt;T, R&amp;gt;       R apply(T)
+     BiFunction&amp;lt;T, U, R&amp;gt;  R apply(T, U)
+     Predicate&amp;lt;T&amp;gt;         boolean test(T)
+     Consumer&amp;lt;T&amp;gt;          void accept(T)
+     Supplier&amp;lt;T&amp;gt;          T get()
+     UnaryOperator&amp;lt;T&amp;gt;     T apply(T)
+     BinaryOperator&amp;lt;T&amp;gt;    T apply(T, T)
+     Runnable             void run()
+     Callable&amp;lt;V&amp;gt;          V call() throws Exception
+     Comparator&amp;lt;T&amp;gt;        int compare(T, T)
+     Plus primitive-specialised variants: IntFunction, ToIntFunction, ...</pre>
+                    <h3>See Also</h3>
+                    <p>MethodReferences.java - the `::` shortcut for &quot;lambda that</p>
+                    <pre class="hj-doc-art">                                  just calls a method&quot;</pre>
+                    <p>StreamIntroduction.java - the place lambdas really shine</p>
                 </div>
             </div>
 
@@ -1400,96 +1457,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.*;
-
-/**
- * Lambda Expressions (Java 8+)
- * ----------------------------
- * A LAMBDA EXPRESSION is a short, anonymous function you can pass around
- * like a value. Lambdas let you write functional-style code WITHOUT writing
- * a class.
- * &lt;p&gt;
- *
- *      Runnable r = () -&amp;gt; System.out.println(&quot;hello&quot;);      // no params, one statement
- *      Comparator&amp;lt;String&amp;gt; c = (a, b) -&amp;gt; a.length() - b.length();
- *      Function&amp;lt;Integer, Integer&amp;gt; sq = n -&amp;gt; n * n;
- * &lt;p&gt;
- *
- * Syntax Forms
- * ------------
- *      ()           -&amp;gt; expr           // no parameters
- *      x            -&amp;gt; expr           // single param, no parens, no type
- *      (x)          -&amp;gt; expr           // single param with parens
- *      (x, y)       -&amp;gt; expr           // multiple params
- *      (int x, int y) -&amp;gt; expr         // explicit parameter types
- *      x            -&amp;gt; { ...; return v; }   // block body
- * &lt;p&gt;
- *
- * Target Typing
- * -------------
- * A lambda has no intrinsic type. The compiler infers its type from the
- * CONTEXT (the assignment, parameter, or return position):
- * &lt;p&gt;
- *
- *      Runnable      r = () -&amp;gt; ...     // SAM = run
- *      Callable&amp;lt;Integer&amp;gt; c = () -&amp;gt; 42  // SAM = call returning Integer
- * &lt;p&gt;
- *
- * The compiler picks the FUNCTIONAL INTERFACE (single abstract method) that
- * matches.
- * &lt;p&gt;
- *
- * Variable Capture - &quot;Effectively Final&quot;
- * --------------------------------------
- * A lambda can READ local variables from its enclosing scope but ONLY if
- * those variables are EFFECTIVELY FINAL - i.e. never reassigned after the
- * initial assignment.
- * &lt;p&gt;
- *
- *      int n = 5;
- *      Runnable r = () -&amp;gt; System.out.println(n);   // OK
- *      // n = 10;                                   // would make `n` non-final
- *                                                   // and break the lambda
- * &lt;p&gt;
- *
- * Lambdas freely READ and MUTATE fields of the enclosing object.
- * &lt;p&gt;
- *
- * `this` Inside a Lambda
- * ----------------------
- * Unlike an anonymous class, `this` inside a lambda refers to the
- * ENCLOSING instance - NOT the lambda. This was a deliberate change to
- * make lambdas behave like inline code.
- * &lt;p&gt;
- *
- * Lambda vs Anonymous Inner Class
- * -------------------------------
- *   - Lambda is more concise.
- *   - Lambda has no state, no `this` of its own.
- *   - Lambda only works for FUNCTIONAL interfaces (one abstract method).
- *   - Anonymous classes can implement multiple methods, hold fields, etc.
- * &lt;p&gt;
- *
- * The Built-In Functional Interfaces (java.util.function)
- * -------------------------------------------------------
- *      Function&amp;lt;T, R&amp;gt;       R apply(T)
- *      BiFunction&amp;lt;T, U, R&amp;gt;  R apply(T, U)
- *      Predicate&amp;lt;T&amp;gt;         boolean test(T)
- *      Consumer&amp;lt;T&amp;gt;          void accept(T)
- *      Supplier&amp;lt;T&amp;gt;          T get()
- *      UnaryOperator&amp;lt;T&amp;gt;     T apply(T)
- *      BinaryOperator&amp;lt;T&amp;gt;    T apply(T, T)
- *      Runnable             void run()
- *      Callable&amp;lt;V&amp;gt;          V call() throws Exception
- *      Comparator&amp;lt;T&amp;gt;        int compare(T, T)
- *      Plus primitive-specialised variants: IntFunction, ToIntFunction, ...
- * &lt;p&gt;
- *
- * See Also
- * --------
- *   MethodReferences.java         - the `::` shortcut for &quot;lambda that
- *                                   just calls a method&quot;
- *   StreamIntroduction.java       - the place lambdas really shine
- */
 
 public class LambdaExpressions {
 

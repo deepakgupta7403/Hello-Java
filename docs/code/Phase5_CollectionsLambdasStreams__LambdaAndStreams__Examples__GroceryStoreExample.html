@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/Examples/GroceryStoreExample.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 93 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 85 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,15 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Demonstrates: filtering by category, sorting, summing prices, grouping by category, finding
-                        cheapest item, joining names, building a receipt.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Real-World Example 2 - Streams in a Grocery Store</h2>
+                    <p>Demonstrates: filtering by category, sorting, summing prices, grouping by category, finding
+                        cheapest item, joining names, building a receipt.</p>
                 </div>
             </div>
 
@@ -1401,13 +1404,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-/**
- * Real-World Example 2 - Streams in a Grocery Store
- * &lt;p&gt;
- *
- * Demonstrates: filtering by category, sorting, summing prices, grouping
- * by category, finding cheapest item, joining names, building a receipt.
- */
 public class GroceryStoreExample {
 
     record Item(String name, String category, double price, int quantity) {

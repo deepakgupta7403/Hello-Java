@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase8_PracticalAPIs/DateAndTime/LocalDateLocalTimeLocalDateTime.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 128 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 79 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,38 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Three &quot;local&quot; types — no zone info, no offset. Use them whenever the time zone is
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>LocalDate / LocalTime / LocalDateTime</h2>
+                    <p>Three &quot;local&quot; types — no zone info, no offset. Use them whenever the time zone is
                         implicit or irrelevant (a birthday, an alarm, a calendar entry that doesn&#x27;t travel across
-                        time zones).
-                    </div>
+                        time zones).</p>
+                    <h3>Construction</h3>
+                    <pre class="hj-doc-art">     LocalDate.now()                   - today, system default zone
+     LocalDate.of(2026, 5, 20)
+     LocalDate.of(2026, Month.MAY, 20)
+     LocalDate.parse(&quot;2026-05-20&quot;)     - ISO-8601
+     LocalTime.of(14, 30)
+     LocalTime.of(14, 30, 15, 123_000_000)
+     LocalDateTime.of(date, time)
+     LocalDateTime.of(2026, 5, 20, 14, 30)</pre>
+                    <h3>Manipulation</h3>
+                    <p>.plusDays(n) / minusDays / plusWeeks / plusMonths / plusYears .with(field, value) - immutable
+                        replace .withMonth(...) / withDayOfMonth(...) .with(TemporalAdjusters.firstDayOfMonth())
+                        .with(TemporalAdjusters.next(DayOfWeek.MONDAY))</p>
+                    <h3>Querying</h3>
+                    <p>.getYear(), .getMonth(), .getDayOfMonth(), .getDayOfWeek(), .getDayOfYear() .lengthOfMonth(),
+                        .lengthOfYear(), .isLeapYear() .isBefore(other), .isAfter(other), .equals(other)</p>
+                    <h3>Differences</h3>
+                    <p>long diff = ChronoUnit.DAYS.between(start, end); Period p = start.until(end); // returns
+                        years/months/days</p>
+                    <h3>Streams of dates</h3>
+                    <pre class="hj-doc-art">     start.datesUntil(end)           - Stream&lt;LocalDate&gt;
+     start.datesUntil(end, Period.ofMonths(1))   - stride</pre>
                 </div>
             </div>
 
@@ -1401,54 +1426,6 @@ import java.time.*;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
 import java.util.stream.Stream;
-
-/**
- * LocalDate / LocalTime / LocalDateTime
- * -------------------------------------
- * Three &quot;local&quot; types — no zone info, no offset. Use them whenever the
- * time zone is implicit or irrelevant (a birthday, an alarm, a calendar
- * entry that doesn&#x27;t travel across time zones).
- * &lt;p&gt;
- *
- * Construction
- * ------------
- *      LocalDate.now()                   - today, system default zone
- *      LocalDate.of(2026, 5, 20)
- *      LocalDate.of(2026, Month.MAY, 20)
- *      LocalDate.parse(&quot;2026-05-20&quot;)     - ISO-8601
- *      LocalTime.of(14, 30)
- *      LocalTime.of(14, 30, 15, 123_000_000)
- *      LocalDateTime.of(date, time)
- *      LocalDateTime.of(2026, 5, 20, 14, 30)
- * &lt;p&gt;
- *
- * Manipulation
- * ------------
- *   .plusDays(n) / minusDays / plusWeeks / plusMonths / plusYears
- *   .with(field, value)                   - immutable replace
- *   .withMonth(...) / withDayOfMonth(...)
- *   .with(TemporalAdjusters.firstDayOfMonth())
- *   .with(TemporalAdjusters.next(DayOfWeek.MONDAY))
- * &lt;p&gt;
- *
- * Querying
- * --------
- *   .getYear(), .getMonth(), .getDayOfMonth(), .getDayOfWeek(), .getDayOfYear()
- *   .lengthOfMonth(), .lengthOfYear(), .isLeapYear()
- *   .isBefore(other), .isAfter(other), .equals(other)
- * &lt;p&gt;
- *
- * Differences
- * -----------
- *   long diff = ChronoUnit.DAYS.between(start, end);
- *   Period p   = start.until(end);                  // returns years/months/days
- * &lt;p&gt;
- *
- * Streams of dates
- * ----------------
- *      start.datesUntil(end)           - Stream&lt;LocalDate&gt;
- *      start.datesUntil(end, Period.ofMonths(1))   - stride
- */
 
 public class LocalDateLocalTimeLocalDateTime {
 

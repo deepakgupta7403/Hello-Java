@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase1_CoreLanguage/DecisionMaking/JumpStatement/ContinueStatement.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 26 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 20 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,16 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Sometimes it is useful to force an early iteration of a loop. That is, you might want to
-                        continue running the loop but stop processing the remainder of the code in its body for this
-                        particular iteration. This is, in e...
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>Sometimes it is useful to force an early iteration of a loop. That is, you might want to continue
+                        running the loop but stop processing the remainder of the code in its body for this particular
+                        iteration. This is, in effect, a goto just past the body of the loop, to the loop’s end. The
+                        continue statement performs such an action.</p>
                 </div>
             </div>
 
@@ -1396,11 +1399,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase1_CoreLanguage.DecisionMaking.JumpStatement;
-
-/**Sometimes it is useful to force an early iteration of a loop.
- * That is, you might want to continue running the loop but stop processing the remainder of the code in its body for this particular iteration.
- * This is, in effect, a goto just past the body of the loop, to the loop’s end.
- * The continue statement performs such an action.**/
 
 public class ContinueStatement {
     public static void main(String args[])

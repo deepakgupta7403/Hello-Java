@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/Collections/ArrayListDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 178 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 113 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,67 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>java.util.ArrayList - Resizing-Array Implementation of List</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.ArrayList - Resizing-Array Implementation of List</h2>
+                    <p>ArrayList is the DEFAULT List implementation in Java. Internally it stores elements in an
+                        Object[] and grows the array (typically by 1.5x) when it gets full.</p>
+                    <h3>Why It Exists</h3>
+                    <p>Plain arrays are FIXED SIZE and have minimal operations. ArrayList wraps one to give you:</p>
+                    <ul>
+                        <li>growth on demand,
+                        </li>
+                        <li>the full List API,
+                        </li>
+                        <li>bidirectional iteration,
+                        </li>
+                        <li>integration with the rest of java.util.
+                        </li>
+                    </ul>
+                    <h3>When To Use It</h3>
+                    <ul>
+                        <li>You need an ORDERED collection with INDEX ACCESS.
+                        </li>
+                        <li>Most modifications are at the END (append).
+                        </li>
+                        <li>Random get() is frequent.
+                        </li>
+                        <li>Single-threaded or read-mostly.
+                        </li>
+                    </ul>
+                    <h3>When NOT To Use It</h3>
+                    <ul>
+                        <li>Frequent inserts/removes in the MIDDLE (every shift is O(n)).
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    -&gt; consider LinkedList (rarely) or a different structure entirely.</pre>
+                    <ul>
+                        <li>You need uniqueness -&gt; HashSet.
+                        </li>
+                        <li>You need concurrent writers -&gt; CopyOnWriteArrayList or external sync.
+                        </li>
+                    </ul>
+                    <h3>Big-O</h3>
+                    <p>get(i), set(i), size(), isEmpty() O(1) add at end O(1) amortised add/remove at index i O(n - i)
+                        contains, indexOf, lastIndexOf O(n) iterator/iteration O(n)</p>
+                    <h3>Constructors</h3>
+                    <p>new ArrayList&amp;lt;&amp;gt;() // initial capacity 10 new ArrayList&amp;lt;&amp;gt;(int
+                        initialCapacity) // pre-size for known load new ArrayList&amp;lt;&amp;gt;(Collection&amp;lt;?
+                        extends E&amp;gt; c) // copy of another</p>
+                    <h3>Capacity vs Size</h3>
+                    <ul>
+                        <li>capacity: how big the internal array currently is.
+                        </li>
+                        <li>size: how many elements you have actually added.
+                        </li>
+                    </ul>
+                    <p>ensureCapacity(int) grows ahead of time; trimToSize() shrinks to size().</p>
+                    <h3>Methods (Complete API, in addition to those inherited from List/Collection)</h3>
+                    <p>ensureCapacity(int) trimToSize() clone() - returns Object; cast to ArrayList if needed</p>
                 </div>
             </div>
 
@@ -1395,70 +1452,6 @@
           <pre class="line-numbers m-0"><code class="language-java">package Phase5_CollectionsLambdasStreams.Collections;
 
 import java.util.*;
-
-/**
- * java.util.ArrayList - Resizing-Array Implementation of List
- * -----------------------------------------------------------
- * ArrayList is the DEFAULT List implementation in Java. Internally it stores
- * elements in an Object[] and grows the array (typically by 1.5x) when it
- * gets full.
- * &lt;p&gt;
- *
- * Why It Exists
- * -------------
- * Plain arrays are FIXED SIZE and have minimal operations. ArrayList wraps
- * one to give you:
- *   - growth on demand,
- *   - the full List API,
- *   - bidirectional iteration,
- *   - integration with the rest of java.util.
- * &lt;p&gt;
- *
- * When To Use It
- * --------------
- *   - You need an ORDERED collection with INDEX ACCESS.
- *   - Most modifications are at the END (append).
- *   - Random get() is frequent.
- *   - Single-threaded or read-mostly.
- * &lt;p&gt;
- *
- * When NOT To Use It
- * ------------------
- *   - Frequent inserts/removes in the MIDDLE (every shift is O(n)).
- *     -&gt; consider LinkedList (rarely) or a different structure entirely.
- *   - You need uniqueness -&gt;  HashSet.
- *   - You need concurrent writers -&gt; CopyOnWriteArrayList or external sync.
- * &lt;p&gt;
- *
- * Big-O
- * -----
- *   get(i), set(i), size(), isEmpty()                O(1)
- *   add at end                                       O(1) amortised
- *   add/remove at index i                            O(n - i)
- *   contains, indexOf, lastIndexOf                   O(n)
- *   iterator/iteration                               O(n)
- * &lt;p&gt;
- *
- * Constructors
- * ------------
- *   new ArrayList&amp;lt;&amp;gt;()                          // initial capacity 10
- *   new ArrayList&amp;lt;&amp;gt;(int initialCapacity)        // pre-size for known load
- *   new ArrayList&amp;lt;&amp;gt;(Collection&amp;lt;? extends E&amp;gt; c)  // copy of another
- * &lt;p&gt;
- *
- * Capacity vs Size
- * ----------------
- *   - capacity: how big the internal array currently is.
- *   - size:     how many elements you have actually added.
- * ensureCapacity(int) grows ahead of time; trimToSize() shrinks to size().
- * &lt;p&gt;
- *
- * Methods (Complete API, in addition to those inherited from List/Collection)
- * --------------------------------------------------------------------------
- *   ensureCapacity(int)
- *   trimToSize()
- *   clone()                  - returns Object; cast to ArrayList if needed
- */
 
 public class ArrayListDemo {
 

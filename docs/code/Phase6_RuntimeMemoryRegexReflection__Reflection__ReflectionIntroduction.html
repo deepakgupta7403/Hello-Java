@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase6_RuntimeMemoryRegexReflection/Reflection/ReflectionIntroduction.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 130 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 74 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,60 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Reflection lets your code INSPECT and MANIPULATE other code at runtime: classes, methods,
-                        fields, constructors, annotations, generic information.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Reflection API — Introduction</h2>
+                    <p>Reflection lets your code INSPECT and MANIPULATE other code at runtime: classes, methods, fields,
+                        constructors, annotations, generic information.</p>
+                    <h3>Why use it?</h3>
+                    <ul>
+                        <li>Frameworks: Spring autowiring, Hibernate entity mapping, Jackson
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    JSON binding, JUnit test discovery — all built on reflection.</pre>
+                    <ul>
+                        <li>Plugins / service loaders.
+                        </li>
+                        <li>Tooling: debuggers, profilers, IDE-level features.
+                        </li>
+                        <li>Generic test helpers.
+                        </li>
+                    </ul>
+                    <h3>Why NOT to use it (in business code)</h3>
+                    <ul>
+                        <li>Slow vs direct method calls (JIT helps a lot but it&#x27;s not free).
+                        </li>
+                        <li>Bypasses compile-time type checks.
+                        </li>
+                        <li>May break under the module system without `opens`.
+                        </li>
+                        <li>Confusing stack traces (InvocationTargetException unwraps).
+                        </li>
+                        <li>Hard to refactor — renaming a field becomes a runtime bomb.
+                        </li>
+                    </ul>
+                    <h3>The starting point: Class&lt;?&gt;</h3>
+                    <ul>
+                        <li>Class&lt;T&gt; object describes a class loaded into the JVM.
+                        </li>
+                        <li>Three ways to obtain one:
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">      String.class
+      someString.getClass()
+      Class.forName(&quot;java.lang.String&quot;)</pre>
+                    <h3>The headline types in java.lang.reflect</h3>
+                    <p>Class&lt;?&gt; - a class itself Method - a method of a class Field - a field of a class
+                        Constructor&lt;T&gt; - a constructor Parameter - a parameter of a method/constructor Modifier -
+                        static helpers to decode int modifier bits Array - reflective array creation/access</p>
+                    <h3>Java 9+ module restrictions</h3>
+                    <p>Accessing PRIVATE members of a module-protected class requires the target package to be
+                        `opens`-exported to your code. Use `setAccessible(true)` only on things you&#x27;re allowed to
+                        touch.</p>
                 </div>
             </div>
 
@@ -1400,61 +1448,6 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-
-/**
- * Reflection API — Introduction
- * -----------------------------
- * Reflection lets your code INSPECT and MANIPULATE other code at
- * runtime: classes, methods, fields, constructors, annotations,
- * generic information.
- * &lt;p&gt;
- *
- * Why use it?
- * -----------
- *   - Frameworks: Spring autowiring, Hibernate entity mapping, Jackson
- *     JSON binding, JUnit test discovery — all built on reflection.
- *   - Plugins / service loaders.
- *   - Tooling: debuggers, profilers, IDE-level features.
- *   - Generic test helpers.
- * &lt;p&gt;
- *
- * Why NOT to use it (in business code)
- * ------------------------------------
- *   - Slow vs direct method calls (JIT helps a lot but it&#x27;s not free).
- *   - Bypasses compile-time type checks.
- *   - May break under the module system without `opens`.
- *   - Confusing stack traces (InvocationTargetException unwraps).
- *   - Hard to refactor — renaming a field becomes a runtime bomb.
- * &lt;p&gt;
- *
- * The starting point: Class&lt;?&gt;
- * ----------------------------
- *   - Class&lt;T&gt; object describes a class loaded into the JVM.
- *   - Three ways to obtain one:
- * &lt;p&gt;
- *
- *       String.class
- *       someString.getClass()
- *       Class.forName(&quot;java.lang.String&quot;)
- * &lt;p&gt;
- *
- * The headline types in java.lang.reflect
- * ---------------------------------------
- *   Class&lt;?&gt;          - a class itself
- *   Method            - a method of a class
- *   Field             - a field of a class
- *   Constructor&lt;T&gt;    - a constructor
- *   Parameter         - a parameter of a method/constructor
- *   Modifier          - static helpers to decode int modifier bits
- *   Array             - reflective array creation/access
- * &lt;p&gt;
- *
- * Java 9+ module restrictions
- * ---------------------------
- * Accessing PRIVATE members of a module-protected class requires the
- * target package to be `opens`-exported to your code. Use `setAccessible(true)`
- * only on things you&#x27;re allowed to touch.
- */
 
 public class ReflectionIntroduction {
 

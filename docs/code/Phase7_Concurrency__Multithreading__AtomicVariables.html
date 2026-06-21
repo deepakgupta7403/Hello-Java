@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/AtomicVariables.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 145 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 98 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,40 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Lock-free counters / references built on COMPARE-AND-SET (CAS) — a hardware instruction that
-                        atomically updates a memory cell only if it still matches an expected old value.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.util.concurrent.atomic</h2>
+                    <p>Lock-free counters / references built on COMPARE-AND-SET (CAS) — a hardware instruction that
+                        atomically updates a memory cell only if it still matches an expected old value.</p>
+                    <p>Compared with `synchronized`, atomics:</p>
+                    <pre class="hj-doc-art">  + Scale better under contention for SIMPLE updates (counters, refs).
+  + Never block — no risk of deadlock from atomic ops.</pre>
+                    <ul>
+                        <li>Cannot atomically update MULTIPLE variables; use a lock for that.
+                        </li>
+                        <li>Under HEAVY contention, CAS-retry loops still spin; use LongAdder /
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    DoubleAdder for hot counters.</pre>
+                    <h3>The Family</h3>
+                    <p>AtomicBoolean AtomicInteger / AtomicLong AtomicReference&lt;V&gt; AtomicIntegerArray /
+                        AtomicLongArray / AtomicReferenceArray&lt;V&gt; AtomicStampedReference&lt;V&gt; - reference +
+                        integer &quot;stamp&quot; to defeat ABA AtomicMarkableReference&lt;V&gt; - reference + boolean
+                        &quot;mark&quot; LongAdder / DoubleAdder - high-throughput counter (striped cells)
+                        LongAccumulator / DoubleAccumulator - LongAdder with arbitrary binary op
+                        AtomicIntegerFieldUpdater etc. - reflection-based update of volatile fields</p>
+                    <h3>Common Methods</h3>
+                    <p>get / set - plain read/write lazySet - relaxed write, eventually visible compareAndSet(expect,
+                        update) - CAS; true if it swapped incrementAndGet / decrementAndGet / addAndGet
+                        updateAndGet(UnaryOperator) - lambda-driven CAS loop accumulateAndGet(x, BinaryOperator) -
+                        lambda-driven CAS with arg</p>
+                    <h3>The ABA Problem</h3>
+                    <p>CAS only sees &quot;is the value still X?&quot; — not &quot;has it changed and changed back?&quot;
+                        If you need ABA-detection, use AtomicStampedReference (stamp increases on every update).</p>
                 </div>
             </div>
 
@@ -1397,52 +1425,6 @@
           <pre class="line-numbers m-0"><code class="language-java">package Phase7_Concurrency.Multithreading;
 
 import java.util.concurrent.atomic.*;
-
-/**
- * java.util.concurrent.atomic
- * ---------------------------
- * Lock-free counters / references built on COMPARE-AND-SET (CAS) — a
- * hardware instruction that atomically updates a memory cell only if it
- * still matches an expected old value.
- * &lt;p&gt;
- *
- * Compared with `synchronized`, atomics:
- *   + Scale better under contention for SIMPLE updates (counters, refs).
- *   + Never block — no risk of deadlock from atomic ops.
- *   - Cannot atomically update MULTIPLE variables; use a lock for that.
- *   - Under HEAVY contention, CAS-retry loops still spin; use LongAdder /
- *     DoubleAdder for hot counters.
- * &lt;p&gt;
- *
- * The Family
- * ----------
- *   AtomicBoolean
- *   AtomicInteger / AtomicLong
- *   AtomicReference&lt;V&gt;
- *   AtomicIntegerArray / AtomicLongArray / AtomicReferenceArray&lt;V&gt;
- *   AtomicStampedReference&lt;V&gt;      - reference + integer &quot;stamp&quot; to defeat ABA
- *   AtomicMarkableReference&lt;V&gt;     - reference + boolean &quot;mark&quot;
- *   LongAdder / DoubleAdder        - high-throughput counter (striped cells)
- *   LongAccumulator / DoubleAccumulator - LongAdder with arbitrary binary op
- *   AtomicIntegerFieldUpdater etc. - reflection-based update of volatile fields
- * &lt;p&gt;
- *
- * Common Methods
- * --------------
- *   get / set                                    - plain read/write
- *   lazySet                                       - relaxed write, eventually visible
- *   compareAndSet(expect, update)                - CAS; true if it swapped
- *   incrementAndGet / decrementAndGet / addAndGet
- *   updateAndGet(UnaryOperator)                  - lambda-driven CAS loop
- *   accumulateAndGet(x, BinaryOperator)          - lambda-driven CAS with arg
- * &lt;p&gt;
- *
- * The ABA Problem
- * ---------------
- * CAS only sees &quot;is the value still X?&quot; — not &quot;has it changed and changed
- * back?&quot; If you need ABA-detection, use AtomicStampedReference (stamp
- * increases on every update).
- */
 
 public class AtomicVariables {
 

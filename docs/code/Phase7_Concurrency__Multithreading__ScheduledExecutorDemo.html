@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/ScheduledExecutorDemo.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 137 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 80 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,53 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Delayed and recurring tasks without writing your own scheduler.</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>ScheduledExecutorService</h2>
+                    <p>Delayed and recurring tasks without writing your own scheduler.</p>
+                    <pre class="hj-doc-art">     ScheduledExecutorService ses = Executors.newScheduledThreadPool(2);</pre>
+                    <h3>The methods</h3>
+                    <p>schedule(Runnable, delay, unit) - run once after delay schedule(Callable&lt;V&gt;, delay, unit) -
+                        run once and produce V scheduleAtFixedRate(r, initial, period, unit)</p>
+                    <ul>
+                        <li>START every `period`, regardless
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                                             of how long previous ran
+                                             (catches up after a slow run).</pre>
+                    <p>scheduleWithFixedDelay(r, initial, delay, unit)</p>
+                    <ul>
+                        <li>WAIT `delay` AFTER each run finishes
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                                             (no catch-up).</pre>
+                    <p>Difference at a glance</p>
+                    <pre class="hj-doc-art">     atFixedRate( period=100 ms ):
+         start 0   100   200   300 ...    even if a run took 150ms,
+                                           the next still starts at 200.</pre>
+                    <pre class="hj-doc-art">     withFixedDelay( delay=100 ms ):
+         run, wait 100, run, wait 100, ...</pre>
+                    <h3>Cancelling</h3>
+                    <p>ScheduledFuture&lt;?&gt; f = ses.scheduleAtFixedRate(...); f.cancel(/* mayInterrupt= * /
+                        false);</p>
+                    <h3>Failure semantics</h3>
+                    <ul>
+                        <li>If a periodic task THROWS, subsequent runs are suppressed and the
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    ScheduledFuture&#x27;s get() will rethrow. ALWAYS catch inside the task
+    if you want it to keep running.</pre>
+                    <h3>Java 21</h3>
+                    <ul>
+                        <li>You can pass a virtual-thread factory to the scheduler if you want
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    each scheduled run to execute on a virtual thread:</pre>
+                    <pre class="hj-doc-art">        Executors.newScheduledThreadPool(1, Thread.ofVirtual().factory());</pre>
                 </div>
             </div>
 
@@ -1398,62 +1441,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
-
-/**
- * ScheduledExecutorService
- * ------------------------
- * Delayed and recurring tasks without writing your own scheduler.
- * &lt;p&gt;
- *
- *      ScheduledExecutorService ses = Executors.newScheduledThreadPool(2);
- * &lt;p&gt;
- *
- * The methods
- * -----------
- *   schedule(Runnable, delay, unit)         - run once after delay
- *   schedule(Callable&lt;V&gt;, delay, unit)      - run once and produce V
- *   scheduleAtFixedRate(r, initial, period, unit)
- *                                            - START every `period`, regardless
- *                                              of how long previous ran
- *                                              (catches up after a slow run).
- *   scheduleWithFixedDelay(r, initial, delay, unit)
- *                                            - WAIT `delay` AFTER each run finishes
- *                                              (no catch-up).
- * &lt;p&gt;
- *
- * Difference at a glance
- * &lt;p&gt;
- *
- *      atFixedRate( period=100 ms ):
- *          start 0   100   200   300 ...    even if a run took 150ms,
- *                                            the next still starts at 200.
- * &lt;p&gt;
- *
- *      withFixedDelay( delay=100 ms ):
- *          run, wait 100, run, wait 100, ...
- * &lt;p&gt;
- *
- * Cancelling
- * ----------
- *   ScheduledFuture&lt;?&gt; f = ses.scheduleAtFixedRate(...);
- *   f.cancel(/* mayInterrupt= * / false);
- * &lt;p&gt;
- *
- * Failure semantics
- * -----------------
- *   - If a periodic task THROWS, subsequent runs are suppressed and the
- *     ScheduledFuture&#x27;s get() will rethrow. ALWAYS catch inside the task
- *     if you want it to keep running.
- * &lt;p&gt;
- *
- * Java 21
- * -------
- *   - You can pass a virtual-thread factory to the scheduler if you want
- *     each scheduled run to execute on a virtual thread:
- * &lt;p&gt;
- *
- *         Executors.newScheduledThreadPool(1, Thread.ofVirtual().factory());
- */
 
 public class ScheduledExecutorDemo {
 

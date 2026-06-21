@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase5_CollectionsLambdasStreams/LambdaAndStreams/StreamFileIO.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 148 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 103 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,36 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Streams + File I/O (java.nio.file.Files)</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Streams + File I/O (java.nio.file.Files)</h2>
+                    <p>The java.nio.file.Files class exposes several stream-returning methods. They let you process
+                        files with the same declarative style you use for collections - and crucially they STREAM
+                        lazily, so you can process a multi-gigabyte file with a tiny memory footprint.</p>
+                    <h3>Stream-Returning Methods on Files</h3>
+                    <pre class="hj-doc-art">     Files.lines(Path)                  Stream&amp;lt;String&amp;gt; - one element per line
+     Files.lines(Path, Charset)
+     Files.list(Path)                    Stream&amp;lt;Path&amp;gt;   - children of one dir
+     Files.walk(Path[, maxDepth])        Stream&amp;lt;Path&amp;gt;   - recursive tree walk
+     Files.find(Path, depth, biPredicate) recursive with a filter</pre>
+                    <h3>Why You Should Use try-with-resources</h3>
+                    <p>These streams hold OS handles (file descriptors). They implement AutoCloseable; ALWAYS wrap them
+                        in try-with-resources so the handle is released even if the pipeline throws.</p>
+                    <pre class="hj-doc-art">     try (Stream&amp;lt;String&amp;gt; lines = Files.lines(path)) {
+         lines.filter(...).forEach(...);
+     }</pre>
+                    <h3>Writing Files - the Counterpart</h3>
+                    <pre class="hj-doc-art">     Files.write(Path, Iterable&amp;lt;String&amp;gt;)            - whole file at once
+     Files.write(Path, byte[], OpenOption...)
+     Files.writeString(Path, CharSequence)           Java 11+
+     Files.newBufferedWriter(Path)                    streamable BufferedWriter</pre>
+                    <h3>Demo Below</h3>
+                    <p>We write a small CSV-like file in /tmp (or the OS temp dir), read it back as a Stream, do a
+                        couple of analyses, then delete the file.</p>
                 </div>
             </div>
 
@@ -1403,50 +1429,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-/**
- * Streams + File I/O (java.nio.file.Files)
- * ----------------------------------------
- * The java.nio.file.Files class exposes several stream-returning methods.
- * They let you process files with the same declarative style you use for
- * collections - and crucially they STREAM lazily, so you can process a
- * multi-gigabyte file with a tiny memory footprint.
- * &lt;p&gt;
- *
- * Stream-Returning Methods on Files
- * ---------------------------------
- *      Files.lines(Path)                  Stream&amp;lt;String&amp;gt; - one element per line
- *      Files.lines(Path, Charset)
- *      Files.list(Path)                    Stream&amp;lt;Path&amp;gt;   - children of one dir
- *      Files.walk(Path[, maxDepth])        Stream&amp;lt;Path&amp;gt;   - recursive tree walk
- *      Files.find(Path, depth, biPredicate) recursive with a filter
- * &lt;p&gt;
- *
- * Why You Should Use try-with-resources
- * -------------------------------------
- * These streams hold OS handles (file descriptors). They implement
- * AutoCloseable; ALWAYS wrap them in try-with-resources so the handle is
- * released even if the pipeline throws.
- * &lt;p&gt;
- *
- *      try (Stream&amp;lt;String&amp;gt; lines = Files.lines(path)) {
- *          lines.filter(...).forEach(...);
- *      }
- * &lt;p&gt;
- *
- * Writing Files - the Counterpart
- * -------------------------------
- *      Files.write(Path, Iterable&amp;lt;String&amp;gt;)            - whole file at once
- *      Files.write(Path, byte[], OpenOption...)
- *      Files.writeString(Path, CharSequence)           Java 11+
- *      Files.newBufferedWriter(Path)                    streamable BufferedWriter
- * &lt;p&gt;
- *
- * Demo Below
- * ----------
- * We write a small CSV-like file in /tmp (or the OS temp dir), read it
- * back as a Stream, do a couple of analyses, then delete the file.
- */
 
 public class StreamFileIO {
 

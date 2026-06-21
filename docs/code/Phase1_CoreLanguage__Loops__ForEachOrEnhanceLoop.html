@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase1_CoreLanguage/Loops/ForEachOrEnhanceLoop.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 48 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 33 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,23 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Java also includes another version of for loop introduced in Java 5. Enhanced for loop provides
-                        a simpler way to iterate through the elements of a collection or array. It is inflexible and
-                        should be used only when the...
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <p>Java also includes another version of for loop introduced in Java 5. Enhanced for loop provides a
+                        simpler way to iterate through the elements of a collection or array. It is inflexible and
+                        should be used only when there is a need to iterate through the elements in sequential manner
+                        without knowing the index of currently processed element. Also note that the object/variable is
+                        immutable when enhanced for loop is used i.e it ensures that the values in the array can not be
+                        modified, so it can be said as read only loop where you can’t update the values as opposite to
+                        other loops where values can be modified. We recommend using this form of the for statement
+                        instead of the general form whenever possible.(as per JAVA doc.)</p>
+                    <p>Syntax: for (T element:Collection obj/array) {</p>
+                    <pre class="hj-doc-art">    statement(s)</pre>
+                    <p>}</p>
                 </div>
             </div>
 
@@ -1396,20 +1406,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase1_CoreLanguage.Loops;
-
-/**Java also includes another version of for loop introduced in Java 5.
- * Enhanced for loop provides a simpler way to iterate through the elements of a collection or array.
- * It is inflexible and should be used only when there is a need to iterate through the elements in sequential manner without knowing the index of currently processed element.
- * Also note that the object/variable is immutable when enhanced for loop is used i.e it ensures that the values in the array can not be modified,
- * so it can be said as read only loop where you can’t update the values as opposite to other loops where values can be modified.
- * We recommend using this form of the for statement instead of the general form whenever possible.(as per JAVA doc.)
- * &lt;p&gt;
- *
- * Syntax:
- * for (T element:Collection obj/array)
- * {
- *     statement(s)
- * }**/
 
 public class ForEachOrEnhanceLoop {
     public static void main(String args[])

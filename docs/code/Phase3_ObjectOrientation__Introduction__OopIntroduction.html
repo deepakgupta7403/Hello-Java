@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase3_ObjectOrientation/Introduction/OopIntroduction.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 151 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 52 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,13 +1374,114 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Java is fundamentally OBJECT-ORIENTED: every line of meaningful code lives inside a class, and
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Object-Oriented Programming in Java - Introduction</h2>
+                    <p>Java is fundamentally OBJECT-ORIENTED: every line of meaningful code lives inside a class, and
                         the program runs by sending messages (method calls) between objects. The OOP paradigm models a
-                        system as a network of coop...
-                    </div>
+                        system as a network of cooperating objects, each holding STATE (fields) and exposing BEHAVIOUR
+                        (methods).</p>
+                    <h3>The Four Pillars of OOP</h3>
+                    <ul>
+                        <li>ABSTRACTION
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    Hiding implementation details and exposing only the relevant interface.
+    &quot;What does it do&quot; without &quot;how does it do it&quot;.</pre>
+                    <pre class="hj-doc-art">        abstract class Shape {
+            abstract double area();
+        }</pre>
+                    <ul>
+                        <li>ENCAPSULATION
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    Bundling data + the code that operates on the data inside a single
+    unit (a class) and controlling access via modifiers.</pre>
+                    <pre class="hj-doc-art">        class Account {
+            private double balance;          // private state
+            public  void deposit(double v){  // controlled access
+                if (v &gt; 0) balance += v;
+            }
+        }</pre>
+                    <ul>
+                        <li>INHERITANCE
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    A subclass acquires fields and methods from a parent class and can
+    add or override behaviour. Reuses code, expresses an &quot;is-a&quot; relationship.</pre>
+                    <pre class="hj-doc-art">        class Animal { void eat() {...} }
+        class Dog extends Animal { void bark() {...} }    // Dog IS-A Animal</pre>
+                    <ul>
+                        <li>POLYMORPHISM
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    One name, many forms. Two flavours in Java:</pre>
+                    <ul>
+                        <li>Compile-time (overloading) - same method name, different signatures.
+                        </li>
+                        <li>Runtime (overriding) - subclass redefines a parent method; the call
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">        is dispatched based on the ACTUAL OBJECT TYPE at runtime.</pre>
+                    <pre class="hj-doc-art">        Animal a = new Dog();
+        a.makeSound();        // runs Dog&#x27;s version</pre>
+                    <h3>Why OOP?</h3>
+                    <ul>
+                        <li>MODULAR - classes are reusable, testable units.
+                        </li>
+                        <li>SCALABLE - inheritance + polymorphism let you grow a system without
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                 rewriting existing code.</pre>
+                    <ul>
+                        <li>MAINTAIN- - encapsulation isolates change behind interfaces.
+                        </li>
+                        <li>REAL-WORLD - models domains the way humans think about them (&quot;a
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                 customer has accounts&quot;, &quot;a car is-a vehicle&quot;).</pre>
+                    <h3>OOP Building Blocks in Java</h3>
+                    <pre class="hj-doc-art">     class            blueprint for objects
+     object           a runtime instance of a class
+     field            a variable owned by an object (state)
+     method           a function owned by a class (behaviour)
+     constructor      a special method that initialises a new object
+     package          a namespace grouping related classes
+     interface        a contract listing methods a class promises to provide
+     abstract class   a partial blueprint - mixes implementation and contract
+     record           a concise immutable data class (Java 16+)
+     enum             a fixed set of named instances
+     sealed class     a class with an EXPLICIT list of allowed subclasses
+                      (Java 17+)</pre>
+                    <h3>What This Folder Covers</h3>
+                    <ul>
+                        <li>Introduction (this file)
+                        </li>
+                        <li>Classes and Objects (../ClassesAndObject/...)
+                        </li>
+                        <li>Constructors (../Constructors/...)
+                        </li>
+                        <li>Object class (../ObjectClass/...)
+                        </li>
+                        <li>Abstraction (../Abstraction/...)
+                        </li>
+                        <li>Encapsulation (../Encapsulation/...)
+                        </li>
+                        <li>Inheritance (../Inheritance/...)
+                        </li>
+                        <li>Polymorphism (../Polymorphism/...)
+                        </li>
+                        <li>Packages (../Packages/...)
+                        </li>
+                        <li>Sealed Classes (../SealedClasses/...)
+                        </li>
+                        <li>Banking Project (../BankingApp/...)
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -1396,104 +1497,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase3_ObjectOrientation.Introduction;
-
-/**
- * Object-Oriented Programming in Java - Introduction
- * --------------------------------------------------
- * Java is fundamentally OBJECT-ORIENTED: every line of meaningful code lives
- * inside a class, and the program runs by sending messages (method calls)
- * between objects. The OOP paradigm models a system as a network of
- * cooperating objects, each holding STATE (fields) and exposing BEHAVIOUR
- * (methods).
- * &lt;p&gt;
- *
- * The Four Pillars of OOP
- * -----------------------
- * &lt;p&gt;
- *
- *  1. ABSTRACTION
- *     Hiding implementation details and exposing only the relevant interface.
- *     &quot;What does it do&quot; without &quot;how does it do it&quot;.
- * &lt;p&gt;
- *
- *         abstract class Shape {
- *             abstract double area();
- *         }
- * &lt;p&gt;
- *
- *  2. ENCAPSULATION
- *     Bundling data + the code that operates on the data inside a single
- *     unit (a class) and controlling access via modifiers.
- * &lt;p&gt;
- *
- *         class Account {
- *             private double balance;          // private state
- *             public  void deposit(double v){  // controlled access
- *                 if (v &gt; 0) balance += v;
- *             }
- *         }
- * &lt;p&gt;
- *
- *  3. INHERITANCE
- *     A subclass acquires fields and methods from a parent class and can
- *     add or override behaviour. Reuses code, expresses an &quot;is-a&quot; relationship.
- * &lt;p&gt;
- *
- *         class Animal { void eat() {...} }
- *         class Dog extends Animal { void bark() {...} }    // Dog IS-A Animal
- * &lt;p&gt;
- *
- *  4. POLYMORPHISM
- *     One name, many forms. Two flavours in Java:
- *       - Compile-time (overloading) - same method name, different signatures.
- *       - Runtime (overriding) - subclass redefines a parent method; the call
- *         is dispatched based on the ACTUAL OBJECT TYPE at runtime.
- * &lt;p&gt;
- *
- *         Animal a = new Dog();
- *         a.makeSound();        // runs Dog&#x27;s version
- * &lt;p&gt;
- *
- * Why OOP?
- * --------
- *  - MODULAR    - classes are reusable, testable units.
- *  - SCALABLE   - inheritance + polymorphism let you grow a system without
- *                  rewriting existing code.
- *  - MAINTAIN-  - encapsulation isolates change behind interfaces.
- *  - REAL-WORLD - models domains the way humans think about them (&quot;a
- *                  customer has accounts&quot;, &quot;a car is-a vehicle&quot;).
- * &lt;p&gt;
- *
- * OOP Building Blocks in Java
- * ---------------------------
- *      class            blueprint for objects
- *      object           a runtime instance of a class
- *      field            a variable owned by an object (state)
- *      method           a function owned by a class (behaviour)
- *      constructor      a special method that initialises a new object
- *      package          a namespace grouping related classes
- *      interface        a contract listing methods a class promises to provide
- *      abstract class   a partial blueprint - mixes implementation and contract
- *      record           a concise immutable data class (Java 16+)
- *      enum             a fixed set of named instances
- *      sealed class     a class with an EXPLICIT list of allowed subclasses
- *                       (Java 17+)
- * &lt;p&gt;
- *
- * What This Folder Covers
- * -----------------------
- *  - Introduction         (this file)
- *  - Classes and Objects  (../ClassesAndObject/...)
- *  - Constructors         (../Constructors/...)
- *  - Object class         (../ObjectClass/...)
- *  - Abstraction          (../Abstraction/...)
- *  - Encapsulation        (../Encapsulation/...)
- *  - Inheritance          (../Inheritance/...)
- *  - Polymorphism         (../Polymorphism/...)
- *  - Packages             (../Packages/...)
- *  - Sealed Classes       (../SealedClasses/...)
- *  - Banking Project      (../BankingApp/...)
- */
 
 public class OopIntroduction {
 

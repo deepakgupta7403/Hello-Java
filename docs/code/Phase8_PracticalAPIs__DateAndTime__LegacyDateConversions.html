@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase8_PracticalAPIs/DateAndTime/LegacyDateConversions.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 128 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 84 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,33 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Most code should use java.time. But you&#x27;ll hit legacy APIs:</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Legacy &lt;-&gt; Modern Date Conversions</h2>
+                    <p>Most code should use java.time. But you&#x27;ll hit legacy APIs:</p>
+                    <p>java.util.Date - mutable long-wrapper java.util.Calendar - &quot;subclasses for various calendars&quot;
+                        (mostly Gregorian) java.sql.Date / Time / Timestamp - JDBC subclasses (deprecated for new code)
+                        java.util.TimeZone - legacy zone class</p>
+                    <h3>Conversion table</h3>
+                    <pre class="hj-doc-art">     Date  -&gt; Instant            : date.toInstant()
+     Instant -&gt; Date             : Date.from(instant)</pre>
+                    <pre class="hj-doc-art">     Calendar -&gt; ZonedDateTime   : (Calendar).toInstant().atZone(zoneId)
+     ZonedDateTime -&gt; Calendar   : GregorianCalendar.from(zdt)</pre>
+                    <pre class="hj-doc-art">     Date -&gt; LocalDate           : date.toInstant().atZone(zone).toLocalDate()
+     LocalDate -&gt; Date           : Date.from(ld.atStartOfDay(zone).toInstant())</pre>
+                    <pre class="hj-doc-art">     java.sql.Timestamp &lt;-&gt; Instant  : .toInstant() / Timestamp.from(...)
+     java.sql.Date     &lt;-&gt; LocalDate : .toLocalDate() / java.sql.Date.valueOf(ld)
+     java.sql.Time     &lt;-&gt; LocalTime : .toLocalTime() / java.sql.Time.valueOf(lt)</pre>
+                    <pre class="hj-doc-art">     TimeZone -&gt; ZoneId          : tz.toZoneId()
+     ZoneId   -&gt; TimeZone        : TimeZone.getTimeZone(zoneId)</pre>
+                    <h3>Best practice</h3>
+                    <p>Convert AT THE BOUNDARY. The minute a legacy call gives you a Date, turn it into the right
+                        java.time type. The minute you must hand a Date out, convert from your modern value. Never let
+                        the legacy types spread into your domain code.</p>
                 </div>
             </div>
 
@@ -1403,49 +1426,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
-
-/**
- * Legacy &lt;-&gt; Modern Date Conversions
- * ----------------------------------
- * Most code should use java.time. But you&#x27;ll hit legacy APIs:
- * &lt;p&gt;
- *
- *   java.util.Date           - mutable long-wrapper
- *   java.util.Calendar       - &quot;subclasses for various calendars&quot; (mostly Gregorian)
- *   java.sql.Date / Time / Timestamp - JDBC subclasses (deprecated for new code)
- *   java.util.TimeZone       - legacy zone class
- * &lt;p&gt;
- *
- * Conversion table
- * ----------------
- *      Date  -&gt; Instant            : date.toInstant()
- *      Instant -&gt; Date             : Date.from(instant)
- * &lt;p&gt;
- *
- *      Calendar -&gt; ZonedDateTime   : (Calendar).toInstant().atZone(zoneId)
- *      ZonedDateTime -&gt; Calendar   : GregorianCalendar.from(zdt)
- * &lt;p&gt;
- *
- *      Date -&gt; LocalDate           : date.toInstant().atZone(zone).toLocalDate()
- *      LocalDate -&gt; Date           : Date.from(ld.atStartOfDay(zone).toInstant())
- * &lt;p&gt;
- *
- *      java.sql.Timestamp &lt;-&gt; Instant  : .toInstant() / Timestamp.from(...)
- *      java.sql.Date     &lt;-&gt; LocalDate : .toLocalDate() / java.sql.Date.valueOf(ld)
- *      java.sql.Time     &lt;-&gt; LocalTime : .toLocalTime() / java.sql.Time.valueOf(lt)
- * &lt;p&gt;
- *
- *      TimeZone -&gt; ZoneId          : tz.toZoneId()
- *      ZoneId   -&gt; TimeZone        : TimeZone.getTimeZone(zoneId)
- * &lt;p&gt;
- *
- * Best practice
- * -------------
- * Convert AT THE BOUNDARY. The minute a legacy call gives you a Date,
- * turn it into the right java.time type. The minute you must hand a
- * Date out, convert from your modern value. Never let the legacy types
- * spread into your domain code.
- */
 
 public class LegacyDateConversions {
 

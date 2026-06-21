@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase1_CoreLanguage/Identifiers/Identifiers.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 100 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 46 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,74 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>An IDENTIFIER is the name given to any program element: a class, method, variable, package,
-                        label, interface, etc. Identifiers are how you refer to things in your code.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Identifiers in Java</h2>
+                    <p>An IDENTIFIER is the name given to any program element: a class, method, variable, package,
+                        label, interface, etc. Identifiers are how you refer to things in your code.</p>
+                    <pre class="hj-doc-art">     int age;                  //   ^^^   &quot;age&quot; is an identifier
+     class Customer { ... }    //   ^^^^^^^^ &quot;Customer&quot; is an identifier</pre>
+                    <h3>Rules for Valid Identifiers (Strict - enforced by the compiler)</h3>
+                    <ul>
+                        <li>May contain letters (A-Z, a-z), digits (0-9), underscore (_) and dollar ($).
+                        </li>
+                        <li>MUST start with a letter, underscore (_), or dollar sign ($).
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    -&gt; CANNOT start with a digit.</pre>
+                    <ul>
+                        <li>Case-sensitive: &quot;name&quot;, &quot;Name&quot;, and &quot;NAME&quot; are three different
+                            identifiers.
+                        </li>
+                        <li>No length limit (but be sensible).
+                        </li>
+                        <li>CANNOT be a Java reserved keyword (class, int, void, ...).
+                        </li>
+                        <li>CANNOT be the literals true, false, or null.
+                        </li>
+                        <li>Cannot contain whitespace.
+                        </li>
+                        <li>Java allows Unicode letters - so non-English names like android , greek
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    letters work. Usually avoided in professional code.</pre>
+                    <h3>Style Conventions (Soft Rules - not enforced, but everyone follows them)</h3>
+                    <ul>
+                        <li>Classes/Interfaces: PascalCase -&gt; Customer, OrderService
+                        </li>
+                        <li>Methods/Variables : camelCase -&gt; getOrderId, totalAmount
+                        </li>
+                        <li>Constants : UPPER_SNAKE_CASE -&gt; MAX_RETRIES, PI
+                        </li>
+                        <li>Packages : lowercase, dot- -&gt; com.example.payments
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                       separated, no _</pre>
+                    <ul>
+                        <li>Generic type vars : single uppercase -&gt; T, K, V, E
+                        </li>
+                        <li>Boolean variables : start with is/has/can -&gt; isActive, hasNext, canEdit
+                        </li>
+                    </ul>
+                    <h3>Special About Dollar Sign and Underscore</h3>
+                    <ul>
+                        <li>$ is technically allowed but reserved for code-generation tools (the Java
+                        </li>
+                    </ul>
+                    <p>compiler itself uses it for inner-class file names like Outer$Inner.class). Avoid using $ in your
+                        own identifiers.</p>
+                    <ul>
+                        <li>Standalone underscore &quot;_&quot; was deprecated as an identifier in Java 9 and is
+                        </li>
+                    </ul>
+                    <p>actually a RESERVED keyword from Java 21 onward (used for unnamed variables in pattern matching).
+                        Use a meaningful name instead.</p>
+                    <p>This class demonstrates legal and illegal identifiers (the illegal ones are commented out -
+                        uncomment one at a time to see the compile errors).</p>
                 </div>
             </div>
 
@@ -1395,59 +1457,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase1_CoreLanguage.Identifiers;
-
-/**
- * Identifiers in Java
- * -------------------
- * An IDENTIFIER is the name given to any program element: a class, method,
- * variable, package, label, interface, etc. Identifiers are how you refer to
- * things in your code.
- * &lt;p&gt;
- *
- *      int age;                  //   ^^^   &quot;age&quot; is an identifier
- *      class Customer { ... }    //   ^^^^^^^^ &quot;Customer&quot; is an identifier
- * &lt;p&gt;
- *
- * Rules for Valid Identifiers (Strict - enforced by the compiler)
- * ---------------------------------------------------------------
- *  1. May contain letters (A-Z, a-z), digits (0-9), underscore (_) and dollar ($).
- *  2. MUST start with a letter, underscore (_), or dollar sign ($).
- *     -&gt; CANNOT start with a digit.
- *  3. Case-sensitive: &quot;name&quot;, &quot;Name&quot;, and &quot;NAME&quot; are three different identifiers.
- *  4. No length limit (but be sensible).
- *  5. CANNOT be a Java reserved keyword (class, int, void, ...).
- *  6. CANNOT be the literals true, false, or null.
- *  7. Cannot contain whitespace.
- *  8. Java allows Unicode letters - so non-English names like  android , greek
- *     letters work. Usually avoided in professional code.
- * &lt;p&gt;
- *
- * Style Conventions (Soft Rules - not enforced, but everyone follows them)
- * -----------------------------------------------------------------------
- *  - Classes/Interfaces: PascalCase            -&gt; Customer, OrderService
- *  - Methods/Variables : camelCase             -&gt; getOrderId, totalAmount
- *  - Constants         : UPPER_SNAKE_CASE      -&gt; MAX_RETRIES, PI
- *  - Packages          : lowercase, dot-       -&gt; com.example.payments
- *                        separated, no _
- *  - Generic type vars : single uppercase      -&gt; T, K, V, E
- *  - Boolean variables : start with is/has/can -&gt; isActive, hasNext, canEdit
- * &lt;p&gt;
- *
- * Special About Dollar Sign and Underscore
- * ----------------------------------------
- * - $ is technically allowed but reserved for code-generation tools (the Java
- *   compiler itself uses it for inner-class file names like Outer$Inner.class).
- *   Avoid using $ in your own identifiers.
- * &lt;p&gt;
- *
- * - Standalone underscore &quot;_&quot; was deprecated as an identifier in Java 9 and is
- *   actually a RESERVED keyword from Java 21 onward (used for unnamed variables
- *   in pattern matching). Use a meaningful name instead.
- * &lt;p&gt;
- *
- * This class demonstrates legal and illegal identifiers (the illegal ones are
- * commented out - uncomment one at a time to see the compile errors).
- */
 
 public class Identifiers {
 

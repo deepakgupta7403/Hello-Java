@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase8_PracticalAPIs/FileIO/FileIOIntroduction.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 112 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 36 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,72 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Java has TWO file APIs you should know:</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>File I/O — Introduction</h2>
+                    <p>Java has TWO file APIs you should know:</p>
+                    <ul>
+                        <li>java.io - &quot;classic&quot; stream-based I/O, since 1.0.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                         Byte streams (InputStream/OutputStream) and
+                         character streams (Reader/Writer). Still the
+                         most common API for reading/writing files.</pre>
+                    <ul>
+                        <li>java.nio.file - &quot;new I/O&quot; file API, since Java 7.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                         Path / Files utility methods that are
+                         shorter, safer, and more flexible. PREFERRED
+                         for new code.</pre>
+                    <p>They INTEROPERATE: a Path can become a File (path.toFile()), and a File can become a Path
+                        (file.toPath()).</p>
+                    <h3>The stream/reader/writer hierarchy</h3>
+                    <pre class="hj-doc-art">     InputStream / OutputStream     - bytes (8-bit)
+     Reader / Writer                - characters (text)
+     Buffered*                      - decorators that add buffering
+     Data*                          - decorators for primitive types
+     Object*                        - serialization</pre>
+                    <h3>Why two APIs?</h3>
+                    <ul>
+                        <li>java.io is older, simpler, and ubiquitous in legacy code.
+                        </li>
+                        <li>java.nio.file fixes a lot of papercuts in java.io:
+                            <ul>
+                                <li>Exceptions tell you WHY (NoSuchFileException vs vague IOException).
+                                </li>
+                                <li>Cross-platform Path manipulation.
+                                </li>
+                                <li>Atomic + copy/move/delete utilities.
+                                </li>
+                                <li>File system events (WatchService).
+                                </li>
+                                <li>Symlinks, attributes, ACLs.
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h3>Quick guide: which class for what</h3>
+                    <p>&quot;Just read a file as text&quot; - Files.readString(path) [Java 11+] &quot;Just write text&quot;
+                        - Files.writeString(path, &quot;...&quot;) &quot;Read line by line&quot; - Files.lines(path) or
+                        BufferedReader &quot;Read bytes (image, binary, etc.)&quot; - Files.readAllBytes(path) &quot;Random
+                        access in a big file&quot; - FileChannel / RandomAccessFile &quot;Stream of files in a directory&quot;
+                        - Files.list / Files.walk &quot;Be notified of changes&quot; - WatchService</p>
+                    <h3>Resource hygiene</h3>
+                    <p>Anything that opens a file should be in a try-with-resources block:</p>
+                    <pre class="hj-doc-art">     try (var reader = Files.newBufferedReader(path)) {
+         ...
+     }</pre>
+                    <p>The JVM does NOT close streams on GC promptly — leaks happen.</p>
+                    <h3>Character encodings</h3>
+                    <p>Always specify the charset for text I/O. The platform default is a landmine on Windows. Use
+                        StandardCharsets.UTF_8.</p>
+                    <p>This file just shows the legacy `File` API to ground later examples. The juicy stuff lives in the
+                        other files in this folder.</p>
                 </div>
             </div>
 
@@ -1396,81 +1458,6 @@
 
 import java.io.File;
 
-/**
- * File I/O — Introduction
- * -----------------------
- * Java has TWO file APIs you should know:
- * &lt;p&gt;
- *
- *   1. java.io           - &quot;classic&quot; stream-based I/O, since 1.0.
- *                          Byte streams (InputStream/OutputStream) and
- *                          character streams (Reader/Writer). Still the
- *                          most common API for reading/writing files.
- * &lt;p&gt;
- *
- *   2. java.nio.file     - &quot;new I/O&quot; file API, since Java 7.
- *                          Path / Files utility methods that are
- *                          shorter, safer, and more flexible. PREFERRED
- *                          for new code.
- * &lt;p&gt;
- *
- * They INTEROPERATE: a Path can become a File (path.toFile()), and a
- * File can become a Path (file.toPath()).
- * &lt;p&gt;
- *
- * The stream/reader/writer hierarchy
- * ----------------------------------
- *      InputStream / OutputStream     - bytes (8-bit)
- *      Reader / Writer                - characters (text)
- *      Buffered*                      - decorators that add buffering
- *      Data*                          - decorators for primitive types
- *      Object*                        - serialization
- * &lt;p&gt;
- *
- * Why two APIs?
- * -------------
- *   - java.io is older, simpler, and ubiquitous in legacy code.
- *   - java.nio.file fixes a lot of papercuts in java.io:
- *       - Exceptions tell you WHY (NoSuchFileException vs vague IOException).
- *       - Cross-platform Path manipulation.
- *       - Atomic + copy/move/delete utilities.
- *       - File system events (WatchService).
- *       - Symlinks, attributes, ACLs.
- * &lt;p&gt;
- *
- * Quick guide: which class for what
- * ---------------------------------
- *   &quot;Just read a file as text&quot;          - Files.readString(path)         [Java 11+]
- *   &quot;Just write text&quot;                    - Files.writeString(path, &quot;...&quot;)
- *   &quot;Read line by line&quot;                  - Files.lines(path) or BufferedReader
- *   &quot;Read bytes (image, binary, etc.)&quot;   - Files.readAllBytes(path)
- *   &quot;Random access in a big file&quot;        - FileChannel / RandomAccessFile
- *   &quot;Stream of files in a directory&quot;     - Files.list / Files.walk
- *   &quot;Be notified of changes&quot;             - WatchService
- * &lt;p&gt;
- *
- * Resource hygiene
- * ----------------
- * Anything that opens a file should be in a try-with-resources block:
- * &lt;p&gt;
- *
- *      try (var reader = Files.newBufferedReader(path)) {
- *          ...
- *      }
- * &lt;p&gt;
- *
- * The JVM does NOT close streams on GC promptly — leaks happen.
- * &lt;p&gt;
- *
- * Character encodings
- * -------------------
- * Always specify the charset for text I/O. The platform default is a
- * landmine on Windows. Use StandardCharsets.UTF_8.
- * &lt;p&gt;
- *
- * This file just shows the legacy `File` API to ground later examples.
- * The juicy stuff lives in the other files in this folder.
- */
 public class FileIOIntroduction {
 
     public static void main(String[] args) {

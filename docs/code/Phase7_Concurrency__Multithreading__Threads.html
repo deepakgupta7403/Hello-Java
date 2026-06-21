@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/Threads.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 148 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 80 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,12 +1374,51 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>Thread is the JVM-level representation of a thread of execution. Every Java program starts with
-                        one Thread (the &quot;main&quot; thread). All other threads must be CREATED explicitly.
-                    </div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>java.lang.Thread</h2>
+                    <p>Thread is the JVM-level representation of a thread of execution. Every Java program starts with
+                        one Thread (the &quot;main&quot; thread). All other threads must be CREATED explicitly.</p>
+                    <h3>Two Ways To Define Work</h3>
+                    <ul>
+                        <li>EXTEND Thread - override run(). Couples your code to
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                                 the Thread class. Cannot also extend
+                                 another class.</pre>
+                    <ul>
+                        <li>IMPLEMENT Runnable - pass to a Thread / ExecutorService.
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">                                 PREFERRED — separates the work from
+                                 the mechanism. Works with thread pools.</pre>
+                    <h3>Important Constructors</h3>
+                    <p>new Thread() - no-op run() by default. new Thread(Runnable r) - run r.run() on a new thread. new
+                        Thread(Runnable r, String name) - give it a debugging-friendly name. new Thread(ThreadGroup g,
+                        Runnable r) - join a thread group (rarely used).</p>
+                    <h3>Important Instance Methods</h3>
+                    <p>start() - schedules the thread and calls run() on it.</p>
+                    <pre class="hj-doc-art">                      Throwing IllegalThreadStateException if called twice.</pre>
+                    <p>run() - the work itself. DO NOT CALL DIRECTLY — that runs on</p>
+                    <pre class="hj-doc-art">                      the current thread, not a new one.</pre>
+                    <p>join() - wait for the thread to finish. interrupt() - request the thread to stop (cooperative).
+                        isAlive() - has it started and not finished? getId() - JVM-unique id for this thread. getName()
+                        / setName(...) getPriority() / setPriority(int) setDaemon(boolean) - daemon threads don&#x27;t
+                        keep the JVM alive. getState() - lifecycle state (NEW, RUNNABLE, ...).</p>
+                    <h3>Important Static Methods</h3>
+                    <p>currentThread() - the running thread. sleep(ms) - pause this thread (releases CPU, KEEPS LOCKS).
+                        yield() - hint to the scheduler: I&#x27;m OK to wait. onSpinWait() - hint inside a busy-wait
+                        loop (Java 9+). activeCount() - number of active threads in the current group.</p>
+                    <h3>Static Methods Java 19+ — Virtual Threads</h3>
+                    <p>ofPlatform() - builder for a classic OS-backed thread. ofVirtual() - builder for a virtual
+                        (user-mode) thread. startVirtualThread(Runnable) - one-shot virtual thread.</p>
+                    <h3>Naming, IDs, Equality</h3>
+                    <p>Two Thread objects are equal only via reference equality (==). Names are NOT unique. Always set a
+                        meaningful name — it shows up in stack traces and profilers.</p>
                 </div>
             </div>
 
@@ -1395,73 +1434,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase7_Concurrency.Multithreading;
-
-/**
- * java.lang.Thread
- * ----------------
- * Thread is the JVM-level representation of a thread of execution.
- * Every Java program starts with one Thread (the &quot;main&quot; thread). All
- * other threads must be CREATED explicitly.
- * &lt;p&gt;
- *
- * Two Ways To Define Work
- * -----------------------
- *   1. EXTEND Thread             - override run(). Couples your code to
- *                                  the Thread class. Cannot also extend
- *                                  another class.
- * &lt;p&gt;
- *
- *   2. IMPLEMENT Runnable        - pass to a Thread / ExecutorService.
- *                                  PREFERRED — separates the work from
- *                                  the mechanism. Works with thread pools.
- * &lt;p&gt;
- *
- * Important Constructors
- * ----------------------
- *   new Thread()                            - no-op run() by default.
- *   new Thread(Runnable r)                  - run r.run() on a new thread.
- *   new Thread(Runnable r, String name)     - give it a debugging-friendly name.
- *   new Thread(ThreadGroup g, Runnable r)   - join a thread group (rarely used).
- * &lt;p&gt;
- *
- * Important Instance Methods
- * --------------------------
- *   start()           - schedules the thread and calls run() on it.
- *                       Throwing IllegalThreadStateException if called twice.
- *   run()             - the work itself. DO NOT CALL DIRECTLY — that runs on
- *                       the current thread, not a new one.
- *   join()            - wait for the thread to finish.
- *   interrupt()       - request the thread to stop (cooperative).
- *   isAlive()         - has it started and not finished?
- *   getId()           - JVM-unique id for this thread.
- *   getName() / setName(...)
- *   getPriority() / setPriority(int)
- *   setDaemon(boolean) - daemon threads don&#x27;t keep the JVM alive.
- *   getState()        - lifecycle state (NEW, RUNNABLE, ...).
- * &lt;p&gt;
- *
- * Important Static Methods
- * ------------------------
- *   currentThread()   - the running thread.
- *   sleep(ms)         - pause this thread (releases CPU, KEEPS LOCKS).
- *   yield()           - hint to the scheduler: I&#x27;m OK to wait.
- *   onSpinWait()      - hint inside a busy-wait loop (Java 9+).
- *   activeCount()     - number of active threads in the current group.
- * &lt;p&gt;
- *
- * Static Methods Java 19+ — Virtual Threads
- * -----------------------------------------
- *   ofPlatform()      - builder for a classic OS-backed thread.
- *   ofVirtual()       - builder for a virtual (user-mode) thread.
- *   startVirtualThread(Runnable) - one-shot virtual thread.
- * &lt;p&gt;
- *
- * Naming, IDs, Equality
- * ---------------------
- * Two Thread objects are equal only via reference equality (==). Names
- * are NOT unique. Always set a meaningful name — it shows up in stack
- * traces and profilers.
- */
 
 public class Threads {
 

@@ -1365,7 +1365,7 @@
                     <code class="text-white-50 small">src/Phase7_Concurrency/Multithreading/StartVsRun.java</code>
                 </div>
                 <div class="d-flex gap-2">
-                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 102 lines</span>
+                    <span class="badge bg-light text-dark"><span class="material-icons-outlined small">code</span> 61 lines</span>
                 </div>
             </div>
         </div>
@@ -1374,10 +1374,47 @@
     <section class="py-4">
         <div class="container-fluid px-4">
 
-            <div class="alert hj-summary mb-4" role="note">
-                <div class="d-flex">
-                    <span class="material-icons me-2 text-primary">info</span>
-                    <div>One of the most common interview / debugging traps in Java.</div>
+            <div class="card hj-doc shadow-1 mb-4">
+                <div class="card-header bg-transparent d-flex align-items-center">
+                    <span class="material-icons me-2 text-primary">menu_book</span>
+                    <span class="fw-bold">Documentation</span>
+                </div>
+                <div class="card-body hj-doc-body">
+                    <h2>Thread.start() vs Thread.run()</h2>
+                    <p>One of the most common interview / debugging traps in Java.</p>
+                    <p>start() - Asks the JVM to create a new OS thread (or virtual thread)</p>
+                    <pre class="hj-doc-art">             and run() will be invoked ON THAT NEW THREAD.</pre>
+                    <p>run() - Just a normal method. Calling it directly executes the body</p>
+                    <pre class="hj-doc-art">             on the CURRENT thread — no new thread is created at all.</pre>
+                    <h3>Why It Matters</h3>
+                    <p>Code written for concurrency (printing thread names, holding locks, sleeping) APPEARS to &quot;work&quot;
+                        if you call run() — it just runs serially on the caller. No parallelism, no throughput, no
+                        concurrency bugs to catch. The bug only shows when load arrives.</p>
+                    <h3>Other Rules</h3>
+                    <ul>
+                        <li>start() can be called ONLY ONCE per Thread instance. A second call
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    throws IllegalThreadStateException.</pre>
+                    <ul>
+                        <li>run() can be called any number of times like any normal method.
+                        </li>
+                        <li>You override run() to define the work, but you NEVER call it. The
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    JVM calls it for you when start() spins up the new thread.</pre>
+                    <h3>In Modern Java</h3>
+                    <ul>
+                        <li>The same distinction applies to virtual threads. Use
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    Thread.startVirtualThread(r) or Thread.ofVirtual().start(r) instead
+    of constructing-and-starting two-step.</pre>
+                    <ul>
+                        <li>Prefer ExecutorService.execute / submit — it removes the start/run
+                        </li>
+                    </ul>
+                    <pre class="hj-doc-art">    confusion entirely.</pre>
                 </div>
             </div>
 
@@ -1393,46 +1430,6 @@
                 </div>
                 <div class="card-body p-0">
           <pre class="line-numbers m-0"><code class="language-java">package Phase7_Concurrency.Multithreading;
-
-/**
- * Thread.start() vs Thread.run()
- * ------------------------------
- * One of the most common interview / debugging traps in Java.
- * &lt;p&gt;
- *
- *   start()  - Asks the JVM to create a new OS thread (or virtual thread)
- *              and run() will be invoked ON THAT NEW THREAD.
- * &lt;p&gt;
- *
- *   run()    - Just a normal method. Calling it directly executes the body
- *              on the CURRENT thread — no new thread is created at all.
- * &lt;p&gt;
- *
- * Why It Matters
- * --------------
- * Code written for concurrency (printing thread names, holding locks,
- * sleeping) APPEARS to &quot;work&quot; if you call run() — it just runs serially
- * on the caller. No parallelism, no throughput, no concurrency bugs to
- * catch. The bug only shows when load arrives.
- * &lt;p&gt;
- *
- * Other Rules
- * -----------
- *   - start() can be called ONLY ONCE per Thread instance. A second call
- *     throws IllegalThreadStateException.
- *   - run() can be called any number of times like any normal method.
- *   - You override run() to define the work, but you NEVER call it. The
- *     JVM calls it for you when start() spins up the new thread.
- * &lt;p&gt;
- *
- * In Modern Java
- * --------------
- *   - The same distinction applies to virtual threads. Use
- *     Thread.startVirtualThread(r) or Thread.ofVirtual().start(r) instead
- *     of constructing-and-starting two-step.
- *   - Prefer ExecutorService.execute / submit — it removes the start/run
- *     confusion entirely.
- */
 
 public class StartVsRun {
 
