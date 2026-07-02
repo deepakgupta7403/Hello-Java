@@ -1380,61 +1380,59 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Exception Handling - Best Practices</h2>
-                    <p>A condensed list of the do&#x27;s and don&#x27;ts that come up over and over in code reviews,
-                        with quick code snippets you can read at a glance.</p>
-                    <h3>Top 10 Rules</h3>
-                    <ul>
-                        <li>THROW EARLY - validate inputs at the boundary and fail with a clear
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                  message. Don&#x27;t propagate a NullPointerException ten
-                  stack frames deep.</pre>
-                    <ul>
-                        <li>CATCH LATE - handle exceptions at the layer that can do something
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                  meaningful (retry, user message, log+continue). Don&#x27;t
-                  catch deep inside a helper if you have nothing to do.</pre>
-                    <ul>
-                        <li>NEVER SWALLOW. Empty catch blocks are bugs. At a minimum log the
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                  exception with full context.</pre>
-                    <ul>
-                        <li>DON&#x27;T CATCH Throwable / Error. Catching Throwable hides JVM-level
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                  problems (OutOfMemoryError, StackOverflowError) that
-                  you cannot meaningfully recover from anyway.</pre>
-                    <ul>
-                        <li>PREFER UNCHECKED for programmer bugs. Use checked exceptions for
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                  conditions a reasonable caller is expected to handle.</pre>
-                    <ul>
-                        <li>INCLUDE CONTEXT in the message. Bad: &quot;lookup failed&quot;.
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                                      Good: &quot;lookup failed for userId=42&quot;.</pre>
-                    <ul>
-                        <li>CHAIN CAUSES. When wrapping, always pass the original as the cause:
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                  throw new HighLevel(&quot;...&quot;, lowLevel).</pre>
-                    <ul>
-                        <li>USE try-with-resources for anything implementing AutoCloseable.
-                        </li>
-                        <li>AVOID using exceptions for FLOW CONTROL. Exceptions are
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                 performance-expensive and obscure intent.</pre>
-                    <ul>
-                        <li>DOCUMENT exceptions with Javadoc @throws so callers know what to plan
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                 for - both checked and the important unchecked ones.</pre>
-                    <p>Each rule has a tiny example below.</p>
+                    Exception Handling - Best Practices
+                    -----------------------------------
+                    A condensed list of the do's and don'ts that come up over and over in
+                    code reviews, with quick code snippets you can read at a glance.
+                    <p>
+
+                        Top 10 Rules
+                        ------------
+                    <p>
+
+                        1. THROW EARLY - validate inputs at the boundary and fail with a clear
+                        message. Don't propagate a NullPointerException ten
+                        stack frames deep.
+                    <p>
+
+                        2. CATCH LATE - handle exceptions at the layer that can do something
+                        meaningful (retry, user message, log+continue). Don't
+                        catch deep inside a helper if you have nothing to do.
+                    <p>
+
+                        3. NEVER SWALLOW. Empty catch blocks are bugs. At a minimum log the
+                        exception with full context.
+                    <p>
+
+                        4. DON'T CATCH Throwable / Error. Catching Throwable hides JVM-level
+                        problems (OutOfMemoryError, StackOverflowError) that
+                        you cannot meaningfully recover from anyway.
+                    <p>
+
+                        5. PREFER UNCHECKED for programmer bugs. Use checked exceptions for
+                        conditions a reasonable caller is expected to handle.
+                    <p>
+
+                        6. INCLUDE CONTEXT in the message. Bad: "lookup failed".
+                        Good: "lookup failed for userId=42".
+                    <p>
+
+                        7. CHAIN CAUSES. When wrapping, always pass the original as the cause:
+                        throw new HighLevel("...", lowLevel).
+                    <p>
+
+                        8. USE try-with-resources for anything implementing AutoCloseable.
+                    <p>
+
+                        9. AVOID using exceptions for FLOW CONTROL. Exceptions are
+                        performance-expensive and obscure intent.
+                    <p>
+
+                        10. DOCUMENT exceptions with Javadoc @throws so callers know what to plan
+                        for - both checked and the important unchecked ones.
+                    <p>
+
+                        Each rule has a tiny example below.
                 </div>
             </div>
 

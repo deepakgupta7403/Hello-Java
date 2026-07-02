@@ -1380,42 +1380,79 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Modern Generics (Java 7 -&amp;gt; 21)</h2>
-                    <p>Generics arrived in Java 5 but the syntax has been refined over many releases. A short tour of
-                        the additions that matter.</p>
-                    <h3>Java 7 - Diamond Operator</h3>
-                    <p>No need to repeat type arguments on the right-hand side:</p>
-                    <pre class="hj-doc-art">     Map&amp;lt;String, List&amp;lt;Integer&amp;gt;&amp;gt; m = new HashMap&amp;lt;&amp;gt;();
+                    Modern Generics (Java 7 -&gt; 21)
+                    ------------------------------
+                    Generics arrived in Java 5 but the syntax has been refined over many
+                    releases. A short tour of the additions that matter.
+                    <p>
+
+                        Java 7 - Diamond Operator
+                        -------------------------
+                        No need to repeat type arguments on the right-hand side:
+                    <p>
+
+                        Map&lt;String, List&lt;Integer&gt;&gt; m = new HashMap&lt;&gt;();
      // instead of:
-     Map&amp;lt;String, List&amp;lt;Integer&amp;gt;&amp;gt; m = new HashMap&amp;lt;String, List&amp;lt;Integer&amp;gt;&amp;gt;();</pre>
-                    <h3>Java 8 - Lambda + Target Type Inference</h3>
-                    <p>Lambdas pick up generic type information from their TARGET type:</p>
-                    <pre class="hj-doc-art">     Function&amp;lt;String, Integer&amp;gt; len = s -&amp;gt; s.length();
-     Comparator&amp;lt;Person&amp;gt; byAge      = (a, b) -&amp;gt; Integer.compare(a.age, b.age);</pre>
-                    <p>Generic methods returning functional interfaces let you build elegant pipelines: Stream&amp;lt;T&amp;gt;,
-                        Optional&amp;lt;T&amp;gt;, Function&amp;lt;T, R&amp;gt;, ...</p>
-                    <h3>Java 9 - Private interface methods + diamond with anonymous classes</h3>
-                    <pre class="hj-doc-art">     Comparator&amp;lt;Integer&amp;gt; cmp = new Comparator&amp;lt;&amp;gt;() {        // diamond on anonymous
+                        Map&lt;String, List&lt;Integer&gt;&gt; m = new HashMap&lt;String, List&lt;Integer&gt;&gt;();
+                    <p>
+
+                        Java 8 - Lambda + Target Type Inference
+                        ---------------------------------------
+                        Lambdas pick up generic type information from their TARGET type:
+                    <p>
+
+                        Function&lt;String, Integer&gt; len = s -&gt; s.length();
+                        Comparator&lt;Person&gt; byAge = (a, b) -&gt; Integer.compare(a.age, b.age);
+                    <p>
+
+                        Generic methods returning functional interfaces let you build elegant
+                        pipelines: Stream&lt;T&gt;, Optional&lt;T&gt;, Function&lt;T, R&gt;, ...
+                    <p>
+
+                        Java 9 - Private interface methods + diamond with anonymous classes
+                        -------------------------------------------------------------------
+                        Comparator&lt;Integer&gt; cmp = new Comparator&lt;&gt;() { // diamond on anonymous
          public int compare(Integer a, Integer b) { return a - b; }
-     };</pre>
-                    <h3>Java 10 - var + Generics</h3>
-                    <pre class="hj-doc-art">     var list = new ArrayList&amp;lt;String&amp;gt;();                    // OK - infers List/ArrayList&lt;String&gt;
-     var list = new ArrayList&amp;lt;&amp;gt;();                          // BAD - infers ArrayList&lt;Object&gt;</pre>
-                    <h3>Java 16 - Records with type parameters</h3>
-                    <pre class="hj-doc-art">     record Pair&amp;lt;K, V&amp;gt;(K key, V value) { }</pre>
-                    <p>Generic records compose well with collectors, streams, and pattern matching.</p>
-                    <h3>Java 17 - Sealed generic interfaces</h3>
-                    <pre class="hj-doc-art">     sealed interface Result&amp;lt;T, E&amp;gt; permits Ok, Err { }
-     record Ok&amp;lt;T, E&amp;gt;(T value)  implements Result&amp;lt;T, E&amp;gt; { }
-     record Err&amp;lt;T, E&amp;gt;(E error) implements Result&amp;lt;T, E&amp;gt; { }</pre>
-                    <h3>Java 21 - Pattern matching for switch on generic types</h3>
-                    <pre class="hj-doc-art">     Result&amp;lt;String, Throwable&amp;gt; r = ...;
+                        };
+                    <p>
+
+                        Java 10 - var + Generics
+                        ------------------------
+                        var list = new ArrayList&lt;String&gt;(); // OK - infers List/ArrayList
+                        <String>
+                            var list = new ArrayList&lt;&gt;(); // BAD - infers ArrayList
+                            <Object>
+                                <p>
+
+                                    Java 16 - Records with type parameters
+                                    --------------------------------------
+                                    record Pair&lt;K, V&gt;(K key, V value) { }
+                                <p>
+
+                                    Generic records compose well with collectors, streams, and pattern
+                                    matching.
+                                <p>
+
+                                    Java 17 - Sealed generic interfaces
+                                    -----------------------------------
+                                    sealed interface Result&lt;T, E&gt; permits Ok, Err { }
+                                    record Ok&lt;T, E&gt;(T value) implements Result&lt;T, E&gt; { }
+                                    record Err&lt;T, E&gt;(E error) implements Result&lt;T, E&gt; { }
+                                <p>
+
+                                    Java 21 - Pattern matching for switch on generic types
+                                    ------------------------------------------------------
+                                    Result&lt;String, Throwable&gt; r = ...;
      String s = switch (r) {
-         case Ok&amp;lt;String, Throwable&amp;gt;  ok  -&amp;gt; ok.value();
-         case Err&amp;lt;String, Throwable&amp;gt; err -&amp;gt; &quot;fail: &quot; + err.error();
-     };</pre>
-                    <p>Generic record patterns can also DECONSTRUCT:</p>
-                    <pre class="hj-doc-art">     case Ok&amp;lt;String, ?&amp;gt;(String value) -&amp;gt; ...</pre>
+                                    case Ok&lt;String, Throwable&gt; ok -&gt; ok.value();
+                                    case Err&lt;String, Throwable&gt; err -&gt; "fail: " + err.error();
+                                    };
+                                <p>
+
+                                    Generic record patterns can also DECONSTRUCT:
+                                <p>
+
+                                    case Ok&lt;String, ?&gt;(String value) -&gt; ...
                 </div>
             </div>
 

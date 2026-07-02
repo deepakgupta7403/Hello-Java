@@ -1380,70 +1380,64 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>try, catch, finally - The Building Blocks</h2>
-                    <p>`try` marks a block of code that may throw an exception. `catch` clauses decide what to do when
-                        one is thrown. `finally` runs no matter what - normal completion, return, or thrown
-                        exception.</p>
-                    <pre class="hj-doc-art">     try {
+                    try, catch, finally - The Building Blocks
+                    -----------------------------------------
+                    `try` marks a block of code that may throw an exception. `catch` clauses
+                    decide what to do when one is thrown. `finally` runs no matter what -
+                    normal completion, return, or thrown exception.
+                    <p>
+
+                        try {
          // protected code
      } catch (ExceptionType e) {
          // handle it
      } finally {
          // ALWAYS runs (except System.exit / JVM crash)
-     }</pre>
-                    <h3>Six Forms You Need To Know</h3>
-                    <ul>
-                        <li>Single catch try { ... } catch (E e) { ... }
-                        </li>
-                        <li>Multiple catches one per exception type
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art"> 3. Multi-catch (Java 7+)                     catch (A | B | C e) { ... }</pre>
-                    <ul>
-                        <li>try / finally with no catch cleanup but propagate
-                        </li>
-                        <li>Nested try inner try inside a catch or another try
-                        </li>
-                        <li>try-with-resources (Java 7+, see TryWithResources.java)
-                        </li>
-                    </ul>
-                    <h3>Catch Ordering Rule</h3>
-                    <p>More SPECIFIC catches must come BEFORE more GENERAL ones. A `catch (Exception)` will swallow an
-                        IOException, so listing `catch (IOException)` AFTER it is a compile error (&quot;unreachable&quot;).</p>
-                    <h3>Multi-Catch Restrictions</h3>
-                    <ul>
-                        <li>The types listed must NOT have a subclass relationship between them.
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    `catch (Exception | IOException e)` is illegal because IOException IS-A
-    Exception - the broader type already covers the narrower one.</pre>
-                    <ul>
-                        <li>Inside a multi-catch, the exception variable is IMPLICITLY FINAL - you
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    cannot reassign it. Its type is the COMMON SUPERTYPE of the listed
-    exceptions.</pre>
-                    <h3>finally Caveats</h3>
-                    <ul>
-                        <li>finally runs even if the try BLOCK has a `return` - it executes BEFORE
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    the value is actually returned.</pre>
-                    <ul>
-                        <li>A `return` inside finally OVERRIDES any earlier return value - usually
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    a BUG to be avoided.</pre>
-                    <ul>
-                        <li>finally does NOT run if the JVM dies (System.exit, kill -9, OS crash).
-                        </li>
-                        <li>finally also does not run if the thread is killed by an uncatchable
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    condition (e.g. Thread.stop on an outdated JVM).</pre>
-                    <h3>try Cannot Be Empty</h3>
-                    <p>A try block must be followed by at least one catch or a finally (or be a try-with-resources). A
-                        bare `try { ... }` does not compile.</p>
+                        }
+                    <p>
+
+                        Six Forms You Need To Know
+                        --------------------------
+                        1. Single catch try { ... } catch (E e) { ... }
+                        2. Multiple catches one per exception type
+                        3. Multi-catch (Java 7+) catch (A | B | C e) { ... }
+                        4. try / finally with no catch cleanup but propagate
+                        5. Nested try inner try inside a catch or another try
+                        6. try-with-resources (Java 7+, see TryWithResources.java)
+                    <p>
+
+                        Catch Ordering Rule
+                        -------------------
+                        More SPECIFIC catches must come BEFORE more GENERAL ones. A
+                        `catch (Exception)` will swallow an IOException, so listing
+                        `catch (IOException)` AFTER it is a compile error ("unreachable").
+                    <p>
+
+                        Multi-Catch Restrictions
+                        ------------------------
+                        - The types listed must NOT have a subclass relationship between them.
+                        `catch (Exception | IOException e)` is illegal because IOException IS-A
+                        Exception - the broader type already covers the narrower one.
+                        - Inside a multi-catch, the exception variable is IMPLICITLY FINAL - you
+                        cannot reassign it. Its type is the COMMON SUPERTYPE of the listed
+                        exceptions.
+                    <p>
+
+                        finally Caveats
+                        ---------------
+                        - finally runs even if the try BLOCK has a `return` - it executes BEFORE
+                        the value is actually returned.
+                        - A `return` inside finally OVERRIDES any earlier return value - usually
+                        a BUG to be avoided.
+                        - finally does NOT run if the JVM dies (System.exit, kill -9, OS crash).
+                        - finally also does not run if the thread is killed by an uncatchable
+                        condition (e.g. Thread.stop on an outdated JVM).
+                    <p>
+
+                        try Cannot Be Empty
+                        -------------------
+                        A try block must be followed by at least one catch or a finally (or be a
+                        try-with-resources). A bare `try { ... }` does not compile.
                 </div>
             </div>
 

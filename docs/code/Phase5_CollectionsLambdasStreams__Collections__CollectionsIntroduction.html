@@ -1,12 +1,12 @@
 <!doctype html>
-<html data-bs-theme="light" lang="en">
+<html lang="en" data-bs-theme="light">
 <head>
     <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Collections Introduction · HelloJava</title>
-    <meta content="A hands-on, topic-by-topic walkthrough of Java 21 LTS." name="description">
-    <link href="https://fonts.googleapis.com" rel="preconnect">
-    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <meta name="description" content="A hands-on, topic-by-topic walkthrough of Java 21 LTS.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
@@ -22,8 +22,8 @@
 
 <nav class="navbar navbar-expand-lg fixed-top shadow-0 hj-navbar">
     <div class="container-fluid">
-        <button aria-controls="sidebar" class="btn btn-link text-white d-lg-none me-2 p-2" data-mdb-target="#sidebar"
-                data-mdb-toggle="offcanvas" type="button">
+        <button class="btn btn-link text-white d-lg-none me-2 p-2" type="button" data-mdb-toggle="offcanvas"
+                data-mdb-target="#sidebar" aria-controls="sidebar">
             <span class="material-icons">menu</span>
         </button>
         <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
@@ -34,11 +34,11 @@
         <div class="d-flex align-items-center ms-auto gap-2">
             <div class="hj-search d-none d-md-flex">
                 <span class="material-icons">search</span>
-                <input autocomplete="off" id="hj-search" placeholder="Search topics..." type="search">
+                <input type="search" id="hj-search" placeholder="Search topics..." autocomplete="off">
                 <div id="hj-search-results"></div>
             </div>
-            <a class="btn btn-link text-white p-2" href="https://github.com" id="hj-github-link" rel="noopener"
-               target="_blank" title="View on GitHub">
+            <a class="btn btn-link text-white p-2" href="https://github.com" target="_blank" rel="noopener"
+               title="View on GitHub" id="hj-github-link">
                 <span class="material-icons">open_in_new</span>
             </a>
             <button class="btn btn-link text-white p-2" id="hj-theme-toggle" title="Toggle theme">
@@ -49,20 +49,20 @@
 </nav>
 
 
-<div class="offcanvas-lg offcanvas-start hj-sidebar" id="sidebar" tabindex="-1">
+<div class="offcanvas-lg offcanvas-start hj-sidebar" tabindex="-1" id="sidebar">
     <div class="offcanvas-header">
         <h6 class="offcanvas-title fw-bold">All Phases</h6>
-        <button aria-label="Close" class="btn-close" data-mdb-dismiss="offcanvas" data-mdb-target="#sidebar"
-                type="button"></button>
+        <button type="button" class="btn-close" data-mdb-dismiss="offcanvas" data-mdb-target="#sidebar"
+                aria-label="Close"></button>
     </div>
     <div class="offcanvas-body p-0">
         <div class="accordion accordion-flush" id="hj-sidebar-acc">
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase0_SetupAndFirstPrograms"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase0_SetupAndFirstPrograms" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">play_circle</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 0</small>
@@ -71,7 +71,7 @@
                         <span class="badge bg-light text-dark ms-2">11</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase0_SetupAndFirstPrograms">
+                <div id="sb-Phase0_SetupAndFirstPrograms" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase0_SetupAndFirstPrograms.html">
@@ -127,9 +127,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase1_CoreLanguage"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase1_CoreLanguage" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">code</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 1</small>
@@ -138,7 +138,7 @@
                         <span class="badge bg-light text-dark ms-2">61</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase1_CoreLanguage">
+                <div id="sb-Phase1_CoreLanguage" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold" href="../phase/Phase1_CoreLanguage.html">
                             <span class="material-icons-outlined small me-1">summarize</span>Phase overview
@@ -352,9 +352,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase2_MethodsArraysStrings"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase2_MethodsArraysStrings" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">data_array</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 2</small>
@@ -363,7 +363,7 @@
                         <span class="badge bg-light text-dark ms-2">20</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase2_MethodsArraysStrings">
+                <div id="sb-Phase2_MethodsArraysStrings" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase2_MethodsArraysStrings.html">
@@ -438,9 +438,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase3_ObjectOrientation"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase3_ObjectOrientation" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">category</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 3</small>
@@ -449,7 +449,7 @@
                         <span class="badge bg-light text-dark ms-2">48</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase3_ObjectOrientation">
+                <div id="sb-Phase3_ObjectOrientation" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase3_ObjectOrientation.html">
@@ -633,9 +633,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase4_ErrorsAndTypeSafety"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase4_ErrorsAndTypeSafety" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">shield</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 4</small>
@@ -644,7 +644,7 @@
                         <span class="badge bg-light text-dark ms-2">27</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase4_ErrorsAndTypeSafety">
+                <div id="sb-Phase4_ErrorsAndTypeSafety" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase4_ErrorsAndTypeSafety.html">
@@ -744,9 +744,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="true"
-                            class="accordion-button  bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase5_CollectionsLambdasStreams"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button  bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase5_CollectionsLambdasStreams" aria-expanded="true">
                         <span class="material-icons me-2 text-primary">stream</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 5</small>
@@ -755,7 +755,7 @@
                         <span class="badge bg-light text-dark ms-2">57</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse show" id="sb-Phase5_CollectionsLambdasStreams">
+                <div id="sb-Phase5_CollectionsLambdasStreams" class="accordion-collapse collapse show">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase5_CollectionsLambdasStreams.html">
@@ -942,9 +942,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase6_RuntimeMemoryRegexReflection"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase6_RuntimeMemoryRegexReflection" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">memory</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 6</small>
@@ -953,7 +953,7 @@
                         <span class="badge bg-light text-dark ms-2">21</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase6_RuntimeMemoryRegexReflection">
+                <div id="sb-Phase6_RuntimeMemoryRegexReflection" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase6_RuntimeMemoryRegexReflection.html">
@@ -1033,9 +1033,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase7_Concurrency"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase7_Concurrency" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">settings_input_component</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 7</small>
@@ -1044,7 +1044,7 @@
                         <span class="badge bg-light text-dark ms-2">48</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase7_Concurrency">
+                <div id="sb-Phase7_Concurrency" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold" href="../phase/Phase7_Concurrency.html">
                             <span class="material-icons-outlined small me-1">summarize</span>Phase overview
@@ -1201,9 +1201,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase8_PracticalAPIs"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase8_PracticalAPIs" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">api</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 8</small>
@@ -1212,7 +1212,7 @@
                         <span class="badge bg-light text-dark ms-2">22</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase8_PracticalAPIs">
+                <div id="sb-Phase8_PracticalAPIs" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold" href="../phase/Phase8_PracticalAPIs.html">
                             <span class="material-icons-outlined small me-1">summarize</span>Phase overview
@@ -1293,9 +1293,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase9_ModernJavaAndModules"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase9_ModernJavaAndModules" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">auto_awesome</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 9</small>
@@ -1304,7 +1304,7 @@
                         <span class="badge bg-light text-dark ms-2">8</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase9_ModernJavaAndModules">
+                <div id="sb-Phase9_ModernJavaAndModules" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase9_ModernJavaAndModules.html">
@@ -1350,10 +1350,10 @@
         <div class="container-fluid px-4">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-2 small">
-                    <li class="breadcrumb-item"><a class="text-white-50" href="../index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a class="text-white-50"
-                                                   href="../phase/Phase5_CollectionsLambdasStreams.html">Phase 5</a></li>
-                    <li aria-current="page" class="breadcrumb-item active text-white">Collections</li>
+                    <li class="breadcrumb-item"><a href="../index.html" class="text-white-50">Home</a></li>
+                    <li class="breadcrumb-item"><a href="../phase/Phase5_CollectionsLambdasStreams.html"
+                                                   class="text-white-50">Phase 5</a></li>
+                    <li class="breadcrumb-item active text-white" aria-current="page">Collections</li>
                 </ol>
             </nav>
             <div class="d-flex align-items-center flex-wrap gap-3">
@@ -1380,93 +1380,118 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Java Collections Framework - Introduction</h2>
-                    <p>The COLLECTIONS FRAMEWORK is the standard library for storing and manipulating groups of objects.
-                        It is one of the most important pieces of the JDK; almost every non-trivial Java program uses
-                        it.</p>
-                    <h3>Why a Framework, Not Just Arrays?</h3>
-                    <p>Arrays are simple but limited:</p>
-                    <ul>
-                        <li>FIXED SIZE.
-                        </li>
-                        <li>One ELEMENT TYPE only.
-                        </li>
-                        <li>Few BUILT-IN OPERATIONS (no search, sort, remove-by-value).
-                        </li>
-                        <li>No POLYMORPHISM across &quot;list-like things&quot;.
-                        </li>
-                    </ul>
-                    <p>The Collections Framework gives you:</p>
-                    <ul>
-                        <li>GROWABLE containers that resize automatically.
-                        </li>
-                        <li>Many SHAPES (List, Set, Queue, Map, Deque) for different access patterns.
-                        </li>
-                        <li>A RICH METHOD SET (add, remove, contains, sort, filter, ...).
-                        </li>
-                        <li>INTERFACES so you can swap implementations without changing callers.
-                        </li>
-                        <li>INTEROPERABILITY with streams, lambdas, parallel processing, and the
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    rest of java.util.</pre>
-                    <h3>The Hierarchy in One Picture</h3>
-                    <pre class="hj-doc-art">     Iterable&lt;E&gt;
+                    Java Collections Framework - Introduction
+                    -----------------------------------------
+                    The COLLECTIONS FRAMEWORK is the standard library for storing and
+                    manipulating groups of objects. It is one of the most important pieces of
+                    the JDK; almost every non-trivial Java program uses it.
+                    <p>
+
+                        Why a Framework, Not Just Arrays?
+                        ---------------------------------
+                        Arrays are simple but limited:
+                        - FIXED SIZE.
+                        - One ELEMENT TYPE only.
+                        - Few BUILT-IN OPERATIONS (no search, sort, remove-by-value).
+                        - No POLYMORPHISM across "list-like things".
+                    <p>
+
+                        The Collections Framework gives you:
+                        - GROWABLE containers that resize automatically.
+                        - Many SHAPES (List, Set, Queue, Map, Deque) for different access patterns.
+                        - A RICH METHOD SET (add, remove, contains, sort, filter, ...).
+                        - INTERFACES so you can swap implementations without changing callers.
+                        - INTEROPERABILITY with streams, lambdas, parallel processing, and the
+                        rest of java.util.
+                    <p>
+
+                        The Hierarchy in One Picture
+                        ----------------------------
+                    <p>
+
+                        Iterable
+                        <E>
          |
          v
-     Collection&lt;E&gt; ---------------------------------+
+                            Collection
+                            <E> ---------------------------------+
          |                                          |
-         +---- List&lt;E&gt;                              +---- Map&lt;K,V&gt;      (NOT a Collection - separate root)
+                                +---- List
+                                <E> +---- Map
+                                    <K
+                                    ,V> (NOT a Collection - separate root)
          |       |-- ArrayList                              |
          |       |-- LinkedList                             |-- HashMap
          |       |-- Vector  (legacy)                       |-- LinkedHashMap
          |       |-- CopyOnWriteArrayList                   |-- TreeMap
          |                                                  |-- ConcurrentHashMap
-         +---- Set&lt;E&gt;                                       |-- Hashtable  (legacy)
+                                    +---- Set
+                                    <E> |-- Hashtable (legacy)
          |       |-- HashSet
          |       |     `-- LinkedHashSet
          |       |-- TreeSet     (also SortedSet, NavigableSet)
          |       |-- EnumSet
          |       |-- CopyOnWriteArraySet
          |
-         +---- Queue&lt;E&gt;
+                                        +---- Queue
+                                        <E>
          |       |-- PriorityQueue
          |       |-- ArrayBlockingQueue, LinkedBlockingQueue (concurrent)
-         |       `-- Deque&lt;E&gt;
+                                            | `-- Deque
+                                            <E>
          |             |-- ArrayDeque
          |             |-- LinkedList (yes, also a List!)
-         |             `-- BlockingDeque (concurrent)</pre>
-                    <p>NOTE: Map is NOT a sub-type of Collection. A Map is a separate root because its operations work
-                        on KEY/VALUE PAIRS, not on single elements.</p>
-                    <h3>Three &quot;Buckets&quot; of Implementations</h3>
-                    <ul>
-                        <li>ORDER-PRESERVING (List, Queue, Deque) - keep insertion order or a
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">     meaningful &quot;first / last&quot;.</pre>
-                    <ul>
-                        <li>UNIQUENESS (Set) - no duplicates, no positional access by default.
-                        </li>
-                        <li>KEY -&gt; VALUE (Map) - look up a value by a key.
-                        </li>
-                    </ul>
-                    <h3>Picking The Right Implementation (90% Of Real-World Use)</h3>
-                    <p>List of stuff, mostly read -&gt; ArrayList Frequent insert/remove in the middle -&gt; LinkedList
-                        (rare in practice) Need uniqueness -&gt; HashSet Uniqueness + sorted order -&gt; TreeSet
-                        Uniqueness + insertion order -&gt; LinkedHashSet Key/value lookup -&gt; HashMap Key/value +
-                        insertion order -&gt; LinkedHashMap Key/value + sorted by key -&gt; TreeMap FIFO queue -&gt;
-                        ArrayDeque Priority queue -&gt; PriorityQueue Stack -&gt; ArrayDeque (push / pop / peek)</p>
-                    <h3>What This Folder Covers</h3>
-                    <p>CollectionsIntroduction.java (this file) CollectionInterface.java - methods on the root
-                        Collection&lt;E&gt; CollectionsClass.java - java.util.Collections static helpers
-                        ListInterface.java + ArrayListDemo / LinkedListDemo SetInterface.java + HashSet / LinkedHashSet
-                        / TreeSet QueueInterface.java + PriorityQueueDemo DequeInterface.java MapInterface.java +
-                        HashMap / LinkedHashMap / TreeMap IteratorDemo.java ComparatorComparable.java
-                        ModernCollections.java - Java 8-21 (factory methods,</p>
-                    <pre class="hj-doc-art">                                         Stream collectors, Sequenced
-                                         collections)</pre>
-                    <p>FaceDetectionApp/ - end-to-end project using many</p>
-                    <pre class="hj-doc-art">                                         collection types together.</pre>
+                                                | `-- BlockingDeque (concurrent)
+                                                <p>
+
+                                                    NOTE: Map is NOT a sub-type of Collection. A Map is a separate root
+                                                    because its operations work on KEY/VALUE PAIRS, not on single
+                                                    elements.
+                                                <p>
+
+                                                    Three "Buckets" of Implementations
+                                                    ----------------------------------
+                                                    1. ORDER-PRESERVING (List, Queue, Deque) - keep insertion order or a
+                                                    meaningful "first / last".
+                                                    2. UNIQUENESS (Set) - no duplicates, no positional access by
+                                                    default.
+                                                    3. KEY -> VALUE (Map) - look up a value by a key.
+                                                <p>
+
+                                                    Picking The Right Implementation (90% Of Real-World Use)
+                                                    --------------------------------------------------------
+                                                    List of stuff, mostly read -> ArrayList
+                                                    Frequent insert/remove in the middle -> LinkedList (rare in
+                                                    practice)
+                                                    Need uniqueness -> HashSet
+                                                    Uniqueness + sorted order -> TreeSet
+                                                    Uniqueness + insertion order -> LinkedHashSet
+                                                    Key/value lookup -> HashMap
+                                                    Key/value + insertion order -> LinkedHashMap
+                                                    Key/value + sorted by key -> TreeMap
+                                                    FIFO queue -> ArrayDeque
+                                                    Priority queue -> PriorityQueue
+                                                    Stack -> ArrayDeque (push / pop / peek)
+                                                <p>
+
+                                                    What This Folder Covers
+                                                    -----------------------
+                                                    CollectionsIntroduction.java (this file)
+                                                    CollectionInterface.java - methods on the root Collection
+                                                    <E>
+                                                        CollectionsClass.java - java.util.Collections static helpers
+                                                        ListInterface.java + ArrayListDemo / LinkedListDemo
+                                                        SetInterface.java + HashSet / LinkedHashSet / TreeSet
+                                                        QueueInterface.java + PriorityQueueDemo
+                                                        DequeInterface.java
+                                                        MapInterface.java + HashMap / LinkedHashMap / TreeMap
+                                                        IteratorDemo.java
+                                                        ComparatorComparable.java
+                                                        ModernCollections.java - Java 8-21 (factory methods,
+                                                        Stream collectors, Sequenced
+                                                        collections)
+                                                        FaceDetectionApp/ - end-to-end project using many
+                                                        collection types together.
                 </div>
             </div>
 
@@ -1554,8 +1579,8 @@ public class CollectionsIntroduction {
 <footer class="hj-footer text-center py-4 mt-5">
     <small class="text-muted">
         HelloJava · A topic-by-topic walkthrough of Java 21 ·
-        Built with <a href="https://mdbootstrap.com/" rel="noopener" target="_blank">MDB</a>
-        and <a href="https://prismjs.com/" rel="noopener" target="_blank">Prism.js</a>
+        Built with <a href="https://mdbootstrap.com/" target="_blank" rel="noopener">MDB</a>
+        and <a href="https://prismjs.com/" target="_blank" rel="noopener">Prism.js</a>
     </small>
 </footer>
 

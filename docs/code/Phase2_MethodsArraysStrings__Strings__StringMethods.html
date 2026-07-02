@@ -1380,70 +1380,90 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>String Methods - Comprehensive Reference</h2>
-                    <p>This file is a guided tour through the most-used methods of java.lang.String. Each method has a
-                        short comment explaining what it does and a runnable example with the expected output.</p>
-                    <h3>Methods Grouped By Purpose</h3>
-                    <p>LENGTH / EMPTINESS</p>
-                    <pre class="hj-doc-art">     length()                    - number of UTF-16 code units
+                    String Methods - Comprehensive Reference
+                    ----------------------------------------
+                    This file is a guided tour through the most-used methods of java.lang.String.
+                    Each method has a short comment explaining what it does and a runnable
+                    example with the expected output.
+                    <p>
+
+                        Methods Grouped By Purpose
+                        --------------------------
+                    <p>
+
+                        LENGTH / EMPTINESS
+                        length() - number of UTF-16 code units
      isEmpty()                   - length == 0
-     isBlank()                   - empty or only whitespace (Java 11+)</pre>
-                    <p>CHAR ACCESS / ARRAYS</p>
-                    <pre class="hj-doc-art">     charAt(i)                   - char at index i
+                        isBlank() - empty or only whitespace (Java 11+)
+                    <p>
+
+                        CHAR ACCESS / ARRAYS
+                        charAt(i) - char at index i
      toCharArray()               - copy to a new char[]
      codePointAt(i)              - int code point (supports supplementary chars)
-     getBytes() / getBytes(charset) - encode as byte[]</pre>
-                    <p>SEARCH</p>
-                    <pre class="hj-doc-art">     indexOf(ch | str | from)    - first occurrence, or -1
+                        getBytes() / getBytes(charset) - encode as byte[]
+                    <p>
+
+                        SEARCH
+                        indexOf(ch | str | from) - first occurrence, or -1
      lastIndexOf(ch | str | from)- last  occurrence, or -1
      contains(seq)               - true if `seq` appears
      startsWith(prefix)
-     endsWith(suffix)</pre>
-                    <p>COMPARISON</p>
-                    <pre class="hj-doc-art">     equals(other)               - case-sensitive content equality
+                        endsWith(suffix)
+                    <p>
+
+                        COMPARISON
+                        equals(other) - case-sensitive content equality
      equalsIgnoreCase(other)
-     compareTo(other)            - lexicographic; &lt;0 / 0 / &gt;0
-     compareToIgnoreCase(other)</pre>
-                    <p>CASE / WHITESPACE</p>
-                    <pre class="hj-doc-art">     toUpperCase() / toLowerCase()
+                        compareTo(other) - lexicographic; <0 / 0 / >0
+                        compareToIgnoreCase(other)
+                    <p>
+
+                        CASE / WHITESPACE
+                        toUpperCase() / toLowerCase()
      trim()                      - strips ASCII control + space
-     strip() / stripLeading() / stripTrailing()  (Java 11+, Unicode-aware)</pre>
-                    <p>TRANSFORM</p>
-                    <pre class="hj-doc-art">     replace(old, new)           - replaces ALL (chars OR CharSequences)
+                        strip() / stripLeading() / stripTrailing() (Java 11+, Unicode-aware)
+                    <p>
+
+                        TRANSFORM
+                        replace(old, new) - replaces ALL (chars OR CharSequences)
      replaceFirst(regex, new)    - regex first match
      replaceAll(regex, new)      - regex all matches
      substring(begin) / substring(begin, end)
      concat(other)
      repeat(count)               - Java 11+
      indent(n)                   - Java 12+
-     transform(fn)               - Java 12+, apply any Function&lt;String, R&gt;</pre>
-                    <p>SPLIT / JOIN / FORMAT</p>
-                    <pre class="hj-doc-art">     split(regex)
+                        transform(fn) - Java 12+, apply any Function
+                        <String
+                        , R>
+                    <p>
+
+                        SPLIT / JOIN / FORMAT
+                        split(regex)
      String.join(delim, parts...)            (static)
      String.format(fmt, args...)             (static; printf-style)
      formatted(args...)                      (Java 15+, instance form)
-     lines()                                 (Java 11+, Stream of lines)</pre>
-                    <p>CONVERSION FROM OTHER TYPES</p>
-                    <pre class="hj-doc-art">     String.valueOf(int|double|boolean|Object|char[])
-     Integer.parseInt(s), Double.parseDouble(s) ...</pre>
-                    <p>REGEX QUICK PATH</p>
-                    <pre class="hj-doc-art">     matches(regex)              - matches() must match the WHOLE string</pre>
-                    <h3>Pitfalls Quick Reference</h3>
-                    <ul>
-                        <li>`==` compares references, not content. Use `.equals(...)`.
-                        </li>
-                        <li>`replace()` takes a literal; `replaceAll()` takes a regex.
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art"> - `split(&quot;|&quot;)` splits on EVERY char because `|` is a regex meta-character.
-   Use `split(&quot;\\|&quot;)` or `Pattern.quote(&quot;|&quot;)`.</pre>
-                    <ul>
-                        <li>`substring(begin, end)` is HALF-OPEN: includes begin, excludes end.
-                        </li>
-                        <li>`length()` counts UTF-16 code UNITS, not grapheme clusters. Emojis and
-                        </li>
-                    </ul>
-                    <p>other supplementary characters take 2 units.</p>
+                        lines() (Java 11+, Stream of lines)
+                    <p>
+
+                        CONVERSION FROM OTHER TYPES
+                        String.valueOf(int|double|boolean|Object|char[])
+                        Integer.parseInt(s), Double.parseDouble(s) ...
+                    <p>
+
+                        REGEX QUICK PATH
+                        matches(regex) - matches() must match the WHOLE string
+                    <p>
+
+                        Pitfalls Quick Reference
+                        ------------------------
+                        - `==` compares references, not content. Use `.equals(...)`.
+                        - `replace()` takes a literal; `replaceAll()` takes a regex.
+                        - `split("|")` splits on EVERY char because `|` is a regex meta-character.
+                        Use `split("\\|")` or `Pattern.quote("|")`.
+                        - `substring(begin, end)` is HALF-OPEN: includes begin, excludes end.
+                        - `length()` counts UTF-16 code UNITS, not grapheme clusters. Emojis and
+                        other supplementary characters take 2 units.
                 </div>
             </div>
 

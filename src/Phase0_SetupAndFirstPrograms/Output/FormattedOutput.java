@@ -1,18 +1,19 @@
 package Phase0_SetupAndFirstPrograms.Output;
 
 /**
- * Advanced Formatted Output
- * -------------------------
- * Beyond plain printf, Java offers two more ways to produce formatted text:
- * <p>
+ * <h1>Advanced Formatted Output</h1>
  *
- *   1. String.format(...)  -> returns the formatted string (does not print).
- *   2. java.util.Formatter -> the lower-level engine behind printf and format.
- *   3. Text Blocks (Java 15+) -> multi-line string literals using """ delimiters.
- * <p>
+ * <p>Beyond plain <code>printf</code>, Java offers two more ways to produce
+ * formatted text:</p>
  *
- * Common Format Specifiers (Recap)
- * --------------------------------
+ * <ul>
+ *   <li><code>String.format(...)</code> &mdash; returns the formatted string (does not print).</li>
+ *   <li><code>java.util.Formatter</code> &mdash; the lower-level engine behind <code>printf</code> and <code>format</code>.</li>
+ *   <li>Text Blocks (Java 15+) &mdash; multi-line string literals using """ delimiters.</li>
+ * </ul>
+ *
+ * <h2>Common Format Specifiers (Recap)</h2>
+ * <pre>
  *      %d   - decimal integer
  *      %o   - octal integer
  *      %x   - hexadecimal integer (use %X for uppercase)
@@ -24,12 +25,17 @@ package Phase0_SetupAndFirstPrograms.Output;
  *      %b   - boolean
  *      %t   - date/time (followed by a sub-specifier like %tY for year)
  *      %n   - platform-specific line separator
- * <p>
+ * </pre>
  *
- * Argument Index
- * --------------
- * You can reference the same argument multiple times using "1$", "2$", etc.
+ * <h2>Argument Index</h2>
+ * <p>You can reference the same argument multiple times using "1$", "2$", etc.</p>
+ * <pre>
  *     "%1$s is %1$s years old"  -> reuses argument #1 twice
+ * </pre>
+ *
+ * @author  Deepak Gupta
+ * @version 1.0
+ * @since 2026-05-21
  */
 
 public class FormattedOutput {

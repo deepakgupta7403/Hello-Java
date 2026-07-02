@@ -1380,77 +1380,91 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>StringBuffer - Mutable, Thread-Safe Character Sequence</h2>
-                    <p>StringBuffer (since Java 1.0) is a MUTABLE counterpart to String. You can append, insert, delete,
-                        or modify characters in place without creating new objects.</p>
-                    <pre class="hj-doc-art">     StringBuffer sb = new StringBuffer(&quot;Hello&quot;);
-     sb.append(&quot;, World&quot;).append(&quot;!&quot;);
-     // sb now contains &quot;Hello, World!&quot;</pre>
-                    <h3>Key Properties</h3>
-                    <ul>
-                        <li>MUTABLE - methods modify the buffer in place and return `this`
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                    for chaining.</pre>
-                    <ul>
-                        <li>THREAD-SAFE - every public method is `synchronized` - safe to use
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                    from multiple threads without external locking.</pre>
-                    <ul>
-                        <li>SLOWER than - the synchronisation has a cost; if you only use the
-                        </li>
-                    </ul>
-                    <p>StringBuilder buffer from one thread, prefer StringBuilder.</p>
-                    <ul>
-                        <li>GROWS AUTOMATIC- has an internal char[] that doubles in size when full.
-                        </li>
-                    </ul>
-                    <h3>When To Use It</h3>
-                    <ul>
-                        <li>You are mutating a shared buffer from MULTIPLE THREADS.
-                        </li>
-                        <li>You need a method signature returning AbstractStringBuilder semantics.
-                        </li>
-                        <li>Otherwise (the common case), use StringBuilder.
-                        </li>
-                    </ul>
-                    <h3>Common Methods - Quick Catalogue</h3>
-                    <pre class="hj-doc-art">     Constructors
+                    StringBuffer - Mutable, Thread-Safe Character Sequence
+                    ------------------------------------------------------
+                    StringBuffer (since Java 1.0) is a MUTABLE counterpart to String. You can
+                    append, insert, delete, or modify characters in place without creating
+                    new objects.
+                    <p>
+
+                        StringBuffer sb = new StringBuffer("Hello");
+                        sb.append(", World").append("!");
+                        // sb now contains "Hello, World!"
+                    <p>
+
+                        Key Properties
+                        --------------
+                        - MUTABLE - methods modify the buffer in place and return `this`
+                        for chaining.
+                        - THREAD-SAFE - every public method is `synchronized` - safe to use
+                        from multiple threads without external locking.
+                        - SLOWER than - the synchronisation has a cost; if you only use the
+                        StringBuilder buffer from one thread, prefer StringBuilder.
+                        - GROWS AUTOMATIC- has an internal char[] that doubles in size when full.
+                    <p>
+
+                        When To Use It
+                        --------------
+                        - You are mutating a shared buffer from MULTIPLE THREADS.
+                        - You need a method signature returning AbstractStringBuilder semantics.
+                        - Otherwise (the common case), use StringBuilder.
+                    <p>
+
+                        Common Methods - Quick Catalogue
+                        --------------------------------
+                        Constructors
          new StringBuffer()                empty, capacity 16
          new StringBuffer(int cap)         empty, custom capacity
          new StringBuffer(String s)        seeded with s, capacity = s.length()+16
-         new StringBuffer(CharSequence)    seeded with any CharSequence</pre>
-                    <pre class="hj-doc-art">     Length &amp; capacity
+                        new StringBuffer(CharSequence) seeded with any CharSequence
+                    <p>
+
+                        Length & capacity
          length()                          number of characters
          capacity()                        size of the internal array
          ensureCapacity(int min)           grow if necessary
          trimToSize()                      shrink the internal array
-         setLength(int n)                  truncate or pad with &#x27; &#x27;</pre>
-                    <pre class="hj-doc-art">     Append (overloaded for almost every type)
-         append(String|char[]|char|int|long|float|double|boolean|Object|CharSequence)</pre>
-                    <pre class="hj-doc-art">     Insert (always at a given index)
-         insert(int offset, anyType)</pre>
-                    <pre class="hj-doc-art">     Replace / delete
+                        setLength(int n) truncate or pad with ' '
+                    <p>
+
+                        Append (overloaded for almost every type)
+                        append(String|char[]|char|int|long|float|double|boolean|Object|CharSequence)
+                    <p>
+
+                        Insert (always at a given index)
+                        insert(int offset, anyType)
+                    <p>
+
+                        Replace / delete
          replace(int start, int end, String s)
          delete(int start, int end)
-         deleteCharAt(int index)</pre>
-                    <pre class="hj-doc-art">     Reverse / read / set
+                        deleteCharAt(int index)
+                    <p>
+
+                        Reverse / read / set
          reverse()
          charAt(int) / codePointAt(int) / getChars(...)
-         setCharAt(int index, char c)</pre>
-                    <pre class="hj-doc-art">     Search
+                        setCharAt(int index, char c)
+                    <p>
+
+                        Search
          indexOf(String) / indexOf(String, fromIndex)
-         lastIndexOf(String) / lastIndexOf(String, fromIndex)</pre>
-                    <pre class="hj-doc-art">     Sub-sequences and output
+                        lastIndexOf(String) / lastIndexOf(String, fromIndex)
+                    <p>
+
+                        Sub-sequences and output
          substring(int start) / substring(int start, int end)
          subSequence(int start, int end)
-         toString()</pre>
-                    <pre class="hj-doc-art">     Java 21
+                        toString()
+                    <p>
+
+                        Java 21
          chars() / codePoints()                  - IntStream views
          compareTo(StringBuffer)                 - lexicographic compare
-         isEmpty()                               - convenience added in 15</pre>
-                    <p>Each method appears below with a tiny worked example.</p>
+                        isEmpty() - convenience added in 15
+                    <p>
+
+                        Each method appears below with a tiny worked example.
                 </div>
             </div>
 

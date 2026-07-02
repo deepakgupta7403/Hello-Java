@@ -1380,55 +1380,62 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Interface Methods - default, static, private (Java 8 / 9)</h2>
-                    <p>Before Java 8, every method declared in an interface was implicitly PUBLIC ABSTRACT - no body
-                        allowed. To evolve an interface (e.g. add a new method), you had to break every existing
-                        implementor. Java 8 fixed this with `default` methods, and Java 9 finished the story with
-                        `private` methods.</p>
-                    <h3>The Four Method Flavours Allowed in an Interface (since Java 9)</h3>
-                    <ul>
-                        <li>ABSTRACT - no body, must be implemented by every concrete class.
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                    `void doStuff();`</pre>
-                    <ul>
-                        <li>DEFAULT - has a body, inherited by implementors unless overridden.
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                    `default void greet() { ... }`</pre>
-                    <ul>
-                        <li>STATIC - utility belonging to the interface itself.
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                    `static Comparator&lt;...&gt; byLength() { ... }`</pre>
-                    <ul>
-                        <li>PRIVATE - helper for the interface&#x27;s own default/static methods.
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                    `private boolean isValid(String s) { ... }`
-                    (Java 9+)</pre>
-                    <h3>Why `default` Was Added</h3>
-                    <p>Interfaces could not evolve without breaking implementors. Adding `default forEach(Consumer)` to
-                        java.lang.Iterable in Java 8 was the motivating example - every existing collection class got it
-                        for free.</p>
-                    <h3>Why `private` Was Added (Java 9)</h3>
-                    <p>To avoid duplicating helper code between default/static methods of the same interface. Without
-                        `private`, you would have to expose the helper or copy it.</p>
-                    <h3>Multiple Inheritance and the &quot;Diamond&quot; Problem</h3>
-                    <p>A class may implement multiple interfaces. If two of them provide CONFLICTING default methods
-                        with the same signature, the compiler forces you to override the method in your class to
-                        disambiguate (you can call `Interface.super.method()` to pick one).</p>
-                    <h3>Modifier Quick Recap</h3>
-                    <ul>
-                        <li>Abstract methods : implicitly public abstract.
-                        </li>
-                        <li>Default / static methods : may be public (default) - no modifier needed.
-                        </li>
-                        <li>Private methods : private only; cannot be public/protected.
-                        </li>
-                        <li>Fields in interfaces : implicitly public static final (constants).
-                        </li>
-                    </ul>
+                    Interface Methods - default, static, private (Java 8 / 9)
+                    ---------------------------------------------------------
+                    Before Java 8, every method declared in an interface was implicitly PUBLIC
+                    ABSTRACT - no body allowed. To evolve an interface (e.g. add a new method),
+                    you had to break every existing implementor. Java 8 fixed this with
+                    `default` methods, and Java 9 finished the story with `private` methods.
+                    <p>
+
+                        The Four Method Flavours Allowed in an Interface (since Java 9)
+                        ---------------------------------------------------------------
+                    <p>
+
+                        1. ABSTRACT - no body, must be implemented by every concrete class.
+                        `void doStuff();`
+                    <p>
+
+                        2. DEFAULT - has a body, inherited by implementors unless overridden.
+                        `default void greet() { ... }`
+                    <p>
+
+                        3. STATIC - utility belonging to the interface itself.
+                        `static Comparator<...> byLength() { ... }`
+                    <p>
+
+                        4. PRIVATE - helper for the interface's own default/static methods.
+                        `private boolean isValid(String s) { ... }`
+                        (Java 9+)
+                    <p>
+
+                        Why `default` Was Added
+                        -----------------------
+                        Interfaces could not evolve without breaking implementors. Adding
+                        `default forEach(Consumer)` to java.lang.Iterable in Java 8 was the
+                        motivating example - every existing collection class got it for free.
+                    <p>
+
+                        Why `private` Was Added (Java 9)
+                        --------------------------------
+                        To avoid duplicating helper code between default/static methods of the same
+                        interface. Without `private`, you would have to expose the helper or copy it.
+                    <p>
+
+                        Multiple Inheritance and the "Diamond" Problem
+                        ----------------------------------------------
+                        A class may implement multiple interfaces. If two of them provide CONFLICTING
+                        default methods with the same signature, the compiler forces you to override
+                        the method in your class to disambiguate (you can call
+                        `Interface.super.method()` to pick one).
+                    <p>
+
+                        Modifier Quick Recap
+                        --------------------
+                        - Abstract methods : implicitly public abstract.
+                        - Default / static methods : may be public (default) - no modifier needed.
+                        - Private methods : private only; cannot be public/protected.
+                        - Fields in interfaces : implicitly public static final (constants).
                 </div>
             </div>
 

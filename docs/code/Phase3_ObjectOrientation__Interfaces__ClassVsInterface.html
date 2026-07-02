@@ -1380,11 +1380,17 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Class vs Interface - Practical Comparison</h2>
-                    <p>Both classes and interfaces describe a TYPE in Java. The difference is in what each can carry and
-                        how Java&#x27;s inheritance model treats them.</p>
-                    <h3>Side-by-Side</h3>
-                    <pre class="hj-doc-art"> Aspect              | class                         | interface
+                    Class vs Interface - Practical Comparison
+                    -----------------------------------------
+                    Both classes and interfaces describe a TYPE in Java. The difference is in
+                    what each can carry and how Java's inheritance model treats them.
+                    <p>
+
+                        Side-by-Side
+                        ------------
+                    <p>
+
+                        Aspect | class | interface
  --------------------+-------------------------------+-------------------------------
  Keyword             | class                         | interface
  Instantiable?       | YES (unless abstract)         | NO  (cannot be `new`-ed)
@@ -1399,32 +1405,36 @@
  Constructors        | yes                           | NO
  Access modifiers    | public / protected / pkg /    | members may be public (default)
  on members          |   private                     |   or private (Java 9+)
- Used to express     | &quot;what an object IS&quot;           | &quot;what an object CAN DO&quot;</pre>
-                    <h3>Picking Between Them</h3>
-                    <ul>
-                        <li>Need SHARED STATE across implementations? -&gt; abstract CLASS.
-                        </li>
-                        <li>Want a CONTRACT a class can adopt alongside its existing parent? -&gt; INTERFACE.
-                        </li>
-                        <li>Need to target LAMBDAS? -&gt; functional INTERFACE (single abstract method).
-                        </li>
-                        <li>Want a CLOSED set of subtypes you control? -&gt; sealed CLASS or sealed INTERFACE.
-                        </li>
-                    </ul>
-                    <h3>Real-World JDK Examples</h3>
-                    <p>List&lt;E&gt; - INTERFACE (the contract) AbstractList&lt;E&gt; - CLASS (a skeleton implementation
-                        - shared code) ArrayList&lt;E&gt; - CLASS extends AbstractList implements List</p>
-                    <p>The JDK consistently pairs interfaces (contract) with abstract classes (shared code) - a pattern
-                        worth copying in your own designs.</p>
-                    <h3>See Also</h3>
-                    <ul>
-                        <li>OOPSConcepts/Abstraction/AbstractClassVsInterface.java - longer discussion
-                        </li>
-                        <li>InterfaceIntro.java - interface members tour
-                        </li>
-                        <li>FunctionalInterfaceDemo.java - SAM + lambdas
-                        </li>
-                    </ul>
+                        Used to express | "what an object IS" | "what an object CAN DO"
+                    <p>
+
+                        Picking Between Them
+                        --------------------
+                        - Need SHARED STATE across implementations? -> abstract CLASS.
+                        - Want a CONTRACT a class can adopt alongside its existing parent? -> INTERFACE.
+                        - Need to target LAMBDAS? -> functional INTERFACE (single abstract method).
+                        - Want a CLOSED set of subtypes you control? -> sealed CLASS or sealed INTERFACE.
+                    <p>
+
+                        Real-World JDK Examples
+                        -----------------------
+                        List
+                        <E> - INTERFACE (the contract)
+                            AbstractList
+                            <E> - CLASS (a skeleton implementation - shared code)
+                                ArrayList
+                                <E> - CLASS extends AbstractList implements List
+                                    <p>
+
+                                        The JDK consistently pairs interfaces (contract) with abstract classes
+                                        (shared code) - a pattern worth copying in your own designs.
+                                    <p>
+
+                                        See Also
+                                        --------
+                                        - OOPSConcepts/Abstraction/AbstractClassVsInterface.java - longer discussion
+                                        - InterfaceIntro.java - interface members tour
+                                        - FunctionalInterfaceDemo.java - SAM + lambdas
                 </div>
             </div>
 

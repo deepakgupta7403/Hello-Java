@@ -1380,88 +1380,83 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Polymorphism in Java</h2>
-                    <p>POLYMORPHISM means &quot;many forms&quot; - the ability of ONE name (a method or a reference) to
-                        behave differently depending on context. Java offers TWO kinds:</p>
-                    <ul>
-                        <li>COMPILE-TIME POLYMORPHISM (a.k.a. Static / Early-binding)
-                            <ul>
-                                <li>Resolved at COMPILE time by the compiler based on argument types.
-                                </li>
-                                <li>Implemented via METHOD OVERLOADING and OPERATOR OVERLOADING (only
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">      `+` for Strings - Java does not let you overload other operators).</pre>
-                    <ul>
-                        <li>RUNTIME POLYMORPHISM (a.k.a. Dynamic / Late-binding)
-                            <ul>
-                                <li>Resolved at RUNTIME based on the ACTUAL OBJECT TYPE.
-                                </li>
-                                <li>Implemented via METHOD OVERRIDING.
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <h3>Method Overloading - Rules</h3>
-                    <p>Two methods CAN share a name if they DIFFER in:</p>
-                    <ul>
-                        <li>number of parameters,
-                        </li>
-                        <li>type of parameters,
-                        </li>
-                        <li>order of parameter types.
-                        </li>
-                    </ul>
-                    <p>Return type ALONE is NOT enough.</p>
-                    <pre class="hj-doc-art">     int    add(int a, int b)       { ... }   // overload
+                    Polymorphism in Java
+                    --------------------
+                    POLYMORPHISM means "many forms" - the ability of ONE name (a method or a
+                    reference) to behave differently depending on context. Java offers TWO
+                    kinds:
+                    <p>
+
+                        1. COMPILE-TIME POLYMORPHISM (a.k.a. Static / Early-binding)
+                        - Resolved at COMPILE time by the compiler based on argument types.
+                        - Implemented via METHOD OVERLOADING and OPERATOR OVERLOADING (only
+                        `+` for Strings - Java does not let you overload other operators).
+                    <p>
+
+                        2. RUNTIME POLYMORPHISM (a.k.a. Dynamic / Late-binding)
+                        - Resolved at RUNTIME based on the ACTUAL OBJECT TYPE.
+                        - Implemented via METHOD OVERRIDING.
+                    <p>
+
+                        Method Overloading - Rules
+                        --------------------------
+                        Two methods CAN share a name if they DIFFER in:
+                        - number of parameters,
+                        - type of parameters,
+                        - order of parameter types.
+                        Return type ALONE is NOT enough.
+                    <p>
+
+                        int add(int a, int b) { ... } // overload
      double add(double a, double b) { ... }   // overload
-     int    add(int b, int a)       { ... }   // ERROR - same signature</pre>
-                    <h3>Method Overriding - Rules</h3>
-                    <p>A subclass redefines a method declared in its parent. The compiler enforces:</p>
-                    <ul>
-                        <li>Same name and same parameter list.
-                        </li>
-                        <li>Return type the same or a SUBTYPE (covariant return).
-                        </li>
-                        <li>Throws clause: cannot add NEW broader checked exceptions.
-                        </li>
-                        <li>Access modifier may be the SAME or MORE PERMISSIVE (cannot narrow).
-                        </li>
-                        <li>Cannot override: private, static, or final methods (you&#x27;d be hiding,
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">       not overriding).</pre>
-                    <p>Mark overrides with @Override - the compiler then verifies the override contract for you.</p>
-                    <h3>Dynamic Dispatch</h3>
-                    <p>When you call a method on a REFERENCE, the JVM looks at the actual OBJECT to decide which body to
-                        run. This is what makes polymorphism powerful.</p>
-                    <pre class="hj-doc-art">     Animal a = new Dog();
-     a.makeSound();        // runs Dog.makeSound(), not Animal.makeSound()</pre>
-                    <h3>What Dynamic Dispatch Does NOT Apply To</h3>
-                    <ul>
-                        <li>STATIC methods - dispatched at compile time by the declared type.
-                        </li>
-                        <li>FIELDS - same: resolved by the declared type.
-                        </li>
-                        <li>PRIVATE methods - cannot be overridden, so always the declaring class&#x27;s.
-                        </li>
-                        <li>FINAL methods - cannot be overridden by design.
-                        </li>
-                        <li>CONSTRUCTORS - never overridden (they are not inherited).
-                        </li>
-                    </ul>
-                    <h3>Pattern Matching (Java 21) and Polymorphism</h3>
-                    <p>Java 21 lets you write SWITCH-BASED polymorphism via pattern matching:</p>
-                    <pre class="hj-doc-art">     String describe(Object o) {
+                        int add(int b, int a) { ... } // ERROR - same signature
+                    <p>
+
+                        Method Overriding - Rules
+                        -------------------------
+                        A subclass redefines a method declared in its parent. The compiler enforces:
+                        - Same name and same parameter list.
+                        - Return type the same or a SUBTYPE (covariant return).
+                        - Throws clause: cannot add NEW broader checked exceptions.
+                        - Access modifier may be the SAME or MORE PERMISSIVE (cannot narrow).
+                        - Cannot override: private, static, or final methods (you'd be hiding,
+                        not overriding).
+                        Mark overrides with @Override - the compiler then verifies the override
+                        contract for you.
+                    <p>
+
+                        Dynamic Dispatch
+                        ----------------
+                        When you call a method on a REFERENCE, the JVM looks at the actual OBJECT
+                        to decide which body to run. This is what makes polymorphism powerful.
+                    <p>
+
+                        Animal a = new Dog();
+                        a.makeSound(); // runs Dog.makeSound(), not Animal.makeSound()
+                    <p>
+
+                        What Dynamic Dispatch Does NOT Apply To
+                        ---------------------------------------
+                        - STATIC methods - dispatched at compile time by the declared type.
+                        - FIELDS - same: resolved by the declared type.
+                        - PRIVATE methods - cannot be overridden, so always the declaring class's.
+                        - FINAL methods - cannot be overridden by design.
+                        - CONSTRUCTORS - never overridden (they are not inherited).
+                    <p>
+
+                        Pattern Matching (Java 21) and Polymorphism
+                        -------------------------------------------
+                        Java 21 lets you write SWITCH-BASED polymorphism via pattern matching:
+                    <p>
+
+                        String describe(Object o) {
          return switch (o) {
-             case Integer i  -&gt; &quot;int &quot; + i;
-             case String  s  -&gt; &quot;str &quot; + s;
-             case null       -&gt; &quot;nothing&quot;;
-             default         -&gt; o.getClass().getSimpleName();
+                        case Integer i -> "int " + i;
+                        case String s -> "str " + s;
+                        case null -> "nothing";
+                        default -> o.getClass().getSimpleName();
          };
-     }</pre>
+                        }
                 </div>
             </div>
 

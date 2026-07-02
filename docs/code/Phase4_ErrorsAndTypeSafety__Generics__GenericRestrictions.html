@@ -1380,63 +1380,62 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Generic Restrictions</h2>
-                    <p>Type erasure (see TypeErasure.java) makes Java generics simple to bolt on to the existing JVM,
-                        but it forbids a number of things that look like they should work. Knowing the rules saves hours
-                        of frustration.</p>
-                    <h3>The Forbidden List (with workarounds)</h3>
-                    <ul>
-                        <li>Cannot use a PRIMITIVE as a type argument
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">        List&amp;lt;int&amp;gt; xs;                     // ERROR
-        List&amp;lt;Integer&amp;gt; xs;                  // OK (boxing)</pre>
-                    <ul>
-                        <li>Cannot instantiate a TYPE PARAMETER directly
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">        T t = new T();                      // ERROR
-        WORKAROUND: pass a Class&amp;lt;T&amp;gt; &quot;type token&quot; or a Supplier&amp;lt;T&amp;gt;.</pre>
-                    <ul>
-                        <li>Cannot create a GENERIC ARRAY directly
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">        T[]      a = new T[10];             // ERROR
-        List&amp;lt;String&amp;gt;[] b = new List&amp;lt;String&amp;gt;[10]; // ERROR
-        WORKAROUND: Object[] cast, or use ArrayList&amp;lt;T&amp;gt;.</pre>
-                    <ul>
-                        <li>Cannot use `instanceof` with a parameterised type
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">        if (x instanceof List&amp;lt;String&amp;gt;) ... // ERROR
-        if (x instanceof List&amp;lt;?&amp;gt;)      ... // OK (wildcard)</pre>
-                    <ul>
-                        <li>Cannot CATCH a parameterised exception
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">        catch (T e) ...                     // ERROR
-        class MyException&amp;lt;T&amp;gt; extends Exception { } // also illegal</pre>
-                    <ul>
-                        <li>Cannot have STATIC fields whose type uses T
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">        class Box&amp;lt;T&amp;gt; { static T DEFAULT; }  // ERROR
-        static methods CAN have their OWN type parameter though.</pre>
-                    <ul>
-                        <li>Cannot OVERLOAD methods that have the SAME erased signature
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">        void m(List&amp;lt;String&amp;gt;)                // both erase to m(List)
-        void m(List&amp;lt;Integer&amp;gt;)               // ERROR</pre>
-                    <ul>
-                        <li>Cannot CAST to a parameterised type (warning rather than error)
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">        List&amp;lt;String&amp;gt; ls = (List&amp;lt;String&amp;gt;) obj;   // unchecked-cast WARNING
+                    Generic Restrictions
+                    --------------------
+                    Type erasure (see TypeErasure.java) makes Java generics simple to bolt on
+                    to the existing JVM, but it forbids a number of things that look like
+                    they should work. Knowing the rules saves hours of frustration.
+                    <p>
+
+                        The Forbidden List (with workarounds)
+                        -------------------------------------
+                    <p>
+
+                        1. Cannot use a PRIMITIVE as a type argument
+                        List&lt;int&gt; xs; // ERROR
+                        List&lt;Integer&gt; xs; // OK (boxing)
+                    <p>
+
+                        2. Cannot instantiate a TYPE PARAMETER directly
+                        T t = new T(); // ERROR
+                        WORKAROUND: pass a Class&lt;T&gt; "type token" or a Supplier&lt;T&gt;.
+                    <p>
+
+                        3. Cannot create a GENERIC ARRAY directly
+                        T[] a = new T[10]; // ERROR
+                        List&lt;String&gt;[] b = new List&lt;String&gt;[10]; // ERROR
+                        WORKAROUND: Object[] cast, or use ArrayList&lt;T&gt;.
+                    <p>
+
+                        4. Cannot use `instanceof` with a parameterised type
+                        if (x instanceof List&lt;String&gt;) ... // ERROR
+                        if (x instanceof List&lt;?&gt;) ... // OK (wildcard)
+                    <p>
+
+                        5. Cannot CATCH a parameterised exception
+                        catch (T e) ... // ERROR
+                        class MyException&lt;T&gt; extends Exception { } // also illegal
+                    <p>
+
+                        6. Cannot have STATIC fields whose type uses T
+                        class Box&lt;T&gt; { static T DEFAULT; } // ERROR
+                        static methods CAN have their OWN type parameter though.
+                    <p>
+
+                        7. Cannot OVERLOAD methods that have the SAME erased signature
+                        void m(List&lt;String&gt;) // both erase to m(List)
+                        void m(List&lt;Integer&gt;) // ERROR
+                    <p>
+
+                        8. Cannot CAST to a parameterised type (warning rather than error)
+                        List&lt;String&gt; ls = (List&lt;String&gt;) obj; // unchecked-cast WARNING
         // The cast is REAL-CHECKED at the erased type (List), but the
-        // &lt;String&gt; bit is unverifiable.</pre>
-                    <p>Each restriction is demonstrated below - the FORBIDDEN line is commented with `// ERROR:` so you
-                        can uncomment and see for yourself.</p>
+                        //
+                        <String> bit is unverifiable.
+                            <p>
+
+                                Each restriction is demonstrated below - the FORBIDDEN line is commented
+                                with `// ERROR:` so you can uncomment and see for yourself.
                 </div>
             </div>
 

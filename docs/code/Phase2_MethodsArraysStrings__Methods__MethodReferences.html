@@ -1380,55 +1380,70 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Method References (Java 8+)</h2>
-                    <p>A method reference is a compact, expressive ALTERNATIVE TO A LAMBDA when the lambda just calls an
-                        existing method. Syntax:</p>
-                    <pre class="hj-doc-art">     Target::methodName</pre>
-                    <h3>Four Forms of Method References</h3>
-                    <ul>
-                        <li>STATIC method Class::staticMethod
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">        Function&lt;String, Integer&gt; p = Integer::parseInt;
-        // equivalent lambda:  s -&gt; Integer.parseInt(s)</pre>
-                    <ul>
-                        <li>INSTANCE method of a PARTICULAR object instance::method
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">        StringBuilder sb = new StringBuilder();
-        Consumer&lt;String&gt; append = sb::append;
-        // equivalent lambda:  s -&gt; sb.append(s)</pre>
-                    <ul>
-                        <li>INSTANCE method of an ARBITRARY object of a type Class::method
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">        Function&lt;String, Integer&gt; len = String::length;
-        // equivalent lambda:  s -&gt; s.length()</pre>
-                    <ul>
-                        <li>CONSTRUCTOR reference Class::new
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">        Supplier&lt;ArrayList&lt;String&gt;&gt; mk = ArrayList::new;
-        Function&lt;String, StringBuilder&gt; wrap = StringBuilder::new;</pre>
-                    <h3>Why Use Them?</h3>
-                    <ul>
-                        <li>Less noise than the equivalent lambda.
-                        </li>
-                        <li>Reads almost like English: &quot;stream of names, sort by String::length&quot;.
-                        </li>
-                        <li>Encourages thinking in terms of WHAT to apply rather than HOW.
-                        </li>
-                    </ul>
-                    <h3>When To Stick With a Lambda</h3>
-                    <ul>
-                        <li>When the lambda needs additional logic beyond a single method call.
-                        </li>
-                        <li>When the type inference for `::` gets confused.
-                        </li>
-                        <li>When readability suffers (overloaded methods + method references can be
-                        </li>
-                    </ul>
-                    <p>hard to read).</p>
+                    Method References (Java 8+)
+                    ---------------------------
+                    A method reference is a compact, expressive ALTERNATIVE TO A LAMBDA when the
+                    lambda just calls an existing method. Syntax:
+                    <p>
+
+                        Target::methodName
+                    <p>
+
+                        Four Forms of Method References
+                        -------------------------------
+                    <p>
+
+                        1. STATIC method Class::staticMethod
+                    <p>
+
+                        Function
+                        <String
+                        , Integer> p = Integer::parseInt;
+                        // equivalent lambda: s -> Integer.parseInt(s)
+                    <p>
+
+                        2. INSTANCE method of a PARTICULAR object instance::method
+                    <p>
+
+                        StringBuilder sb = new StringBuilder();
+                        Consumer
+                        <String> append = sb::append;
+                            // equivalent lambda: s -> sb.append(s)
+                            <p>
+
+                                3. INSTANCE method of an ARBITRARY object of a type Class::method
+                            <p>
+
+                                Function
+                                <String
+                                , Integer> len = String::length;
+                                // equivalent lambda: s -> s.length()
+                            <p>
+
+                                4. CONSTRUCTOR reference Class::new
+                            <p>
+
+                                Supplier
+                                <ArrayList
+                                <String>> mk = ArrayList::new;
+                                    Function
+                                    <String
+                                    , StringBuilder> wrap = StringBuilder::new;
+                                    <p>
+
+                                        Why Use Them?
+                                        -------------
+                                        - Less noise than the equivalent lambda.
+                                        - Reads almost like English: "stream of names, sort by String::length".
+                                        - Encourages thinking in terms of WHAT to apply rather than HOW.
+                                    <p>
+
+                                        When To Stick With a Lambda
+                                        ---------------------------
+                                        - When the lambda needs additional logic beyond a single method call.
+                                        - When the type inference for `::` gets confused.
+                                        - When readability suffers (overloaded methods + method references can be
+                                        hard to read).
                 </div>
             </div>
 

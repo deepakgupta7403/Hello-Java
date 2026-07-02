@@ -1380,58 +1380,77 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Multi-Dimensional Arrays</h2>
-                    <p>Java does NOT have true multi-dimensional arrays the way Fortran or C do. Instead, a &quot;2D
-                        array&quot; is really an ARRAY OF ARRAYS - each row is itself a separate one-dimensional array
-                        on the heap, linked from a parent array.</p>
-                    <pre class="hj-doc-art">     int[][] grid = new int[3][4];</pre>
-                    <pre class="hj-doc-art">     grid -&gt; [ ref0 ][ ref1 ][ ref2 ]                  (3 row-references)
+                    Multi-Dimensional Arrays
+                    ------------------------
+                    Java does NOT have true multi-dimensional arrays the way Fortran or C do.
+                    Instead, a "2D array" is really an ARRAY OF ARRAYS - each row is itself a
+                    separate one-dimensional array on the heap, linked from a parent array.
+                    <p>
+
+                        int[][] grid = new int[3][4];
+                    <p>
+
+                        grid -> [ ref0 ][ ref1 ][ ref2 ] (3 row-references)
               |       |       |
               v       v       v
-             [0,0,0,0][0,0,0,0][0,0,0,0]               (each row is 4 ints)</pre>
-                    <h3>Declaration Styles</h3>
-                    <pre class="hj-doc-art">     int[][]  a;       // preferred
+                        [0,0,0,0][0,0,0,0][0,0,0,0] (each row is 4 ints)
+                    <p>
+
+                        Declaration Styles
+                        ------------------
+                        int[][] a; // preferred
      int   a[][];      // legal but unusual
-     int[] a[];        // legal but ugly</pre>
-                    <h3>Three Ways to Create a 2D Array</h3>
-                    <ul>
-                        <li>Allocate both dimensions, default-filled:
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">        int[][] grid = new int[3][4];        // 3 rows, each of length 4</pre>
-                    <ul>
-                        <li>Allocate the outer array first, then each row separately:
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">        int[][] grid = new int[3][];
+                        int[] a[]; // legal but ugly
+                    <p>
+
+                        Three Ways to Create a 2D Array
+                        -------------------------------
+                        1. Allocate both dimensions, default-filled:
+                    <p>
+
+                        int[][] grid = new int[3][4]; // 3 rows, each of length 4
+                    <p>
+
+                        2. Allocate the outer array first, then each row separately:
+                    <p>
+
+                        int[][] grid = new int[3][];
         grid[0] = new int[]{1, 2, 3};
-        grid[1] = new int[]{4, 5, 6};</pre>
-                    <ul>
-                        <li>Literal:
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">        int[][] grid = { {1, 2, 3},
+                        grid[1] = new int[]{4, 5, 6};
+                    <p>
+
+                        3. Literal:
+                    <p>
+
+                        int[][] grid = { {1, 2, 3},
                          {4, 5, 6},
-                         {7, 8, 9} };</pre>
-                    <h3>Iteration</h3>
-                    <pre class="hj-doc-art">     for (int r = 0; r &lt; grid.length; r++)
-         for (int c = 0; c &lt; grid[r].length; c++)
-             ... grid[r][c] ...</pre>
-                    <pre class="hj-doc-art">     for (int[] row : grid)
+                        {7, 8, 9} };
+                    <p>
+
+                        Iteration
+                        ---------
+                        for (int r = 0; r < grid.length; r++)
+                        for (int c = 0; c < grid[r].length; c++)
+                        ... grid[r][c] ...
+                    <p>
+
+                        for (int[] row : grid)
          for (int v : row)
-             ... v ...</pre>
-                    <h3>Useful Helpers</h3>
-                    <pre class="hj-doc-art">     Arrays.toString(intRow)        - print a single row
+                        ... v ...
+                    <p>
+
+                        Useful Helpers
+                        --------------
+                        Arrays.toString(intRow) - print a single row
      Arrays.deepToString(grid)      - print the whole multi-dim array
-     Arrays.deepEquals(a, b)        - element-by-element equality (any depth)</pre>
-                    <h3>Notes</h3>
-                    <ul>
-                        <li>3D, 4D ... are just arrays of 2D, 3D, ... arrays. Same idea.
-                        </li>
-                        <li>Because each row is a separate object, rows can have DIFFERENT lengths -
-                        </li>
-                    </ul>
-                    <p>that variant is called a &quot;jagged array&quot; (see JaggedArrays.java).</p>
+                        Arrays.deepEquals(a, b) - element-by-element equality (any depth)
+                    <p>
+
+                        Notes
+                        -----
+                        - 3D, 4D ... are just arrays of 2D, 3D, ... arrays. Same idea.
+                        - Because each row is a separate object, rows can have DIFFERENT lengths -
+                        that variant is called a "jagged array" (see JaggedArrays.java).
                 </div>
             </div>
 

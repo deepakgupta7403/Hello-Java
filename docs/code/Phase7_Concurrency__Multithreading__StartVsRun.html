@@ -1,12 +1,12 @@
 <!doctype html>
-<html data-bs-theme="light" lang="en">
+<html lang="en" data-bs-theme="light">
 <head>
     <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Start Vs Run · HelloJava</title>
-    <meta content="A hands-on, topic-by-topic walkthrough of Java 21 LTS." name="description">
-    <link href="https://fonts.googleapis.com" rel="preconnect">
-    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <meta name="description" content="A hands-on, topic-by-topic walkthrough of Java 21 LTS.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
@@ -22,8 +22,8 @@
 
 <nav class="navbar navbar-expand-lg fixed-top shadow-0 hj-navbar">
     <div class="container-fluid">
-        <button aria-controls="sidebar" class="btn btn-link text-white d-lg-none me-2 p-2" data-mdb-target="#sidebar"
-                data-mdb-toggle="offcanvas" type="button">
+        <button class="btn btn-link text-white d-lg-none me-2 p-2" type="button" data-mdb-toggle="offcanvas"
+                data-mdb-target="#sidebar" aria-controls="sidebar">
             <span class="material-icons">menu</span>
         </button>
         <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
@@ -34,11 +34,11 @@
         <div class="d-flex align-items-center ms-auto gap-2">
             <div class="hj-search d-none d-md-flex">
                 <span class="material-icons">search</span>
-                <input autocomplete="off" id="hj-search" placeholder="Search topics..." type="search">
+                <input type="search" id="hj-search" placeholder="Search topics..." autocomplete="off">
                 <div id="hj-search-results"></div>
             </div>
-            <a class="btn btn-link text-white p-2" href="https://github.com" id="hj-github-link" rel="noopener"
-               target="_blank" title="View on GitHub">
+            <a class="btn btn-link text-white p-2" href="https://github.com" target="_blank" rel="noopener"
+               title="View on GitHub" id="hj-github-link">
                 <span class="material-icons">open_in_new</span>
             </a>
             <button class="btn btn-link text-white p-2" id="hj-theme-toggle" title="Toggle theme">
@@ -49,20 +49,20 @@
 </nav>
 
 
-<div class="offcanvas-lg offcanvas-start hj-sidebar" id="sidebar" tabindex="-1">
+<div class="offcanvas-lg offcanvas-start hj-sidebar" tabindex="-1" id="sidebar">
     <div class="offcanvas-header">
         <h6 class="offcanvas-title fw-bold">All Phases</h6>
-        <button aria-label="Close" class="btn-close" data-mdb-dismiss="offcanvas" data-mdb-target="#sidebar"
-                type="button"></button>
+        <button type="button" class="btn-close" data-mdb-dismiss="offcanvas" data-mdb-target="#sidebar"
+                aria-label="Close"></button>
     </div>
     <div class="offcanvas-body p-0">
         <div class="accordion accordion-flush" id="hj-sidebar-acc">
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase0_SetupAndFirstPrograms"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase0_SetupAndFirstPrograms" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">play_circle</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 0</small>
@@ -71,7 +71,7 @@
                         <span class="badge bg-light text-dark ms-2">11</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase0_SetupAndFirstPrograms">
+                <div id="sb-Phase0_SetupAndFirstPrograms" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase0_SetupAndFirstPrograms.html">
@@ -127,9 +127,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase1_CoreLanguage"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase1_CoreLanguage" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">code</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 1</small>
@@ -138,7 +138,7 @@
                         <span class="badge bg-light text-dark ms-2">61</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase1_CoreLanguage">
+                <div id="sb-Phase1_CoreLanguage" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold" href="../phase/Phase1_CoreLanguage.html">
                             <span class="material-icons-outlined small me-1">summarize</span>Phase overview
@@ -352,9 +352,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase2_MethodsArraysStrings"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase2_MethodsArraysStrings" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">data_array</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 2</small>
@@ -363,7 +363,7 @@
                         <span class="badge bg-light text-dark ms-2">20</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase2_MethodsArraysStrings">
+                <div id="sb-Phase2_MethodsArraysStrings" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase2_MethodsArraysStrings.html">
@@ -438,9 +438,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase3_ObjectOrientation"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase3_ObjectOrientation" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">category</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 3</small>
@@ -449,7 +449,7 @@
                         <span class="badge bg-light text-dark ms-2">48</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase3_ObjectOrientation">
+                <div id="sb-Phase3_ObjectOrientation" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase3_ObjectOrientation.html">
@@ -633,9 +633,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase4_ErrorsAndTypeSafety"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase4_ErrorsAndTypeSafety" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">shield</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 4</small>
@@ -644,7 +644,7 @@
                         <span class="badge bg-light text-dark ms-2">27</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase4_ErrorsAndTypeSafety">
+                <div id="sb-Phase4_ErrorsAndTypeSafety" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase4_ErrorsAndTypeSafety.html">
@@ -744,9 +744,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase5_CollectionsLambdasStreams"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase5_CollectionsLambdasStreams" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">stream</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 5</small>
@@ -755,7 +755,7 @@
                         <span class="badge bg-light text-dark ms-2">57</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase5_CollectionsLambdasStreams">
+                <div id="sb-Phase5_CollectionsLambdasStreams" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase5_CollectionsLambdasStreams.html">
@@ -942,9 +942,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase6_RuntimeMemoryRegexReflection"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase6_RuntimeMemoryRegexReflection" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">memory</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 6</small>
@@ -953,7 +953,7 @@
                         <span class="badge bg-light text-dark ms-2">21</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase6_RuntimeMemoryRegexReflection">
+                <div id="sb-Phase6_RuntimeMemoryRegexReflection" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase6_RuntimeMemoryRegexReflection.html">
@@ -1033,9 +1033,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="true"
-                            class="accordion-button  bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase7_Concurrency"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button  bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase7_Concurrency" aria-expanded="true">
                         <span class="material-icons me-2 text-primary">settings_input_component</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 7</small>
@@ -1044,7 +1044,7 @@
                         <span class="badge bg-light text-dark ms-2">48</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse show" id="sb-Phase7_Concurrency">
+                <div id="sb-Phase7_Concurrency" class="accordion-collapse collapse show">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold" href="../phase/Phase7_Concurrency.html">
                             <span class="material-icons-outlined small me-1">summarize</span>Phase overview
@@ -1201,9 +1201,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase8_PracticalAPIs"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase8_PracticalAPIs" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">api</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 8</small>
@@ -1212,7 +1212,7 @@
                         <span class="badge bg-light text-dark ms-2">22</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase8_PracticalAPIs">
+                <div id="sb-Phase8_PracticalAPIs" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold" href="../phase/Phase8_PracticalAPIs.html">
                             <span class="material-icons-outlined small me-1">summarize</span>Phase overview
@@ -1293,9 +1293,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase9_ModernJavaAndModules"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase9_ModernJavaAndModules" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">auto_awesome</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 9</small>
@@ -1304,7 +1304,7 @@
                         <span class="badge bg-light text-dark ms-2">8</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase9_ModernJavaAndModules">
+                <div id="sb-Phase9_ModernJavaAndModules" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase9_ModernJavaAndModules.html">
@@ -1350,10 +1350,10 @@
         <div class="container-fluid px-4">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-2 small">
-                    <li class="breadcrumb-item"><a class="text-white-50" href="../index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a class="text-white-50" href="../phase/Phase7_Concurrency.html">Phase
+                    <li class="breadcrumb-item"><a href="../index.html" class="text-white-50">Home</a></li>
+                    <li class="breadcrumb-item"><a href="../phase/Phase7_Concurrency.html" class="text-white-50">Phase
                         7</a></li>
-                    <li aria-current="page" class="breadcrumb-item active text-white">Multithreading</li>
+                    <li class="breadcrumb-item active text-white" aria-current="page">Multithreading</li>
                 </ol>
             </nav>
             <div class="d-flex align-items-center flex-wrap gap-3">
@@ -1380,41 +1380,43 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Thread.start() vs Thread.run()</h2>
-                    <p>One of the most common interview / debugging traps in Java.</p>
-                    <p>start() - Asks the JVM to create a new OS thread (or virtual thread)</p>
-                    <pre class="hj-doc-art">             and run() will be invoked ON THAT NEW THREAD.</pre>
-                    <p>run() - Just a normal method. Calling it directly executes the body</p>
-                    <pre class="hj-doc-art">             on the CURRENT thread — no new thread is created at all.</pre>
-                    <h3>Why It Matters</h3>
-                    <p>Code written for concurrency (printing thread names, holding locks, sleeping) APPEARS to &quot;work&quot;
-                        if you call run() — it just runs serially on the caller. No parallelism, no throughput, no
-                        concurrency bugs to catch. The bug only shows when load arrives.</p>
-                    <h3>Other Rules</h3>
-                    <ul>
-                        <li>start() can be called ONLY ONCE per Thread instance. A second call
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    throws IllegalThreadStateException.</pre>
-                    <ul>
-                        <li>run() can be called any number of times like any normal method.
-                        </li>
-                        <li>You override run() to define the work, but you NEVER call it. The
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    JVM calls it for you when start() spins up the new thread.</pre>
-                    <h3>In Modern Java</h3>
-                    <ul>
-                        <li>The same distinction applies to virtual threads. Use
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    Thread.startVirtualThread(r) or Thread.ofVirtual().start(r) instead
-    of constructing-and-starting two-step.</pre>
-                    <ul>
-                        <li>Prefer ExecutorService.execute / submit — it removes the start/run
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    confusion entirely.</pre>
+                    Thread.start() vs Thread.run()
+                    ------------------------------
+                    One of the most common interview / debugging traps in Java.
+                    <p>
+
+                        start() - Asks the JVM to create a new OS thread (or virtual thread)
+                        and run() will be invoked ON THAT NEW THREAD.
+                    <p>
+
+                        run() - Just a normal method. Calling it directly executes the body
+                        on the CURRENT thread — no new thread is created at all.
+                    <p>
+
+                        Why It Matters
+                        --------------
+                        Code written for concurrency (printing thread names, holding locks,
+                        sleeping) APPEARS to "work" if you call run() — it just runs serially
+                        on the caller. No parallelism, no throughput, no concurrency bugs to
+                        catch. The bug only shows when load arrives.
+                    <p>
+
+                        Other Rules
+                        -----------
+                        - start() can be called ONLY ONCE per Thread instance. A second call
+                        throws IllegalThreadStateException.
+                        - run() can be called any number of times like any normal method.
+                        - You override run() to define the work, but you NEVER call it. The
+                        JVM calls it for you when start() spins up the new thread.
+                    <p>
+
+                        In Modern Java
+                        --------------
+                        - The same distinction applies to virtual threads. Use
+                        Thread.startVirtualThread(r) or Thread.ofVirtual().start(r) instead
+                        of constructing-and-starting two-step.
+                        - Prefer ExecutorService.execute / submit — it removes the start/run
+                        confusion entirely.
                 </div>
             </div>
 
@@ -1508,8 +1510,8 @@ public class StartVsRun {
 <footer class="hj-footer text-center py-4 mt-5">
     <small class="text-muted">
         HelloJava · A topic-by-topic walkthrough of Java 21 ·
-        Built with <a href="https://mdbootstrap.com/" rel="noopener" target="_blank">MDB</a>
-        and <a href="https://prismjs.com/" rel="noopener" target="_blank">Prism.js</a>
+        Built with <a href="https://mdbootstrap.com/" target="_blank" rel="noopener">MDB</a>
+        and <a href="https://prismjs.com/" target="_blank" rel="noopener">Prism.js</a>
     </small>
 </footer>
 

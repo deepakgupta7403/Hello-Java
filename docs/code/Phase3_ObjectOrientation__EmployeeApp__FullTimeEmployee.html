@@ -1380,24 +1380,19 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <p>FullTimeEmployee - permanent staff paid a fixed monthly salary.</p>
-                    <p>Implemented as a RECORD, which:</p>
-                    <ul>
-                        <li>is implicitly final (satisfies the sealed permits requirement),
-                        </li>
-                        <li>generates equals/hashCode/toString from the components,
-                        </li>
-                        <li>exposes a canonical constructor we can extend with a compact form
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    for validation.</pre>
-                    <p>Also implements two cross-cutting interfaces:</p>
-                    <ul>
-                        <li>Promotable - this employee can be promoted (gets a raise).
-                        </li>
-                        <li>Auditable - marker interface; signals this object should be logged.
-                        </li>
-                    </ul>
+                    FullTimeEmployee - permanent staff paid a fixed monthly salary.
+                    <p>
+
+                        Implemented as a RECORD, which:
+                        - is implicitly final (satisfies the sealed permits requirement),
+                        - generates equals/hashCode/toString from the components,
+                        - exposes a canonical constructor we can extend with a compact form
+                        for validation.
+                    <p>
+
+                        Also implements two cross-cutting interfaces:
+                        - Promotable - this employee can be promoted (gets a raise).
+                        - Auditable - marker interface; signals this object should be logged.
                 </div>
             </div>
 

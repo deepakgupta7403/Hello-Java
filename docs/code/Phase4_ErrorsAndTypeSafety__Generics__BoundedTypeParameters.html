@@ -1380,52 +1380,75 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Bounded Type Parameters</h2>
-                    <p>A BOUND restricts what types can be used for a type parameter. The syntax is `T extends X` (read
-                        as &quot;T which is some subtype of X&quot;). The bound applies whether X is a CLASS or an
-                        INTERFACE - the keyword is always `extends`, never `implements`.</p>
-                    <pre class="hj-doc-art">     &amp;lt;T extends Number&amp;gt;             T must be Number, Integer, Double, ...
-     &amp;lt;T extends Comparable&amp;lt;T&amp;gt;&amp;gt;     T must be comparable to itself
-     &amp;lt;T extends Number &amp;amp; Comparable&amp;lt;T&amp;gt;&amp;gt;   multiple bounds via `&amp;amp;`</pre>
-                    <h3>Why Bound?</h3>
-                    <p>Without a bound, T is just Object - you can only call Object&#x27;s methods on it. With a bound,
-                        the compiler lets you treat T as the bound type:</p>
-                    <pre class="hj-doc-art">     static &amp;lt;T extends Number&amp;gt; double sum(List&amp;lt;T&amp;gt; xs) {
+                    Bounded Type Parameters
+                    -----------------------
+                    A BOUND restricts what types can be used for a type parameter. The syntax
+                    is `T extends X` (read as "T which is some subtype of X"). The bound
+                    applies whether X is a CLASS or an INTERFACE - the keyword is always
+                    `extends`, never `implements`.
+                    <p>
+
+                        &lt;T extends Number&gt; T must be Number, Integer, Double, ...
+                        &lt;T extends Comparable&lt;T&gt;&gt; T must be comparable to itself
+                        &lt;T extends Number &amp; Comparable&lt;T&gt;&gt; multiple bounds via `&amp;`
+                    <p>
+
+                        Why Bound?
+                        ----------
+                        Without a bound, T is just Object - you can only call Object's methods on
+                        it. With a bound, the compiler lets you treat T as the bound type:
+                    <p>
+
+                        static &lt;T extends Number&gt; double sum(List&lt;T&gt; xs) {
          double s = 0;
          for (T x : xs) s += x.doubleValue();        // legal because T is-a Number
          return s;
-     }</pre>
-                    <h3>Multiple Bounds</h3>
-                    <pre class="hj-doc-art">     &amp;lt;T extends Number &amp;amp; Comparable&amp;lt;T&amp;gt;&amp;gt;</pre>
-                    <ul>
-                        <li>Use `&amp;` (ampersand), not commas, between bounds.
-                        </li>
-                        <li>At most ONE bound may be a CLASS, and it must come FIRST. The rest
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    must be interfaces.</pre>
-                    <ul>
-                        <li>The compiler treats T as having all the bounds&#x27; members.
-                        </li>
-                    </ul>
-                    <h3>Recursive Bounds</h3>
-                    <pre class="hj-doc-art">     &amp;lt;T extends Comparable&amp;lt;T&amp;gt;&amp;gt;</pre>
-                    <p>T&#x27;s bound references T itself. This is how you require &quot;comparable to its own type&quot;
-                        - the classic recipe for type-safe sorting / min / max. See RecursiveTypeBounds.java for the
-                        full discussion.</p>
-                    <h3>Bounded Class-Level Type Parameter</h3>
-                    <pre class="hj-doc-art">     class NumericBox&amp;lt;T extends Number&amp;gt; {
+                        }
+                    <p>
+
+                        Multiple Bounds
+                        ---------------
+                        &lt;T extends Number &amp; Comparable&lt;T&gt;&gt;
+                    <p>
+
+                        - Use `&` (ampersand), not commas, between bounds.
+                        - At most ONE bound may be a CLASS, and it must come FIRST. The rest
+                        must be interfaces.
+                        - The compiler treats T as having all the bounds' members.
+                    <p>
+
+                        Recursive Bounds
+                        ----------------
+                        &lt;T extends Comparable&lt;T&gt;&gt;
+                    <p>
+
+                        T's bound references T itself. This is how you require "comparable to its
+                        own type" - the classic recipe for type-safe sorting / min / max. See
+                        RecursiveTypeBounds.java for the full discussion.
+                    <p>
+
+                        Bounded Class-Level Type Parameter
+                        ----------------------------------
+                        class NumericBox&lt;T extends Number&gt; {
          T value;
          double asDouble() { return value.doubleValue(); }
-     }</pre>
-                    <p>Now NumericBox&amp;lt;String&amp;gt; is a COMPILE ERROR. The class cannot be instantiated with
-                        anything other than a Number subclass.</p>
-                    <h3>Wildcards (?) vs Bounded Type Parameters</h3>
-                    <pre class="hj-doc-art">     &amp;lt;T extends Number&amp;gt;      named parameter T, usable in the body
-     &amp;lt;? extends Number&amp;gt;      wildcard, no name, less flexible</pre>
-                    <p>Use a NAMED type parameter when you need to REFER to that type inside the method (return it, hold
-                        a reference, pass it to another generic method). Use a WILDCARD when you only consume values and
-                        never need the type name. See Wildcards.java and PecsPrinciple.java.</p>
+                        }
+                    <p>
+
+                        Now NumericBox&lt;String&gt; is a COMPILE ERROR. The class cannot be
+                        instantiated with anything other than a Number subclass.
+                    <p>
+
+                        Wildcards (?) vs Bounded Type Parameters
+                        ----------------------------------------
+                        &lt;T extends Number&gt; named parameter T, usable in the body
+                        &lt;? extends Number&gt; wildcard, no name, less flexible
+                    <p>
+
+                        Use a NAMED type parameter when you need to REFER to that type inside the
+                        method (return it, hold a reference, pass it to another generic method).
+                        Use a WILDCARD when you only consume values and never need the type name.
+                        See Wildcards.java and PecsPrinciple.java.
                 </div>
             </div>
 

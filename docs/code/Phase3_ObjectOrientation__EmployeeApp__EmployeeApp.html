@@ -1380,36 +1380,30 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <p>EmployeeApp - runnable demo of the Employee Management System.</p>
-                    <p>Wires together every kind of interface covered in this folder:</p>
-                    <ul>
-                        <li>SEALED INTERFACE : Employee with permits-list of variants.
-                        </li>
-                        <li>RECORDS implementing : FullTimeEmployee, PartTimeEmployee,
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    a sealed interface         Contractor, Intern.</pre>
-                    <ul>
-                        <li>CAPABILITY interfaces : Promotable - only some variants implement it.
-                        </li>
-                        <li>MARKER interface : Auditable - &quot;tag&quot; with no methods.
-                        </li>
-                        <li>FUNCTIONAL interface : EmployeeFilter - used as a lambda predicate.
-                        </li>
-                        <li>NESTED interface idea : a `Promotable.promote` returns Employee, the
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                               root interface.</pre>
-                    <ul>
-                        <li>DEFAULT, STATIC, PRIVATE methods inside Employee.
-                        </li>
-                        <li>PATTERN MATCHING SWITCH on the sealed Employee type (Java 21).
-                        </li>
-                    </ul>
-                    <p>Run with:</p>
-                    <pre class="hj-doc-art">     javac src/OOPSConcepts/EmployeeApp/*.java
+                    EmployeeApp - runnable demo of the Employee Management System.
+                    <p>
+
+                        Wires together every kind of interface covered in this folder:
+                    <p>
+
+                        - SEALED INTERFACE : Employee with permits-list of variants.
+                        - RECORDS implementing : FullTimeEmployee, PartTimeEmployee,
+                        a sealed interface Contractor, Intern.
+                        - CAPABILITY interfaces : Promotable - only some variants implement it.
+                        - MARKER interface : Auditable - "tag" with no methods.
+                        - FUNCTIONAL interface : EmployeeFilter - used as a lambda predicate.
+                        - NESTED interface idea : a `Promotable.promote` returns Employee, the
+                        root interface.
+                        - DEFAULT, STATIC, PRIVATE methods inside Employee.
+                        - PATTERN MATCHING SWITCH on the sealed Employee type (Java 21).
+                    <p>
+
+                        Run with:
+                    <p>
+
+                        javac src/OOPSConcepts/EmployeeApp/*.java
      cd src
-     java OOPSConcepts.EmployeeApp.EmployeeApp</pre>
+                        java OOPSConcepts.EmployeeApp.EmployeeApp
                 </div>
             </div>
 

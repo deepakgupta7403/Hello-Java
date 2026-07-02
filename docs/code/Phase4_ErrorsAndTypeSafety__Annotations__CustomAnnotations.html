@@ -1380,42 +1380,10 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Custom Annotations</h2>
-                    <p>Declare with `@interface` and decorate with meta-annotations.</p>
-                    <pre class="hj-doc-art">     @Retention(RetentionPolicy.RUNTIME)
-     @Target(ElementType.METHOD)
-     public @interface Audited {
-         String label() default &quot;&quot;;
-     }</pre>
-                    <h3>Allowed element types</h3>
-                    <ul>
-                        <li>Primitives, String, Class, an enum type
-                        </li>
-                        <li>Other annotations
-                        </li>
-                        <li>Arrays of any of the above
-                        </li>
-                    </ul>
-                    <h3>Defaults</h3>
-                    <p>Elements without `default` MUST be provided at the use site.</p>
-                    <h3>Single-element shorthand</h3>
-                    <p>If the only element is named `value`, callers can omit the name:</p>
-                    <pre class="hj-doc-art">     @Tag(&quot;urgent&quot;)          // same as @Tag(value = &quot;urgent&quot;)</pre>
-                    <h3>Repeatable annotations (Java 8+)</h3>
-                    <pre class="hj-doc-art">     @Schedule(&quot;MON&quot;) @Schedule(&quot;WED&quot;)
-     void cron() { ... }</pre>
-                    <p>Requires:</p>
-                    <ul>
-                        <li>A &quot;container&quot; annotation whose value is an array of the repeatable.
-                        </li>
-                        <li>The repeatable annotation is marked @Repeatable(Container.class).
-                        </li>
-                    </ul>
-                    <h3>Type-use annotations (Java 8+)</h3>
-                    <pre class="hj-doc-art">     @Target(ElementType.TYPE_USE)
-     public @interface NonNull {}</pre>
-                    <pre class="hj-doc-art">     List&lt;@NonNull String&gt; names;
-     String s = (@NonNull String) o;</pre>
+                    Custom Annotations
+                    ------------------
+                    Declare with `@interface` and decorate with meta-annotations.
+                    <p>
                 </div>
             </div>
 

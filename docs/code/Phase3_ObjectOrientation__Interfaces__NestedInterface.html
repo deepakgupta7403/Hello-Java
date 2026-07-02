@@ -1380,71 +1380,68 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Nested Interfaces</h2>
-                    <p>An interface declared INSIDE another type (a class or another interface) is a NESTED INTERFACE.
-                        It is a way to scope a contract to the type that owns it - the interface &quot;belongs&quot; to
-                        the outer type both conceptually and in its fully qualified name.</p>
-                    <pre class="hj-doc-art">     class List {
+                    Nested Interfaces
+                    -----------------
+                    An interface declared INSIDE another type (a class or another interface) is
+                    a NESTED INTERFACE. It is a way to scope a contract to the type that owns
+                    it - the interface "belongs" to the outer type both conceptually and in
+                    its fully qualified name.
+                    <p>
+
+                        class List {
          interface Iterator { ... }       // nested
      }
-     // fully qualified name: List.Iterator</pre>
-                    <h3>Two Flavours</h3>
-                    <ul>
-                        <li>Nested inside a CLASS
-                            <ul>
-                                <li>Implicitly STATIC (every nested type inside an interface is also
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">         implicitly static; inside a class, the `static` keyword is allowed
-         for clarity but is the default for nested interfaces too).</pre>
-                    <ul>
-                        <li>Can be private / protected / package-private / public (controls
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">         who outside the file can see it).</pre>
-                    <ul>
-                        <li>Nested inside an INTERFACE
-                            <ul>
-                                <li>Implicitly PUBLIC and STATIC.
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <h3>Why Nest an Interface?</h3>
-                    <ul>
-                        <li>LOGICAL GROUPING - the interface is meaningful only in the context of
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    the outer type (Map.Entry, ChronoLocalDate.Era, Stream.Builder).</pre>
-                    <ul>
-                        <li>NAMESPACE HYGIENE - prevents top-level name pollution.
-                        </li>
-                        <li>ACCESS CONTROL - a `private` nested interface is invisible to other
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    files, useful for internal abstractions inside a class.</pre>
-                    <h3>JDK Examples</h3>
-                    <p>Map.Entry&lt;K,V&gt; - per-entry view of a Map Iterable.Iterator&lt;T&gt; - (Iterator is now a
-                        top-level interface,</p>
-                    <pre class="hj-doc-art">                                   but historically it was nested)</pre>
-                    <p>AbstractMap.SimpleEntry&lt;K,V&gt; - a class implementing Map.Entry Builder patterns - inner
-                        Builder interface owned by the type</p>
-                    <h3>Rules To Remember</h3>
-                    <ul>
-                        <li>You CANNOT instantiate an interface directly - nested or not.
-                        </li>
-                        <li>Use the qualified name to refer to it from outside:
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">        Outer.NestedInterface nested = new Outer.NestedInterface() { ... };</pre>
-                    <ul>
-                        <li>A nested interface can extend other interfaces, just like a top-level one.
-                        </li>
-                        <li>Inside the outer type&#x27;s body you refer to it by its simple name.
-                        </li>
-                    </ul>
+                        // fully qualified name: List.Iterator
+                    <p>
+
+                        Two Flavours
+                        ------------
+                        1. Nested inside a CLASS
+                        - Implicitly STATIC (every nested type inside an interface is also
+                        implicitly static; inside a class, the `static` keyword is allowed
+                        for clarity but is the default for nested interfaces too).
+                        - Can be private / protected / package-private / public (controls
+                        who outside the file can see it).
+                    <p>
+
+                        2. Nested inside an INTERFACE
+                        - Implicitly PUBLIC and STATIC.
+                    <p>
+
+                        Why Nest an Interface?
+                        ----------------------
+                        - LOGICAL GROUPING - the interface is meaningful only in the context of
+                        the outer type (Map.Entry, ChronoLocalDate.Era, Stream.Builder).
+                        - NAMESPACE HYGIENE - prevents top-level name pollution.
+                        - ACCESS CONTROL - a `private` nested interface is invisible to other
+                        files, useful for internal abstractions inside a class.
+                    <p>
+
+                        JDK Examples
+                        ------------
+                        Map.Entry
+                        <K
+                        ,V> - per-entry view of a Map
+                        Iterable.Iterator
+                        <T> - (Iterator is now a top-level interface,
+                            but historically it was nested)
+                            AbstractMap.SimpleEntry
+                            <K
+                            ,V> - a class implementing Map.Entry
+                            Builder patterns - inner Builder interface owned by the type
+                            <p>
+
+                                Rules To Remember
+                                -----------------
+                                - You CANNOT instantiate an interface directly - nested or not.
+                                - Use the qualified name to refer to it from outside:
+                            <p>
+
+                                Outer.NestedInterface nested = new Outer.NestedInterface() { ... };
+                            <p>
+
+                                - A nested interface can extend other interfaces, just like a top-level one.
+                                - Inside the outer type's body you refer to it by its simple name.
                 </div>
             </div>
 

@@ -1380,34 +1380,41 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Relational (Comparison) Operators</h2>
-                    <p>Relational operators compare two values and produce a boolean result.</p>
-                    <pre class="hj-doc-art">     ==    equal to
+                    Relational (Comparison) Operators
+                    ---------------------------------
+                    Relational operators compare two values and produce a boolean result.
+                    <p>
+
+                        == equal to
      !=    not equal to
-     &gt;     greater than
-     &lt;     less than
-     &gt;=    greater than or equal
-     &lt;=    less than or equal</pre>
-                    <h3>IMPORTANT - == on Objects vs Primitives</h3>
-                    <ul>
-                        <li>On PRIMITIVES, == compares VALUES.
-                        </li>
-                        <li>On REFERENCE TYPES, == compares REFERENCES (do both variables point to the
-                        </li>
-                    </ul>
-                    <p>same object on the heap?). To compare logical equality of objects, use the .equals(...)
-                        method.</p>
-                    <pre class="hj-doc-art">     String a = new String(&quot;hi&quot;);
-     String b = new String(&quot;hi&quot;);
-     a == b          -&gt; false   (different objects)
-     a.equals(b)     -&gt; true    (same content)</pre>
-                    <h3>NaN Comparisons</h3>
-                    <p>NaN (Not-a-Number) is unique - it is NOT equal to itself:</p>
-                    <pre class="hj-doc-art">     Double.NaN == Double.NaN     -&gt; false
-     Double.NaN != Double.NaN     -&gt; true
-     Double.NaN &gt;  0              -&gt; false
-     Double.NaN &lt;  0              -&gt; false</pre>
-                    <p>Use Double.isNaN(value) to test for NaN safely.</p>
+                        > greater than
+                        < less than
+                        >= greater than or equal
+                        <= less than or equal
+                    <p>
+
+                        IMPORTANT - == on Objects vs Primitives
+                        ---------------------------------------
+                        - On PRIMITIVES, == compares VALUES.
+                        - On REFERENCE TYPES, == compares REFERENCES (do both variables point to the
+                        same object on the heap?). To compare logical equality of objects, use the
+                        .equals(...) method.
+                    <p>
+
+                        String a = new String("hi");
+                        String b = new String("hi");
+                        a == b -> false (different objects)
+                        a.equals(b) -> true (same content)
+                    <p>
+
+                        NaN Comparisons
+                        ---------------
+                        NaN (Not-a-Number) is unique - it is NOT equal to itself:
+                        Double.NaN == Double.NaN -> false
+                        Double.NaN != Double.NaN -> true
+                        Double.NaN > 0 -> false
+                        Double.NaN < 0 -> false
+                        Use Double.isNaN(value) to test for NaN safely.
                 </div>
             </div>
 

@@ -1380,45 +1380,65 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Custom Exceptions</h2>
-                    <p>Sometimes the standard exceptions are too generic. A domain-specific exception class lets callers
-                        catch your particular failure with a precise `catch` and lets you carry extra data (account id,
-                        retry-after seconds, error code) along with the message.</p>
-                    <h3>Two Flavours</h3>
-                    <ul>
-                        <li>CHECKED : extend Exception (forced to handle)
-                        </li>
-                        <li>UNCHECKED : extend RuntimeException (NOT forced to handle)
-                        </li>
-                    </ul>
-                    <p>Pick CHECKED for failures the CALLER is expected to recover from (FileNotFoundException - try a
-                        different file). Pick UNCHECKED for programmer errors and invariant violations
-                        (IllegalStateException) - forcing every caller to handle them just clutters the code.</p>
-                    <h3>Recommended Constructors (the four-constructor convention)</h3>
-                    <p>Mirror the standard ones from the parent. The compiler will pick the right overload at the call
-                        site:</p>
-                    <pre class="hj-doc-art">     public MyException()                                 { super(); }
+                    Custom Exceptions
+                    -----------------
+                    Sometimes the standard exceptions are too generic. A domain-specific
+                    exception class lets callers catch your particular failure with a precise
+                    `catch` and lets you carry extra data (account id, retry-after seconds,
+                    error code) along with the message.
+                    <p>
+
+                        Two Flavours
+                        ------------
+                        - CHECKED : extend Exception (forced to handle)
+                        - UNCHECKED : extend RuntimeException (NOT forced to handle)
+                    <p>
+
+                        Pick CHECKED for failures the CALLER is expected to recover from
+                        (FileNotFoundException - try a different file). Pick UNCHECKED for
+                        programmer errors and invariant violations (IllegalStateException) -
+                        forcing every caller to handle them just clutters the code.
+                    <p>
+
+                        Recommended Constructors (the four-constructor convention)
+                        ----------------------------------------------------------
+                        Mirror the standard ones from the parent. The compiler will pick the
+                        right overload at the call site:
+                    <p>
+
+                        public MyException() { super(); }
      public MyException(String message)                   { super(message); }
      public MyException(String message, Throwable cause)  { super(message, cause); }
-     public MyException(Throwable cause)                  { super(cause); }</pre>
-                    <h3>Naming Convention</h3>
-                    <p>Class names should end with the word &quot;Exception&quot; - `InsufficientFundsException`,
-                        `PaymentDeclinedException`, etc.</p>
-                    <h3>Carrying Extra Data</h3>
-                    <p>You can add fields and constructor parameters to capture context. Common extras: an error code,
-                        the offending value, a &quot;retry after&quot; timestamp.</p>
-                    <pre class="hj-doc-art">     public class RateLimitException extends RuntimeException {
+                        public MyException(Throwable cause) { super(cause); }
+                    <p>
+
+                        Naming Convention
+                        -----------------
+                        Class names should end with the word "Exception" - `InsufficientFundsException`,
+                        `PaymentDeclinedException`, etc.
+                    <p>
+
+                        Carrying Extra Data
+                        -------------------
+                        You can add fields and constructor parameters to capture context. Common
+                        extras: an error code, the offending value, a "retry after" timestamp.
+                    <p>
+
+                        public class RateLimitException extends RuntimeException {
          private final long retryAfterMs;
          public RateLimitException(String message, long retryAfterMs) {
              super(message);
              this.retryAfterMs = retryAfterMs;
          }
          public long getRetryAfterMs() { return retryAfterMs; }
-     }</pre>
-                    <h3>Tip</h3>
-                    <p>Prefer the JDK&#x27;s standard exception types when they fit (NullPointerException,
-                        IllegalArgumentException, IllegalStateException). Reach for a custom class when callers benefit
-                        from a more specific type.</p>
+                        }
+                    <p>
+
+                        Tip
+                        ---
+                        Prefer the JDK's standard exception types when they fit (NullPointerException,
+                        IllegalArgumentException, IllegalStateException). Reach for a custom class
+                        when callers benefit from a more specific type.
                 </div>
             </div>
 

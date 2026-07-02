@@ -1380,66 +1380,78 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Wrapper Classes in Java</h2>
-                    <p>Every primitive in Java has a corresponding WRAPPER class that lives in the java.lang package. A
-                        wrapper is an OBJECT that holds a single primitive value.</p>
-                    <pre class="hj-doc-art">     primitive | wrapper       | size of primitive
+                    Wrapper Classes in Java
+                    -----------------------
+                    Every primitive in Java has a corresponding WRAPPER class that lives in the
+                    java.lang package. A wrapper is an OBJECT that holds a single primitive value.
+                    <p>
+
+                        primitive | wrapper | size of primitive
      ----------+---------------+-------------------
      byte      | Byte          | 8 bits
      short     | Short         | 16 bits
-     int       | Integer       | 32 bits  (note - NOT &quot;Int&quot;)
+                        int | Integer | 32 bits (note - NOT "Int")
      long      | Long          | 64 bits
      float     | Float         | 32 bits
      double    | Double        | 64 bits
-     char      | Character     | 16 bits  (note - NOT &quot;Char&quot;)
-     boolean   | Boolean       | JVM-dep.</pre>
-                    <h3>Why Do Wrapper Classes Exist?</h3>
-                    <ul>
-                        <li>Collections only hold OBJECTS - List&lt;int&gt; is illegal but List&lt;Integer&gt; works.
-                        </li>
-                        <li>Wrappers can be NULL (a primitive cannot) - useful to represent &quot;missing&quot;
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    values in DB rows / JSON / DTOs.</pre>
-                    <ul>
-                        <li>They expose USEFUL STATIC HELPERS like parseInt(), toBinaryString(),
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    compare(), min(), max(), MAX_VALUE / MIN_VALUE constants.</pre>
-                    <ul>
-                        <li>They participate in generics, reflection, and serialization frameworks.
-                        </li>
-                        <li>They are IMMUTABLE - safe to share across threads.
-                        </li>
-                    </ul>
-                    <h3>Boxing and Unboxing</h3>
-                    <ul>
-                        <li>Boxing = converting a primitive into the matching wrapper object.
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                int -&gt; Integer.</pre>
-                    <ul>
-                        <li>Unboxing = the reverse: wrapper -&gt; primitive.
-                        </li>
-                        <li>Autoboxing = the compiler does this for you automatically (since Java 5).
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">     Integer boxed   = 42;        // autoboxing  -&gt; Integer.valueOf(42)
-     int     primit  = boxed;     // auto-unbox  -&gt; boxed.intValue()</pre>
-                    <h3>The Famous Integer Cache (Performance Trap)</h3>
-                    <p>Integer.valueOf(int) caches the integers in the range -128..127. Two boxed Integers in that range
-                        share the SAME object - so == happens to return true. Outside that range, two boxed Integers are
-                        different objects and == is false.</p>
-                    <pre class="hj-doc-art">     Integer a = 100, b = 100;   //   a == b   -&gt; true   (cached)
-     Integer c = 200, d = 200;   //   c == d   -&gt; false  (NOT cached)</pre>
-                    <p>Lesson: ALWAYS compare wrappers with .equals(), never with ==.</p>
-                    <h3>Useful Helpers</h3>
-                    <p>Integer.parseInt(&quot;42&quot;) -&gt; 42 Integer.valueOf(&quot;42&quot;) -&gt; Integer(42)
-                        Integer.toBinaryString(10) -&gt; &quot;1010&quot; Integer.toHexString(255) -&gt; &quot;ff&quot;
-                        Integer.bitCount(7) -&gt; 3 (number of set bits) Integer.compare(a, b) -&gt; -1 / 0 / 1
-                        Integer.MAX_VALUE -&gt; 2147483647 Boolean.parseBoolean(&quot;true&quot;) -&gt; true
-                        Character.isDigit(&#x27;5&#x27;) -&gt; true Character.toUpperCase(&#x27;a&#x27;) -&gt; &#x27;A&#x27;</p>
-                    <p>See AutoboxingUnboxing.java in this package for the boxing/unboxing demo.</p>
+                        char | Character | 16 bits (note - NOT "Char")
+                        boolean | Boolean | JVM-dep.
+                    <p>
+
+                        Why Do Wrapper Classes Exist?
+                        -----------------------------
+                        1. Collections only hold OBJECTS - List
+                        <int> is illegal but List
+                            <Integer> works.
+                                2. Wrappers can be NULL (a primitive cannot) - useful to represent "missing"
+                                values in DB rows / JSON / DTOs.
+                                3. They expose USEFUL STATIC HELPERS like parseInt(), toBinaryString(),
+                                compare(), min(), max(), MAX_VALUE / MIN_VALUE constants.
+                                4. They participate in generics, reflection, and serialization frameworks.
+                                5. They are IMMUTABLE - safe to share across threads.
+                                <p>
+
+                                    Boxing and Unboxing
+                                    -------------------
+                                    - Boxing = converting a primitive into the matching wrapper object.
+                                    int -> Integer.
+                                    - Unboxing = the reverse: wrapper -> primitive.
+                                    - Autoboxing = the compiler does this for you automatically (since Java 5).
+                                <p>
+
+                                    Integer boxed = 42; // autoboxing -> Integer.valueOf(42)
+                                    int primit = boxed; // auto-unbox -> boxed.intValue()
+                                <p>
+
+                                    The Famous Integer Cache (Performance Trap)
+                                    -------------------------------------------
+                                    Integer.valueOf(int) caches the integers in the range -128..127. Two boxed
+                                    Integers in that range share the SAME object - so == happens to return true.
+                                    Outside that range, two boxed Integers are different objects and == is false.
+                                <p>
+
+                                    Integer a = 100, b = 100; // a == b -> true (cached)
+                                    Integer c = 200, d = 200; // c == d -> false (NOT cached)
+                                <p>
+
+                                    Lesson: ALWAYS compare wrappers with .equals(), never with ==.
+                                <p>
+
+                                    Useful Helpers
+                                    --------------
+                                    Integer.parseInt("42") -> 42
+                                    Integer.valueOf("42") -> Integer(42)
+                                    Integer.toBinaryString(10) -> "1010"
+                                    Integer.toHexString(255) -> "ff"
+                                    Integer.bitCount(7) -> 3 (number of set bits)
+                                    Integer.compare(a, b) -> -1 / 0 / 1
+                                    Integer.MAX_VALUE -> 2147483647
+                                    Boolean.parseBoolean("true") -> true
+                                    Character.isDigit('5') -> true
+                                    Character.toUpperCase('a') -> 'A'
+                                <p>
+
+                                    See AutoboxingUnboxing.java in this package for the boxing/unboxing demo.
                 </div>
             </div>
 

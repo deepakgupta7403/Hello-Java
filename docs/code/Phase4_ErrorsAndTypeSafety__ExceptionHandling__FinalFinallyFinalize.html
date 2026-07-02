@@ -1380,55 +1380,57 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>final vs finally vs finalize</h2>
-                    <p>Three words that look almost identical and do COMPLETELY different things. This file untangles
-                        them once and for all.</p>
-                    <pre class="hj-doc-art"> Keyword     | What it is              | Where it appears          | Purpose
+                    final vs finally vs finalize
+                    ----------------------------
+                    Three words that look almost identical and do COMPLETELY different things.
+                    This file untangles them once and for all.
+                    <p>
+
+                        Keyword | What it is | Where it appears | Purpose
  ------------+-------------------------+---------------------------+-----------------------------
- final       | A modifier              | on variables, methods,    | Says &quot;this cannot change&quot;.
-             |                         | classes, parameters       |   - final var  -&gt; can be assigned once
-             |                         |                           |   - final method -&gt; cannot be overridden
-             |                         |                           |   - final class  -&gt; cannot be subclassed
+                        final | A modifier | on variables, methods, | Says "this cannot change".
+                        | | classes, parameters | - final var -> can be assigned once
+                        | | | - final method -> cannot be overridden
+                        | | | - final class -> cannot be subclassed
  ------------+-------------------------+---------------------------+-----------------------------
  finally     | A block                 | with try { ... }          | A clean-up block that ALWAYS runs.
              |                         |                           |   Used for closing resources.
  ------------+-------------------------+---------------------------+-----------------------------
  finalize()  | A method on Object      | overridden by a class     | Was called by the GC before
-             |                         | (DEPRECATED for removal)  | reclaiming an object. DON&#x27;T use it.
+                        | | (DEPRECATED for removal) | reclaiming an object. DON'T use it.
              |                         |                           |   Use try-with-resources or
-             |                         |                           |   java.lang.ref.Cleaner instead.</pre>
-                    <h3>Why finalize() is Deprecated</h3>
-                    <ul>
-                        <li>Unpredictable: the JVM might NEVER call it.
-                        </li>
-                        <li>Slow: postpones reclaiming the object and triggers a second GC cycle.
-                        </li>
-                        <li>Unsafe: can resurrect partially-collected objects.
-                        </li>
-                        <li>Removed since: deprecated for removal in Java 9, marked for actual
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    removal in newer releases.</pre>
-                    <p>For deterministic clean-up use:</p>
-                    <ul>
-                        <li>try-with-resources (see TryWithResources.java)
-                        </li>
-                        <li>java.lang.ref.Cleaner (since Java 9, replaces finalize properly)
-                        </li>
-                    </ul>
-                    <h3>The three keywords visually:</h3>
-                    <p>final int LIMIT = 100; // CONSTANT</p>
-                    <p>try {</p>
-                    <pre class="hj-doc-art">     doWork();</pre>
-                    <p>} finally { // ALWAYS-RUN cleanup</p>
-                    <pre class="hj-doc-art">     cleanup();</pre>
-                    <p>}</p>
-                    <p>class Foo {</p>
-                    <pre class="hj-doc-art">     @Override
-     protected void finalize() {  // DEPRECATED hook
-         // discouraged - don&#x27;t use
-     }</pre>
-                    <p>}</p>
+                        | | | java.lang.ref.Cleaner instead.
+                    <p>
+
+                        Why finalize() is Deprecated
+                        ----------------------------
+                        - Unpredictable: the JVM might NEVER call it.
+                        - Slow: postpones reclaiming the object and triggers a second GC cycle.
+                        - Unsafe: can resurrect partially-collected objects.
+                        - Removed since: deprecated for removal in Java 9, marked for actual
+                        removal in newer releases.
+                    <p>
+
+                        For deterministic clean-up use:
+                        - try-with-resources (see TryWithResources.java)
+                        - java.lang.ref.Cleaner (since Java 9, replaces finalize properly)
+                    <p>
+
+                        The three keywords visually:
+                        ---------------------------
+                    <p>
+
+                        final int LIMIT = 100; // CONSTANT
+                    <p>
+
+                        try {
+                        doWork();
+                        } finally { // ALWAYS-RUN cleanup
+                        cleanup();
+                        }
+                    <p>
+
+                        class Foo {
                 </div>
             </div>
 

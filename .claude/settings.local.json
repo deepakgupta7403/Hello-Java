@@ -31,7 +31,10 @@
       "Bash(curl -s http://localhost:8765/index.html)",
       "PowerShell(python scripts/generate_site.py)",
       "Bash(grep -c '/\\\\*\\\\*' docs/code/Phase0_SetupAndFirstPrograms__JDKvsJREvsJVM__JDKvsJREvsJVM.html)",
-      "PowerShell(Start-Process \"C:\\\\Users\\\\deepa\\\\IdeaProjects\\\\HelloJava\\\\docs\\\\code\\\\Phase0_SetupAndFirstPrograms__ClassNameMyth__Hello.html\")"
+      "PowerShell(Start-Process \"C:\\\\Users\\\\deepa\\\\IdeaProjects\\\\HelloJava\\\\docs\\\\code\\\\Phase0_SetupAndFirstPrograms__ClassNameMyth__Hello.html\")",
+      "Bash(git -C \"C:/Users/deepa/IdeaProjects/HelloJava\" log --diff-filter=A --format=\"%ad\" --date=short -- src/Phase0_SetupAndFirstPrograms/HelloWorld.java)",
+      "Bash(cp /tmp/gen_mine.py scripts/generate_site.py)",
+      "Bash(git stash *)"
     ]
   }
 }

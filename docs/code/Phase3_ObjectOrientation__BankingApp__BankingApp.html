@@ -1380,36 +1380,29 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>BankingApp - runnable demo of the Simple Banking Application</h2>
-                    <p>This `main` ties together every OOP pillar from the rest of the folder:</p>
-                    <ul>
-                        <li>ABSTRACTION : `Account` is abstract; callers code against it.
-                        </li>
-                        <li>ENCAPSULATION : balances and transaction histories are private and
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                     manipulated only through validated methods.</pre>
-                    <ul>
-                        <li>INHERITANCE : `SavingsAccount` and `CheckingAccount` share Account&#x27;s
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                     machinery.</pre>
-                    <ul>
-                        <li>POLYMORPHISM : `Bank.applyMonthlyCycle()` calls `applyInterest()` on
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                     every Account; each subclass&#x27;s `calculateInterest()` is
-                     dispatched at runtime.</pre>
-                    <ul>
-                        <li>PACKAGES : every file lives in package OOPSConcepts.BankingApp.
-                        </li>
-                        <li>RECORDS : `Transaction` is an immutable record.
-                        </li>
-                    </ul>
-                    <p>Run from project root:</p>
-                    <pre class="hj-doc-art">     javac src/OOPSConcepts/BankingApp/*.java
+                    BankingApp - runnable demo of the Simple Banking Application
+                    ------------------------------------------------------------
+                    This `main` ties together every OOP pillar from the rest of the folder:
+                    <p>
+
+                        - ABSTRACTION : `Account` is abstract; callers code against it.
+                        - ENCAPSULATION : balances and transaction histories are private and
+                        manipulated only through validated methods.
+                        - INHERITANCE : `SavingsAccount` and `CheckingAccount` share Account's
+                        machinery.
+                        - POLYMORPHISM : `Bank.applyMonthlyCycle()` calls `applyInterest()` on
+                        every Account; each subclass's `calculateInterest()` is
+                        dispatched at runtime.
+                        - PACKAGES : every file lives in package OOPSConcepts.BankingApp.
+                        - RECORDS : `Transaction` is an immutable record.
+                    <p>
+
+                        Run from project root:
+                    <p>
+
+                        javac src/OOPSConcepts/BankingApp/*.java
      cd src
-     java OOPSConcepts.BankingApp.BankingApp</pre>
+                        java OOPSConcepts.BankingApp.BankingApp
                 </div>
             </div>
 

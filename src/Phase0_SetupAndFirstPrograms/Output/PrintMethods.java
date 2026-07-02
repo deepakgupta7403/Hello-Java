@@ -1,36 +1,40 @@
 package Phase0_SetupAndFirstPrograms.Output;
 
 /**
- * Printing Output to the Console
- * ------------------------------
- * Java exposes the standard output stream as the static field System.out, which
- * is an instance of java.io.PrintStream. PrintStream offers three families of
- * methods for writing text to the console:
- * <p>
+ * <h1>Printing Output to the Console</h1>
  *
- *      System.out.print(...)    -> writes the argument, does NOT add a newline
- *      System.out.println(...)  -> writes the argument and then a newline
- *      System.out.printf(...)   -> C-style formatted output (no trailing newline)
- *      System.out.format(...)   -> same as printf - alias
- * <p>
+ * <p>Java exposes the standard output stream as the static field <code>System.out</code>, which
+ * is an instance of <code>java.io.PrintStream</code>. PrintStream offers three families of
+ * methods for writing text to the console:</p>
  *
- * There is also System.err - a separate PrintStream used for error messages.
- * Conceptually identical to System.out but typically rendered in red in IDEs and
- * goes to a different OS file descriptor (stderr).
- * <p>
+ * <pre>
+ *      System.out.print(...)    -&gt; writes the argument, does NOT add a newline
+ *      System.out.println(...)  -&gt; writes the argument and then a newline
+ *      System.out.printf(...)   -&gt; C-style formatted output (no trailing newline)
+ *      System.out.format(...)   -&gt; same as printf - alias
+ * </pre>
  *
- * Performance Note
- * ----------------
- * System.out is "auto-flush" so each call performs an I/O operation. For tight
- * loops printing millions of lines, wrap it in a BufferedWriter for ~10x speedup:
+ * <p>There is also <code>System.err</code> &mdash; a separate PrintStream used for error messages.
+ * Conceptually identical to <code>System.out</code> but typically rendered in red in IDEs and
+ * goes to a different OS file descriptor (stderr).</p>
+ *
+ * <h2>Performance Note</h2>
+ * <p><code>System.out</code> is "auto-flush" so each call performs an I/O operation. For tight
+ * loops printing millions of lines, wrap it in a <code>BufferedWriter</code> for ~10x speedup:</p>
+ * <pre>
  *     PrintWriter pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
- * <p>
+ * </pre>
  *
- * String Concatenation vs printf
- * ------------------------------
- * - println("x = " + x) is simple and fast for a few values.
- * - printf("x = %d%n", x) is preferred when formatting numbers (width, precision,
- *   padding, locale-aware decimals, etc.).
+ * <h2>String Concatenation vs printf</h2>
+ * <ul>
+ *   <li><code>println("x = " + x)</code> is simple and fast for a few values.</li>
+ *   <li><code>printf("x = %d%n", x)</code> is preferred when formatting numbers (width, precision,
+ *   padding, locale-aware decimals, etc.).</li>
+ * </ul>
+ *
+ * @author  Deepak Gupta
+ * @version 1.0
+ * @since 2026-05-21
  */
 
 public class PrintMethods {

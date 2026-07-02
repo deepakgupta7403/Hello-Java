@@ -1380,42 +1380,52 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Final Arrays - &quot;final&quot; only protects the REFERENCE, not the CONTENTS</h2>
-                    <p>Marking an array variable `final` is a frequent source of confusion. It only means the variable
-                        CANNOT BE REASSIGNED to point to a different array. The elements INSIDE the array remain
-                        mutable.</p>
-                    <pre class="hj-doc-art">     final int[] nums = {1, 2, 3};
+                    Final Arrays - "final" only protects the REFERENCE, not the CONTENTS
+                    --------------------------------------------------------------------
+                    Marking an array variable `final` is a frequent source of confusion. It only
+                    means the variable CANNOT BE REASSIGNED to point to a different array. The
+                    elements INSIDE the array remain mutable.
+                    <p>
+
+                        final int[] nums = {1, 2, 3};
      nums[0] = 99;            // OK    - element is reassigned, not the variable
-     nums = new int[]{4,5,6}; // ERROR - cannot reassign `nums`</pre>
-                    <h3>Java Has No Built-In Immutable Array</h3>
-                    <p>Unlike Kotlin&#x27;s `IntArray` + `val` distinction, Java arrays are mutable. To publish data
-                        that callers cannot tamper with, you must work AROUND this. Patterns to achieve real
-                        immutability:</p>
-                    <ul>
-                        <li>Wrap in `List.of(...)` - true immutable List (since Java 9).
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    Best choice for new code.</pre>
-                    <ul>
-                        <li>Return a defensive COPY - getter returns arr.clone() so callers
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    see a snapshot and cannot mutate the original.</pre>
-                    <ul>
-                        <li>Wrap in `Collections.unmodifiableList(Arrays.asList(arr))` -
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    unmodifiable VIEW over an array (still backed by the array - if you
-    hold onto the original, you can still mutate via that reference).</pre>
-                    <h3>Compile-Time Constants</h3>
-                    <p>`static final int MAX = 10` is a compile-time constant - inlined into callers. `static final
-                        int[] DATA = ...` is NOT a compile-time constant - arrays cannot be inlined, only their
-                        REFERENCE is final. That is why `public static final int[] PUBLIC_API = ...` is considered an
-                        antipattern and IDEs warn about it - callers can still mutate the elements.</p>
-                    <h3>Constant Object Arrays</h3>
-                    <p>Even with `record` types or `String` elements, the ARRAY ITSELF is mutable even though each
-                        element happens to be immutable. To freeze the structure, use a List (preferred) or a defensive
-                        copy.</p>
+                        nums = new int[]{4,5,6}; // ERROR - cannot reassign `nums`
+                    <p>
+
+                        Java Has No Built-In Immutable Array
+                        ------------------------------------
+                        Unlike Kotlin's `IntArray` + `val` distinction, Java arrays are mutable. To
+                        publish data that callers cannot tamper with, you must work AROUND this.
+                        Patterns to achieve real immutability:
+                    <p>
+
+                        1. Wrap in `List.of(...)` - true immutable List (since Java 9).
+                        Best choice for new code.
+                    <p>
+
+                        2. Return a defensive COPY - getter returns arr.clone() so callers
+                        see a snapshot and cannot mutate the original.
+                    <p>
+
+                        3. Wrap in `Collections.unmodifiableList(Arrays.asList(arr))` -
+                        unmodifiable VIEW over an array (still backed by the array - if you
+                        hold onto the original, you can still mutate via that reference).
+                    <p>
+
+                        Compile-Time Constants
+                        ----------------------
+                        `static final int MAX = 10` is a compile-time constant - inlined into
+                        callers. `static final int[] DATA = ...` is NOT a compile-time constant -
+                        arrays cannot be inlined, only their REFERENCE is final. That is why
+                        `public static final int[] PUBLIC_API = ...` is considered an antipattern
+                        and IDEs warn about it - callers can still mutate the elements.
+                    <p>
+
+                        Constant Object Arrays
+                        ----------------------
+                        Even with `record` types or `String` elements, the ARRAY ITSELF is mutable
+                        even though each element happens to be immutable. To freeze the structure,
+                        use a List (preferred) or a defensive copy.
                 </div>
             </div>
 

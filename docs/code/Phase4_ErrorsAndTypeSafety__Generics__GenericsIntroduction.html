@@ -1380,71 +1380,85 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Generic Programming in Java - Introduction</h2>
-                    <p>GENERICS let you write classes, interfaces, and methods that work with a PARAMETER TYPE chosen by
-                        the caller. The result is code that is reusable AND type-safe at compile time:</p>
-                    <pre class="hj-doc-art">     List&amp;lt;String&amp;gt;  names = new ArrayList&amp;lt;&amp;gt;();
-     List&amp;lt;Integer&amp;gt; ints  = new ArrayList&amp;lt;&amp;gt;();</pre>
-                    <p>One ArrayList class, two specialised types. The compiler enforces that `names.add(42)` is a
-                        COMPILE error - you cannot accidentally mix types.</p>
-                    <h3>Before Generics (Pre-Java 5)</h3>
-                    <pre class="hj-doc-art">     List names = new ArrayList();          // raw list - holds Objects
-     names.add(&quot;Alice&quot;);
+                    Generic Programming in Java - Introduction
+                    ------------------------------------------
+                    GENERICS let you write classes, interfaces, and methods that work with a
+                    PARAMETER TYPE chosen by the caller. The result is code that is reusable
+                    AND type-safe at compile time:
+                    <p>
+
+                        List&lt;String&gt; names = new ArrayList&lt;&gt;();
+                        List&lt;Integer&gt; ints = new ArrayList&lt;&gt;();
+                    <p>
+
+                        One ArrayList class, two specialised types. The compiler enforces that
+                        `names.add(42)` is a COMPILE error - you cannot accidentally mix types.
+                    <p>
+
+                        Before Generics (Pre-Java 5)
+                        ----------------------------
+                        List names = new ArrayList(); // raw list - holds Objects
+                        names.add("Alice");
      names.add(42);                          // legal! mixed bag
-     String s = (String) names.get(1);       // ClassCastException at runtime</pre>
-                    <h3>After Generics (Java 5+)</h3>
-                    <pre class="hj-doc-art">     List&amp;lt;String&amp;gt; names = new ArrayList&amp;lt;&amp;gt;();
-     names.add(&quot;Alice&quot;);
+                        String s = (String) names.get(1); // ClassCastException at runtime
+                    <p>
+
+                        After Generics (Java 5+)
+                        ------------------------
+                        List&lt;String&gt; names = new ArrayList&lt;&gt;();
+                        names.add("Alice");
      names.add(42);                          // COMPILE ERROR - caught early
-     String s = names.get(0);                // no cast needed</pre>
-                    <h3>What Generics Give You</h3>
-                    <ul>
-                        <li>TYPE SAFETY at compile time.
-                        </li>
-                        <li>No more redundant casts.
-                        </li>
-                        <li>Reusable, generic algorithms (Collections.sort, Comparator.comparing,
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    Function&amp;lt;T, R&amp;gt;, Optional&amp;lt;T&amp;gt;, Stream&amp;lt;T&amp;gt;...).</pre>
-                    <ul>
-                        <li>Better IDE autocomplete and refactoring.
-                        </li>
-                    </ul>
-                    <h3>Type Parameters - The Conventional Names</h3>
-                    <pre class="hj-doc-art">     T       Type (a generic placeholder)
+                        String s = names.get(0); // no cast needed
+                    <p>
+
+                        What Generics Give You
+                        ----------------------
+                        - TYPE SAFETY at compile time.
+                        - No more redundant casts.
+                        - Reusable, generic algorithms (Collections.sort, Comparator.comparing,
+                        Function&lt;T, R&gt;, Optional&lt;T&gt;, Stream&lt;T&gt;...).
+                        - Better IDE autocomplete and refactoring.
+                    <p>
+
+                        Type Parameters - The Conventional Names
+                        ----------------------------------------
+                        T Type (a generic placeholder)
      E       Element  (for collections)
      K       Key      (for maps)
      V       Value    (for maps)
      N       Number
      R       Return type
-     ?       Wildcard (&quot;some type, I don&#x27;t care which&quot;)</pre>
-                    <p>Use these single-letter names by convention. Pick longer names only if the meaning is non-obvious
-                        in context.</p>
-                    <h3>Where Generics Appear in Java</h3>
-                    <ul>
-                        <li>Generic CLASSES class Box&amp;lt;T&amp;gt; { T value; }
-                        </li>
-                        <li>Generic INTERFACES interface Comparable&amp;lt;T&amp;gt; { ... }
-                        </li>
-                        <li>Generic METHODS &amp;lt;T&amp;gt; List&amp;lt;T&amp;gt; singleton(T t) { ... }
-                        </li>
-                        <li>Generic CONSTRUCTORS &amp;lt;T&amp;gt; Box(T t) { ... }
-                        </li>
-                        <li>Bounded type params &amp;lt;T extends Number&amp;gt;
-                        </li>
-                        <li>Wildcards List&amp;lt;? extends Number&amp;gt;
-                        </li>
-                    </ul>
-                    <h3>What This Folder Covers</h3>
-                    <p>GenericsIntroduction.java (this file) GenericClasses.java - parameterised classes
-                        GenericMethods.java - parameterised methods GenericInterfaces.java - parameterised interfaces
-                        BoundedTypeParameters.java - &amp;lt;T extends X&amp;gt; bounds Wildcards.java - ?, ? extends, ?
-                        super PecsPrinciple.java - Producer Extends, Consumer Super TypeErasure.java - how generics
-                        actually work at runtime GenericRestrictions.java - what you CANNOT do with generics
-                        RecursiveTypeBounds.java - &amp;lt;T extends Comparable&amp;lt;T&amp;gt;&amp;gt;
-                        HeapPollutionAndSafeVarargs.java - varargs + generics warnings ModernGenerics.java - diamond,
-                        var, records, lambdas</p>
+                        ? Wildcard ("some type, I don't care which")
+                    <p>
+
+                        Use these single-letter names by convention. Pick longer names only if
+                        the meaning is non-obvious in context.
+                    <p>
+
+                        Where Generics Appear in Java
+                        -----------------------------
+                        - Generic CLASSES class Box&lt;T&gt; { T value; }
+                        - Generic INTERFACES interface Comparable&lt;T&gt; { ... }
+                        - Generic METHODS &lt;T&gt; List&lt;T&gt; singleton(T t) { ... }
+                        - Generic CONSTRUCTORS &lt;T&gt; Box(T t) { ... }
+                        - Bounded type params &lt;T extends Number&gt;
+                        - Wildcards List&lt;? extends Number&gt;
+                    <p>
+
+                        What This Folder Covers
+                        -----------------------
+                        GenericsIntroduction.java (this file)
+                        GenericClasses.java - parameterised classes
+                        GenericMethods.java - parameterised methods
+                        GenericInterfaces.java - parameterised interfaces
+                        BoundedTypeParameters.java - &lt;T extends X&gt; bounds
+                        Wildcards.java - ?, ? extends, ? super
+                        PecsPrinciple.java - Producer Extends, Consumer Super
+                        TypeErasure.java - how generics actually work at runtime
+                        GenericRestrictions.java - what you CANNOT do with generics
+                        RecursiveTypeBounds.java - &lt;T extends Comparable&lt;T&gt;&gt;
+                        HeapPollutionAndSafeVarargs.java - varargs + generics warnings
+                        ModernGenerics.java - diamond, var, records, lambdas
                 </div>
             </div>
 

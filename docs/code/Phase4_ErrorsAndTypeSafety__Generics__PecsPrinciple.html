@@ -1380,28 +1380,48 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>PECS - Producer Extends, Consumer Super</h2>
-                    <p>The most famous rule of generic API design, coined by Joshua Bloch in &quot;Effective Java&quot;.
-                        It tells you which wildcard to use:</p>
-                    <pre class="hj-doc-art">     PRODUCER produces T values for me  -&gt;  Collection&amp;lt;? extends T&amp;gt;
-     CONSUMER consumes T values from me -&gt;  Collection&amp;lt;? super T&amp;gt;
-     Neither (does both)                 -&gt;  plain Collection&amp;lt;T&amp;gt; (no wildcard)</pre>
-                    <h3>Why It Matters</h3>
-                    <p>Picking the wrong bound makes a generic method LESS USEFUL than it could be. A method that &quot;reads
-                        Numbers from a list&quot; should accept `List&amp;lt;? extends Number&amp;gt;`, not just `List&amp;lt;Number&amp;gt;`
-                        - otherwise callers with a `List&amp;lt;Integer&amp;gt;` get a compile error.</p>
-                    <h3>Worked Example: Collections.copy / addAll / sort</h3>
-                    <p>The JDK applies PECS systematically:</p>
-                    <pre class="hj-doc-art">     // copy(dest, src) - src PRODUCES, dest CONSUMES
-     public static &amp;lt;T&amp;gt; void copy(List&amp;lt;? super T&amp;gt; dest, List&amp;lt;? extends T&amp;gt; src)</pre>
-                    <pre class="hj-doc-art">     // addAll(c, elements) - c CONSUMES the varargs PRODUCER
-     public static &amp;lt;T&amp;gt; boolean addAll(Collection&amp;lt;? super T&amp;gt; c, T... elements)</pre>
-                    <pre class="hj-doc-art">     // sort with a comparator that COMPARES (consumes) T or any supertype
-     public static &amp;lt;T&amp;gt; void sort(List&amp;lt;T&amp;gt; list, Comparator&amp;lt;? super T&amp;gt; c)</pre>
-                    <h3>The Quick Test</h3>
-                    <p>For every method parameter ask: &quot;Will I PULL items out of this and use them as T?&quot; -&gt;
-                        `? extends T` (producer) &quot;Will I PUSH items into this typed as T?&quot; -&gt; `? super T`
-                        (consumer) &quot;Both?&quot; -&gt; `T` (no wildcard)</p>
+                    PECS - Producer Extends, Consumer Super
+                    ---------------------------------------
+                    The most famous rule of generic API design, coined by Joshua Bloch in
+                    "Effective Java". It tells you which wildcard to use:
+                    <p>
+
+                        PRODUCER produces T values for me -> Collection&lt;? extends T&gt;
+                        CONSUMER consumes T values from me -> Collection&lt;? super T&gt;
+                        Neither (does both) -> plain Collection&lt;T&gt; (no wildcard)
+                    <p>
+
+                        Why It Matters
+                        --------------
+                        Picking the wrong bound makes a generic method LESS USEFUL than it could
+                        be. A method that "reads Numbers from a list" should accept
+                        `List&lt;? extends Number&gt;`, not just `List&lt;Number&gt;` - otherwise callers
+                        with a `List&lt;Integer&gt;` get a compile error.
+                    <p>
+
+                        Worked Example: Collections.copy / addAll / sort
+                        ------------------------------------------------
+                        The JDK applies PECS systematically:
+                    <p>
+
+                        // copy(dest, src) - src PRODUCES, dest CONSUMES
+                        public static &lt;T&gt; void copy(List&lt;? super T&gt; dest, List&lt;? extends T&gt; src)
+                    <p>
+
+                        // addAll(c, elements) - c CONSUMES the varargs PRODUCER
+                        public static &lt;T&gt; boolean addAll(Collection&lt;? super T&gt; c, T... elements)
+                    <p>
+
+                        // sort with a comparator that COMPARES (consumes) T or any supertype
+                        public static &lt;T&gt; void sort(List&lt;T&gt; list, Comparator&lt;? super T&gt; c)
+                    <p>
+
+                        The Quick Test
+                        --------------
+                        For every method parameter ask:
+                        "Will I PULL items out of this and use them as T?" -> `? extends T` (producer)
+                        "Will I PUSH items into this typed as T?" -> `? super T` (consumer)
+                        "Both?" -> `T` (no wildcard)
                 </div>
             </div>
 

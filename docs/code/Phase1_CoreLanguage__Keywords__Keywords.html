@@ -1380,50 +1380,88 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Java Keywords (Reserved Words)</h2>
-                    <p>Keywords are words RESERVED by the Java language. You cannot use them as identifiers (variable,
-                        class, method names). Java has 50+ reserved words, grouped here by purpose.</p>
-                    <h3>1) Primitive Types (8)</h3>
-                    <pre class="hj-doc-art">     boolean, byte, char, short, int, long, float, double</pre>
-                    <h3>2) Flow Control (11)</h3>
-                    <pre class="hj-doc-art">     if, else, switch, case, default,
+                    Java Keywords (Reserved Words)
+                    ------------------------------
+                    Keywords are words RESERVED by the Java language. You cannot use them as
+                    identifiers (variable, class, method names). Java has 50+ reserved words,
+                    grouped here by purpose.
+                    <p>
+
+                        1) Primitive Types (8)
+                        ----------------------
+                        boolean, byte, char, short, int, long, float, double
+                    <p>
+
+                        2) Flow Control (11)
+                        --------------------
+                        if, else, switch, case, default,
      for, while, do,
-     break, continue, return</pre>
-                    <h3>3) Class / Object Related (10)</h3>
-                    <pre class="hj-doc-art">     class, interface, enum, extends, implements,
-     new, this, super, instanceof, package</pre>
-                    <h3>4) Access Modifiers (3)</h3>
-                    <pre class="hj-doc-art">     public, private, protected
-     (the fourth - &quot;default&quot; / package-private - has NO keyword)</pre>
-                    <h3>5) Non-Access Modifiers (7)</h3>
-                    <pre class="hj-doc-art">     static, final, abstract, synchronized,
+                        break, continue, return
+                    <p>
+
+                        3) Class / Object Related (10)
+                        ------------------------------
+                        class, interface, enum, extends, implements,
+                        new, this, super, instanceof, package
+                    <p>
+
+                        4) Access Modifiers (3)
+                        -----------------------
+                        public, private, protected
+                        (the fourth - "default" / package-private - has NO keyword)
+                    <p>
+
+                        5) Non-Access Modifiers (7)
+                        ---------------------------
+                        static, final, abstract, synchronized,
      transient, volatile, native, strictfp
-     (strictfp became implicit in Java 17, but it is still a reserved word)</pre>
-                    <h3>6) Exception Handling (5)</h3>
-                    <pre class="hj-doc-art">     try, catch, finally, throw, throws</pre>
-                    <h3>7) Miscellaneous (4)</h3>
-                    <pre class="hj-doc-art">     void          - method returns nothing
+                        (strictfp became implicit in Java 17, but it is still a reserved word)
+                    <p>
+
+                        6) Exception Handling (5)
+                        -------------------------
+                        try, catch, finally, throw, throws
+                    <p>
+
+                        7) Miscellaneous (4)
+                        --------------------
+                        void - method returns nothing
      import        - bring another class/package into scope
      assert        - debug-time invariant check (Java 1.4+)
      const, goto   - RESERVED but UNUSED, kept reserved so you cannot use them
-                     as identifiers (Java does NOT actually support goto/const).</pre>
-                    <h3>8) Reserved Literals (3) - technically literals, not keywords</h3>
-                    <pre class="hj-doc-art">     true, false, null</pre>
-                    <h3>9) Contextual Keywords (Restricted - act as keywords ONLY in certain contexts)</h3>
-                    <pre class="hj-doc-art">     var       (Java 10+) - local variable type inference
+                        as identifiers (Java does NOT actually support goto/const).
+                    <p>
+
+                        8) Reserved Literals (3) - technically literals, not keywords
+                        -------------------------------------------------------------
+                        true, false, null
+                    <p>
+
+                        9) Contextual Keywords (Restricted - act as keywords ONLY in certain contexts)
+                        -----------------------------------------------------------------------------
+                        var (Java 10+) - local variable type inference
      yield     (Java 14+) - switch expression result
      record    (Java 16+) - immutable data class
      sealed, non-sealed, permits (Java 17+) - sealed class hierarchies
-     _         (Java 9 deprecated, Java 21+ reserved as unnamed pattern variable)</pre>
-                    <p>These are NOT fully reserved - you CAN still name a variable &quot;var&quot; or &quot;yield&quot;
-                        if you really want to (though it is confusing). They are only treated as keywords in the
-                        specific syntactic positions where they apply.</p>
-                    <h3>Why &quot;const&quot; and &quot;goto&quot; are Reserved but Unused</h3>
-                    <p>They were left reserved on purpose, so that the compiler can produce a helpful error message (&quot;goto
-                        is not supported&quot;) instead of treating them as regular identifiers. The Java designers
-                        chose final + labeled break/continue over const + goto for safer, more readable code.</p>
-                    <p>This class only demonstrates that you CANNOT use keywords as identifiers. The illegal lines are
-                        commented - uncomment any of them to see the compile error from the javac compiler.</p>
+                        _ (Java 9 deprecated, Java 21+ reserved as unnamed pattern variable)
+                    <p>
+
+                        These are NOT fully reserved - you CAN still name a variable "var" or "yield"
+                        if you really want to (though it is confusing). They are only treated as
+                        keywords in the specific syntactic positions where they apply.
+                    <p>
+
+                        Why "const" and "goto" are Reserved but Unused
+                        -----------------------------------------------
+                        They were left reserved on purpose, so that the compiler can produce a
+                        helpful error message ("goto is not supported") instead of treating them as
+                        regular identifiers. The Java designers chose final + labeled break/continue
+                        over const + goto for safer, more readable code.
+                    <p>
+
+                        This class only demonstrates that you CANNOT use keywords as identifiers.
+                        The illegal lines are commented - uncomment any of them to see the compile
+                        error from the javac compiler.
                 </div>
             </div>
 

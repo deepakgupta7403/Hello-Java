@@ -1380,49 +1380,77 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Generic Interfaces</h2>
-                    <p>Just like classes, an INTERFACE can declare type parameters. Generic interfaces are the
-                        foundation of almost every modern Java API:</p>
-                    <pre class="hj-doc-art">     interface Comparable&amp;lt;T&amp;gt; { int compareTo(T o); }
-     interface Comparator&amp;lt;T&amp;gt; { int compare(T a, T b); }
-     interface Iterable&amp;lt;T&amp;gt;   { Iterator&amp;lt;T&amp;gt; iterator(); }
-     interface Function&amp;lt;T, R&amp;gt; { R apply(T t); }
-     interface Map.Entry&amp;lt;K, V&amp;gt; { K getKey(); V getValue(); }</pre>
-                    <h3>Two Ways To Implement A Generic Interface</h3>
-                    <ul>
-                        <li>FIX the type parameter:
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">        class Customer implements Comparable&amp;lt;Customer&amp;gt; {
+                    Generic Interfaces
+                    ------------------
+                    Just like classes, an INTERFACE can declare type parameters. Generic
+                    interfaces are the foundation of almost every modern Java API:
+                    <p>
+
+                        interface Comparable&lt;T&gt; { int compareTo(T o); }
+                        interface Comparator&lt;T&gt; { int compare(T a, T b); }
+                        interface Iterable&lt;T&gt; { Iterator&lt;T&gt; iterator(); }
+                        interface Function&lt;T, R&gt; { R apply(T t); }
+                        interface Map.Entry&lt;K, V&gt; { K getKey(); V getValue(); }
+                    <p>
+
+                        Two Ways To Implement A Generic Interface
+                        -----------------------------------------
+                    <p>
+
+                        1. FIX the type parameter:
+                    <p>
+
+                        class Customer implements Comparable&lt;Customer&gt; {
             public int compareTo(Customer o) { ... }
-        }</pre>
-                    <ul>
-                        <li>PASS THROUGH a type parameter the implementing class also declares:
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">        class Stack&amp;lt;E&amp;gt; implements Iterable&amp;lt;E&amp;gt; {
-            public Iterator&amp;lt;E&amp;gt; iterator() { ... }
-        }</pre>
-                    <h3>Multiple Generic Interfaces</h3>
-                    <p>A class can implement more than one generic interface as long as their parameter bindings are
-                        consistent:</p>
-                    <pre class="hj-doc-art">     class Customer implements Comparable&amp;lt;Customer&amp;gt;, Serializable { ... }</pre>
-                    <p>You CANNOT implement the same generic interface with two different type arguments:</p>
-                    <pre class="hj-doc-art">     class Bad implements Comparable&amp;lt;Integer&amp;gt;, Comparable&amp;lt;String&amp;gt; { ... }
-     // ^^^ COMPILE ERROR</pre>
-                    <h3>Functional Generic Interfaces - The Lambdas Bridge</h3>
-                    <p>Java&#x27;s standard functional interfaces are all generic:</p>
-                    <pre class="hj-doc-art">     Function&amp;lt;T, R&amp;gt;        R apply(T)
-     BiFunction&amp;lt;T, U, R&amp;gt;   R apply(T, U)
-     Predicate&amp;lt;T&amp;gt;          boolean test(T)
-     Consumer&amp;lt;T&amp;gt;           void accept(T)
-     Supplier&amp;lt;T&amp;gt;           T get()
-     Comparator&amp;lt;T&amp;gt;         int compare(T, T)</pre>
-                    <h3>Implementations Below</h3>
-                    <p>Container&amp;lt;E&amp;gt; - our own generic interface ArrayContainer&amp;lt;E&amp;gt; -
-                        implements with pass-through param IntContainer - implements with FIXED param Repository&amp;lt;K,
-                        V&amp;gt; - multi-param generic interface InMemoryRepo&amp;lt;K, V&amp;gt; - pass-through
-                        implementor Cache - implements Function&amp;lt;String, String&amp;gt; (fix R = String)</p>
+                        }
+                    <p>
+
+                        2. PASS THROUGH a type parameter the implementing class also declares:
+                    <p>
+
+                        class Stack&lt;E&gt; implements Iterable&lt;E&gt; {
+                        public Iterator&lt;E&gt; iterator() { ... }
+                        }
+                    <p>
+
+                        Multiple Generic Interfaces
+                        ---------------------------
+                        A class can implement more than one generic interface as long as their
+                        parameter bindings are consistent:
+                    <p>
+
+                        class Customer implements Comparable&lt;Customer&gt;, Serializable { ... }
+                    <p>
+
+                        You CANNOT implement the same generic interface with two different
+                        type arguments:
+                    <p>
+
+                        class Bad implements Comparable&lt;Integer&gt;, Comparable&lt;String&gt; { ... }
+                        // ^^^ COMPILE ERROR
+                    <p>
+
+                        Functional Generic Interfaces - The Lambdas Bridge
+                        --------------------------------------------------
+                        Java's standard functional interfaces are all generic:
+                    <p>
+
+                        Function&lt;T, R&gt; R apply(T)
+                        BiFunction&lt;T, U, R&gt; R apply(T, U)
+                        Predicate&lt;T&gt; boolean test(T)
+                        Consumer&lt;T&gt; void accept(T)
+                        Supplier&lt;T&gt; T get()
+                        Comparator&lt;T&gt; int compare(T, T)
+                    <p>
+
+                        Implementations Below
+                        ---------------------
+                        Container&lt;E&gt; - our own generic interface
+                        ArrayContainer&lt;E&gt; - implements with pass-through param
+                        IntContainer - implements with FIXED param
+                        Repository&lt;K, V&gt; - multi-param generic interface
+                        InMemoryRepo&lt;K, V&gt; - pass-through implementor
+                        Cache - implements Function&lt;String, String&gt; (fix R = String)
                 </div>
             </div>
 

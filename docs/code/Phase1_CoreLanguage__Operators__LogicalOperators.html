@@ -1380,30 +1380,38 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Logical (Boolean) Operators</h2>
-                    <pre class="hj-doc-art">     &amp;&amp;    short-circuit AND   (right side evaluated only if left is true)
+                    Logical (Boolean) Operators
+                    ---------------------------
+                    && short-circuit AND (right side evaluated only if left is true)
      ||    short-circuit OR    (right side evaluated only if left is false)
      !     logical NOT
-     &amp;     non-short-circuit AND  (rare - evaluates BOTH sides always)
+                    & non-short-circuit AND (rare - evaluates BOTH sides always)
      |     non-short-circuit OR   (rare - evaluates BOTH sides always)
-     ^     XOR (exclusive or)</pre>
-                    <h3>Short-Circuit vs Non-Short-Circuit</h3>
-                    <pre class="hj-doc-art">- &amp;&amp; and || stop evaluating as soon as the result is known. This is the SAFE</pre>
-                    <p>way to combine null checks with method calls:</p>
-                    <pre class="hj-doc-art">     if (s != null &amp;&amp; s.length() &gt; 0) { ... }   // safe - no NPE
-     if (s != null &amp; s.length() &gt; 0)  { ... }   // dangerous - both sides evaluate</pre>
-                    <ul>
-                        <li>&amp; and | are used when the right side has SIDE EFFECTS you want to keep
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">  regardless. Almost always you want &amp;&amp; and ||.</pre>
-                    <h3>Truth Tables</h3>
-                    <pre class="hj-doc-art">     A     B    | A&amp;&amp;B   A||B   A^B   !A
+                    ^ XOR (exclusive or)
+                    <p>
+
+                        Short-Circuit vs Non-Short-Circuit
+                        ----------------------------------
+                        - && and || stop evaluating as soon as the result is known. This is the SAFE
+                        way to combine null checks with method calls:
+                    <p>
+
+                        if (s != null && s.length() > 0) { ... } // safe - no NPE
+                        if (s != null & s.length() > 0) { ... } // dangerous - both sides evaluate
+                    <p>
+
+                        - & and | are used when the right side has SIDE EFFECTS you want to keep
+                        regardless. Almost always you want && and ||.
+                    <p>
+
+                        Truth Tables
+                        ------------
+                        A B | A&&B A||B A^B !A
      ----------+----------------------------
      true  true | true   true   false false
      true  false| false  true   true  false
      false true | false  true   true  true
-     false false| false  false  false true</pre>
+                        false false| false false false true
                 </div>
             </div>
 

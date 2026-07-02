@@ -1380,64 +1380,12 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Functional Interfaces (Java 8+)</h2>
-                    <p>A FUNCTIONAL INTERFACE is an interface with EXACTLY ONE ABSTRACT METHOD (SAM = Single Abstract
-                        Method). Such interfaces can be the TARGET TYPE of lambda expressions and method references.</p>
-                    <pre class="hj-doc-art">     @FunctionalInterface
-     interface Calculator {
-         int apply(int a, int b);
-     }</pre>
-                    <pre class="hj-doc-art">     Calculator add = (a, b) -&gt; a + b;     // lambda
-     Calculator max = Math::max;           // method reference</pre>
-                    <h3>The @FunctionalInterface Annotation</h3>
-                    <p>Optional but recommended. It tells the compiler to ERROR-CHECK that the interface has exactly one
-                        abstract method. Adding a second abstract method later won&#x27;t silently break callers - the
-                        compiler will refuse to compile the annotation.</p>
-                    <h3>What Does NOT Count Toward the &quot;one abstract method&quot; Limit</h3>
-                    <ul>
-                        <li>default methods (have a body)
-                        </li>
-                        <li>static methods (have a body)
-                        </li>
-                        <li>private methods (have a body, Java 9+)
-                        </li>
-                        <li>methods inherited from java.lang.Object (toString, equals, hashCode ...)
-                        </li>
-                    </ul>
-                    <h3>The java.util.function Package - Quick Cheatsheet</h3>
-                    <p>Function&lt;T,R&gt; : R apply(T t) x -&gt; ... BiFunction&lt;T,U,R&gt; : R apply(T t, U u) (x,y)
-                        -&gt; ... UnaryOperator&lt;T&gt; : T apply(T t) same in / out type BinaryOperator&lt;T&gt; : T
-                        apply(T a, T b) Predicate&lt;T&gt; : boolean test(T t) Consumer&lt;T&gt; : void accept(T t)
-                        BiConsumer&lt;T,U&gt; : void accept(T t, U u) Supplier&lt;T&gt; : T get()</p>
-                    <p>Specialised for primitives to avoid boxing:</p>
-                    <pre class="hj-doc-art">     IntFunction&lt;R&gt;, ToIntFunction&lt;T&gt;, IntPredicate, IntUnaryOperator, ...</pre>
-                    <h3>Common Use Cases</h3>
-                    <ul>
-                        <li>Stream operations: filter / map / reduce / forEach
-                        </li>
-                        <li>Comparators Comparator.comparing(Person::age)
-                        </li>
-                        <li>Strategy pattern pass behaviour as an argument
-                        </li>
-                        <li>Callbacks event handlers, listeners
-                        </li>
-                        <li>Builders / fluent APIs
-                        </li>
-                    </ul>
-                    <h3>Lambda Capture Rules (brief recap)</h3>
-                    <ul>
-                        <li>Lambdas can READ local variables and parameters, but they must be
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    EFFECTIVELY FINAL (assigned once).</pre>
-                    <ul>
-                        <li>Lambdas freely read/write fields of the enclosing object via `this`.
-                        </li>
-                        <li>`this` inside a lambda refers to the ENCLOSING class - not the lambda.
-                        </li>
-                    </ul>
-                    <p>For default / static / private interface members see InterfaceIntro.java and
-                        Basics/Methods/InterfaceMethods.java.</p>
+                    Functional Interfaces (Java 8+)
+                    -------------------------------
+                    A FUNCTIONAL INTERFACE is an interface with EXACTLY ONE ABSTRACT METHOD
+                    (SAM = Single Abstract Method). Such interfaces can be the TARGET TYPE of
+                    lambda expressions and method references.
+                    <p>
                 </div>
             </div>
 

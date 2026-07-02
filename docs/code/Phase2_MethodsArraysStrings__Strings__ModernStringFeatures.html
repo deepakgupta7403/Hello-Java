@@ -1380,37 +1380,51 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Modern String Features (Java 11 -&gt; 21)</h2>
-                    <p>Java keeps adding small but useful String methods. This file is a quick tour of everything
-                        Basics-level that landed in 11, 12, 15, and beyond - all available on Java 21.</p>
-                    <h3>Java 11</h3>
-                    <pre class="hj-doc-art">     isBlank()                       - true if empty OR only whitespace
-     lines()                         - Stream&lt;String&gt; of lines (no separators)
+                    Modern String Features (Java 11 -> 21)
+                    --------------------------------------
+                    Java keeps adding small but useful String methods. This file is a quick
+                    tour of everything Basics-level that landed in 11, 12, 15, and beyond -
+                    all available on Java 21.
+                    <p>
+
+                        Java 11
+                        -------
+                        isBlank() - true if empty OR only whitespace
+                        lines() - Stream
+                        <String> of lines (no separators)
      strip() / stripLeading() /      - Unicode-aware trim (smarter than trim())
          stripTrailing()
      repeat(int count)               - concat the string with itself N times
-     chars() / codePoints()          - IntStream over the characters</pre>
-                    <h3>Java 12</h3>
-                    <pre class="hj-doc-art">     indent(int n)                   - add (or remove) leading spaces per line
-     transform(Function&lt;String, R&gt;)  - apply any function, fluently</pre>
-                    <h3>Java 15</h3>
-                    <pre class="hj-doc-art">     Text Blocks  &quot;&quot;&quot; ... &quot;&quot;&quot;        - multi-line string literals
-     formatted(args)                 - instance form of String.format</pre>
-                    <h3>Java 21</h3>
-                    <pre class="hj-doc-art">     Pattern matching for switch     - match on `String` values with `when` guards
+                            chars() / codePoints() - IntStream over the characters
+                            <p>
+
+                                Java 12
+                                -------
+                                indent(int n) - add (or remove) leading spaces per line
+                                transform(Function
+                                <String
+                                , R>) - apply any function, fluently
+                            <p>
+
+                                Java 15
+                                -------
+                                Text Blocks """ ... """ - multi-line string literals
+                                formatted(args) - instance form of String.format
+                            <p>
+
+                                Java 21
+                                -------
+                                Pattern matching for switch - match on `String` values with `when` guards
      String templates (preview only) - NOT covered here, the feature was
-                                       retracted from later releases.</pre>
-                    <h3>Why These Matter</h3>
-                    <ul>
-                        <li>`strip()` handles Unicode whitespace - `trim()` only strips ASCII &lt; 0x20.
-                        </li>
-                        <li>`repeat()` is much faster than a loop with `+=`.
-                        </li>
-                        <li>Text blocks make JSON, SQL, HTML in code dramatically easier to read.
-                        </li>
-                        <li>`transform()` and `lines()` enable a fluent, functional style.
-                        </li>
-                    </ul>
+                                retracted from later releases.
+                            <p>
+
+                                Why These Matter
+                                ----------------
+                                - `strip()` handles Unicode whitespace - `trim()` only strips ASCII < 0x20.
+                                - `repeat()` is much faster than a loop with `+=`.
+                                - Text blocks make JSON, SQL, HTML in code dramatically easier to read.
+                                - `transform()` and `lines()` enable a fluent, functional style.
                 </div>
             </div>
 

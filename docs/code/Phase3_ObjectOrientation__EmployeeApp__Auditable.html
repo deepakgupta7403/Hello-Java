@@ -1380,13 +1380,22 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <p>Auditable - a MARKER INTERFACE.</p>
-                    <p>Implementing this interface means &quot;this object should be logged by the audit framework&quot;.
-                        The marker has no methods; downstream code checks `instanceof Auditable` and acts
-                        accordingly.</p>
-                    <p>We could have used an annotation instead (see MarkerInterface.java for the comparison). Using an
-                        interface here lets us write generic helpers with an upper bound, e.g.:</p>
-                    <pre class="hj-doc-art">     static &lt;T extends Auditable&gt; void auditAll(Collection&lt;T&gt; items) { ... }</pre>
+                    Auditable - a MARKER INTERFACE.
+                    <p>
+
+                        Implementing this interface means "this object should be logged by the
+                        audit framework". The marker has no methods; downstream code checks
+                        `instanceof Auditable` and acts accordingly.
+                    <p>
+
+                        We could have used an annotation instead (see MarkerInterface.java for the
+                        comparison). Using an interface here lets us write generic helpers with an
+                        upper bound, e.g.:
+                    <p>
+
+                        static
+                        <T extends Auditable> void auditAll(Collection
+                            <T> items) { ... }
                 </div>
             </div>
 

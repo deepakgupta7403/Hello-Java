@@ -1380,39 +1380,32 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <p>Employee - the core CONTRACT every staff member must satisfy.</p>
-                    <p>Implemented as a SEALED INTERFACE (Java 17+) so the company knows exactly which kinds of
-                        employees exist. Adding a new permitted record below will cause every exhaustive `switch
-                        (employee) { ... }` elsewhere to fail to compile until the new case is handled - a strong
-                        build-time safety net.</p>
-                    <h2>Why an interface for the root type?</h2>
-                    <ul>
-                        <li>Employees vary widely (full-time, contractor, intern, ...) - we want a
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    POLYMORPHIC type without forcing a deep class hierarchy.</pre>
-                    <ul>
-                        <li>Records make great variants: immutable, compact, equality for free.
-                        </li>
-                        <li>The interface carries shared DEFAULT behaviour (annualSalary,
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    formattedId) that every implementor inherits.</pre>
-                    <h3>Interface members used here</h3>
-                    <ul>
-                        <li>abstract methods : id, name, monthlyPay
-                        </li>
-                        <li>default methods : annualSalary, formattedId, summary
-                        </li>
-                        <li>static methods : nextId - centralised id generator
-                        </li>
-                        <li>private methods : pad - helper used by formattedId
-                        </li>
-                        <li>constants : MAX_PAY - inherited public static final
-                        </li>
-                        <li>permits clause : restricts implementors to known types
-                        </li>
-                    </ul>
+                    Employee - the core CONTRACT every staff member must satisfy.
+                    <p>
+
+                        Implemented as a SEALED INTERFACE (Java 17+) so the company knows exactly
+                        which kinds of employees exist. Adding a new permitted record below will
+                        cause every exhaustive `switch (employee) { ... }` elsewhere to fail to
+                        compile until the new case is handled - a strong build-time safety net.
+                    <p>
+
+                        Why an interface for the root type?
+                        -----------------------------------
+                        - Employees vary widely (full-time, contractor, intern, ...) - we want a
+                        POLYMORPHIC type without forcing a deep class hierarchy.
+                        - Records make great variants: immutable, compact, equality for free.
+                        - The interface carries shared DEFAULT behaviour (annualSalary,
+                        formattedId) that every implementor inherits.
+                    <p>
+
+                        Interface members used here
+                        ---------------------------
+                        - abstract methods : id, name, monthlyPay
+                        - default methods : annualSalary, formattedId, summary
+                        - static methods : nextId - centralised id generator
+                        - private methods : pad - helper used by formattedId
+                        - constants : MAX_PAY - inherited public static final
+                        - permits clause : restricts implementors to known types
                 </div>
             </div>
 

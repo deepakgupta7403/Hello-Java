@@ -1380,12 +1380,18 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>String vs StringBuffer vs StringBuilder</h2>
-                    <p>Java offers THREE classes for textual data. They look similar but have very different mutation,
-                        thread-safety, and performance characteristics. Picking the right one is a recurring interview
-                        question and a real performance lever.</p>
-                    <h3>Side-by-Side Comparison</h3>
-                    <pre class="hj-doc-art"> Aspect             | String                | StringBuffer        | StringBuilder
+                    String vs StringBuffer vs StringBuilder
+                    ---------------------------------------
+                    Java offers THREE classes for textual data. They look similar but have very
+                    different mutation, thread-safety, and performance characteristics. Picking
+                    the right one is a recurring interview question and a real performance lever.
+                    <p>
+
+                        Side-by-Side Comparison
+                        -----------------------
+                    <p>
+
+                        Aspect | String | StringBuffer | StringBuilder
  -------------------+-----------------------+---------------------+---------------------
  Mutability         | Immutable             | Mutable             | Mutable
  Thread safety      | Implicit (immutable)  | Synchronized        | NOT synchronized
@@ -1401,38 +1407,37 @@
  equals()           | Content equality      | Reference equality  | Reference equality
                     |                       | (inherits Object!)  | (inherits Object!)
  Class introduced   | Java 1.0              | Java 1.0            | Java 5
- Internal storage   | private final byte[]  | char[] / byte[]     | char[] / byte[]</pre>
-                    <h3>Important Detail - equals() on StringBuffer/StringBuilder</h3>
-                    <p>Neither StringBuffer nor StringBuilder override equals(). Two builders with IDENTICAL CONTENT are
-                        NOT equal by .equals(). Convert to String first:</p>
-                    <pre class="hj-doc-art">     sb1.toString().equals(sb2.toString());</pre>
-                    <h3>When To Use Which</h3>
-                    <ul>
-                        <li>STRING: for textual VALUES (storage, parameters, return types, keys).
-                        </li>
-                        <li>STRINGBUILDER: for BUILDING up a String in single-threaded code (the
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                   default for most &quot;compose a string&quot; needs).</pre>
-                    <ul>
-                        <li>STRINGBUFFER: for the rare case of MULTIPLE THREADS appending to the
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                   same buffer concurrently. Otherwise prefer StringBuilder.</pre>
-                    <h3>Performance Benchmark (in main())</h3>
-                    <p>Three loops of N = 100_000 appends:</p>
-                    <ul>
-                        <li>String &quot;+=&quot; inside a loop
-                        </li>
-                        <li>StringBuffer.append
-                        </li>
-                        <li>StringBuilder.append
-                        </li>
-                    </ul>
-                    <p>The numbers vary by JVM but the relative ordering is always:</p>
-                    <pre class="hj-doc-art">     Slowest:  String += loop (O(N^2))
+                        Internal storage | private final byte[] | char[] / byte[] | char[] / byte[]
+                    <p>
+
+                        Important Detail - equals() on StringBuffer/StringBuilder
+                        --------------------------------------------------------
+                        Neither StringBuffer nor StringBuilder override equals(). Two builders with
+                        IDENTICAL CONTENT are NOT equal by .equals(). Convert to String first:
+                    <p>
+
+                        sb1.toString().equals(sb2.toString());
+                    <p>
+
+                        When To Use Which
+                        -----------------
+                        - STRING: for textual VALUES (storage, parameters, return types, keys).
+                        - STRINGBUILDER: for BUILDING up a String in single-threaded code (the
+                        default for most "compose a string" needs).
+                        - STRINGBUFFER: for the rare case of MULTIPLE THREADS appending to the
+                        same buffer concurrently. Otherwise prefer StringBuilder.
+                    <p>
+
+                        Performance Benchmark (in main())
+                        ---------------------------------
+                        Three loops of N = 100_000 appends:
+                        1. String "+=" inside a loop
+                        2. StringBuffer.append
+                        3. StringBuilder.append
+                        The numbers vary by JVM but the relative ordering is always:
+                        Slowest: String += loop (O(N^2))
      Mid    :  StringBuffer (synchronized overhead)
-     Fastest:  StringBuilder</pre>
+                        Fastest: StringBuilder
                 </div>
             </div>
 

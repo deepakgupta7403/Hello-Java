@@ -1380,34 +1380,43 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>The instanceof Operator</h2>
-                    <p>Tests whether an object is an instance of a particular class, sub-class, or implements a
-                        particular interface. Result is a boolean.</p>
-                    <pre class="hj-doc-art">     obj instanceof Type        // true if obj is non-null AND of that type</pre>
-                    <p>Returns FALSE if obj is null - so instanceof is also a handy null-safe check.</p>
-                    <h3>Pattern Matching (Java 16+)</h3>
-                    <p>Since Java 16 you can bind the cast variable in the same expression:</p>
-                    <pre class="hj-doc-art">     if (obj instanceof String s) {
-         // here &#x27;s&#x27; is already a String - no extra cast needed
+                    The instanceof Operator
+                    -----------------------
+                    Tests whether an object is an instance of a particular class, sub-class, or
+                    implements a particular interface. Result is a boolean.
+                    <p>
+
+                        obj instanceof Type // true if obj is non-null AND of that type
+                    <p>
+
+                        Returns FALSE if obj is null - so instanceof is also a handy null-safe check.
+                    <p>
+
+                        Pattern Matching (Java 16+)
+                        ---------------------------
+                        Since Java 16 you can bind the cast variable in the same expression:
+                    <p>
+
+                        if (obj instanceof String s) {
+                        // here 's' is already a String - no extra cast needed
          System.out.println(s.length());
-     }</pre>
-                    <p>Inside the &#x27;if&#x27; body &#x27;s&#x27; is in scope; outside it is not.</p>
-                    <h3>When To Use It</h3>
-                    <ul>
-                        <li>When you really do not know the runtime type (e.g. dealing with Object,
-                        </li>
-                    </ul>
-                    <p>external data, sealed hierarchies).</p>
-                    <ul>
-                        <li>In equals() implementations.
-                        </li>
-                    </ul>
-                    <h3>When NOT To Use It</h3>
-                    <ul>
-                        <li>As a stand-in for polymorphism. If you find yourself writing a long chain of
-                        </li>
-                    </ul>
-                    <p>instanceof / cast, consider overriding a method in each subclass instead.</p>
+                        }
+                    <p>
+
+                        Inside the 'if' body 's' is in scope; outside it is not.
+                    <p>
+
+                        When To Use It
+                        --------------
+                        - When you really do not know the runtime type (e.g. dealing with Object,
+                        external data, sealed hierarchies).
+                        - In equals() implementations.
+                    <p>
+
+                        When NOT To Use It
+                        ------------------
+                        - As a stand-in for polymorphism. If you find yourself writing a long chain of
+                        instanceof / cast, consider overriding a method in each subclass instead.
                 </div>
             </div>
 

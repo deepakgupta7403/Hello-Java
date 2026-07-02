@@ -5,26 +5,30 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * Taking Input - java.io.BufferedReader
- * -------------------------------------
- * BufferedReader is the older (pre-Java-5) way to read input. It reads one whole
- * LINE at a time as a String - you have to parse the result yourself.
- * <p>
- * <p>
- * Why use BufferedReader over Scanner?
- * ------------------------------------
- * - Faster than Scanner because it does not do regex-based tokenizing.
- * Commonly used in competitive programming for that reason.
- * - Larger buffer size by default (8192 chars vs Scanner's 1024).
- * <p>
- * <p>
- * Trade-offs
- * ----------
- * - Returns Strings only. You must convert with Integer.parseInt(),
- * Double.parseDouble(), etc.
- * - Throws checked IOException, so you must declare "throws" or wrap in try/catch.
- * - No built-in support for reading individual tokens of different types from the
- * same line (you would split the line yourself).
+ * <h1>Taking Input &mdash; java.io.BufferedReader</h1>
+ *
+ * <p><code>BufferedReader</code> is the older (pre-Java-5) way to read input. It reads one whole
+ * LINE at a time as a String &mdash; you have to parse the result yourself.</p>
+ *
+ * <h2>Why use BufferedReader over Scanner?</h2>
+ * <ul>
+ *   <li>Faster than <code>Scanner</code> because it does not do regex-based tokenizing.
+ *       Commonly used in competitive programming for that reason.</li>
+ *   <li>Larger buffer size by default (8192 chars vs Scanner's 1024).</li>
+ * </ul>
+ *
+ * <h2>Trade-offs</h2>
+ * <ul>
+ *   <li>Returns Strings only. You must convert with <code>Integer.parseInt()</code>,
+ *       <code>Double.parseDouble()</code>, etc.</li>
+ *   <li>Throws checked <code>IOException</code>, so you must declare "throws" or wrap in try/catch.</li>
+ *   <li>No built-in support for reading individual tokens of different types from the
+ *       same line (you would split the line yourself).</li>
+ * </ul>
+ *
+ * @author  Deepak Gupta
+ * @version 1.0
+ * @since 2026-05-21
  */
 
 public class BufferedReaderInput {

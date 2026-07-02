@@ -5,7 +5,7 @@
     "path": "Phase0_SetupAndFirstPrograms/HelloWorld.java",
     "phaseLabel": "Phase 0 \u2014 Setup & First Programs",
     "section": "Overview",
-    "summary": ""
+    "summary": "Hello, World! \u2014 your first Java program"
   },
   {
     "title": "Is Main Compulsory",
@@ -13,7 +13,7 @@
     "path": "Phase0_SetupAndFirstPrograms/IsMainCompulsory.java",
     "phaseLabel": "Phase 0 \u2014 Setup & First Programs",
     "section": "Overview",
-    "summary": "The answer to this question depends on the version of java you are using. Prior to JDK 7, the main method was not mandatory in a java program. You could write your full code under static block and it ran normally. The..."
+    "summary": "Is a main Method Compulsory?"
   },
   {
     "title": "Hello",
@@ -21,7 +21,7 @@
     "path": "Phase0_SetupAndFirstPrograms/ClassNameMyth/Hello.java",
     "phaseLabel": "Phase 0 \u2014 Setup & First Programs",
     "section": "Class Name Myth",
-    "summary": "The Final Conclusion If the class is public and file name are same as class name then it's working fine. If the class is public and file name are different as class name then it's throw the error class name and file n..."
+    "summary": "The Final Conclusion Whether a Java source file compiles depends on the relationship between the class name, the file name, and whether the class is declared public. There are three cases to consider."
   },
   {
     "title": "Buffered Reader Input",
@@ -29,7 +29,7 @@
     "path": "Phase0_SetupAndFirstPrograms/Input/BufferedReaderInput.java",
     "phaseLabel": "Phase 0 \u2014 Setup & First Programs",
     "section": "Input",
-    "summary": "Taking Input - java.io.BufferedReader"
+    "summary": "Taking Input \u2014 java.io.BufferedReader"
   },
   {
     "title": "Console Input",
@@ -37,7 +37,7 @@
     "path": "Phase0_SetupAndFirstPrograms/Input/ConsoleInput.java",
     "phaseLabel": "Phase 0 \u2014 Setup & First Programs",
     "section": "Input",
-    "summary": "Taking Input - java.io.Console"
+    "summary": "Taking Input \u2014 java.io.Console"
   },
   {
     "title": "Scanner Input",
@@ -45,7 +45,7 @@
     "path": "Phase0_SetupAndFirstPrograms/Input/ScannerInput.java",
     "phaseLabel": "Phase 0 \u2014 Setup & First Programs",
     "section": "Input",
-    "summary": "Taking Input - java.util.Scanner"
+    "summary": "Taking Input \u2014 java.util.Scanner"
   },
   {
     "title": "Install Java",
@@ -61,7 +61,7 @@
     "path": "Phase0_SetupAndFirstPrograms/Introduction/Introduction.java",
     "phaseLabel": "Phase 0 \u2014 Setup & First Programs",
     "section": "Introduction",
-    "summary": "Java is a high-level, class-based, object-oriented programming language designed by James Gosling at Sun Microsystems in 1995 (now owned by Oracle Corporation). It follows the principle of WORA - \"Write Once, Run Anyw..."
+    "summary": "Java is a high-level, class-based, object-oriented programming language designed by James Gosling at Sun Microsystems in 1995 (now owned by Oracle Corporation). It follows the principle of WORA \u2014 \"Write Once, Run Anyw..."
   },
   {
     "title": "JD Kvs JR Evs JVM",
@@ -69,7 +69,7 @@
     "path": "Phase0_SetupAndFirstPrograms/JDKvsJREvsJVM/JDKvsJREvsJVM.java",
     "phaseLabel": "Phase 0 \u2014 Setup & First Programs",
     "section": "JD Kvs JR Evs JVM",
-    "summary": "These three are the most commonly confused acronyms in the Java world. They are nested - the JDK contains the JRE, and the JRE contains the JVM:"
+    "summary": "These three are the most commonly confused acronyms in the Java world. They are nested \u2014 the JDK contains the JRE, and the JRE contains the JVM:"
   },
   {
     "title": "Formatted Output",
@@ -1317,7 +1317,7 @@
     "path": "Phase4_ErrorsAndTypeSafety/Generics/TypeErasure.java",
     "phaseLabel": "Phase 4 \u2014 Errors & Type Safety",
     "section": "Generics",
-    "summary": "Generics are a COMPILE-TIME feature. The compiler uses type parameters to check your code and insert the necessary casts. After that, all the generic information is THROWN AWAY (\"erased\"): a List&lt;String&gt; and a L..."
+    "summary": "Generics are a COMPILE-TIME feature. The compiler uses type parameters to check your code and insert the necessary casts. After that, all the generic information is THROWN AWAY (\"erased\"): a List<String> and a List<In..."
   },
   {
     "title": "Wildcards",
@@ -1381,7 +1381,7 @@
     "path": "Phase5_CollectionsLambdasStreams/Collections/CollectionInterface.java",
     "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
     "section": "Collections",
-    "summary": "java.util.Collection&lt;E&gt; - The Root Interface"
+    "summary": "java.util.Collection<E> - The Root Interface"
   },
   {
     "title": "Collections Class",
@@ -1445,7 +1445,7 @@
     "path": "Phase5_CollectionsLambdasStreams/Collections/DequeInterface.java",
     "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
     "section": "Collections",
-    "summary": "java.util.Deque&lt;E&gt; - \"Double-Ended Queue\""
+    "summary": "java.util.Deque<E> - \"Double-Ended Queue\""
   },
   {
     "title": "Enumeration Demo",
@@ -1453,7 +1453,7 @@
     "path": "Phase5_CollectionsLambdasStreams/Collections/EnumerationDemo.java",
     "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
     "section": "Collections",
-    "summary": "java.util.Enumeration&lt;E&gt; - The Original (Java 1.0) Iterator"
+    "summary": "java.util.Enumeration<E> - The Original (Java 1.0) Iterator"
   },
   {
     "title": "Enum Set Demo",
@@ -1461,7 +1461,7 @@
     "path": "Phase5_CollectionsLambdasStreams/Collections/EnumSetDemo.java",
     "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
     "section": "Collections",
-    "summary": "java.util.EnumSet&lt;E extends Enum&lt;E&gt;&gt; - Fastest Set for Enum Keys"
+    "summary": "java.util.EnumSet<E extends Enum<E>> - Fastest Set for Enum Keys"
   },
   {
     "title": "Detector",
@@ -1501,7 +1501,7 @@
     "path": "Phase5_CollectionsLambdasStreams/Collections/HashMapDemo.java",
     "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
     "section": "Collections",
-    "summary": "java.util.HashMap&lt;K, V&gt; - The Default Map Implementation"
+    "summary": "java.util.HashMap<K, V> - The Default Map Implementation"
   },
   {
     "title": "Hash Set Demo",
@@ -1509,7 +1509,7 @@
     "path": "Phase5_CollectionsLambdasStreams/Collections/HashSetDemo.java",
     "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
     "section": "Collections",
-    "summary": "java.util.HashSet&lt;E&gt; - Hash-Table-Backed Set"
+    "summary": "java.util.HashSet<E> - Hash-Table-Backed Set"
   },
   {
     "title": "Hashtable Demo",
@@ -1517,7 +1517,7 @@
     "path": "Phase5_CollectionsLambdasStreams/Collections/HashtableDemo.java",
     "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
     "section": "Collections",
-    "summary": "java.util.Hashtable&lt;K, V&gt; - The Original Java 1.0 Map"
+    "summary": "java.util.Hashtable<K, V> - The Original Java 1.0 Map"
   },
   {
     "title": "Identity Hash Map Demo",
@@ -1525,7 +1525,7 @@
     "path": "Phase5_CollectionsLambdasStreams/Collections/IdentityHashMapDemo.java",
     "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
     "section": "Collections",
-    "summary": "java.util.IdentityHashMap&lt;K, V&gt; - Map That Compares With `==`"
+    "summary": "java.util.IdentityHashMap<K, V> - Map That Compares With `==`"
   },
   {
     "title": "Iterable Demo",
@@ -1533,7 +1533,7 @@
     "path": "Phase5_CollectionsLambdasStreams/Collections/IterableDemo.java",
     "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
     "section": "Collections",
-    "summary": "java.lang.Iterable&lt;T&gt; - The \"for-each\" Contract"
+    "summary": "java.lang.Iterable<T> - The \"for-each\" Contract"
   },
   {
     "title": "Iterator Demo",
@@ -1549,7 +1549,7 @@
     "path": "Phase5_CollectionsLambdasStreams/Collections/LinkedHashMapDemo.java",
     "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
     "section": "Collections",
-    "summary": "java.util.LinkedHashMap&lt;K, V&gt; - HashMap with Predictable Order"
+    "summary": "java.util.LinkedHashMap<K, V> - HashMap with Predictable Order"
   },
   {
     "title": "Linked Hash Set Demo",
@@ -1557,7 +1557,7 @@
     "path": "Phase5_CollectionsLambdasStreams/Collections/LinkedHashSetDemo.java",
     "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
     "section": "Collections",
-    "summary": "java.util.LinkedHashSet&lt;E&gt; - \"HashSet that Remembers Insertion Order\""
+    "summary": "java.util.LinkedHashSet<E> - \"HashSet that Remembers Insertion Order\""
   },
   {
     "title": "Linked List Demo",
@@ -1573,7 +1573,7 @@
     "path": "Phase5_CollectionsLambdasStreams/Collections/ListInterface.java",
     "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
     "section": "Collections",
-    "summary": "java.util.List&lt;E&gt; - Ordered, Indexable, Duplicates Allowed"
+    "summary": "java.util.List<E> - Ordered, Indexable, Duplicates Allowed"
   },
   {
     "title": "Map Interface",
@@ -1581,7 +1581,7 @@
     "path": "Phase5_CollectionsLambdasStreams/Collections/MapInterface.java",
     "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
     "section": "Collections",
-    "summary": "java.util.Map&lt;K, V&gt; - Key-Value Lookup"
+    "summary": "java.util.Map<K, V> - Key-Value Lookup"
   },
   {
     "title": "Modern Collections",
@@ -1597,7 +1597,7 @@
     "path": "Phase5_CollectionsLambdasStreams/Collections/PriorityQueueDemo.java",
     "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
     "section": "Collections",
-    "summary": "java.util.PriorityQueue&lt;E&gt; - Heap-Backed Priority Queue"
+    "summary": "java.util.PriorityQueue<E> - Heap-Backed Priority Queue"
   },
   {
     "title": "Queue Interface",
@@ -1605,7 +1605,7 @@
     "path": "Phase5_CollectionsLambdasStreams/Collections/QueueInterface.java",
     "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
     "section": "Collections",
-    "summary": "java.util.Queue&lt;E&gt; - FIFO Linear Collection"
+    "summary": "java.util.Queue<E> - FIFO Linear Collection"
   },
   {
     "title": "Set Interface",
@@ -1613,7 +1613,7 @@
     "path": "Phase5_CollectionsLambdasStreams/Collections/SetInterface.java",
     "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
     "section": "Collections",
-    "summary": "java.util.Set&lt;E&gt; - No Duplicates Allowed"
+    "summary": "java.util.Set<E> - No Duplicates Allowed"
   },
   {
     "title": "Sorted And Navigable Set",
@@ -1629,7 +1629,7 @@
     "path": "Phase5_CollectionsLambdasStreams/Collections/TreeMapDemo.java",
     "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
     "section": "Collections",
-    "summary": "java.util.TreeMap&lt;K, V&gt; - Sorted Map (Red-Black Tree)"
+    "summary": "java.util.TreeMap<K, V> - Sorted Map (Red-Black Tree)"
   },
   {
     "title": "Tree Set Demo",
@@ -1637,7 +1637,7 @@
     "path": "Phase5_CollectionsLambdasStreams/Collections/TreeSetDemo.java",
     "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
     "section": "Collections",
-    "summary": "java.util.TreeSet&lt;E&gt; - Sorted Set Backed by a Red-Black Tree"
+    "summary": "java.util.TreeSet<E> - Sorted Set Backed by a Red-Black Tree"
   },
   {
     "title": "Vector And Stack",
@@ -1653,7 +1653,7 @@
     "path": "Phase5_CollectionsLambdasStreams/Collections/WeakHashMapDemo.java",
     "phaseLabel": "Phase 5 \u2014 Collections, Lambdas & Streams",
     "section": "Collections",
-    "summary": "java.util.WeakHashMap&lt;K, V&gt; - Map With Weakly-Referenced Keys"
+    "summary": "java.util.WeakHashMap<K, V> - Map With Weakly-Referenced Keys"
   },
   {
     "title": "Collectors Class",

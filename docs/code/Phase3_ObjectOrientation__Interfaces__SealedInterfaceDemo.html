@@ -1380,63 +1380,59 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Sealed Interfaces - Java 17 (LTS) onwards</h2>
-                    <p>A SEALED INTERFACE restricts WHO IS ALLOWED TO IMPLEMENT IT. Before sealed interfaces, every
-                        public interface was open to the entire world. Sealed interfaces close that hole - you list the
-                        permitted implementors.</p>
-                    <pre class="hj-doc-art">     sealed interface Result permits Success, Failure {}
+                    Sealed Interfaces - Java 17 (LTS) onwards
+                    -----------------------------------------
+                    A SEALED INTERFACE restricts WHO IS ALLOWED TO IMPLEMENT IT. Before sealed
+                    interfaces, every public interface was open to the entire world. Sealed
+                    interfaces close that hole - you list the permitted implementors.
+                    <p>
+
+                        sealed interface Result permits Success, Failure {}
      record Success(String data) implements Result {}
-     record Failure(String err)  implements Result {}</pre>
-                    <h3>Three Choices Each Permitted Subtype Must Make</h3>
-                    <ul>
-                        <li>final - cannot be extended further. (record is implicitly final)
-                        </li>
-                        <li>sealed - extendable, but with its OWN permits list.
-                        </li>
-                        <li>non-sealed - extendable by anyone; ends the seal.
-                        </li>
-                    </ul>
-                    <h3>Why Sealed?</h3>
-                    <ul>
-                        <li>ALGEBRAIC DATA TYPES - model a closed union of variants.
-                        </li>
-                        <li>EXHAUSTIVE SWITCH - the compiler verifies every permitted case is
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                             handled; no `default` needed.</pre>
-                    <ul>
-                        <li>VERSION SAFETY - adding a new permitted variant turns every
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                             previously-exhaustive switch into a compile
-                             error - exactly what you want.</pre>
-                    <ul>
-                        <li>DOCUMENTATION - the permits list IS the documentation of &quot;all
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                             implementors&quot;.</pre>
-                    <h3>Common Patterns</h3>
-                    <p>Result&lt;T, E&gt; Success | Failure</p>
-                    <pre class="hj-doc-art">  Json              Null | Boolean | Number | String | Array | Object
+                        record Failure(String err) implements Result {}
+                    <p>
+
+                        Three Choices Each Permitted Subtype Must Make
+                        ----------------------------------------------
+                        1. final - cannot be extended further. (record is implicitly final)
+                        2. sealed - extendable, but with its OWN permits list.
+                        3. non-sealed - extendable by anyone; ends the seal.
+                    <p>
+
+                        Why Sealed?
+                        -----------
+                        - ALGEBRAIC DATA TYPES - model a closed union of variants.
+                        - EXHAUSTIVE SWITCH - the compiler verifies every permitted case is
+                        handled; no `default` needed.
+                        - VERSION SAFETY - adding a new permitted variant turns every
+                        previously-exhaustive switch into a compile
+                        error - exactly what you want.
+                        - DOCUMENTATION - the permits list IS the documentation of "all
+                        implementors".
+                    <p>
+
+                        Common Patterns
+                        ---------------
+                        Result
+                        <T
+                        , E> Success | Failure
+                        Json Null | Boolean | Number | String | Array | Object
   Token             Plus | Minus | Number | Eof
-  HttpResponse      Ok | Redirect | NotFound | ServerError</pre>
-                    <h3>Rules</h3>
-                    <ul>
-                        <li>Permitted subtypes must live in the SAME MODULE (or the same package
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    if no module).</pre>
-                    <ul>
-                        <li>When permitted subtypes are in the SAME FILE the `permits` clause may
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    be omitted - the compiler infers it. This file uses that shortcut.</pre>
-                    <ul>
-                        <li>Every permitted subtype must DIRECTLY implement the sealed interface.
-                        </li>
-                    </ul>
-                    <p>Related: SealedClassesDemo.java in OOPSConcepts/SealedClasses shows the same idea on classes;
-                        sealed interfaces tend to be more common because they pair naturally with records.</p>
+                        HttpResponse Ok | Redirect | NotFound | ServerError
+                    <p>
+
+                        Rules
+                        -----
+                        - Permitted subtypes must live in the SAME MODULE (or the same package
+                        if no module).
+                        - When permitted subtypes are in the SAME FILE the `permits` clause may
+                        be omitted - the compiler infers it. This file uses that shortcut.
+                        - Every permitted subtype must DIRECTLY implement the sealed interface.
+                    <p>
+
+                        Related: SealedClassesDemo.java in OOPSConcepts/SealedClasses shows the
+                        same idea on classes; sealed interfaces tend to be more common because
+                        they pair naturally with records.
                 </div>
             </div>
 

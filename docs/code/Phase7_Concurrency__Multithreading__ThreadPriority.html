@@ -1,12 +1,12 @@
 <!doctype html>
-<html data-bs-theme="light" lang="en">
+<html lang="en" data-bs-theme="light">
 <head>
     <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Thread Priority · HelloJava</title>
-    <meta content="A hands-on, topic-by-topic walkthrough of Java 21 LTS." name="description">
-    <link href="https://fonts.googleapis.com" rel="preconnect">
-    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <meta name="description" content="A hands-on, topic-by-topic walkthrough of Java 21 LTS.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
@@ -22,8 +22,8 @@
 
 <nav class="navbar navbar-expand-lg fixed-top shadow-0 hj-navbar">
     <div class="container-fluid">
-        <button aria-controls="sidebar" class="btn btn-link text-white d-lg-none me-2 p-2" data-mdb-target="#sidebar"
-                data-mdb-toggle="offcanvas" type="button">
+        <button class="btn btn-link text-white d-lg-none me-2 p-2" type="button" data-mdb-toggle="offcanvas"
+                data-mdb-target="#sidebar" aria-controls="sidebar">
             <span class="material-icons">menu</span>
         </button>
         <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
@@ -34,11 +34,11 @@
         <div class="d-flex align-items-center ms-auto gap-2">
             <div class="hj-search d-none d-md-flex">
                 <span class="material-icons">search</span>
-                <input autocomplete="off" id="hj-search" placeholder="Search topics..." type="search">
+                <input type="search" id="hj-search" placeholder="Search topics..." autocomplete="off">
                 <div id="hj-search-results"></div>
             </div>
-            <a class="btn btn-link text-white p-2" href="https://github.com" id="hj-github-link" rel="noopener"
-               target="_blank" title="View on GitHub">
+            <a class="btn btn-link text-white p-2" href="https://github.com" target="_blank" rel="noopener"
+               title="View on GitHub" id="hj-github-link">
                 <span class="material-icons">open_in_new</span>
             </a>
             <button class="btn btn-link text-white p-2" id="hj-theme-toggle" title="Toggle theme">
@@ -49,20 +49,20 @@
 </nav>
 
 
-<div class="offcanvas-lg offcanvas-start hj-sidebar" id="sidebar" tabindex="-1">
+<div class="offcanvas-lg offcanvas-start hj-sidebar" tabindex="-1" id="sidebar">
     <div class="offcanvas-header">
         <h6 class="offcanvas-title fw-bold">All Phases</h6>
-        <button aria-label="Close" class="btn-close" data-mdb-dismiss="offcanvas" data-mdb-target="#sidebar"
-                type="button"></button>
+        <button type="button" class="btn-close" data-mdb-dismiss="offcanvas" data-mdb-target="#sidebar"
+                aria-label="Close"></button>
     </div>
     <div class="offcanvas-body p-0">
         <div class="accordion accordion-flush" id="hj-sidebar-acc">
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase0_SetupAndFirstPrograms"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase0_SetupAndFirstPrograms" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">play_circle</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 0</small>
@@ -71,7 +71,7 @@
                         <span class="badge bg-light text-dark ms-2">11</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase0_SetupAndFirstPrograms">
+                <div id="sb-Phase0_SetupAndFirstPrograms" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase0_SetupAndFirstPrograms.html">
@@ -127,9 +127,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase1_CoreLanguage"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase1_CoreLanguage" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">code</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 1</small>
@@ -138,7 +138,7 @@
                         <span class="badge bg-light text-dark ms-2">61</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase1_CoreLanguage">
+                <div id="sb-Phase1_CoreLanguage" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold" href="../phase/Phase1_CoreLanguage.html">
                             <span class="material-icons-outlined small me-1">summarize</span>Phase overview
@@ -352,9 +352,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase2_MethodsArraysStrings"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase2_MethodsArraysStrings" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">data_array</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 2</small>
@@ -363,7 +363,7 @@
                         <span class="badge bg-light text-dark ms-2">20</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase2_MethodsArraysStrings">
+                <div id="sb-Phase2_MethodsArraysStrings" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase2_MethodsArraysStrings.html">
@@ -438,9 +438,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase3_ObjectOrientation"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase3_ObjectOrientation" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">category</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 3</small>
@@ -449,7 +449,7 @@
                         <span class="badge bg-light text-dark ms-2">48</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase3_ObjectOrientation">
+                <div id="sb-Phase3_ObjectOrientation" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase3_ObjectOrientation.html">
@@ -633,9 +633,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase4_ErrorsAndTypeSafety"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase4_ErrorsAndTypeSafety" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">shield</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 4</small>
@@ -644,7 +644,7 @@
                         <span class="badge bg-light text-dark ms-2">27</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase4_ErrorsAndTypeSafety">
+                <div id="sb-Phase4_ErrorsAndTypeSafety" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase4_ErrorsAndTypeSafety.html">
@@ -744,9 +744,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase5_CollectionsLambdasStreams"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase5_CollectionsLambdasStreams" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">stream</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 5</small>
@@ -755,7 +755,7 @@
                         <span class="badge bg-light text-dark ms-2">57</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase5_CollectionsLambdasStreams">
+                <div id="sb-Phase5_CollectionsLambdasStreams" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase5_CollectionsLambdasStreams.html">
@@ -942,9 +942,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase6_RuntimeMemoryRegexReflection"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase6_RuntimeMemoryRegexReflection" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">memory</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 6</small>
@@ -953,7 +953,7 @@
                         <span class="badge bg-light text-dark ms-2">21</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase6_RuntimeMemoryRegexReflection">
+                <div id="sb-Phase6_RuntimeMemoryRegexReflection" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase6_RuntimeMemoryRegexReflection.html">
@@ -1033,9 +1033,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="true"
-                            class="accordion-button  bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase7_Concurrency"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button  bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase7_Concurrency" aria-expanded="true">
                         <span class="material-icons me-2 text-primary">settings_input_component</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 7</small>
@@ -1044,7 +1044,7 @@
                         <span class="badge bg-light text-dark ms-2">48</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse show" id="sb-Phase7_Concurrency">
+                <div id="sb-Phase7_Concurrency" class="accordion-collapse collapse show">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold" href="../phase/Phase7_Concurrency.html">
                             <span class="material-icons-outlined small me-1">summarize</span>Phase overview
@@ -1201,9 +1201,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase8_PracticalAPIs"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase8_PracticalAPIs" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">api</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 8</small>
@@ -1212,7 +1212,7 @@
                         <span class="badge bg-light text-dark ms-2">22</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase8_PracticalAPIs">
+                <div id="sb-Phase8_PracticalAPIs" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold" href="../phase/Phase8_PracticalAPIs.html">
                             <span class="material-icons-outlined small me-1">summarize</span>Phase overview
@@ -1293,9 +1293,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase9_ModernJavaAndModules"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase9_ModernJavaAndModules" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">auto_awesome</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 9</small>
@@ -1304,7 +1304,7 @@
                         <span class="badge bg-light text-dark ms-2">8</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase9_ModernJavaAndModules">
+                <div id="sb-Phase9_ModernJavaAndModules" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase9_ModernJavaAndModules.html">
@@ -1350,10 +1350,10 @@
         <div class="container-fluid px-4">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-2 small">
-                    <li class="breadcrumb-item"><a class="text-white-50" href="../index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a class="text-white-50" href="../phase/Phase7_Concurrency.html">Phase
+                    <li class="breadcrumb-item"><a href="../index.html" class="text-white-50">Home</a></li>
+                    <li class="breadcrumb-item"><a href="../phase/Phase7_Concurrency.html" class="text-white-50">Phase
                         7</a></li>
-                    <li aria-current="page" class="breadcrumb-item active text-white">Multithreading</li>
+                    <li class="breadcrumb-item active text-white" aria-current="page">Multithreading</li>
                 </ol>
             </nav>
             <div class="d-flex align-items-center flex-wrap gap-3">
@@ -1380,54 +1380,57 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Thread Priority</h2>
-                    <p>Every Thread has an integer PRIORITY between 1 and 10 (inclusive):</p>
-                    <pre class="hj-doc-art">     Thread.MIN_PRIORITY   = 1
+                    Thread Priority
+                    ---------------
+                    Every Thread has an integer PRIORITY between 1 and 10 (inclusive):
+                    <p>
+
+                        Thread.MIN_PRIORITY = 1
      Thread.NORM_PRIORITY  = 5     (the default)
-     Thread.MAX_PRIORITY   = 10</pre>
-                    <p>Priority is a HINT to the OS scheduler that this thread should be preferred over lower-priority
-                        ones. It is NOT a guarantee.</p>
-                    <h3>What actually happens</h3>
-                    <ul>
-                        <li>The JVM maps Java&#x27;s 1..10 to native OS priorities. Each OS has a
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    different range and policy:
+                        Thread.MAX_PRIORITY = 10
+                    <p>
+
+                        Priority is a HINT to the OS scheduler that this thread should be
+                        preferred over lower-priority ones. It is NOT a guarantee.
+                    <p>
+
+                        What actually happens
+                        ---------------------
+                        - The JVM maps Java's 1..10 to native OS priorities. Each OS has a
+                        different range and policy:
         Linux  - mapping varies, often a small effect or none in CFS.
         Windows - mapped to thread priority levels (idle..time-critical).
-        macOS  - QoS-influenced; not a strict ordering.</pre>
-                    <ul>
-                        <li>On most modern desktops/servers, priority has very little effect.
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    Do NOT rely on it for correctness.</pre>
-                    <h3>Inheritance</h3>
-                    <p>A new Thread inherits its priority from the thread that created it (unless explicitly set before
-                        start()).</p>
-                    <h3>Validity</h3>
-                    <p>setPriority(int) throws IllegalArgumentException if out of [1, 10]. setPriority is also capped by
-                        the parent ThreadGroup&#x27;s max priority.</p>
-                    <h3>When NOT to use priorities</h3>
-                    <ul>
-                        <li>To &quot;make this thread go faster than another.&quot; It rarely does.
-                        </li>
-                        <li>To ensure ordering or fairness — use a queue / synchronizer.
-                        </li>
-                        <li>To prevent starvation — priority-based starvation is a thing.
-                        </li>
-                    </ul>
-                    <h3>When priorities can help</h3>
-                    <ul>
-                        <li>To run a low-priority background task (Thread.MIN_PRIORITY) so it
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    doesn&#x27;t crowd out interactive work.</pre>
-                    <ul>
-                        <li>On dedicated real-time-ish systems where you actually control the
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    OS scheduler. On general-purpose JVMs, treat priorities as polite
-    hints only.</pre>
+                        macOS - QoS-influenced; not a strict ordering.
+                        - On most modern desktops/servers, priority has very little effect.
+                        Do NOT rely on it for correctness.
+                    <p>
+
+                        Inheritance
+                        -----------
+                        A new Thread inherits its priority from the thread that created it
+                        (unless explicitly set before start()).
+                    <p>
+
+                        Validity
+                        --------
+                        setPriority(int) throws IllegalArgumentException if out of [1, 10].
+                        setPriority is also capped by the parent ThreadGroup's max priority.
+                    <p>
+
+                        When NOT to use priorities
+                        --------------------------
+                        - To "make this thread go faster than another." It rarely does.
+                        - To ensure ordering or fairness — use a queue / synchronizer.
+                        - To prevent starvation — priority-based starvation is a thing.
+                    <p>
+
+                        When priorities can help
+                        ------------------------
+                        - To run a low-priority background task (Thread.MIN_PRIORITY) so it
+                        doesn't crowd out interactive work.
+                        - On dedicated real-time-ish systems where you actually control the
+                        OS scheduler. On general-purpose JVMs, treat priorities as polite
+                        hints only.
                 </div>
             </div>
 
@@ -1535,8 +1538,8 @@ public class ThreadPriority {
 <footer class="hj-footer text-center py-4 mt-5">
     <small class="text-muted">
         HelloJava · A topic-by-topic walkthrough of Java 21 ·
-        Built with <a href="https://mdbootstrap.com/" rel="noopener" target="_blank">MDB</a>
-        and <a href="https://prismjs.com/" rel="noopener" target="_blank">Prism.js</a>
+        Built with <a href="https://mdbootstrap.com/" target="_blank" rel="noopener">MDB</a>
+        and <a href="https://prismjs.com/" target="_blank" rel="noopener">Prism.js</a>
     </small>
 </footer>
 

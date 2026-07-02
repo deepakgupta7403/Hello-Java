@@ -1380,22 +1380,15 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <p>Bank - aggregate root that owns many Accounts.</p>
-                    <p>Demonstrates:</p>
-                    <ul>
-                        <li>ENCAPSULATION - accounts list is hidden; callers go through openAccount,
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                     find, applyMonthlyCycle.</pre>
-                    <ul>
-                        <li>POLYMORPHISM - applyMonthlyCycle iterates over Account references;
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                     each subclass&#x27;s overridden calculateInterest runs.</pre>
-                    <ul>
-                        <li>SINGLE RESPONSIBILITY - the Bank schedules; each Account owns its rules.
-                        </li>
-                    </ul>
+                    Bank - aggregate root that owns many Accounts.
+                    <p>
+
+                        Demonstrates:
+                        - ENCAPSULATION - accounts list is hidden; callers go through openAccount,
+                        find, applyMonthlyCycle.
+                        - POLYMORPHISM - applyMonthlyCycle iterates over Account references;
+                        each subclass's overridden calculateInterest runs.
+                        - SINGLE RESPONSIBILITY - the Bank schedules; each Account owns its rules.
                 </div>
             </div>
 

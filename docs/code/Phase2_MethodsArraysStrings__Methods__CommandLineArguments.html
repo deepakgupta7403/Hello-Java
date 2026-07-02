@@ -1380,39 +1380,51 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Command-Line Arguments</h2>
-                    <p>When you launch a Java program, anything you type after the class name on the command line is
-                        passed to `main` as a String array:</p>
-                    <pre class="hj-doc-art">     public static void main(String[] args)</pre>
-                    <p>Each whitespace-separated token becomes one element of `args`. Arguments are ALWAYS Strings - you
-                        must parse them yourself if you need numbers.</p>
-                    <h3>Running This File</h3>
-                    <p>Compile first:</p>
-                    <pre class="hj-doc-art">     javac src/Basics/Methods/CommandLineArguments.java</pre>
-                    <p>Then run (from the src directory) with whatever arguments you want:</p>
-                    <pre class="hj-doc-art">     cd src
-     java Basics.Methods.CommandLineArguments alpha beta 42</pre>
-                    <p>Or, single-file mode (Java 11+):</p>
-                    <pre class="hj-doc-art">     java src/Basics/Methods/CommandLineArguments.java alpha beta 42</pre>
-                    <p>In IntelliJ - right-click -&gt; &quot;Modify Run Configuration...&quot; -&gt; &quot;Program
-                        arguments&quot; field. List tokens separated by spaces. Quote tokens that contain spaces: &quot;Hello
-                        World&quot;.</p>
-                    <h3>Things To Know</h3>
-                    <ul>
-                        <li>args is NEVER null. If no arguments are passed, args.length == 0.
-                        </li>
-                        <li>The PROGRAM NAME (the class) is NOT in args - that is a C/C++ convention.
-                        </li>
-                    </ul>
-                    <p>args[0] is the FIRST user argument.</p>
-                    <ul>
-                        <li>Quote any argument that contains spaces: &quot;Hello World&quot;.
-                        </li>
-                        <li>Standard input is separate: command-line args are not the same as Scanner.
-                        </li>
-                    </ul>
-                    <h3>Demo</h3>
-                    <p>This program echoes each argument, then sums any that parse as integers.</p>
+                    Command-Line Arguments
+                    ----------------------
+                    When you launch a Java program, anything you type after the class name on the
+                    command line is passed to `main` as a String array:
+                    <p>
+
+                        public static void main(String[] args)
+                    <p>
+
+                        Each whitespace-separated token becomes one element of `args`. Arguments are
+                        ALWAYS Strings - you must parse them yourself if you need numbers.
+                    <p>
+
+                        Running This File
+                        -----------------
+                        Compile first:
+                        javac src/Basics/Methods/CommandLineArguments.java
+                    <p>
+
+                        Then run (from the src directory) with whatever arguments you want:
+                        cd src
+                        java Basics.Methods.CommandLineArguments alpha beta 42
+                    <p>
+
+                        Or, single-file mode (Java 11+):
+                        java src/Basics/Methods/CommandLineArguments.java alpha beta 42
+                    <p>
+
+                        In IntelliJ - right-click -> "Modify Run Configuration..." -> "Program
+                        arguments" field. List tokens separated by spaces. Quote tokens that contain
+                        spaces: "Hello World".
+                    <p>
+
+                        Things To Know
+                        --------------
+                        - args is NEVER null. If no arguments are passed, args.length == 0.
+                        - The PROGRAM NAME (the class) is NOT in args - that is a C/C++ convention.
+                        args[0] is the FIRST user argument.
+                        - Quote any argument that contains spaces: "Hello World".
+                        - Standard input is separate: command-line args are not the same as Scanner.
+                    <p>
+
+                        Demo
+                        ----
+                        This program echoes each argument, then sums any that parse as integers.
                 </div>
             </div>
 

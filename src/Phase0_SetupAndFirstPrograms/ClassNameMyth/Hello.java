@@ -1,10 +1,29 @@
 package Phase0_SetupAndFirstPrograms.ClassNameMyth;
 
-/**The Final Conclusion
- * If the class is public and file name are same as class name then it's working fine.
- * If the class is public and file name are different as class name then it's throw the error class name and file name should be same
- * If the class is not public and file name are same as class name then it's working fine.
- * All the program is did below**/
+/**
+ * <h1>The Class Name Myth</h1>
+ *
+ * <h2>The Final Conclusion</h2>
+ * <p>Whether a Java source file compiles depends on the relationship between the
+ * class name, the file name, and whether the class is declared <code>public</code>.
+ * There are three cases to consider.</p>
+ *
+ * <ul>
+ *   <li>If the class is <code>public</code> and the file name is the same as the
+ *       class name, then it works fine.</li>
+ *   <li>If the class is <code>public</code> and the file name is different from the
+ *       class name, then it throws an error &mdash; the class name and file name
+ *       must be the same.</li>
+ *   <li>If the class is not <code>public</code> and the file name is different from
+ *       the class name, then it still works fine.</li>
+ * </ul>
+ *
+ * <p>The programs demonstrating each case are shown below.</p>
+ *
+ * @author Deepak Gupta
+ * @version 1.0
+ * @since 2026-05-21
+ */
 
 /*public class Hello {
     public static void main(String[] args) {

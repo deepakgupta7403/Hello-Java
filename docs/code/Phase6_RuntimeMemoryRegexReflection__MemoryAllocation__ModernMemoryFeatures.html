@@ -1,12 +1,12 @@
 <!doctype html>
-<html data-bs-theme="light" lang="en">
+<html lang="en" data-bs-theme="light">
 <head>
     <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Modern Memory Features · HelloJava</title>
-    <meta content="A hands-on, topic-by-topic walkthrough of Java 21 LTS." name="description">
-    <link href="https://fonts.googleapis.com" rel="preconnect">
-    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <meta name="description" content="A hands-on, topic-by-topic walkthrough of Java 21 LTS.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
@@ -22,8 +22,8 @@
 
 <nav class="navbar navbar-expand-lg fixed-top shadow-0 hj-navbar">
     <div class="container-fluid">
-        <button aria-controls="sidebar" class="btn btn-link text-white d-lg-none me-2 p-2" data-mdb-target="#sidebar"
-                data-mdb-toggle="offcanvas" type="button">
+        <button class="btn btn-link text-white d-lg-none me-2 p-2" type="button" data-mdb-toggle="offcanvas"
+                data-mdb-target="#sidebar" aria-controls="sidebar">
             <span class="material-icons">menu</span>
         </button>
         <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
@@ -34,11 +34,11 @@
         <div class="d-flex align-items-center ms-auto gap-2">
             <div class="hj-search d-none d-md-flex">
                 <span class="material-icons">search</span>
-                <input autocomplete="off" id="hj-search" placeholder="Search topics..." type="search">
+                <input type="search" id="hj-search" placeholder="Search topics..." autocomplete="off">
                 <div id="hj-search-results"></div>
             </div>
-            <a class="btn btn-link text-white p-2" href="https://github.com" id="hj-github-link" rel="noopener"
-               target="_blank" title="View on GitHub">
+            <a class="btn btn-link text-white p-2" href="https://github.com" target="_blank" rel="noopener"
+               title="View on GitHub" id="hj-github-link">
                 <span class="material-icons">open_in_new</span>
             </a>
             <button class="btn btn-link text-white p-2" id="hj-theme-toggle" title="Toggle theme">
@@ -49,20 +49,20 @@
 </nav>
 
 
-<div class="offcanvas-lg offcanvas-start hj-sidebar" id="sidebar" tabindex="-1">
+<div class="offcanvas-lg offcanvas-start hj-sidebar" tabindex="-1" id="sidebar">
     <div class="offcanvas-header">
         <h6 class="offcanvas-title fw-bold">All Phases</h6>
-        <button aria-label="Close" class="btn-close" data-mdb-dismiss="offcanvas" data-mdb-target="#sidebar"
-                type="button"></button>
+        <button type="button" class="btn-close" data-mdb-dismiss="offcanvas" data-mdb-target="#sidebar"
+                aria-label="Close"></button>
     </div>
     <div class="offcanvas-body p-0">
         <div class="accordion accordion-flush" id="hj-sidebar-acc">
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase0_SetupAndFirstPrograms"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase0_SetupAndFirstPrograms" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">play_circle</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 0</small>
@@ -71,7 +71,7 @@
                         <span class="badge bg-light text-dark ms-2">11</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase0_SetupAndFirstPrograms">
+                <div id="sb-Phase0_SetupAndFirstPrograms" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase0_SetupAndFirstPrograms.html">
@@ -127,9 +127,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase1_CoreLanguage"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase1_CoreLanguage" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">code</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 1</small>
@@ -138,7 +138,7 @@
                         <span class="badge bg-light text-dark ms-2">61</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase1_CoreLanguage">
+                <div id="sb-Phase1_CoreLanguage" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold" href="../phase/Phase1_CoreLanguage.html">
                             <span class="material-icons-outlined small me-1">summarize</span>Phase overview
@@ -352,9 +352,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase2_MethodsArraysStrings"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase2_MethodsArraysStrings" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">data_array</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 2</small>
@@ -363,7 +363,7 @@
                         <span class="badge bg-light text-dark ms-2">20</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase2_MethodsArraysStrings">
+                <div id="sb-Phase2_MethodsArraysStrings" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase2_MethodsArraysStrings.html">
@@ -438,9 +438,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase3_ObjectOrientation"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase3_ObjectOrientation" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">category</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 3</small>
@@ -449,7 +449,7 @@
                         <span class="badge bg-light text-dark ms-2">48</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase3_ObjectOrientation">
+                <div id="sb-Phase3_ObjectOrientation" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase3_ObjectOrientation.html">
@@ -633,9 +633,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase4_ErrorsAndTypeSafety"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase4_ErrorsAndTypeSafety" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">shield</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 4</small>
@@ -644,7 +644,7 @@
                         <span class="badge bg-light text-dark ms-2">27</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase4_ErrorsAndTypeSafety">
+                <div id="sb-Phase4_ErrorsAndTypeSafety" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase4_ErrorsAndTypeSafety.html">
@@ -744,9 +744,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase5_CollectionsLambdasStreams"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase5_CollectionsLambdasStreams" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">stream</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 5</small>
@@ -755,7 +755,7 @@
                         <span class="badge bg-light text-dark ms-2">57</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase5_CollectionsLambdasStreams">
+                <div id="sb-Phase5_CollectionsLambdasStreams" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase5_CollectionsLambdasStreams.html">
@@ -942,9 +942,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="true"
-                            class="accordion-button  bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase6_RuntimeMemoryRegexReflection"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button  bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase6_RuntimeMemoryRegexReflection" aria-expanded="true">
                         <span class="material-icons me-2 text-primary">memory</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 6</small>
@@ -953,7 +953,7 @@
                         <span class="badge bg-light text-dark ms-2">21</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse show" id="sb-Phase6_RuntimeMemoryRegexReflection">
+                <div id="sb-Phase6_RuntimeMemoryRegexReflection" class="accordion-collapse collapse show">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase6_RuntimeMemoryRegexReflection.html">
@@ -1033,9 +1033,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase7_Concurrency"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase7_Concurrency" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">settings_input_component</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 7</small>
@@ -1044,7 +1044,7 @@
                         <span class="badge bg-light text-dark ms-2">48</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase7_Concurrency">
+                <div id="sb-Phase7_Concurrency" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold" href="../phase/Phase7_Concurrency.html">
                             <span class="material-icons-outlined small me-1">summarize</span>Phase overview
@@ -1201,9 +1201,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase8_PracticalAPIs"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase8_PracticalAPIs" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">api</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 8</small>
@@ -1212,7 +1212,7 @@
                         <span class="badge bg-light text-dark ms-2">22</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase8_PracticalAPIs">
+                <div id="sb-Phase8_PracticalAPIs" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold" href="../phase/Phase8_PracticalAPIs.html">
                             <span class="material-icons-outlined small me-1">summarize</span>Phase overview
@@ -1293,9 +1293,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase9_ModernJavaAndModules"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase9_ModernJavaAndModules" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">auto_awesome</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 9</small>
@@ -1304,7 +1304,7 @@
                         <span class="badge bg-light text-dark ms-2">8</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase9_ModernJavaAndModules">
+                <div id="sb-Phase9_ModernJavaAndModules" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase9_ModernJavaAndModules.html">
@@ -1350,10 +1350,10 @@
         <div class="container-fluid px-4">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-2 small">
-                    <li class="breadcrumb-item"><a class="text-white-50" href="../index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a class="text-white-50"
-                                                   href="../phase/Phase6_RuntimeMemoryRegexReflection.html">Phase 6</a></li>
-                    <li aria-current="page" class="breadcrumb-item active text-white">Memory Allocation</li>
+                    <li class="breadcrumb-item"><a href="../index.html" class="text-white-50">Home</a></li>
+                    <li class="breadcrumb-item"><a href="../phase/Phase6_RuntimeMemoryRegexReflection.html"
+                                                   class="text-white-50">Phase 6</a></li>
+                    <li class="breadcrumb-item active text-white" aria-current="page">Memory Allocation</li>
                 </ol>
             </nav>
             <div class="d-flex align-items-center flex-wrap gap-3">
@@ -1380,113 +1380,95 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Modern Memory Features (Java 9 -&gt; 21)</h2>
-                    <p>The JVM and JDK keep getting better at memory. A short tour of the changes that matter most to
-                        everyday Java code.</p>
-                    <h3>Java 9</h3>
-                    <ul>
-                        <li>COMPACT STRINGS String now stores LATIN-1 chars as one
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                                 byte each (instead of always two). Cuts
+                    Modern Memory Features (Java 9 -> 21)
+                    -------------------------------------
+                    The JVM and JDK keep getting better at memory. A short tour of the
+                    changes that matter most to everyday Java code.
+                    <p>
+
+                        Java 9
+                        ------
+                        - COMPACT STRINGS String now stores LATIN-1 chars as one
+                        byte each (instead of always two). Cuts
                                  String memory roughly in half for ASCII
-                                 text. Automatic - no code changes needed.</pre>
-                    <ul>
-                        <li>java.lang.ref.Cleaner Reliable replacement for finalize() to
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                                 clean up native / off-heap resources.</pre>
-                    <ul>
-                        <li>String.intern() table moves to native memory (Metaspace).
-                        </li>
-                    </ul>
-                    <h3>Java 10</h3>
-                    <ul>
-                        <li>APPLICATION CLASS-DATA SHARING (AppCDS)
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    Pre-load a shared archive of your app classes for faster startup
-    and smaller per-JVM footprint.</pre>
-                    <h3>Java 11</h3>
-                    <ul>
-                        <li>EPSILON GC &quot;do-nothing&quot; allocator for benchmarks.
-                        </li>
-                        <li>ZGC Experimental low-pause collector.
-                        </li>
-                    </ul>
-                    <h3>Java 14</h3>
-                    <ul>
-                        <li>HELPFUL NULLPOINTEREXCEPTIONS (related to memory only loosely - tells
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    you which dereference was null).</pre>
-                    <ul>
-                        <li>Foreign-Memory Access API (incubator) - precursor to the Foreign
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    Function &amp; Memory API.</pre>
-                    <h3>Java 15</h3>
-                    <ul>
-                        <li>ZGC and Shenandoah PRODUCTION-READY.
-                        </li>
-                    </ul>
-                    <h3>Java 16</h3>
-                    <ul>
-                        <li>Records Smaller, immutable data carriers.
-                        </li>
-                        <li>Foreign Linker API (incubator)
-                        </li>
-                    </ul>
-                    <h3>Java 17 (LTS)</h3>
-                    <ul>
-                        <li>Sealed classes / records mature.
-                        </li>
-                        <li>Strongly Encapsulate JDK Internals (sun.misc.Unsafe etc.) - moves Java
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    away from low-level memory hacks.</pre>
-                    <h3>Java 19 / 20</h3>
-                    <ul>
-                        <li>VIRTUAL THREADS (preview) Cheap (a few KB each) threads scheduled
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                                 on a small pool of OS carrier threads.
-                                 Changes the memory cost of &quot;one thread
-                                 per request&quot;.</pre>
-                    <h3>Java 21 (LTS)</h3>
-                    <ul>
-                        <li>VIRTUAL THREADS Final. Each virtual thread uses a few KB
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                                 of heap instead of a per-thread 512 KB
+                        text. Automatic - no code changes needed.
+                        - java.lang.ref.Cleaner Reliable replacement for finalize() to
+                        clean up native / off-heap resources.
+                        - String.intern() table moves to native memory (Metaspace).
+                    <p>
+
+                        Java 10
+                        -------
+                        - APPLICATION CLASS-DATA SHARING (AppCDS)
+                        Pre-load a shared archive of your app classes for faster startup
+                        and smaller per-JVM footprint.
+                    <p>
+
+                        Java 11
+                        -------
+                        - EPSILON GC "do-nothing" allocator for benchmarks.
+                        - ZGC Experimental low-pause collector.
+                    <p>
+
+                        Java 14
+                        -------
+                        - HELPFUL NULLPOINTEREXCEPTIONS (related to memory only loosely - tells
+                        you which dereference was null).
+                        - Foreign-Memory Access API (incubator) - precursor to the Foreign
+                        Function & Memory API.
+                    <p>
+
+                        Java 15
+                        -------
+                        - ZGC and Shenandoah PRODUCTION-READY.
+                    <p>
+
+                        Java 16
+                        -------
+                        - Records Smaller, immutable data carriers.
+                        - Foreign Linker API (incubator)
+                    <p>
+
+                        Java 17 (LTS)
+                        -------------
+                        - Sealed classes / records mature.
+                        - Strongly Encapsulate JDK Internals (sun.misc.Unsafe etc.) - moves Java
+                        away from low-level memory hacks.
+                    <p>
+
+                        Java 19 / 20
+                        ------------
+                        - VIRTUAL THREADS (preview) Cheap (a few KB each) threads scheduled
+                        on a small pool of OS carrier threads.
+                        Changes the memory cost of "one thread
+                        per request".
+                    <p>
+
+                        Java 21 (LTS)
+                        -------------
+                        - VIRTUAL THREADS Final. Each virtual thread uses a few KB
+                        of heap instead of a per-thread 512 KB
                                  OS stack - millions of threads become
-                                 practical.</pre>
-                    <ul>
-                        <li>GENERATIONAL ZGC ZGC now has a young / old generational
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                                 split. Same pause-time goals (sub-ms)
+                        practical.
+                        - GENERATIONAL ZGC ZGC now has a young / old generational
+                        split. Same pause-time goals (sub-ms)
                                  with better throughput and less memory
                                  overhead.
-                                 Flag: -XX:+UseZGC -XX:+ZGenerational</pre>
-                    <ul>
-                        <li>Foreign Function &amp; Memory API (preview, finalized in Java 22)
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                                 Safe, supported replacement for JNI and
-                                 Unsafe for OFF-HEAP memory access.</pre>
-                    <h3>Things You Can Actually Run</h3>
-                    <p>The demos below show:</p>
-                    <ul>
-                        <li>Compact-string effect on byte usage (informational - JVM does it).
-                        </li>
-                        <li>Cleaner-based cleanup of a &quot;resource&quot;.
-                        </li>
-                        <li>Off-heap direct ByteBuffer.
-                        </li>
-                        <li>Memory cost of platform threads vs virtual threads.
-                        </li>
-                    </ul>
+                        Flag: -XX:+UseZGC -XX:+ZGenerational
+                        - Foreign Function & Memory API (preview, finalized in Java 22)
+                        Safe, supported replacement for JNI and
+                        Unsafe for OFF-HEAP memory access.
+                    <p>
+
+                        Things You Can Actually Run
+                        ---------------------------
+                        The demos below show:
+                    <p>
+
+                        1. Compact-string effect on byte usage (informational - JVM does it).
+                        2. Cleaner-based cleanup of a "resource".
+                        3. Off-heap direct ByteBuffer.
+                        4. Memory cost of platform threads vs virtual threads.
                 </div>
             </div>
 
@@ -1615,8 +1597,8 @@ public class ModernMemoryFeatures {
 <footer class="hj-footer text-center py-4 mt-5">
     <small class="text-muted">
         HelloJava · A topic-by-topic walkthrough of Java 21 ·
-        Built with <a href="https://mdbootstrap.com/" rel="noopener" target="_blank">MDB</a>
-        and <a href="https://prismjs.com/" rel="noopener" target="_blank">Prism.js</a>
+        Built with <a href="https://mdbootstrap.com/" target="_blank" rel="noopener">MDB</a>
+        and <a href="https://prismjs.com/" target="_blank" rel="noopener">Prism.js</a>
     </small>
 </footer>
 

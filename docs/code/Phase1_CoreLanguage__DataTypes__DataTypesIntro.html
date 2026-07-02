@@ -1380,10 +1380,13 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Data Types in Java</h2>
-                    <p>Java is a STATICALLY-TYPED language - every variable must have a declared type known at compile
-                        time. Java data types fall into two top-level categories:</p>
-                    <pre class="hj-doc-art">             Java Data Types
+                    Data Types in Java
+                    ------------------
+                    Java is a STATICALLY-TYPED language - every variable must have a declared type
+                    known at compile time. Java data types fall into two top-level categories:
+                    <p>
+
+                        Java Data Types
              /              \
      Primitive            Reference (a.k.a. Non-Primitive)
      (8 built-in)         (everything else)
@@ -1398,11 +1401,16 @@
      |   |-- floating-point
      |       |-- float
      |       |-- double
-     |-- boolean</pre>
-                    <p>(*) char is INTEGRAL because it stores a 16-bit unsigned Unicode code unit;</p>
-                    <pre class="hj-doc-art">    it can be used in arithmetic - e.g. &#x27;A&#x27; + 1 evaluates to 66 (an int).</pre>
-                    <h3>Primitive Types - Quick Table</h3>
-                    <pre class="hj-doc-art">  Type    | Size      | Default | Range
+                        |-- boolean
+                    <p>
+
+                        (*) char is INTEGRAL because it stores a 16-bit unsigned Unicode code unit;
+                        it can be used in arithmetic - e.g. 'A' + 1 evaluates to 66 (an int).
+                    <p>
+
+                        Primitive Types - Quick Table
+                        -----------------------------
+                        Type | Size | Default | Range
   --------+-----------+---------+--------------------------------------------
   byte    | 8  bits   | 0       | -128 .. 127
   short   | 16 bits   | 0       | -32,768 .. 32,767
@@ -1410,37 +1418,42 @@
   long    | 64 bits   | 0L      | -2^63 .. 2^63 - 1
   float   | 32 bits   | 0.0f    | ~ +/-3.4e38   (7 decimal digits precision)
   double  | 64 bits   | 0.0d    | ~ +/-1.7e308  (15 decimal digits precision)
-  char    | 16 bits   | &#x27; &#x27;| 0 .. 65,535   (Unicode BMP code units)
-  boolean | JVM-dep.  | false   | true / false</pre>
-                    <h3>Reference Types</h3>
-                    <ul>
-                        <li>All non-primitive types are REFERENCES (similar to pointers in C, but safer:
-                        </li>
-                    </ul>
-                    <p>no pointer arithmetic, automatically garbage collected).</p>
-                    <ul>
-                        <li>A reference variable either points to an object on the HEAP or is null.
-                        </li>
-                        <li>Examples: String, int[], List&lt;String&gt;, Customer, Thread, ...
-                        </li>
-                    </ul>
-                    <h3>Primitive vs Reference - Key Differences</h3>
-                    <pre class="hj-doc-art">  Aspect            | Primitive                | Reference
+                        char | 16 bits | ' '| 0 .. 65,535 (Unicode BMP code units)
+                        boolean | JVM-dep. | false | true / false
+                    <p>
+
+                        Reference Types
+                        ---------------
+                        - All non-primitive types are REFERENCES (similar to pointers in C, but safer:
+                        no pointer arithmetic, automatically garbage collected).
+                        - A reference variable either points to an object on the HEAP or is null.
+                        - Examples: String, int[], List
+                        <String>, Customer, Thread, ...
+                            <p>
+
+                                Primitive vs Reference - Key Differences
+                                ----------------------------------------
+                                Aspect | Primitive | Reference
   ------------------+--------------------------+-----------------------------
   Stored in         | stack (or inside object) | heap (object), stack (var)
-  Default value     | 0 / false / &#x27; &#x27;     | null
+                                Default value | 0 / false / ' ' | null
   Memory size       | fixed by type            | depends on object + header
   Methods?          | no                       | yes (via the referenced obj)
   Can be null?      | NO                       | yes
   Wrapped equivalent| Integer, Double, ...     | (already an object)
-  == compares       | values                   | references (use .equals())</pre>
-                    <h3>Why Both Worlds?</h3>
-                    <p>Primitives are FAST and cheap (no object header, fits in a CPU register). Reference types are
-                        FLEXIBLE (carry methods, can be null, fit in collections because generics only work with
-                        reference types).</p>
-                    <p>Wrapper classes (Integer, Double, Boolean, ...) bridge the gap - they are objects that hold a
-                        single primitive value. See Basics/WrapperClasses for deeper coverage. Detailed primitive
-                        examples are in Basics/PrimitiveDataTypes.</p>
+                                == compares | values | references (use .equals())
+                            <p>
+
+                                Why Both Worlds?
+                                ----------------
+                                Primitives are FAST and cheap (no object header, fits in a CPU register).
+                                Reference types are FLEXIBLE (carry methods, can be null, fit in collections
+                                because generics only work with reference types).
+                            <p>
+
+                                Wrapper classes (Integer, Double, Boolean, ...) bridge the gap - they are
+                                objects that hold a single primitive value. See Basics/WrapperClasses for
+                                deeper coverage. Detailed primitive examples are in Basics/PrimitiveDataTypes.
                 </div>
             </div>
 

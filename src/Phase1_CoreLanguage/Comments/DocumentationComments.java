@@ -29,9 +29,9 @@ package Phase1_CoreLanguage.Comments;
  * the output on the screen.
  * <p>
  *
- * @author  Pratik Agarwal
+ * @author  Deepak Gupta
  * @version 1.0
- * @since   2017-02-18
+ * @since 2026-02-18
  */
 
 public class DocumentationComments {

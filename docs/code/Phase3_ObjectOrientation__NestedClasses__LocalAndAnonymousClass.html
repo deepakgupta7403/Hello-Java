@@ -1380,72 +1380,35 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Local and Anonymous Classes</h2>
-                    <p>Two ways to declare a class INSIDE A METHOD or other block. They:</p>
-                    <ul>
-                        <li>Can use the surrounding method&#x27;s locals — but ONLY EFFECTIVELY
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    FINAL ones (assigned once, never reassigned after).</pre>
-                    <ul>
-                        <li>Cannot be declared `public` / `protected` / `private` — they have
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    no scope larger than the enclosing block.</pre>
-                    <ul>
-                        <li>Cannot have static members (except compile-time constants).
-                        </li>
-                    </ul>
-                    <h3>Local class</h3>
-                    <pre class="hj-doc-art">     void doStuff() {
+                    Local and Anonymous Classes
+                    ---------------------------
+                    Two ways to declare a class INSIDE A METHOD or other block. They:
+                    <p>
+
+                        - Can use the surrounding method's locals — but ONLY EFFECTIVELY
+                        FINAL ones (assigned once, never reassigned after).
+                        - Cannot be declared `public` / `protected` / `private` — they have
+                        no scope larger than the enclosing block.
+                        - Cannot have static members (except compile-time constants).
+                    <p>
+
+                        Local class
+                        -----------
+                        void doStuff() {
          class Helper { ... }
          new Helper().something();
-     }</pre>
-                    <ul>
-                        <li>Has a name. Can be instantiated multiple times.
-                        </li>
-                        <li>Can extend / implement anything.
-                        </li>
-                        <li>Useful when you need TWO instances of the helper, or you want a
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    constructor with arguments.</pre>
-                    <h3>Anonymous class</h3>
-                    <pre class="hj-doc-art">     Runnable r = new Runnable() {
-         @Override public void run() { ... }
-     };</pre>
-                    <ul>
-                        <li>No name. Instantiated EXACTLY ONCE at the declaration site.
-                        </li>
-                        <li>Can extend ONE class OR implement ONE interface — never both.
-                        </li>
-                        <li>Constructor arguments forwarded to the parent.
-                        </li>
-                    </ul>
-                    <h3>Lambda vs anonymous class</h3>
-                    <p>If the target is a FUNCTIONAL interface (one abstract method), prefer a lambda. Anonymous class
-                        wins when:</p>
-                    <ul>
-                        <li>The target has MULTIPLE abstract methods.
-                        </li>
-                        <li>You need to override `equals` / `hashCode` / `toString`.
-                        </li>
-                        <li>You need a name for `this` (lambdas&#x27; `this` is the enclosing
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    instance, not the lambda).</pre>
-                    <h3>Capture rules</h3>
-                    <ul>
-                        <li>Outer fields: visible, read/write.
-                        </li>
-                        <li>Outer LOCAL variables: visible, READ-ONLY (effectively final).
-                        </li>
-                        <li>The enclosing &#x27;this&#x27;: accessible as Outer.this (anon/local).
-                        </li>
-                    </ul>
-                    <h3>Java 16+</h3>
-                    <p>Local records and local enums are allowed:</p>
-                    <pre class="hj-doc-art">     void m() { record Pair(int a, int b) {} ... }</pre>
+                        }
+                    <p>
+
+                        - Has a name. Can be instantiated multiple times.
+                        - Can extend / implement anything.
+                        - Useful when you need TWO instances of the helper, or you want a
+                        constructor with arguments.
+                    <p>
+
+                        Anonymous class
+                        ---------------
+                        Runnable r = new Runnable() {
                 </div>
             </div>
 

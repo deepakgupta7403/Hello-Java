@@ -1380,57 +1380,63 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Null Pointer Exceptions (NPE)</h2>
-                    <p>The famous NullPointerException is thrown when your code tries to USE a variable that holds
-                        `null` as if it were a real object. Six operations can trigger it:</p>
-                    <ul>
-                        <li>Calling an instance method on null null.foo()
-                        </li>
-                        <li>Reading or writing an instance field null.f = 1
-                        </li>
-                        <li>Indexing into a null array ((int[]) null)[0]
-                        </li>
-                        <li>Throwing a null Throwable throw null
-                        </li>
-                        <li>Acquiring the monitor of null synchronized (null) { }
-                        </li>
-                        <li>Auto-unboxing a null wrapper int x = (Integer) null
-                        </li>
-                    </ul>
-                    <p>Anything else (e.g. comparing with `==`) is safe.</p>
-                    <h3>Helpful NullPointerException (Java 14+)</h3>
-                    <p>Since Java 14 the JVM enhances the NPE message to tell you EXACTLY WHICH variable was null.
-                        Compare:</p>
-                    <pre class="hj-doc-art">     OLD : Exception in thread &quot;main&quot; java.lang.NullPointerException
-     NEW : Cannot invoke &quot;String.length()&quot; because &quot;name&quot; is null</pre>
-                    <p>Run with -XX:+ShowCodeDetailsInExceptionMessages on Java 14 (enabled by default since Java 15).
-                        Project SDK is 21 in this repo, so you get it automatically.</p>
-                    <h3>How To Avoid NPEs</h3>
-                    <ul>
-                        <li>PROGRAM TO IMMUTABILITY records, final fields, value-like types.
-                        </li>
-                        <li>PREFER EMPTY OVER NULL return List.of(), &quot;&quot;, or Optional.empty().
-                        </li>
-                        <li>USE Objects.requireNonNull fail FAST at the boundary with a clear msg.
-                        </li>
-                        <li>USE Optional&lt;T&gt; for &quot;value might be absent&quot; return types.
-                        </li>
-                        <li>DEFENSIVE checks at edges APIs / user input / parsed data.
-                        </li>
-                        <li>SAFE-NAVIGATION patterns a == null ? &quot;&quot; : a.toUpperCase()
-                        </li>
-                        <li>REACH for libraries @NonNull / @Nullable annotations + tools.
-                        </li>
-                    </ul>
-                    <h3>Optional - the modern null replacement</h3>
-                    <pre class="hj-doc-art">     Optional.empty()                    // explicit &quot;no value&quot;
+                    Null Pointer Exceptions (NPE)
+                    -----------------------------
+                    The famous NullPointerException is thrown when your code tries to USE a
+                    variable that holds `null` as if it were a real object. Six operations
+                    can trigger it:
+                    <p>
+
+                        1. Calling an instance method on null null.foo()
+                        2. Reading or writing an instance field null.f = 1
+                        3. Indexing into a null array ((int[]) null)[0]
+                        4. Throwing a null Throwable throw null
+                        5. Acquiring the monitor of null synchronized (null) { }
+                        6. Auto-unboxing a null wrapper int x = (Integer) null
+                    <p>
+
+                        Anything else (e.g. comparing with `==`) is safe.
+                    <p>
+
+                        Helpful NullPointerException (Java 14+)
+                        ---------------------------------------
+                        Since Java 14 the JVM enhances the NPE message to tell you EXACTLY WHICH
+                        variable was null. Compare:
+                    <p>
+
+                        OLD : Exception in thread "main" java.lang.NullPointerException
+                        NEW : Cannot invoke "String.length()" because "name" is null
+                    <p>
+
+                        Run with -XX:+ShowCodeDetailsInExceptionMessages on Java 14 (enabled by
+                        default since Java 15). Project SDK is 21 in this repo, so you get it
+                        automatically.
+                    <p>
+
+                        How To Avoid NPEs
+                        -----------------
+                        - PROGRAM TO IMMUTABILITY records, final fields, value-like types.
+                        - PREFER EMPTY OVER NULL return List.of(), "", or Optional.empty().
+                        - USE Objects.requireNonNull fail FAST at the boundary with a clear msg.
+                        - USE Optional
+                        <T> for "value might be absent" return types.
+                            - DEFENSIVE checks at edges APIs / user input / parsed data.
+                            - SAFE-NAVIGATION patterns a == null ? "" : a.toUpperCase()
+                            - REACH for libraries @NonNull / @Nullable annotations + tools.
+                            <p>
+
+                                Optional - the modern null replacement
+                                --------------------------------------
+                                Optional.empty() // explicit "no value"
      Optional.of(x)                      // x must NOT be null
      Optional.ofNullable(maybeX)         // accepts null
      opt.isPresent() / isEmpty()
      opt.orElse(default) / orElseGet / orElseThrow
-     opt.map(...).flatMap(...).filter(...)</pre>
-                    <p>Optional is meant for RETURN TYPES, not fields or parameters - the JDK authors are explicit about
-                        that.</p>
+                                opt.map(...).flatMap(...).filter(...)
+                            <p>
+
+                                Optional is meant for RETURN TYPES, not fields or parameters - the JDK
+                                authors are explicit about that.
                 </div>
             </div>
 

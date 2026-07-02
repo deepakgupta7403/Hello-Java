@@ -4,31 +4,37 @@ import java.io.Console;
 import java.util.Arrays;
 
 /**
- * Taking Input - java.io.Console
- * ------------------------------
- * The Console class (since Java 6) is the third common way of reading input.
- * Its key feature: it can read passwords WITHOUT echoing them on screen.
- * <p>
+ * <h1>Taking Input &mdash; java.io.Console</h1>
  *
- * IMPORTANT - Console can be null
- * -------------------------------
- * System.console() returns null when:
- *   - The JVM is launched without an attached terminal (e.g. from inside an IDE
- *     like IntelliJ / Eclipse, or when stdin/stdout is redirected).
- * <p>
+ * <p>The <code>Console</code> class (since Java 6) is the third common way of reading input.
+ * Its key feature: it can read passwords WITHOUT echoing them on screen.</p>
  *
- * To test this class, run it from a real terminal:
- *     javac ConsoleInput.java
- *     java  ConsoleInput
- * <p>
+ * <h2>IMPORTANT - Console can be null</h2>
  *
- * Methods Used Here
- * -----------------
- *   readLine(prompt, args...)     - reads a line, prompt supports printf-style format
- *   readPassword(prompt, args...) - reads a line WITHOUT echo, returns char[]
- *                                   (returning char[] instead of String makes it
- *                                    easier to wipe the password from memory)
- *   printf(format, args...)       - formatted print, returns the Console itself
+ * <p><code>System.console()</code> returns null when:</p>
+ * <ul>
+ *   <li>The JVM is launched without an attached terminal (e.g. from inside an IDE
+ *       like IntelliJ / Eclipse, or when stdin/stdout is redirected).</li>
+ * </ul>
+ *
+ * <p>To test this class, run it from a real terminal:</p>
+ * <pre>
+ * javac ConsoleInput.java
+ * java  ConsoleInput
+ * </pre>
+ *
+ * <h2>Methods Used Here</h2>
+ * <pre>
+ * readLine(prompt, args...)     - reads a line, prompt supports printf-style format
+ * readPassword(prompt, args...) - reads a line WITHOUT echo, returns char[]
+ *                                 (returning char[] instead of String makes it
+ *                                  easier to wipe the password from memory)
+ * printf(format, args...)       - formatted print, returns the Console itself
+ * </pre>
+ *
+ * @author  Deepak Gupta
+ * @version 1.0
+ * @since 2026-05-21
  */
 
 public class ConsoleInput {

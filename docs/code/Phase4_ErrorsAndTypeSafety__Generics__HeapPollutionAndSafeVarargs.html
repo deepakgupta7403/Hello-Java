@@ -1380,58 +1380,34 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Heap Pollution and @SafeVarargs</h2>
-                    <p>HEAP POLLUTION happens when a variable of a parameterised type refers to an object that does NOT
-                        match that type at runtime. Type erasure means the JVM cannot stop you - so the compiler issues
-                        an &quot;unchecked&quot; warning whenever you do something that could cause heap pollution.</p>
-                    <h3>Where Heap Pollution Comes From</h3>
-                    <ul>
-                        <li>Unchecked casts: (List&amp;lt;String&amp;gt;) someObject
-                        </li>
-                        <li>Raw types: List l = listOfStrings;
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                         l.add(42);     // poisons the String list</pre>
-                    <ul>
-                        <li>Generic VARARGS: when a method takes T... it secretly creates an
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                         Object[] - that array is heap pollution if T is
-                         itself a generic type.</pre>
-                    <h3>The Varargs Bridge</h3>
-                    <p>Varargs are syntactic sugar for an ARRAY. When the element type is generic, the compiler must
-                        allocate an Object[] (it cannot create a `new List&amp;lt;String&amp;gt;[N]` - generic-array
-                        creation is illegal). It then issues a warning:</p>
-                    <pre class="hj-doc-art">     &quot;unchecked: Possible heap pollution from parameterized vararg type&quot;</pre>
-                    <h3>@SafeVarargs</h3>
-                    <p>Annotate a method (constructor) that:</p>
-                    <ul>
-                        <li>takes a generic varargs parameter, AND
-                        </li>
-                        <li>PROMISES not to misuse it (no writes to the array, no leaks of the
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    array to non-generic code).</pre>
-                    <p>Restrictions:</p>
-                    <ul>
-                        <li>Allowed on `static`, `final`, or `private` methods, and on
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    constructors. Since Java 9, also allowed on `private` instance methods.</pre>
-                    <ul>
-                        <li>You CANNOT use it on a non-final non-private instance method - a
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    subclass could violate the promise.</pre>
-                    <h3>What Goes Wrong (The Concrete Bug)</h3>
-                    <pre class="hj-doc-art">     static &amp;lt;T&amp;gt; T[] toArray(T... a) { return a; }</pre>
-                    <pre class="hj-doc-art">     // caller:
-     Object[] objs = toArray(List.of(1), List.of(&quot;a&quot;));
-     objs[0] = &quot;anything&quot;;     // legal at runtime - it&#x27;s an Object[]
-     List&amp;lt;Integer&amp;gt; bad = (List&amp;lt;Integer&amp;gt;) objs[0];   // succeeds at type-erasure level
-     Integer i = bad.get(0);    // ClassCastException far from the bug</pre>
-                    <p>The method exposed its INTERNAL Object[] to outside code - a leak. The @SafeVarargs promise is
-                        &quot;I won&#x27;t do that.&quot;</p>
+                    Heap Pollution and @SafeVarargs
+                    -------------------------------
+                    HEAP POLLUTION happens when a variable of a parameterised type refers to
+                    an object that does NOT match that type at runtime. Type erasure means
+                    the JVM cannot stop you - so the compiler issues an "unchecked" warning
+                    whenever you do something that could cause heap pollution.
+                    <p>
+
+                        Where Heap Pollution Comes From
+                        -------------------------------
+                        1. Unchecked casts: (List&lt;String&gt;) someObject
+                        2. Raw types: List l = listOfStrings;
+                        l.add(42); // poisons the String list
+                        3. Generic VARARGS: when a method takes T... it secretly creates an
+                        Object[] - that array is heap pollution if T is
+                        itself a generic type.
+                    <p>
+
+                        The Varargs Bridge
+                        ------------------
+                        Varargs are syntactic sugar for an ARRAY. When the element type is
+                        generic, the compiler must allocate an Object[] (it cannot create a
+                        `new List&lt;String&gt;[N]` - generic-array creation is illegal). It then
+                        issues a warning:
+                    <p>
+
+                        "unchecked: Possible heap pollution from parameterized vararg type"
+                    <p>
                 </div>
             </div>
 

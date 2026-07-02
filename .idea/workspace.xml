@@ -333,6 +333,7 @@
       <change beforePath="$PROJECT_DIR$/docs/code/Phase9_ModernJavaAndModules__Modules__ModulesIntroduction.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/code/Phase9_ModernJavaAndModules__Modules__ModulesIntroduction.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/code/Phase9_ModernJavaAndModules__Modules__ServiceLoaderDemo.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/code/Phase9_ModernJavaAndModules__Modules__ServiceLoaderDemo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/docs/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/phase/Phase0_SetupAndFirstPrograms.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/phase/Phase0_SetupAndFirstPrograms.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/phase/Phase1_CoreLanguage.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/phase/Phase1_CoreLanguage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/phase/Phase2_MethodsArraysStrings.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/phase/Phase2_MethodsArraysStrings.html" afterDir="false" />
@@ -344,6 +345,18 @@
       <change beforePath="$PROJECT_DIR$/docs/phase/Phase8_PracticalAPIs.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/phase/Phase8_PracticalAPIs.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/phase/Phase9_ModernJavaAndModules.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/phase/Phase9_ModernJavaAndModules.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/generate_site.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/generate_site.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/ClassNameMyth/Hello.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/ClassNameMyth/Hello.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/HelloWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/HelloWorld.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/Input/BufferedReaderInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/Input/BufferedReaderInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/Input/ConsoleInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/Input/ConsoleInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/Input/ScannerInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/Input/ScannerInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/Installation/InstallJava.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/Installation/InstallJava.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/Introduction/Introduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/Introduction/Introduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/IsMainCompulsory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/IsMainCompulsory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/JDKvsJREvsJVM/JDKvsJREvsJVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/JDKvsJREvsJVM/JDKvsJREvsJVM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/Output/FormattedOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/Output/FormattedOutput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/Output/PrintMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase0_SetupAndFirstPrograms/Output/PrintMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Comments/DocumentationComments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Phase1_CoreLanguage/Comments/DocumentationComments.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -416,40 +429,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.BufferedReaderInput.executor": "Run",
-    "Application.ConsoleInput.executor": "Run",
-    "Application.FormattedOutput.executor": "Run",
-    "Application.HelloWorld.executor": "Run",
-    "Application.InitializingObject.executor": "Run",
-    "Application.Introduction.executor": "Run",
-    "Application.JDKvsJREvsJVM.executor": "Run",
-    "Application.ScannerInput.executor": "Run",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.BufferedReaderInput.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ConsoleInput.executor&quot;: &quot;Run&quot;,
+    &quot;Application.FormattedOutput.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HelloWorld.executor&quot;: &quot;Run&quot;,
+    &quot;Application.InitializingObject.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Introduction.executor&quot;: &quot;Run&quot;,
+    &quot;Application.JDKvsJREvsJVM.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ModernStringFeatures.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ScannerInput.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Deepak\IdeaProjects\Java Prctice\src\Variables" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.HelloWorld">
+  <component name="RunManager" selected="Application.ModernStringFeatures">
     <configuration name="BufferedReaderInput" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Phase0_SetupAndFirstPrograms.Input.BufferedReaderInput" />
       <module name="Java Prctice" />
@@ -502,12 +516,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ScannerInput" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Phase0_SetupAndFirstPrograms.Input.ScannerInput" />
+    <configuration name="ModernStringFeatures" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Phase2_MethodsArraysStrings.Strings.ModernStringFeatures" />
       <module name="Java Prctice" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Phase0_SetupAndFirstPrograms.Input.*" />
+          <option name="PATTERN" value="Phase2_MethodsArraysStrings.Strings.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -517,11 +531,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ModernStringFeatures" />
         <item itemvalue="Application.HelloWorld" />
         <item itemvalue="Application.FormattedOutput" />
         <item itemvalue="Application.ConsoleInput" />
         <item itemvalue="Application.BufferedReaderInput" />
-        <item itemvalue="Application.ScannerInput" />
       </list>
     </recent_temporary>
   </component>
@@ -731,7 +745,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779467310533</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="UI change DG commit">
+      <option name="closed" value="true" />
+      <created>1782077228616</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1782077228616</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

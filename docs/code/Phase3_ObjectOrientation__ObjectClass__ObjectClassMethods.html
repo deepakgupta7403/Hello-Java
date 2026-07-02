@@ -1380,64 +1380,59 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>java.lang.Object - The Root of Every Class</h2>
-                    <p>Every class in Java is a descendant of java.lang.Object. Even if you write `class Foo {}` with no
-                        `extends` clause, the compiler inserts `extends Object` automatically. That means EVERY OBJECT
-                        inherits ten methods from Object - some you override constantly, some you should leave
-                        alone.</p>
-                    <h3>Methods Inherited from Object</h3>
-                    <ul>
-                        <li>equals(Object o) - logical equality test
-                        </li>
-                        <li>hashCode() - integer hash (used by HashMap / HashSet)
-                        </li>
-                        <li>toString() - human-readable representation
-                        </li>
-                        <li>getClass() - runtime Class&lt;?&gt; of the object
-                        </li>
-                        <li>clone() - protected; returns a field-by-field copy
-                        </li>
-                        <li>finalize() - DEPRECATED, JVM cleanup hook
-                        </li>
-                        <li>wait() / wait(timeout) - thread coordination
-                        </li>
-                        <li>notify() / notifyAll() - thread coordination
-                        </li>
-                    </ul>
-                    <h3>Methods You Almost Always OVERRIDE</h3>
-                    <pre class="hj-doc-art">     equals(Object)   - to define &quot;two objects are logically the same&quot;
+                    java.lang.Object - The Root of Every Class
+                    ------------------------------------------
+                    Every class in Java is a descendant of java.lang.Object. Even if you write
+                    `class Foo {}` with no `extends` clause, the compiler inserts
+                    `extends Object` automatically. That means EVERY OBJECT inherits ten methods
+                    from Object - some you override constantly, some you should leave alone.
+                    <p>
+
+                        Methods Inherited from Object
+                        -----------------------------
+                    <p>
+
+                        1. equals(Object o) - logical equality test
+                        2. hashCode() - integer hash (used by HashMap / HashSet)
+                        3. toString() - human-readable representation
+                        4. getClass() - runtime Class<?> of the object
+                        5. clone() - protected; returns a field-by-field copy
+                        6. finalize() - DEPRECATED, JVM cleanup hook
+                        7. wait() / wait(timeout) - thread coordination
+                        8. notify() / notifyAll() - thread coordination
+                    <p>
+
+                        Methods You Almost Always OVERRIDE
+                        ----------------------------------
+                        equals(Object) - to define "two objects are logically the same"
      hashCode()       - MUST be overridden together with equals()
-     toString()       - for human-readable logging / debugging</pre>
-                    <h3>The equals/hashCode Contract</h3>
-                    <ul>
-                        <li>If a.equals(b) is TRUE, then a.hashCode() == b.hashCode().
-                        </li>
-                        <li>The reverse is NOT required (different objects may share a hash).
-                        </li>
-                        <li>equals must be REFLEXIVE, SYMMETRIC, TRANSITIVE, CONSISTENT, and
-                        </li>
-                    </ul>
-                    <p>null-safe (a.equals(null) -&gt; false).</p>
-                    <ul>
-                        <li>Break this contract and HashMap / HashSet / HashTable / LinkedHashSet
-                        </li>
-                    </ul>
-                    <p>will silently misbehave.</p>
-                    <h3>What NOT to Override</h3>
-                    <ul>
-                        <li>getClass() is FINAL.
-                        </li>
-                        <li>clone() is brittle - prefer copy constructors or static factories.
-                        </li>
-                        <li>finalize() is DEPRECATED for removal; use try-with-resources or Cleaner.
-                        </li>
-                        <li>wait/notify - use higher-level concurrency utilities (Lock, Semaphore,
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                 CompletableFuture) instead of these primitives.</pre>
-                    <h3>Modern Tip</h3>
-                    <p>The `record` keyword (Java 16+) auto-generates correct equals, hashCode and toString from the
-                        components - free of charge. Records are the right choice for simple data carriers.</p>
+                        toString() - for human-readable logging / debugging
+                    <p>
+
+                        The equals/hashCode Contract
+                        ----------------------------
+                        - If a.equals(b) is TRUE, then a.hashCode() == b.hashCode().
+                        - The reverse is NOT required (different objects may share a hash).
+                        - equals must be REFLEXIVE, SYMMETRIC, TRANSITIVE, CONSISTENT, and
+                        null-safe (a.equals(null) -> false).
+                        - Break this contract and HashMap / HashSet / HashTable / LinkedHashSet
+                        will silently misbehave.
+                    <p>
+
+                        What NOT to Override
+                        --------------------
+                        - getClass() is FINAL.
+                        - clone() is brittle - prefer copy constructors or static factories.
+                        - finalize() is DEPRECATED for removal; use try-with-resources or Cleaner.
+                        - wait/notify - use higher-level concurrency utilities (Lock, Semaphore,
+                        CompletableFuture) instead of these primitives.
+                    <p>
+
+                        Modern Tip
+                        ----------
+                        The `record` keyword (Java 16+) auto-generates correct equals, hashCode and
+                        toString from the components - free of charge. Records are the right choice
+                        for simple data carriers.
                 </div>
             </div>
 

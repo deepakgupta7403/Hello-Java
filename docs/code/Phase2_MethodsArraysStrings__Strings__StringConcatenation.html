@@ -1380,44 +1380,56 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>String Concatenation</h2>
-                    <p>&quot;Concatenation&quot; means joining two or more Strings end-to-end. Java offers several
-                        mechanisms:</p>
-                    <ul>
-                        <li>The &#x27;+&#x27; operator &quot;Hello, &quot; + name
-                        </li>
-                        <li>String.concat(other) &quot;Hello, &quot;.concat(name)
-                        </li>
-                        <li>StringBuilder / StringBuffer use when looping
-                        </li>
-                        <li>String.join(delim, parts...) Java 8+
-                        </li>
-                        <li>java.util.StringJoiner Java 8+, with prefix/suffix
-                        </li>
-                        <li>Stream.collect(Collectors.joining(...)) Java 8+
-                        </li>
-                        <li>String.format / String.formatted printf-style composition
-                        </li>
-                        <li>Text blocks Java 15+, multi-line literals
-                        </li>
-                    </ul>
-                    <h3>Behind the scenes</h3>
-                    <p>Each `+` between String operands is compiled (since Java 9) into a `makeConcatWithConstants`
-                        invoke-dynamic call that the JVM optimises at runtime. For most simple expressions like `&quot;x=&quot;
-                        + x` you do NOT need to reach for StringBuilder yourself - the compiler does the right
-                        thing.</p>
-                    <p>The big EXCEPTION is concatenation INSIDE A LOOP:</p>
-                    <pre class="hj-doc-art">     String s = &quot;&quot;;
-     for (int i = 0; i &lt; N; i++) s += part(i);     // O(N^2) - BAD</pre>
-                    <pre class="hj-doc-art">     StringBuilder sb = new StringBuilder();
-     for (int i = 0; i &lt; N; i++) sb.append(part(i)); // O(N) - GOOD
-     String s = sb.toString();</pre>
-                    <p>Each `+=` allocates and copies the whole prefix again because Strings are immutable.</p>
-                    <h3>Type Coercion - the &#x27;+&#x27; Trap</h3>
-                    <pre class="hj-doc-art">     &quot;Sum = &quot; + 1 + 2      ==  &quot;Sum = 12&quot;      (left-to-right concatenation)
-     &quot;Sum = &quot; + (1 + 2)    ==  &quot;Sum = 3&quot;       (parens force int addition)</pre>
-                    <h3>Performance Demo</h3>
-                    <p>main() benchmarks loop-concat vs StringBuilder so you can see the difference in milliseconds.</p>
+                    String Concatenation
+                    --------------------
+                    "Concatenation" means joining two or more Strings end-to-end. Java offers
+                    several mechanisms:
+                    <p>
+
+                        1. The '+' operator "Hello, " + name
+                        2. String.concat(other) "Hello, ".concat(name)
+                        3. StringBuilder / StringBuffer use when looping
+                        4. String.join(delim, parts...) Java 8+
+                        5. java.util.StringJoiner Java 8+, with prefix/suffix
+                        6. Stream.collect(Collectors.joining(...)) Java 8+
+                        7. String.format / String.formatted printf-style composition
+                        8. Text blocks Java 15+, multi-line literals
+                    <p>
+
+                        Behind the scenes
+                        -----------------
+                        Each `+` between String operands is compiled (since Java 9) into a
+                        `makeConcatWithConstants` invoke-dynamic call that the JVM optimises at
+                        runtime. For most simple expressions like `"x=" + x` you do NOT need to
+                        reach for StringBuilder yourself - the compiler does the right thing.
+                    <p>
+
+                        The big EXCEPTION is concatenation INSIDE A LOOP:
+                    <p>
+
+                        String s = "";
+                        for (int i = 0; i < N; i++) s += part(i); // O(N^2) - BAD
+                    <p>
+
+                        StringBuilder sb = new StringBuilder();
+                        for (int i = 0; i < N; i++) sb.append(part(i)); // O(N) - GOOD
+                        String s = sb.toString();
+                    <p>
+
+                        Each `+=` allocates and copies the whole prefix again because Strings are
+                        immutable.
+                    <p>
+
+                        Type Coercion - the '+' Trap
+                        ----------------------------
+                        "Sum = " + 1 + 2 == "Sum = 12" (left-to-right concatenation)
+                        "Sum = " + (1 + 2) == "Sum = 3" (parens force int addition)
+                    <p>
+
+                        Performance Demo
+                        ----------------
+                        main() benchmarks loop-concat vs StringBuilder so you can see the
+                        difference in milliseconds.
                 </div>
             </div>
 

@@ -1380,32 +1380,47 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Assignment Operators</h2>
-                    <p>The basic assignment operator is = and the COMPOUND assignment operators combine an arithmetic /
-                        bitwise operator with assignment:</p>
-                    <pre class="hj-doc-art">     =      simple assignment
-     +=     a += b   -&gt; a = a + b
-     -=     a -= b   -&gt; a = a - b
-     *=     a *= b   -&gt; a = a * b
-     /=     a /= b   -&gt; a = a / b
-     %=     a %= b   -&gt; a = a % b
-     &amp;=     a &amp;= b   -&gt; a = a &amp; b
-     |=     a |= b   -&gt; a = a | b
-     ^=     a ^= b   -&gt; a = a ^ b
-     &lt;&lt;=    a &lt;&lt;= b  -&gt; a = a &lt;&lt; b
-     &gt;&gt;=    a &gt;&gt;= b  -&gt; a = a &gt;&gt; b
-     &gt;&gt;&gt;=   a &gt;&gt;&gt;= b -&gt; a = a &gt;&gt;&gt; b</pre>
-                    <h3>The Hidden Cast in Compound Assignments</h3>
-                    <p>Compound assignment operators perform an IMPLICIT cast back to the variable&#x27;s type. The
-                        plain &#x27;=&#x27; does not.</p>
-                    <pre class="hj-doc-art">     short s = 10;
-     s = s + 1;       // ERROR - s + 1 is int, can&#x27;t assign int to short
-     s += 1;          // OK    - += quietly casts back to short</pre>
-                    <p>This is convenient but can MASK BUGS - the cast can lose data without warning.</p>
-                    <h3>Right-to-Left Associativity / Chained Assignment</h3>
-                    <pre class="hj-doc-art">     int x, y, z;
-     x = y = z = 5;     // assigns 5 to z, then y, then x</pre>
-                    <p>Avoid in real code - too easy to misread.</p>
+                    Assignment Operators
+                    --------------------
+                    The basic assignment operator is = and the COMPOUND assignment operators
+                    combine an arithmetic / bitwise operator with assignment:
+                    <p>
+
+                        = simple assignment
+                        += a += b -> a = a + b
+                        -= a -= b -> a = a - b
+                        *= a *= b -> a = a * b
+                        /= a /= b -> a = a / b
+                        %= a %= b -> a = a % b
+                        &= a &= b -> a = a & b
+                        |= a |= b -> a = a | b
+                        ^= a ^= b -> a = a ^ b
+                        <<= a <<= b -> a = a << b
+                        >>= a >>= b -> a = a >> b
+                        >>>= a >>>= b -> a = a >>> b
+                    <p>
+
+                        The Hidden Cast in Compound Assignments
+                        ---------------------------------------
+                        Compound assignment operators perform an IMPLICIT cast back to the variable's
+                        type. The plain '=' does not.
+                    <p>
+
+                        short s = 10;
+                        s = s + 1; // ERROR - s + 1 is int, can't assign int to short
+                        s += 1; // OK - += quietly casts back to short
+                    <p>
+
+                        This is convenient but can MASK BUGS - the cast can lose data without warning.
+                    <p>
+
+                        Right-to-Left Associativity / Chained Assignment
+                        ------------------------------------------------
+                        int x, y, z;
+                        x = y = z = 5; // assigns 5 to z, then y, then x
+                    <p>
+
+                        Avoid in real code - too easy to misread.
                 </div>
             </div>
 

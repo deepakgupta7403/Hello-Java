@@ -1380,20 +1380,21 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <p>EmployeeFilter - a NESTED + FUNCTIONAL interface.</p>
-                    <p>Used by the repository&#x27;s `find(...)` method to express arbitrary search criteria as a
-                        lambda:</p>
-                    <pre class="hj-doc-art">     repo.find(EmployeeFilter.byMinSalary(10_000)
-                             .and(EmployeeFilter.byType(Intern.class)));</pre>
-                    <p>Demonstrates:</p>
-                    <ul>
-                        <li>@FunctionalInterface annotation enforcing the SAM rule.
-                        </li>
-                        <li>default `and` / `or` / `negate` composition methods (like Predicate).
-                        </li>
-                        <li>static FACTORIES on the interface itself for common filters.
-                        </li>
-                    </ul>
+                    EmployeeFilter - a NESTED + FUNCTIONAL interface.
+                    <p>
+
+                        Used by the repository's `find(...)` method to express arbitrary search
+                        criteria as a lambda:
+                    <p>
+
+                        repo.find(EmployeeFilter.byMinSalary(10_000)
+                        .and(EmployeeFilter.byType(Intern.class)));
+                    <p>
+
+                        Demonstrates:
+                        - @FunctionalInterface annotation enforcing the SAM rule.
+                        - default `and` / `or` / `negate` composition methods (like Predicate).
+                        - static FACTORIES on the interface itself for common filters.
                 </div>
             </div>
 

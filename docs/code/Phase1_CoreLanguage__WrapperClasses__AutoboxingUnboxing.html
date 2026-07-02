@@ -1380,39 +1380,42 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Autoboxing and Auto-Unboxing</h2>
-                    <p>Since Java 5 the compiler converts between primitives and their wrappers automatically:</p>
-                    <pre class="hj-doc-art">     Integer boxed = 42;       // autoboxing  -&gt; Integer.valueOf(42)
-     int prim       = boxed;   // auto-unbox  -&gt; boxed.intValue()</pre>
-                    <p>Conceptually this is just syntactic sugar - the compiler inserts the calls to Integer.valueOf /
-                        intValue() for you.</p>
-                    <h3>Where Autoboxing Helps</h3>
-                    <ul>
-                        <li>Putting primitives into collections: list.add(5) -&gt; list.add(Integer.valueOf(5))
-                        </li>
-                        <li>Arithmetic on wrappers: Integer sum = a + b
-                        </li>
-                        <li>Methods that accept Object: sysout(int) -&gt; sysout(Integer.valueOf(int))
-                        </li>
-                    </ul>
-                    <h3>Three Common Pitfalls</h3>
-                    <ul>
-                        <li>NullPointerException when unboxing null - the most common bug.
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    Integer i = null;     int x = i;     //  NullPointerException</pre>
-                    <ul>
-                        <li>Using == on boxed values - reference comparison, not value comparison.
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    Integer a = 200, b = 200;  a == b -&gt; false (outside the -128..127 cache)
-    Always use .equals().</pre>
-                    <ul>
-                        <li>Performance cost in tight loops - boxing/unboxing allocates new objects.
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    Prefer the primitive specialisations (IntStream over Stream&lt;Integer&gt;) when
-    hot.</pre>
+                    Autoboxing and Auto-Unboxing
+                    ----------------------------
+                    Since Java 5 the compiler converts between primitives and their wrappers
+                    automatically:
+                    <p>
+
+                        Integer boxed = 42; // autoboxing -> Integer.valueOf(42)
+                        int prim = boxed; // auto-unbox -> boxed.intValue()
+                    <p>
+
+                        Conceptually this is just syntactic sugar - the compiler inserts the calls
+                        to Integer.valueOf / intValue() for you.
+                    <p>
+
+                        Where Autoboxing Helps
+                        ----------------------
+                        - Putting primitives into collections: list.add(5) -> list.add(Integer.valueOf(5))
+                        - Arithmetic on wrappers: Integer sum = a + b
+                        - Methods that accept Object: sysout(int) -> sysout(Integer.valueOf(int))
+                    <p>
+
+                        Three Common Pitfalls
+                        ---------------------
+                        1. NullPointerException when unboxing null - the most common bug.
+                        Integer i = null; int x = i; // NullPointerException
+                    <p>
+
+                        2. Using == on boxed values - reference comparison, not value comparison.
+                        Integer a = 200, b = 200; a == b -> false (outside the -128..127 cache)
+                        Always use .equals().
+                    <p>
+
+                        3. Performance cost in tight loops - boxing/unboxing allocates new objects.
+                        Prefer the primitive specialisations (IntStream over Stream
+                        <Integer>) when
+                            hot.
                 </div>
             </div>
 

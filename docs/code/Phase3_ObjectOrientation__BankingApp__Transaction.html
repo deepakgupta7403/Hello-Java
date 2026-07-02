@@ -1380,19 +1380,18 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <p>Transaction - immutable log entry for a single account event.</p>
-                    <p>Implemented as a Java RECORD (Java 16+):</p>
-                    <ul>
-                        <li>All fields are final.
-                        </li>
-                        <li>equals / hashCode / toString are generated.
-                        </li>
-                        <li>The compiler also synthesises a canonical constructor and accessor
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    methods type(), amount(), balanceAfter(), timestamp().</pre>
-                    <p>The nested `Type` enum makes the kind of event explicit and lets us use exhaustive `switch`
-                        statements in any caller code.</p>
+                    Transaction - immutable log entry for a single account event.
+                    <p>
+
+                        Implemented as a Java RECORD (Java 16+):
+                        - All fields are final.
+                        - equals / hashCode / toString are generated.
+                        - The compiler also synthesises a canonical constructor and accessor
+                        methods type(), amount(), balanceAfter(), timestamp().
+                    <p>
+
+                        The nested `Type` enum makes the kind of event explicit and lets us
+                        use exhaustive `switch` statements in any caller code.
                 </div>
             </div>
 

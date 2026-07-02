@@ -102,6 +102,16 @@ def split_camel(name: str) -> str:
     return s
 
 
+# Block-level HTML tags that mark a Javadoc block as "HTML-authored" (as opposed
+# to the plain-text `Heading / ----` convention used by most files in this repo).
+BLOCK_HTML_RE = re.compile(r"<\s*(?:h[1-6]|ul|ol|li|pre|p|br)\b", re.IGNORECASE)
+
+
+def _is_html_authored(body_lines: list[str]) -> bool:
+    """True if the Javadoc body was written with block-level HTML tags."""
+    return any(BLOCK_HTML_RE.search(ln) for ln in body_lines)
+
+
 def extract_summary(code: str) -> str:
     """Pull a short prose summary from the first top-of-file Javadoc block.
 
@@ -119,11 +129,15 @@ def extract_summary(code: str) -> str:
     cleaned: list[str] = []
     for raw in body.splitlines():
         line = re.sub(r"^\s*\*\s?", "", raw).rstrip()
-        if line.startswith("@"):
+        if line.lstrip().startswith("@"):
             break
         if line.strip().lower() in ("<p>", "</p>", "<pre>", "</pre>"):
             cleaned.append("")
             continue
+        # Strip inline/block HTML so summaries read as plain prose regardless of
+        # whether the source uses the plain-text or HTML-authored Javadoc style.
+        line = re.sub(r"<[^>]+>", "", line)
+        line = html.unescape(line)
         cleaned.append(line)
 
     # Split into paragraphs at blank lines OR separator lines (---, ===, ~~~)
@@ -179,6 +193,12 @@ def _javadoc_body_lines(code: str) -> list[str]:
     if not m:
         return []
     lines = [re.sub(r"^\s*\*\s?", "", raw).rstrip() for raw in m.group(1).splitlines()]
+    # Drop the Javadoc tag block (@author, @version, @since, @param, ...) — it is
+    # metadata, not part of the rendered description.
+    for idx, ln in enumerate(lines):
+        if re.match(r"^@\w+", ln.strip()):
+            lines = lines[:idx]
+            break
     # trim leading/trailing blank or decorative-only lines
     while lines and lines[-1].strip() in ("", "*"):
         lines.pop()
@@ -209,6 +229,11 @@ def javadoc_to_html(code: str) -> str:
     lines = _javadoc_body_lines(code)
     if not lines:
         return ""
+
+    # HTML-authored Javadoc (uses <h1>/<h2>/<pre>/<ul>/...) is already valid HTML,
+    # so emit it verbatim instead of running the plain-text heuristics below.
+    if _is_html_authored(lines):
+        return "\n".join(lines).strip()
 
     parts: list[str] = []
     para: list[str] = []
@@ -1044,6 +1069,12 @@ code, pre, .font-monospace {
 .hj-doc-body { line-height: 1.65; }
 .hj-doc-body > :first-child { margin-top: 0; }
 .hj-doc-body > :last-child { margin-bottom: 0; }
+.hj-doc-body h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--hj-primary);
+  margin: 0 0 1.1rem;
+}
 .hj-doc-body h2 {
   font-size: 1.4rem;
   font-weight: 700;
@@ -1060,7 +1091,8 @@ code, pre, .font-monospace {
 .hj-doc-body p { margin-bottom: .9rem; }
 .hj-doc-body ul { margin-bottom: .9rem; padding-left: 1.4rem; }
 .hj-doc-body li { margin-bottom: .25rem; }
-.hj-doc-art {
+.hj-doc-art,
+.hj-doc-body pre {
   background: #1e1e2e;
   color: #e6e8eb;
   border-radius: 8px;
@@ -1071,7 +1103,16 @@ code, pre, .font-monospace {
   line-height: 1.45;
   white-space: pre;
 }
-[data-bs-theme="dark"] .hj-doc-art { background: #0f1420; }
+[data-bs-theme="dark"] .hj-doc-art,
+[data-bs-theme="dark"] .hj-doc-body pre { background: #0f1420; }
+.hj-doc-body code {
+  background: rgba(25, 118, 210, 0.10);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 0.875em;
+}
+[data-bs-theme="dark"] .hj-doc-body code { background: rgba(25, 118, 210, 0.22); }
+.hj-doc-body pre code { background: none; padding: 0; font-size: inherit; }
 
 .hj-code-card { border: 0; border-radius: 10px; overflow: hidden; }
 .hj-code-card .card-header { border-bottom: 1px solid #000; padding: 10px 16px; }

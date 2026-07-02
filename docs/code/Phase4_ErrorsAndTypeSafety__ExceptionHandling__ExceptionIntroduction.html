@@ -1380,21 +1380,25 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Exception Handling in Java - Introduction</h2>
-                    <p>An EXCEPTION is an abnormal event that disrupts the normal flow of a program. When an exception
-                        is THROWN, the JVM looks up the call stack for a matching handler; if it finds none, the program
-                        terminates and the JVM prints the stack trace.</p>
-                    <p>Java&#x27;s exception system has three jobs:</p>
-                    <ul>
-                        <li>SEPARATE error handling from regular code (no error codes mixed in).
-                        </li>
-                        <li>PROPAGATE failures up the stack until something handles them.
-                        </li>
-                        <li>ENFORCE certain kinds of failure to be acknowledged (checked exceptions).
-                        </li>
-                    </ul>
-                    <h3>The Throwable Hierarchy</h3>
-                    <pre class="hj-doc-art">     Throwable                                         (top of the chain)
+                    Exception Handling in Java - Introduction
+                    -----------------------------------------
+                    An EXCEPTION is an abnormal event that disrupts the normal flow of a
+                    program. When an exception is THROWN, the JVM looks up the call stack for
+                    a matching handler; if it finds none, the program terminates and the JVM
+                    prints the stack trace.
+                    <p>
+
+                        Java's exception system has three jobs:
+                        1. SEPARATE error handling from regular code (no error codes mixed in).
+                        2. PROPAGATE failures up the stack until something handles them.
+                        3. ENFORCE certain kinds of failure to be acknowledged (checked exceptions).
+                    <p>
+
+                        The Throwable Hierarchy
+                        -----------------------
+                    <p>
+
+                        Throwable (top of the chain)
      |
      |-- Error           (serious JVM-level problems - DO NOT catch)
      |     |-- OutOfMemoryError
@@ -1412,38 +1416,57 @@
                  |-- IllegalArgumentException
                  |-- ArithmeticException
                  |-- NumberFormatException
-                 |-- ConcurrentModificationException</pre>
-                    <h3>Checked vs Unchecked - Quick Rule</h3>
-                    <p>CHECKED - Any Exception that is NOT a RuntimeException. The compiler</p>
-                    <pre class="hj-doc-art">              FORCES you to either catch them or declare them with `throws`.
+                        |-- ConcurrentModificationException
+                    <p>
+
+                        Checked vs Unchecked - Quick Rule
+                        ---------------------------------
+                        CHECKED - Any Exception that is NOT a RuntimeException. The compiler
+                        FORCES you to either catch them or declare them with `throws`.
               Used for failures the caller is expected to plan for
-              (a file might be missing, the DB might be down).</pre>
-                    <p>UNCHECKED - RuntimeException and its descendants, plus all Errors. The</p>
-                    <pre class="hj-doc-art">              compiler does NOT force you to acknowledge them. Used for
-              programming bugs (NPE, IOOBE) and unrecoverable conditions.</pre>
-                    <h3>Anatomy of a Stack Trace</h3>
-                    <pre class="hj-doc-art">     Exception in thread &quot;main&quot; java.lang.NumberFormatException: For input string: &quot;abc&quot;
+                        (a file might be missing, the DB might be down).
+                    <p>
+
+                        UNCHECKED - RuntimeException and its descendants, plus all Errors. The
+                        compiler does NOT force you to acknowledge them. Used for
+                        programming bugs (NPE, IOOBE) and unrecoverable conditions.
+                    <p>
+
+                        Anatomy of a Stack Trace
+                        ------------------------
+                        Exception in thread "main" java.lang.NumberFormatException: For input string: "abc"
          at java.base/java.lang.NumberFormatException.forInputString(...)
          at java.base/java.lang.Integer.parseInt(...)
-         at MyApp.run(MyApp.java:17)            &lt;- your code, your line
-         at MyApp.main(MyApp.java:9)</pre>
-                    <p>Read it top to bottom: the EXCEPTION type, its message, then the call chain (newest first). The
-                        first `at MyApp.X(...)` line is usually the bug.</p>
-                    <h3>Five Keywords That Make Exception Handling Work</h3>
-                    <pre class="hj-doc-art">     try        - protect a region of code
+                        at MyApp.run(MyApp.java:17) <- your code, your line
+                        at MyApp.main(MyApp.java:9)
+                    <p>
+
+                        Read it top to bottom: the EXCEPTION type, its message, then the call
+                        chain (newest first). The first `at MyApp.X(...)` line is usually the bug.
+                    <p>
+
+                        Five Keywords That Make Exception Handling Work
+                        -----------------------------------------------
+                        try - protect a region of code
      catch      - handle a thrown exception by type
      finally    - run cleanup no matter what
      throw      - raise an exception explicitly
      throws     - declare that a method may propagate certain checked
-                  exceptions to its caller</pre>
-                    <h3>What This Folder Covers</h3>
-                    <p>ExceptionIntroduction.java (this file) TryCatchBlock.java - try/catch / multi-catch / nested try
-                        FinalFinallyFinalize.java - three different &quot;final*&quot; keywords ThrowAndThrows.java -
-                        throw vs throws + propagation CustomException.java - your own checked + unchecked types
-                        ChainedException.java - wrap a cause without losing it NullPointerExceptions.java - NPE, helpful
-                        messages, Optional ExceptionInOverriding.java - the throws rules for overriders
-                        TryWithResources.java - auto-close cleanup (Java 7+, enhanced 9+) ExceptionBestPractices.java -
-                        dos and donts</p>
+                        exceptions to its caller
+                    <p>
+
+                        What This Folder Covers
+                        -----------------------
+                        ExceptionIntroduction.java (this file)
+                        TryCatchBlock.java - try/catch / multi-catch / nested try
+                        FinalFinallyFinalize.java - three different "final*" keywords
+                        ThrowAndThrows.java - throw vs throws + propagation
+                        CustomException.java - your own checked + unchecked types
+                        ChainedException.java - wrap a cause without losing it
+                        NullPointerExceptions.java - NPE, helpful messages, Optional
+                        ExceptionInOverriding.java - the throws rules for overriders
+                        TryWithResources.java - auto-close cleanup (Java 7+, enhanced 9+)
+                        ExceptionBestPractices.java - dos and donts
                 </div>
             </div>
 

@@ -1380,32 +1380,64 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Recursive Type Bounds</h2>
-                    <p>A type parameter can have a bound that REFERENCES ITSELF. The canonical example is:</p>
-                    <pre class="hj-doc-art">     &amp;lt;T extends Comparable&amp;lt;T&amp;gt;&amp;gt;</pre>
-                    <p>Read as &quot;T is comparable to ITS OWN TYPE&quot;. This is exactly the constraint the JDK&#x27;s
-                        Collections.max / Collections.min / Collections.sort etc. need.</p>
-                    <h3>Why You Need It</h3>
-                    <p>Without the recursive bound you could pass nonsensical types:</p>
-                    <pre class="hj-doc-art">     static &amp;lt;T extends Comparable&amp;gt; T max(List&amp;lt;T&amp;gt; xs)  // BAD</pre>
-                    <pre class="hj-doc-art">     A class `Foo implements Comparable&amp;lt;String&amp;gt;` satisfies that signature
-     but compareTo on a Foo expects a String - we&#x27;d mis-compare.</pre>
-                    <p>The recursive bound forbids that.</p>
-                    <h3>The Builder Pattern&#x27;s Cousin</h3>
-                    <p>Another classic recursive-bound use:</p>
-                    <pre class="hj-doc-art">     class Builder&amp;lt;B extends Builder&amp;lt;B&amp;gt;&amp;gt; {
+                    Recursive Type Bounds
+                    ---------------------
+                    A type parameter can have a bound that REFERENCES ITSELF. The canonical
+                    example is:
+                    <p>
+
+                        &lt;T extends Comparable&lt;T&gt;&gt;
+                    <p>
+
+                        Read as "T is comparable to ITS OWN TYPE". This is exactly the constraint
+                        the JDK's Collections.max / Collections.min / Collections.sort etc. need.
+                    <p>
+
+                        Why You Need It
+                        ---------------
+                        Without the recursive bound you could pass nonsensical types:
+                    <p>
+
+                        static &lt;T extends Comparable&gt; T max(List&lt;T&gt; xs) // BAD
+                    <p>
+
+                        A class `Foo implements Comparable&lt;String&gt;` satisfies that signature
+                        but compareTo on a Foo expects a String - we'd mis-compare.
+                    <p>
+
+                        The recursive bound forbids that.
+                    <p>
+
+                        The Builder Pattern's Cousin
+                        ----------------------------
+                        Another classic recursive-bound use:
+                    <p>
+
+                        class Builder&lt;B extends Builder&lt;B&gt;&gt; {
          B self() { return (B) this; }
          B name(String n) { ...; return self(); }
-     }</pre>
-                    <p>Subclasses inherit the fluent return type as their OWN type, not the parent&#x27;s. That lets you
-                        keep chaining subclass methods.</p>
-                    <h3>Enum&amp;lt;E extends Enum&amp;lt;E&amp;gt;&amp;gt; - the JDK&#x27;s most famous example</h3>
-                    <p>java.lang.Enum is declared:</p>
-                    <pre class="hj-doc-art">     public abstract class Enum&amp;lt;E extends Enum&amp;lt;E&amp;gt;&amp;gt;
-         implements Comparable&amp;lt;E&amp;gt;, Serializable { ... }</pre>
-                    <p>That is why Day.MONDAY.compareTo(Day.FRIDAY) returns an int but Day.MONDAY.compareTo(Color.RED)
-                        is a COMPILE ERROR - the bound nails E down to &quot;your own enum type, please&quot;.</p>
-                    <p>Two demos below: a typed min/max method and a &quot;fluent self-typed builder&quot;.</p>
+                        }
+                    <p>
+
+                        Subclasses inherit the fluent return type as their OWN type, not the
+                        parent's. That lets you keep chaining subclass methods.
+                    <p>
+
+                        Enum&lt;E extends Enum&lt;E&gt;&gt; - the JDK's most famous example
+                        ------------------------------------------------------
+                        java.lang.Enum is declared:
+                    <p>
+
+                        public abstract class Enum&lt;E extends Enum&lt;E&gt;&gt;
+                        implements Comparable&lt;E&gt;, Serializable { ... }
+                    <p>
+
+                        That is why Day.MONDAY.compareTo(Day.FRIDAY) returns an int but
+                        Day.MONDAY.compareTo(Color.RED) is a COMPILE ERROR - the bound nails
+                        E down to "your own enum type, please".
+                    <p>
+
+                        Two demos below: a typed min/max method and a "fluent self-typed builder".
                 </div>
             </div>
 

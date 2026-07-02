@@ -1380,24 +1380,18 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <p>CheckingAccount - &quot;is-a&quot; Account designed for day-to-day spending.</p>
-                    <ul>
-                        <li>Pays NO interest in this simple model (overrides return 0).
-                        </li>
-                        <li>Charges a flat MONTHLY FEE each time applyInterest() runs (we treat
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    `applyInterest` as the monthly cycle hook).</pre>
-                    <p>Demonstrates:</p>
-                    <ul>
-                        <li>INHERITANCE + POLYMORPHISM by overriding the hook differently from
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    SavingsAccount.</pre>
-                    <ul>
-                        <li>METHOD OVERRIDING with a side effect (charging a fee).
-                        </li>
-                    </ul>
+                    CheckingAccount - "is-a" Account designed for day-to-day spending.
+                    <p>
+
+                        - Pays NO interest in this simple model (overrides return 0).
+                        - Charges a flat MONTHLY FEE each time applyInterest() runs (we treat
+                        `applyInterest` as the monthly cycle hook).
+                    <p>
+
+                        Demonstrates:
+                        - INHERITANCE + POLYMORPHISM by overriding the hook differently from
+                        SavingsAccount.
+                        - METHOD OVERRIDING with a side effect (charging a fee).
                 </div>
             </div>
 

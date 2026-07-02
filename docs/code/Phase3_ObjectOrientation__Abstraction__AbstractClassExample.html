@@ -1380,59 +1380,49 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Abstraction - Part 1: ABSTRACT CLASSES</h2>
-                    <p>ABSTRACTION is the OOP pillar that hides implementation details and exposes only the behaviour a
-                        caller needs. In Java you achieve abstraction with two mechanisms:</p>
-                    <ul>
-                        <li>abstract classes (this file)
-                        </li>
-                        <li>interfaces (see InterfaceExample.java)
-                        </li>
-                    </ul>
-                    <h3>What is an abstract class?</h3>
-                    <p>A class declared with the `abstract` keyword. It MAY contain:</p>
-                    <ul>
-                        <li>concrete fields and methods (with bodies)
-                        </li>
-                        <li>abstract methods (no body, must end with a semicolon)
-                        </li>
-                        <li>constructors (called by subclass constructors via super(...))
-                        </li>
-                    </ul>
-                    <p>Properties:</p>
-                    <ul>
-                        <li>You CANNOT instantiate an abstract class directly:
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">        new Shape();        // ERROR</pre>
-                    <ul>
-                        <li>A subclass either provides bodies for ALL inherited abstract methods,
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    or it must ALSO be declared abstract.</pre>
-                    <ul>
-                        <li>An abstract class is essentially a &quot;partial class&quot; - you finish it.
-                        </li>
-                    </ul>
-                    <h3>When to use an abstract class</h3>
-                    <ul>
-                        <li>You have a TEMPLATE with some shared behaviour AND some pieces left
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    for the subclass to fill in (Template Method pattern).</pre>
-                    <ul>
-                        <li>You want to share STATE (fields) across all subclasses - interfaces
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">    can have constants but not regular fields.</pre>
-                    <ul>
-                        <li>You want non-public constructors (to control how subclasses construct).
-                        </li>
-                    </ul>
-                    <h3>Template Method Pattern</h3>
-                    <p>The classic use case. A concrete method in the abstract class defines the overall ALGORITHM and
-                        calls abstract &quot;hooks&quot; that subclasses override:</p>
-                    <pre class="hj-doc-art">     abstract class Game {
+                    Abstraction - Part 1: ABSTRACT CLASSES
+                    --------------------------------------
+                    ABSTRACTION is the OOP pillar that hides implementation details and exposes
+                    only the behaviour a caller needs. In Java you achieve abstraction with two
+                    mechanisms:
+                    <p>
+
+                        1. abstract classes (this file)
+                        2. interfaces (see InterfaceExample.java)
+                    <p>
+
+                        What is an abstract class?
+                        --------------------------
+                        A class declared with the `abstract` keyword. It MAY contain:
+                        - concrete fields and methods (with bodies)
+                        - abstract methods (no body, must end with a semicolon)
+                        - constructors (called by subclass constructors via super(...))
+                    <p>
+
+                        Properties:
+                        - You CANNOT instantiate an abstract class directly:
+                        new Shape(); // ERROR
+                        - A subclass either provides bodies for ALL inherited abstract methods,
+                        or it must ALSO be declared abstract.
+                        - An abstract class is essentially a "partial class" - you finish it.
+                    <p>
+
+                        When to use an abstract class
+                        -----------------------------
+                        - You have a TEMPLATE with some shared behaviour AND some pieces left
+                        for the subclass to fill in (Template Method pattern).
+                        - You want to share STATE (fields) across all subclasses - interfaces
+                        can have constants but not regular fields.
+                        - You want non-public constructors (to control how subclasses construct).
+                    <p>
+
+                        Template Method Pattern
+                        -----------------------
+                        The classic use case. A concrete method in the abstract class defines the
+                        overall ALGORITHM and calls abstract "hooks" that subclasses override:
+                    <p>
+
+                        abstract class Game {
          public final void play() {            // template method - final
              start();
              while (!isOver()) takeTurn();
@@ -1442,18 +1432,16 @@
          protected abstract void takeTurn();
          protected abstract boolean isOver();
          protected abstract void finish();
-     }</pre>
-                    <h3>The Example Below</h3>
-                    <p>Shape is an abstract class with:</p>
-                    <ul>
-                        <li>a shared field `name`
-                        </li>
-                        <li>a concrete `describe()` that uses the abstract methods
-                        </li>
-                        <li>two abstract methods area() and perimeter()
-                        </li>
-                    </ul>
-                    <p>Circle and Rectangle complete the contract.</p>
+                        }
+                    <p>
+
+                        The Example Below
+                        -----------------
+                        Shape is an abstract class with:
+                        - a shared field `name`
+                        - a concrete `describe()` that uses the abstract methods
+                        - two abstract methods area() and perimeter()
+                        Circle and Rectangle complete the contract.
                 </div>
             </div>
 

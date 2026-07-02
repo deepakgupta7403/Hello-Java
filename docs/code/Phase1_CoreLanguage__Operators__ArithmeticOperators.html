@@ -1380,43 +1380,57 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Arithmetic Operators</h2>
-                    <p>Java provides the standard five arithmetic operators:</p>
-                    <pre class="hj-doc-art">     +     addition         (and string concatenation when an operand is String)</pre>
-                    <ul>
-                        <li>subtraction
-                        </li>
-                        <li>multiplication
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">     /     division         (integer division if both operands are integers)
-     %     modulus          (remainder of integer division)</pre>
-                    <h3>Integer Division vs Floating-Point Division</h3>
-                    <p>If BOTH operands are integers, &#x27;/&#x27; performs INTEGER division and discards the
-                        fractional part. If EITHER operand is a floating-point value, &#x27;/&#x27; performs
-                        floating-point division.</p>
-                    <pre class="hj-doc-art">     7 / 2     -&gt; 3        (integer division)
-     7 / 2.0   -&gt; 3.5      (one operand is double - promoted to floating-point)</pre>
-                    <h3>Overflow</h3>
-                    <p>Integer arithmetic in Java WRAPS AROUND silently on overflow - there is no exception. If you need
-                        overflow detection use Math.addExact, multiplyExact, etc. (they throw ArithmeticException).</p>
-                    <pre class="hj-doc-art">     Integer.MAX_VALUE + 1   -&gt; -2147483648  (silent overflow)
-     Math.addExact(Integer.MAX_VALUE, 1)     -&gt; throws ArithmeticException</pre>
-                    <h3>Division by Zero</h3>
-                    <ul>
-                        <li>Integer division by zero -&gt; throws ArithmeticException (&quot;/ by zero&quot;)
-                        </li>
-                        <li>Floating-point divide by zero -&gt; NO exception, produces:
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">     positive / 0.0  -&gt;  Infinity
-     negative / 0.0  -&gt; -Infinity
-     0.0 / 0.0       -&gt;  NaN</pre>
-                    <h3>Operator Precedence (highest first, partial list)</h3>
-                    <pre class="hj-doc-art">     unary +, -, ++, --
+                    Arithmetic Operators
+                    --------------------
+                    Java provides the standard five arithmetic operators:
+                    <p>
+
+                        + addition (and string concatenation when an operand is String)
+                        - subtraction
+                        * multiplication
+                        / division (integer division if both operands are integers)
+                        % modulus (remainder of integer division)
+                    <p>
+
+                        Integer Division vs Floating-Point Division
+                        -------------------------------------------
+                        If BOTH operands are integers, '/' performs INTEGER division and discards the
+                        fractional part. If EITHER operand is a floating-point value, '/' performs
+                        floating-point division.
+                    <p>
+
+                        7 / 2 -> 3 (integer division)
+                        7 / 2.0 -> 3.5 (one operand is double - promoted to floating-point)
+                    <p>
+
+                        Overflow
+                        --------
+                        Integer arithmetic in Java WRAPS AROUND silently on overflow - there is no
+                        exception. If you need overflow detection use Math.addExact, multiplyExact,
+                        etc. (they throw ArithmeticException).
+                    <p>
+
+                        Integer.MAX_VALUE + 1 -> -2147483648 (silent overflow)
+                        Math.addExact(Integer.MAX_VALUE, 1) -> throws ArithmeticException
+                    <p>
+
+                        Division by Zero
+                        ----------------
+                        - Integer division by zero -> throws ArithmeticException ("/ by zero")
+                        - Floating-point divide by zero -> NO exception, produces:
+                        positive / 0.0 -> Infinity
+                        negative / 0.0 -> -Infinity
+                        0.0 / 0.0 -> NaN
+                    <p>
+
+                        Operator Precedence (highest first, partial list)
+                        -------------------------------------------------
+                        unary +, -, ++, --
      *, /, %
-     +, -</pre>
-                    <p>Use parentheses for clarity rather than relying on memory.</p>
+                        +, -
+                    <p>
+
+                        Use parentheses for clarity rather than relying on memory.
                 </div>
             </div>
 

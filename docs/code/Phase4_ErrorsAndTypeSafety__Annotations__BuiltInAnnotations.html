@@ -1380,33 +1380,13 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Built-In Annotations</h2>
-                    <p>The standard ones every Java developer should recognise.</p>
-                    <h3>Compiler / language family</h3>
-                    <p>@Override - &quot;I&#x27;m overriding a superclass method.&quot; The</p>
-                    <pre class="hj-doc-art">                           compiler errors if the signature doesn&#x27;t
-                           actually override anything.</pre>
-                    <p>@Deprecated - &quot;This is going away. Don&#x27;t add new uses.&quot;</p>
-                    <pre class="hj-doc-art">                           Java 9+ adds elements: since, forRemoval.</pre>
-                    <p>@SuppressWarnings(&quot;unchecked&quot;, &quot;rawtypes&quot;, ...)</p>
-                    <ul>
-                        <li>Tell the compiler to ignore named warnings
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">                           in the smallest scope you can manage.</pre>
-                    <p>@SafeVarargs - &quot;This varargs method is safe even though it</p>
-                    <pre class="hj-doc-art">                           uses a generic type.&quot; See Generics section.</pre>
-                    <p>@FunctionalInterface - On an interface: error if it has more than</p>
-                    <pre class="hj-doc-art">                           one abstract method. Catches typos in
-                           single-method contracts.</pre>
-                    <h3>Meta-annotation family (used on YOUR annotations)</h3>
-                    <p>@Retention - SOURCE / CLASS / RUNTIME @Target - what code element it can attach to @Inherited -
-                        sub-classes inherit it from a class @Repeatable - declares an annotation as repeatable
-                        @Documented - include in javadoc</p>
-                    <h3>Reflection / serialization family</h3>
-                    <p>@Native - hint for native bytecode tools (rarely used). @Serial (Java 14+) - &quot;this is a
-                        serialization-related member.&quot; @SuppressWarnings(&quot;serial&quot;) - skip the
-                        missing-serialVersionUID warning.</p>
+                    Built-In Annotations
+                    --------------------
+                    The standard ones every Java developer should recognise.
+                    <p>
+
+                        Compiler / language family
+                        --------------------------
                 </div>
             </div>
 

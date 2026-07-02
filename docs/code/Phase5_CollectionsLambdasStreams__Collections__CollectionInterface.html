@@ -1,12 +1,12 @@
 <!doctype html>
-<html data-bs-theme="light" lang="en">
+<html lang="en" data-bs-theme="light">
 <head>
     <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Collection Interface · HelloJava</title>
-    <meta content="A hands-on, topic-by-topic walkthrough of Java 21 LTS." name="description">
-    <link href="https://fonts.googleapis.com" rel="preconnect">
-    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <meta name="description" content="A hands-on, topic-by-topic walkthrough of Java 21 LTS.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
@@ -22,8 +22,8 @@
 
 <nav class="navbar navbar-expand-lg fixed-top shadow-0 hj-navbar">
     <div class="container-fluid">
-        <button aria-controls="sidebar" class="btn btn-link text-white d-lg-none me-2 p-2" data-mdb-target="#sidebar"
-                data-mdb-toggle="offcanvas" type="button">
+        <button class="btn btn-link text-white d-lg-none me-2 p-2" type="button" data-mdb-toggle="offcanvas"
+                data-mdb-target="#sidebar" aria-controls="sidebar">
             <span class="material-icons">menu</span>
         </button>
         <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
@@ -34,11 +34,11 @@
         <div class="d-flex align-items-center ms-auto gap-2">
             <div class="hj-search d-none d-md-flex">
                 <span class="material-icons">search</span>
-                <input autocomplete="off" id="hj-search" placeholder="Search topics..." type="search">
+                <input type="search" id="hj-search" placeholder="Search topics..." autocomplete="off">
                 <div id="hj-search-results"></div>
             </div>
-            <a class="btn btn-link text-white p-2" href="https://github.com" id="hj-github-link" rel="noopener"
-               target="_blank" title="View on GitHub">
+            <a class="btn btn-link text-white p-2" href="https://github.com" target="_blank" rel="noopener"
+               title="View on GitHub" id="hj-github-link">
                 <span class="material-icons">open_in_new</span>
             </a>
             <button class="btn btn-link text-white p-2" id="hj-theme-toggle" title="Toggle theme">
@@ -49,20 +49,20 @@
 </nav>
 
 
-<div class="offcanvas-lg offcanvas-start hj-sidebar" id="sidebar" tabindex="-1">
+<div class="offcanvas-lg offcanvas-start hj-sidebar" tabindex="-1" id="sidebar">
     <div class="offcanvas-header">
         <h6 class="offcanvas-title fw-bold">All Phases</h6>
-        <button aria-label="Close" class="btn-close" data-mdb-dismiss="offcanvas" data-mdb-target="#sidebar"
-                type="button"></button>
+        <button type="button" class="btn-close" data-mdb-dismiss="offcanvas" data-mdb-target="#sidebar"
+                aria-label="Close"></button>
     </div>
     <div class="offcanvas-body p-0">
         <div class="accordion accordion-flush" id="hj-sidebar-acc">
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase0_SetupAndFirstPrograms"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase0_SetupAndFirstPrograms" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">play_circle</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 0</small>
@@ -71,7 +71,7 @@
                         <span class="badge bg-light text-dark ms-2">11</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase0_SetupAndFirstPrograms">
+                <div id="sb-Phase0_SetupAndFirstPrograms" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase0_SetupAndFirstPrograms.html">
@@ -127,9 +127,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase1_CoreLanguage"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase1_CoreLanguage" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">code</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 1</small>
@@ -138,7 +138,7 @@
                         <span class="badge bg-light text-dark ms-2">61</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase1_CoreLanguage">
+                <div id="sb-Phase1_CoreLanguage" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold" href="../phase/Phase1_CoreLanguage.html">
                             <span class="material-icons-outlined small me-1">summarize</span>Phase overview
@@ -352,9 +352,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase2_MethodsArraysStrings"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase2_MethodsArraysStrings" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">data_array</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 2</small>
@@ -363,7 +363,7 @@
                         <span class="badge bg-light text-dark ms-2">20</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase2_MethodsArraysStrings">
+                <div id="sb-Phase2_MethodsArraysStrings" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase2_MethodsArraysStrings.html">
@@ -438,9 +438,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase3_ObjectOrientation"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase3_ObjectOrientation" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">category</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 3</small>
@@ -449,7 +449,7 @@
                         <span class="badge bg-light text-dark ms-2">48</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase3_ObjectOrientation">
+                <div id="sb-Phase3_ObjectOrientation" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase3_ObjectOrientation.html">
@@ -633,9 +633,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase4_ErrorsAndTypeSafety"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase4_ErrorsAndTypeSafety" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">shield</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 4</small>
@@ -644,7 +644,7 @@
                         <span class="badge bg-light text-dark ms-2">27</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase4_ErrorsAndTypeSafety">
+                <div id="sb-Phase4_ErrorsAndTypeSafety" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase4_ErrorsAndTypeSafety.html">
@@ -744,9 +744,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="true"
-                            class="accordion-button  bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase5_CollectionsLambdasStreams"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button  bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase5_CollectionsLambdasStreams" aria-expanded="true">
                         <span class="material-icons me-2 text-primary">stream</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 5</small>
@@ -755,7 +755,7 @@
                         <span class="badge bg-light text-dark ms-2">57</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse show" id="sb-Phase5_CollectionsLambdasStreams">
+                <div id="sb-Phase5_CollectionsLambdasStreams" class="accordion-collapse collapse show">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase5_CollectionsLambdasStreams.html">
@@ -942,9 +942,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase6_RuntimeMemoryRegexReflection"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase6_RuntimeMemoryRegexReflection" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">memory</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 6</small>
@@ -953,7 +953,7 @@
                         <span class="badge bg-light text-dark ms-2">21</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase6_RuntimeMemoryRegexReflection">
+                <div id="sb-Phase6_RuntimeMemoryRegexReflection" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase6_RuntimeMemoryRegexReflection.html">
@@ -1033,9 +1033,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase7_Concurrency"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase7_Concurrency" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">settings_input_component</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 7</small>
@@ -1044,7 +1044,7 @@
                         <span class="badge bg-light text-dark ms-2">48</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase7_Concurrency">
+                <div id="sb-Phase7_Concurrency" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold" href="../phase/Phase7_Concurrency.html">
                             <span class="material-icons-outlined small me-1">summarize</span>Phase overview
@@ -1201,9 +1201,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase8_PracticalAPIs"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase8_PracticalAPIs" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">api</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 8</small>
@@ -1212,7 +1212,7 @@
                         <span class="badge bg-light text-dark ms-2">22</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase8_PracticalAPIs">
+                <div id="sb-Phase8_PracticalAPIs" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold" href="../phase/Phase8_PracticalAPIs.html">
                             <span class="material-icons-outlined small me-1">summarize</span>Phase overview
@@ -1293,9 +1293,9 @@
 
             <div class="accordion-item bg-transparent border-0">
                 <h2 class="accordion-header">
-                    <button aria-expanded="false"
-                            class="accordion-button collapsed bg-transparent py-2 px-3" data-mdb-collapse-init data-mdb-target="#sb-Phase9_ModernJavaAndModules"
-                            data-mdb-toggle="collapse" type="button">
+                    <button class="accordion-button collapsed bg-transparent py-2 px-3"
+                            type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                            data-mdb-target="#sb-Phase9_ModernJavaAndModules" aria-expanded="false">
                         <span class="material-icons me-2 text-primary">auto_awesome</span>
                         <span class="flex-grow-1">
               <small class="text-muted d-block">Phase 9</small>
@@ -1304,7 +1304,7 @@
                         <span class="badge bg-light text-dark ms-2">8</span>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse " id="sb-Phase9_ModernJavaAndModules">
+                <div id="sb-Phase9_ModernJavaAndModules" class="accordion-collapse collapse ">
                     <div class="accordion-body p-0">
                         <a class="hj-sidebar-link d-block px-3 py-2 fw-bold"
                            href="../phase/Phase9_ModernJavaAndModules.html">
@@ -1350,10 +1350,10 @@
         <div class="container-fluid px-4">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-2 small">
-                    <li class="breadcrumb-item"><a class="text-white-50" href="../index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a class="text-white-50"
-                                                   href="../phase/Phase5_CollectionsLambdasStreams.html">Phase 5</a></li>
-                    <li aria-current="page" class="breadcrumb-item active text-white">Collections</li>
+                    <li class="breadcrumb-item"><a href="../index.html" class="text-white-50">Home</a></li>
+                    <li class="breadcrumb-item"><a href="../phase/Phase5_CollectionsLambdasStreams.html"
+                                                   class="text-white-50">Phase 5</a></li>
+                    <li class="breadcrumb-item active text-white" aria-current="page">Collections</li>
                 </ol>
             </nav>
             <div class="d-flex align-items-center flex-wrap gap-3">
@@ -1380,68 +1380,76 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>java.util.Collection&amp;lt;E&amp;gt; - The Root Interface</h2>
-                    <p>Collection&amp;lt;E&amp;gt; is the shared API that List, Set, Queue, and Deque all inherit.
-                        Programs against Collection get a generic API that works on any implementation:</p>
-                    <pre class="hj-doc-art">     void process(Collection&amp;lt;String&amp;gt; c) { for (String s : c) ... }</pre>
-                    <h3>The Methods (Complete API)</h3>
-                    <ul>
-                        <li>Size / emptiness
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">      size()                  - element count
-      isEmpty()               - size() == 0</pre>
-                    <ul>
-                        <li>Membership
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">      contains(Object o)
-      containsAll(Collection&amp;lt;?&amp;gt; c)</pre>
-                    <ul>
-                        <li>Modification
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">      add(E e)                - true if changed (Set may return false)
+                    java.util.Collection&lt;E&gt; - The Root Interface
+                    ---------------------------------------------
+                    Collection&lt;E&gt; is the shared API that List, Set, Queue, and Deque all
+                    inherit. Programs against Collection get a generic API that works on any
+                    implementation:
+                    <p>
+
+                        void process(Collection&lt;String&gt; c) { for (String s : c) ... }
+                    <p>
+
+                        The Methods (Complete API)
+                        --------------------------
+                    <p>
+
+                        - Size / emptiness
+                        size() - element count
+                        isEmpty() - size() == 0
+                    <p>
+
+                        - Membership
+                        contains(Object o)
+                        containsAll(Collection&lt;?&gt; c)
+                    <p>
+
+                        - Modification
+                        add(E e) - true if changed (Set may return false)
       remove(Object o)
-      addAll(Collection&amp;lt;? extends E&amp;gt; c)
-      removeAll(Collection&amp;lt;?&amp;gt; c)
-      retainAll(Collection&amp;lt;?&amp;gt; c)        - intersection
-      removeIf(Predicate&amp;lt;? super E&amp;gt; p)  - Java 8+
-      clear()</pre>
-                    <ul>
-                        <li>Iteration / conversion
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">      iterator()
+                        addAll(Collection&lt;? extends E&gt; c)
+                        removeAll(Collection&lt;?&gt; c)
+                        retainAll(Collection&lt;?&gt; c) - intersection
+                        removeIf(Predicate&lt;? super E&gt; p) - Java 8+
+                        clear()
+                    <p>
+
+                        - Iteration / conversion
+                        iterator()
       toArray()
       toArray(T[] a)
-      toArray(IntFunction&amp;lt;T[]&amp;gt;)         - Java 11+
-      forEach(Consumer&amp;lt;? super E&amp;gt;)      - Java 8+
+                        toArray(IntFunction&lt;T[]&gt;) - Java 11+
+                        forEach(Consumer&lt;? super E&gt;) - Java 8+
       stream() / parallelStream()       - Java 8+
-      spliterator()                     - Java 8+</pre>
-                    <ul>
-                        <li>Equality / identity
-                        </li>
-                    </ul>
-                    <pre class="hj-doc-art">      equals(Object o)
-      hashCode()</pre>
-                    <h3>The Optional-Operation Convention</h3>
-                    <p>Some implementations are IMMUTABLE - List.of(...), Map.of(...). Calling a mutator on them throws
-                        UnsupportedOperationException. The Java spec permits any Collection method to be &quot;optional&quot;
-                        - read the docs for each implementation.</p>
-                    <h3>Equality - Two Collections Are Equal If...</h3>
-                    <ul>
-                        <li>Same TYPE family (a List is never .equals to a Set).
-                        </li>
-                        <li>Same SIZE.
-                        </li>
-                        <li>Same ELEMENTS in the same iteration order (for ordered types).
-                        </li>
-                    </ul>
-                    <h3>Iteration Gotcha - ConcurrentModificationException</h3>
-                    <p>Most collections are fail-fast: modifying them while iterating with a for-each loop will throw
-                        ConcurrentModificationException. Use the Iterator&#x27;s own remove() method, removeIf(...), or
-                        a CopyOnWrite* / Concurrent* collection.</p>
+                        spliterator() - Java 8+
+                    <p>
+
+                        - Equality / identity
+                        equals(Object o)
+                        hashCode()
+                    <p>
+
+                        The Optional-Operation Convention
+                        ---------------------------------
+                        Some implementations are IMMUTABLE - List.of(...), Map.of(...). Calling a
+                        mutator on them throws UnsupportedOperationException. The Java spec
+                        permits any Collection method to be "optional" - read the docs for each
+                        implementation.
+                    <p>
+
+                        Equality - Two Collections Are Equal If...
+                        ------------------------------------------
+                        - Same TYPE family (a List is never .equals to a Set).
+                        - Same SIZE.
+                        - Same ELEMENTS in the same iteration order (for ordered types).
+                    <p>
+
+                        Iteration Gotcha - ConcurrentModificationException
+                        --------------------------------------------------
+                        Most collections are fail-fast: modifying them while iterating with a
+                        for-each loop will throw ConcurrentModificationException. Use the
+                        Iterator's own remove() method, removeIf(...), or a CopyOnWrite* /
+                        Concurrent* collection.
                 </div>
             </div>
 
@@ -1597,8 +1605,8 @@ public class CollectionInterface {
 <footer class="hj-footer text-center py-4 mt-5">
     <small class="text-muted">
         HelloJava · A topic-by-topic walkthrough of Java 21 ·
-        Built with <a href="https://mdbootstrap.com/" rel="noopener" target="_blank">MDB</a>
-        and <a href="https://prismjs.com/" rel="noopener" target="_blank">Prism.js</a>
+        Built with <a href="https://mdbootstrap.com/" target="_blank" rel="noopener">MDB</a>
+        and <a href="https://prismjs.com/" target="_blank" rel="noopener">Prism.js</a>
     </small>
 </footer>
 

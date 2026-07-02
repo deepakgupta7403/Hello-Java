@@ -1380,27 +1380,32 @@
                     <span class="fw-bold">Documentation</span>
                 </div>
                 <div class="card-body hj-doc-body">
-                    <h2>Reading Annotations at Runtime</h2>
-                    <p>For runtime-retained annotations, the Reflection API gives you:</p>
-                    <pre class="hj-doc-art">     class.getAnnotation(MyAnnot.class)
+                    Reading Annotations at Runtime
+                    ------------------------------
+                    For runtime-retained annotations, the Reflection API gives you:
+                    <p>
+
+                        class.getAnnotation(MyAnnot.class)
      class.getAnnotationsByType(MyAnnot.class)   // repeatables
      class.isAnnotationPresent(MyAnnot.class)
      class.getAnnotations()                       // declared on class
-     class.getDeclaredAnnotations()               // not inherited</pre>
-                    <pre class="hj-doc-art">     method.getAnnotation(MyAnnot.class)
+                        class.getDeclaredAnnotations() // not inherited
+                    <p>
+
+                        method.getAnnotation(MyAnnot.class)
      method.getAnnotationsByType(MyAnnot.class)
-     method.getParameterAnnotations()</pre>
-                    <p>This is the API frameworks like Spring, JUnit, Jackson, and Hibernate use to drive their
-                        behaviour.</p>
-                    <h3>Pattern: hand-rolled @Audited interceptor</h3>
-                    <ul>
-                        <li>Walk the class&#x27;s methods.
-                        </li>
-                        <li>If a method has @Audited, wrap its invocation with logging.
-                        </li>
-                        <li>This is the conceptual core of AOP libraries.
-                        </li>
-                    </ul>
+                        method.getParameterAnnotations()
+                    <p>
+
+                        This is the API frameworks like Spring, JUnit, Jackson, and Hibernate
+                        use to drive their behaviour.
+                    <p>
+
+                        Pattern: hand-rolled @Audited interceptor
+                        -----------------------------------------
+                        - Walk the class's methods.
+                        - If a method has @Audited, wrap its invocation with logging.
+                        - This is the conceptual core of AOP libraries.
                 </div>
             </div>
 
